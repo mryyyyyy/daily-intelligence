@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日双专栏日推 · 2026-04-11</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #0f1117;
+    color: #e8eaf0;
+    min-height: 100vh;
+    padding: 24px 16px;
+  }
+  .page-header { text-align: center; margin-bottom: 40px; }
+  .page-header h1 {
+    font-size: 28px; font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .page-header .date-badge {
+    display: inline-block;
+    background: rgba(102,126,234,0.15); border: 1px solid rgba(102,126,234,0.3);
+    border-radius: 20px; padding: 4px 16px; font-size: 13px; color: #a0a8c0;
+  }
+  .columns-wrapper {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    max-width: 1400px; margin: 0 auto;
+  }
+  @media (max-width: 900px) { .columns-wrapper { grid-template-columns: 1fr; } }
+
+  .col-news {
+    background: linear-gradient(160deg, #1a1d2e 0%, #12141f 100%);
+    border: 1px solid rgba(255,200,80,0.2); border-radius: 16px; overflow: hidden;
+  }
+  .col-news .col-header {
+    background: linear-gradient(135deg, #c8961a, #e8b84b); padding: 18px 22px;
+  }
+  .col-news .col-header h2 { font-size: 17px; font-weight: 700; color: #1a1000; margin-bottom: 4px; }
+  .col-news .col-header .subtitle { font-size: 12px; color: rgba(26,16,0,0.7); }
+  .col-news .col-body { padding: 20px; }
+
+  .core-signal {
+    background: rgba(200,150,26,0.12); border-left: 3px solid #e8b84b;
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin-bottom: 20px;
+  }
+  .core-signal .label { font-size: 11px; color: #e8b84b; font-weight: 600; letter-spacing: 1px; margin-bottom: 6px; }
+  .core-signal p { font-size: 14px; color: #f0d080; line-height: 1.6; font-weight: 500; }
+
+  .news-item {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,200,80,0.1);
+    border-radius: 10px; padding: 14px 16px; margin-bottom: 14px;
+  }
+  .news-item:last-child { margin-bottom: 0; }
+  .news-item .news-title {
+    font-size: 14px; font-weight: 700; color: #f0c060;
+    margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+  }
+  .news-item .news-title .num {
+    background: rgba(200,150,26,0.3); border-radius: 50%;
+    width: 22px; height: 22px; display: flex; align-items: center; justify-content: center;
+    font-size: 11px; flex-shrink: 0;
+  }
+  .news-section { margin-bottom: 8px; }
+  .news-section .sec-label { font-size: 11px; font-weight: 600; color: #a08040; margin-bottom: 4px; letter-spacing: 0.5px; }
+  .news-section p { font-size: 13px; color: #c8cad8; line-height: 1.65; }
+  .news-section.signal p { color: #e0c870; }
+  .news-section.impact p { color: #90d090; }
+
+  .summary-box {
+    background: linear-gradient(135deg, rgba(200,150,26,0.15), rgba(200,150,26,0.05));
+    border: 1px solid rgba(200,150,26,0.3); border-radius: 10px; padding: 14px 16px; margin-top: 16px;
+  }
+  .summary-box .label { font-size: 11px; color: #e8b84b; font-weight: 600; margin-bottom: 8px; }
+  .summary-box p { font-size: 13px; color: #d4b060; line-height: 1.65; }
+
+  .col-ai {
+    background: linear-gradient(160deg, #0d1a2e 0%, #0a1220 100%);
+    border: 1px solid rgba(80,180,255,0.2); border-radius: 16px; overflow: hidden;
+  }
+  .col-ai .col-header {
+    background: linear-gradient(135deg, #1565c0, #0d47a1); padding: 18px 22px;
+  }
+  .col-ai .col-header h2 { font-size: 17px; font-weight: 700; color: #e3f2fd; margin-bottom: 4px; }
+  .col-ai .col-header .subtitle { font-size: 12px; color: rgba(227,242,253,0.6); }
+  .col-ai .col-body { padding: 20px; }
+
+  .ai-section { margin-bottom: 18px; }
+  .ai-section-title {
+    font-size: 13px; font-weight: 700; color: #64b5f6;
+    display: flex; align-items: center; gap: 6px;
+    margin-bottom: 10px; padding-bottom: 8px;
+    border-bottom: 1px solid rgba(80,180,255,0.15);
+  }
+  .ai-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(80,180,255,0.12);
+    border-radius: 8px; padding: 12px 14px; margin-bottom: 10px;
+  }
+  .ai-card:last-child { margin-bottom: 0; }
+  .ai-card .card-tag { font-size: 11px; font-weight: 600; color: #90caf9; margin-bottom: 5px; }
+  .ai-card .card-main { font-size: 13px; color: #b0bec5; line-height: 1.6; }
+  .ai-card .card-main strong { color: #e3f2fd; }
+  .ai-card .card-value {
+    margin-top: 6px; font-size: 12px; color: #4fc3f7; line-height: 1.5;
+    padding-top: 6px; border-top: 1px solid rgba(80,180,255,0.1);
+  }
+  .ai-card .card-value::before { content: "💡 "; }
+
+  .money-card { background: rgba(255,193,7,0.06); border: 1px solid rgba(255,193,7,0.2); }
+  .money-card .card-tag { color: #ffd54f; }
+  .money-card .card-value { color: #ffd54f; border-top-color: rgba(255,193,7,0.15); }
+
+  .dict-card { background: rgba(156,39,176,0.06); border: 1px solid rgba(156,39,176,0.2); }
+  .dict-card .card-tag { color: #ce93d8; }
+  .dict-card .card-value { color: #ce93d8; border-top-color: rgba(156,39,176,0.15); }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>📡 每日双专栏日推</h1>
+  <div class="date-badge">📅 2026年04月11日（星期六）· 第13期</div>
+</div>
+
+<div class="columns-wrapper">
+
+  <!-- ===== 专栏一：新闻联播简报 ===== -->
+  <div class="col-news">
+    <div class="col-header">
+      <h2>📺 新闻联播每日简报</h2>
+      <div class="subtitle">风向标解读版 · 4月10日播出内容</div>
+    </div>
+    <div class="col-body">
+
+      <div class="core-signal">
+        <div class="label">▲ 核心风向</div>
+        <p>两岸关系回暖+中美乒乓外交55周年双线外交信号释放，同时一季度CPI温和上涨0.9%、李强召开经济形势座谈会，"稳增长+扩内需+促开放"三大政策底色清晰。</p>
+      </div>
+
+      <!-- 新闻1 -->
+      <div class="news-item">
+        <div class="news-title"><span class="num">1</span>习近平会见中国国民党主席郑丽文</div>
+        <div class="news-section">
+          <div class="sec-label">📋 新闻联播说了什么</div>
+          <p>习近平总书记在北京<strong>会见中国国民党主席郑丽文</strong>，这是两岸高层时隔多年首次直接会见，释放两岸关系回暖的重要信号。具体会面地点为北京人民大会堂。</p>
+        </div>
+        <div class="news-section signal">
+          <div class="sec-label">🎯 风向标解读</div>
+          <p>此次会见是两岸关系中的标志性事件。国民党主席访陆+最高领导人亲自会见，意味着两岸政治对话渠道重启。结合近期两岸经贸交流升温（台湾水果输陆恢复等），对台政策从"硬管控"转向"软接触"的信号明确。</p>
+        </div>
+        <div class="news-section impact">
+          <div class="sec-label">📊 行业影响</div>
+          <p>两岸经贸概念股（物流、航运、跨境电商）；福建自贸区受益企业；台资企业在陆投资信心回升；两岸旅游、文化交流相关板块。</p>
+        </div>
+      </div>
+
+      <!-- 新闻2 -->
+      <div class="news-item">
+        <div class="news-title"><span class="num">2</span>李强主持召开经济形势专家和企业家座谈会</div>
+        <div class="news-section">
+          <div class="sec-label">📋 新闻联播说了什么</div>
+          <p>国务院总理<strong>李强</strong>主持召开经济形势专家和企业家座谈会，听取对当前经济形势的分析判断和政策建议。会议聚焦<strong>"十五五"良好开局</strong>目标，强调稳定预期、提振信心、激发活力。</p>
+        </div>
+        <div class="news-section signal">
+          <div class="sec-label">🎯 风向标解读</div>
+          <p>座谈会是政策风向标——当总理密集召集专家和企业家"问诊"经济，通常预示后续将有<strong>增量稳增长政策</strong>出台。结合一季度CPI仅涨0.9%（低于2%目标），扩内需政策加码的概率正在上升。</p>
+        </div>
+        <div class="news-section impact">
+          <div class="sec-label">📊 行业影响</div>
+          <p>消费刺激（家电以旧换新延续/扩围）；基建投资（专项债加速发行）；民营经济（营商环境优化政策可期）；房地产（一线松绑预期升温）。</p>
+        </div>
+      </div>
+
+      <!-- 新闻3 -->
+      <div class="news-item">
+        <div class="news-title"><span class="num">3</span>一季度CPI同比上涨0.9%，出入境1.85亿人次</div>
+        <div class="news-section">
+          <div class="sec-label">📋 新闻联播说了什么</div>
+          <p>国家统计局数据：一季度全国居民消费价格指数（CPI）同比上涨<strong>0.9%</strong>，涨幅温和，距离全年2%目标有较大空间。同期，一季度全国共<strong>1.85亿人次出入境</strong>，反映出入境旅游和商务活动全面恢复并超越疫前水平。</p>
+        </div>
+        <div class="news-section signal">
+          <div class="sec-label">🎯 风向标解读</div>
+          <p>CPI 0.9%说明内需恢复偏慢、通缩压力仍在，央行降准降息空间充足。1.85亿人次出入境是强信号——免签政策效果显著，国际航线、出境游、跨境电商等赛道持续受益。</p>
+        </div>
+        <div class="news-section impact">
+          <div class="sec-label">📊 行业影响</div>
+          <p>出境游（航空公司、OTA平台、免税店）；消费股（CPI偏低+促消费政策预期）；债券市场（利率下行预期利好债市）；黄金（低利率环境支撑金价）。</p>
+        </div>
+      </div>
+
+      <!-- 新闻4 -->
+      <div class="news-item">
+        <div class="news-title"><span class="num">4</span>中美"乒乓外交"55周年纪念活动</div>
+        <div class="news-section">
+          <div class="sec-label">📋 新闻联播说了什么</div>
+          <p>习近平向中美"乒乓外交"55周年纪念大会暨中美青少年体育交流系列活动启动仪式致<strong>贺信</strong>，<strong>韩正</strong>出席活动并致辞。系列活动包括中美青少年乒乓球友谊赛、体育文化交流论坛等。</p>
+        </div>
+        <div class="news-section signal">
+          <div class="sec-label">🎯 风向标解读</div>
+          <p>"乒乓外交"55周年是中美关系破冰的象征性节点。在中美贸易摩擦持续的背景下，选择"体育+青少年"作为柔性外交手段，传递"民间交流不中断"的信号，与两岸关系回暖形成外交组合拳。</p>
+        </div>
+        <div class="news-section impact">
+          <div class="sec-label">📊 行业影响</div>
+          <p>体育产业（乒乓球器材、赛事运营）；青少年教育交流（留学中介、国际学校）；中美跨境电商（政治缓和预期利好）。</p>
+        </div>
+      </div>
+
+      <!-- 新闻5 -->
+      <div class="news-item">
+        <div class="news-title"><span class="num">5</span>陕西/安徽"十五五"良好开局：科技成果转化+未来产业</div>
+        <div class="news-section">
+          <div class="sec-label">📋 新闻联播说了什么</div>
+          <p>"凝心聚力 真抓实干 奋力实现'十五五'良好开局"系列报道：<strong>陕西</strong>加快推动科技成果高效转化应用（西安交大/西北工业大学产学研融合）；<strong>安徽</strong>以科技创新引领未来产业加速发展（合肥"量子+AI"双核驱动）。</p>
+        </div>
+        <div class="news-section signal">
+          <div class="sec-label">🎯 风向标解读</div>
+          <p>新闻联播"十五五"系列连续多日报道地方经验，今天聚焦陕西（科技转化）和安徽（未来产业），信号明确：<strong>地方政府要从GDP驱动转向科技驱动</strong>。合肥模式（投资+科技+产业闭环）作为全国样本被推广。</p>
+        </div>
+        <div class="news-section impact">
+          <div class="sec-label">📊 行业影响</div>
+          <p>科技孵化园区；产学研合作平台；量子计算、人工智能等未来产业概念；西安/合肥本地科技上市公司。</p>
+        </div>
+      </div>
+
+      <!-- 新闻6 -->
+      <div class="news-item">
+        <div class="news-title"><span class="num">6</span>美以军事打击致伊朗近2400人死亡+以黎冲突升级</div>
+        <div class="news-section">
+          <div class="sec-label">📋 新闻联播说了什么</div>
+          <p>世卫组织称<strong>美以军事打击已致伊朗近2400人死亡</strong>；以色列称对黎巴嫩真主党发动<strong>新一轮空袭</strong>，黎巴嫩方面称正与以军地面部队战斗。中东局势持续恶化，此前4月11日美伊伊斯兰堡谈判的前景不明朗。</p>
+        </div>
+        <div class="news-section signal">
+          <div class="sec-label">🎯 风向标解读</div>
+          <p>伊朗近2400人死亡的数字远超此前报道，说明冲突烈度急剧升级。美伊伊斯兰堡谈判今日（4月11日）举行，但双方军事行动并未停止，"边打边谈"格局短期内难以改变。油价和避险资产将持续受地缘风险驱动。</p>
+        </div>
+        <div class="news-section impact">
+          <div class="sec-label">📊 行业影响</div>
+          <p>能源化工（油价高位震荡风险加大）；黄金（避险需求持续）；军工防御板块；航运保险费率上升（中东航线）；中国油企进口成本压力。</p>
+        </div>
+      </div>
+
+      <div class="summary-box">
+        <div class="label">🔭 总结风向标</div>
+        <p>今日新闻联播外交信号突出：<strong>两岸高层会见</strong>（国民党主席首次访陆）+<strong>中美乒乓外交55周年</strong>双线外交组合拳。经济面，CPI 0.9%+李强经济座谈会=增量政策预期升温。中东方面，伊朗2400人死亡+美伊今日谈判，地缘风险仍是最大外部不确定性。关注后续稳增长政策落地时间表。</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== 专栏二：AI情报 ===== -->
+  <div class="col-ai">
+    <div class="col-header">
+      <h2>🚀 AI生产力情报专栏</h2>
+      <div class="subtitle">黑科技与套利指南 · 2026-04-11 · 第13期</div>
+    </div>
+    <div class="col-body">
+
+      <!-- 顶级装备库 -->
+      <div class="ai-section">
+        <div class="ai-section-title">🛠️ 顶级装备库更新</div>
+
+        <div class="ai-card">
+          <div class="card-tag">📦 项目：阿里 HappyHorse "多模态视频生成" 深度拆解</div>
+          <div class="card-main">
+            阿里巴巴发布多模态大模型<strong>HappyHorse</strong>，在视频生成Elo评分中以<strong>1332分登顶全球第一</strong>，超越Sora和可灵。核心黑科技：原生多模态架构+高保真时序一致性生成，商业级广告视频可"一键出片"。
+          </div>
+          <div class="card-value">
+            适合电商视频制作团队——淘宝/抖音商品主图视频、品牌宣传片，成本从5万/条降至500/条以下，一个人+HappyHorse就能替代整个视频外包团队。
+          </div>
+        </div>
+
+        <div class="ai-card">
+          <div class="card-tag">📦 项目：MiniMax Music 2.6 "AI音乐生成+Cover翻唱" 深度拆解</div>
+          <div class="card-main">
+            MiniMax升级AI音乐生成模型至<strong>Music 2.6</strong>，新增<strong>Cover翻唱功能</strong>和<strong>Agent技能</strong>。核心黑科技：可以拿任意一首歌，AI自动生成同风格翻唱版本，支持人声风格迁移+歌词重写，音质达到录音棚级别。
+          </div>
+          <div class="card-value">
+            自媒体音乐博主必备——热门歌曲翻唱不用再找歌手录，AI一键生成。配合短视频平台，日更3-5首翻唱作品，涨粉速度可提升5-10倍。
+          </div>
+        </div>
+
+        <div class="ai-card">
+          <div class="card-tag">📦 项目：腾讯 HY-Embodied-0.5 "具身智能模型" 深度拆解</div>
+          <div class="card-main">
+            腾讯发布专为机器人打造的具身模型<strong>HY-Embodied-0.5</strong>，在<strong>22项评测中16项拿下最佳</strong>。核心黑科技：物理世界理解+多任务泛化，让机器人从"只会搬箱子"进化到"理解复杂指令+自主决策"。</          </div>
+          <div class="card-value">
+            适合工业自动化领域——仓储物流、工厂产线、农业采摘场景，部署后可替代2-3名工人，ROI回收期从3年缩短到8个月。
+          </div>
+        </div>
+      </div>
+
+      <!-- Agent战场情报 -->
+      <div class="ai-section">
+        <div class="ai-section-title">🤖 Agent 战场情报</div>
+
+        <div class="ai-card">
+          <div class="card-tag">🔥 动态：Hermes Agent 框架引入 "全局任务编排层"</div>
+          <div class="card-main">
+            全球顶级开源Agent框架<strong>Hermes Agent</strong>发布新版本，小米<strong>MiMo-V2</strong>大模型已率先接入。核心能力：全局任务编排——一个Agent可同时管理数十个子任务，支持"失败自动重试+任务优先级动态调整"，像项目经理一样自动调度资源。
+          </div>
+          <div class="card-value">
+            适合做自动化内容工厂——让一个"主编Agent"调度10个"写作Agent"，批量生产小红书图文/短视频脚本/公众号文章，一个人管理百条内容流。
+          </div>
+        </div>
+
+        <div class="ai-card">
+          <div class="card-tag">⚡ 动态：MiniMax MMX-CLI 开源 "AI Agent命令行工具"</div>
+          <div class="card-main">
+            MiniMax开源<strong>MMX-CLI</strong>，面向AI Agent的命令行工具，打破API接口壁垒，支持跨平台调用不同模型。核心价值：<strong>一个CLI入口管理所有AI服务</strong>，类似MCP但更轻量、更易部署。
+          </div>
+          <div class="card-value">
+            适合开发者——本地开发Agent应用时，不用再为每个模型单独写适配代码，一个CLI搞定所有API调用，开发效率提升3-5倍。
+          </div>
+        </div>
+
+        <div class="ai-card">
+          <div class="card-tag">📡 动态：五部门印发《"人工智能+教育"行动计划》</div>
+          <div class="card-main">
+            教育部等五部门联合印发<strong>《"人工智能+教育"行动计划》</strong>，要求全学段开发AI慕课资源，基础教育阶段<strong>AI课程将全面开设</strong>。这是首个国家级AI教育政策文件，覆盖K12到高校全链路。
+          </div>
+          <div class="card-value">
+            教育科技赛道重大利好——AI课程开发、AI教学工具、AI作业批改平台都将纳入政府采购清单，教育SaaS公司抓紧做AI教育产品，政策红利窗口期6-12个月。
+          </div>
+        </div>
+      </div>
+
+      <!-- AI套利/变现线索 -->
+      <div class="ai-section">
+        <div class="ai-section-title">💰 AI 套利/变现线索</div>
+
+        <div class="ai-card money-card">
+          <div class="card-tag">💎 热点：HappyHorse视频生成登顶 → AI视频代工暴利窗口</div>
+          <div class="card-main">
+            阿里HappyHorse Elo 1332分全球第一，视频生成质量达到商业广告级。当前绝大多数电商商家仍在用传统拍摄（单条5000-50000元），AI视频成本不到1%。<strong>代工差价就是利润。</strong>
+          </div>
+          <div class="card-value">
+            复刻建议：在闲鱼/淘宝/1688挂"AI商品视频制作"服务，定价500-2000元/条，实际成本几乎为零（HappyHorse+可灵组合出片），日接3-5单即可月入3-5万。
+          </div>
+        </div>
+
+        <div class="ai-card money-card">
+          <div class="card-tag">💎 热点：Music 2.6 Cover翻唱 → 短视频音乐号变现</div>
+          <div class="card-main">
+            MiniMax Music 2.6的Cover翻唱功能可一键将热门歌曲AI翻唱不同风格版本。<strong>实际案例</strong>：海外博主用Suno翻唱版覆盖Spotify歌单，单月版税收入超$5000。国内抖音/快手音乐号玩法更成熟，变现路径更短。
+          </div>
+          <div class="card-value">
+            复刻建议：选3-5个垂直风格（古风/摇滚/二次元），每天AI翻唱1首热门歌曲发抖音/快手，粉丝到1000后开通音乐推广任务，单条推广费50-500元。
+          </div>
+        </div>
+      </div>
+
+      <!-- 避坑/黑话词典 -->
+      <div class="ai-section">
+        <div class="ai-section-title">🔍 避坑/黑话词典</div>
+
+        <div class="ai-card dict-card">
+          <div class="card-tag">📖 词条：Elo评分（ Elo Rating System）</div>
+          <div class="card-main">
+            原用于国际象棋排名的系统，现在被用来评测AI模型。模型A对战模型B，用户盲选更喜欢哪个，赢了加分、输了扣分。<strong>HappyHorse Elo 1332分</strong>就是通过数万次用户盲测得出的综合排名。
+          </div>
+          <div class="card-value">
+            大白话：就是让用户"盲品"AI生成的视频，像评委打分一样，谁的"得票率"高谁排名靠前。Elo分越高，说明用户越买账。
+          </div>
+        </div>
+
+        <div class="ai-card dict-card">
+          <div class="card-tag">📖 词条：具身智能（Embodied AI）</div>
+          <div class="card-main">
+            让AI拥有"身体"——不只是聊天和写代码，而是能操控真实的机器人手臂、腿脚，在物理世界中完成抓取、行走、操作等任务。<strong>腾讯HY-Embodied-0.5</strong>就是这个方向的最新成果。
+          </div>
+          <div class="card-value">
+            大白话：以前AI只会"动嘴"，现在给它装上了"手脚"。具身智能就是让AI从"键盘侠"变成"实干家"，能替你在真实世界里干活。
+          </div>
+        </div>
+
+        <div class="ai-card dict-card">
+          <div class="card-tag">📖 词条：Hermes Agent（信使Agent框架）</div>
+          <div class="card-main">
+            一个开源的Agent编排框架，核心功能是让多个AI Agent协同工作。一个"总管Agent"负责分配任务、监控进度、处理异常，类似公司的"项目经理"，下面是各个"员工Agent"。
+          </div>
+          <div class="card-value">
+            大白话：就是给AI团队请了一个"项目经理"。以前你的10个AI Agent各干各的、互不沟通，现在有个"总管"统一调度，效率直接翻倍。
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div style="text-align:center; margin-top: 32px; font-size: 12px; color: #404560;">
+  信源：新华社/央视/cn.govopendata.com · AIbase · 机器之心 · 2026-04-11 自动生成
+</div>
+
+</body>
+</html>

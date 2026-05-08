@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日双专栏简报 · 2026-04-03</title>
+<style>
+  :root {
+    --red:#e63946; --navy:#1d3557; --blue:#457b9d;
+    --lightblue:#a8dadc; --cream:#f1faee; --gold:#e9c46a;
+    --green:#2a9d8f; --purple:#7b2d8b; --orange:#f4a261;
+    --dark:#1a1a2e; --card-bg:#fff; --shadow:0 4px 20px rgba(0,0,0,.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:-apple-system,'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif;
+    background:linear-gradient(135deg,#0f2027 0%,#203a43 50%,#2c5364 100%);
+    min-height:100vh; padding:20px; color:#333;
+  }
+  /* ── 顶部 ── */
+  .header{text-align:center;padding:30px 20px 20px;color:#fff;}
+  .date-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
+    border-radius:30px;padding:6px 18px;font-size:13px;color:#a8dadc;margin-bottom:12px;letter-spacing:2px;}
+  .header h1{font-size:28px;font-weight:700;margin-bottom:6px;}
+  .header p{font-size:13px;color:rgba(255,255,255,.55);}
+  /* ── 双栏 ── */
+  .columns{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1400px;margin:0 auto;padding-bottom:40px;}
+  @media(max-width:900px){.columns{grid-template-columns:1fr;}}
+  .column-wrap{display:flex;flex-direction:column;gap:16px;}
+  .column-header{border-radius:16px 16px 0 0;padding:18px 22px 14px;color:#fff;}
+  .col-news .column-header{background:linear-gradient(135deg,#1d3557,#457b9d);}
+  .col-ai .column-header{background:linear-gradient(135deg,#16213e,#0f3460);}
+  .column-header .col-tag{font-size:11px;letter-spacing:3px;text-transform:uppercase;opacity:.7;margin-bottom:4px;}
+  .column-header h2{font-size:20px;font-weight:700;}
+  .column-header .col-sub{font-size:12px;opacity:.6;margin-top:4px;}
+  /* ── 卡片 ── */
+  .card{background:var(--card-bg);border-radius:14px;padding:20px;box-shadow:var(--shadow);
+    transition:transform .2s,box-shadow .2s;}
+  .card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.12);}
+  /* ── 核心风向 ── */
+  .core-wind{background:linear-gradient(135deg,#1d3557,#2d6a9f);border-radius:14px;padding:18px 22px;color:#fff;}
+  .core-wind .cw-label{font-size:11px;letter-spacing:3px;color:#a8dadc;margin-bottom:8px;}
+  .core-wind .cw-text{font-size:15px;line-height:1.8;color:#f1faee;font-weight:500;}
+  /* ── 新闻卡 ── */
+  .news-card{border-left:4px solid var(--blue);}
+  .news-num{display:inline-block;width:24px;height:24px;background:var(--navy);color:#fff;border-radius:50%;
+    text-align:center;line-height:24px;font-size:12px;font-weight:700;margin-right:8px;flex-shrink:0;}
+  .news-title{display:flex;align-items:center;margin-bottom:12px;}
+  .news-title h3{font-size:15px;font-weight:700;color:var(--navy);}
+  .news-item-row{margin-bottom:10px;}
+  .news-label{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;
+    margin-bottom:5px;letter-spacing:1px;}
+  .label-says{background:#e8f4fd;color:#1d3557;}
+  .label-signal{background:#fff3cd;color:#856404;}
+  .label-impact{background:#d1ecf1;color:#0c5460;}
+  .news-content{font-size:13px;line-height:1.75;color:#444;padding-left:4px;}
+  .highlight{color:var(--red);font-weight:700;}
+  .industry-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+  .industry-tag{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;}
+  .tag-up{background:#fff0f0;color:#e63946;border:1px solid #ffc9c9;}
+  .tag-neutral{background:#f0f4ff;color:#457b9d;border:1px solid #c9d7f0;}
+  .tag-down{background:#f0fff4;color:#2a9d8f;border:1px solid #c9f0e8;}
+  /* ── 总结 ── */
+  .summary-card{background:linear-gradient(135deg,#f8f9fa,#e9ecef);border-radius:14px;padding:18px 22px;border-top:3px solid var(--navy);}
+  .summary-card h3{font-size:14px;color:var(--navy);font-weight:700;margin-bottom:10px;}
+  .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .summary-item{background:#fff;border-radius:8px;padding:10px 12px;font-size:12px;color:#555;border-left:3px solid var(--lightblue);}
+  .summary-item strong{display:block;color:var(--navy);margin-bottom:2px;font-size:12px;}
+  /* ── AI专栏 ── */
+  .ai-section-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .ai-section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;
+    justify-content:center;font-size:18px;flex-shrink:0;}
+  .icon-tool{background:linear-gradient(135deg,#667eea,#764ba2);}
+  .icon-agent{background:linear-gradient(135deg,#f093fb,#f5576c);}
+  .icon-money{background:linear-gradient(135deg,#4facfe,#00f2fe);}
+  .icon-chart{background:linear-gradient(135deg,#43e97b,#38f9d7);}
+  .icon-dict{background:linear-gradient(135deg,#fa709a,#fee140);}
+  .ai-section-header h3{font-size:16px;font-weight:700;color:#1a1a2e;}
+  .ai-section-header span{font-size:12px;color:#888;}
+  .ai-item{background:#f8f9ff;border-radius:10px;padding:14px 16px;margin-bottom:10px;border-left:3px solid #667eea;}
+  .ai-item:last-child{margin-bottom:0;}
+  .ai-item-title{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:6px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+  .badge{font-size:10px;padding:2px 7px;border-radius:4px;font-weight:600;}
+  .badge-new{background:#e7f5ff;color:#1971c2;}
+  .badge-hot{background:#fff0f0;color:#c92a2a;}
+  .badge-money{background:#f3fce3;color:#2b8a3e;}
+  .ai-item-body{font-size:13px;line-height:1.75;color:#555;}
+  .ai-item-body .key{color:#667eea;font-weight:700;}
+  .ai-item-body .num{color:var(--red);font-weight:700;}
+  /* GitHub表格 */
+  .github-table{width:100%;border-collapse:collapse;font-size:13px;}
+  .github-table th{background:#f0f4ff;color:#457b9d;font-weight:700;padding:8px 10px;text-align:left;font-size:11px;letter-spacing:1px;}
+  .github-table td{padding:8px 10px;border-bottom:1px solid #f0f0f0;color:#444;vertical-align:middle;}
+  .github-table tr:last-child td{border-bottom:none;}
+  .star-num{color:var(--orange);font-weight:700;}
+  .repo-name{color:var(--navy);font-weight:700;}
+  /* 词典 */
+  .dict-item{background:linear-gradient(135deg,#fff9db,#fff3b0);border-radius:10px;padding:14px 16px;margin-bottom:10px;border-left:3px solid var(--gold);}
+  .dict-item:last-child{margin-bottom:0;}
+  .dict-item .dict-term{font-size:14px;font-weight:700;color:#664d03;margin-bottom:4px;}
+  .dict-item .dict-def{font-size:13px;color:#7c5404;line-height:1.65;}
+  .ai-date-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#667eea20,#764ba220);
+    border:1px solid #667eea40;border-radius:20px;padding:5px 14px;font-size:12px;color:#667eea;font-weight:600;margin-bottom:14px;}
+  /* 底部 */
+  .footer{text-align:center;padding:20px;color:rgba(255,255,255,.35);font-size:12px;}
+  /* 周五特殊标记 */
+  .friday-badge{display:inline-block;background:linear-gradient(135deg,#f4a261,#e76f51);
+    color:#fff;border-radius:8px;padding:3px 10px;font-size:11px;font-weight:700;margin-left:8px;vertical-align:middle;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="date-badge">📅 2026 · 04 · 03 · FRIDAY · 第8期 <span style="color:#f4a261;margin-left:6px;">清明小长假倒计时1天</span></div>
+  <h1>每日双专栏简报</h1>
+  <p>新闻联播风向标解读 &nbsp;|&nbsp; AI生产力情报</p>
+</div>
+
+<div class="columns">
+
+<!-- ═══════════ 专栏一：新闻联播 ═══════════ -->
+<div class="column-wrap col-news">
+  <div class="column-header">
+    <div class="col-tag">📺 Column I · News Broadcast</div>
+    <h2>新闻联播风向标解读</h2>
+    <div class="col-sub">基于2026年4月2日央视新闻联播文字稿 · 政策信号与行业影响分析</div>
+  </div>
+
+  <!-- 核心风向 -->
+  <div class="core-wind">
+    <div class="cw-label">▶ 核心风向</div>
+    <div class="cw-text">
+      科技创新+产业融合成为"新质生产力"主抓手——1-2月高技术制造业增速13.1%领跑工业；农机装备补短板打开百亿市场；工程机械出口大涨33.4%；"天网2026"反腐猎逃启动；春日旅游消费6天小长假引爆；美以-伊战局升级，国际能源署/IMF/世界银行罕见联合应对。
+    </div>
+  </div>
+
+  <!-- 新闻1 -->
+  <div class="card news-card">
+    <div class="news-title"><span class="news-num">1</span>
+      <h3>科技创新+产业融合：高技术制造业增速13.1%，十万亿新兴产业再翻番</h3>
+    </div>
+    <div class="news-item-row">
+      <span class="news-label label-says">新闻联播说了什么</span>
+      <div class="news-content">
+        【新思想引领新征程】专题报道科技创新与产业深度融合成果：
+        <br>· 1—2月科研技术服务业销售收入同比增长<span class="highlight">23.6%</span>；知识产权密集型产业增长<span class="highlight">12.8%</span>
+        <br>· 规模以上<span class="highlight">高技术制造业增加值同比增长13.1%</span>，高于工业均值<span class="highlight">6.8个百分点</span>
+        <br>· <span class="highlight">湖北</span>培育省级概念中心<span class="highlight">60家以上</span>；<span class="highlight">广东</span>推行"先用后转"改革
+        <br>· <span class="highlight">河北唐山</span>钢铁企业上线大模型，效率提升<span class="highlight">5倍</span>、精度达<span class="highlight">±1毫米</span>
+        <br>· "十五五"期间推动超过<span class="highlight">5万家企业</span>进行"人工智能+工业互联网"升级改造
+        <br>· 新兴支柱产业产值未来五年有望再翻一番，扩大到<span class="highlight">十万亿以上</span>
+        <br>· 全球首创成果：首款混合动力无人运输机首飞、首台<span class="highlight">20兆瓦</span>海上风电机组并网、全球强度最大工业级碳纤维量产
+      </div>
+    </div>
+    <div class="news-item-row">
+      <span class="news-label label-signal">风向标解读</span>
+      <div class="news-content">
+        "5万家企业AI化+工业互联网升级"写入五年规划，是迄今最明确的制造业数字化"动员令"。10万亿新兴产业再翻番目标意味着年均增速需维持在15%以上，政策支持力度将持续加大。唐山钢铁大模型案例作为新闻联播具名报道，具有极强示范信号：工业大模型从实验室走向批量部署。20兆瓦海上风电创全球最大纪录，意味着中国离岸风电单机容量已全面领先。
+      </div>
+    </div>
+    <span class="news-label label-impact">行业影响</span>
+    <div class="industry-tags">
+      <span class="industry-tag tag-up">🔴 工业大模型（科大讯飞/海尔卡奥斯）</span>
+      <span class="industry-tag tag-up">🔴 海上风电设备（明阳/金风）</span>
+      <span class="industry-tag tag-up">🔴 工业互联网平台</span>
+      <span class="industry-tag tag-up">🔴 碳纤维材料（中复神鹰）</span>
+      <span class="industry-tag tag-neutral">🔵 知识产权服务</span>
+    </div>
+  </div>
+
+  <!-- 新闻2 -->
+  <div class="card news-card">
+    <div class="news-title"><span class="news-num">2</span>
+      <h3>央企六巨头落实"正确政绩观"：三峡/中国电信/南方电网等36-30项具体工作</h3>
+    </div>
+    <div class="news-item-row">
+      <span class="news-label label-says">新闻联播说了什么</span>
+      <div class="news-content">
+        【树立和践行正确政绩观】专题报道六大央企落实举措：
+        <br>· <span class="highlight">中国长江三峡集团</span>：<span class="highlight">10方面36项工作</span>
+        <br>· <span class="highlight">中国电信集团</span>：<span class="highlight">17项重点工作</span>
+        <br>· <span class="highlight">南方电网</span>：<span class="highlight">14项重点工作、30项具体任务</span>
+        <br>· <span class="highlight">中信集团</span>：党建引领专项
+        <br>· <span class="highlight">国家开发银行</span>：聚焦新质生产力、民生保障金融服务
+        <br>· <span class="highlight">中国矿产资源集团</span>：<span class="highlight">9方面25项重点工作</span>
+      </div>
+    </div>
+    <div class="news-item-row">
+      <span class="news-label label-signal">风向标解读</span>
+      <div class="news-content">
+        三峡（清洁能源）、电信（数字基础设施）、南方电网（特高压/微电网）、矿产资源（关键矿产）六大央企同日具名上榜，传递2026年央企核心投资方向：能源转型+数字基建+关键资源安全三条主线齐头并进。国家开发银行聚焦"新质生产力金融服务"，将为高技术制造业、AI产业提供低息融资支持。
+      </div>
+    </div>
+    <span class="news-label label-impact">行业影响</span>
+    <div class="industry-tags">
+      <span class="industry-tag tag-up">🔴 清洁能源（三峡项目供应链）</span>
+      <span class="industry-tag tag-up">🔴 算力/数字基建（中国电信采购）</span>
+      <span class="industry-tag tag-up">🔴 关键矿产（锂/钴/稀土）</span>
+      <span class="industry-tag tag-neutral">🔵 政策性融资（国开行定向贷款）</span>
+    </div>
+  </div>
+
+  <!-- 新闻3 -->
+  <div class="card news-card">
+    <div class="news-title"><span class="news-num">3</span>
+      <h3>"十五五"农机补短板：丘陵无人机保有量翻倍至20万架，百亿市场</h3>
+    </div>
+    <div class="news-item-row">
+      <span class="news-label label-says">新闻联播说了什么</span>
+      <div class="news-content">
+        【"十五五"新图景】聚焦农机装备空白突破：
+        <br>· 农作物耕种收综合机械化率将提高到<span class="highlight">80%以上</span>（比"十四五"末+<span class="highlight">3.3个百分点</span>）
+        <br>· 丘陵山区农用无人机保有量达<span class="highlight">20万架</span>（比"十四五"末多一倍），服务市场空间约<span class="highlight">100亿元</span>，带动约<span class="highlight">30万"新农人"</span>
+        <br>· 超<span class="highlight">80万台</span>丘陵小农机将提升作业效率<span class="highlight">30%以上</span>
+        <br>· AI辅助育种周期缩短<span class="highlight">20%</span>；智慧农场通过天空地一体化监测助推粮食产能迈上<span class="highlight">1.45万亿斤</span>
+        <br>· 典型案例：荔枝种植户刘广镇使用智能无人机仿地飞行，接单<span class="highlight">2000亩</span>
+      </div>
+    </div>
+    <div class="news-item-row">
+      <span class="news-label label-signal">风向标解读</span>
+      <div class="news-content">
+        丘陵农机历史上是国产农机的"最大痛点"——坡地作业对精度要求极高，国产设备长期落后。此次量化写入五年规划并给出百亿市场空间预测，说明政策端将通过补贴+采购双通道催熟这一赛道。"新农人"概念与30万就业岗位结合，将使农业无人机获得消费级市场属性，进一步扩大大疆/极飞的应用场景。AI育种缩短20%周期，对种子龙头（隆平高科/先正达）直接利好。
+      </div>
+    </div>
+    <span class="news-label label-impact">行业影响</span>
+    <div class="industry-tags">
+      <span class="industry-tag tag-up">🔴 农业无人机（大疆农业/极飞科技）</span>
+      <span class="industry-tag tag-up">🔴 丘陵小农机制造商</span>
+      <span class="industry-tag tag-up">🔴 AI育种（种子公司+AI赋能）</span>
+      <span class="industry-tag tag-neutral">🔵 农业保险/涉农金融</span>
+    </div>
+  </div>
+
+  <!-- 新闻4 -->
+  <div class="card news-card">
+    <div class="news-title"><span class="news-num">4</span>
+      <h3>机械工业1-2月开局：工程机械出口106亿美元，非洲市场大涨77%</h3>
+    </div>
+    <div class="news-item-row">
+      <span class="news-label label-says">新闻联播说了什么</span>
+      <div class="news-content">
+        前2个月机械工业实现良好开局：
+        <br>· 通用设备制造业增长<span class="highlight">8.9%</span>，专用设备<span class="highlight">8.8%</span>，汽车制造<span class="highlight">3.4%</span>
+        <br>· 工程机械产品出口额<span class="highlight">106.86亿美元</span>，同比增长<span class="highlight">33.4%</span>（2月超<span class="highlight">51亿美元</span>）
+        <br>· 出口增速：非洲<span class="highlight">+77%</span>、大洋洲<span class="highlight">+50.6%</span>、欧洲<span class="highlight">+28.1%</span>
+      </div>
+    </div>
+    <div class="news-item-row">
+      <span class="news-label label-signal">风向标解读</span>
+      <div class="news-content">
+        工程机械出口33%的增速和106亿美元的体量，在全球工程建设放缓背景下尤为亮眼。非洲+77%增速与前一日新闻"非洲2025年GDP增速4.2%"形成政策联动——非洲基建高增速+中国工程机械出口扩张相互印证，是"全球南方"市场拓展的清晰信号。欧洲+28.1%说明中国工程机械已突破欧洲市场，美以-伊局势引发的欧洲重建投资也将贡献增量。
+      </div>
+    </div>
+    <span class="news-label label-impact">行业影响</span>
+    <div class="industry-tags">
+      <span class="industry-tag tag-up">🔴 工程机械出口（三一/徐工/中联）</span>
+      <span class="industry-tag tag-up">🔴 非洲/大洋洲贸易物流</span>
+      <span class="industry-tag tag-neutral">🔵 工程机械零部件</span>
+    </div>
+  </div>
+
+  <!-- 新闻5 -->
+  <div class="card news-card">
+    <div class="news-title"><span class="news-num">5</span>
+      <h3>"天网2026"正式启动：国家监委+公安部+央行联合猎逃追赃</h3>
+    </div>
+    <div class="news-item-row">
+      <span class="news-label label-says">新闻联播说了什么</span>
+      <div class="news-content">
+        "天网2026"行动正式启动，多部门联合参与：
+        <br>· <span class="highlight">国家监委</span>：职务犯罪境外追赃
+        <br>· <span class="highlight">公安部</span>："猎狐"行动（追逃外逃人员）
+        <br>· <span class="highlight">中国人民银行+公安部</span>：打击离岸公司和地下钱庄转移赃款
+        <br>· <span class="highlight">中央组织部+公安部等</span>：治理"裸官"和违规因私出国境
+      </div>
+    </div>
+    <div class="news-item-row">
+      <span class="news-label label-signal">风向标解读</span>
+      <div class="news-content">
+        央行专项打击"离岸公司+地下钱庄"组合，是针对资本外流链条的精准封堵。跨部门协作（纪委+公安+央行+组织部）规格高于往年，说明2026年"天网"行动是"十五五"反腐开局的重要布局。对于金融科技、跨境支付企业需警惕合规整治力度加强；对反洗钱技术服务商（合规科技）形成利好。
+      </div>
+    </div>
+    <span class="news-label label-impact">行业影响</span>
+    <div class="industry-tags">
+      <span class="industry-tag tag-up">🔴 反洗钱/合规科技（RegTech）</span>
+      <span class="industry-tag tag-down">🟢 离岸金融/跨境支付需审慎</span>
+      <span class="industry-tag tag-neutral">🔵 司法/数字取证技术</span>
+    </div>
+  </div>
+
+  <!-- 新闻6 -->
+  <div class="card news-card">
+    <div class="news-title"><span class="news-num">6</span>
+      <h3>清明6天小长假：全国研学+赏花经济多省联动，安徽18岁以下学生全免票</h3>
+    </div>
+    <div class="news-item-row">
+      <span class="news-label label-says">新闻联播说了什么</span>
+      <div class="news-content">
+        春日经济全国联动，4月1-3日与清明假期叠加形成<span class="highlight">6天小长假</span>：
+        <br>· <span class="highlight">上海普陀区</span>：公园露天剧场带动周边消费
+        <br>· <span class="highlight">河南洛阳</span>：牡丹观赏园+实景演艺+古风巡游
+        <br>· <span class="highlight">山东冠县</span>：万亩梨园"赏花+"预计接待游客<span class="highlight">20多万人次</span>
+        <br>· <span class="highlight">青海循化县</span>：杏花林已接待游客超<span class="highlight">13万人次</span>
+        <br>· <span class="highlight">四川</span>：<span class="highlight">116条</span>春假研学线路（三国蜀道/熊猫家园等8大主题）
+        <br>· <span class="highlight">安徽</span>：100多家A级景区对18周岁以下在校生<span class="highlight">免票</span>
+        <br>· <span class="highlight">江苏南京</span>：推出"托管式游学"12人成团
+        <br>· <span class="highlight">贵州</span>：春假期间景区免票+特色研学产品
+      </div>
+    </div>
+    <div class="news-item-row">
+      <span class="news-label label-signal">风向标解读</span>
+      <div class="news-content">
+        6天连假+多省同步免票/补贴，是2026年内需消费政策"扩容"的集中体现。安徽全省百景区学生免票是省级层面罕见大规模让利，预示2026年文旅消费将从"降价引流"向"生态体验"升级。研学经济从课外活动上升为官方议程，116条四川研学线路标志着研学旅游标准化即将加速。
+      </div>
+    </div>
+    <span class="news-label label-impact">行业影响</span>
+    <div class="industry-tags">
+      <span class="industry-tag tag-up">🔴 文旅景区/OTA平台（携程/美团）</span>
+      <span class="industry-tag tag-up">🔴 研学旅游机构</span>
+      <span class="industry-tag tag-up">🔴 民宿/乡村旅游（洛阳/四川）</span>
+      <span class="industry-tag tag-neutral">🔵 文创/IP周边</span>
+    </div>
+  </div>
+
+  <!-- 新闻7 -->
+  <div class="card news-card">
+    <div class="news-title"><span class="news-num">7</span>
+      <h3>美以-伊第34天：特朗普扬言打击伊朗发电厂/油田，国际能源署+IMF+世行罕见联合</h3>
+    </div>
+    <div class="news-item-row">
+      <span class="news-label label-says">新闻联播说了什么</span>
+      <div class="news-content">
+        · 美以打击伊朗<span class="highlight">指挥控制中心、防空系统、武器制造基地</span>；伊朗反击<span class="highlight">美军雷达、以色列油轮、"拉斐尔"军工</span>
+        <br>· 特朗普称将在<span class="highlight">"未来两到三周内"猛烈打击伊朗发电厂、石油设施</span>
+        <br>· <span class="highlight">巴西总统卢拉</span>批评美国"编造伊朗核武谎言发动战争"
+        <br>· <span class="highlight">国际能源署、IMF、世界银行</span>成立协调小组应对中东战事对能源/经济冲击
+        <br>· <span class="highlight">黎巴嫩</span>称以军袭击已致<span class="highlight">1318人</span>死亡
+        <br>· <span class="highlight">印尼马鲁古海峡</span>发生<span class="highlight">7.4级地震</span>，1死数伤
+      </div>
+    </div>
+    <div class="news-item-row">
+      <span class="news-label label-signal">风向标解读</span>
+      <div class="news-content">
+        特朗普扬言打击伊朗发电厂+石油设施是升级信号，一旦实施将引发油价大幅跳升。国际能源署/IMF/世行三机构联合协调，是2008年金融危机以来首次，标志冲突已从地区军事事件演变为全球宏观风险。巴西总统公开批美，全球南方与西方阵营裂痕进一步扩大，将推进去美元化进程。
+      </div>
+    </div>
+    <span class="news-label label-impact">行业影响</span>
+    <div class="industry-tags">
+      <span class="industry-tag tag-up">🔴 油气（中石油/中海油受益于油价高位）</span>
+      <span class="industry-tag tag-up">🔴 黄金/避险资产</span>
+      <span class="industry-tag tag-down">🟢 航运/全球供应链风险上行</span>
+      <span class="industry-tag tag-neutral">🔵 人民币国际化加速</span>
+    </div>
+  </div>
+
+  <!-- 总结风向 -->
+  <div class="summary-card">
+    <h3>📊 总结风向标</h3>
+    <div class="summary-grid">
+      <div class="summary-item"><strong>政策主线</strong>5万家企业AI化+工业互联网，新兴产业10万亿再翻番</div>
+      <div class="summary-item"><strong>投资热点</strong>工业大模型/海上风电/农业无人机/工程机械出口</div>
+      <div class="summary-item"><strong>短期催化</strong>清明6天连假文旅消费井喷（今日启动）</div>
+      <div class="summary-item"><strong>外部风险</strong>特朗普威胁打击伊朗能源设施，油价跳升风险最高</div>
+      <div class="summary-item"><strong>政策执行</strong>"天网2026"启动，反洗钱/合规监管力度加强</div>
+      <div class="summary-item"><strong>出口亮点</strong>工程机械非洲+77%，全球南方市场成新增长极</div>
+    </div>
+  </div>
+</div>
+<!-- ═══ END 专栏一 ═══ -->
+
+<!-- ═══════════ 专栏二：AI情报 ═══════════ -->
+<div class="column-wrap col-ai">
+  <div class="column-header">
+    <div class="col-tag">🚀 Column II · AI Intelligence</div>
+    <h2>AI生产力情报：黑科技与套利指南</h2>
+    <div class="col-sub">今日信源：量子位 · 36氪 · GitHub Trending · 周五特别盘点</div>
+  </div>
+
+  <div class="ai-date-badge">📅 2026-04-03 &nbsp;·&nbsp; 清明假前最后一期 · 第8期 <span class="friday-badge">FRIDAY</span></div>
+
+  <!-- 顶级装备 -->
+  <div class="card">
+    <div class="ai-section-header">
+      <div class="ai-section-icon icon-tool">🛠️</div>
+      <div><h3>顶级装备库更新</h3><span>今日重点工具/模型突破</span></div>
+    </div>
+
+    <div class="ai-item">
+      <div class="ai-item-title">
+        阿里 Qwen3.6-Plus：中国最强编程模型，直逼 Claude
+        <span class="badge badge-hot">🔥 今日发布</span>
+      </div>
+      <div class="ai-item-body">
+        <span class="key">核心黑科技：</span>被量子位标题直接称为"中国最强编程模型"，性能<b>直逼Claude</b>（未指定具体版本但对标Opus级别），已接入<b>钉钉"悟空"</b>等企业场景，意味着可直接在企业OA生态内调用旗舰编程能力。相较GLM-5.1的Opus 4.6接近，Qwen3.6-Plus在接入广度上更占优势。
+        <br><br><span class="key">实战价值：</span>国内可商用的最强编程模型之一，结合钉钉CLI开源（昨日上线），可搭建<b>"钉钉审批流+AI代码生成+自动部署"</b>全链路自动化。适合代码接单、企业CICD改造、软件公司降本。估算：原来5人小团队可压缩到2人+Qwen3.6自动完成60%代码工作。
+      </div>
+    </div>
+
+    <div class="ai-item">
+      <div class="ai-item-title">
+        GLM-5V-Turbo：草图变前端代码，视觉编程黑科技
+        <span class="badge badge-new">🆕 刚上线</span>
+      </div>
+      <div class="ai-item-body">
+        <span class="key">核心黑科技：</span>支持<b>视觉编程（Visual Programming）</b>——直接拍草图/截图，自动生成对应前端HTML/CSS/JS代码。核心突破在于把"所见即所得"推进到"所拍即所得"，不需要写需求文档，手绘UI稿即可出代码。
+        <br><br><span class="key">实战价值：</span>设计师不懂代码？没关系——手机拍下草图，GLM-5V-Turbo直接出可运行页面。适合<b>独立开发者接UI订单、设计外包公司扩产能</b>。报价可以和Figma设计稿交付平齐（500-3000元/页），但生产效率是传统的10倍+。
+      </div>
+    </div>
+
+    <div class="ai-item">
+      <div class="ai-item-title">
+        豆包大模型日均 Token 消耗量超 120 万亿 + Seedance 2.0 开放公测
+        <span class="badge badge-hot">💥 规模震撼</span>
+      </div>
+      <div class="ai-item-body">
+        <span class="key">核心黑科技：</span><b>120万亿Token/天</b>意味着豆包每天处理的文字量相当于全国人手写1000本书。这个数字背后是字节系产品（抖音/TikTok/飞书/剪映）的AI化规模效应。Seedance 2.0视频生成API同步开放公测，接入字节全平台分发能力。
+        <br><br><span class="key">实战价值：</span>Seedance 2.0公测意味着视频生成API价格将进一步压低（竞品压价策略）。抢先接入Seedance 2.0制作<b>短视频内容工厂</b>（AI剧情短片/电商展示视频/AI新闻播报），配合抖音算法红利，是当前3个月内的最优时间窗口。
+      </div>
+    </div>
+
+    <div class="ai-item">
+      <div class="ai-item-title">
+        千问 AI 眼镜首次 OTA 升级：大模型物理接口落地
+        <span class="badge badge-new">🆕 硬件新品</span>
+      </div>
+      <div class="ai-item-body">
+        <span class="key">核心黑科技：</span>千问AI眼镜通过OTA升级实现"把事办成"能力升级——不再只是语音问答，而是具备<b>视觉+语音+执行</b>的复合闭环。这是大模型从软件走向物理世界的标志性节点：眼镜即AI的"感知终端"。
+        <br><br><span class="key">实战价值：</span>AI眼镜产业链（光学元件/语音芯片/AR显示）即将进入爆发期，可关注供应链投资机会。应用层面：工厂巡检、仓储拣选、医疗辅助诊断等<b>需要双手解放的场景</b>将率先商业化，B端接单比C端更确定。
+      </div>
+    </div>
+  </div>
+
+  <!-- Agent战场 -->
+  <div class="card">
+    <div class="ai-section-header">
+      <div class="ai-section-icon icon-agent">🤖</div>
+      <div><h3>Agent 战场情报</h3><span>框架/平台最新进展与落地路径</span></div>
+    </div>
+
+    <div class="ai-item" style="border-left-color:#f5576c">
+      <div class="ai-item-title">
+        清华+人大+面壁智能开源"智能调度员"：龙虾养殖成本降58%
+        <span class="badge badge-new">📖 开源</span>
+      </div>
+      <div class="ai-item-body">
+        <span class="key">动态：</span>清华大学、人民大学、面壁智能联合推出开源"<b>智能调度员</b>"框架，实测将龙虾养殖成本降低<span class="num">58%</span>，并实现敏感数据的<b>本地处理</b>（不上云）。
+        <br><span class="key">解读：</span>这不是简单的"AI+农业"——"智能调度员"是一种<b>多智能体协调框架</b>，可以协调传感器数据采集Agent、决策Agent、执行Agent，形成完整的自动化控制链。更关键的是"敏感数据本地处理"满足了农业/食品/医疗等对数据合规要求高的行业。
+        <br><span class="key">落地场景：</span>参照龙虾降本58%案例，可移植到<b>工厂车间自动化、仓储物流调度、餐饮标准化管理</b>。对于乙方服务商：把这套框架包装成垂直行业SaaS，龙虾→猪场→鸡舍，都是可复制的降本故事。
+      </div>
+    </div>
+
+    <div class="ai-item" style="border-left-color:#f5576c">
+      <div class="ai-item-title">
+        OpenAI 收购脱口秀公司：AI+内容创作商业闭环浮出水面
+      </div>
+      <div class="ai-item-body">
+        <span class="key">动态：</span>OpenAI收购一家美国脱口秀公司，主持人与CEO奥特曼有<b>10年私交</b>，引发AI+内容产业想象。
+        <br><span class="key">解读：</span>这不只是"买个节目"——OpenAI正在构建<b>内容生产+AI技术+分发渠道</b>的完整飞轮。拥有真人IP+AI生成能力后，可以低成本批量生产专属风格内容，是"AI内容工厂"的终极形态。
+        <br><span class="key">落地场景：</span>参照此策略：找一个有流量的真人KOL合作，用AI克隆其风格批量生成内容，真人只需做最终审核。<b>人设IP+AI产能=可规模化的内容业务</b>，成本可压到传统模式的1/20。
+      </div>
+    </div>
+
+    <div class="ai-item" style="border-left-color:#f5576c">
+      <div class="ai-item-title">
+        Oh-My-Codex：给 OpenAI Codex 装上"智能体外骨骼"
+        <span class="badge badge-hot">🔥 爆榜</span>
+      </div>
+      <div class="ai-item-body">
+        <span class="key">动态：</span>Oh-My-Codex (GitHub: oh-my-codex)今日新增<span class="num">+2,867 Star</span>，总计<span class="num">11,707 Star</span>。功能：为Codex添加钩子(Hooks)、智能体团队(Agent Teams)、HUD界面等，让Codex从"单枪匹马"变成"有组织的团队作战"。
+        <br><span class="key">解读：</span>类比昨日的claw-code，Oh-My-Codex是对OpenAI Codex的能力扩展而非替代，属于"合规增强"路线（不涉及DMCA风险）。Hooks机制允许在代码生成的各节点插入自定义逻辑，实现质检/安全审核/风格统一自动化。
+        <br><span class="key">落地场景：</span>搭配Qwen3.6-Plus和GLM-5V-Turbo，构建<b>"设计稿→代码→质检→部署"全自动流水线</b>，Oh-My-Codex负责中间的质检Hook层，实现零人工干预的代码交付。
+      </div>
+    </div>
+  </div>
+
+  <!-- 套利线索 -->
+  <div class="card">
+    <div class="ai-section-header">
+      <div class="ai-section-icon icon-money">💰</div>
+      <div><h3>AI 套利 / 变现线索</h3><span>清明假期前：今日可执行的4个变现窗口</span></div>
+    </div>
+
+    <div class="ai-item" style="border-left-color:#00f2fe">
+      <div class="ai-item-title">
+        🎯 窗口①：德适医疗上市首日+111%——AI医疗变现最新范本
+        <span class="badge badge-money">💰 融资机会</span>
+      </div>
+      <div class="ai-item-body">
+        <span class="key">热点：</span>德适医疗上市首日大涨<span class="num">111%</span>，毛利率<span class="num">96.5%</span>，被量子位称为"大模型商业化最硬核答卷"——AI赋能医疗诊断的SaaS订阅收入模型已被市场验证。
+        <br><span class="key">复刻建议：</span>
+        <br>① 参照德适模式：选定一个<b>垂直医疗场景</b>（影像初筛/药品说明解读/随访问卷），用现有大模型API搭建MVP，以SaaS订阅（2000-5000元/月/机构）切入县域医院市场
+        <br>② 96.5%毛利率揭示AI医疗护城河：客户一旦接入就很难迁移，<b>早期定价策略建议低价锁客</b>，后期靠续约和增值服务提利润
+      </div>
+    </div>
+
+    <div class="ai-item" style="border-left-color:#00f2fe">
+      <div class="ai-item-title">
+        🎯 窗口②：具身智能融资热，星海图再融20亿估值200亿
+        <span class="badge badge-money">💰 中长线</span>
+      </div>
+      <div class="ai-item-body">
+        <span class="key">热点：</span>具身智能头部公司星海图再融<span class="num">20亿元</span>，估值升至<span class="num">200亿元</span>，门槛持续抬高。
+        <br><span class="key">复刻建议：</span>
+        <br>① 具身智能核心供应链：触觉传感器（压电/应变）、灵巧手机械结构、端侧推理芯片——这三类供应商还处于早期，可提前布局
+        <br>② 对于服务商：<b>帮工厂做"机器人数据采集+标注"外包</b>是当前最确定的具身智能变现方式，不需要自研模型，报价50-200元/小时/机器人
+      </div>
+    </div>
+
+    <div class="ai-item" style="border-left-color:#00f2fe">
+      <div class="ai-item-title">
+        🎯 窗口③：清明6天长假 × AI内容矩阵 = 流量红利
+        <span class="badge badge-hot">🔥 时效性强</span>
+      </div>
+      <div class="ai-item-body">
+        <span class="key">热点：</span>清明6天长假今日开始（4月3日至4月6日），叠加洛阳牡丹/山东梨花/四川研学等多点爆发，旅游内容搜索量暴增。
+        <br><span class="key">复刻建议：</span>
+        <br>① 现在（今天）用AI批量生产"洛阳牡丹赏花攻略"、"四川研学路线推荐"等内容，发布在小红书/抖音，<b>今晚到明天流量最高峰</b>
+        <br>② 用Wan2.7-Image生成景点"AI概念图"配合真实攻略文字，视觉差异化明显，完播率比纯文字高3倍
+        <br>③ 接旅游景区AI图文内容制作订单，此时报价可高于平时20-30%（需求旺季）
+      </div>
+    </div>
+
+    <div class="ai-item" style="border-left-color:#00f2fe">
+      <div class="ai-item-title">
+        🎯 窗口④：System Prompts Leaks爆榜，提示词工程服务溢价期
+        <span class="badge badge-hot">⭐ 36K Stars</span>
+      </div>
+      <div class="ai-item-body">
+        <span class="key">热点：</span>GitHub项目<b>system_prompts_leaks</b>（收录ChatGPT/Claude/Gemini/Grok等所有主流模型系统提示词）今日有<span class="num">36,363 Star</span>，说明提示词工程需求仍处于市场热点期。
+        <br><span class="key">复刻建议：</span>
+        <br>① 把泄露的Claude Code/GPT-4o系统提示词<b>逆向分析出结构框架</b>，出一份《2026年顶级AI系统提示词结构拆解》报告，小报童定价59元，切"提示词工程师"人群
+        <br>② 提供"企业专属AI角色设定"服务：基于泄露提示词的框架，帮企业定制客服Bot/销售助手的系统提示词，报价500-3000元/个，可标准化交付
+      </div>
+    </div>
+  </div>
+
+  <!-- GitHub热榜 -->
+  <div class="card">
+    <div class="ai-section-header">
+      <div class="ai-section-icon icon-chart">📈</div>
+      <div><h3>GitHub 今日热榜</h3><span>Top 3 爆榜项目 · 今日新增Star</span></div>
+    </div>
+    <table class="github-table">
+      <thead>
+        <tr><th>#</th><th>项目</th><th>描述</th><th>今日⭐</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td class="repo-name">OpenScreen</td>
+          <td>免费开源录屏/演示视频工具，无水印可商用，Screen Studio平替</td>
+          <td class="star-num">+1,081（总15,870）</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td class="repo-name">oh-my-codex</td>
+          <td>给OpenAI Codex装钩子/智能体团队/HUD，单枪匹马变团队作战</td>
+          <td class="star-num">+2,867（总11,707）</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td class="repo-name">system_prompts_leaks</td>
+          <td>GPT/Claude/Gemini/Grok等主流模型系统提示词泄露合集，持续更新</td>
+          <td class="star-num">+306（总36,363）</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:12px;padding:12px;background:#f0fff4;border-radius:8px;font-size:12px;color:#2a9d8f;">
+      💡 <b>本周GitHub爆榜回顾</b>：claw-code（史上最快10万Star）→ VibeVoice（+3863）→ oh-my-claudecode（+1126）→ oh-my-codex（+2867）。本周最大主题：<b>Claude Code生态爆发</b>，围绕Claude的工具生态正在快速扩张。
+    </div>
+  </div>
+
+  <!-- 词典 -->
+  <div class="card">
+    <div class="ai-section-header">
+      <div class="ai-section-icon icon-dict">🔍</div>
+      <div><h3>避坑 / 黑话词典</h3><span>本周精选 · 5个本周最热术语</span></div>
+    </div>
+
+    <div class="dict-item">
+      <div class="dict-term">Vibe Coding（氛围编码）</div>
+      <div class="dict-def">用AI写代码时，你只需要"感觉对了就发"——不看每行代码，只看最终跑不跑得起来。优点：速度极快；缺点：1.9万行代码里可能藏着100个bug，出了事你都不知道从哪查。36氪今日有文章质疑这是"生产力骗局"——适合原型验证，不适合生产环境。</div>
+    </div>
+
+    <div class="dict-item">
+      <div class="dict-term">智能调度员（Intelligent Scheduler）</div>
+      <div class="dict-def">不是给你排班的软件——是一种多Agent协调框架，相当于"给所有AI小弟配一个会统筹安排任务的大脑"。谁先干、谁后干、出错了怎么重派，全部自动决策。清华开源的版本让龙虾养殖成本降58%，核心就在于"调度"二字。</div>
+    </div>
+
+    <div class="dict-item">
+      <div class="dict-term">OTA升级（Over-The-Air）</div>
+      <div class="dict-def">不插线、不去4S店，通过网络推送给你的设备自动升级功能——就像手机系统更新。千问AI眼镜OTA意味着硬件卖出去后还能持续"变聪明"，这才是AI硬件的真正商业模式：卖设备只是开始，后续软件升级才是持续收费的锚点。</div>
+    </div>
+
+    <div class="dict-item">
+      <div class="dict-term">MaaS（模型即服务，Model as a Service）</div>
+      <div class="dict-def">不卖大模型软件，而是按用量收API调用费，像水电一样计量收费。智谱首份财报7.24亿元全靠这个模式——你的每一次AI对话背后，都在给MaaS公司打钱。对开发者来说，MaaS比买GPU自己跑便宜10倍以上。</div>
+    </div>
+
+    <div class="dict-item">
+      <div class="dict-term">System Prompt（系统提示词）</div>
+      <div class="dict-def">给AI设定"人设+规则"的隐藏说明书——就像给新员工写"你在这家公司只能做什么、不能说什么、遇到XX问题要怎么回答"。用户看不到，但AI的行为全靠它约束。GitHub上泄露的那些，就是ChatGPT/Claude出厂自带的"秘密操作手册"。</div>
+    </div>
+  </div>
+
+</div>
+<!-- ═══ END 专栏二 ═══ -->
+
+</div><!-- /.columns -->
+
+<div class="footer">
+  每日双专栏简报 · 第8期 · 2026-04-03（周五）· 清明假前最后一刊<br>
+  下期：2026-04-07（周一）09:00 自动推送第9期 · 信源：央视新闻联播 · 量子位 · 36氪 · GitHub Trending<br>
+  本报告由 AI 自动生成，内容仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>

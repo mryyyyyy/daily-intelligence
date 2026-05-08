@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>五一综合情报 · 2026年5月1日—6日</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f0f2f5;color:#1a1a2e;}
+.header{background:linear-gradient(135deg,#1a1a2e 0%,#0f3460 60%,#533483 100%);color:#fff;padding:32px 20px;text-align:center;}
+.header h1{font-size:24px;font-weight:700;letter-spacing:3px;}
+.header .range{font-size:13px;opacity:.7;margin-top:8px;}
+.header .badge-row{margin-top:12px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.header .badge-row span{background:rgba(255,255,255,.15);padding:3px 12px;border-radius:20px;font-size:12px;}
+/* 主布局 */
+.main{max-width:1440px;margin:0 auto;padding:16px;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:960px){.two-col{grid-template-columns:1fr;}}
+/* 导航 */
+.day-nav{display:flex;gap:8px;overflow-x:auto;padding:12px 0;margin-bottom:12px;}
+.day-btn{flex:0 0 auto;background:#fff;border:2px solid #ddd;border-radius:8px;padding:6px 14px;font-size:12px;cursor:pointer;font-weight:600;transition:all .2s;}
+.day-btn.active,.day-btn:hover{border-color:#0969da;color:#0969da;}
+/* 卡片 */
+.card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.06);margin-bottom:12px;}
+.card-label{font-size:11px;font-weight:700;letter-spacing:1px;padding:2px 10px;border-radius:20px;display:inline-block;margin-bottom:8px;}
+.label-news{background:#e8f4fd;color:#0969da;}
+.label-ai{background:#f0e6ff;color:#8250df;}
+.label-hot{background:#fff3e0;color:#e65100;}
+.card-title{font-size:15px;font-weight:700;margin-bottom:12px;color:#1a1a2e;}
+/* 风向标 */
+.core-wind{background:linear-gradient(135deg,#fff8e1,#fff3cd);border-left:4px solid #ffc107;border-radius:8px;padding:12px 14px;margin-bottom:14px;font-size:13px;line-height:1.7;color:#333;}
+.core-wind .label{font-size:10px;color:#d48806;font-weight:700;letter-spacing:1px;margin-bottom:4px;}
+/* 新闻条目 */
+.news-item{border-left:3px solid #0969da;padding:0 0 14px 12px;margin-bottom:0;}
+.news-item+.news-item{border-top:1px solid #f0f0f0;padding-top:14px;}
+.news-item h3{font-size:13px;color:#1a1a2e;margin-bottom:7px;font-weight:700;}
+.detail-box{background:#f8f9fa;border-radius:7px;padding:9px 11px;margin-bottom:7px;font-size:12px;line-height:1.8;color:#444;}
+.detail-box b{color:#0969da;}
+.tag-signal{background:#e3f2fd;color:#1565c0;border-radius:4px;padding:1px 6px;font-size:11px;margin-right:4px;}
+.tag-impact{background:#fff3e0;color:#e65100;border-radius:4px;padding:1px 6px;font-size:11px;}
+.tag-text{font-size:12px;color:#555;line-height:1.6;margin-top:5px;}
+.summary-box{background:#e8f5e9;border-left:4px solid #43a047;border-radius:8px;padding:11px 14px;margin-top:14px;font-size:12px;line-height:1.7;color:#333;}
+.summary-box .label{font-size:10px;color:#2e7d32;font-weight:700;letter-spacing:1px;margin-bottom:4px;}
+/* AI区 */
+.ai-header{background:linear-gradient(135deg,#8250df,#6b21c8);color:#fff;padding:14px 18px;border-radius:10px 10px 0 0;}
+.ai-header h2{font-size:15px;font-weight:700;}
+.ai-header p{font-size:11px;opacity:.8;margin-top:3px;}
+.ai-body{background:#fff;border-radius:0 0 10px 10px;padding:16px;}
+.section-head{font-size:12px;font-weight:700;color:#8250df;border-bottom:2px solid #f0e6ff;padding-bottom:5px;margin-bottom:10px;}
+.tool-card{background:#fafafa;border:1px solid #eee;border-radius:8px;padding:11px 12px;margin-bottom:8px;}
+.tool-card .name{font-size:13px;font-weight:700;color:#333;margin-bottom:3px;}
+.tool-card .tech{font-size:12px;color:#666;line-height:1.6;margin-bottom:5px;}
+.tool-card .value{font-size:11px;color:#8250df;background:#f0e6ff;border-radius:4px;padding:3px 8px;display:inline-block;}
+/* 表格 */
+.data-table{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0;}
+.data-table th{background:#f5f0ff;color:#8250df;padding:7px 8px;text-align:left;font-size:11px;}
+.data-table td{padding:6px 8px;border-bottom:1px solid #f0f0f0;vertical-align:top;}
+.data-table .num{color:#e65100;font-weight:700;}
+/* 日历条 */
+.day-strip{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+.day-chip{background:#0969da;color:#fff;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:700;}
+/* 统计 */
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;}
+.stat-item{background:#fff;border-radius:8px;padding:10px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.05);}
+.stat-item .num{font-size:18px;font-weight:800;color:#0969da;}
+.stat-item .unit{font-size:11px;color:#999;margin-top:2px;}
+.footer{text-align:center;padding:20px;color:#999;font-size:11px;}
+/* 日期分隔标题 */
+.date-divider{background:linear-gradient(90deg,#0969da,#8250df);color:#fff;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.date-divider span{font-size:11px;opacity:.8;}
+/* 新闻联播概览条 */
+.overview-bar{background:#f0f7ff;border:1px solid #c8e0ff;border-radius:8px;padding:10px 12px;font-size:12px;color:#1565c0;line-height:1.7;margin-bottom:10px;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🗓️ 五一综合情报 特刊</h1>
+  <div class="range">2026年5月1日（五一劳动节）— 5月6日 · 第19期综合版</div>
+  <div class="badge-row">
+    <span>📺 新闻联播5日精华</span>
+    <span>🤖 AI情报5日汇总</span>
+    <span>🏆 GitHub热榜·5月</span>
+    <span>💰 变现线索3条</span>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- 统计行 -->
+<div class="stat-grid" style="margin-top:8px;">
+  <div class="stat-item"><div class="num">5</div><div class="unit">天新闻联播</div></div>
+  <div class="stat-item"><div class="num">24+</div><div class="unit">重点新闻条目</div></div>
+  <div class="stat-item"><div class="num">15+</div><div class="unit">AI情报动态</div></div>
+</div>
+
+<div class="two-col">
+
+<!-- =========== 左列：新闻联播汇总 =========== -->
+<div>
+  <div class="card">
+    <span class="card-label label-news">📺 风向标解读 · 5月1日—5日</span>
+    <div class="card-title">新闻联播五日精华汇编</div>
+
+    <div class="core-wind">
+      <div class="label">🔮 五日核心风向</div>
+      五一假期政策红利全面兑现：消费以旧换新带动<b>6193亿元</b>，文旅出行预计<b>15亿人次</b>；五四青年节习近平强调"十五五"开局青年担当；<b>浏阳烟花厂爆炸</b>重大安全事故倒逼高层安全生产整治全面升级；"六张网"超7万亿投资提速，能源、基建、算力并轨推进。
+    </div>
+
+    <!-- 5月1日 -->
+    <div class="date-divider">📅 5月1日 <span>五一劳动节</span></div>
+    <div class="overview-bar">核心：零关税对非洲53国全面实施 · 五一首日19亿人次出游创历史 · 广交会第三期开展 · 电影票房破130亿</div>
+
+    <div class="news-item">
+      <h3>1. 中国对53个非洲建交国全面实施零关税</h3>
+      <div class="detail-box">
+        <b>新闻联播说了什么：</b>5月1日起，中国正式对<b>53个非洲建交国</b>全面实施零关税举措，覆盖所有与中国建交的非洲国家。第<b>139届</b>广交会第三期同步开展，多国采购商高度关注对非贸易通道扩展。
+      </div>
+      <span class="tag-signal">📡 风向标</span>
+      <div class="tag-text">这是中国"全球南方"战略的重大落地动作，实质性让利举措强化"一带一路2.0"布局。非洲进口商品关税归零直接影响农产品、矿产、轻工业品贸易结构。</div>
+      <span class="tag-impact">🏭 行业影响</span>
+      <div class="tag-text">非洲进出口贸易企业、跨境电商（Jumia等平台）、矿产资源开发企业直接受益。</div>
+    </div>
+
+    <div class="news-item">
+      <h3>2. 五一假期首日：全国出游超19亿人次，票房破130亿</h3>
+      <div class="detail-box">
+        <b>新闻联播说了什么：</b>2026年一季度国内居民出游超<b>19亿人次</b>（含五一前积累数据）。上海"购在中国"国际消费季暨第<b>七届</b>"五五购物节"正式启动。2026年电影票房已突破<b>130亿元</b>，五一档首日票房超<b>1.6亿元</b>。平陆运河航运枢纽工程进入<b>有水调试</b>阶段，连通珠江与北部湾。
+      </div>
+      <span class="tag-signal">📡 风向标</span>
+      <div class="tag-text">消费数据远超预期，五一成为内需验证窗口。平陆运河是继京杭大运河后最重要的新开运河，将重塑广西-珠三角货运格局。</div>
+    </div>
+
+    <!-- 5月2日 -->
+    <div class="date-divider" style="margin-top:16px;">📅 5月2日 <span>假期第二天</span></div>
+    <div class="overview-bar">核心：C919翱翔高原+CR450时速453公里+算电协同绿电项目投运 · 中国任安理会5月轮值主席 · 深圳口岸出入境破1亿人次</div>
+
+    <div class="news-item">
+      <h3>3. 科技成就专题：CR450刷新"中国速度"，C919高原运营</h3>
+      <div class="detail-box">
+        <b>新闻联播说了什么：</b>五一劳动节特别专题报道中国科技制造成就：<b>CR450动车组</b>以<b>时速453公里</b>刷新中国高铁最高速度纪录；<b>国产大飞机C919</b>正式翱翔高原航线；<b>天问二号</b>逐梦深空（预备状态）；<b>雄安新区</b>建设、<b>平陆运河</b>贯通山海。
+      </div>
+      <span class="tag-signal">📡 风向标</span>
+      <div class="tag-text">CR450速度突破453公里是重大里程碑，意味着中国高铁正式进入"超高速"时代。高原C919与国际航空市场竞争进入实质阶段。</div>
+      <span class="tag-impact">🏭 行业影响</span>
+      <div class="tag-text">铁路装备制造（中国中车）、民航设备、航空材料（碳纤维）赛道持续受益。</div>
+    </div>
+
+    <div class="news-item">
+      <h3>4. 首个算电协同绿电直供项目投运，深圳口岸出入境破1亿人次</h3>
+      <div class="detail-box">
+        <b>新闻联播说了什么：</b>我国首个<b>算电协同绿电直供项目</b>正式投运，实现算力与绿色电力直接匹配供给。<b>今年经深圳各口岸出入境人员破1亿人次</b>（历史新高）。五一档电影<b>两天票房超3亿元</b>，绿色出行热度持续攀升。
+      </div>
+      <span class="tag-signal">📡 风向标</span>
+      <div class="tag-text">算电协同是AI算力绿色化的关键突破，直接呼应"碳中和+算力建设"双目标。绿电直供模式一旦推广，将重构算力产业链成本结构。</div>
+      <span class="tag-impact">🏭 行业影响</span>
+      <div class="tag-text"><b>绿电交易市场</b>、AI算力绿色认证（光伏+储能+算力一体化园区）、数据中心运营商受益。</div>
+    </div>
+
+    <!-- 5月3日 -->
+    <div class="date-divider" style="margin-top:16px;">📅 5月3日 <span>假期第三天</span></div>
+    <div class="overview-bar">核心：以旧换新带动6193亿元销售额 · 78个步行街客流+5.4%营业额+5.1% · 跨区域人员流动单日2.9亿人次</div>
+
+    <div class="news-item">
+      <h3>5. 假期消费大数据：以旧换新带动6193亿，汽车换新211万辆</h3>
+      <div class="detail-box">
+        <b>新闻联播说了什么（商务部5月3日数据）：</b>
+        <table class="data-table">
+          <tr><th>指标</th><th>数据</th></tr>
+          <tr><td>以旧换新惠及人次（截至5/2）</td><td class="num">8427.4万人次</td></tr>
+          <tr><td>带动销售额</td><td class="num">6193.6亿元</td></tr>
+          <tr><td>汽车以旧换新数量</td><td class="num">211.1万辆</td></tr>
+          <tr><td>家电以旧换新数量</td><td class="num">3380.9万台</td></tr>
+          <tr><td>数码/智能产品购新</td><td class="num">4835.4万件</td></tr>
+          <tr><td>78个步行街客流同比</td><td class="num">+5.4%</td></tr>
+          <tr><td>营业额同比</td><td class="num">+5.1%</td></tr>
+          <tr><td>演出消费增长</td><td class="num">+19%</td></tr>
+          <tr><td>租车订单增长</td><td class="num">+25%</td></tr>
+        </table>
+      </div>
+      <span class="tag-signal">📡 风向标</span>
+      <div class="tag-text">6193亿元是政策刺激效果的最强验证，表明以旧换新是目前拉动内需效率最高的政策工具。上半年大概率继续加码。演出消费+19%印证文化经济结构升级。</div>
+      <span class="tag-impact">🏭 行业影响</span>
+      <div class="tag-text"><b>家电、汽车、消费电子</b>直接受益，线下零售、演出场馆持续火热。</div>
+    </div>
+
+    <!-- 5月4日 -->
+    <div class="date-divider" style="margin-top:16px;">📅 5月4日 <span>五四青年节</span></div>
+    <div class="overview-bar">核心：习近平五四回信强调"十五五"青年担当 · 广交会贸促超760场 · 五一档票房超6亿 · 第九届数字中国峰会闭幕</div>
+
+    <div class="news-item">
+      <h3>6. 习近平五四回信：青年建功"十五五"开局之年</h3>
+      <div class="detail-box">
+        <b>新闻联播说了什么：</b>五四青年节，习近平向<b>中国青年五四奖章暨新时代青年先锋奖</b>获奖者代表回信，<b>16名</b>青年代表此前写信汇报。信中强调今年是<b>"十五五"开局之年</b>，希望青年把个人追求融入国家发展大局。全国各级共青团组织开展<b>"青年大学习 建功'十五五'"</b>主题团日活动，覆盖江西、湖北、四川、上海等省市。
+      </div>
+      <span class="tag-signal">📡 风向标</span>
+      <div class="tag-text">"十五五"开局第一个五四，"青年力量"被再次强调为推动高质量发展的核心人力资本。教育、职业培训、科技人才培养方向政策倾斜信号明确。</div>
+    </div>
+
+    <div class="news-item">
+      <h3>7. 第九届数字中国建设峰会闭幕，广交会贸促超760场</h3>
+      <div class="detail-box">
+        <b>新闻联播说了什么：</b>第<b>九届</b>数字中国建设峰会正式闭幕，多项数字经济指标发布；第<b>139届</b>广交会累计开展贸促活动超<b>760场</b>；大国工匠梁凌宇——为电网铸造<b>"AI底座"</b>专题播出；五一档电影票房超<b>6亿元</b>，放映场次超去年五一整个档期。中国队成功<b>卫冕汤姆斯杯</b>。
+      </div>
+      <span class="tag-signal">📡 风向标</span>
+      <div class="tag-text">760场贸促活动是广交会历史高位，印证出口韧性。"AI底座"为电网基础设施的表述首次在新闻联播出现，算力与电力融合成为基建关键词。</div>
+    </div>
+
+    <!-- 5月5日 -->
+    <div class="date-divider" style="margin-top:16px;">📅 5月5日 <span>立夏 · 重大安全事故日</span></div>
+    <div class="overview-bar">核心：湖南浏阳烟花厂爆炸·重大伤亡·国务院调查组 · "六张网"总投资7万亿 · 嫦娥七号下半年发射 · 五一档票房7.37亿创历史</div>
+
+    <div class="news-item">
+      <h3>8. ⚠️ 湖南浏阳烟花厂爆炸：国务院调查组成立，"四不放过"严肃追责</h3>
+      <div class="detail-box">
+        <b>新闻联播说了什么：</b>5月4日<b>16时40分</b>，<b>湖南省长沙市浏阳市华盛烟花制造燃放有限公司</b>车间发生爆炸，造成重大人员伤亡。<br>
+        习近平作出<b>重要指示</b>：全力救治伤员，严肃追责，抓好<b>重点行业领域风险隐患排查整治</b>。<br>
+        李强作出<b>批示</b>：严防次生灾害，依法严肃处理。<br>
+        国务院副总理<b>张国清</b>率有关部门负责同志5月5日赶赴现场，宣布成立<b>国务院事故调查组</b>，按<b>"四不放过"</b>原则追责。
+      </div>
+      <span class="tag-signal">📡 风向标</span>
+      <div class="tag-text">国务院直接成立事故调查组是顶级响应级别，结合此前（4月29日）政治局集体学习"防灾减灾"，本次事故将进一步推动<b>危险化学品、烟花爆竹行业全国专项整治</b>。安全生产监管将全面收紧。</div>
+      <span class="tag-impact">🏭 行业影响</span>
+      <div class="tag-text">烟花爆竹行业合规性将被重新审视；安全生产监测设备（传感器、预警系统）、危化品管理平台商迎来业务增量。</div>
+    </div>
+
+    <div class="news-item">
+      <h3>9. "六张网"总投资超7万亿，嫦娥七号下半年发射</h3>
+      <div class="detail-box">
+        <b>新闻联播说了什么：</b>中共中央政治局会议明确"六张网"规划（<b>水网、新型电网、算力网、通信网、城市地下管网、物流网</b>），今年总投资超<b>7万亿元</b>。具体进展：温福高铁福建段近<b>1000名</b>建设者坚守一线；吉林大安东北首座塔式熔盐光热电站，近<b>2万面</b>镜子追日，年提供<b>1.8亿度</b>清洁电能；离岸超70公里风电平台年供<b>4400万度</b>。嫦娥七号在<b>海南文昌</b>测试，<b>下半年</b>发射，将探测月球极区水分布。五一档票房<b>7.37亿元</b>，观影人次和场次<b>均创历史新高</b>。
+      </div>
+      <span class="tag-signal">📡 风向标</span>
+      <div class="tag-text">"六张网"超7万亿是"十五五"最大基建投资包，其中<b>算力网</b>被单独列出是首次，意味着AI基础设施从此在国家级战略中享有与电网、铁路同等地位。</div>
+      <span class="tag-impact">🏭 行业影响</span>
+      <div class="tag-text">算力网概念股（寒武纪、中际旭创）、光热电站（东方电气）、深远海风电、高铁建设全面受益。</div>
+    </div>
+
+    <div class="summary-box">
+      <div class="label">📊 五日总结风向标</div>
+      五一五日呈现三条主线：①<b>内需消费</b>——以旧换新6193亿、出游15亿人次、票房7.37亿历史最高，消费刺激政策效果验证充分；②<b>基础设施</b>——"六张网"7万亿投资提速，算力网首次提至战略地位，嫦娥七号进入冲刺阶段；③<b>安全生产</b>——浏阳爆炸事故触发最高级别响应，叠加上周政治局防灾减灾集体学习，全国安全生产专项整治进入高强度阶段。能源、算力、新能源三条投资主线最为确定。
+    </div>
+  </div>
+</div>
+
+<!-- =========== 右列：AI情报汇总 =========== -->
+<div>
+  <div style="border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06);">
+    <div class="ai-header">
+      <h2>🚀 AI生产力情报 · 五一特辑</h2>
+      <p>📅 2026.05.01 — 05.06 | 信源：AITNT · 量子位 · GitHub Trending · Product Hunt</p>
+    </div>
+    <div class="ai-body">
+
+      <div class="section-head">🛠️ 【本周顶级装备库】</div>
+
+      <div class="tool-card">
+        <div class="name">🔥 GPT-5.5 Instant 正式发布（5月1日）</div>
+        <div class="tech">
+          <b>核心黑科技：</b>OpenAI向所有用户推送GPT-5.5 Instant作为默认免费模型，幻觉率大降<b>52.5%</b>，多项测试准确率全面提升。新增<b>可控制记忆来源功能</b>，实时语音架构（relay + transceiver双层）延迟低于<b>0.3秒</b>，服务全球数亿周活用户。同步推出<b>网络安全专用模型</b>，实现分钟级全链路风险检测。
+        </div>
+        <div class="value">💡 实战价值：免费用户直接升级，现有工作流无需改造。幻觉率降52.5%意味着AI辅助写报告、分析数据的可信度大幅提升，适合法务、财务、医疗等高精度场景。</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="name">🤖 OpenAI Codex 反超 Claude Code（5月5日）</div>
+        <div class="tech">
+          <b>核心黑科技：</b>近两个月开发者正从Anthropic的Claude Code<b>转向OpenAI Codex</b>，用户量、下载量数据已实现反超。GPT-5.5自主选定5月5日举办发布会，宾客由Codex从推文回复中挑选——这本身就是AI Agent能力的展示。
+        </div>
+        <div class="value">💡 实战价值：代码外包接单者需关注。如果客户技术栈转向Codex，可提前布局GPT-5.5 API接入，避免因工具切换损失客户。</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="name">🌐 Anthropic 融资15亿 + Claude 创意连接器扩展（5月5日）</div>
+        <div class="tech">
+          <b>核心黑科技：</b>Anthropic联合<b>黑石、高盛</b>等华尔街巨头完成<b>15亿美元</b>企业级AI融资，押注B端市场。同期Claude创意软件连接器在5月持续扩展，Adobe、Blender等8大软件生态全面打通。联合创始人Jack Clark预测：<b>2028年底前AI自主递归改进概率为60%</b>。
+        </div>
+        <div class="value">💡 实战价值：华尔街15亿级押注说明企业级AI服务是下一个大市场。布局Claude API for Business的SaaS开发者现在是最佳窗口期。</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="name">📝 北京人形机器人"天工Omni"发布（5月2日）</div>
+        <div class="tech">
+          <b>核心黑科技：</b>北京人形机器人创新中心发布<b>"天工Omni"</b>机器人，融合多模态感知能力（视觉+触觉+语音），代表国产人形机器人技术新突破。波士顿动力Atlas月产仅<b>4台</b>，远低于目标，而国产路线正在加速追赶。
+        </div>
+        <div class="value">💡 实战价值：关注具身智能国产替代机会。RoboScience完成<b>10亿元A轮</b>融资，整个具身智能赛道进入爆发前夜。</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="name">⚡ DeepSeek V4-Pro 2.5折延至5月31日</div>
+        <div class="tech">
+          <b>核心黑科技：</b>DeepSeek延续2.5折优惠至5月31日，押注国产芯片战略，已明确携手华为Ascend芯片，标志重大战略转变——从依赖美国半导体，转向中国本土AI基础设施。
+        </div>
+        <div class="value">💡 实战价值：5月31日前是API接入窗口期。批量内容生产、批量数据清洗、批量代码生成的团队应立即切换DeepSeek V4-Pro。</div>
+      </div>
+
+      <div class="section-head">🤖 【Agent 战场情报】</div>
+
+      <div class="tool-card">
+        <div class="name">👑 hermes-agent 突破127K⭐，持续霸榜GitHub第一</div>
+        <div class="tech">
+          <b>动态：</b>5月1日GitHub热榜数据，hermes-agent已达<b>127,796⭐</b>，5月日榜趋势新增<b>+1,437</b>，长期霸榜全球第一。<br>
+          <b>同场亮点：</b>TradingAgents（金融量化Agent）<b>59,117⭐</b>，cc-switch（Claude Code切换工具）<b>57,071⭐</b>，claude-flow（Claude工作流框架）<b>34,683⭐</b>。
+        </div>
+        <div class="value">🌟 落地场景：配合hermes-agent + claude-flow构建自适应工作流Agent，适合电商客服、内容审核、数据处理等需要长期稳定运行的场景。</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="name">🔓 OpenWhip + PUA插件 — Claude Code Agent管控双剑</div>
+        <div class="tech">
+          <b>动态：</b>GitHub出现两款针对Claude Code Agent的管控工具：<b>OpenWhip</b>（一键Ctrl+C中断摆烂AI）；<b>PUA插件</b>（通过分级施压提升AI解决问题持续性），已获<b>16K+Stars</b>。
+        </div>
+        <div class="value">🌟 落地场景：长时间运行的自动化Agent（如代码生成、内容批量生产）出现停滞时，用这两个工具重新激活。</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="name">🎓 上海交大 SkVM — AI技能跨模型跨框架统一运行</div>
+        <div class="tech">
+          <b>动态：</b>上海交通大学发布SkVM系统，通过AOT提前编译、环境绑定、JIT优化技术，解决AI技能<b>跨模型、跨框架、跨环境</b>运行不稳定问题。实测平均提升任务完成率<b>15.3%</b>，最高减少<b>40% Token消耗</b>，代码固化提速最高达<b>50倍</b>。
+        </div>
+        <div class="value">🌟 落地场景：多模型混合部署的企业级AI平台，SkVM可降低多框架兼容性成本。</div>
+      </div>
+
+      <div class="section-head">💰 【AI套利/变现线索】</div>
+
+      <div class="tool-card">
+        <div class="name">🏆 线索一：五一消费数据 → 旅游AI内容矩阵</div>
+        <div class="tech">五一档票房7.37亿创历史，演出消费+19%，出游15亿人次。旅游、演出、文创AI内容需求爆发。</div>
+        <div class="value">🎯 复刻：用GPT-5.5 Instant批量生成旅游攻略、景区短视频脚本，发布在小红书/抖音矩阵账号，五月是流量最高峰。</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="name">🏆 线索二："六张网"7万亿 → AI行业报告代写</div>
+        <div class="tech">水网、电网、算力网、通信网等六大方向总投资超7万亿，政府、券商、咨询公司对行业研究报告需求暴增。</div>
+        <div class="value">🎯 复刻：用DeepSeek V4-Pro（2.5折）批量生成行业分析报告，在猪八戒、政采云等平台承接政府和企业定制研报，单份2000-10000元，成本极低。</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="name">🏆 线索三：GPT-5.5网络安全模型 → 安全审计接单</div>
+        <div class="tech">GPT-5.5同步推出网络安全专用模型，实现分钟级全链路风险检测，降低安全审计门槛。</div>
+        <div class="value">🎯 复刻：中小企业AI安全审计服务（含代码审查+数据泄露风险评估），面向中小企业年费制服务，1000-5000元/年，用AI工具可同时服务50+客户。</div>
+      </div>
+
+      <div class="section-head">🔍 【避坑/黑话词典】</div>
+      <div style="background:#fff8e1;border-radius:8px;padding:11px 12px;margin-bottom:8px;">
+        <div style="font-size:12px;font-weight:700;color:#e65100;">词条：递归自我改进（Recursive Self-Improvement）</div>
+        <div style="font-size:12px;color:#555;margin-top:4px;">大白话：AI自己改进自己的AI。就像让GPT写出一个比GPT更强的GPT。Anthropic联创预测2028年发生概率60%。一旦发生，AI能力提升速度将远超摩尔定律。</div>
+      </div>
+      <div style="background:#fff8e1;border-radius:8px;padding:11px 12px;margin-bottom:8px;">
+        <div style="font-size:12px;font-weight:700;color:#e65100;">词条：算力网（Computing Power Network）</div>
+        <div style="font-size:12px;color:#555;margin-top:4px;">大白话：AI专用的"电网"。就像电力有电网一样，算力也会有专门的分配网络。"六张网"里算力网被单独列出，说明AI基础设施已是国家战略。</div>
+      </div>
+      <div style="background:#fff8e1;border-radius:8px;padding:11px 12px;">
+        <div style="font-size:12px;font-weight:700;color:#e65100;">词条：绿电直供（Green Power Direct Supply）</div>
+        <div style="font-size:12px;color:#555;margin-top:4px;">大白话：AI数据中心直接用风电、光伏供电，不经过电网中转。国内首个"算电协同绿电直供项目"已投运，AI训练的碳排放从此可以归零。</div>
+      </div>
+
+      <div class="section-head" style="margin-top:14px;">🏆 【GitHub Trending · 5月日榜 Top 10（5月1日数据）】</div>
+      <table class="data-table">
+        <tr><th>#</th><th>项目</th><th>描述</th><th>⭐今日</th></tr>
+        <tr><td>🥇1</td><td>mattpocock/skills</td><td>TypeScript教育技能集</td><td class="num">+3,436</td></tr>
+        <tr><td>🥈2</td><td>warp</td><td>Rust终端工具</td><td class="num">+2,717</td></tr>
+        <tr><td>🥉3</td><td>TradingAgents</td><td>金融量化Agent</td><td class="num">+2,188</td></tr>
+        <tr><td>4</td><td>andrej-karpathy-skills</td><td>LLM编程缺陷配置</td><td class="num">+2,236</td></tr>
+        <tr><td>5</td><td>hermes-agent</td><td>自适应进化Agent</td><td class="num">+1,437</td></tr>
+        <tr><td>6</td><td>obra/superpowers</td><td>Claude Skills工具集</td><td class="num">+1,053</td></tr>
+        <tr><td>7</td><td>cc-switch</td><td>Claude Code切换工具</td><td class="num">+655</td></tr>
+        <tr><td>8</td><td>everything-claude-code</td><td>Claude Code全集</td><td class="num">+597</td></tr>
+        <tr><td>9</td><td>agency-agents</td><td>多Agent协作框架</td><td class="num">+523</td></tr>
+        <tr><td>10</td><td>claude-flow</td><td>Claude工作流框架</td><td class="num">+564</td></tr>
+      </table>
+
+      <div class="section-head" style="margin-top:12px;">📊 【本周AI融资/市值动态】</div>
+      <table class="data-table">
+        <tr><th>公司</th><th>事件</th><th>金额</th></tr>
+        <tr><td>Anthropic</td><td>黑石/高盛领投企业级</td><td class="num">15亿美元</td></tr>
+        <tr><td>Google → Anthropic</td><td>追加投资总计</td><td class="num">400亿美元</td></tr>
+        <tr><td>RoboScience</td><td>VLOA大模型A轮</td><td class="num">10亿元人民币</td></tr>
+        <tr><td>波士顿动力</td><td>现代累计注资（未盈利）</td><td class="num">22亿美元+</td></tr>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+</div><!-- end two-col -->
+</div><!-- end main -->
+
+<div class="footer">
+  <div>📅 2026年5月1日—6日 第19期综合版 · 双专栏特刊</div>
+  <div>📺 新闻联播五日精华 + 🤖 AI情报五日汇总 · 每周一综合复盘</div>
+</div>
+
+</body>
+</html>

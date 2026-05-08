@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日双专栏简报 · 2026-04-07</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #f0f2f5; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; color: #1a1a2e; }
+
+  .page-header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: white; text-align: center; padding: 32px 20px 24px;
+  }
+  .page-header h1 { font-size: 22px; font-weight: 700; letter-spacing: 2px; margin-bottom: 6px; }
+  .page-header .date { font-size: 13px; opacity: 0.7; }
+  .page-header .issue { font-size: 12px; opacity: 0.5; margin-top: 4px; }
+
+  .container { max-width: 780px; margin: 0 auto; padding: 20px 16px 40px; }
+
+  /* ===== 专栏一 ===== */
+  .col1-header {
+    background: linear-gradient(135deg, #c0392b, #e74c3c);
+    border-radius: 16px 16px 0 0; padding: 18px 22px; color: white;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .col1-header .icon { font-size: 24px; }
+  .col1-header h2 { font-size: 17px; font-weight: 700; }
+  .col1-header .sub { font-size: 12px; opacity: 0.85; margin-top: 2px; }
+
+  .col1-body { background: white; border-radius: 0 0 16px 16px; padding: 0 0 20px; margin-bottom: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+
+  .core-wind {
+    background: linear-gradient(135deg, #fff5f5, #fff0f0);
+    border-left: 4px solid #e74c3c; margin: 0 20px 20px;
+    padding: 14px 16px; border-radius: 0 8px 8px 0; margin-top: 20px;
+  }
+  .core-wind .label { font-size: 11px; color: #e74c3c; font-weight: 700; letter-spacing: 1px; margin-bottom: 6px; }
+  .core-wind p { font-size: 14px; line-height: 1.7; color: #333; font-weight: 500; }
+
+  .news-item { border-bottom: 1px solid #f5f5f5; padding: 18px 20px; }
+  .news-item:last-child { border-bottom: none; }
+  .news-title { font-size: 15px; font-weight: 700; color: #1a1a2e; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px; }
+  .news-num { background: #e74c3c; color: white; font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 4px; flex-shrink: 0; margin-top: 1px; }
+
+  .news-block { margin-bottom: 10px; }
+  .block-label { font-size: 11px; font-weight: 700; letter-spacing: 0.5px; padding: 3px 8px; border-radius: 4px; display: inline-block; margin-bottom: 6px; }
+  .label-what { background: #e8f4fd; color: #2980b9; }
+  .label-signal { background: #fef9e7; color: #d35400; }
+  .label-impact { background: #eafaf1; color: #1e8449; }
+  .block-content { font-size: 13px; line-height: 1.75; color: #444; padding-left: 4px; }
+  .block-content .num { color: #e74c3c; font-weight: 600; }
+  .block-content .person { color: #2980b9; font-weight: 600; }
+  .block-content .place { color: #8e44ad; font-weight: 600; }
+
+  .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .tag { font-size: 11px; padding: 3px 8px; border-radius: 12px; }
+  .tag-green { background: #d5f5e3; color: #1e8449; }
+  .tag-blue { background: #d6eaf8; color: #1a5276; }
+  .tag-orange { background: #fdebd0; color: #a04000; }
+  .tag-red { background: #fadbd8; color: #922b21; }
+  .tag-purple { background: #e8daef; color: #6c3483; }
+
+  .summary-wind {
+    margin: 0 20px; background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-radius: 12px; padding: 16px 18px; color: white;
+  }
+  .summary-wind .s-label { font-size: 11px; color: #e74c3c; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
+  .summary-wind p { font-size: 13px; line-height: 1.75; opacity: 0.9; }
+
+  /* ===== 专栏二 ===== */
+  .col2-header {
+    background: linear-gradient(135deg, #0f3460, #533483);
+    border-radius: 16px 16px 0 0; padding: 18px 22px; color: white;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .col2-header .icon { font-size: 24px; }
+  .col2-header h2 { font-size: 17px; font-weight: 700; }
+  .col2-header .sub { font-size: 12px; opacity: 0.85; margin-top: 2px; }
+
+  .col2-body { background: white; border-radius: 0 0 16px 16px; padding: 0 0 20px; margin-bottom: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+
+  .ai-section { padding: 18px 20px; border-bottom: 1px solid #f5f5f5; }
+  .ai-section:last-child { border-bottom: none; }
+  .ai-section-title {
+    font-size: 14px; font-weight: 700; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .ai-section-title .emoji { font-size: 18px; }
+
+  .ai-card { background: #f8f9fa; border-radius: 10px; padding: 13px 14px; margin-bottom: 10px; border-left: 3px solid #533483; }
+  .ai-card .card-title { font-size: 13px; font-weight: 700; color: #0f3460; margin-bottom: 6px; }
+  .ai-card .card-row { font-size: 12px; line-height: 1.65; color: #555; margin-bottom: 4px; }
+  .ai-card .card-row b { color: #333; }
+  .ai-card .card-row .highlight { color: #533483; font-weight: 600; }
+  .ai-card .card-row .money { color: #e74c3c; font-weight: 600; }
+  .ai-card .card-row .tech { color: #0f3460; font-weight: 600; }
+
+  .github-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; }
+  .github-table th { background: #f0f2f5; color: #666; font-weight: 600; padding: 7px 10px; text-align: left; }
+  .github-table td { padding: 7px 10px; border-bottom: 1px solid #f5f5f5; color: #444; }
+  .github-table tr:last-child td { border-bottom: none; }
+  .star-badge { background: #fff3cd; color: #856404; font-size: 11px; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+
+  .dict-item { display: flex; gap: 12px; margin-bottom: 10px; align-items: flex-start; }
+  .dict-term { background: #0f3460; color: white; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; white-space: nowrap; flex-shrink: 0; }
+  .dict-def { font-size: 12px; color: #555; line-height: 1.65; }
+
+  .footer { text-align: center; font-size: 12px; color: #999; padding: 10px 0 0; }
+  .footer a { color: #e74c3c; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>📰 每日双专栏简报</h1>
+  <div class="date">2026年4月7日 · 周一</div>
+  <div class="issue">第9期 · 清明节后首刊</div>
+</div>
+
+<div class="container">
+
+  <!-- ========== 专栏一：新闻联播 ========== -->
+  <div class="col1-header">
+    <span class="icon">📺</span>
+    <div>
+      <h2>新闻联播风向标解读</h2>
+      <div class="sub">基于2026年4月6日（清明节）新闻联播文字稿</div>
+    </div>
+  </div>
+  <div class="col1-body">
+
+    <div class="core-wind">
+      <div class="label">🧭 核心风向</div>
+      <p>清明节假期尾声——新能源装机规模突破18.8亿千瓦、城市更新15万亿大盘奠定"十五五"内需主轴；消费数据亮眼但增速温和（日均+2.4%）；"欧佩克+"增产叠加美以-伊冲突持续，能源供需博弈白热化。</p>
+    </div>
+
+    <!-- 新闻1 -->
+    <div class="news-item">
+      <div class="news-title"><span class="news-num">01</span>新型能源体系："十五五"电网投资超5万亿，装机28.8%增速刷新纪录</div>
+
+      <div class="news-block">
+        <span class="block-label label-what">📢 新闻联播说了什么</span>
+        <div class="block-content">
+          截至<span class="num">2026年2月底</span>，全国风电光伏装机量达<span class="num">18.8亿千瓦</span>，同比增长<span class="num">28.8%</span>；可再生能源发电量超<span class="num">4万亿千瓦时</span>，占全国总发电量约<span class="num">40%</span>。"三北"基地、海上风电、沿海核电全线推进；<span class="place">雅砻江</span>水风光一体化基地建成后年供清洁电能<span class="num">2000亿度</span>。"十五五"期间将投产特高压直流<span class="num">15条</span>，电网投资超<span class="num">5万亿元</span>，"西电东送"能力达<span class="num">4.2亿千瓦</span>以上。政策目标：2030年非化石能源占比达<span class="num">25%</span>，新能源装机比重超<span class="num">50%</span>。
+        </div>
+      </div>
+
+      <div class="news-block">
+        <span class="block-label label-signal">🔍 风向标解读</span>
+        <div class="block-content">
+          5万亿电网投资是"新基建"新一轮最大单项支出，明确指向特高压、储能、虚拟电厂、配电自动化。清明期间密集发布此消息，叠加之前川渝调研雅砻江，表明国家能源主管部门已锁定"水风光+特高压"打包模式，东部省份将成为清洁电"消纳池"，相关设备商投产周期将大幅压缩。
+        </div>
+      </div>
+
+      <div class="news-block">
+        <span class="block-label label-impact">💹 行业影响</span>
+        <div class="block-content">
+          受益：特高压设备（国电南瑞/许继/平高）、风电整机（金风/明阳）、海上风电（东方电气）、储能系统（宁德时代/阳光电源）、电力信息化（远景能源/朗新科技）。压力：煤电、天然气调峰电站占比将持续下降。
+        </div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-green">特高压</span>
+        <span class="tag tag-green">海上风电</span>
+        <span class="tag tag-blue">储能</span>
+        <span class="tag tag-blue">西电东送</span>
+        <span class="tag tag-orange">电网5万亿</span>
+      </div>
+    </div>
+
+    <!-- 新闻2 -->
+    <div class="news-item">
+      <div class="news-title"><span class="news-num">02</span>"十五五"城市更新：15万亿投资，11.5万老旧小区焕新</div>
+
+      <div class="news-block">
+        <span class="block-label label-what">📢 新闻联播说了什么</span>
+        <div class="block-content">
+          "十五五"城市更新总投资超<span class="num">15万亿元</span>，其中地下管网更新约<span class="num">5万亿元</span>。改造目标：<span class="num">50万套</span>危旧房改造、<span class="num">11.5万个</span>老旧小区焕新、<span class="num">1500个</span>老旧街区/厂区更新、<span class="num">77万公里</span>管网焕新。<span class="place">重庆</span>千厮门大桥景观阳台、<span class="place">广东</span><span class="num">300个</span>城市更新重点片区、<span class="place">武汉</span><span class="num">182个</span>整体更新片区被列为典型案例。
+        </div>
+      </div>
+
+      <div class="news-block">
+        <span class="block-label label-signal">🔍 风向标解读</span>
+        <div class="block-content">
+          15万亿城市更新+房地产"止跌回稳"背景叠加，形成双重刺激。管网5万亿中含智慧管网（地下综合管廊数字化）、城市生命线工程，直接带动物联网传感器、BIM软件、管廊建设。"老旧小区"改造历来是地方政府债抓手，预计配套专项债上半年加速发行。
+        </div>
+      </div>
+
+      <div class="news-block">
+        <span class="block-label label-impact">💹 行业影响</span>
+        <div class="block-content">
+          受益：建筑建材（三棵树/东方雨虹）、地下管网检测（赛默飞）、智慧城市（海康威视/大华）、物业管理科技、电梯改造（通力/迅达）。关注：地方专项债加速下发节奏，一季度专项债使用率将成政策信号。
+        </div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-orange">15万亿城市更新</span>
+        <span class="tag tag-blue">智慧管网</span>
+        <span class="tag tag-green">老旧小区改造</span>
+        <span class="tag tag-purple">地方专项债</span>
+      </div>
+    </div>
+
+    <!-- 新闻3 -->
+    <div class="news-item">
+      <div class="news-title"><span class="news-num">03</span>清明消费数据：日均销售额+2.4%，新能源汽车换新补贴带动2468亿</div>
+
+      <div class="news-block">
+        <span class="block-label label-what">📢 新闻联播说了什么</span>
+        <div class="block-content">
+          清明假期全国重点零售和餐饮企业日均销售额同比增长<span class="num">2.4%</span>；<span class="num">78个</span>步行街客流量+<span class="num">6.0%</span>、营业额+<span class="num">6.7%</span>。汽车以旧换新补贴<span class="num">152.6万份</span>，带动新车销售额<span class="num">2468亿元</span>；家电数码销售<span class="num">6284.5万台</span>，销售额<span class="num">2159.7亿元</span>；智能眼镜销售额增长<span class="num">3.2倍</span>，智能手表+<span class="num">12.3%</span>。餐饮+<span class="num">3.9%</span>，跨城出游增<span class="num">15.1%</span>，租车订单量增约<span class="num">40%</span>。全社会跨区域人员流动量达<span class="num">8.4亿人次</span>，日均<span class="num">2.8亿</span>，同比+<span class="num">6%</span>。
+        </div>
+      </div>
+
+      <div class="news-block">
+        <span class="block-label label-signal">🔍 风向标解读</span>
+        <div class="block-content">
+          整体消费日均+2.4%略低于春节（+5%），但"以旧换新"拉动效果显著——汽车单项补贴带动2468亿元，说明政策补贴乘数大于自然增长。<span class="num">智能眼镜3.2倍</span>增速是今日最大消费黑马，对应AR/智能穿戴赛道的季节性+政策性双重催化。8.4亿人次出行数据也将拉动高速公路收费、油耗、航空旅游等。
+        </div>
+      </div>
+
+      <div class="news-block">
+        <span class="block-label label-impact">💹 行业影响</span>
+        <div class="block-content">
+          受益：智能眼镜/穿戴（雷鸟创新/Rokid/华为眼镜）；新能源汽车（比亚迪/小鹏）；文旅OTA（携程/同程）；租车平台（神州/一嗨）。关注：以旧换新补贴剩余额度，下半年若再补充将再度提振。
+        </div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-green">智能眼镜+320%</span>
+        <span class="tag tag-blue">以旧换新2468亿</span>
+        <span class="tag tag-orange">8.4亿人次出行</span>
+        <span class="tag tag-green">文旅消费</span>
+      </div>
+    </div>
+
+    <!-- 新闻4 -->
+    <div class="news-item">
+      <div class="news-title"><span class="news-num">04</span>广交会第139届：境外采购商预登记超19万人，"一带一路"占比约74%</div>
+
+      <div class="news-block">
+        <span class="block-label label-what">📢 新闻联播说了什么</span>
+        <div class="block-content">
+          第<span class="num">139届</span>广交会境外采购商预登记超<span class="num">19万人</span>，其中"一带一路"国家约<span class="num">14万人</span>，占比约<span class="num">74%</span>。<span class="place">深圳港</span>一季度外贸集装箱吞吐量<span class="num">852.27万标箱</span>，同比增长<span class="num">7.81%</span>。商务部等六部门推出<span class="num">16条</span>举措推动电子商务高质量发展。
+        </div>
+      </div>
+
+      <div class="news-block">
+        <span class="block-label label-signal">🔍 风向标解读</span>
+        <div class="block-content">
+          "一带一路"买家占74%，欧美占比下降，外贸结构正在发生历史性转变——对美关税战倒逼中国出口向"全球南方"转移。16条电商举措叠加广交会数据，跨境电商出海政策密集加码，东南亚/中东/非洲成为新增量市场，配套仓储物流、支付结算、本地化运营服务有大量机会。
+        </div>
+      </div>
+
+      <div class="news-block">
+        <span class="block-label label-impact">💹 行业影响</span>
+        <div class="block-content">
+          受益：跨境电商平台（SHEIN/Temu/速卖通）、跨境支付（连连数字/Airwallex）、海外仓（菜鸟/万邑通）、深圳港相关物流（招商港口）。风险：对欧美订单仍受关税压制，注意欧美买家比例持续下滑。
+        </div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-blue">广交会</span>
+        <span class="tag tag-orange">一带一路74%</span>
+        <span class="tag tag-green">跨境电商16条</span>
+        <span class="tag tag-blue">深圳港+7.81%</span>
+      </div>
+    </div>
+
+    <!-- 新闻5 -->
+    <div class="news-item">
+      <div class="news-title"><span class="news-num">05</span>国际·美以-伊冲突第37天："欧佩克+"增产20.6万桶/日，霍尔木兹封锁威胁持续</div>
+
+      <div class="news-block">
+        <span class="block-label label-what">📢 新闻联播说了什么</span>
+        <div class="block-content">
+          美以打击伊朗目标，伊朗反击<span class="place">以色列</span>石化设施及美军基地；特朗普威胁轰炸伊朗发电厂和大桥，伊朗称将继续封锁<span class="place">霍尔木兹海峡</span>；伊朗披露击落美方直升机，美称成功救出飞行员。"欧佩克+"宣布<span class="num">5月</span>日均增产原油<span class="num">20.6万桶</span>；中东局势或致非洲经济增速下滑<span class="num">0.2个百分点</span>；塞尔维亚"土耳其溪"管道发现爆炸物，<span class="place">匈牙利</span>暗示<span class="place">乌克兰</span>涉案；<span class="place">日本</span>福岛第二核电站1号机组冷却系统故障。
+        </div>
+      </div>
+
+      <div class="news-block">
+        <span class="block-label label-signal">🔍 风向标解读</span>
+        <div class="block-content">
+          "欧佩克+"增产20.6万桶/日对冲伊朗供应中断风险，但霍尔木兹封锁一旦成真将切断全球约20%石油运输，油价短期恐高波动。欧洲"土耳其溪"管道遭破坏叠加北约内部分裂，能源安全成全球首要议题。对中国：原油进口依赖中东，需密切关注替代路线（俄管道+中亚）。
+        </div>
+      </div>
+
+      <div class="news-block">
+        <span class="block-label label-impact">💹 行业影响</span>
+        <div class="block-content">
+          受益：黄金/原油期货避险、国内液化天然气（LNG）进口商（中海油）、国防军工板块（中船/中航）。风险：航运保险溢价上升、中东出口企业财务成本增加。
+        </div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-red">霍尔木兹封锁风险</span>
+        <span class="tag tag-orange">欧佩克+增产</span>
+        <span class="tag tag-red">美以-伊第37天</span>
+        <span class="tag tag-purple">黄金避险</span>
+      </div>
+    </div>
+
+    <!-- 总结 -->
+    <div style="padding: 0 20px; margin-top: 4px;">
+      <div class="summary-wind">
+        <div class="s-label">🧭 总结风向标</div>
+        <p>今日四条核心脉络：①能源转型提速（18.8亿千瓦+电网5万亿），②内需扩容（城市更新15万亿+以旧换新），③出口结构东移（广交会74%一带一路买家），④地缘能源风险上升（霍尔木兹+欧洲管道）。政策主旋律是"稳投资扩内需+出口市场多元化"，建议重点关注智能眼镜、特高压、跨境电商、城市更新四个方向。</p>
+      </div>
+    </div>
+
+  </div><!-- end col1-body -->
+
+
+  <!-- ========== 专栏二：AI情报 ========== -->
+  <div class="col2-header">
+    <span class="icon">🚀</span>
+    <div>
+      <h2>AI生产力情报 · 黑科技与套利指南</h2>
+      <div class="sub">📅 2026‑04‑07 · 清明节后首个交易日</div>
+    </div>
+  </div>
+  <div class="col2-body">
+
+    <!-- 板块1：顶级装备 -->
+    <div class="ai-section">
+      <div class="ai-section-title"><span class="emoji">🛠️</span>【顶级装备库更新】</div>
+
+      <div class="ai-card">
+        <div class="card-title">① Hermes-Agent（NousResearch）— "能与你共同成长的智能体系统"</div>
+        <div class="card-row"><b>核心黑科技：</b><span class="tech">持续记忆+自适应人格层</span>——不是单次对话，而是跨会话构建用户画像，Agent会记住你上次任务的偏好和习惯，下次直接切入，省掉80%的指令重复。今日GitHub Trending冠军，今日新增 <span class="highlight">+3721 ⭐</span>。</div>
+        <div class="card-row"><b>实战价值：</b>最适合<span class="money">个人知识工作者接单场景</span>——长期客户的需求画像自动积累，产出质量越来越高，比临时招人更稳定。配合Cursor用于代码项目，客户满意度理论上可以持续提升。</div>
+      </div>
+
+      <div class="ai-card">
+        <div class="card-title">② Shannon（KeyGraphHQ）— AI自主渗透测试工具</div>
+        <div class="card-row"><b>核心黑科技：</b><span class="tech">白盒源码分析+自动漏洞利用链</span>——读懂源代码里的攻击向量，自动执行真实渗透，不是扫描器，是"能打的AI安全工程师"。今日 <span class="highlight">+3840 ⭐</span>（新增星数全榜第一）。</div>
+        <div class="card-row"><b>实战价值：</b><span class="money">安全审计接单</span>的降维打击工具，原本需要3-5天的渗透测试报告，Shannon可以在数小时内出初稿。中小企业安全外包市场空间大，目前会用Shannon的人极少。</div>
+      </div>
+
+      <div class="ai-card">
+        <div class="card-title">③ Ollama 本地大模型集成 — Kimi-K2.5 / GLM-5 / MiniMax 全家桶到来</div>
+        <div class="card-row"><b>核心黑科技：</b>Ollama已集成<span class="tech">Kimi-K2.5、GLM-5、MiniMax、DeepSeek、gpt-oss、Qwen、Gemma</span>等国产+国际模型，一条命令本地运行，数据不出门。总Star <span class="highlight">16471</span>，今日仍在涨。</div>
+        <div class="card-row"><b>实战价值：</b>企业私有化部署成本断崖式下降，<span class="money">企业本地AI助手服务商</span>可以用Ollama+GLM-5做定制化交付，报价高、数据合规、复购率高。</div>
+      </div>
+
+      <div class="ai-card">
+        <div class="card-title">④ 阿里千问3.6 Plus — 日调用量1.4万亿Token登顶全球榜首</div>
+        <div class="card-row"><b>核心黑科技：</b><span class="tech">1.4万亿Token/日</span>，超越GPT-4o成为全球调用量最大的模型（量子位报道）。背后是MaaS（模型即服务）规模效应：调用越多→推理成本越低→价格越低→调用越多的正循环。</div>
+        <div class="card-row"><b>实战价值：</b>API价格将持续下降，<span class="money">现在囤API额度</span>是成本套利时机，做AI应用的开发者建议评估迁移至Qwen3.6 Plus降低token成本。</div>
+      </div>
+    </div>
+
+    <!-- 板块2：Agent战场 -->
+    <div class="ai-section">
+      <div class="ai-section-title"><span class="emoji">🤖</span>【Agent战场情报】</div>
+
+      <div class="ai-card">
+        <div class="card-title">动态①：OpenAI IPO前夜高层大换血，GPT-6疑似难产</div>
+        <div class="card-row"><b>解读：</b>36氪+量子位双源确认——OpenAI内部矛盾激化，有传言称GPT-6因算力瓶颈延期，同时IPO路演受阻。这意味着<span class="tech">2026年大模型绝对能力的跃升可能放缓</span>，工程化（Agent框架/工具调用优化）比参数规模更重要。</div>
+        <div class="card-row"><b>落地场景：</b>对创业者的信号——不用再等GPT-6再出手，<span class="money">现有模型能力已足够构建垂直产品</span>，先占位比等技术成熟更重要。</div>
+      </div>
+
+      <div class="ai-card">
+        <div class="card-title">动态②：浪潮信息发布"企千虾" — 企业级OpenClaw管控方案</div>
+        <div class="card-row"><b>解读：</b><span class="tech">企业级Agent规模化管控</span>——解决的是大公司部署100+个AI Agent时"谁监控谁、权限怎么隔离、日志怎么审计"的问题，相当于给企业Agent装了"企业版班主任"。</div>
+        <div class="card-row"><b>落地场景：</b>集团型企业IT采购的新方向，<span class="money">企业AI实施服务商</span>可以拿"企千虾"作为解决方案组件，提升中标率。适合制造业、金融、政务等监管要求高的场景。</div>
+      </div>
+
+      <div class="ai-card">
+        <div class="card-title">动态③：具身智能独角兽 — 机器人1小时学新任务，1800次成功率99%</div>
+        <div class="card-row"><b>解读：</b>"具身Scaling Law"首次被验证——机器人像大模型一样，<span class="tech">数据越多，泛化能力越强</span>，1小时学习效率达到人类技能迁移水平。这意味着工厂换产时间将从"数周培训"压缩到"1小时迁移"。</div>
+        <div class="card-row"><b>落地场景：</b>供应链柔性制造需求将爆发，<span class="money">机器人数据标注、仿真环境搭建、工厂改造服务</span>是距离现金流最近的机会。</div>
+      </div>
+    </div>
+
+    <!-- 板块3：套利线索 -->
+    <div class="ai-section">
+      <div class="ai-section-title"><span class="emoji">💰</span>【AI套利/变现线索】</div>
+
+      <div class="ai-card">
+        <div class="card-title">线索① 清明节"红色旅游+AI内容"流量红利（今日截止窗口）</div>
+        <div class="card-row"><b>热点：</b>中共一大纪念馆客流+32.2%，中国共产党历史展览馆超24万人次，贵州遵义实景演出爆满。</div>
+        <div class="card-row"><b>复刻建议：</b>① 用AI（MidJourney/即梦）生成红色景区历史场景对比图（民国vs现代），发小红书/抖音；② AI配音+历史照片做"遵义会议还原"短视频，3分钟以内，今明两天发效果最好，流量峰值窗口就是现在。</div>
+      </div>
+
+      <div class="ai-card">
+        <div class="card-title">线索② AI安全审计接单 — Shannon工具刚上线，市场无竞争</div>
+        <div class="card-row"><b>热点：</b>Shannon今日GitHub全球第一，会用的人极少，但企业对安全审计的需求是刚需。</div>
+        <div class="card-row"><b>复刻建议：</b>① 今天下载Shannon，跑一个开源项目生成样本报告；② 在Boss直聘/猎聘挂"AI辅助安全审计服务"，定价5000-20000元/次；③ 小红书发使用教程吸引同行，私域变现。窗口期约2-4周（之后竞争者会多）。</div>
+      </div>
+
+      <div class="ai-card">
+        <div class="card-title">线索③ 智能眼镜内容创作 — 销售额+320%，但内容生产者几乎为零</div>
+        <div class="card-row"><b>热点：</b>清明假期智能眼镜销售额增长3.2倍，但配套内容（使用教程、场景测评）极度匮乏。</div>
+        <div class="card-row"><b>复刻建议：</b>用雷鸟/Rokid眼镜录制"第一视角城市漫步"，AI剪辑+配音，发B站/小红书。这类视频现在收藏量极高，变现路径：测评恰饭+品牌合作+直播带货。</div>
+      </div>
+
+      <div class="ai-card">
+        <div class="card-title">线索④ 跨境"一带一路"选品 — 广交会74%买家来自新兴市场</div>
+        <div class="card-row"><b>热点：</b>中东/非洲/东南亚买家占广交会近四分之三，欧美占比下滑。</div>
+        <div class="card-row"><b>复刻建议：</b>用AI分析1688/阿里国际站的中东/非洲爆款类目（家用电器、建材、农机），AI生成阿拉伯语/斯瓦希里语产品描述，挂速卖通/Noon平台。对标赛道：农机、小家电、LED照明。</div>
+      </div>
+    </div>
+
+    <!-- 板块4：GitHub热榜 -->
+    <div class="ai-section">
+      <div class="ai-section-title"><span class="emoji">📈</span>【GitHub今日热榜 · 2026-04-07】</div>
+      <table class="github-table">
+        <tr><th>项目</th><th>今日新增⭐</th><th>一句话描述</th></tr>
+        <tr><td><b>Hermes-Agent</b><br><small>NousResearch</small></td><td><span class="star-badge">+3,721</span></td><td>能与你共同成长的持久记忆AI智能体</td></tr>
+        <tr><td><b>Shannon</b><br><small>KeyGraphHQ</small></td><td><span class="star-badge">+3,840</span></td><td>AI自主白盒渗透测试，自动找漏洞+自动打</td></tr>
+        <tr><td><b>GitNexus</b><br><small>ABHIGYANPATWARI</small></td><td><span class="star-badge">+2,652</span></td><td>浏览器端知识图谱+Graph RAG，零服务器</td></tr>
+        <tr><td><b>Ollama</b><br><small>ollama</small></td><td><span class="star-badge">16,471 总⭐</span></td><td>一行命令本地跑GLM-5/Kimi-K2.5/Qwen</td></tr>
+        <tr><td><b>OpenScreen</b><br><small>SiddharthVaddem</small></td><td><span class="star-badge">+1,610</span></td><td>免费开源Screen Studio替代，制作演示视频</td></tr>
+        <tr><td><b>Obsidian-Skills</b><br><small>Kepano</small></td><td><span class="star-badge">+1,275</span></td><td>教会Obsidian Agent用Markdown/CLI技能</td></tr>
+      </table>
+    </div>
+
+    <!-- 板块5：黑话词典 -->
+    <div class="ai-section">
+      <div class="ai-section-title"><span class="emoji">🔍</span>【避坑/黑话词典】</div>
+
+      <div class="dict-item">
+        <span class="dict-term">具身Scaling Law</span>
+        <span class="dict-def">大模型有"数据越多越聪明"的规律，现在机器人也被发现有同样规律——练习任务越多、越会举一反三。1小时学会新动作，说明机器人终于也走上了"越练越强"的路。</span>
+      </div>
+      <div class="dict-item">
+        <span class="dict-term">白盒渗透测试</span>
+        <span class="dict-def">黑客测试分两种：不知道代码（黑盒，像真实入侵）和知道源码（白盒，能更系统地找漏洞）。Shannon是白盒工具，给代码进去，AI自己读懂再找弱点，比人工快10倍。</span>
+      </div>
+      <div class="dict-item">
+        <span class="dict-term">Graph RAG</span>
+        <span class="dict-def">普通RAG是"把文档切碎搜索再喂给AI"，Graph RAG是"把文档变成关系图谱再搜索"，能找到跨文档的隐性关联——比如"这个人→参与了这个项目→和那家公司有合作→涉及这条政策"。适合做知识库、尽调、情报分析。</span>
+      </div>
+      <div class="dict-item">
+        <span class="dict-term">MaaS (Model as a Service)</span>
+        <span class="dict-def">模型即服务，就是"租AI用"而不是"买AI"。Qwen3.6 Plus日调用1.4万亿Token就是MaaS规模的体现——你按量付费，不用养服务器，随用随调。千问日均1.4万亿Token意味着全球有超千万用户在付费租这个AI。</span>
+      </div>
+      <div class="dict-item">
+        <span class="dict-term">西电东送</span>
+        <span class="dict-def">把西部（四川/云南/新疆/内蒙）的水电/风电/光伏，通过特高压电网输送到东部（广东/长三角/华北）用电大省。"十五五"电网5万亿的核心任务就是把这条高速路从4.2亿千瓦扩容，相当于再建十几条超级电力高速公路。</span>
+      </div>
+    </div>
+
+  </div><!-- end col2-body -->
+
+  <div class="footer">
+    第9期 · 2026-04-07 · 清明节后首刊 · 下期：2026-04-08 09:00 自动推送<br>
+    <small style="margin-top:4px;display:block;">数据来源：cn.govopendata.com / 量子位 / 36氪 / GitHub Trending</small>
+  </div>
+
+</div><!-- end container -->
+</body>
+</html>

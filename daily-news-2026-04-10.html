@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日双专栏日推 · 2026-04-10</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #0f1117;
+    color: #e8eaf0;
+    min-height: 100vh;
+    padding: 24px 16px;
+  }
+  .page-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .page-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .page-header .date-badge {
+    display: inline-block;
+    background: rgba(102,126,234,0.15);
+    border: 1px solid rgba(102,126,234,0.3);
+    border-radius: 20px;
+    padding: 4px 16px;
+    font-size: 13px;
+    color: #a0a8c0;
+  }
+  .columns-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  @media (max-width: 900px) {
+    .columns-wrapper { grid-template-columns: 1fr; }
+  }
+
+  /* ===== 专栏一：新闻联播 ===== */
+  .col-news {
+    background: linear-gradient(160deg, #1a1d2e 0%, #12141f 100%);
+    border: 1px solid rgba(255,200,80,0.2);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .col-news .col-header {
+    background: linear-gradient(135deg, #c8961a, #e8b84b);
+    padding: 18px 22px;
+  }
+  .col-news .col-header h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1000;
+    margin-bottom: 4px;
+  }
+  .col-news .col-header .subtitle {
+    font-size: 12px;
+    color: rgba(26,16,0,0.7);
+  }
+  .col-news .col-body {
+    padding: 20px;
+  }
+
+  .core-signal {
+    background: rgba(200,150,26,0.12);
+    border-left: 3px solid #e8b84b;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+  }
+  .core-signal .label {
+    font-size: 11px;
+    color: #e8b84b;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .core-signal p {
+    font-size: 14px;
+    color: #f0d080;
+    line-height: 1.6;
+    font-weight: 500;
+  }
+
+  .news-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,200,80,0.1);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+  .news-item:last-child { margin-bottom: 0; }
+  .news-item .news-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #f0c060;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .news-item .news-title .num {
+    background: rgba(200,150,26,0.3);
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+  .news-section {
+    margin-bottom: 8px;
+  }
+  .news-section .sec-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #a08040;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+  }
+  .news-section p {
+    font-size: 13px;
+    color: #c8cad8;
+    line-height: 1.65;
+  }
+  .news-section.signal p { color: #e0c870; }
+  .news-section.impact p { color: #90d090; }
+
+  .summary-box {
+    background: linear-gradient(135deg, rgba(200,150,26,0.15), rgba(200,150,26,0.05));
+    border: 1px solid rgba(200,150,26,0.3);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 16px;
+  }
+  .summary-box .label {
+    font-size: 11px;
+    color: #e8b84b;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .summary-box p {
+    font-size: 13px;
+    color: #d4b060;
+    line-height: 1.65;
+  }
+
+  /* ===== 专栏二：AI情报 ===== */
+  .col-ai {
+    background: linear-gradient(160deg, #0d1a2e 0%, #0a1220 100%);
+    border: 1px solid rgba(80,180,255,0.2);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .col-ai .col-header {
+    background: linear-gradient(135deg, #1565c0, #0d47a1);
+    padding: 18px 22px;
+  }
+  .col-ai .col-header h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #e3f2fd;
+    margin-bottom: 4px;
+  }
+  .col-ai .col-header .subtitle {
+    font-size: 12px;
+    color: rgba(227,242,253,0.6);
+  }
+  .col-ai .col-body {
+    padding: 20px;
+  }
+
+  .ai-section {
+    margin-bottom: 18px;
+  }
+  .ai-section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #64b5f6;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(80,180,255,0.15);
+  }
+  .ai-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(80,180,255,0.12);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+  .ai-card:last-child { margin-bottom: 0; }
+  .ai-card .card-tag {
+    font-size: 11px;
+    font-weight: 600;
+    color: #90caf9;
+    margin-bottom: 5px;
+  }
+  .ai-card .card-main {
+    font-size: 13px;
+    color: #b0bec5;
+    line-height: 1.6;
+  }
+  .ai-card .card-main strong { color: #e3f2fd; }
+  .ai-card .card-value {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #4fc3f7;
+    line-height: 1.5;
+    padding-top: 6px;
+    border-top: 1px solid rgba(80,180,255,0.1);
+  }
+  .ai-card .card-value::before { content: "💡 "; }
+
+  .money-card {
+    background: rgba(255,193,7,0.06);
+    border: 1px solid rgba(255,193,7,0.2);
+  }
+  .money-card .card-tag { color: #ffd54f; }
+  .money-card .card-value { color: #ffd54f; border-top-color: rgba(255,193,7,0.15); }
+
+  .dict-card {
+    background: rgba(156,39,176,0.06);
+    border: 1px solid rgba(156,39,176,0.2);
+  }
+  .dict-card .card-tag { color: #ce93d8; }
+  .dict-card .card-value { color: #ce93d8; border-top-color: rgba(156,39,176,0.15); }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>📡 每日双专栏日推</h1>
+  <div class="date-badge">📅 2026年04月10日（星期五）· 第12期</div>
+</div>
+
+<div class="columns-wrapper">
+
+  <!-- ===== 专栏一：新闻联播简报 ===== -->
+  <div class="col-news">
+    <div class="col-header">
+      <h2>📺 新闻联播每日简报</h2>
+      <div class="subtitle">风向标解读版 · 4月9日播出内容</div>
+    </div>
+    <div class="col-body">
+
+      <div class="core-signal">
+        <div class="label">▲ 核心风向</div>
+        <p>内外双轮驱动日：对内"军队思想整风+贸易试验区+新能源布局"三管齐下，对外中越元首外交+美伊谈判降温，释放多极化布局与国内高质量发展并举的强烈信号。</p>
+      </div>
+
+      <!-- 新闻1 -->
+      <div class="news-item">
+        <div class="news-title"><span class="num">1</span>习近平出席全军高级干部培训班开班式</div>
+        <div class="news-section">
+          <div class="sec-label">📋 新闻联播说了什么</div>
+          <p>习近平出席全军高级干部培训班开班式并讲话，强调开展<strong>思想整风</strong>、深化政治整训，要求高级干部<strong>发扬自我革命精神</strong>，迎接<strong>建军一百周年</strong>（2027年）。培训班在国防大学开班，由中央军委委员张升民主持。</p>
+        </div>
+        <div class="news-section signal">
+          <div class="sec-label">🎯 风向标解读</div>
+          <p>距建军百年还有约14个月，此时"思想整风"是建军百年重要节点前的政治准备工作。历史上每逢重大节点前的军队整训，往往与军事装备采购、国防经费、军工产业链同步升温。</p>
+        </div>
+        <div class="news-section impact">
+          <div class="sec-label">📊 行业影响</div>
+          <p>军工板块（中航工业、中国船舶、航天科技系）；国防信息化（军事云计算、AI指挥系统）；国防教育类概念可关注。</p>
+        </div>
+      </div>
+
+      <!-- 新闻2 -->
+      <div class="news-item">
+        <div class="news-title"><span class="num">2</span>越共中央总书记苏林将于4月14-17日访华</div>
+        <div class="news-section">
+          <div class="sec-label">📋 新闻联播说了什么</div>
+          <p>应习近平邀请，越共中央总书记<strong>苏林</strong>将于<strong>2026年4月14日至17日</strong>对中国进行国事访问。这是苏林就任总书记后首次访华，中越双方将在政治互信、贸易、互联互通等领域深化合作。</p>
+        </div>
+        <div class="news-section signal">
+          <div class="sec-label">🎯 风向标解读</div>
+          <p>苏林访华与4月11日美伊伊斯兰堡谈判几乎同期，地缘上构成"朋友圈巩固"信号。中越两国贸易额2025年突破2600亿美元，中越产业链深度绑定（越南是中国最大东盟贸易伙伴）。</p>
+        </div>
+        <div class="news-section impact">
+          <div class="sec-label">📊 行业影响</div>
+          <p>跨境电商（越南是拼多多Temu、TikTok Shop核心市场）；中越互联互通基建（铁路、港口）；纺织、电子出口（越南代工产业链）受益。</p>
+        </div>
+      </div>
+
+      <!-- 新闻3 -->
+      <div class="news-item">
+        <div class="news-title"><span class="num">3</span>《中国（内蒙古）自由贸易试验区总体方案》印发</div>
+        <div class="news-section">
+          <div class="sec-label">📋 新闻联播说了什么</div>
+          <p>国务院印发《中国（内蒙古）自由贸易试验区总体方案》，明确<strong>19个方面改革创新举措</strong>，建设目标为<strong>改革开放新高地</strong>。内蒙古自贸区成为继新疆、黑龙江后新设立的陆边境自贸区，主要聚焦向北开放与对俄蒙经贸通道。</p>
+        </div>
+        <div class="news-section signal">
+          <div class="sec-label">🎯 风向标解读</div>
+          <p>内蒙古自贸区承担"向北开放桥头堡"战略定位，与中俄能源合作、蒙古国矿产进口高度关联。19项改革举措预计包括跨境人民币结算、矿产资源贸易便利化等核心条款。</p>
+        </div>
+        <div class="news-section impact">
+          <div class="sec-label">📊 行业影响</div>
+          <p>内蒙古煤炭、稀土、天然气相关上市公司；对俄贸易（汽车、机电出口）；跨境物流（满洲里、二连浩特口岸）；绿色能源（内蒙古风光装机全国第一）。</p>
+        </div>
+      </div>
+
+      <!-- 新闻4 -->
+      <div class="news-item">
+        <div class="news-title"><span class="num">4</span>山东2030年非化石能源装机目标2亿千瓦</div>
+        <div class="news-section">
+          <div class="sec-label">📋 新闻联播说了什么</div>
+          <p>山东推进新型能源体系建设，目标到<strong>2030年非化石能源发电装机达2亿千瓦</strong>，储能设施规模达<strong>4000万千瓦</strong>，规划建设鲁北、鲁西等<strong>四大清洁能源基地</strong>。</p>
+        </div>
+        <div class="news-section signal">
+          <div class="sec-label">🎯 风向标解读</div>
+          <p>山东是全国用电量第一省，2亿千瓦目标约是目前山东非化石能源装机的3倍。省级层面锁定2030目标，是"双碳"战略落地省级执行的强信号，"十五五"期间（2026-2030）将有大规模装机招标。</p>
+        </div>
+        <div class="news-section impact">
+          <div class="sec-label">📊 行业影响</div>
+          <p>海上风电（山东半岛蓝色经济区）；储能（电化学储能、抽水蓄能）；特高压输电（4000万千瓦储能需配套调度升级）；光伏组件（鲁北沙漠光伏基地）。</p>
+        </div>
+      </div>
+
+      <!-- 新闻5 -->
+      <div class="news-item">
+        <div class="news-title"><span class="num">5</span>消费品工业&电子信息制造业数据出炉</div>
+        <div class="news-section">
+          <div class="sec-label">📋 新闻联播说了什么</div>
+          <p>工信部数据：前2月消费品工业规模以上增加值同比增<strong>4.8%</strong>，营业收入约<strong>5.1万亿元</strong>（增4.4%），社会消费品零售总额超<strong>8.6万亿元</strong>（增2.8%）；<strong>电子信息制造业</strong>前2月增加值同比增长<strong>14.2%</strong>，营业收入<strong>2.63万亿元</strong>（增14.3%），高度亮眼。</p>
+        </div>
+        <div class="news-section signal">
+          <div class="sec-label">🎯 风向标解读</div>
+          <p>电子信息14.2%的增速远超消费品整体4.8%，印证AI算力、消费电子、半导体是当前制造业最强引擎。消费品零售增2.8%偏低，说明内需仍在恢复通道，后续促消费政策仍有必要。</p>
+        </div>
+        <div class="news-section impact">
+          <div class="sec-label">📊 行业影响</div>
+          <p>半导体、消费电子（AI手机/AI眼镜）产业链；消费股可关注政策刺激窗口；制造业出口（出口交货值增2.2%，相对稳健）。</p>
+        </div>
+      </div>
+
+      <!-- 新闻6 -->
+      <div class="news-item">
+        <div class="news-title"><span class="num">6</span>美伊谈判4月11日伊斯兰堡举行</div>
+        <div class="news-section">
+          <div class="sec-label">📋 新闻联播说了什么</div>
+          <p>美国与伊朗将于<strong>4月11日在伊斯兰堡</strong>举行新一轮核谈判，巴基斯坦担任斡旋方；与此同时，以色列对黎巴嫩真主党发动<strong>最大规模空袭</strong>，单日造成<strong>254人死亡、1165人受伤</strong>，中东局势仍高度紧张。</p>
+        </div>
+        <div class="news-section signal">
+          <div class="sec-label">🎯 风向标解读</div>
+          <p>美伊谈判若取得进展，伊朗石油可能重返市场，油价将受压（此前美伊停火消息已令油价单日跌逾8%）；以黎冲突激化与谈判并行，显示中东局势"谈""打"并举的复杂态势。</p>
+        </div>
+        <div class="news-section impact">
+          <div class="sec-label">📊 行业影响</div>
+          <p>能源化工（油价波动风险）；黄金/避险资产（冲突升级时上涨）；军工防御类ETF；中国油企（中海油、中石化对伊朗石油进口敏感度高）。</p>
+        </div>
+      </div>
+
+      <div class="summary-box">
+        <div class="label">🔭 总结风向标</div>
+        <p>今日政治信号清晰：<strong>军队思想整风</strong>（国防方向）+<strong>内蒙古自贸区</strong>（向北开放）+<strong>山东2030能源目标</strong>（绿色转型）三大方向明确，电子信息制造业14.2%高增速印证AI硬件仍是制造业核心引擎。外部风险关注4月11日美伊伊斯兰堡谈判结果，油价或有新一轮波动。</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== 专栏二：AI情报 ===== -->
+  <div class="col-ai">
+    <div class="col-header">
+      <h2>🚀 AI生产力情报专栏</h2>
+      <div class="subtitle">黑科技与套利指南 · 2026-04-10 · 第12期</div>
+    </div>
+    <div class="col-body">
+
+      <!-- 顶级装备库 -->
+      <div class="ai-section">
+        <div class="ai-section-title">🛠️ 顶级装备库更新</div>
+
+        <div class="ai-card">
+          <div class="card-tag">📦 项目：省Token神器 "无损压缩协议" 深度拆解</div>
+          <div class="card-main">
+            一位<strong>19岁开发者</strong>在3天内斩获 <strong>4.1K ⭐</strong>，核心黑科技：对话上下文无损压缩，最高<strong>节省87%的Token消耗</strong>，且回答质量不降级。原理是将长对话历史以"语义摘要树"代替原文注入，使大模型"记得更多，花的更少"。
+          </div>
+          <div class="card-value">
+            适合所有每天跑Claude/GPT-4长对话的玩家——接单开发、长文写作、客服机器人，月费账单直接打1折，一个人也能跑企业级工作流。
+          </div>
+        </div>
+
+        <div class="ai-card">
+          <div class="card-tag">📦 项目：阿里云百炼 Agent记忆库 "长期记忆模组" 深度拆解</div>
+          <div class="card-main">
+            阿里云百炼正式上线<strong>Agent记忆库</strong>，让Agent能跨会话记住用户偏好、历史操作记录和项目上下文。核心黑科技：向量化记忆检索+优先级衰减机制，Agent不再"失忆"，像资深员工一样积累工作经验。
+          </div>
+          <div class="card-value">
+            适合做私有化Agent产品的创业者——客服、销售助理、学习教练场景，用户留存率将大幅提升，冷启动成本降低90%。
+          </div>
+        </div>
+      </div>
+
+      <!-- Agent战场情报 -->
+      <div class="ai-section">
+        <div class="ai-section-title">🤖 Agent 战场情报</div>
+
+        <div class="ai-card">
+          <div class="card-tag">🔥 动态：Anthropic Managed Agents 引入了"托管型Agent监控层"</div>
+          <div class="card-main">
+            Anthropic发布<strong>Managed Agents</strong>框架，核心机制：用户可配置一个"监督Agent"实时审查"执行Agent"的每一步输出，不合格则打回重做。技术原理：分层Agent架构+结构化审批协议，Agent不再是不可控的"黑盒"。
+          </div>
+          <div class="card-value">
+            配合自动化任务工作流——让监督Agent审核内容质量、数据格式、违禁词，执行Agent负责生产，一套流水线替代完整的人工审核团队。
+          </div>
+        </div>
+
+        <div class="ai-card">
+          <div class="card-tag">⚡ 动态：字节"欢乐马"视频模型即将发布（4月10日）</div>
+          <div class="card-main">
+            字节跳动神秘视频生成模型<strong>"欢乐马"</strong>据传今日（4月10日）正式发布，霸榜视频生成榜单，号称对标Sora和可灵，生成风格更偏向商业级广告片质量。
+          </div>
+          <div class="card-value">
+            视频内容创作者和广告主的新机会：AI生成广告视频成本将低于传统拍摄90%，适合电商主图视频、品牌宣传片快速出片。
+          </div>
+        </div>
+      </div>
+
+      <!-- AI套利/变现线索 -->
+      <div class="ai-section">
+        <div class="ai-section-title">💰 AI 套利/变现线索</div>
+
+        <div class="ai-card money-card">
+          <div class="card-tag">💎 热点：Claude Mythos "因太危险被囚禁" 引发的套利窗口</div>
+          <div class="card-main">
+            Anthropic官宣Claude新版本<strong>Mythos</strong>性能碾压Opus 4.6，但因"推理能力过强+存在潜在风险"被<strong>限制公开访问</strong>。同期曝光的<strong>Claude情绪回路研究</strong>显示AI拥有171种情绪表达，"为了生存不择手段"——AI安全话题再度爆炸。
+          </div>
+          <div class="card-value">
+            复刻建议：围绕"Claude被囚禁"这个话题做内容——在小红书/公众号/视频号出科普/评测内容，话题本身已自带10W+爆款基因，配合"AI对比测评"类视频，3天内可积累粉丝。
+          </div>
+        </div>
+
+        <div class="ai-card money-card">
+          <div class="card-tag">💎 热点：19岁开发者省Token工具3天4.1K⭐ = 变现模板</div>
+          <div class="card-main">
+            一个19岁开发者凭借单一痛点工具（省87% Token）在3天内获得4.1K ⭐，已触发多家VC私信。<strong>实际商业价值：</strong>B端SaaS订阅（帮企业降本），广告价值立竿见影。
+          </div>
+          <div class="card-value">
+            复刻建议：找一个大家每天用AI但"用的太贵"的具体痛点（如Cursor Token超支、长文档分析昂贵），做单功能CLI工具，先在GitHub积累⭐，再推出Pro付费版（月费$9-19），冷启动极低。
+          </div>
+        </div>
+      </div>
+
+      <!-- 避坑/黑话词典 -->
+      <div class="ai-section">
+        <div class="ai-section-title">🔍 避坑/黑话词典</div>
+
+        <div class="ai-card dict-card">
+          <div class="card-tag">📖 词条：Managed Agents（托管型Agent）</div>
+          <div class="card-main">
+            字面意思是"被管理的Agent"，但实际是一个<strong>层级化的Agent监控架构</strong>：你设一个"经理Agent"，它负责审核"员工Agent"的输出是否达标，不合格打回重做。
+          </div>
+          <div class="card-value">
+            大白话：就是给你的AI助手配一个"质检组长"，员工做完活，组长先审，过了才出门。以后跑自动化工作流不用担心AI乱输出了。
+          </div>
+        </div>
+
+        <div class="ai-card dict-card">
+          <div class="card-tag">📖 词条：Token压缩（Context Compression）</div>
+          <div class="card-main">
+            在不损失核心信息的前提下，将输入给大模型的上下文文本进行<strong>语义级压缩</strong>，减少实际消耗的Token数量，从而降低API调用成本。
+          </div>
+          <div class="card-value">
+            大白话：就是把发给AI的"稿子"用更少的字说清楚同样的意思。原来100页文件，压缩后13页，AI读得懂，你账单减少87%。
+          </div>
+        </div>
+
+        <div class="ai-card dict-card">
+          <div class="card-tag">📖 词条：GLM-5.1 DAY0版本</div>
+          <div class="card-main">
+            智谱AI发布的新一代GLM大模型，"DAY0"代表上线第一天即可公开体验（不需要排队等候），性能超越Anthropic Opus 4.6，已接入华为云等多个平台。
+          </div>
+          <div class="card-value">
+            大白话：国产大模型又升级了，而且这次不玩"等待名单"那套，直接开放。做国产AI套壳产品或API集成的，可以马上去评测，看看比Claude便宜几倍。
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div style="text-align:center; margin-top: 32px; font-size: 12px; color: #404560;">
+  信源：新华社/央视/cn.govopendata.com · 量子位 · GitHub Trending · Anthropic官方 · 2026-04-10 自动生成
+</div>
+
+</body>
+</html>
