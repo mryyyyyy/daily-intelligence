@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日情报 | 2026-05-09</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f0f2f5;
+  --card-bg: #fff;
+  --text-primary: #1a1a2e;
+  --text-secondary: #555;
+  --text-muted: #999;
+  --accent-red: #e74c3c;
+  --accent-blue: #0984e3;
+  --accent-gold: #f39c12;
+  --accent-green: #27ae60;
+  --accent-purple: #8e44ad;
+  --border: #e0e0e0;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --radius: 12px;
+  --font: 'Noto Sans SC', -apple-system, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font); background: var(--bg); color: var(--text-primary); font-size: 14px; line-height: 1.6; }
+.container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+.header { text-align: center; margin-bottom: 24px; }
+.header h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.5px; }
+.header .subtitle { color: var(--text-muted); font-size: 0.85rem; margin-top: 4px; }
+.header .date-badge { display: inline-block; background: var(--accent-red); color: #fff; padding: 3px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; margin-top: 8px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+.card { background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.card-header { padding: 16px 20px 12px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+.card-header .icon { font-size: 1.3rem; }
+.card-header h2 { font-size: 1rem; font-weight: 600; }
+.card-header .tag { margin-left: auto; background: var(--bg); color: var(--text-muted); font-size: 0.72rem; padding: 2px 8px; border-radius: 6px; }
+.card-header .tag.weekend { background: #fff3e0; color: #e65100; }
+.card-body { padding: 16px 20px; }
+.wind-core { background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 100%); border-radius: 10px; padding: 16px 18px; margin-bottom: 14px; color: #fff; }
+.wind-core .label { font-size: 0.7rem; color: #64b5f6; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.wind-core .title { font-size: 0.95rem; font-weight: 700; line-height: 1.4; margin-bottom: 6px; }
+.wind-core .meta { font-size: 0.75rem; color: #90caf9; }
+.wind-core .quote { margin-top: 8px; padding: 8px 12px; background: rgba(255,255,255,0.07); border-left: 3px solid #64b5f6; border-radius: 0 6px 6px 0; font-size: 0.8rem; color: #bbdefb; font-style: italic; }
+.news-item { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px dashed #eee; }
+.news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.news-item .news-title { font-weight: 600; font-size: 0.9rem; color: var(--text-primary); margin-bottom: 4px; display: flex; align-items: flex-start; gap: 6px; }
+.news-item .news-title::before { content: '●'; color: var(--accent-red); font-size: 0.5rem; margin-top: 5px; flex-shrink: 0; }
+.news-item .news-body { font-size: 0.8rem; color: var(--text-secondary); padding-left: 14px; }
+.news-item .highlight { display: inline-block; background: #fff3e0; color: #e65100; padding: 1px 6px; border-radius: 4px; font-weight: 500; font-size: 0.78rem; margin: 2px 0; }
+.news-item .wind-tag { display: inline-block; background: #e8f5e9; color: #2e7d32; padding: 1px 6px; border-radius: 4px; font-size: 0.72rem; margin-left: 4px; font-weight: 500; }
+.news-item .figure { font-weight: 700; color: var(--accent-red); }
+.news-item .person { color: var(--accent-blue); font-weight: 500; }
+.section-title { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; margin-top: 14px; }
+.section-title:first-child { margin-top: 0; }
+.tool-item { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px dashed #eee; align-items: flex-start; }
+.tool-item:last-child { border-bottom: none; }
+.tool-emoji { font-size: 1.2rem; flex-shrink: 0; width: 28px; text-align: center; }
+.tool-content { flex: 1; }
+.tool-name { font-weight: 600; font-size: 0.88rem; color: var(--text-primary); }
+.tool-name .star { display: inline-block; background: #fffde7; color: #f57f17; padding: 1px 5px; border-radius: 4px; font-size: 0.72rem; font-weight: 600; margin-left: 4px; }
+.tool-desc { font-size: 0.78rem; color: var(--text-secondary); margin-top: 2px; }
+.tool-tag { display: inline-block; background: var(--bg); color: var(--text-muted); padding: 1px 6px; border-radius: 4px; font-size: 0.68rem; margin-top: 4px; }
+.trend-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; margin-top: 8px; }
+.trend-table th { background: #f5f5f5; color: var(--text-muted); font-weight: 500; padding: 6px 8px; text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.trend-table td { padding: 7px 8px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+.trend-table tr:last-child td { border-bottom: none; }
+.trend-table .rank { color: var(--text-muted); font-weight: 600; width: 24px; }
+.trend-table .proj-name { font-weight: 600; color: var(--text-primary); }
+.trend-table .proj-star { color: #f57f17; font-weight: 600; }
+.trend-table .proj-lang { color: var(--text-muted); font-size: 0.72rem; }
+.arb-item { padding: 10px 0; border-bottom: 1px dashed #eee; }
+.arb-item:last-child { border-bottom: none; }
+.arb-item .arb-title { font-weight: 600; font-size: 0.85rem; color: var(--text-primary); margin-bottom: 3px; }
+.arb-item .arb-desc { font-size: 0.78rem; color: var(--text-secondary); margin-top: 2px; }
+.arb-item .arb-num { color: var(--accent-green); font-weight: 600; }
+.warn-item { display: flex; gap: 8px; padding: 8px 0; font-size: 0.78rem; }
+.warn-icon { color: var(--accent-red); flex-shrink: 0; }
+.divider { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
+.summary-box { background: linear-gradient(135deg, #1a1a2e, #2d2d5a); border-radius: 10px; padding: 14px 16px; margin-top: 12px; }
+.summary-box .label { font-size: 0.68rem; color: #90caf9; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.summary-box .text { color: #fff; font-size: 0.82rem; line-height: 1.6; }
+.footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 0.75rem; }
+.footer a { color: var(--accent-blue); text-decoration: none; }
+.flash-news { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.flash-chip { background: #f5f5f5; color: var(--text-secondary); padding: 3px 8px; border-radius: 6px; font-size: 0.72rem; }
+.blue-tag { background: #e3f2fd; color: #1565c0; padding: 1px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 500; }
+.green-tag { background: #e8f5e9; color: #2e7d32; padding: 1px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 500; }
+.red-tag { background: #ffebee; color: #c62828; padding: 1px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 500; }
+.gold-tag { background: #fff8e1; color: #e65100; padding: 1px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+  <h1>📡 每日情报日报</h1>
+  <div class="subtitle">双专栏 · 新闻风向标解读 + AI生产力情报</div>
+  <span class="date-badge">2026年5月9日 · 周六</span>
+</div>
+
+<div class="grid">
+
+<!-- ==================== 专栏一：国内外要闻 ==================== -->
+<div class="card">
+  <div class="card-header">
+    <span class="icon">🌍</span>
+    <h2>专栏一 · 周末要闻速览</h2>
+    <span class="tag weekend">5月9日综合版</span>
+  </div>
+  <div class="card-body">
+
+    <div class="wind-core">
+      <div class="label">📌 今日核心风向</div>
+      <div class="title">俄乌三天停火启动 · 美伊冲突持续 · 全球芯片股暴涨</div>
+      <div class="meta">📅 5月8-9日 | 🌐 全球要闻汇总</div>
+      <div class="quote">"这次停火将全面终止所有军事作战行动，同时双方将各自交换1000名囚犯" — 特朗普</div>
+    </div>
+
+    <!-- 国际头条 -->
+    <div class="section-title" style="color: var(--accent-red);">🔥 今日头条</div>
+
+    <div class="news-item">
+      <div class="news-title">俄乌5月9日起三天停火 + 互换<span class="figure">1000</span>名战俘</div>
+      <div class="news-body">
+        特朗普在"真相社交"发文：普京和<span class="person">泽连斯基</span>均接受停火协议，<span class="highlight">5月9日、10日、11日</span>全面停火。<br>
+        莫斯科红场胜利日阅兵如期举行——泽连斯基此前承诺不袭击红场阅兵。<br>
+        <span class="wind-tag">🌬️ 二战胜利日外交：俄乌冲突出现最明确降级信号</span>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-title">美伊霍尔木兹冲突：美军开火瘫痪伊朗油轮，伊朗谴责违反停火</div>
+      <div class="news-body">
+        伊朗常驻联合国代表<span class="person">伊拉瓦尼</span>：美袭击伊朗油轮<span class="highlight">违反停火协议</span>。<br>
+        美国国务卿<span class="person">鲁比奥</span>：要求伊朗在周五前就止战方案作出答复。<br>
+        卡塔尔首相穆罕默德与美副总统<span class="person">万斯</span>会面，讨论与伊朗谈判。<br>
+        <span class="wind-tag">⚠️ 霍尔木兹局势：冲突与谈判并行，和平进程仍有高概率</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 国际要闻 -->
+    <div class="section-title" style="color: var(--accent-blue);">🌍 国际动态</div>
+
+    <div class="news-item">
+      <div class="news-title">美贸易法院裁定特朗普<span class="figure">10%</span>全球关税无效</div>
+      <div class="news-body">
+        美国国际贸易法院裁定：对所有国家的10%基准关税无效。<br>
+        <span class="person">特朗普</span>政府已提起上诉。<br>
+        <span class="wind-tag">🌬️ 全球贸易秩序重构进入司法博弈阶段</span>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-title">美政府准备下达AI安全行政令</div>
+      <div class="news-body">
+        白宫准备AI安全行政令——<span class="highlight">不强制</span>前沿模型发布前接受政府审批。<br>
+        <span class="wind-tag">🌬️ 美国AI监管走向"自愿+自律"模式，与其他国家路线分化</span>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-title">苏丹冲突持续三年，布尔汉拒绝谈判</div>
+      <div class="news-body">
+        苏丹武装部队总司令<span class="person">布尔汉</span>拒绝与快速支援部队谈判。<br>
+        <span class="wind-tag">🌬️ 人道主义危机持续恶化</span>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-title">日本疑似入市干预，日元空头大幅回撤</div>
+      <div class="news-body">
+        日本疑似动用超<span class="figure">600亿美元</span>干预汇市，日元净空头降至<span class="figure">61738手</span>。<br>
+        <span class="wind-tag">🌬️ 日元保卫战：亚洲货币战争信号</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 市场数据 -->
+    <div class="section-title" style="color: var(--text-muted);">💹 市场要闻</div>
+
+    <div class="news-item">
+      <div class="news-title">美光飙升<span class="figure">15.5%</span>，市值突破<span class="figure">8400亿美元</span></div>
+      <div class="news-body">
+        单周暴涨<span class="figure">38%</span>，一个月涨幅近<span class="figure">84%</span>。<br>
+        英特尔与苹果达成芯片代工初步协议——英特尔股价单日涨<span class="figure">近14%</span>。<br>
+        <span class="wind-tag">🌬️ 芯片股迎2000年来最佳六周行情（费城半导体指数↑32%）</span>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-title">纳指、标普再创历史新高，连续第六周上涨</div>
+      <div class="news-body">
+        美4月非农就业增加<span class="figure">11.5万</span>（高于预期），失业率持稳<span class="figure">4.3%</span>。<br>
+        但美债收益率下跌——薪资增长温和 + 劳动力参与率未引发工资压力。<br>
+        <span class="wind-tag">🌬️ 就业数据不弱不强的"金发姑娘"状态</span>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-title">Cerebras上调IPO定价至每股<span class="figure">125-135美元</span></div>
+      <div class="news-body">
+        超额认购<span class="figure">超20倍</span>，AI芯片IPO热度极高。<br>
+        Isomorphic Labs（谷歌DeepMind分拆）拟融资<span class="figure">逾20亿美元</span>。<br>
+        <span class="wind-tag">🌬️ AI芯片IPO热潮持续，市场热情不减</span>
+      </div>
+    </div>
+
+    <!-- 总结 -->
+    <div class="summary-box">
+      <div class="label">📊 要闻总结</div>
+      <div class="text">
+        <b>🔥 最大变量：</b>俄乌三天停火是年内最明确的降级信号，但伊朗问题仍是中东最大隐患。<br>
+        <b>💹 市场：</b>芯片股爆发式上涨（美光38%周涨），AI融资热潮不退（Cerebras IPO、Isomorphic 20亿）。<br>
+        <b>⚖️ 政策：</b>特朗普关税被裁定违宪上诉、AI安全行政令绕过强制审批——监管博弈持续。
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== 专栏二：AI情报 ==================== -->
+<div class="card">
+  <div class="card-header">
+    <span class="icon">🤖</span>
+    <h2>专栏二 · AI生产力情报</h2>
+    <span class="tag">2026-05-09</span>
+  </div>
+  <div class="card-body">
+
+    <div class="section-title" style="color: var(--accent-red);">🔥 今日重磅</div>
+
+    <div class="tool-item">
+      <div class="tool-emoji">💰</div>
+      <div class="tool-content">
+        <div class="tool-name">DeepSeek 首轮融资估值或达<span class="figure">450亿美元</span><span class="star">NEW</span></div>
+        <div class="tool-desc">
+          TechCrunch报道：DeepSeek凭借<span class="highlight">极低训练成本</span>崛起，首轮估值或达450亿美元。<br>
+          对比：Kimi投后估值<span class="figure">200亿美元</span>——DeepSeek估值是Kimi的<span class="highlight">2.25倍</span>。<br>
+          <span class="tool-tag" style="background:#e3f2fd;color:#1565c0;">🇨🇳 国产AI估值体系：DeepSeek > Kimi > 其他</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-item">
+      <div class="tool-emoji">🏭</div>
+      <div class="tool-content">
+        <div class="tool-name">Anthropic × Akamai：<span class="figure">18亿美元</span>/7年计算协议<span class="star">NEW</span></div>
+        <div class="tool-desc">
+          Anthropic与Akamai签署<span class="highlight">7年18亿美元</span>AI基础设施协议。<br>
+          对冲私募信贷风险，锁定长期算力供给。<br>
+          Akamai股价暴涨<span class="figure">近20%</span>。<br>
+          <span class="tool-tag">AI基础设施 · 长协锁定</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-item">
+      <div class="tool-emoji">🤖</div>
+      <div class="tool-content">
+        <div class="tool-name">xAI 裁员约<span class="figure">10%</span>，包括Mistral创始成员</div>
+        <div class="tool-desc">
+          包括Mistral AI联合创始人在内的多名关键工程师离职。<br>
+          <span class="tool-tag" style="background:#ffebee;color:#c62828;">⚠️ Grok生态扩张期裁员，反常信号值得关注</span>
+        </div>
+    </div>
+
+    <div class="tool-item">
+      <div class="tool-emoji">🎙️</div>
+      <div class="tool-content">
+        <div class="tool-name">OpenAI 实时语音模型持续渗透</div>
+        <div class="tool-desc">
+          突破传统一问一答，支持<span class="highlight">并发多任务语音交互</span>（推理/翻译/转录三合一）。<br>
+          Voice Agent应用落地加速：客服、教育、医疗问诊等场景。<br>
+          <span class="tool-tag">语音AI · Voice Agent</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-item">
+      <div class="tool-emoji">💸</div>
+      <div class="tool-content">
+        <div class="tool-name">Isomorphic Labs（谷歌）拟融资<span class="figure">逾20亿美元</span></div>
+        <div class="tool-desc">
+          谷歌DeepMind分拆公司，专注AI药物研发。<br>
+          <span class="tool-tag">AI医疗 · 谷歌系</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 顶级装备库 -->
+    <div class="section-title">🛠️ 顶级装备库</div>
+
+    <div class="tool-item">
+      <div class="tool-emoji">⚡</div>
+      <div class="tool-content">
+        <div class="tool-name">DeepSeek-TUI</div>
+        <div class="tool-desc">终端内运行的DeepSeek编程Agent，累计18.4k⭐（昨日数据，今日预计20k+）</div>
+        <span class="tool-tag">Python · 终端AI编程</span>
+      </div>
+    </div>
+    <div class="tool-item">
+      <div class="tool-emoji">📋</div>
+      <div class="tool-content">
+        <div class="tool-name">addyosmani/agent-skills</div>
+        <div class="tool-desc">生产级AI编程Agent技能库，累计32.7k⭐（日增2600+）</div>
+        <span class="tool-tag">AI工程规范 · 技能库</span>
+      </div>
+    </div>
+    <div class="tool-item">
+      <div class="tool-emoji">🏦</div>
+      <div class="tool-content">
+        <div class="tool-name">anthropics/financial-services</div>
+        <div class="tool-desc">Anthropic官方金融服务AI工具包，11.1k⭐（日增2100+）</div>
+        <span class="tool-tag">金融AI · Anthropic官方</span>
+      </div>
+    </div>
+    <div class="tool-item">
+      <div class="tool-emoji">📚</div>
+      <div class="tool-content">
+        <div class="tool-name">datawhalechina/hello-agents</div>
+        <div class="tool-desc">《从零开始构建智能体》教程，43.8k⭐（中文AI教育标杆）</div>
+        <span class="tool-tag">Agent教程 · 中文开源</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- GitHub Trending -->
+    <div class="section-title">📈 GitHub Trending · 5月7日数据延续</div>
+    <table class="trend-table">
+      <thead>
+        <tr><th>#</th><th>项目</th><th>累计⭐</th><th>语言</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="rank">🥇</td><td class="proj-name">Hmbown/DeepSeek-TUI</td><td class="proj-star">18.4k</td><td class="proj-lang">Python</td></tr>
+        <tr><td class="rank">🥈</td><td class="proj-name">addyosmani/agent-skills</td><td class="proj-star">32.7k</td><td class="proj-lang">—</td></tr>
+        <tr><td class="rank">🥉</td><td class="proj-name">anthropics/financial-services</td><td class="proj-star">11.1k</td><td class="proj-lang">—</td></tr>
+        <tr><td class="rank">4</td><td class="proj-name">mattpocock/skills</td><td class="proj-star">64.6k</td><td class="proj-lang">TS</td></tr>
+        <tr><td class="rank">5</td><td class="proj-name">TauricResearch/TradingAgents</td><td class="proj-star">71k</td><td class="proj-lang">Py</td></tr>
+        <tr><td class="rank">6</td><td class="proj-name">D4Vinci/Scrapling</td><td class="proj-star">47.1k</td><td class="proj-lang">Py</td></tr>
+        <tr><td class="rank">7</td><td class="proj-name">ruvnet/claude-flow</td><td class="proj-star">46k</td><td class="proj-lang">—</td></tr>
+        <tr><td class="rank">8</td><td class="proj-name">rtk-ai/rtk</td><td class="proj-star">43.8k</td><td class="proj-lang">Rust</td></tr>
+        <tr><td class="rank">9</td><td class="proj-name">datawhalechina/hello-agents</td><td class="proj-star">43.8k</td><td class="proj-lang">Py</td></tr>
+        <tr><td class="rank">10</td><td class="proj-name">docusealco/docuseal</td><td class="proj-star">15.5k</td><td class="proj-lang">—</td></tr>
+      </tbody>
+    </table>
+    <div style="font-size:0.7rem;color:#999;margin-top:6px;">📡 GitHub API今日暂时不可用，数据为5月7日延续</div>
+
+    <hr class="divider">
+
+    <!-- 套利线索 -->
+    <div class="section-title">💰 套利变现线索</div>
+
+    <div class="arb-item">
+      <div class="arb-title">🇨🇳 DeepSeek vs Kimi：国产AI估值套利机会</div>
+      <div class="arb-desc">
+        DeepSeek 450亿美元 vs Kimi 200亿美元——DeepSeek是Kimi的<span class="arb-num">2.25倍</span>。<br>
+        两家均处于一级市场，<span class="arb-num">pre-IPO轮次</span>存在套利空间。<br>
+        关注：国家集成电路产业投资基金动向（国产AI国家队资金）
+      </div>
+    </div>
+    <div class="arb-item">
+      <div class="arb-title">🏭 Anthropic长协模式 → 算力供应商价值重估</div>
+      <div class="arb-desc">
+        Anthropic锁定Akamai <span class="arb-num">7年18亿美元</span>——这是AI公司锁定长协算力的范式案例。<br>
+        受益方：<span class="arb-num">Akamai</span>（CDN→AI基础设施转型）、<span class="arb-num">CoreWeave</span>等算力租赁商。<br>
+        <span class="tool-tag" style="background:#e8f5e9;color:#2e7d32;">算力长协 = 低风险稳定现金流，适合机构配置</span>
+      </div>
+    </div>
+    <div class="arb-item">
+      <div class="arb-title">💊 谷歌分拆Isomorphic融资 → AI医疗加速</div>
+      <div class="arb-desc">
+        谷歌DeepMind分拆的AI制药公司，融资<span class="arb-num">逾20亿美元</span>。<br>
+        信号：AI医疗从"概念"进入"<span class="arb-num">临床验证</span>"阶段。<br>
+        国内对标：晶泰科技、英矽智能等AI制药公司值得关注。
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 避坑词典 -->
+    <div class="section-title">🔍 避坑词典</div>
+
+    <div class="warn-item">
+      <span class="warn-icon">⚠️</span>
+      <span><b>xAI裁员反常信号：</b>Grok扩张期裁员10%，包括Mistral创始成员。AI公司人员流动≠能力下降，但需关注战略方向调整。</span>
+    </div>
+    <div class="warn-item">
+      <span class="warn-icon">⚠️</span>
+      <span><b>俄乌停火脆弱性：</b>三天停火≠和平进程，谈判仍有高概率破裂风险。霍尔木兹+俄乌双线地缘风险压制市场风险偏好。</span>
+    </div>
+    <div class="warn-item">
+      <span class="warn-icon">⚠️</span>
+      <span><b>芯片股过热警告：</b>费城半导体指数六周涨32%，美光单周38%——短期超买，回调概率上升。注意止损纪律。</span>
+    </div>
+
+    <hr class="divider">
+
+    <!-- AI市场快读 -->
+    <div class="section-title">📊 AI市场快读</div>
+    <div class="flash-news" style="flex-direction:column;gap:4px;">
+      <div class="flash-chip" style="background:#fff3e0;color:#333;">💰 DeepSeek首轮融资估值 <b>450亿美元</b>（TechCrunch）</div>
+      <div class="flash-chip" style="background:#e3f2fd;color:#333;">🏭 Anthropic×Akamai <b>18亿美元/7年</b>长协 · Akamai暴涨20%</div>
+      <div class="flash-chip" style="background:#f3e5f5;color:#333;">🤖 xAI裁员10%含Mistral创始人</div>
+      <div class="flash-chip" style="background:#e8f5e9;color:#333;">💊 Isomorphic Labs融资 <b>逾20亿美元</b>（谷歌DeepMind分拆）</div>
+      <div class="flash-chip" style="background:#f0f2f5;color:#333;">📈 美光周涨38%市值8400亿美元</div>
+    </div>
+
+    <!-- AI总结 -->
+    <div class="summary-box">
+      <div class="label">🧠 AI情报总结</div>
+      <div class="text">
+        <b>估值层：</b>国产AI格局重塑——DeepSeek(450亿) > Kimi(200亿)，国家队资金+美元VC同步加码。<br>
+        <b>基础设施层：</b>Anthropic长协模式验证"算力长协"是AI公司确定性最高的商业模式之一。<br>
+        <b>垂直应用层：</b>谷歌分拆Isomorphic融资，AI制药进入临床验证阶段；Voice Agent继续渗透。<br>
+        <b>⚠️ 风险：</b>xAI裁员+芯片股过热，短期需警惕情绪降温。
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- grid -->
+
+<div class="footer">
+  <p>📡 每日情报日报 | 数据来源：财联社 / 财新 / 新浪财经 / TechCrunch / GitHub Trending</p>
+  <p>生成时间：2026-05-09 10:25 | 由 WorkBuddy AI 自动生成</p>
+</div>
+
+</div><!-- container -->
+</body>
+</html>
