@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日双专栏情报 | 2026-05-11</title>
+<style>
+  :root {
+    --red: #e03131;
+    --gold: #f08c00;
+    --green: #2f9e44;
+    --blue: #1971c2;
+    --purple: #6741d9;
+    --teal: #0c8599;
+    --bg: #0f1117;
+    --card: #1a1d27;
+    --card2: #1e2235;
+    --border: #2a2d3e;
+    --text: #e8eaf0;
+    --muted: #8b8fa8;
+    --accent: #4dabf7;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 24px 16px 48px;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .header-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #1c2440 0%, #0f1117 100%);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 6px 20px;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #74c0fc, #f783ac, #ffd43b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .header .subtitle {
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  /* ── Layout ── */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 900px) {
+    .container { grid-template-columns: 1fr; }
+  }
+
+  /* ── Column Header ── */
+  .col-header {
+    border-radius: 16px 16px 0 0;
+    padding: 20px 24px 16px;
+    margin-bottom: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .col-header.news {
+    background: linear-gradient(135deg, #1a1f36 0%, #0d1525 100%);
+    border: 1px solid #2a3a5e;
+    border-bottom: none;
+  }
+  .col-header.ai {
+    background: linear-gradient(135deg, #1a1430 0%, #0d0f1a 100%);
+    border: 1px solid #3a2a5e;
+    border-bottom: none;
+  }
+  .col-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .col-header.news::before { background: linear-gradient(90deg, #e03131, #f08c00); }
+  .col-header.ai::before { background: linear-gradient(90deg, #6741d9, #1971c2); }
+
+  .col-header .col-icon { font-size: 24px; margin-bottom: 6px; }
+  .col-header h2 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .col-header .col-desc { font-size: 12px; color: var(--muted); }
+
+  /* ── Card ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: none;
+    padding: 0;
+  }
+  .card:last-child { border-radius: 0 0 16px 16px; }
+
+  /* ── News Sections ── */
+  .news-section {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 24px;
+  }
+  .news-section:last-child { border-bottom: none; }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  .label-core { background: rgba(224,49,49,0.15); color: #ff6b6b; border: 1px solid rgba(224,49,49,0.3); }
+  .label-news { background: rgba(240,140,0,0.15); color: #ffd43b; border: 1px solid rgba(240,140,0,0.3); }
+  .label-summary { background: rgba(47,158,68,0.15); color: #69db7c; border: 1px solid rgba(47,158,68,0.3); }
+
+  .core-signal {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.6;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, rgba(224,49,49,0.08), rgba(240,140,0,0.05));
+    border-left: 3px solid var(--red);
+    border-radius: 0 8px 8px 0;
+  }
+
+  /* ── News Item ── */
+  .news-item {
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .news-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+  .news-item-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .news-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border-radius: 6px;
+    background: rgba(240,140,0,0.2);
+    border: 1px solid rgba(240,140,0,0.4);
+    font-size: 11px;
+    font-weight: 800;
+    color: #ffd43b;
+    margin-top: 1px;
+  }
+
+  .info-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .info-block {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .info-tag {
+    min-width: 90px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-align: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .tag-what { background: rgba(25,113,194,0.2); color: #74c0fc; border: 1px solid rgba(25,113,194,0.3); }
+  .tag-signal { background: rgba(103,65,217,0.2); color: #b197fc; border: 1px solid rgba(103,65,217,0.3); }
+  .tag-impact { background: rgba(47,158,68,0.2); color: #8ce99a; border: 1px solid rgba(47,158,68,0.3); }
+
+  .info-text {
+    font-size: 13px;
+    color: #c8cad8;
+    line-height: 1.65;
+  }
+  .info-text strong { color: #fff; font-weight: 600; }
+
+  .data-pill {
+    display: inline-block;
+    background: rgba(255,212,59,0.12);
+    border: 1px solid rgba(255,212,59,0.25);
+    color: #ffd43b;
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .summary-box {
+    background: linear-gradient(135deg, rgba(47,158,68,0.08), rgba(12,133,153,0.05));
+    border: 1px solid rgba(47,158,68,0.2);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #c8cad8;
+    line-height: 1.7;
+  }
+  .summary-box strong { color: #69db7c; }
+
+  /* ── AI Column ── */
+  .ai-block {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 24px;
+  }
+  .ai-block:last-child { border-bottom: none; }
+
+  .ai-block-title {
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+  }
+  .ai-block-title .emoji { font-size: 18px; }
+
+  /* ── GitHub Trending ── */
+  .repo-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .repo-card {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px;
+    align-items: start;
+    transition: border-color 0.2s;
+  }
+  .repo-card:hover { border-color: var(--purple); }
+  .repo-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #a5b4fc;
+  }
+  .repo-desc { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.5; }
+  .repo-meta { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+  .repo-stars {
+    font-size: 11px;
+    color: #ffd43b;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .repo-tag {
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-weight: 700;
+  }
+  .tag-agent { background: rgba(103,65,217,0.2); color: #b197fc; }
+  .tag-inference { background: rgba(25,113,194,0.2); color: #74c0fc; }
+  .tag-coding { background: rgba(12,133,153,0.2); color: #66d9e8; }
+  .tag-rag { background: rgba(240,140,0,0.2); color: #ffd43b; }
+  .tag-mcp { background: rgba(47,158,68,0.2); color: #8ce99a; }
+  .tag-llm { background: rgba(224,49,49,0.2); color: #ff8787; }
+  .trend-badge {
+    font-size: 11px;
+    font-weight: 800;
+    color: #ff6b6b;
+    white-space: nowrap;
+    background: rgba(224,49,49,0.1);
+    border: 1px solid rgba(224,49,49,0.25);
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+
+  /* ── AI Items ── */
+  .ai-item {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 10px;
+  }
+  .ai-item:last-child { margin-bottom: 0; }
+  .ai-item-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ai-item-body { display: flex; flex-direction: column; gap: 7px; }
+  .ai-row { display: flex; gap: 8px; align-items: flex-start; }
+  .ai-label {
+    min-width: 72px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 4px;
+    text-align: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .al-tech { background: rgba(103,65,217,0.2); color: #b197fc; border: 1px solid rgba(103,65,217,0.3); }
+  .al-value { background: rgba(47,158,68,0.2); color: #8ce99a; border: 1px solid rgba(47,158,68,0.3); }
+  .al-scene { background: rgba(12,133,153,0.2); color: #66d9e8; border: 1px solid rgba(12,133,153,0.3); }
+  .al-hot { background: rgba(240,140,0,0.2); color: #ffd43b; border: 1px solid rgba(240,140,0,0.3); }
+  .al-copy { background: rgba(25,113,194,0.2); color: #74c0fc; border: 1px solid rgba(25,113,194,0.3); }
+  .al-word { background: rgba(224,49,49,0.2); color: #ff8787; border: 1px solid rgba(224,49,49,0.3); }
+  .al-plain { background: rgba(139,143,168,0.15); color: #c8cad8; border: 1px solid rgba(139,143,168,0.2); }
+
+  .ai-text { font-size: 13px; color: #c8cad8; line-height: 1.65; }
+  .ai-text strong { color: #fff; }
+
+  /* ── Product Hunt ── */
+  .ph-grid { display: flex; flex-direction: column; gap: 8px; }
+  .ph-item {
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    gap: 10px;
+    align-items: start;
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .ph-rank {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--muted);
+    text-align: center;
+    padding-top: 2px;
+  }
+  .ph-rank.top1 { color: #ffd43b; }
+  .ph-rank.top2 { color: #c8cad8; }
+  .ph-rank.top3 { color: #ce7c3e; }
+  .ph-name { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+  .ph-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .ph-votes {
+    font-size: 12px;
+    font-weight: 700;
+    color: #f783ac;
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+
+  /* ── Dictionary Entry ── */
+  .dict-entry {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 10px;
+  }
+  .dict-entry:last-child { margin-bottom: 0; }
+  .dict-term {
+    font-size: 14px;
+    font-weight: 800;
+    color: #a5b4fc;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dict-eng { font-size: 12px; color: var(--muted); font-weight: 400; }
+  .dict-def { font-size: 13px; color: #c8cad8; line-height: 1.65; }
+  .dict-def strong { color: #fff; }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    body { padding: 16px 10px 32px; }
+    .col-header { padding: 16px 16px 12px; }
+    .news-section, .ai-block { padding: 16px 16px; }
+    .header h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<div class="header">
+  <div class="header-badge">🗓️ 2026年05月11日（周一）· 自动情报机器人 · 双专栏版</div>
+  <h1>每日双专栏情报</h1>
+  <div class="subtitle">📡 专栏一：新闻联播风向标解读 &nbsp;|&nbsp; 🤖 专栏二：AI生产力黑洞</div>
+</div>
+
+<!-- ── MAIN GRID ── -->
+<div class="container">
+
+  <!-- ═══════════════════════════════ 专栏一 ═══════════════════════════════ -->
+  <div>
+    <div class="col-header news">
+      <div class="col-icon">📺</div>
+      <h2>专栏一：新闻联播风向标解读</h2>
+      <div class="col-desc">信源：cn.govopendata.com · 20260510 完整文字稿（5月11日稿件播出后同步更新）</div>
+    </div>
+
+    <!-- 一、核心风向 -->
+    <div class="card">
+      <div class="news-section">
+        <div class="section-label label-core">🎯 一、核心风向</div>
+        <div class="core-signal">
+          "十五五"开局定调：以<strong>新基建与算力自主</strong>为骨架，<strong>内需消费与粮食安全</strong>为底座，<strong>外部对峙（美伊、俄乌）</strong>为背景，国内全面强调"稳进"与"高质量发展"。
+        </div>
+      </div>
+
+      <!-- 二、分项解读 -->
+      <div class="news-section">
+        <div class="section-label label-news">📋 二、分项解读（按重要性排序）</div>
+
+        <!-- 1 新型基础设施 -->
+        <div class="news-item">
+          <div class="news-item-title">
+            <span class="news-num">1</span>
+            新型基础设施建设全面加速，算力规模跃居全球前列
+          </div>
+          <div class="info-row">
+            <div class="info-block">
+              <span class="info-tag tag-what">联播说了什么</span>
+              <span class="info-text">
+                习近平总书记强调"适度超前部署新型基础设施建设"。关键数据：全国<span class="data-pill">5G基站495.8万个</span>，<span class="data-pill">5G-A覆盖330城</span>，<span class="data-pill">万兆光网试点86城</span>，智能算力规模达<span class="data-pill">每秒1882百亿亿次</span>，算力大通道超<span class="data-pill">70条</span>，东数西算八大枢纽占全国算力超<span class="data-pill">80%</span>。上海临港绿电供给率<span class="data-pill">95%</span>，雄安新区低轨卫星完成发射前调试。
+              </span>
+            </div>
+            <div class="info-block">
+              <span class="info-tag tag-signal">风向标解读</span>
+              <span class="info-text">
+                "十五五"规划明确将<strong>低轨卫星互联网、万兆光网、全国一体化算力网</strong>列为重点任务，这是近两年来罕见的"精确数字叠加国家战略"组合信号——算力已从企业竞争升级为<strong>国家基础设施主权</strong>。
+              </span>
+            </div>
+            <div class="info-block">
+              <span class="info-tag tag-impact">行业影响</span>
+              <span class="info-text">
+                受益：<strong>算力芯片、光纤光缆、卫星通信、数据中心、算力租赁</strong>板块。风险：低端5G设备厂商将遭淘汰，向5G-A升级的资本开支压力增大。
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 经济先行指标 -->
+        <div class="news-item">
+          <div class="news-item-title">
+            <span class="news-num">2</span>
+            4月经济先行指标超预期，AI/机器人投资同比暴增175%
+          </div>
+          <div class="info-row">
+            <div class="info-block">
+              <span class="info-tag tag-what">联播说了什么</span>
+              <span class="info-text">
+                国家信息中心发布4月数据：AI、人形机器人等前沿领域投资同比增长<span class="data-pill">+175.2%</span>；算力/数据/网络基础设施中标金额同比增长<span class="data-pill">+61.7%</span>；战略性新兴产业专利授权量增速较一季度加快<span class="data-pill">10.6个百分点</span>；商品消费同比增长<span class="data-pill">2.7%</span>，电子品、日用百货增速较快。
+              </span>
+            </div>
+            <div class="info-block">
+              <span class="info-tag tag-signal">风向标解读</span>
+              <span class="info-text">
+                175.2%的AI/机器人投资增速是"现象级数字"——意味着<strong>政策资金与产业资本已形成共振</strong>，而非单向政策驱动。结合专利加速，说明从研发到商业化落地的通道正在打通。
+              </span>
+            </div>
+            <div class="info-block">
+              <span class="info-tag tag-impact">行业影响</span>
+              <span class="info-text">
+                受益：<strong>人形机器人零部件（减速器/传感器）、AI算力、工业自动化</strong>产业链。消费端温和复苏，电商增速仍领先，<strong>电子消费品、家电</strong>值得关注。
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 秋粮收购 -->
+        <div class="news-item">
+          <div class="news-item-title">
+            <span class="news-num">3</span>
+            2025年度秋粮收购收官，总量超3.38亿吨创近年高位
+          </div>
+          <div class="info-row">
+            <div class="info-block">
+              <span class="info-tag tag-what">联播说了什么</span>
+              <span class="info-text">
+                国家粮食和物资储备局：2025年度秋粮收购总量超<span class="data-pill">3.38亿吨</span>，特点"进度快、购销活、价格涨"。河南、湖南、黑龙江三省启动最低收购价预案，托市收购中晚稻<span class="data-pill">418万吨</span>。全国低温/准低温储粮仓容达<span class="data-pill">2.2亿吨</span>。
+              </span>
+            </div>
+            <div class="info-block">
+              <span class="info-tag tag-signal">风向标解读</span>
+              <span class="info-text">
+                "价格涨"叠加"最低收购价预案启动"是矛盾信号——表面价格市场化，实则<strong>政策托底粮食安全</strong>的底线思维仍在。在外部不确定性背景下，粮食储备扩容是战略重心。
+              </span>
+            </div>
+            <div class="info-block">
+              <span class="info-tag tag-impact">行业影响</span>
+              <span class="info-text">
+                受益：<strong>粮食储存设备、粮库建设、农机自动化、冷链物流</strong>。粮价温和上涨对农业上游（种子、化肥）形成正反馈。
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 深渊探索 -->
+        <div class="news-item">
+          <div class="news-item-title">
+            <span class="news-num">4</span>
+            "奋斗者"号完成156天太平洋穿越科考，8000米深发现生命绿洲
+          </div>
+          <div class="info-row">
+            <div class="info-block">
+              <span class="info-tag tag-what">联播说了什么</span>
+              <span class="info-text">
+                中科院深海所"探索一号"科考船历时<span class="data-pill">156天</span>，航程超<span class="data-pill">4万公里</span>，联合<span class="data-pill">6国83名</span>科考队员完成太平洋穿越。"奋斗者"号共完成<span class="data-pill">63潜次</span>（其中50次超6000米），在约<span class="data-pill">8000米</span>深处发现"不依赖光合作用的生命绿洲"——目前南半球最深化能生态系统，多种深渊狮子鱼或为新物种。
+              </span>
+            </div>
+            <div class="info-block">
+              <span class="info-tag tag-signal">风向标解读</span>
+              <span class="info-text">
+                深海探索的多国合作框架（中智等6国）是中国在<strong>"全球公域"领域扩大主导权</strong>的典型路径。深海生物发现→新物种申报→生物专利，是未来10年的隐性战略资产。
+              </span>
+            </div>
+            <div class="info-block">
+              <span class="info-tag tag-impact">行业影响</span>
+              <span class="info-text">
+                受益：<strong>深海装备制造、水下机器人、生物技术、海洋科学</strong>相关板块。国产深海探测装备迎来里程碑，有望加速进口替代。
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 便民生活圈 -->
+        <div class="news-item">
+          <div class="news-item-title">
+            <span class="news-num">5</span>
+            一刻钟便民生活圈：全国8132个，服务1.68亿人，2030年全覆盖
+          </div>
+          <div class="info-row">
+            <div class="info-block">
+              <span class="info-tag tag-what">联播说了什么</span>
+              <span class="info-text">
+                全国已建设便民生活圈<span class="data-pill">8132个</span>，服务社区居民<span class="data-pill">1.68亿人</span>。改造优化养老站点<span class="data-pill">10898个</span>，托育机构<span class="data-pill">19273个</span>。目标：<span class="data-pill">2030年</span>实现地级以上城市主城区全覆盖。
+              </span>
+            </div>
+            <div class="info-block">
+              <span class="info-tag tag-signal">风向标解读</span>
+              <span class="info-text">
+                "一刻钟便民"是<strong>扩大内需+社区治理+银发经济</strong>三合一政策抓手，结合HPV疫苗接种纳入国家免疫规划，信号清晰：<strong>消费端政策将以"社区化、普惠化"为主轴持续发力</strong>。
+              </span>
+            </div>
+            <div class="info-block">
+              <span class="info-tag tag-impact">行业影响</span>
+              <span class="info-text">
+                受益：<strong>社区零售、物业科技、养老服务、托育机构、O2O本地生活</strong>赛道。2030年全覆盖目标带动持续建设投入，对应约<span class="data-pill">200亿+</span>的社区改造市场。
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 国际局势 -->
+        <div class="news-item">
+          <div class="news-item-title">
+            <span class="news-num">6</span>
+            【国际】美伊海上对峙升级，英法备战霍尔木兹，俄乌停火名存实亡
+          </div>
+          <div class="info-row">
+            <div class="info-block">
+              <span class="info-tag tag-what">联播说了什么</span>
+              <span class="info-text">
+                美军称已改变<span class="data-pill">58艘</span>商船航向、使<span class="data-pill">4艘</span>丧失航行能力；伊朗警告"侵犯油轮将猛烈打击美军目标"，导弹/无人机已锁定。英国驱逐舰从地中海东部调往中东，法国提议英法牵头多国护航并派"戴高乐"号赴红海。俄乌：停火后俄记录乌军多次违反，普京警告"必须制止篡改二战历史"。
+              </span>
+            </div>
+            <div class="info-block">
+              <span class="info-tag tag-signal">风向标解读</span>
+              <span class="info-text">
+                霍尔木兹海峡护航联盟正在形成，英法驱逐舰联合行动，<strong>能源运输安全溢价将进一步推升油价</strong>。俄乌停火破裂预期升温，欧洲防务开支或再度提速。
+              </span>
+            </div>
+            <div class="info-block">
+              <span class="info-tag tag-impact">行业影响</span>
+              <span class="info-text">
+                关注：<strong>原油、LNG价格、航运保险、军工防务</strong>。国内受益：<strong>能源安全相关储备</strong>板块、<strong>国产军工</strong>。风险：大宗商品进口成本上升，外贸物流费用抬升。
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end 分项解读 -->
+
+      <!-- 三、总结风向标 -->
+      <div class="news-section">
+        <div class="section-label label-summary">✅ 三、总结风向标</div>
+        <div class="summary-box">
+          本日联播核心主线：<strong>算力/新基建是"十五五"第一驱动力</strong>（算力增速176%远超GDP），<strong>粮食安全底线思维牢固</strong>（3.38亿吨收购+最低价预案），<strong>社区消费内循环持续培育</strong>（便民圈+疫苗+养老托育）。<br><br>
+          外部看：中东局势维持高压，<strong>能源价格将保持高位波动</strong>；俄乌冲突延续，<strong>欧洲防务需求利好国内军工替代链</strong>。<br><br>
+          投资方向建议：<strong>算力&nbsp;&gt;&nbsp;人形机器人&nbsp;&gt;&nbsp;社区消费&nbsp;&gt;&nbsp;粮食仓储&nbsp;&gt;&nbsp;能源储备</strong>，按政策信号强度排序。
+        </div>
+      </div>
+
+    </div><!-- .card -->
+  </div><!-- 专栏一 -->
+
+
+  <!-- ═══════════════════════════════ 专栏二 ═══════════════════════════════ -->
+  <div>
+    <div class="col-header ai">
+      <div class="col-icon">🤖</div>
+      <h2>专栏二：AI生产力黑洞</h2>
+      <div class="col-desc">黑科技与套利指南 · 信源：GitHub Trending / Twitter/X / Product Hunt / 36氪 / 量子位</div>
+    </div>
+
+    <div class="card">
+
+      <!-- 🛠️ 顶级装备库 -->
+      <div class="ai-block">
+        <div class="ai-block-title"><span class="emoji">🛠️</span>【顶级装备库更新】今日重磅工具深度拆解</div>
+
+        <!-- Gemini 2.5 Pro I/O -->
+        <div class="ai-item">
+          <div class="ai-item-title">
+            <span style="background:rgba(25,113,194,0.2);color:#74c0fc;padding:2px 7px;border-radius:4px;font-size:11px;">NEW</span>
+            Gemini 2.5 Pro I/O 特供版 · Google DeepMind
+          </div>
+          <div class="ai-item-body">
+            <div class="ai-row">
+              <span class="ai-label al-tech">核心黑科技</span>
+              <span class="ai-text">专为AI编程优化的旗舰模型。<strong>单条文字提示生成完整Web应用</strong>；<strong>一张草图→可运行前端组件</strong>（无需手写CSS）；<strong>YouTube视频→互动学习应用</strong>。DeepMind CEO德米斯·哈萨比斯宣称"我们有史以来构建的最强编程模型"，在多项coding benchmark上<strong>挑战Claude Code统治地位</strong>。</span>
+            </div>
+            <div class="ai-row">
+              <span class="ai-label al-value">实战价值</span>
+              <span class="ai-text">接单场景：<strong>草图→原型→可交付Demo</strong>，全程AI零手写。适合TA做材质Demo/游戏Prototype，把"能不能做"的验证成本从2天压到2小时。配合代码接单，一人顶一个前端小组。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- GPT-5.5 Instant -->
+        <div class="ai-item">
+          <div class="ai-item-title">
+            <span style="background:rgba(47,158,68,0.2);color:#8ce99a;padding:2px 7px;border-radius:4px;font-size:11px;">升级</span>
+            GPT-5.5 Instant · OpenAI 默认模型切换
+          </div>
+          <div class="ai-item-body">
+            <div class="ai-row">
+              <span class="ai-label al-tech">核心黑科技</span>
+              <span class="ai-text">幻觉率最高降低<strong>52.5%</strong>；法律/医疗/金融敏感领域准确性显著提升；减少废话表情符号；<strong>API用户无需改代码自动升级</strong>。</span>
+            </div>
+            <div class="ai-row">
+              <span class="ai-label al-value">实战价值</span>
+              <span class="ai-text">用于HLSL/UE5代码审查时，错误率下降直接减少debug循环。做小红书产品文案时，减少AI腔、提升真实感。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Claude Orbit -->
+        <div class="ai-item">
+          <div class="ai-item-title">
+            <span style="background:rgba(103,65,217,0.2);color:#b197fc;padding:2px 7px;border-radius:4px;font-size:11px;">曝光</span>
+            Claude Orbit · Anthropic 主动助手功能
+          </div>
+          <div class="ai-item-body">
+            <div class="ai-row">
+              <span class="ai-label al-tech">核心黑科技</span>
+              <span class="ai-text"><strong>无需用户主动发起对话</strong>——Orbit在后台持续运行，自动读取工作数据，主动生成个性化洞察、预警风险。AI助手从"被动响应"正式进化为<strong>"主动服务"</strong>。</span>
+            </div>
+            <div class="ai-row">
+              <span class="ai-label al-value">实战价值</span>
+              <span class="ai-text">未来的工作范式：AI主动盯着你的代码/日报/项目文件，出问题前就提醒你。适合下厨房PM场景——自动监控SKU数据异动，无需每天手动查表。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🤖 Agent 战场情报 -->
+      <div class="ai-block">
+        <div class="ai-block-title"><span class="emoji">🤖</span>【Agent战场情报】GitHub Trending热榜（28天涨幅实时快报）</div>
+        <div class="repo-grid">
+
+          <div class="repo-card">
+            <div>
+              <div class="repo-name">anomalyco / opencode</div>
+              <div class="repo-desc">开源多模态AI Agent编程框架，自主连接模型/工具/基础设施，Coding Agents领域28天增速第一</div>
+              <div class="repo-meta">
+                <span class="repo-stars">⭐ 54,527</span>
+                <span class="repo-tag tag-coding">Coding Agent</span>
+              </div>
+            </div>
+            <div class="trend-badge">🔥+2,072</div>
+          </div>
+
+          <div class="repo-card">
+            <div>
+              <div class="repo-name">anthropics / claude-code</div>
+              <div class="repo-desc">Anthropic官方发布的代码Agent，在IDE内自主完成多文件重构、测试、PR提交，28天增速第二</div>
+              <div class="repo-meta">
+                <span class="repo-stars">⭐ 44,044</span>
+                <span class="repo-tag tag-coding">Coding Agent</span>
+              </div>
+            </div>
+            <div class="trend-badge">🔥+1,249</div>
+          </div>
+
+          <div class="repo-card">
+            <div>
+              <div class="repo-name">openai / codex</div>
+              <div class="repo-desc">OpenAI开源代码生成框架，支持CLI调用，与GPT-5.5 Instant打通，28天增速第三</div>
+              <div class="repo-meta">
+                <span class="repo-stars">⭐ 44,123</span>
+                <span class="repo-tag tag-coding">Coding Agent</span>
+              </div>
+            </div>
+            <div class="trend-badge">🔥+940</div>
+          </div>
+
+          <div class="repo-card">
+            <div>
+              <div class="repo-name">open-webui / open-webui</div>
+              <div class="repo-desc">最流行的本地大模型Web管理界面，支持Ollama/OpenAI兼容API，团队私有部署首选</div>
+              <div class="repo-meta">
+                <span class="repo-stars">⭐ 105,717</span>
+                <span class="repo-tag tag-inference">Inference UI</span>
+              </div>
+            </div>
+            <div class="trend-badge">↑+698</div>
+          </div>
+
+          <div class="repo-card">
+            <div>
+              <div class="repo-name">langgenius / dify</div>
+              <div class="repo-desc">LLM应用开发平台，可视化Workflow编排，RAG+Agent一站式，国内AI创业最常用底座</div>
+              <div class="repo-meta">
+                <span class="repo-stars">⭐ 111,220</span>
+                <span class="repo-tag tag-llm">LLM Tools</span>
+              </div>
+            </div>
+            <div class="trend-badge">↑+468</div>
+          </div>
+
+          <div class="repo-card">
+            <div>
+              <div class="repo-name">google-gemini / gemini-cli</div>
+              <div class="repo-desc">谷歌官方Gemini命令行工具，配合Gemini 2.5 Pro I/O使用，本地终端直接调用最新编程模型</div>
+              <div class="repo-meta">
+                <span class="repo-stars">⭐ 54,620</span>
+                <span class="repo-tag tag-coding">Coding Agent</span>
+              </div>
+            </div>
+            <div class="trend-badge">↑+437</div>
+          </div>
+
+        </div>
+
+        <!-- Agent 解读 -->
+        <div style="margin-top:12px;">
+          <div class="ai-item">
+            <div class="ai-item-title">📊 Agent战场趋势解读</div>
+            <div class="ai-item-body">
+              <div class="ai-row">
+                <span class="ai-label al-plain">动态</span>
+                <span class="ai-text">Claude-Code、OpenCode、Codex三家Coding Agent同期爆发增长，共同特征：<strong>从"建议代码"进化为"自主执行任务"</strong>——能读文件、写代码、提交PR、执行测试，全程无人干预。</span>
+              </div>
+              <div class="ai-row">
+                <span class="ai-label al-plain">解读</span>
+                <span class="ai-text">代码Agent已进入<strong>红海竞争</strong>，差异化在于"能不能连接外部系统"——anthropic/claude-code走多工具路线，opencode主打开源可审计，Codex走CLI管道路线。</span>
+              </div>
+              <div class="ai-row">
+                <span class="ai-label al-scene">落地场景</span>
+                <span class="ai-text">UE5 C++插件开发：用claude-code接手"重复性Boilerplate代码生成"，TA只需审查架构决策。接入蓝图节点逻辑生成流程，一周迭代速度预计提升<strong>2-3倍</strong>。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 💰 套利变现 -->
+      <div class="ai-block">
+        <div class="ai-block-title"><span class="emoji">💰</span>【AI套利/变现线索】今日热点</div>
+
+        <div class="ai-item">
+          <div class="ai-item-title">🔥 线索一：Kimi创始人登人民日报，国产开源模型迎政策东风</div>
+          <div class="ai-item-body">
+            <div class="ai-row">
+              <span class="ai-label al-hot">热点</span>
+              <span class="ai-text">月之暗面Kimi创始人杨植麟2026年5月11日在<strong>人民日报</strong>发文《让中国大模型成为全球创新的基座》。披露：我国日均Token调用量<span class="data-pill">140万亿</span>，两年增长<span class="data-pill">1000倍</span>；生成式AI用户<span class="data-pill">6亿</span>，普及率<span class="data-pill">42.8%</span>；中国开源模型全球下载量<strong>全球第一</strong>。Kimi完成<span class="data-pill">20亿美元</span>融资，投后估值突破<span class="data-pill">200亿美元</span>。</span>
+            </div>
+            <div class="ai-row">
+              <span class="ai-label al-copy">复刻建议</span>
+              <span class="ai-text"><strong>①</strong> API接入Kimi优先于闭源模型，性价比更高且合规风险更低。<strong>②</strong> 中国开源模型生态（Kimi/DeepSeek/Qwen）全球下载第一→适合面向海外开发者做<strong>中文AI工具教程内容</strong>，小红书/YouTube双发，吸引付费社群。<strong>③</strong> "国产模型+国产芯片"组合是接下来12个月最确定的政策方向，相关赛道值得重点跟踪。</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ai-item">
+          <div class="ai-item-title">🔥 线索二：Meta收购ARI，人形机器人VLA模型爆发前夕</div>
+          <div class="ai-item-body">
+            <div class="ai-row">
+              <span class="ai-label al-hot">热点</span>
+              <span class="ai-text">Meta已完成收购人形机器人AI公司Assured Robot Intelligence（ARI），并入Superintelligence部门。ARI核心技术：<strong>VLA（视觉-语言-动作）基础模型</strong>，让机器人在复杂环境中理解并适应人类行为。同期：2026世界人形机器人运动会国内首站在<strong>福建福鼎</strong>举行，人形机器人完成白茶制作全流程。</span>
+            </div>
+            <div class="ai-row">
+              <span class="ai-label al-copy">复刻建议</span>
+              <span class="ai-text">机器人+生鲜/食品制造场景正在成为标杆案例（白茶全流程）。<strong>内容机会</strong>：做"AI机器人在食品行业的应用"系列科普，切入下厨房/美食垂类，高热度+低竞争，适合姜姜子账号未来升维内容方向。</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ai-item">
+          <div class="ai-item-title">🔥 线索三：杭州机器人条例施行，2025年产业集群产值破千亿</div>
+          <div class="ai-item-body">
+            <div class="ai-row">
+              <span class="ai-label al-hot">热点</span>
+              <span class="ai-text">全国<strong>首部</strong>具身智能机器人地方法规《杭州市促进具身智能机器人产业发展条例》5月1日正式施行。杭州已集聚机器人相关企业<span class="data-pill">700余家</span>，2025年具身智能产业集群产值达<span class="data-pill">1068亿元</span>。</span>
+            </div>
+            <div class="ai-row">
+              <span class="ai-label al-copy">复刻建议</span>
+              <span class="ai-text">杭州机器人产业集群是全国最强落地政策，<strong>相关企业招聘需求将爆发</strong>——如果你懂C++/HLSL/实时渲染，机器人仿真/虚拟训练场景（数字孪生）是高薪跳槽方向。可关注杭州相关企业股权激励信息。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 📦 Product Hunt -->
+      <div class="ai-block">
+        <div class="ai-block-title"><span class="emoji">📦</span>【Product Hunt新品】热榜 Top（2026-05-09）</div>
+        <div class="ph-grid">
+          <div class="ph-item">
+            <div class="ph-rank top1">🥇</div>
+            <div>
+              <div class="ph-name">RankSpot</div>
+              <div class="ph-desc">AI SEO博客Agent，每日自动研究+撰写+发布SEO文章，助力在Google和AI答案中获得引用排名</div>
+            </div>
+            <div class="ph-votes">▲ 538</div>
+          </div>
+          <div class="ph-item">
+            <div class="ph-rank top2">🥈</div>
+            <div>
+              <div class="ph-name">Monid 2.0</div>
+              <div class="ph-desc">Agent工具的"OpenRouter"——一次接入调用200+工具（社交爬虫/搜索API/电商数据/线索生成）</div>
+            </div>
+            <div class="ph-votes">▲ 443</div>
+          </div>
+          <div class="ph-item">
+            <div class="ph-rank top3">🥉</div>
+            <div>
+              <div class="ph-name">Flare</div>
+              <div class="ph-desc">AI原生语音优先社交应用，无点赞/无陌生人信息流，AI Orb把瞬间转化为记忆纽带</div>
+            </div>
+            <div class="ph-votes">▲ 369</div>
+          </div>
+          <div class="ph-item">
+            <div class="ph-rank">4</div>
+            <div>
+              <div class="ph-name">Minions</div>
+              <div class="ph-desc">开源Hermes Agent任务控制面板，并行任务管理+自动重试，多Agent协调调度</div>
+            </div>
+            <div class="ph-votes">▲ 300</div>
+          </div>
+          <div class="ph-item">
+            <div class="ph-rank">5</div>
+            <div>
+              <div class="ph-name">GitHired</div>
+              <div class="ph-desc">以实际代码复杂度筛选工程师，拥有10,000+评估档案，GitHub+LinkedIn数据双维度分析</div>
+            </div>
+            <div class="ph-votes">▲ 236</div>
+          </div>
+          <div class="ph-item">
+            <div class="ph-rank">6</div>
+            <div>
+              <div class="ph-name">Fabraix</div>
+              <div class="ph-desc">前Meta工程师团队打造，1000+对抗性策略黑盒测试AI Agent漏洞，无需集成</div>
+            </div>
+            <div class="ph-votes">▲ 219</div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <div class="ai-item">
+            <div class="ai-item-title">💡 Product Hunt 商机解读</div>
+            <div class="ai-text" style="padding: 0 2px;">
+              <strong>RankSpot（AI SEO Agent）</strong>排名第一，验证了"内容自动化生产+SEO"赛道爆发。复刻路径：用类似工具+小红书笔记自动化，建立食品/生鲜领域的内容护城河。<br><br>
+              <strong>Monid 2.0</strong>本质是"Agent工具市场"，是继MCP后最值得关注的基础设施趋势——未来Agent不需要自己写集成，直接付费调用。<strong>Fabraix</strong>（AI安全测试）对应工信部5月10日启动的"AI科技伦理审查先导计划"，政策与市场共振。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🔍 黑话词典 -->
+      <div class="ai-block">
+        <div class="ai-block-title"><span class="emoji">🔍</span>【避坑/黑话词典】今日三条</div>
+
+        <div class="dict-entry">
+          <div class="dict-term">
+            VLA模型
+            <span class="dict-eng">Vision-Language-Action Model</span>
+          </div>
+          <div class="dict-def">
+            <strong>一句话大白话：</strong>让机器人"能看+能说+能动"的三合一大脑。传统机器人靠写死的代码做动作，VLA是训练出来的——看到"把苹果放进篮子"这句话，机器人直接理解并执行，无需编程。Meta收购ARI就是为了这个。
+          </div>
+        </div>
+
+        <div class="dict-entry">
+          <div class="dict-term">
+            Coding Agent
+            <span class="dict-eng">Code-Writing AI Agent</span>
+          </div>
+          <div class="dict-def">
+            <strong>一句话大白话：</strong>不只是"帮你写代码"的AI，而是"自己去开文件、改Bug、跑测试、提PR"的AI员工。你说"把这个功能加上"，它把全流程干完，你只需要做Code Review。Claude Code、opencode都是这类。
+          </div>
+        </div>
+
+        <div class="dict-entry">
+          <div class="dict-term">
+            Token调用量
+            <span class="dict-eng">Token Consumption</span>
+          </div>
+          <div class="dict-def">
+            <strong>一句话大白话：</strong>AI处理文字的"电量消耗"计量单位，大约4个英文字母=1个token，中文约2字=1 token。中国日均调用<strong>140万亿Token</strong>，相当于每天处理约<strong>7000万本厚书</strong>的文字量。这个数字两年涨1000倍，说明AI从"偶尔试用"变成了"每天离不开"。
+          </div>
+        </div>
+
+      </div>
+
+    </div><!-- .card -->
+  </div><!-- 专栏二 -->
+
+</div><!-- .container -->
+
+<div class="footer">
+  📡 每日双专栏情报 · 2026-05-11 · 自动情报机器人生成 · 信源：央视新闻联播文字稿 / GitHub / Product Hunt / 36氪 / 量子位<br>
+  <span style="color:#3a3f5e;margin-top:4px;display:block;">github.com/mryyyyyy/daily-intelligence</span>
+</div>
+
+</body>
+</html>
