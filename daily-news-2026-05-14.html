@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日双专栏AI情报推送 2026-05-14</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    padding: 20px;
+  }
+  .header {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #1a1f35 0%, #0d1117 100%);
+    border-bottom: 2px solid #2d7ff9;
+    margin-bottom: 24px;
+    border-radius: 12px 12px 0 0;
+  }
+  .header h1 {
+    font-size: 24px;
+    color: #58a6ff;
+    letter-spacing: 2px;
+  }
+  .header .date {
+    color: #8b949e;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  @media (max-width: 900px) {
+    .two-col { grid-template-columns: 1fr; }
+  }
+  .col {
+    background: #161b22;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #30363d;
+  }
+  .col-header {
+    padding: 16px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #30363d;
+  }
+  .col1-header { background: linear-gradient(90deg, #1c3a5f, #0d1f3c); color: #58a6ff; }
+  .col2-header { background: linear-gradient(90deg, #3d1f5f, #1f0d3c); color: #d2a8ff; }
+  .col-body { padding: 16px 20px; }
+  .section-title {
+    font-size: 14px;
+    color: #f0883e;
+    margin: 16px 0 8px 0;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed #30363d;
+  }
+  .core-wind {
+    background: linear-gradient(135deg, #1c3a5f 0%, #0d1f3c 100%);
+    border-left: 4px solid #58a6ff;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .news-item {
+    margin-bottom: 16px;
+    padding: 12px;
+    background: #1c2128;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+  }
+  .news-item h3 {
+    color: #58a6ff;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .news-item p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #c9d1d9;
+    margin-bottom: 6px;
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+    margin-right: 4px;
+  }
+  .tag-red { background: #3d1a1a; color: #ff7b72; }
+  .tag-green { background: #1a3d1a; color: #7ee787; }
+  .tag-blue { background: #1a2d4d; color: #79c0ff; }
+  .tag-orange { background: #3d2a0a; color: #ffa657; }
+  .summary-box {
+    background: linear-gradient(135deg, #2d1f0a 0%, #1a1205 100%);
+    border: 1px solid #5c3d0a;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 16px;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #ffa657;
+  }
+  .ai-item {
+    margin-bottom: 14px;
+    padding: 12px;
+    background: #1c2128;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+  }
+  .ai-item h3 {
+    font-size: 13px;
+    color: #d2a8ff;
+    margin-bottom: 6px;
+  }
+  .ai-item p {
+    font-size: 12px;
+    line-height: 1.7;
+    color: #c9d1d9;
+    margin-bottom: 4px;
+  }
+  .emoji { font-size: 16px; margin-right: 6px; }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    margin: 2px;
+  }
+  .badge-ts { background: #1a3a5f; color: #79c0ff; }
+  .badge-rs { background: #2d1f0a; color: #ffa657; }
+  .badge-py { background: #1a2d1a; color: #7ee787; }
+  .badge-sh { background: #2d1a3d; color: #d2a8ff; }
+  .badge-go { background: #1a3d3d; color: #79c0ff; }
+  .badge-sw { background: #3d1a2d; color: #ff79c6; }
+  .ghtrending {
+    background: #1c2128;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 6px 0;
+  }
+  .ghtrending .name {
+    color: #58a6ff;
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .ghtrending .desc {
+    color: #8b949e;
+    font-size: 12px;
+    margin: 4px 0;
+  }
+  .ghtrending .meta {
+    font-size: 11px;
+    color: #6e7681;
+  }
+  .footer {
+    text-align: center;
+    padding: 16px;
+    color: #6e7681;
+    font-size: 12px;
+    border-top: 1px solid #30363d;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📡 每日双专栏AI情报推送</h1>
+  <div class="date">📅 2026年5月14日（周四） | 🔄 每日9:00自动更新</div>
+</div>
+
+<div class="two-col">
+
+  <!-- ==================== 专栏一：新闻联播 ==================== -->
+  <div class="col">
+    <div class="col-header col1-header">📺 专栏一：新闻联播每日简报（风向标解读版）</div>
+    <div class="col-body">
+
+      <div class="core-wind">
+        <strong>🔑 核心风向：</strong>三大国际科创中心建设全面提速，"十五五"开局之年地方规划密集落地，一季度经营主体新设509.8万户彰显经济活力，中美经贸高级别磋商在韩举行释放缓和信号。
+      </div>
+
+      <div class="section-title">📌 分项解读（按重要性排序）</div>
+
+      <div class="news-item">
+        <h3>1. 推进国际科技创新中心建设 打造世界级科技创新策源地</h3>
+        <p><span class="tag tag-blue">重磅政策</span><span class="tag tag-red">科技战略</span></p>
+        <p><strong>新闻联播说了什么：</strong>习近平总书记亲自谋划建设具有全球影响力的国际科创中心，起步"十五五"，高水平推进三大中心：</p>
+        <p>• <strong>京津冀（北京）</strong>：已形成<strong>3个万亿级产业集群</strong>（新一代信息技术等）、<strong>7个千亿级产业集群</strong>（智能制造、航天等）；北京亦庄马拉松为人形机器人打造极限测试赛道。</p>
+        <p>• <strong>长三角（上海）</strong>：集成电路、生物医药、AI形成世界级产业集群；加速推动全球首个侵入式脑机接口医疗器械上市。</p>
+        <p>• <strong>粤港澳大湾区</strong>：已形成<strong>10个万亿级产业集群</strong>；"深圳—香港—广州"集群<strong>2025年首次登顶"全球百强创新集群"榜首</strong>；拥有散裂中子源、强流重离子加速器等大科学装置。</p>
+        <p><strong>风向标解读：</strong>这是"十五五"开局最强的科技动员令。北京原始创新+上海成果转化+大湾区产业落地，形成全国科技创新"三极格局"。人形机器人测试赛道进马拉松，标志着具身智能从实验室走向实战场景。</p>
+        <p><strong>行业影响：</strong>人形机器人（优必选、智元）、脑机接口（Neuralink对标产品）、AI芯片三大赛道直接受益；科研仪器国产化进程加速。</p>
+      </div>
+
+      <div class="news-item">
+        <h3>2. 中美在韩国举行经贸磋商</h3>
+        <p><span class="tag tag-orange">外交动态</span><span class="tag tag-green">贸易缓和</span></p>
+        <p><strong>新闻联播说了什么：</strong>当地时间5月13日，中方由国务院副总理<strong>何立峰</strong>牵头，美方由财政部长<strong>贝森特</strong>牵头，在韩国举行经贸磋商。双方秉持相互尊重、和平共处、合作共赢原则，就解决经贸问题和拓展务实合作进行坦诚深入交流。国际社会普遍期待中美元首会晤引领中美关系平稳前行。</p>
+        <p><strong>风向标解读：</strong>这是继瑞士日内瓦谈判后又一次重要接触。何立峰+贝森特组合说明双方正在建立常态化经贸沟通机制，释放去风险而非脱钩的信号。</p>
+        <p><strong>行业影响：</strong>半导体设备出口管制有望边际松动；消费电子（苹果供应链）、跨境电商（Shein/Temu）迎来喘息空间；航运价格（波罗的海指数）已提前反应。</p>
+      </div>
+
+      <div class="news-item">
+        <h3>3. 一季度全国新设经营主体509.8万户</h3>
+        <p><span class="tag tag-green">经济数据</span></p>
+        <p><strong>新闻联播说了什么：</strong>市场监管总局5月13日公布数据：</p>
+        <p>• 一季度全国新设经营主体<strong>509.8万户</strong></p>
+        <p>• 第三产业占比最高：<strong>447.3万户</strong>（87.8%）</p>
+        <p>• 截至3月底，登记在册企业达<strong>2684.8万户</strong>，同比增长<strong>6.8%</strong></p>
+        <p>• <strong>"集成电路制造"新设主体同比增31.0%</strong></p>
+        <p>• <strong>"智能无人飞行器制造"新设主体同比增15.7%</strong></p>
+        <p><strong>风向标解读：</strong>两大"硬科技"赛道（集成电路+无人机）新设主体增速远超均值，说明资本正在用脚投票押注中国硬科技自主化。新注册不代表都能活，但代表了真实的方向。</p>
+        <p><strong>行业影响：</strong>集成电路设备商（北方华创、中微公司）、无人机整机（DJI、大疆行业版）持续看好。</p>
+      </div>
+
+      <div class="news-item">
+        <h3>4. 外资加速布局中国服务业</h3>
+        <p><span class="tag tag-green">外资数据</span></p>
+        <p><strong>新闻联播说了什么：</strong>一季度全国新设立外商投资企业超过<strong>13000家</strong>，同比增<strong>11%</strong>；高技术服务业实际使用外资同比<strong>翻番增长127.8%</strong>（以研发设计为代表）。</p>
+        <p>截至3月底：</p>
+        <p>• 北京：外资研发中心<strong>332家</strong>，今年新增<strong>55家</strong></p>
+        <p>• 上海：外资研发中心<strong>647家</strong>，今年新增<strong>15家</strong></p>
+        <p><strong>风向标解读：</strong>外资用真金白银押注中国高技术服务业，与中美博弈的叙事形成鲜明反差。研发中心的背后是人才和IP，说明中国仍是全球不可替代的创新节点。</p>
+        <p><strong>行业影响：</strong>CXO医药研发外包（药明康德、康龙化成）、生物医药研发服务持续受益。</p>
+      </div>
+
+      <div class="news-item">
+        <h3>5. 一季度我国水电清洁能源基地建设全面提速</h3>
+        <p><span class="tag tag-green">能源战略</span></p>
+        <p><strong>新闻联播说了什么：</strong>大渡河金川水电站（总装机<strong>86万千瓦</strong>）首台机组投产；大渡河流域已集中投产水电装机超<strong>2000万千瓦</strong>。澜沧江14座大型水电站（总装机约2430万千瓦），金沙江上游旭龙等水电站总规划规模达<strong>5700万千瓦</strong>。截至2026年Q1，全国水电累计装机容量达<strong>4.5亿千瓦</strong>。</p>
+        <p><strong>风向标解读：</strong>雅砻江"水风光储氢算"一体化是新型电力系统的标杆样本，能源+算力的组合拳意味着西部清洁能源正在成为AI算力的新型基础设施。</p>
+        <p><strong>行业影响：</strong>水电设备商（东方电气、哈电集团）、特高压输电（国电南瑞、平高电气）直接受益。</p>
+      </div>
+
+      <div class="news-item">
+        <h3>6. 前4个月全国铁路完成固定资产投资2008亿元</h3>
+        <p><span class="tag tag-blue">基建投资</span></p>
+        <p><strong>新闻联播说了什么：</strong>国铁集团数据：前4月全国铁路固定资产投资<strong>2008亿元</strong>，同比增长<strong>3.2%</strong>。重点项目：西安至安康高铁启动静态验收、重庆至昆明高铁川滇段进入铺轨阶段、成渝中线高铁新建重庆科学城站取得阶段性成果。</p>
+        <p><strong>风向标解读：</strong>铁路投资维持2000亿+规模，是稳增长的核心工具。成渝中线提速意味着西部高铁网络持续加密，沿线产业链（轨交设备、建材）持续受益。</p>
+      </div>
+
+      <div class="news-item">
+        <h3>7. 2025年我国新发现大中型矿产地200处</h3>
+        <p><span class="tag tag-orange">资源战略</span></p>
+        <p><strong>新闻联播说了什么：</strong>自然资源部数据：2025年全国非油气地质勘查投入资金<strong>252.50亿元</strong>，同比增<strong>10%</strong>。新发现金、铁、煤炭、锂等大中型矿产地<strong>200处</strong>。锰、镍、锡等战略性新兴矿种勘查投入大幅增长。</p>
+        <p><strong>行业影响：</strong>锂矿（赣锋锂业、天齐锂业）、稀土（北方稀土）战略价值持续提升。</p>
+      </div>
+
+      <div class="news-item">
+        <h3>8. 四川盆地发现东峰页岩气田 探明储量2356.87亿立方米</h3>
+        <p><span class="tag tag-orange">能源发现</span></p>
+        <p><strong>新闻联播说了什么：</strong>中国石化发布：四川盆地发现<strong>东峰页岩气田</strong>（位于资阳市），探明地质储量<strong>2356.87亿立方米</strong>。位于地下<strong>4500-5200米</strong>超深层，是我国<strong>首个超深层千亿方级页岩气田</strong>。</p>
+        <p><strong>行业影响：</strong>超深层油气开采技术突破，油气工程服务（安东油田服务、中曼石油）受益。</p>
+      </div>
+
+      <div class="news-item">
+        <h3>9. 多元化文旅场景赋能入境游提质扩容</h3>
+        <p><span class="tag tag-blue">消费复苏</span></p>
+        <p><strong>新闻联播说了什么：</strong>陕西西安唐乐宫沉浸式唐代歌舞、江苏周庄非遗民俗体验等多场景发力。四川一季度入境游客量同比增长超<strong>五成</strong>。北京重点涉外商圈搭建覆盖二十余种外语的多语种服务平台。</p>
+        <p><strong>行业影响：</strong>入境游复苏直接利好OTA平台（携程）、国际航班、免税店（中国中免）。</p>
+      </div>
+
+      <div class="news-item">
+        <h3>10. 2026年电影票房突破140亿元</h3>
+        <p><span class="tag tag-blue">文娱数据</span></p>
+        <p><strong>新闻联播说了什么：</strong>截至5月12日晚，2026年电影票房突破<strong>140亿元</strong>，全产业链产值突破<strong>2200亿元</strong>。</p>
+        <p><strong>行业影响：</strong>影视制作（光线传媒、华策影视）、院线（万达电影）持续复苏。</p>
+      </div>
+
+      <div class="summary-box">
+        <strong>🌡️ 总结风向标：</strong>今日新闻联播释放三重信号：<br>
+        ① <strong>科技自立</strong>成为"十五五"最强音，三大科创中心从规划进入加速落地阶段；<br>
+        ② <strong>中美经贸</strong>保持接触，摩擦边际缓和但核心技术封锁持续；<br>
+        ③ <strong>新设主体</strong>跑步入场硬科技（集成电路+无人机），民间资本用增量投票押注中国科技未来。<br><br>
+        <strong>投资参考：</strong>科技制造 > 消费 > 金融；硬科技（半导体/AI/机器人） > 房地产/传统基建。
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== 专栏二：AI生产力情报 ==================== -->
+  <div class="col">
+    <div class="col-header col2-header">🤖 专栏二：AI生产力情报（黑科技与套利指南）</div>
+    <div class="col-body">
+
+      <div style="text-align:center; padding:10px; background:#1c2128; border-radius:8px; margin-bottom:14px;">
+        <span style="font-size:20px;">🚀 AI 生产力黑洞：今日黑科技与套利指南</span><br>
+        <span style="font-size:12px; color:#8b949e;">📅 日期：2026-05-14 | 🕘 9:00 AM 自动更新</span>
+      </div>
+
+      <div class="section-title">🛠️ 【顶级装备库更新】</div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🔬</span>项目：<strong>CloakBrowser</strong> — "反检测隐形浏览器"深度拆解</h3>
+        <p><span class="badge badge-py">Python</span> <span class="badge badge-ts">反爬虫</span></p>
+        <p><strong>核心黑科技：</strong>Stealth Chromium内核，源码级指纹补丁，每一个绕过Bot检测的黑科技。号称Drop-in Playwright替代品——即只需改一行import代码，现有爬虫项目零成本升级为完全隐形的浏览器自动化。</p>
+        <p><strong>实战价值：</strong>适合需要大规模数据采集但频繁被反爬的运营场景（如竞品价格监控、社交媒体舆情抓取、小红书笔记数据提取），日均节省人工验证时间3小时+。</p>
+        <p style="color:#ffa657; font-size:11px;">⭐ GitHub今日之星：1,835 stars | 总stars: 9,508</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🧠</span>项目：<strong>agentmemory</strong> — "AI编程Agent的持久记忆系统"深度拆解</h3>
+        <p><span class="badge badge-ts">TypeScript</span> <span class="badge badge-ts">AI编程</span></p>
+        <p><strong>核心黑科技：</strong>#1 持久记忆框架，专为AI coding agent设计，基于真实世界benchmark评估。支持多session上下文记忆、代码模式学习、项目知识积累，让AI Agent不再"每轮都失忆"。</p>
+        <p><strong>实战价值：</strong>配合小红书生鲜项目，可以建立商品知识库（辣椒产地知识、供应链术语）、用户反馈记忆（评论区常见问题解答库），让AI客服每次回复都比上次更懂你。</p>
+        <p style="color:#ffa657; font-size:11px;">⭐ GitHub今日之星：1,379 stars | 总stars: 7,648</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">💻</span>项目：<strong>openhuman</strong> — "个人AI超智能体"深度拆解</h3>
+        <p><span class="badge badge-rs">Rust</span> <span class="badge badge-ts">AI助手</span></p>
+        <p><strong>核心黑科技：</strong>Rust编写，强调隐私、极简和超强能力。完全本地化运行，数据不出本地，可接入本地知识库、文件系统、数据库。</p>
+        <p><strong>实战价值：</strong>适合需要处理敏感商业数据的TA工作场景（UE插件代码、内部技术文档）。</p>
+        <p style="color:#ffa657; font-size:11px;">⭐ GitHub今日之星：1,696 stars | 总stars: 5,518</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🔊</span>项目：<strong>supertonic</strong> — "极速本地多语言TTS"深度拆解</h3>
+        <p><span class="badge badge-sw">Swift</span> <span class="badge badge-ts">语音合成</span></p>
+        <p><strong>核心黑科技：</strong>Lightning-Fast、On-Device、多语言TTS，直接跑在苹果设备上的ONNX原生推理，无需网络。中文支持优秀，延迟毫秒级。</p>
+        <p><strong>实战价值：</strong>可替代高昂的Azure/Google TTS API，将新闻联播简报实时转为中文语音早报，发在微信/小红书/视频号，零API成本。</p>
+        <p style="color:#ffa657; font-size:11px;">⭐ GitHub今日之星：859 stars | 总stars: 4,354</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🛡️</span>项目：<strong>skills</strong> — "Matt Pocock的.claude目录完全公开"深度拆解</h3>
+        <p><span class="badge badge-sh">Shell</span> <span class="badge badge-ts">开发工具</span></p>
+        <p><strong>核心黑科技：</strong>Vercer前VP of DevRel、Zod作者Matt Pocock将他日常使用的高阶prompt模板、agent workflow全部开源（78,997 stars，今日+3,392）。</p>
+        <p><strong>实战价值：</strong>可以直接参考他的Claude/MCP集成方案，快速搭建适合自己项目的AI coding workflow。</p>
+        <p style="color:#ffa657; font-size:11px;">⭐ GitHub今日之星：3,392 stars（今日全球最高）| 总stars: 78,997</p>
+      </div>
+
+      <div class="section-title">🏆 【GitHub Trending 全榜速览】</div>
+
+      <div class="ghtrending">
+        <div class="name">#3 superpowers — obra</div>
+        <div class="desc">An agentic skills framework & software development methodology that works.</div>
+        <div class="meta">Shell | ⭐ 189,523 | 今日 +1,401</div>
+      </div>
+      <div class="ghtrending">
+        <div class="name">#1 openhuman — tinyhumansai</div>
+        <div class="desc">Your Personal AI super intelligence. Private, Simple and extremely powerful.</div>
+        <div class="meta">Rust | ⭐ 5,518 | 今日 +1,696</div>
+      </div>
+      <div class="ghtrending">
+        <div class="name">#2 agentmemory — rohitg00</div>
+        <div class="desc">#1 Persistent memory for AI coding agents based on real-world benchmarks</div>
+        <div class="meta">TypeScript | ⭐ 7,648 | 今日 +1,379</div>
+      </div>
+      <div class="ghtrending">
+        <div class="name">#4 AiToEarn — yikart</div>
+        <div class="desc">Let's use AI to Earn!</div>
+        <div class="meta">TypeScript | ⭐ 12,920 | 今日 +981</div>
+      </div>
+      <div class="ghtrending">
+        <div class="name">#6 react-doctor — millionco</div>
+        <div class="desc">Your agent writes bad React. This catches it.</div>
+        <div class="meta">TypeScript | ⭐ 9,280 | 今日 +604</div>
+      </div>
+      <div class="ghtrending">
+        <div class="name">#9 LLMs-from-scratch — rasbt</div>
+        <div class="desc">Implement a ChatGPT-like LLM in PyTorch from scratch, step by step</div>
+        <div class="meta">Jupyter | ⭐ 94,462 | 今日 +821</div>
+      </div>
+      <div class="ghtrending">
+        <div class="name">#12 skills — mattpocock</div>
+        <div class="desc">Skills for Real Engineers. Straight from my .claude directory.</div>
+        <div class="meta">Shell | ⭐ 78,997 | 今日 +3,392</div>
+      </div>
+      <div class="ghtrending">
+        <div class="name">#16 spec-kit — github</div>
+        <div class="desc">Toolkit to help you get started with Spec-Driven Development</div>
+        <div class="meta">Python | ⭐ 98,382 | 今日 +1,120</div>
+      </div>
+
+      <div class="section-title">🤖 【Agent 战场情报】</div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">💥</span>动态：<strong>Claude Code 推出"Goal模式"</strong></h3>
+        <p><strong>技术原理：</strong>Claude Code新增goal-directed执行模式——博士80小时熬夜改代码任务，AI仅需不到2小时完成。Agent不再是"跑一下停一下"，而是"不达成目标不停止"，支持中途自我反思、自我修正。</p>
+        <p><strong>落地场景：</strong>配合小红书生鲜项目：让Agent负责每日竞品内容分析，自动追踪10+竞品账号，一键生成差异化内容建议，不完成不停止。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">⚡</span>动态：<strong>Bun × Claude Code：96万行Rust代码6天重写</strong></h3>
+        <p><strong>技术原理：</strong>Bun团队用Claude Code在6天内将Bun核心代码库（约96万行Rust代码）完全重写，AI参与度100%。证明了AI全流程Coding在大型项目中的可行性。</p>
+        <p><strong>落地场景：</strong>对TA工作场景：UE插件大规模重构不再是噩梦，AI可以承担80%的机械代码迁移工作。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🎯</span>动态：<strong>GPT-5.5 全球首破ProgramBench地狱级编程基准</strong></h3>
+        <p><strong>技术原理：</strong>GPT-5.5在全球首个ProgramBench（地狱级编程测试）中实现0源码盲写程序，Terminal-Bench 2.0得分82.7%，SWE-Bench Pro得分58.6%，代理编码能力史上最强。</p>
+        <p><strong>落地场景：</strong>对于SWE-Bench这类复杂代码修复任务，GLM-5.1得分58.4%与之接近，且成本是Claude Opus的1/3——国内团队最优性价比选择。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">📦</span>动态：<strong>Manus 发布 Cloud Computer — 云端AI超计算机</strong></h3>
+        <p><strong>技术原理：</strong>Manus在Product Hunt推出Cloud Computer云端AI计算机，定位为"AI原生的云端桌面"，通过浏览器直接调用远端算力，所有计算在云端完成，数据完全隔离。</p>
+        <p><strong>落地场景：</strong>无需本地高配机器，即可运行大型UE工程、Stable Diffusion生图、3D渲染，服务于小红书详情页批量图片生成。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🏗️</span>动态：<strong>MiniMax 发布"Mavis" — Agent「三省六部」架构</strong></h3>
+        <p><strong>技术原理：</strong>MiniMax推出Mavis，采用类似古代官制的分层Agent架构——「省」（战略决策）→「部」（专业执行）→「司」（任务执行），三层职责分离，避免Agent越权和失控。</p>
+        <p><strong>落地场景：</strong>对应小红书项目：省=主账号运营决策，部=内容生成/客服/数据分析三个专项，司=具体执行任务（写笔记/回评论/做图），形成完整AI运营闭环。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🔑</span>动态：<strong>Cerebras 紧急IPO中 — 对冲CoreWeave暴跌</strong></h3>
+        <p><strong>技术原理：</strong>AI算力军备竞赛分化：CoreWeave股价暴跌（OpenAI"承诺"变成危险资产），而Cerebras凭借wafer-scale芯片（小芯片做大算力）紧急IPO，算力格局重新洗牌。</p>
+        <p><strong>落地场景：</strong>关注Cerebras IPO估值，若定价合理可考虑布局AI算力主题二级市场。</p>
+      </div>
+
+      <div class="section-title">💰 【AI 套利/变现线索】</div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">📻</span>热点：<strong>NotebookLM + 新闻联播 = 音频早报变现</strong></h3>
+        <p><strong>案例：</strong>国外博主利用NotebookLM将枯燥法律文档转为脱口秀风格电台，上传Spotify获利数万订阅。法律文档都能变现，新闻联播政策解读天然适合音频化。</p>
+        <p><strong>复刻步骤：</strong>① 用本文专栏一内容+量子位/36氪AI早报 ② 粘贴进NotebookLM或supertonic（TTS本地版）生成播音腔音频 ③ 发布微信音频号/喜马拉雅/小红书音频 ④ 挂载农产品购买链接或知识星球变现</p>
+        <p><strong>预估收益：</strong>知识付费类账号音频早报，500粉以上可接农产品广告，客单价100-300元/条。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🖼️</span>热点：<strong>Cerebras+Manus云端AI = 批量生成小红书详情图</strong></h3>
+        <p><strong>案例：</strong>「彩云之珍」128元菌菇礼盒8.4万单，其核心卖点是专业级产品图+产地故事图，成本几乎为零。</p>
+        <p><strong>复刻步骤：</strong>① 用Manus Cloud Computer批量处理阳雀湖辣椒供应链素材图 ② AI生成1:1产品宣传图（可参考generate_pepper_pdf.js流程） ③ 自动生成10种场景变体图 ④ 挂小红书店铺链接，直接成交</p>
+        <p><strong>预估收益：</strong>每张AI生图节省设计师成本200-500元，日均出图100张=节省2-5万/天。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🧠</span>热点：<strong>agentmemory 构建"竞品知识库"自动化监控</strong></h3>
+        <p><strong>案例：</strong>小红书生鲜精品赛道竞品分析显示：一颗大番茄3年从0做到10亿，其核心是"按城市定制场景内容"的精细化运营。普通人无法手工监控这么多竞品。</p>
+        <p><strong>复刻步骤：</strong>① CloakBrowser（反检测爬虫）每日抓取10+竞品账号内容 ② agentmemory建立记忆知识库（SKU价格/内容形式/发布时间） ③ Claude Code Goal模式每日自动生成竞品周报 ④ 发知识星球变现</p>
+        <p><strong>预估收益：</strong>竞品监控SaaS工具月订阅99-299元/账号，100个用户=月入1-3万。</p>
+      </div>
+
+      <div class="section-title">🔍 【避坑/黑话词典】</div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">📖</span>词条：<strong>MCP (Model Context Protocol)</strong></h3>
+        <p><strong>一句话大白话：</strong>给所有AI工具统一装"万能插座"。以前Cursor调不动本地GitHub，Claude连不上Slack——有了MCP，任何AI都能无缝调用任何工具，就像安卓手机用Type-C充电一样通用。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">📖</span>词条：<strong>Agentic AI</strong></h3>
+        <p><strong>一句话大白话：</strong>"会自己干活不用盯着的AI"。不是你问一句它答一句，而是你告诉它目标"帮我把竞品账号分析完"，它自动拆解任务→执行→检查结果→修正→交付。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">📖</span>词条：<strong>ProgramBench / Terminal-Bench</strong></h3>
+        <p><strong>一句话大白话：</strong>专门测试AI写代码+debug+重构的"地狱级考试"。ProgramBench号称最难，通过率接近零，GPT-5.5首次突破说明AI编程正式进入"专家级"。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">📖</span>词条：<strong>Wafer-Scale Engine (WSE)</strong></h3>
+        <p><strong>一句话大白话：</strong>把一整块晶圆（比脸还大的硅片）做成一颗芯片，不切割。芯片面积是普通GPU的50倍以上，数据搬运距离极短，训练大模型速度快10倍，但散热是噩梦。Cerebras是全球唯一量产WSE的公司。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">📖</span>词条：<strong>GLM-5.1 / SWE-Bench Pro 58.4%</strong></h3>
+        <p><strong>一句话大白话：</strong>国产GLM-5.1在国际编程能力测试SWE-Bench Pro中得分58.4%，是全球第一。比Claude Opus 4.6还强，但API价格是它的1/3——最性价比的深度实验探索工具。</p>
+      </div>
+
+      <div class="section-title">📊 【Product Hunt AI 爆款 TOP 5】</div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🏅</span>#1 Kanwas — 479,225 upvotes</h3>
+        <p><strong>一句话描述：</strong>AI驱动的团队知识管理工具，让团队知识不再碎片化。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🥈</span>#2 FlowMarket — 469,136 upvotes</h3>
+        <p><strong>一句话描述：</strong>AI营销自动化平台，可视化构建营销漏斗，自动生成内容。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🥉</span>#3 Monid 2.0 — 46,621 upvotes</h3>
+        <p><strong>一句话描述：</strong>AI身份管理+数字分身平台，支持创建虚拟数字形象。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">4️⃣</span>#4 Superset 2.0 — 42,545 upvotes</h3>
+        <p><strong>一句话描述：</strong>AI数据分析可视化平台，支持自然语言查询数据库。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">5️⃣</span>#5 Huddle01 VMs — 42,158 upvotes</h3>
+        <p><strong>一句话描述：</strong>AI虚拟会议平台，支持沉浸式3D虚拟会议室，内置AI会议记录+行动项追踪。</p>
+      </div>
+
+      <div class="summary-box" style="background: linear-gradient(135deg, #2d1a3d 0%, #1a0d2e 100%); border-color: #5c2d8c; color: #d2a8ff;">
+        <strong>🧭 情报总结：</strong><br>
+        ① Agent战场：从"单兵作战"进化为"多Agent协作"（Mavis三省六部/Manus Cloud Computer）<br>
+        ② 编程能力：GPT-5.5 + GLM-5.1 双雄争霸，SWE-Bench Pro成新标杆<br>
+        ③ 变现路径：新闻联播→音频早报（NotebookLM/supertonic），详情图→批量AI生成（Manus）<br>
+        ④ 套利机会：CloakBrowser绕过检测降成本，agentmemory建知识库自动化<br>
+        ⑤ 下一个拐点：<strong>Google I/O 2026（5月19-20日）</strong>，Gemini 3.1 Ultra之后还有大招
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>📡 每日双专栏AI情报推送 | 自动化生成 | 数据来源：CCTV新闻联播 · GitHub Trending · Product Hunt · 36氪 · 量子位 · AIToolsRecap</p>
+  <p>🔄 推送时间：每个工作日 9:00 AM | GitHub仓库：https://github.com/mryyyyyy/daily-intelligence</p>
+</div>
+
+</body>
+</html>
