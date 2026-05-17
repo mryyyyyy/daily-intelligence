@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 2026-05-17</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #fffbf5; color: #4a3728; font-size: 15px; line-height: 1.7; }
+
+  /* ====== Hero ====== */
+  .hero {
+    background: linear-gradient(135deg, #fff8ee 0%, #fff3e0 50%, #fffbf5 100%);
+    border-bottom: 2px solid #f0d5a8;
+    padding: 32px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -30%; right: -5%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(230,126,34,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -20%; left: -3%;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(241,196,15,0.07) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(230,126,34,0.12);
+    border: 1px solid rgba(230,126,34,0.3);
+    color: #d35400;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #5d4037;
+    margin-bottom: 8px;
+  }
+  .hero .sub { color: #8d6e63; font-size: 14px; }
+
+  /* ====== Container ====== */
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 28px 20px;
+  }
+
+  /* ====== Card ====== */
+  .card {
+    background: #ffffff;
+    border: 1px solid #f0d5a8;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 12px rgba(230,126,34,0.06);
+  }
+  .card-header {
+    background: linear-gradient(135deg, #fff8ee 0%, #fff3e0 100%);
+    padding: 16px 22px;
+    border-bottom: 1px solid #f0d5a8;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .card-header .icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .card-header h2 { font-size: 17px; font-weight: 700; }
+  .card-body { padding: 22px; }
+
+  /* ====== Section Colors ====== */
+  .sec1 .card-header { background: linear-gradient(135deg, #fff0e8 0%, #fff8ee 100%); }
+  .sec1 .icon { background: rgba(231,76,60,0.12); }
+  .sec1 .card-header h2 { color: #c0392b; }
+  .sec1 .card-header .icon::before { content: '🔥'; }
+
+  .sec2 .card-header { background: linear-gradient(135deg, #fff8e8 0%, #fffbee 100%); }
+  .sec2 .icon { background: rgba(243,156,18,0.12); }
+  .sec2 .card-header h2 { color: #d68910; }
+  .sec2 .card-header .icon::before { content: '🎯'; }
+
+  .sec3 .card-header { background: linear-gradient(135deg, #f0fff4 0%, #f8fff8 100%); }
+  .sec3 .icon { background: rgba(39,174,96,0.1); }
+  .sec3 .card-header h2 { color: #1e8449; }
+  .sec3 .card-header .icon::before { content: '🌿'; }
+
+  .sec4 .card-header { background: linear-gradient(135deg, #f8f0ff 0%, #faf4ff 100%); }
+  .sec4 .icon { background: rgba(142,68,173,0.1); }
+  .sec4 .card-header h2 { color: #7d3c98; }
+  .sec4 .card-header .icon::before { content: '💡'; }
+
+  .sec5 .card-header { background: linear-gradient(135deg, #fff0f8 0%, #fff8fc 100%); }
+  .sec5 .icon { background: rgba(219,68,119,0.1); }
+  .sec5 .card-header h2 { color: #c0392b; }
+  .sec5 .card-header .icon::before { content: '🧪'; }
+
+  .sec6 .card-header { background: linear-gradient(135deg, #f0f8ff 0%, #f8fcff 100%); }
+  .sec6 .icon { background: rgba(52,152,219,0.1); }
+  .sec6 .card-header h2 { color: #2471a3; }
+  .sec6 .card-header .icon::before { content: '🏬'; }
+
+  /* ====== Items ====== */
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #b07d5a;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed #f0d5a8;
+  }
+
+  .item {
+    margin-bottom: 20px;
+    padding: 16px 18px;
+    background: #fffefa;
+    border: 1px solid #f5e8cc;
+    border-radius: 10px;
+    position: relative;
+  }
+  .item:last-child { margin-bottom: 0; }
+  .item-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #5d4037;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  .item-body {
+    font-size: 13.5px;
+    color: #6d5a4a;
+    margin-bottom: 6px;
+  }
+  .item-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 600;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .tag-red { background: rgba(231,76,60,0.1); color: #c0392b; }
+  .tag-yellow { background: rgba(243,156,18,0.1); color: #d68910; }
+  .tag-green { background: rgba(39,174,96,0.1); color: #1e8449; }
+  .tag-blue { background: rgba(52,152,219,0.1); color: #2471a3; }
+  .tag-purple { background: rgba(142,68,173,0.1); color: #7d3c98; }
+  .tag-orange { background: rgba(230,126,34,0.1); color: #d35400; }
+
+  .item-footer {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: rgba(230,126,34,0.06);
+    border-left: 3px solid #e67e22;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: #8d6e63;
+  }
+  .item-footer strong { color: #d35400; }
+
+  /* ====== Seasonal Grid ====== */
+  .seasonal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  @media (max-width: 600px) {
+    .seasonal-grid { grid-template-columns: 1fr; }
+  }
+  .seasonal-card {
+    background: #fffefa;
+    border: 1px solid #f5e8cc;
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .seasonal-card .label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #b07d5a;
+    margin-bottom: 6px;
+  }
+  .seasonal-card .content {
+    font-size: 13.5px;
+    color: #5d4037;
+    font-weight: 600;
+  }
+  .seasonal-card .sub {
+    font-size: 12px;
+    color: #8d6e63;
+    margin-top: 4px;
+  }
+
+  /* ====== Creative Card ====== */
+  .creative-card {
+    background: #fffefa;
+    border: 2px solid #f0d5a8;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .creative-card:last-child { margin-bottom: 0; }
+  .creative-name {
+    font-size: 16px;
+    font-weight: 800;
+    color: #d35400;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .creative-desc {
+    font-size: 13.5px;
+    color: #6d5a4a;
+    margin-bottom: 10px;
+  }
+  .creative-detail {
+    font-size: 13px;
+    color: #5d4037;
+    padding: 8px 12px;
+    background: rgba(230,126,34,0.06);
+    border-radius: 6px;
+    margin-bottom: 6px;
+  }
+  .creative-detail strong { color: #d35400; }
+
+  /* ====== Table ====== */
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  .info-table th {
+    background: #fff3e0;
+    color: #d35400;
+    font-weight: 700;
+    padding: 10px 14px;
+    text-align: left;
+    border: 1px solid #f0d5a8;
+  }
+  .info-table td {
+    padding: 10px 14px;
+    border: 1px solid #f5e8cc;
+    color: #5d4037;
+  }
+  .info-table tr:nth-child(even) td { background: #fffefa; }
+
+  /* ====== Footer ====== */
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: #b07d5a;
+    font-size: 12px;
+    border-top: 1px solid #f0d5a8;
+  }
+
+  /* ====== Section emoji fix ====== */
+  .card-header .icon::before { display: none; }
+
+  /* ====== Timeline style ====== */
+  .timeline-item {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .timeline-marker {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #e67e22;
+    margin-top: 6px;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .timeline-marker::after {
+    content: '';
+    position: absolute;
+    top: 10px; left: 4px;
+    width: 2px;
+    height: calc(100% + 8px);
+    background: #f0d5a8;
+  }
+  .timeline-item:last-child .timeline-marker::after { display: none; }
+  .timeline-content { flex: 1; }
+
+  .source-note {
+    font-size: 11.5px;
+    color: #b07d5a;
+    text-align: right;
+    margin-top: 16px;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">🌾 2026年5月17日 星期日</div>
+    <h1>🍳 食研日推 · 每日食品行业情报</h1>
+    <div class="sub">下厨房食品品牌PM专用 | 拒绝水文，只给弹药 | 距端午（5.31）还有14天</div>
+  </div>
+</div>
+
+<!-- Container -->
+<div class="container">
+
+<!-- ============ 板块一：今日行业要闻 ============ -->
+<div class="card sec1">
+  <div class="card-header">
+    <div class="icon">🔥</div>
+    <h2>一、今日行业要闻</h2>
+  </div>
+  <div class="card-body">
+    <div class="section-label">NEWS · 2026-05-17 · 72小时内食品行业大事</div>
+
+    <div class="item">
+      <div class="item-title">山姆双城同开（济南+青岛），5月15日开业即"限流"</div>
+      <div class="item-body">山姆会员商店30年来首次"双店同开"，济南+青岛同步落地，全国门店达67家。开业首日即启动限流，排队数小时，多款限定新品首发（瑞雪青苹果丹麦、烘焙系列、MM新品）。小红书相关话题持续发酵，会员制仓储赛道热度居高不下。</div>
+      <div class="item-footer"><strong>📌 与我何干：</strong>山姆正在加速覆盖山东等新一线城市，其<b>配料表清洁、高性价比</b>的爆品逻辑（生巧慕斯条、脆巧奶酪丸等）是我们618选品的直接参照系。建议618前实地考察济南/青岛山姆，抓618食品爆品窗口。</div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">小龙虾预制菜"遇冷"真相：产量翻倍、价格走低，但消费者不买单</div>
+      <div class="item-body">据《小龙虾品类发展报告2026》（红餐+肥肥虾庄，4月28日发布）及多地水产市场反馈：2026年小龙虾产量较去年翻倍，批发价持续下探（4月中旬湖北主产区17.52元/斤），但消费者购买热情不如往年，社交媒体上出现"没人抢着买"的讨论。小龙虾预制菜正从夜宵专属向全年化、多场景迁移，但<b>口味同质化严重</b>。</div>
+      <div class="item-footer"><strong>📌 与我何干：</strong>小龙虾赛道正在出清，正是用<b>配料表干净的差异化调味料包</b>切入市场的时机——不是跟风卖预制虾，而是做"家庭版大厨调味料"升级。</div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">618电商大促5月13日全面启幕，食品品类重押"品质升级"</div>
+      <div class="item-body">淘宝5月12日、天猫5月13日、京东5月13日、抖音5月13日全面启动618预热——46天超长周期（史上最长），各平台核心策略已从"低价内卷"转向"品质竞争"，平台补贴向<b>新品、爆品、品质食品</b>倾斜。食品品类达播竞争加剧，达人选品更看重"配料表差异化"和"产地故事"。</div>
+      <div class="item-footer"><strong>📌 与我何干：</strong>618是端午食材的第一战场，<b>5月20日前是爆品卡位的最后窗口</b>。端午礼盒（粽子+时令食材组合）正在成为天猫/抖音食品的新增量品类，提前锁定达人排期。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ 板块二：爆品雷达 ============ -->
+<div class="card sec2">
+  <div class="card-header">
+    <div class="icon">🎯</div>
+    <h2>二、爆品雷达 · 趋势苗头</h2>
+  </div>
+  <div class="card-body">
+    <div class="section-label">RADAR · 关注正在起势的品类机会</div>
+
+    <div class="item">
+      <div class="item-title">"小龙虾+粽子" 跨界组合正在渠道验证</div>
+      <div class="item-body">盒马端午团购手册已上线「创意小龙虾端午餐」单品，五芳斋等头部品牌同步推进"麻辣小龙虾粽"。这不是新概念，但在618+端午双重节点下，组合礼盒正在成为家庭聚餐和企业团购的新选项。</div>
+      <div style="margin: 8px 0;">
+        <span class="item-tag tag-yellow">🟡 起势</span>
+      </div>
+      <div class="item-footer"><strong>🎯 机会判断：</strong>"小龙虾粽"目前以礼盒为主，但<b>家庭装小龙虾调味料+粽叶捆绑</b>还是空白——可以做家用版，618冲量。</div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">杨梅季节提前启动，618前小高潮将至</div>
+      <div class="item-body">云南石屏早熟杨梅已上市，浙江仙居东魁杨梅预计6月初大量出货，当前批发价约23元/斤。小红书上"杨梅季节"相关话题在5月中旬开始升温，溯源测评类内容互动率高。618在6月1日开启，正好卡在杨梅最佳赏味期（6月上中旬）。</div>
+      <div style="margin: 8px 0;">
+        <span class="item-tag tag-yellow">🟡 起势</span>
+      </div>
+      <div class="item-footer"><strong>🎯 机会判断：</strong>杨梅对冷链要求高、损耗大，<b>做"产地直发+分级筛选"</b>的差异化溢价空间明显（精品级138元/1.6斤已有案例）。今年618核心机会点：<b>仙居东魁·精品杨梅礼盒（家庭装）</b>。</div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">"冰淇淋+茶"跨界产品线横扫茶饮渠道</div>
+      <div class="item-body">霸王茶姬上海武康路旗舰店推出13款冰淇淋产品（Geelato系列），五一假期排队超5小时，小红书话题超200万浏览。用经典茶底做冰淇淋基底，实现"奶茶口感冰品化"，本质是产品线跨品类延伸——冰淇淋是茶饮夏季留存的王牌品类。</div>
+      <div style="margin: 8px 0;">
+        <span class="item-tag tag-green">🟢 苗头</span>
+      </div>
+      <div class="item-footer"><strong>🎯 机会判断：</strong>茶饮端已验证"花香/茶香+奶香"冰淇淋口感组合。<b>食材品牌可以借鉴这个逻辑</b>——推出"茶香系列冷冻水果冰棒"或"桂花/茉莉茶香调味坚果"，将茶饮趋势迁移到食品零售场景。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ 板块三：时令风向 ============ -->
+<div class="card sec3">
+  <div class="card-header">
+    <div class="icon">🌿</div>
+    <h2>三、时令风向 · 品类机会</h2>
+  </div>
+  <div class="card-body">
+    <div class="section-label">SEASON · 提前2-4周预判 · 5月17日实时定位</div>
+
+    <div class="seasonal-grid">
+      <div class="seasonal-card">
+        <div class="label">📅 当前时令节点</div>
+        <div class="content">立夏（5月5日）→ 小满（5月21日）</div>
+        <div class="sub">夏季食材全面上市窗口期，端午倒计时14天</div>
+      </div>
+      <div class="seasonal-card">
+        <div class="label">⏰ 下一个重要节点</div>
+        <div class="content">小满 5月21日 / 端午 5月31日</div>
+        <div class="sub">小满后杨梅/枇杷/荔枝进入峰值，端午礼盒最晚6月1日上架</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 18px;"></div>
+
+    <div class="item">
+      <div class="item-title">🍃 即将热卖品类</div>
+      <div class="item-body">
+        <strong>① 杨梅（浙江仙居·云南石屏）</strong> — 618开售后第一周自然流量爆发，溯源测评内容互动率高，产地直发溢价空间大。<br>
+        <strong>② 小龙虾（湖北/四川/江苏）</strong> — 价格下探激活家庭消费，但消费者对"好调料+好虾"的需求缺口明显，配料表干净的调味料包有机会。<br>
+        <strong>③ 枇杷（四川石棉·福建云霄·浙江塘栖）</strong> — 当前正旺季，批发价格稳中有落，精品白沙枇杷是礼盒潜力品类。
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">🚨 开品窗口提醒</div>
+      <div class="item-body">
+        <strong>小龙虾调味料</strong> — 窗口正在打开：今年行情走弱，品质好+配料干净的调味料包切入竞争最弱的"家用大厨"细分，建议<strong>5月25日前</strong>完成达人种草，618第一波（6月1日）配合冲量。<br>
+        <strong>端午礼盒</strong> — 窗口即将关闭：粽子礼盒已高度同质化，差异化机会在"粽子+时令食材"组合（如杨梅粽礼盒、枇杷粽礼盒），<strong>最晚5月25日</strong>锁定达人排期和库存。
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">🏔️ 产地直发机会</div>
+      <div class="item-body">
+        <strong>云南石屏早熟杨梅</strong> — 上市时间比仙居早10-15天，当前可发货，溢价高但量少，适合做"首发限定"种草内容。<br>
+        <strong>浙江仙居东魁杨梅</strong> — 预计6月5-10日大量出货，23元/斤（通货），精品级（单果20g+，糖度15°+）产地直发128-168元/3斤包邮，今年做精品杨梅的竞争者明显增多，需提前锁定果园合作。<br>
+        <strong>四川石棉枇杷（蜀白1号）</strong> — 5月持续发货，精品果出汁率高，白沙枇杷品种稀缺性强，适合做"产地故事"内容。
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ 板块四：跨界灵感 ============ -->
+<div class="card sec4">
+  <div class="card-header">
+    <div class="icon">💡</div>
+    <h2>四、跨界灵感 · 创新动作</h2>
+  </div>
+  <div class="card-body">
+    <div class="section-label">INSPIRATION · 可迁移到食材场景的创新信号</div>
+
+    <div class="item">
+      <div class="item-title">霸王茶姬「Geelato」冰淇淋系列 — 茶饮IP化做季节留客</div>
+      <div class="item-body">用13款经典茶底直接复用做冰淇淋基底，实现"冰淇淋=茶饮SKU的延伸"，夏季留客利器。小红书话题超200万，开业当天排队5小时。核心逻辑：茶饮品牌用冰淇淋做品类延伸，延长高温季的生命周期。</div>
+      <div class="item-footer"><strong>🔄 迁移可能：</strong>食品品牌可以借鉴"产品线跨品类"逻辑——如推出"桂花/茉莉茶香调味坚果杯"或"冷萃茶香冷冻水果杯"，将茶饮爆款风味迁移到零售食品赛道，做便利店/会员店渠道。</div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">全家「布丁口感面包」系列 — 口感混搭做增量</div>
+      <div class="item-body">全家便利店推出布丁+面包跨界组合，将甜品口感嵌入主食场景，主打"一口咬下双层满足"。这是便利店烘焙做产品创新的典型路径——用<b>口感层次</b>做差异化，不靠大品类创新。</div>
+      <div class="item-footer"><strong>🔄 迁移可能：</strong>"食材+甜品口感"正在成为食品创新主线。可以做：<b>咸蛋黄肉粽（咸甜双感）</b>、<b>杨梅奶酪冰粽</b>等，核心是"经典品类+甜品思维"的口感升级。</div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">盒马2026端午团购手册 — 场景捆绑做礼盒增量</div>
+      <div class="item-body">盒马端午手册核心打法：粽子礼盒+双黄咸鸭蛋+创意小龙虾粽+应季鲜果，一站式配齐企业团购/客户礼赠/家庭聚餐三个场景。用场景捆绑代替单品销售，客单价提升明显。</div>
+      <div class="item-footer"><strong>🔄 迁移可能：</strong>我们的端午节令食材组合可以借鉴：<b>"端午食趣盒"（1份精品杨梅+2个大师粽+1份洁净小龙虾调料包）</b>，定价158-188元，卡位618礼赠场景。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ 板块五：脑暴时刻 ============ -->
+<div class="card sec5">
+  <div class="card-header">
+    <div class="icon">🧪</div>
+    <h2>五、脑暴时刻 · 融合创意</h2>
+  </div>
+  <div class="card-body">
+    <div class="section-label">BRAINSTORM · 收敛型创意 · 基于今日所有信息交叉组合</div>
+
+    <div class="creative-card">
+      <div class="creative-name">🍅 创意一：「618·仙居东魁杨梅精品礼盒」</div>
+      <div class="creative-desc">产地直发·分级筛选·冷链次日达 | 定价128-168元/3斤</div>
+
+      <div class="creative-detail"><strong>一句话描述：</strong>精选单果20g+浙江仙居东魁杨梅，配分级卡尺验收，配料表零添加，仅含杨梅，全程冷链48小时到家。</div>
+      <div class="creative-detail"><strong>为什么是现在：</strong>618（6月1日）正好卡在仙居杨梅最佳赏味期，小红书"杨梅溯源测评"内容热度正在升温（5月中旬起），精品杨梅在小红书属于蓝海——目前满屏是"仙居杨梅"，但少有人做"分级筛选+溯源背书"。</div>
+      <div class="creative-detail"><strong>差异化锚点：</strong>对比现有抖音/天猫仙居杨梅——<b>现有竞品</b>：通货散装、无分级、照片千篇一律；<b>我们的差异化</b>：单果分级（20g+/22g+/25g+）、配分级卡尺的"盲测趣味"内容、冷链锁鲜包装、产地果园直连视频背书。</div>
+      <div class="creative-detail"><strong>可行性初判：</strong>供应链难度中等——需提前锁定仙居2-3家果园合作（建议5月20日前）；冷链成本约15-20元/单（3斤装）；渠道适配：抖音达播（场景溯源型）+小红书种草（测评型）；利润空间：3斤售价138元，到手价约35-40%，可行。</div>
+    </div>
+
+    <div class="creative-card">
+      <div class="creative-name">🌶️ 创意二：「小满·洁净小龙虾调料包」</div>
+      <div class="creative-desc">配料表仅4味 | 零添加剂零色素 | 618冲量款 | 定价29.9-39.9元/3袋</div>
+
+      <div class="creative-detail"><strong>一句话描述：</strong>针对小龙虾行情走弱的时机，推出"家用大厨版洁净调料包"——配料表只有：辣椒、花椒、姜、蒜、盐，不加任何添加剂、色素、增味剂，超市价9.9元普通调料包的升级替代品。</div>
+      <div class="creative-detail"><strong>为什么是现在：</strong>2026年小龙虾批发价下探（湖北主产区17元/斤区间），消费者买虾成本降低，但调味料包同质化严重——抖音上满屏"麻辣小龙虾调料"，配料表普遍含有味精、呈味核苷酸、红色素。"洁净版调味料"是真实的需求缺口，不是伪命题。</div>
+      <div class="creative-detail"><strong>差异化锚点：</strong>对比现有抖音爆款调味料——<b>现有竞品</b>：配料表5-10种，含味精/色素/增味剂，包装粗放；<b>我们的差异化</b>：4味基础配料表、可视化清洁（白色粉末vs红彤彤添加剂）、附赠"鉴别好虾3步法"内容卡。</div>
+      <div class="creative-detail"><strong>可行性初判：</strong>供应链难度低——调料包代工成熟，找四川/重庆有SC认证的工厂即可，重点是把关配方（4味基础+比例保密）；渠道适配：小红书种草（"教你鉴别配料表"内容）+抖音达播；618前完成种草，6月1日冲量；利润空间：成本约8-10元/袋，售价29.9元，利润率高。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ 板块六：展会速递 ============ -->
+<div class="card sec6">
+  <div class="card-header">
+    <div class="icon">🏬</div>
+    <h2>六、展会速递 · 渠道上新</h2>
+  </div>
+  <div class="card-body">
+    <div class="section-label">EXPO · 近期重要食品展会与渠道新品动态</div>
+
+    <div class="item">
+      <div class="item-title">🎪 SIAL西雅国际食品展（上海）— 明日开幕！</div>
+      <div class="item-body">
+        <strong>时间：</strong>2026年5月18-20日（明天！）<br>
+        <strong>地点：</strong>上海新国际博览中心<br>
+        <strong>规模：</strong>世界三大食品展之一，汇聚全球优质产区与工厂，专业买家直通源头的平台。九日气泡果汁（50%果汁+50%气泡，夏季餐饮解辣解腻）已确认参展。
+      </div>
+      <div class="item-footer"><strong>📌 与我何干：</strong>这是618前最后一波新品发现机会——<b>重点关注</b>：①东南亚/云南特色食材（找下一个杨梅/枇杷）；②清洁配料调味品工厂；③618后下一个爆款品类的供应链资源。建议现场带清单：仙居杨梅产地代表、洁净调味料工厂、川味预制菜代工。</div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">🛒 渠道新品动态</div>
+      <div class="item-body">
+        <table class="info-table">
+          <tr>
+            <th>渠道</th>
+            <th>新品/动态</th>
+            <th>启发</th>
+          </tr>
+          <tr>
+            <td><strong>盒马</strong></td>
+            <td>端午团购手册上线：匠心粽子礼盒+创意小龙虾粽+双黄咸鸭蛋+应季鲜果</td>
+            <td>礼盒"多品类捆绑"打法值得借鉴</td>
+          </tr>
+          <tr>
+            <td><strong>山姆</strong></td>
+            <td>济南+青岛双店开业，限定首发系列（烘焙/零食/鲜食），全国67家门店</td>
+            <td>山姆配料表逻辑=618选品参照系</td>
+          </tr>
+          <tr>
+            <td><strong>罗森中国</strong></td>
+            <td>5月11日入驻广东河源+韶关，罗森广东版图持续扩张</td>
+            <td>便利店下沉是区域性食材新品验证的好渠道</td>
+          </tr>
+          <tr>
+            <td><strong>小象超市</strong></td>
+            <td>美团拟50亿收购叮咚买菜，前置仓格局重塑</td>
+            <td>叮咚"快手菜"用户资源或整合，小象超市618前可能有清仓/引流动作</td>
+          </tr>
+          <tr>
+            <td><strong>全家中国</strong></td>
+            <td>布丁口感面包持续推出新品，口感混搭创新</td>
+            <td>"甜品思维做主食"是2026食品创新主线</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="item" style="background: #fff8f0;">
+      <div class="item-title">🍱 本周餐饮连锁新品追踪</div>
+      <div class="item-body">
+        <strong>西贝</strong>：持续发力儿童餐（年销2000万份+），同时拓展成人专业餐；<strong>海底捞</strong>：首家"糖水铺"开业，糖水品类场景延伸；<strong>费大厨</strong>：辣椒炒肉SKU持续深耕，带动"专用椒"食材需求。这三家代表同一个信号：<b>餐饮连锁正在向上游渗透食材供应链</b>，品质食材采购需求在扩大。
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>⚠️ 以上内容由AI自动聚合生成，信息来源于公开渠道，仅供参考，不构成开品决策依据</p>
+  <p>信源：红餐网 / 36氪 / Foodaily / 蝉妈妈 / 一亩田 / 新华网 / 联商网 / 山姆官网 / 盒马公众号 等</p>
+  <p style="margin-top:8px;">🍳 食研日推 · 下厨房食品品牌PM专用 | 2026-05-17 09:00 CST</p>
+</div>
+
+</div>
+
+</body>
+</html>
