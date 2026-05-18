@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>精品生鲜选品框架 v1.0 | 食材买手实验室</title>
+<style>
+  :root {
+    --bg: #faf8f5;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --accent: #c45c3e;
+    --accent-light: #fdf2ef;
+    --green: #2d7d46;
+    --green-light: #e8f5ec;
+    --gold: #b8860b;
+    --gold-light: #fff8e7;
+    --purple: #7c3aed;
+    --purple-light: #f3e8ff;
+    --border: #e8e4df;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7;
+    padding: 24px; max-width: 900px; margin: 0 auto;
+  }
+  h1 { font-size: 26px; font-weight: 700; margin-bottom: 4px; }
+  .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+  h2 {
+    font-size: 18px; font-weight: 700; margin: 32px 0 16px;
+    padding-left: 12px; border-left: 4px solid var(--accent);
+  }
+  h3 { font-size: 15px; font-weight: 600; margin: 20px 0 10px; }
+  .card {
+    background: var(--card); border-radius: 12px; padding: 20px;
+    box-shadow: var(--shadow); margin-bottom: 16px;
+    border: 1px solid var(--border);
+  }
+  .badge {
+    display: inline-block; padding: 2px 10px; border-radius: 20px;
+    font-size: 12px; font-weight: 600; margin-right: 6px;
+  }
+  .badge-red { background: var(--accent-light); color: var(--accent); }
+  .badge-green { background: var(--green-light); color: var(--green); }
+  .badge-gold { background: var(--gold-light); color: var(--gold); }
+  .badge-purple { background: var(--purple-light); color: var(--purple); }
+  .problem-box {
+    background: #fff5f5; border-left: 4px solid var(--accent);
+    padding: 16px; border-radius: 8px; margin-bottom: 20px;
+  }
+  .problem-box h3 { color: var(--accent); margin-top: 0; }
+  table {
+    width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0;
+  }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: #f5f5f5; font-weight: 600; font-size: 12px; color: var(--muted); }
+  tr:hover { background: #fafafa; }
+  .price { font-weight: 700; color: var(--accent); font-size: 16px; }
+  .tag {
+    display: inline-block; padding: 1px 8px; border-radius: 4px;
+    font-size: 11px; margin-right: 4px; margin-bottom: 4px;
+  }
+  .tag-gi { background: var(--gold-light); color: var(--gold); }
+  .tag-season { background: #e0f2fe; color: #0369a1; }
+  .tag-premium { background: var(--purple-light); color: var(--purple); }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
+  .insight {
+    background: var(--green-light); border-radius: 8px;
+    padding: 14px 16px; font-size: 13px; color: #14532d; margin-top: 12px;
+  }
+  .search-tip {
+    background: #eff6ff; border-radius: 8px; padding: 14px 16px;
+    font-size: 13px; color: #1e40af; margin-top: 12px;
+  }
+  .search-tip code {
+    background: #dbeafe; padding: 2px 6px; border-radius: 4px;
+    font-family: "SF Mono", monospace; font-size: 12px;
+  }
+  .highlight { background: #fef3c7; padding: 0 4px; border-radius: 3px; }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { margin-bottom: 6px; }
+  .template-box {
+    background: #f8fafc; border: 2px dashed #cbd5e1;
+    border-radius: 12px; padding: 20px; margin-top: 16px;
+  }
+  .template-box h3 { color: var(--purple); }
+</style>
+</head>
+<body>
+
+<h1>精品生鲜选品框架 v1.0</h1>
+<div class="subtitle">食材买手实验室 | 2026-05-18 | 面向白领精致人群的选品标准</div>
+
+<!-- ========== 问题诊断 ========== -->
+<div class="problem-box">
+  <h3>为什么AI只能搜出大蒜2.9元/斤？</h3>
+  <p><strong>根本原因：搜索策略和数据源从一开始就是错的。</strong></p>
+  <ul>
+    <li><strong>关键词太泛</strong>：搜"生鲜价格""时令水果" → 返回惠农网、一亩田等<span class="highlight">B2B批发市场</span>数据，天然是大宗低价货</li>
+    <li><strong>缺乏精品筛选维度</strong>：没有按客单价、地理标志、品牌溢价、小众稀缺性过滤</li>
+    <li><strong>AI的关联思维局限</strong>：提到辣椒就围绕辣椒打转，不会自动跳转到<span class="highlight">同价位段的其他精品品类</span></li>
+    <li><strong>数据源偏差</strong>：批发市场价格 ≠ 零售精品市场价格。大蒜2.9元/斤对你没有任何价值</li>
+  </ul>
+</div>
+
+<!-- ========== 五维选品标准 ========== -->
+<h2>精品选品五维标准（替代"批发价行情"）</h2>
+
+<div class="card">
+  <table>
+    <tr>
+      <th style="width:80px">维度</th>
+      <th style="width:180px">定义</th>
+      <th>筛选标准（必须满足≥3项）</th>
+    </tr>
+    <tr>
+      <td><span class="badge badge-gold">地标</span></td>
+      <td>地理标志/原产地保护</td>
+      <td>国家地理标志产品（GI认证）、核心产区限定（如樟树港&lt;1km²）、非遗工艺</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-red">稀缺</span></td>
+      <td>产量稀缺/时令极短</td>
+      <td>年产≤X吨、采收期≤30天、手工采摘、无法规模化种植</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-purple">溢价</span></td>
+      <td>价格带100元以上</td>
+      <td>单品≥100元，或单价≥50元/斤。覆盖冷链物流成本（30元/单起步）</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-green">颜值</span></td>
+      <td>出片率高/仪式感强</td>
+      <td>适合Live图拍摄、有开箱仪式感、色彩/形态独特、适合送礼场景</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-gold">故事</span></td>
+      <td>可讲出差异化故事</td>
+      <td>有具体人物（院士/匠人）、有历史（百年传承）、有工艺（21道工序）、有可验证数据</td>
+    </tr>
+  </table>
+  <div class="insight">
+    <strong>关键判定：</strong>一个品类必须同时满足<strong>溢价（≥100元）</strong>+<strong>地标/稀缺（至少1项）</strong>，才有资格进入日推的"精品风向标"。不满足的品类（如大蒜、普通小龙虾）直接过滤。
+  </div>
+</div>
+
+<!-- ========== SIAL 2026 四大趋势 ========== -->
+<h2>SIAL 2026 × WGSN 精品食材四大趋势（5.18-20 上海）</h2>
+
+<div class="grid-2">
+  <div class="card">
+    <h3><span class="badge badge-gold">趋势1</span> 本地奢华</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">风土与故事成为轻奢新标配。强调产地底蕴与工艺传承，将本地特色转化为奢华体验。</p>
+    <ul style="font-size:13px;">
+      <li><strong>伊比利亚黑猪火腿</strong>（西班牙）— 橡果饲养，手工腌制36个月</li>
+      <li><strong>樟树港辣椒</strong>（湖南）— 国家地理标志，核心产区&lt;1km²，288元/斤</li>
+      <li><strong>纯血和牛</strong>（青岛隆铭）— SIAL 2026重磅亮相，国产高端牛肉标杆</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3><span class="badge badge-green">趋势2</span> 质朴原生</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">回归本真对抗"超加工"。迎合消费者对时令、田园风味及天然无添加的向往。</p>
+    <ul style="font-size:13px;">
+      <li><strong>内蒙古草原羊肉</strong> — 时令限定，散养放牧，无激素添加</li>
+      <li><strong>大兴安岭野生蓝莓</strong> — 极地浆果，花青素含量是普通蓝莓3倍</li>
+      <li><strong>林芝松茸</strong>（西藏）— 海拔3000米+原始森林，无法人工种植</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3><span class="badge badge-purple">趋势3</span> 全球风味融合</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">异域风情轻松上桌。让全球风味融入日常餐桌，实现正宗异国风味的家庭化。</p>
+    <ul style="font-size:13px;">
+      <li><strong>猫山王榴莲</strong>（马来西亚）— 液氮冷冻进口，D197品种，入口即化</li>
+      <li><strong>佳沛金果</strong>（新西兰）— 全年稳定供应，维生素C含量极高</li>
+      <li><strong>法国吉拉多生蚝</strong> — N0/N1规格，海水味+榛果香，开壳即食</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3><span class="badge badge-red">趋势4</span> 健康功能性</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">从"好吃"到"吃出健康"。食材成为健康管理载体，直击抗衰老等核心诉求。</p>
+    <ul style="font-size:13px;">
+      <li><strong>五黑莓果混合果汁</strong> — 花青素5MAX，直击抗氧化/抗衰老</li>
+      <li><strong>牛油果油/特级初榨橄榄油</strong> — 地中海饮食理念载体</li>
+      <li><strong>有机番茄</strong>（一颗大品牌）— 番茄红素含量标准化，3年10亿GMV</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ========== 当季精品品类池 ========== -->
+<h2>5月下旬-6月 当季精品品类池（已验证真实存在）</h2>
+
+<div class="card">
+  <table>
+    <tr>
+      <th>品类</th>
+      <th>标杆产地/品牌</th>
+      <th>价格带</th>
+      <th>匹配维度</th>
+      <th>小红书热度</th>
+    </tr>
+    <tr>
+      <td><strong>东魁杨梅</strong></td>
+      <td>浙江仙居（地理标志）<br>云南石屏（早熟）</td>
+      <td class="price">138-300元/礼盒</td>
+      <td>
+        <span class="tag tag-gi">地标</span>
+        <span class="tag tag-season">时令极短</span>
+        <span class="tag tag-premium">溢价</span>
+      </td>
+      <td>"买杨梅被骗"笔记高互动<br>科普选品型进入最佳时机</td>
+    </tr>
+    <tr>
+      <td><strong>桂味荔枝</strong></td>
+      <td>广东增城（挂绿）<br>海南妃子笑升级款</td>
+      <td class="price">80-200元/礼盒</td>
+      <td>
+        <span class="tag tag-gi">地标</span>
+        <span class="tag tag-season">15天窗口</span>
+        <span class="tag tag-premium">溢价</span>
+      </td>
+      <td>白糖罂已上市<br>桂味5月底-6月接棒</td>
+    </tr>
+    <tr>
+      <td><strong>樟树港辣椒</strong></td>
+      <td>湖南湘阴（核心产区）</td>
+      <td class="price">288元/斤</td>
+      <td>
+        <span class="tag tag-gi">地标</span>
+        <span class="tag tag-season">5.20盛产期</span>
+        <span class="tag tag-premium">稀缺</span>
+      </td>
+      <td>"辣椒界爱马仕"<br>头茬稀缺性科普笔记机会</td>
+    </tr>
+    <tr>
+      <td><strong>阳山水蜜桃</strong></td>
+      <td>江苏无锡（地理标志）</td>
+      <td class="price">128-298元/礼盒</td>
+      <td>
+        <span class="tag tag-gi">地标</span>
+        <span class="tag tag-season">6月上市</span>
+        <span class="tag tag-premium">颜值</span>
+      </td>
+      <td>"可以吸的水蜜桃"<br>开箱仪式感极强</td>
+    </tr>
+    <tr>
+      <td><strong>猫山王榴莲</strong></td>
+      <td>马来西亚D197<br>（液氮冷冻进口）</td>
+      <td class="price">180-400元/颗</td>
+      <td>
+        <span class="tag tag-premium">全球</span>
+        <span class="tag tag-season">全年</span>
+        <span class="tag tag-premium">溢价</span>
+      </td>
+      <td>"猫山王vs金枕"对比笔记<br>永恒流量话题</td>
+    </tr>
+    <tr>
+      <td><strong>大兴安岭蓝莓</strong></td>
+      <td>黑龙江漠河/塔河<br>野生/有机种植</td>
+      <td class="price">100-200元/斤</td>
+      <td>
+        <span class="tag tag-gi">地标</span>
+        <span class="tag tag-season">7-8月</span>
+        <span class="tag tag-premium">功能</span>
+      </td>
+      <td>花青素3倍于普通蓝莓<br>健康功能性极强</td>
+    </tr>
+    <tr>
+      <td><strong>纯血和牛</strong></td>
+      <td>青岛隆铭（国产）</td>
+      <td class="price">300-800元/kg</td>
+      <td>
+        <span class="tag tag-gi">本地奢华</span>
+        <span class="tag tag-premium">溢价</span>
+      </td>
+      <td>SIAL 2026重磅亮相<br>国产高端牛肉标杆</td>
+    </tr>
+    <tr>
+      <td><strong>有机番茄</strong></td>
+      <td>一颗大（品牌）</td>
+      <td class="price">20-40元/斤</td>
+      <td>
+        <span class="tag tag-premium">品牌</span>
+        <span class="tag tag-premium">功能</span>
+      </td>
+      <td>3年10亿GMV<br>小红书生鲜赛道标杆</td>
+    </tr>
+  </table>
+  <div class="insight">
+    <strong>品类池使用规则：</strong>每期日推从这8个核心品类中选<strong>3-4个</strong>当季重点跟踪，配合1个"趋势新品"（如SIAL展上发现的新品）。绝不放大众低价品充数。
+  </div>
+</div>
+
+<!-- ========== 搜索策略升级 ========== -->
+<h2>搜索策略升级：从"批发价"到"精品风向标"</h2>
+
+<div class="card">
+  <h3>一、数据源切换</h3>
+  <table>
+    <tr>
+      <th>旧数据源（废弃）</th>
+      <th>新数据源（启用）</th>
+      <th>原因</th>
+    </tr>
+    <tr>
+      <td>惠农网、一亩田</td>
+      <td>小红书站内搜索（真实售价）</td>
+      <td>看用户实际成交价格，不是批发价</td>
+    </tr>
+    <tr>
+      <td>普通新闻"时令水果"</td>
+      <td>SIAL/FBIF等行业展会报告</td>
+      <td>获取前沿趋势和高端品类</td>
+    </tr>
+    <tr>
+      <td>百度"水果价格"</td>
+      <td>京东/天猫精品礼盒价格</td>
+      <td>验证白领人群的实际购买价格带</td>
+    </tr>
+    <tr>
+      <td>——</td>
+      <td>地理标志产品官网</td>
+      <td>获取GI认证、产区故事、工艺细节</td>
+    </tr>
+  </table>
+</div>
+
+<div class="card">
+  <h3>二、搜索关键词模板（直接复制给AI用）</h3>
+  <div class="search-tip">
+    <strong>通用公式：</strong><code>精品/高端/有机 + 品类名 + 地理标志/核心产区 + 礼盒/白领/小红书 + 价格</code>
+  </div>
+  <table>
+    <tr>
+      <th>场景</th>
+      <th>关键词模板</th>
+    </tr>
+    <tr>
+      <td>当季精品水果</td>
+      <td><code>"仙居东魁杨梅" 精品礼盒 价格 2026</code><br><code>"桂味荔枝" 高端 小红书 售价</code></td>
+    </tr>
+    <tr>
+      <td>地理标志食材</td>
+      <td><code>国家地理标志 高价农产品 2026</code><br><code>"樟树港辣椒" 地理标志 核心产区</code></td>
+    </tr>
+    <tr>
+      <td>进口高端食材</td>
+      <td><code>猫山王榴莲 D197 液氮冷冻 价格</code><br><code>法国生蚝 吉拉多 进口 精品</code></td>
+    </tr>
+    <tr>
+      <td>行业趋势新品</td>
+      <td><code>SIAL 2026 高端食材 新品</code><br><code>WGSN 食品趋势 本地奢华 精品</code></td>
+    </tr>
+    <tr>
+      <td>小红书爆款验证</td>
+      <td><code>site:xiaohongshu.com 杨梅 礼盒 测评</code><br><code>小红书 高端水果 月销 爆款</code></td>
+    </tr>
+  </table>
+</div>
+
+<div class="card">
+  <h3>三、AI执行指令（给自动化用的Prompt片段）</h3>
+  <div class="search-tip">
+    <strong>核心指令：</strong>搜索当季精品生鲜品类时，<strong>严禁</strong>使用"批发价""农贸市场""惠农网"等关键词。必须围绕以下维度搜索：
+    <ol style="margin-top:8px;padding-left:18px;">
+      <li>国家地理标志产品（GI认证）</li>
+      <li>核心产区限定（面积、海拔、树龄等可量化指标）</li>
+      <li>价格带≥100元或单价≥50元/斤</li>
+      <li>小红书平台真实成交/种草数据</li>
+      <li>有具体可验证的故事（人物、历史、工艺、数据）</li>
+    </ol>
+    <strong>过滤规则：</strong>任何单价&lt;30元/斤的品类，或没有地理标志/品牌背书的普通大宗农产品，<strong>直接丢弃</strong>，不进入报告。
+  </div>
+</div>
+
+<!-- ========== 新模板 ========== -->
+<h2>新模板：本周精品风向标（替代"核心品类行情"）</h2>
+
+<div class="template-box">
+  <h3>【本周精品风向标】5.18-5.24</h3>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:12px;">基于SIAL 2026 × WGSN趋势报告 | 仅跟踪≥100元地标精品</p>
+
+  <div class="grid-2">
+    <div class="card" style="margin-bottom:8px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+        <span style="font-size:20px;">🍒</span>
+        <strong>仙居东魁杨梅</strong>
+        <span class="tag tag-gi">地标</span>
+      </div>
+      <div class="price">138-300元/精品礼盒</div>
+      <p style="font-size:12px;color:var(--muted);margin-top:6px;">
+        国家地理标志 | 乒乓球大小 | 6月中旬上市<br>
+        窗口期仅剩20天
+      </p>
+      <div class="insight" style="margin-top:8px;font-size:12px;">
+        <strong>情报：</strong>小红书"买杨梅被骗"笔记互动激增，科普选品型内容进入最佳窗口期
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:8px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+        <span style="font-size:20px;">🌶️</span>
+        <strong>樟树港辣椒（头茬）</strong>
+        <span class="tag tag-gi">地标</span>
+      </div>
+      <div class="price">288元/斤</div>
+      <p style="font-size:12px;color:var(--muted);margin-top:6px;">
+        核心产区&lt;1km² | 200年历史 | 21道工序<br>
+        5.20盛产期仅剩2天
+      </p>
+      <div class="insight" style="margin-top:8px;font-size:12px;">
+        <strong>情报：</strong>头茬稀缺性科普笔记最晚明天出，盛产期后价格将回落30%
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:8px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+        <span style="font-size:20px;">🍑</span>
+        <strong>阳山水蜜桃</strong>
+        <span class="tag tag-gi">地标</span>
+      </div>
+      <div class="price">128-298元/礼盒</div>
+      <p style="font-size:12px;color:var(--muted);margin-top:6px;">
+        江苏无锡地理标志 | 6月初上市<br>
+        "可以吸的水蜜桃"
+      </p>
+      <div class="insight" style="margin-top:8px;font-size:12px;">
+        <strong>情报：</strong>开箱仪式感极强，适合"沉浸式开箱"Live图内容
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:8px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+        <span style="font-size:20px;">🥩</span>
+        <strong>纯血和牛（国产）</strong>
+        <span class="tag tag-premium">趋势新品</span>
+      </div>
+      <div class="price">300-800元/kg</div>
+      <p style="font-size:12px;color:var(--muted);margin-top:6px;">
+        青岛隆铭 | SIAL 2026重磅亮相<br>
+        国产高端牛肉标杆
+      </p>
+      <div class="insight" style="margin-top:8px;font-size:12px;">
+        <strong>情报：</strong>"本地奢华"趋势代表，国产替代进口的和牛肉市场正在爆发
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:12px;background:var(--gold-light);border-color:var(--gold);">
+    <h3 style="color:var(--gold);margin-top:0;">本周趋势洞察</h3>
+    <p style="font-size:13px;">
+      SIAL 2026上海展（5.18-20）正在举办，WGSN发布四大趋势：<strong>本地奢华、质朴原生、全球风味融合、健康功能性</strong>。
+      白领精致人群的核心需求是<strong>"效率与品质兼容"</strong>——他们需要下班后能轻松复刻的高端食材，而不是需要去菜市场挑拣的大众货。
+      选品要围绕"<span class="highlight">有故事、有颜值、有认证、有溢价</span>"四个标准，帮用户做决策，而不是只报价格。
+    </p>
+  </div>
+</div>
+
+<!-- ========== 执行清单 ========== -->
+<h2>立即执行清单</h2>
+
+<div class="card">
+  <ol>
+    <li><strong>修改自动化Prompt</strong>：把日推情报的搜索关键词全部替换为本文"搜索关键词模板"中的版本，加入"严禁搜索批发价/农贸市场"的硬性约束</li>
+    <li><strong>替换报告模板</strong>：把"核心品类行情"板块改为"本周精品风向标"，只放≥100元的地标精品</li>
+    <li><strong>建立品类池</strong>：按春夏秋冬四季维护"精品品类池"，每个季节保证8-10个核心品类+2-3个趋势新品</li>
+    <li><strong>数据源白名单</strong>：只允许使用小红书站内、京东/天猫精品区、SIAL等行业展会、地理标志官网作为数据源</li>
+    <li><strong>每周五更新品类池</strong>：根据下周时令和展会/行业动态，提前确定下周要跟踪的3-4个精品</li>
+  </ol>
+</div>
+
+<div style="text-align:center;margin-top:32px;padding:16px;color:var(--muted);font-size:12px;border-top:1px solid var(--border);">
+  食材买手实验室 | 精品生鲜选品框架 v1.0 | 2026-05-18
+</div>
+
+</body>
+</html>
