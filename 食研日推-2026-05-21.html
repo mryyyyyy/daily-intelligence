@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 2026-05-21</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #faf6f1; color: #3d2b1f; font-size: 15px; line-height: 1.75; }
+
+  .hero {
+    background: linear-gradient(135deg, #8B3A1D 0%, #C4622D 40%, #E8945A 70%, #faf6f1 100%);
+    padding: 36px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -30%; right: -5%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255,240,220,0.25) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -20%; left: -5%;
+    width: 350px; height: 350px;
+    background: radial-gradient(circle, rgba(139,58,29,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.45);
+    color: #fff;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .hero .sub {
+    color: rgba(255,255,255,0.88);
+    font-size: 14px;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 28px 20px 40px;
+  }
+
+  /* 六大板块通用 */
+  .section { margin-bottom: 32px; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e8d5c4;
+  }
+  .section-icon { font-size: 22px; }
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #8B3A1D;
+  }
+  .section-badge {
+    margin-left: auto;
+    background: #fff3e0;
+    color: #C4622D;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 10px;
+    border: 1px solid #f0c9a0;
+  }
+
+  /* 卡片 */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    border: 1px solid #f0d9c4;
+    box-shadow: 0 2px 8px rgba(139,58,29,0.06);
+  }
+  .card-tag {
+    display: inline-block;
+    background: #8B3A1D;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .card-tag.green { background: #2d7a4f; }
+  .card-tag.orange { background: #c06820; }
+  .card-tag.blue { background: #1a5c8a; }
+  .card-tag.red { background: #c0392b; }
+  .card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #3d2b1f;
+    margin-bottom: 6px;
+  }
+  .card-sub {
+    font-size: 13px;
+    color: #7a5c48;
+    margin-bottom: 8px;
+  }
+  .card-footer {
+    background: #faf6f1;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: #5a3e2b;
+    border-left: 3px solid #C4622D;
+    margin-top: 8px;
+  }
+  .card-footer strong { color: #8B3A1D; }
+
+  /* 时令区块 */
+  .season-box {
+    background: linear-gradient(135deg, #fff9f4 0%, #fef0e6 100%);
+    border: 1px solid #f0c9a0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .season-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .season-row:last-child { margin-bottom: 0; }
+  .season-emoji { font-size: 16px; }
+  .season-label { font-size: 13px; color: #8B3A1D; font-weight: 700; min-width: 70px; }
+  .season-text { font-size: 14px; color: #5a3e2b; }
+  .season-text strong { color: #8B3A1D; }
+
+  /* 信号强度 */
+  .signal {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 8px;
+  }
+  .signal.green { background: #e8f5e9; color: #2d7a4f; }
+  .signal.orange { background: #fff3e0; color: #c06820; }
+  .signal.red { background: #ffebee; color: #c0392b; }
+
+  /* 创意卡片 */
+  .idea-card {
+    background: linear-gradient(135deg, #fff9f4 0%, #fdf0e8 100%);
+    border: 1px solid #e8c9a8;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .idea-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #8B3A1D;
+    margin-bottom: 10px;
+  }
+  .idea-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+  .idea-label { font-weight: 700; color: #8B3A1D; min-width: 72px; }
+  .idea-text { color: #5a3e2b; }
+
+  /* 渠道/展会条目 */
+  .exhibit-row {
+    display: flex;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px dashed #e8d5c4;
+    font-size: 14px;
+  }
+  .exhibit-row:last-child { border-bottom: none; }
+  .exhibit-icon { font-size: 18px; flex-shrink: 0; }
+  .exhibit-content { flex: 1; }
+  .exhibit-name { font-weight: 700; color: #3d2b1f; }
+  .exhibit-sub { color: #7a5c48; font-size: 13px; margin-top: 2px; }
+  .exhibit-tag {
+    background: #fff3e0;
+    color: #c06820;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    height: fit-content;
+  }
+
+  .footer {
+    text-align: center;
+    color: #b08a70;
+    font-size: 12px;
+    padding: 20px 0;
+    border-top: 1px solid #e8d5c4;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">🌿 食研日推 · 每日行业情报 · 2026-05-21</div>
+    <h1>🍳 食研日推</h1>
+    <div class="sub">专注食品消费品开品情报 · 下厨房品牌PM内参 · 信息覆盖72小时内</div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- 一、今日行业要闻 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-icon">🔥</span>
+    <span class="section-title">一、今日行业要闻</span>
+    <span class="section-badge">72h内</span>
+  </div>
+
+  <div class="card">
+    <span class="card-tag">行业事件</span>
+    <h3>FBIF2026食品饮料创新论坛在杭州举办（5月14日）</h3>
+    <div class="card-sub">160+演讲嘉宾 · 650+展商 · 6000+渠道观众；AI风味研发成最大亮点，上海交大展示"Umami-IP"模型，食品研发正从"经验驱动"转向"模型驱动"</div>
+    <div class="card-footer"><strong>与我何干：</strong>AI风味筛选工具已进入实用阶段，未来可用于预测消费者对新品口味的接受度；关注其开放API或合作机会</div>
+  </div>
+
+  <div class="card">
+    <span class="card-tag red">政策合规</span>
+    <h3>《网络食品销售经营者落实食品安全主体责任监督管理规定》5月20日起施行</h3>
+    <div class="card-sub">国家市场监管总局令第124号，覆盖网络食品交易第三方平台及入网食品销售者；要求强化人员配备、准入审查、风险管控全链条</div>
+    <div class="card-footer"><strong>与我何干：</strong>对抖音等平台达播的合规要求明显提升，选品时需核查供应商资质和标签合规性；"零添加"宣称将面临更严格抽检</div>
+  </div>
+
+  <div class="card">
+    <span class="card-tag green">渠道格局</span>
+    <h3>美团完成对叮咚买菜收购，即时零售格局重塑</h3>
+    <div class="card-sub">2026年2月完成收购，小象超市与叮咚供应链整合；盒马同期重启前置仓业务（2025年底约200家），即时零售赛道进入"双强"格局</div>
+    <div class="card-footer"><strong>与我何干：</strong>小象超市/盒马前置仓扩张意味着生鲜即时零售的流量入口正在集中，产地直发SKU进入这些平台的优先级应提升</div>
+  </div>
+</div>
+
+<!-- 二、爆品雷达 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-icon">🎯</span>
+    <span class="section-title">二、爆品雷达·趋势苗头</span>
+    <span class="section-badge">正在起势</span>
+  </div>
+
+  <div class="card">
+    <span class="card-tag green">苗头</span>
+    <h3>山姆双店开业引爆"青汁+羽衣甘蓝"组合</h3>
+    <div class="card-sub">济南、青岛双店5月15日同开（山姆入华30年首次双店同开），轻元素青汁与羽衣甘蓝粉成为开业当日健康食品区最热品类，开业即引爆排队购买</div>
+    <div class="card-footer">
+      <strong>与我何干：</strong>青汁/羽衣甘蓝在山姆会员店连续多年热销，说明"便携绿色代餐"在中国高净值消费者中有稳定需求；
+      <strong>差异化机会：</strong>现有青汁产品普遍添加甜味剂或增稠剂，"零添加洁净版青汁/羽衣甘蓝粉"存在真实空白
+      <span class="signal orange">🟡起势</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-tag orange">品类危机</span>
+    <h3>漳州杨梅"甜蜜素事件"冲击消费信心</h3>
+    <div class="card-sub">2026年5月，深圳市场曝光漳州龙海杨梅商贩使用8000倍超甜三无添加剂浸泡杨梅，已登热搜前列；深圳杨梅供应链正在接受调查</div>
+    <div class="card-footer">
+      <strong>与我何干：</strong>短期杨梅品类受舆论冲击，但实质利好"有溯源体系+配料洁净"的杨梅品牌；<strong>机会窗口：</strong>产地透明（仙居/云南）、检测报告齐全的杨梅礼盒有机会填补消费者信任空白；618大促前正好需要差异化
+      <span class="signal green">🟢苗头</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-tag blue">渠道爆品</span>
+    <h3>韩国咖啡连锁Mega MGC"杯装刨冰"两周破百万杯</h3>
+    <div class="card-sub">5月前5天冰饮销量较4月末上涨约15%；途尚咖啡数据显示刨冰新品仅两周销量突破100万杯，韩国市场夏令冰品需求提前爆发</div>
+    <div class="card-footer">
+      <strong>与我何干：</strong>国内冰品/冷饮赛道与食品有强关联——"冷"趋势正在从饮品向食材迁移；可以关注清爽型水果即食杯（杨梅/枇杷冷杯）的即食化机会
+      <span class="signal orange">🟡起势</span>
+    </div>
+  </div>
+</div>
+
+<!-- 三、时令风向 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-icon">🌿</span>
+    <span class="section-title">三、时令风向·品类机会</span>
+    <span class="section-badge">小满前后</span>
+  </div>
+
+  <div class="season-box">
+    <div class="season-row">
+      <span class="season-emoji">📅</span>
+      <span class="season-label">当前时令</span>
+      <span class="season-text">立夏（5月5日）→ <strong>小满（5月21日）</strong>；气温快速回升，消夏、生鲜、应季水果进入黄金消费窗口；距离<strong>端午节（6月3日）</strong>还有 <strong>13天</strong></span>
+    </div>
+    <div class="season-row">
+      <span class="season-emoji">⏰</span>
+      <span class="season-label">倒计时</span>
+      <span class="season-text">距端午节（6月3日）<strong>13天</strong> · 距仙居杨梅盛产（6月8日）<strong>18天</strong></span>
+    </div>
+    <div class="season-row">
+      <span class="season-emoji">🎯</span>
+      <span class="season-label">即将热卖</span>
+      <span class="season-text"><strong>枇杷/杨梅</strong>——5月下旬云南/福建枇杷收尾，浙江仙居杨梅6月初接棒；<strong>小龙虾</strong>——湖北潜江批发价13.52元/斤，当前价格适中，6月入夏后进入峰值</span>
+    </div>
+    <div class="season-row">
+      <span class="season-emoji">🚨</span>
+      <span class="season-label">窗口提醒</span>
+      <span class="season-text"><strong>端午粽子</strong>——北京稻香村5月18日已全面铺货，抖音头部品牌已大量上架，<strong>现在入局普通粽子已晚</strong>；若要做，必须做差异化切入点（如纯净配料、独特口味、地方特色）</span>
+    </div>
+    <div class="season-row">
+      <span class="season-emoji">🏔️</span>
+      <span class="season-label">产地机会</span>
+      <span class="season-text"><strong>仙居东魁杨梅</strong>（浙江台州）——地理标志产品，6月5日荸荠种少量上市，6月8日盛产，6月13日东魁种少量上市；建议提前锁定果园预订，<strong>纯净配料短保冷鲜装</strong>是差异化核心</span>
+    </div>
+  </div>
+</div>
+
+<!-- 四、跨界灵感 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-icon">💡</span>
+    <span class="section-title">四、跨界灵感·创新动作</span>
+    <span class="section-badge">可迁移</span>
+  </div>
+
+  <div class="card">
+    <span class="card-tag">餐饮创新</span>
+    <h3>海底捞秋季新品的"地理标志食材"路线向夏季延伸</h3>
+    <div class="card-sub">海底捞延续"地域美食"路线，将地理标志产品搬上餐桌；西贝持续深耕"蒙餐+时令"季节限定菜单</div>
+    <div class="card-footer"><strong>迁移可能：</strong>餐饮验证过的"地理标志食材"热度正在向C端零售迁移——<strong>下游做地理标志食材的产地直发礼盒，是顺从这一趋势的正确方向</strong></div>
+  </div>
+
+  <div class="card">
+    <span class="card-tag">便利店季节限定</span>
+    <h3>全家强化"甜点主题"场景化陈列，罗森成都推春夏新品</h3>
+    <div class="card-sub">全家将冰品+面包+甜点跨品类整合为"甜点主题"场景化陈列，罗森5月在成都推出"链动春夏新品"；便利店季节限定节奏加快，5月已全面进入"夏季"</div>
+    <div class="card-footer"><strong>迁移可能：</strong>便利店"季节限定+场景化组货"的逻辑可以迁移到抖音达播——<strong>围绕当周时令食材做主题组货专题（如'杨梅季'、'小龙虾季'）而非单品单推</strong></div>
+  </div>
+
+  <div class="card">
+    <span class="card-tag">海外趋势</span>
+    <h3>韩国咖啡连锁Mega MGC冰杯新品验证"冷即食"赛道</h3>
+    <div class="card-sub">Mega MGC推出杯装刨冰新品，两周销量破百万杯；冰杯+咖啡的形式正在韩国引领冷饮潮流</div>
+    <div class="card-footer"><strong>迁移可能：</strong>"冷杯即食"概念可迁移至<strong>小份装冷鲜水果</strong>（如杨梅冷杯、枇杷冷杯）——便利店验证过的需求，抖音电商可以用更优质食材做升级版</div>
+  </div>
+</div>
+
+<!-- 五、脑暴时刻 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-icon">🧪</span>
+    <span class="section-title">五、脑暴时刻·融合创意</span>
+    <span class="section-badge">收敛创意</span>
+  </div>
+
+  <div class="idea-card">
+    <div class="idea-title">💎 创意卡片①：「仙居纯净杨梅·48小时产地直达」</div>
+    <div class="idea-row"><span class="idea-label">产品定义</span><span class="idea-text">仙居东魁杨梅，配料表仅杨梅，无任何添加剂；采摘后经预冷处理，48小时内冷链直达消费者手中</span></div>
+    <div class="idea-row"><span class="idea-label">为什么是现在</span><span class="idea-text">漳州杨梅甜蜜素事件正在冲击消费者信心，618前正是建立信任差异化的最佳时机；仙居杨梅6月5日荸荠种少量上市，窗口从现在起约2-3周</span></div>
+    <div class="idea-row"><span class="idea-label">差异化锚点</span><span class="idea-text">现有杨梅电商：强调口感/个头大/礼盒颜值，但无品牌强调"无添加+全程溯源+检测报告随箱附赠"；竞品配料表普遍无标注，但消费者无法验证</span></div>
+    <div class="idea-row"><span class="idea-label">可行性初判</span><span class="idea-text">供应链难度中等——仙居有成熟杨梅供应链，可与果园定制合作，核心难点是48小时冷链包装；渠道适配度极高，小红书+抖音双平台种草，618节点加持</span></div>
+  </div>
+
+  <div class="idea-card">
+    <div class="idea-title">🌿 创意卡片②：「山姆同款逻辑·羽衣甘蓝洁净代餐粉」</div>
+    <div class="idea-row"><span class="idea-label">产品定义</span><span class="idea-text">配料表仅羽衣甘蓝（或+青汁伴侣），无增稠剂/甜味剂/色素；小规格独立包装，针对都市白领夏令代餐场景</span></div>
+    <div class="idea-row"><span class="idea-label">为什么是现在</span><span class="idea-text">山姆济南+青岛双店同日开业验证羽衣甘蓝品类爆发力；6月气温升高，代餐需求从"热食饱腹"转向"轻食清爽"，时机刚好</span></div>
+    <div class="idea-row"><span class="idea-label">差异化锚点</span><span class="idea-text">现有羽衣甘蓝粉：普遍添加了代糖/增稠剂/香精改善口感；"山姆同款洁净配方"对会员店消费人群有天然说服力，且价格可以做到山姆同类产品的80%</span></div>
+    <div class="idea-row"><span class="idea-label">可行性初判</span><span class="idea-text">供应链成熟度高——羽衣甘蓝原料国内有稳定供应（云南/山东为主），核心壁垒在配方洁净+包装设计；需在配方和溯源报告上建立护城河</span></div>
+  </div>
+</div>
+
+<!-- 六、展会速递 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-icon">🏬</span>
+    <span class="section-title">六、展会速递·渠道上新</span>
+    <span class="section-badge">近期重要</span>
+  </div>
+
+  <div class="card">
+    <span class="card-tag">🔥 正在举办</span>
+    <h3>SIAL西雅国际食品展（上海）</h3>
+    <div class="card-sub">📍 上海新国际博览中心 | 5月18-20日（今日最后一天！） | 展览面积超大，汇聚650+展商，亚洲规模最大综合食品展之一；全球食品新品、进口食品、餐饮供应链集中展示</div>
+    <div class="card-footer"><strong>与我何干：</strong>闭展前最后机会——今日若在上海，可直接前往挖掘进口食品供应链、全球特色食材；建议重点关注配料表干净的进口常温食品和东南亚风味新品</div>
+  </div>
+
+  <div class="card">
+    <span class="card-tag">📍 已结束·值得回看</span>
+    <h3>FBIF2026食品饮料创新论坛（杭州）</h3>
+    <div class="card-sub">4月27-29日举办；FBIF2026以"大势可为"为主题，涵盖乳品/零食/烘焙/饮料等多品类；AI风味研发（上海交大Umami-IP模型）、需求涟漪模型、零食"模型驱动"研发等新方法论值得重点学习</div>
+    <div class="card-footer"><strong>与我何干：</strong>论坛演讲资料通常会公开发布，建议搜索FBIF2026演讲资料包（官网/公众号），重点关注AI风味研发和全球零食趋势两个板块</div>
+  </div>
+
+  <div class="card">
+    <span class="card-tag blue">渠道上新</span>
+    <h3>山姆会员店济南+青岛双店开业新品</h3>
+    <div class="card-sub">5月15日开业；轻元素青汁、羽衣甘蓝粉引爆健康食品区；开业即现排队购买；山姆在中国已有67家门店，年销售额突破1400亿元</div>
+    <div class="card-footer"><strong>启发：</strong>山姆验证了"青汁+羽衣甘蓝"组合在北方高净值消费者的爆发力；<strong>对下厨房的启示：</strong>抖音电商版"洁净羽衣甘蓝粉"完全可以在南方主攻，避开山姆北方主场竞争</div>
+  </div>
+
+  <div class="card">
+    <span class="card-tag green">渠道上新</span>
+    <h3>北京稻香村端午新品全面上市</h3>
+    <div class="card-sub">5月18日全渠道铺货；共5款粽子礼盒+9款散售粽子+多款端午限定糕点；礼盒主打"粽香满堂"山水文创系列，线上线下全域覆盖</div>
+    <div class="card-footer"><strong>启发：</strong>端午粽子赛道已高度内卷，头部品牌全面铺货；但"纯净配料粽子"仍是空白——可考虑小规格、无添加、地方特色口味的粽子单品作为次年切入</div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  食研日推 · 下厨房品牌PM内参 · 每日9:00自动生成 · 覆盖食品行业要闻 / 爆品趋势 / 时令机会 / 跨界灵感 / 创意脑暴 / 展会渠道
+</div>
+
+</body>
+</html>
