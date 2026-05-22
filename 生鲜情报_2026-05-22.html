@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小红书生鲜电商每日作战情报 | 2026-05-22</title>
+<style>
+:root {
+  --bg: #0f0f0f;
+  --card: #1a1a1a;
+  --border: #2a2a2a;
+  --text: #e0e0e0;
+  --text2: #999;
+  --red: #ff4757;
+  --green: #2ed573;
+  --orange: #ffa502;
+  --blue: #5352ed;
+  --gold: #f0c040;
+  --accent: #ff6348;
+  --tag-bg: #252525;
+  --p0: #ff4757;
+  --p1: #ffa502;
+  --p2: #5352ed;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.7; padding: 0; }
+.header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 30px 30px; text-align: center; border-bottom: 3px solid var(--accent); position: relative; overflow: hidden; }
+.header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,99,72,0.08) 0%, transparent 60%); }
+.header h1 { font-size: 2.4em; font-weight: 900; color: #fff; position: relative; margin-bottom: 8px; }
+.header .date { font-size: 1.1em; color: var(--accent); position: relative; }
+.header .subtitle { color: var(--text2); margin-top: 6px; font-size: 0.9em; }
+.container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+/* 头条Breaking */
+.breaking { background: linear-gradient(135deg, #2d0a0a 0%, #1a0a0a 100%); border: 2px solid var(--red); border-radius: 12px; padding: 24px; margin: 20px 0; position: relative; }
+.breaking::before { content: '🔥 今日头条'; position: absolute; top: -12px; left: 20px; background: var(--red); color: #fff; padding: 2px 14px; border-radius: 4px; font-size: 0.85em; font-weight: 700; }
+.breaking h2 { font-size: 1.5em; margin-top: 8px; color: var(--red); }
+.breaking p { color: var(--text); margin-top: 8px; }
+
+/* Countdown strip */
+.countdown-strip { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+.countdown-item { flex: 1; min-width: 160px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; text-align: center; }
+.countdown-item .num { font-size: 1.8em; font-weight: 900; }
+.countdown-item .label { font-size: 0.78em; color: var(--text2); margin-top: 2px; }
+.countdown-item.urgent { border-color: var(--red); }
+.countdown-item.urgent .num { color: var(--red); }
+.countdown-item.warn { border-color: var(--orange); }
+.countdown-item.warn .num { color: var(--orange); }
+.countdown-item.ok { border-color: var(--green); }
+.countdown-item.ok .num { color: var(--green); }
+.countdown-item.info { border-color: var(--blue); }
+.countdown-item.info .num { color: var(--blue); }
+
+/* Cards */
+.section { margin: 24px 0; }
+.section-title { font-size: 1.2em; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.section-title .icon { font-size: 1.3em; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin-bottom: 14px; }
+.card h3 { font-size: 1.05em; margin-bottom: 10px; color: #fff; }
+.card p { margin-bottom: 8px; color: var(--text); font-size: 0.93em; }
+.card .source { font-size: 0.78em; color: var(--text2); margin-top: 6px; font-style: italic; }
+
+/* Tag pills */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.tag { display: inline-block; padding: 2px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 600; }
+.tag-red { background: rgba(255,71,87,0.2); color: var(--red); }
+.tag-orange { background: rgba(255,165,2,0.2); color: var(--orange); }
+.tag-green { background: rgba(46,213,115,0.2); color: var(--green); }
+.tag-blue { background: rgba(83,82,237,0.2); color: var(--blue); }
+.tag-gold { background: rgba(240,192,64,0.2); color: var(--gold); }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; font-size: 0.88em; margin: 12px 0; }
+th { text-align: left; padding: 10px 12px; background: #252525; color: var(--text2); font-weight: 600; border-bottom: 2px solid var(--border); font-size: 0.8em; text-transform: uppercase; }
+td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+tr:last-child td { border-bottom: none; }
+.price-up { color: var(--red); }
+.price-down { color: var(--green); }
+
+/* Alerts */
+.alert { padding: 14px 18px; border-radius: 8px; margin: 12px 0; font-size: 0.92em; }
+.alert-red { background: rgba(255,71,87,0.1); border-left: 3px solid var(--red); }
+.alert-orange { background: rgba(255,165,2,0.1); border-left: 3px solid var(--orange); }
+.alert-green { background: rgba(46,213,115,0.1); border-left: 3px solid var(--green); }
+.alert-blue { background: rgba(83,82,237,0.1); border-left: 3px solid var(--blue); }
+
+/* Action Items */
+.action-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; }
+.action-item .priority { font-weight: 900; font-size: 0.8em; padding: 2px 8px; border-radius: 4px; flex-shrink: 0; min-width: 32px; text-align: center; margin-top: 2px; }
+.action-item .priority.p0 { background: var(--p0); color: #fff; }
+.action-item .priority.p1 { background: var(--p1); color: #fff; }
+.action-item .priority.p2 { background: var(--p2); color: #fff; }
+.action-item .content { flex: 1; font-size: 0.92em; }
+.action-item .deadline { font-size: 0.78em; color: var(--text2); white-space: nowrap; }
+
+/* Discovery badge */
+.discovery { display: inline-block; background: linear-gradient(135deg, #f0c040, #ffa502); color: #000; padding: 2px 8px; border-radius: 4px; font-size: 0.72em; font-weight: 700; margin-right: 6px; }
+
+/* Footer */
+.footer { text-align: center; padding: 30px; color: var(--text2); font-size: 0.8em; border-top: 1px solid var(--border); margin-top: 30px; }
+.footer a { color: var(--accent); }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .header h1 { font-size: 1.5em; }
+  .container { padding: 10px; }
+  .countdown-item { min-width: 100px; }
+  .countdown-item .num { font-size: 1.3em; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🌶️ 小红书生鲜电商每日作战情报</h1>
+  <div class="date">2026年5月22日 星期五 · 09:00</div>
+  <div class="subtitle">精品生鲜赛道 · 选品官视角 · 科普选品型</div>
+</div>
+
+<div class="container">
+
+<!-- ============ BREAKING ============ -->
+<div class="breaking">
+  <h2>🔥 小红书618今天正式开打！「好货主场」全周期启动</h2>
+  <p>2026年小红书以"66周年庆"为主题，5月22日至6月18日全平台大促。今年喊出「好货主场」口号——流量、补贴、运营方法全面倾斜优质商品。好货混资补贴首次全品类开放（8~8.8折满减券，直播间当天有效）；店播三重福利（预约蓄水+开播激励+GMV阶梯）；宠粉清单平台全额9折补贴持续运转。天猫618预售昨天（5.21）已启动，跨平台比价窗口同步打开。</p>
+  <p style="font-size:0.8em;color:var(--text2);margin-top:8px;">来源：网经社5.19、广告圈5.9、人民财讯5.9</p>
+</div>
+
+<!-- ============ COUNTDOWN STRIP ============ -->
+<div class="countdown-strip">
+  <div class="countdown-item urgent">
+    <div class="num">D-Day</div>
+    <div class="label">🔥 618全周期今天启动</div>
+  </div>
+  <div class="countdown-item urgent">
+    <div class="num">15天</div>
+    <div class="label">Big Day 6.6 倒计时</div>
+  </div>
+  <div class="countdown-item urgent">
+    <div class="num">9天</div>
+    <div class="label">⚠️ AI标签5月底截止</div>
+  </div>
+  <div class="countdown-item info">
+    <div class="num">Day 2</div>
+    <div class="label">天猫618预售中</div>
+  </div>
+  <div class="countdown-item warn">
+    <div class="num">Day 3</div>
+    <div class="label">🌶️ 樟树港盛产期</div>
+  </div>
+  <div class="countdown-item info">
+    <div class="num">Day 8</div>
+    <div class="label">后免佣时代</div>
+  </div>
+</div>
+
+<!-- 二级倒计时 -->
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+  <span class="tag tag-blue">LEAP UP Day 12</span>
+  <span class="tag tag-gold">宠粉清单 Day 8</span>
+  <span class="tag tag-green">好货混资补贴 今日生效</span>
+  <span class="tag tag-orange">天猫618预售 Day 2</span>
+  <span class="tag tag-red">店播三重福利 今日启动</span>
+</div>
+
+<!-- ============ SECTION 1: 平台动态 ============ -->
+<div class="section">
+  <div class="section-title"><span class="icon">📡</span> 平台动态</div>
+
+  <div class="card">
+    <div class="tags"><span class="tag tag-red">P0 关键</span><span class="tag tag-gold">启动日</span></div>
+    <h3>🔥 618好货主场今起全周期启动（5.22-6.18）</h3>
+    <p>小红书66周年庆以「好货主场」为主题，核心资源、营销补贴与流量激励全面向好货倾斜。联合3000+宝藏直播间打造全民购物狂欢。从2023买手模式→2024主理人店播→2026好货主场，平台转化逻辑完成三连跳——"用户买到好货"成为核心。</p>
+    <p><strong>关键抓手：</strong>好货混资补贴（8~8.8折满减券首次全品类开放，直播间当天有效）+ 店播三重福利（预约蓄水量奖励 + 开播流量激励 + GMV阶梯流量）+ 宠粉清单平台全额9折。</p>
+    <p class="source">来源：网经社5.19、广告圈5.9</p>
+  </div>
+
+  <div class="card">
+    <div class="tags"><span class="tag tag-blue">策略</span></div>
+    <h3>NPL方法论 + LEAP UP精准扶好货 双轮驱动</h3>
+    <p><strong>NPL三链路：</strong>Note（笔记种草）→ People（人群资产）→ Livestream（直播转化）。食饮行业店播DGMV持续双位数增长。此模型利好精品生鲜：选品笔记建立信任→精准人群资产沉淀→店播高效转化。</p>
+    <p><strong>LEAP UP Day 12：</strong>百万免佣已终止8天，后免佣时代「选品能力=生存门槛」逻辑强化。LEAP UP精准倾斜好品质+好服务+好价格商家，精品生鲜天生匹配。</p>
+    <p class="source">来源：小红书Grow商家大会、人民财讯5.9</p>
+  </div>
+
+  <div class="card">
+    <div class="tags"><span class="tag tag-orange">跨平台</span></div>
+    <h3>全平台618格局：补贴总规模突破800亿</h3>
+    <p>天猫618预售5.21启动（昨天），京东已开战，抖音5.15抢先购进行中，拼多多持续。重庆618电商嘉年华释放超3亿元消费红利，8大平台联合参与。全平台总补贴规模突破800亿（同比+35%），跨平台价格竞争激烈，但也意味着用户消费心智全面打开——精品赛道的"不拼价格、拼选品"差异化反而更突出。</p>
+    <p class="source">来源：重庆日报5.8、综合报道</p>
+  </div>
+</div>
+
+<!-- ============ SECTION 2: 品类风向标 ============ -->
+<div class="section">
+  <div class="section-title"><span class="icon">🌿</span> 品类风向标 · 当季精品</div>
+
+  <table>
+    <tr>
+      <th>品类</th>
+      <th>标杆产地/品牌</th>
+      <th>价格带</th>
+      <th>状态</th>
+      <th>五维匹配</th>
+      <th>618机会度</th>
+    </tr>
+    <tr>
+      <td>🌶️ 樟树港辣椒</td>
+      <td>湖南湘阴（核心产区<1km²）</td>
+      <td>288元/斤（头茬）</td>
+      <td>🔥 盛产期Day 3</td>
+      <td>⭐⭐⭐⭐⭐</td>
+      <td><span class="tag tag-red">极高</span></td>
+    </tr>
+    <tr>
+      <td>🍑 阳山水蜜桃</td>
+      <td>江苏无锡（地理标志）</td>
+      <td>88-298元/礼盒</td>
+      <td>🆕 5月下旬上市</td>
+      <td>⭐⭐⭐⭐⭐</td>
+      <td><span class="tag tag-red">极高</span></td>
+    </tr>
+    <tr>
+      <td>🍒 东魁杨梅</td>
+      <td>浙江仙居（地理标志）</td>
+      <td>138-300元/礼盒</td>
+      <td>⏳ 6月中旬上市</td>
+      <td>⭐⭐⭐⭐</td>
+      <td><span class="tag tag-orange">中高</span></td>
+    </tr>
+    <tr>
+      <td>🍈 桂味荔枝</td>
+      <td>广东增城/海南</td>
+      <td>80-200元/礼盒</td>
+      <td>⏳ 5月底-6月</td>
+      <td>⭐⭐⭐⭐</td>
+      <td><span class="tag tag-orange">中高</span></td>
+    </tr>
+    <tr>
+      <td>🥭 猫山王榴莲</td>
+      <td>马来西亚D197</td>
+      <td>180-400元/颗</td>
+      <td>📉 放价走货中</td>
+      <td>⭐⭐⭐⭐</td>
+      <td><span class="tag tag-blue">中</span></td>
+    </tr>
+    <tr>
+      <td>🐟 大连海参</td>
+      <td>辽宁大连（GI+工信部名录）</td>
+      <td>参王拍卖价待查</td>
+      <td>🆕 春采节结束</td>
+      <td>⭐⭐⭐⭐⭐</td>
+      <td><span class="tag tag-blue">待评估</span></td>
+    </tr>
+  </table>
+
+  <div class="card">
+    <div class="tags"><span class="tag tag-red">P0 选品</span><span class="tag tag-green">盛产期</span></div>
+    <h3>🌶️ 樟树港辣椒：盛产期Day 3 · 155倍价差科普窗口</h3>
+    <p>头茬288元/斤批量上市中，核心产区不足1km²，200年种植历史，21道工序，国家地理标志产品。"辣椒界爱马仕"的稀缺叙事在618首日有极高内容爆发力。</p>
+    <p><strong>618策略：</strong>"樟树港288元 vs 普通辣椒2元，155倍价差背后的选品逻辑"——科普对比笔记挂车转化。配合618好货主场定位，讲透"为什么贵"。</p>
+    <p class="source">来源：腾讯新闻4.27、知乎、记忆库</p>
+  </div>
+
+  <div class="card">
+    <div class="tags"><span class="tag tag-red">P0 选品</span><span class="tag tag-green">新上市</span></div>
+    <h3>🍑 阳山水蜜桃：5月下旬上市 · 618首播最佳选品</h3>
+    <p>江苏无锡阳山地理标志产品，128-298元/礼盒精品带。88元尝鲜装预售中。"世界上最好吃的水蜜桃"口碑加持。正好撞上618全周期启动——新品+618双热点叠加，内容势能最大化。</p>
+    <p><strong>618策略：</strong>首发科普笔记（阳山水蜜桃为什么值这个价）→ 618店播首秀 → 挂车转化。"尝鲜装88元"作为入门款拉新，"礼盒装298元"作为利润款。</p>
+    <p class="source">来源：记忆库、水蜜桃网</p>
+  </div>
+
+  <div class="card">
+    <div class="tags"><span class="tag tag-orange">P1 关注</span><span class="tag tag-red">信任危机</span></div>
+    <h3>🍒 杨梅赛道：信任重建窗口 · 品类教育真空期</h3>
+    <p>云南高山杨梅在售（抖音5.17），仙居东魁6月中旬上市。杨梅品类信任危机持续——"毒水"笔记扩散未止。品类教育真空期仍在扩大：谁先建立信任谁就占领品类心智。</p>
+    <p><strong>618策略：</strong>"杨梅挑选避坑指南"科普笔记——不做销售做教育，先建立信任。618后半段（6月中旬）仙居东魁上市时挂车转化。</p>
+    <p class="source">来源：抖音5.17、记忆库（5.17-5.21杨梅危机追踪）</p>
+  </div>
+
+  <div class="card">
+    <div class="tags"><span class="tag tag-blue">P2 跟踪</span></div>
+    <h3>🥭 榴莲 + 🍈 荔枝：放价走货 · 谨慎选品</h3>
+    <p>榴莲全国放价走货加速，越南金枕跌破20元/斤，价格体系下移。荔枝妃子笑进入旺季，价格持续走低。两品类均处于"量升价跌"通道——精品选品策略下谨慎入场，等待精品品种（猫山王、桂味）价格反季节窗口。</p>
+    <p class="source">来源：记忆库（5.14-5.18榴莲/荔枝价格跟踪）</p>
+  </div>
+</div>
+
+<!-- ============ SECTION 3: 新品类发现 ============ -->
+<div class="section">
+  <div class="section-title"><span class="icon">🔍</span> 新品类发现</div>
+
+  <div class="card">
+    <div class="tags"><span class="tag tag-gold">已跟踪</span><span class="tag tag-green">5/5维度</span></div>
+    <h3>🐓 赤水乌骨鸡：12900元拍卖 · 溢价天花板参考</h3>
+    <p>贵州赤水双地标GI + 260年历史 + 石斛生态养殖 + ICGIA国际推荐。香港拍卖会12900元创纪录。五维全匹配（地标✅ 稀缺✅ 溢价✅ 颜值✅ 故事✅），但属于非日常零售品类。重点学习其溢价天花板逻辑：双地标+文化故事+药食同源=超高端定价。</p>
+    <p class="source">来源：网易5.6、ICGIA报道</p>
+  </div>
+
+  <div class="card">
+    <div class="tags"><span class="tag tag-blue">P2 待验证</span></div>
+    <h3>🦌 生鲜鹿肉（吉林长白山）：SIAL参展 · 溢价待查</h3>
+    <p>吉林长白山GI认证✅ + 小众稀缺✅ + 红宝石色颜值✅，溢价维度待验证❓，故事维度待挖掘❓。SIAL 2026参展商吉林纽鹿进出口。需要确认零售价位和供应链稳定性。</p>
+    <p class="source">来源：SIAL 2026参展商（记忆库5.19）</p>
+  </div>
+
+  <div class="alert alert-blue">
+    <strong>📌 今日新发现：</strong>本日搜索未发现符合五维标准（≥3维度，含溢价+地标/稀缺至少1项）的新品类。当季品类池锚点（樟树港/阳山水蜜桃/东魁杨梅/桂味荔枝/猫山王）仍然是最优618组合。
+  </div>
+</div>
+
+<!-- ============ SECTION 4: 竞品扫描 ============ -->
+<div class="section">
+  <div class="section-title"><span class="icon">🎯</span> 竞品扫描</div>
+
+  <div class="card">
+    <h3>618竞争格局：三股力量 + 科普选品型唯一差异化</h3>
+    <p><strong>力量① 品牌旗舰店型（一颗大番茄等）：</strong>大预算、全渠道、反漏斗模型。618期间大概率加大投放，挤压自然流量。但他们卖的是品牌农产品，不是地理标志精品——品类错位竞争。</p>
+    <p><strong>力量② 产地直发型（阳雀湖等产地商家）：</strong>内容同质化严重——"正宗产地"千篇一律。不帮用户做决策，缺乏选品视角。618期间大概率价格战内卷。</p>
+    <p><strong>力量③ 精品溢价型（科普选品型 = 我们）：</strong>唯一一个"帮用户选"的店铺号。竞品说"我的好"，你说"我帮你选对的"。618好货主场最匹配的定位——平台倾斜好货，你帮用户挑好货。</p>
+    <p class="source">来源：记忆库分析、竞品持续跟踪</p>
+  </div>
+
+  <div class="alert alert-green">
+    <strong>✅ 差异化持续确认：</strong>618全周期今天启动，"好货主场"主题最好地验证了科普选品型定位。你的核心价值不是卖货，是帮用户在当前季节从众多商品中选出真正值得买的好货——这在618信息过载期是稀缺能力。
+  </div>
+</div>
+
+<!-- ============ SECTION 5: AI工具 ============ -->
+<div class="section">
+  <div class="section-title"><span class="icon">🤖</span> AI工具与合规</div>
+
+  <div class="card">
+    <h3>AI电商618首战：三条路线 + 五件套工具链</h3>
+    <p><strong>路线① 千问×淘宝（1.66亿月活）：</strong>AI搜索+推荐，助力消费者决策。5.11千问正式入淘。</p>
+    <p><strong>路线② 豆包闭环（3.45亿月活）：</strong>内容生成+电商转化闭环，字节系全链路。</p>
+    <p><strong>路线③ 小红书种草信任：</strong>AI辅助内容创作+精准投放，Reditor+火兔+图小玉+Canva AI 2.0+数字人五件套。</p>
+    <p><strong>⚠️ AI标签强制标注5月底仅剩9天！</strong>中央网信办5.12新规——短视频6类标签强制标注，5月底前完成。所有AI生成/辅助内容必须标注。</p>
+    <p class="source">来源：钛媒体5.12、艾瑞4.22、记忆库</p>
+  </div>
+</div>
+
+<!-- ============ SECTION 6: 今日行动清单 ============ -->
+<div class="section">
+  <div class="section-title"><span class="icon">✅</span> 今日行动清单</div>
+
+  <div class="action-item">
+    <div class="priority p0">P0</div>
+    <div class="content"><strong>618今天正式开打！所有选品/内容/店播今日到位</strong><br>确认3篇商品笔记 + 1条视频 + 店播脚本全部就绪。好货混资补贴今日生效，立即确认资质和报名状态。</div>
+    <div class="deadline">⏰ 今天</div>
+  </div>
+  <div class="action-item">
+    <div class="priority p0">P0</div>
+    <div class="content"><strong>樟树港科普对比笔记发布（盛产期Day 3 + 618首日）</strong><br>"288元/斤 vs 2元/斤，155倍价差背后的选品逻辑"——科普+挂车双驱动。618首日流量红利窗口。</div>
+    <div class="deadline">⏰ 今天</div>
+  </div>
+  <div class="action-item">
+    <div class="priority p0">P0</div>
+    <div class="content"><strong>阳山水蜜桃618首播选品确认 + 科普笔记</strong><br>5月下旬正好上市，88元尝鲜装→298元礼盒产品矩阵。首发科普笔记挂车，配合618全周期首日流量。</div>
+    <div class="deadline">⏰ 今天</div>
+  </div>
+  <div class="action-item">
+    <div class="priority p1">P1</div>
+    <div class="content"><strong>杨梅信任重建科普笔记（品类教育真空期）</strong><br>"杨梅挑选避坑指南"——618前半段做教育不打销售，6月中旬仙居东魁上市时转化。</div>
+    <div class="deadline">⏰ 本周内</div>
+  </div>
+  <div class="action-item">
+    <div class="priority p1">P1</div>
+    <div class="content"><strong>天猫618跨平台比价（预售Day 2）</strong><br>樟树港辣椒+阳山水蜜桃+杨梅三大品类在天猫/京东/拼多多的价格和促销策略，确认选品定价定位。</div>
+    <div class="deadline">⏰ 本周末</div>
+  </div>
+  <div class="action-item">
+    <div class="priority p2">P2</div>
+    <div class="content"><strong>AI标签合规准备（仅剩9天）</strong><br>确认所有存量内容已标注AI辅助创作标签。5月底截止前完成全部合规检查。</div>
+    <div class="deadline">⏰ 5月31日前</div>
+  </div>
+  <div class="action-item">
+    <div class="priority p2">P2</div>
+    <div class="content"><strong>荔枝品种科普蓄水 / 榴莲放价跟踪 / 鹿肉溢价验证</strong><br>为618后半段和6月备选品类做准备。</div>
+    <div class="deadline">⏰ 持续</div>
+  </div>
+</div>
+
+<!-- ============ SECTION 7: 风险提示 ============ -->
+<div class="section">
+  <div class="section-title"><span class="icon">⚠️</span> 风险提示</div>
+
+  <div class="alert alert-orange">
+    <strong>618首日流量竞争激烈：</strong>品牌商家+产地商家集中发力，自然流量被挤压。店播是差异化突破口——科普选品的店播比纯卖货的店播有更高停留时长和转化率。利用好货混资补贴的8~8.8折券+店播三重福利。
+  </div>
+  <div class="alert alert-orange">
+    <strong>杨梅信任危机未消 [个别案例/品类级影响]：</strong>"毒水"事件持续扩散，可能影响6月仙居东魁上市。策略：先教育不卖货，建立选品官信任后再转化。<br><span style="font-size:0.78em;color:var(--text2)">归因：个别传播事件→品类联想扩散 [需持续监控官方回应]</span>
+  </div>
+  <div class="alert alert-blue">
+    <strong>AI标签5月底仅剩9天：</strong>未标注内容可能被限流/下架。P2优先级但硬性deadline不可忽视。
+  </div>
+</div>
+
+<!-- ============ SECTION 8: 信源清单 ============ -->
+<div class="section">
+  <div class="section-title"><span class="icon">📚</span> 信源清单</div>
+  <div style="display:flex;flex-wrap:wrap;gap:6px;">
+    <span class="tag tag-blue">网经社5.19</span>
+    <span class="tag tag-blue">广告圈5.9</span>
+    <span class="tag tag-blue">人民财讯5.9</span>
+    <span class="tag tag-blue">重庆日报5.8</span>
+    <span class="tag tag-blue">腾讯新闻4.27</span>
+    <span class="tag tag-blue">网易5.6（ICGIA）</span>
+    <span class="tag tag-blue">抖音5.17</span>
+    <span class="tag tag-blue">钛媒体5.12</span>
+    <span class="tag tag-blue">艾瑞4.22</span>
+    <span class="tag tag-blue">记忆库（长期跟踪）</span>
+    <span class="tag tag-orange">⚠️ 小红书MCP未登录</span>
+  </div>
+  <p style="font-size:0.8em;color:var(--text2);margin-top:8px;">所有数据标注来源，符合信息解读纪律5条。品类数据优先精品/高端/有机前缀搜索，未使用惠农网/一亩田等批发价数据源。</p>
+</div>
+
+</div><!-- /container -->
+
+<div class="footer">
+  <p>📅 每日 09:00 自动生成 | 🔗 <a href="https://github.com/mryyyyyy/daily-intelligence">GitHub 仓库</a></p>
+  <p style="margin-top:4px;">科普选品型 · 精品溢价赛道 · 帮用户选对好货</p>
+  <p style="margin-top:8px;font-size:0.75em;">© 2026 小红书生鲜电商每日作战情报 | 仅供内部参考</p>
+</div>
+
+</body>
+</html>
