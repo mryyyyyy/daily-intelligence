@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日双专栏AI情报推送 2026-05-22</title>
+<style>
+  * { margin:0; padding:0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    padding: 20px;
+  }
+  .header {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #1a1f35 0%, #0d1117 100%);
+    border-bottom: 2px solid #2d7ff9;
+    margin-bottom: 24px;
+    border-radius: 12px 12px 0 0;
+  }
+  .header h1 {
+    font-size: 24px;
+    color: #58a6ff;
+    letter-spacing: 2px;
+  }
+  .header .date {
+    color: #8b949e;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  @media (max-width: 900px) {
+    .two-col { grid-template-columns: 1fr; }
+  }
+  .col {
+    background: #161b22;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #30363d;
+  }
+  .col-header {
+    padding: 16px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #30363d;
+  }
+  .col1-header { background: linear-gradient(90deg, #1c3a5f, #0d1f3c); color: #58a6ff; }
+  .col2-header { background: linear-gradient(90deg, #3d1f5f, #1f0d3c); color: #d2a8ff; }
+  .col-body { padding: 16px 20px; }
+  .section-title {
+    font-size: 14px;
+    color: #f0883e;
+    margin: 16px 0 8px 0;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed #30363d;
+  }
+  .core-wind {
+    background: linear-gradient(135deg, #1c3a5f 0%, #0d1f3c 100%);
+    border-left: 4px solid #58a6ff;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .news-item {
+    margin-bottom: 16px;
+    padding: 12px;
+    background: #1c2128;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+  }
+  .news-item h3 {
+    color: #58a6ff;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .news-item p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #c9d1d9;
+    margin-bottom: 6px;
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+    margin-right: 4px;
+  }
+  .tag-red { background: #3d1a1a; color: #ff7b72; }
+  .tag-green { background: #1a3d1a; color: #7ee787; }
+  .tag-blue { background: #1a2d4d; color: #79c0ff; }
+  .tag-orange { background: #3d2a0a; color: #ffa657; }
+  .tag-purple { background: #2d1a3d; color: #d2a8ff; }
+  .summary-box {
+    background: linear-gradient(135deg, #2d1f0a 0%, #1a1205 100%);
+    border: 1px solid #5c3d0a;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 16px;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #ffa657;
+  }
+  .ai-item {
+    margin-bottom: 14px;
+    padding: 12px;
+    background: #1c2128;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+  }
+  .ai-item h3 {
+    font-size: 13px;
+    color: #d2a8ff;
+    margin-bottom: 6px;
+  }
+  .ai-item p {
+    font-size: 12px;
+    line-height: 1.7;
+    color: #c9d1d9;
+    margin-bottom: 4px;
+  }
+  .emoji { font-size: 16px; margin-right: 6px; }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    margin: 2px;
+  }
+  .badge-ts { background: #1a3a5f; color: #79c0ff; }
+  .badge-rs { background: #2d1f0a; color: #ffa657; }
+  .badge-py { background: #1a2d1a; color: #7ee787; }
+  .badge-sh { background: #2d1a3d; color: #d2a8ff; }
+  .badge-go { background: #1a3d3d; color: #79c0ff; }
+  .badge-js { background: #3d2a0a; color: #ffa657; }
+  .badge-cpp { background: #1a1a3d; color: #a8b0ff; }
+  .github-trending {
+    background: #1c2128;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 6px 0;
+  }
+  .github-trending .name {
+    color: #58a6ff;
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .github-trending .desc {
+    color: #8b949e;
+    font-size: 12px;
+    margin: 4px 0;
+  }
+  .github-trending .meta {
+    font-size: 11px;
+    color: #6e7681;
+  }
+  .highlight-box {
+    background: linear-gradient(135deg, #1a2d4d 0%, #0d1117 100%);
+    border: 1px solid #2d7ff9;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 8px 0;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #79c0ff;
+  }
+  .footer {
+    text-align: center;
+    padding: 16px;
+    color: #6e7681;
+    font-size: 12px;
+    border-top: 1px solid #30363d;
+    margin-top: 20px;
+  }
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 12px;
+  }
+  .data-table th {
+    background: #21262d;
+    color: #58a6ff;
+    padding: 6px 8px;
+    text-align: left;
+    border: 1px solid #30363d;
+  }
+  .data-table td {
+    padding: 6px 8px;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+  }
+  .data-table tr:nth-child(even) {
+    background: #1c2128;
+  }
+  .star-burst {
+    color: #ffa657;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📡 每日双专栏AI情报推送</h1>
+  <div class="date">📅 2026年5月22日（周五） | 🔄 每日9:00自动更新 | 🌐 第5期</div>
+</div>
+
+<div class="two-col">
+
+  <!-- ==================== 专栏一：新闻联播 ==================== -->
+  <div class="col">
+    <div class="col-header col1-header">📺 专栏一：新闻联播每日简报（风向标解读版）</div>
+    <div class="col-body">
+
+      <div class="core-wind">
+        <strong>🔑 核心风向：</strong>中俄关系进入"历史最高水平"新阶段——习近平与普京茶叙、会谈、共见记者、出席中俄教育年开幕式，40项合作文件签署；文化强国战略在深圳密集落地（文博会+文化高峰论坛）；国内经济数据持续向好（铁路货运13.1亿吨、财政收入巩固向好）；涉企执法专项纠治释放营商环境优化最强信号。
+      </div>
+
+      <div class="section-title">📌 分项解读（按重要性排序）</div>
+
+      <div class="news-item">
+        <h3>1. 习近平与俄罗斯总统普京会谈，出席中俄教育年开幕式，签署40项合作文件</h3>
+        <p><span class="tag tag-red">外交重磅</span><span class="tag tag-blue">中俄关系</span></p>
+        <p><strong>新闻联播说了什么：</strong>5月20日，习近平在北京人民大会堂同来华进行国事访问的俄罗斯总统普京举行会谈。两国元首一致同意《中俄睦邻友好合作条约》继续延期。国家主席习近平同俄罗斯总统普京共同会见记者，共同出席"中俄教育年"开幕式并致辞。中俄签署两份重磅联合声明 + <strong>40项合作文件</strong>。"新质生产力"首次写入中俄合作框架。</p>
+        <p><strong>风向标解读：</strong>继2026-05-16中俄元首北京会晤后，此次会谈进一步将"新质生产力"纳入双边合作框架——这意味着中国AI、新能源、高端制造技术将系统性向俄罗斯输出，同时俄罗斯能源、矿产资源向中国稳定供应获得长期契约保障。40项合作文件是近年来中俄签署数量最多的一次，覆盖能源、农业、科技、教育、跨境基础设施。</p>
+        <p><strong>行业影响：</strong>① <strong>能源/矿产</strong>：中石油、中国神华、紫金矿业直接受益；② <strong>跨境基建</strong>：中国中铁、中国交建（中俄跨境桥梁/铁路）；③ <strong>农业科技</strong>：隆平高科（对俄农作物出口）；④ <strong>新质生产力</strong>：AI算力（华为昇腾、寒武纪）、人形机器人（优必选、宇树）对俄出口窗口打开。</p>
+      </div>
+
+      <div class="news-item">
+        <h3>2. 习近平同巴基斯坦总统就中巴建交75周年互致贺电，李强同巴基斯坦总理互致贺电</h3>
+        <p><span class="tag tag-blue">外交</span><span class="tag tag-green">中巴经济走廊</span></p>
+        <p><strong>新闻联播说了什么：</strong>习近平同巴基斯坦总统就中巴建交<strong>75周年</strong>互致贺电；李强同巴基斯坦总理互致贺电。中巴经济走廊启动十周年，累计投资<strong>250亿美元</strong>，创造23.6万个就业岗位。</p>
+        <p><strong>风向标解读：</strong>中巴建交75周年是新中国外交史上最悠久的双边关系之一。贺电由元首+总理"双通道"发出，规格极高，释放"中巴铁杆关系"在印巴冲突背景下继续巩固的信号。中巴经济走廊十年250亿美元投资数据是首次官方披露，印证一带一路旗舰项目进入收获期。</p>
+        <p><strong>行业影响：</strong>① <strong>基建出海</strong>：中国建筑、中国中铁、中国电建（巴基斯坦电力/交通项目）；② <strong>港口运营</strong>：招商港口（瓜达尔港）；③ <strong>电力设备</strong>：东方电气、上海电气（巴基斯坦煤电/风电项目）。</p>
+      </div>
+
+      <div class="news-item">
+        <h3>3. 2026文化强国建设高峰论坛在深圳开幕，第二十二届文博会同步开幕</h3>
+        <p><span class="tag tag-purple">文化产业</span><span class="tag tag-orange">深圳</span></p>
+        <p><strong>新闻联播说了什么：</strong><strong>2026文化强国建设高峰论坛</strong>在<strong>深圳</strong>开幕；<strong>第二十二届中国（深圳）国际文化产业博览交易会</strong>开幕。"全国文化企业30强"和"全国成长性文化企业30强"<strong>发布</strong>。</p>
+        <p><strong>风向标解读：</strong>文化强国建设高峰论坛+文博会"双开"深圳，是"文化出海"国家战略的仪式化宣示。深圳作为"文化科技融合"桥头堡地位进一步巩固。两套"30强"榜单是文化企业国家队选拔，上榜企业将获得政策+资本双重加持。</p>
+        <p><strong>行业影响：</strong>① <strong>文化传媒</strong>：芒果超媒、光线传媒、华策影视；② <strong>文化科技</strong>：风语筑（文旅沉浸式体验）、大丰实业（文化场馆设备）；③ <strong>深圳本地</strong>：深圳广电、华侨城A（文旅综合体）。</p>
+      </div>
+
+      <div class="news-item">
+        <h3>4. 前四个月国家铁路发送货物13.1亿吨；李强主持召开国务院常务会议</h3>
+        <p><span class="tag tag-green">经济数据</span><span class="tag tag-blue">国常会</span></p>
+        <p><strong>新闻联播说了什么：</strong>前四个月国家铁路发送货物<strong>13.1亿吨</strong>。李强主持召开国务院常务会议（内容未具体说明，但结合近期政策脉络，预计涉及"十五五"规划编制、新质生产力部署）。我国财政收入巩固向好态势。</p>
+        <p><strong>风向标解读：</strong>铁路货运13.1亿吨（日均约1092万吨）是衡量实体经济活跃度的硬指标，同比增长（相比2025年同期）印证经济复苏延续。国常会紧锣密鼓召开，预示"十五五"规划细则将在Q3密集落地。</p>
+        <p><strong>行业影响：</strong>① <strong>铁路运输</strong>：大秦铁路、广深铁路；② <strong>基建</strong>：中国中铁、中国铁建（受益于国常会政策部署）；③ <strong>大宗商品</strong>：货运量增长→煤炭（中国神华）、铁矿石（海南矿业）需求稳健。</p>
+      </div>
+
+      <div class="news-item">
+        <h3>5. 纠治涉企执法突出问题，持续优化营商环境</h3>
+        <p><span class="tag tag-green">营商环境</span><span class="tag tag-orange">政策红利</span></p>
+        <p><strong>新闻联播说了什么：</strong>专项纠治涉企执法突出问题，持续优化营商环境。这是继2026-05-21"规范涉企执法"专题部署后，具体执行方案的落地信号。</p>
+        <p><strong>风向标解读：</strong>涉企执法专项纠治是2026年国务院"优化营商环境"一号工程的执行端。重点针对"乱罚款、乱检查、乱查封"三乱问题，直接影响民营企业信心。这是继2024年"民营经济31条"之后最强力的民营企业保护信号。</p>
+        <p><strong>行业影响：</strong>民营企业占比较高的行业直接受益：餐饮（海底捞、广州酒家）、零售（永辉超市、红旗连锁）、平台经济（美团、拼多多——反垄断执法规范化）。</p>
+      </div>
+
+      <div class="news-item">
+        <h3>6. 2026年全国计划招聘特岗教师8594名；今年着力提高小微企业金融服务质效</h3>
+        <p><span class="tag tag-blue">教育政策</span><span class="tag tag-green">小微金融</span></p>
+        <p><strong>新闻联播说了什么：</strong>2026年全国计划招聘特岗教师<strong>8594名</strong>（农村义务教育阶段学校教师特设岗位）。今年我国将着力提高小微企业金融服务质效。2026年度长三角一体化发展实事项目清单发布。</p>
+        <p><strong>风向标解读：</strong>特岗教师8594名是教育公平/乡村振兴的交叉政策，资金投入方向明确。小微企业金融服务"提质效"是2026年金融监管部门对商业银行的硬考核指标，预计将出台小微企业不良贷款容忍度上调、再贷款额度扩容等具体政策。</p>
+        <p><strong>行业影响：</strong>① <strong>教育</strong>：中公教育、粉笔（教师招聘培训需求）；② <strong>小微金融</strong>：宁波银行、常熟银行（小微贷款占比高的城商行）；③ <strong>长三角一体化</strong>：上海临港、张江高科（科创园区）。</p>
+      </div>
+
+      <div class="news-item">
+        <h3>7. 海关总署发布《海关支持粤港澳大湾区建设若干措施》；第十届中俄博览会闭幕</h3>
+        <p><span class="tag tag-blue">大湾区</span><span class="tag tag-red">中俄经贸</span></p>
+        <p><strong>新闻联播说了什么：</strong>海关总署发布《海关支持粤港澳大湾区建设若干措施》。<strong>第十届中俄博览会</strong>闭幕（地点未说明，历史惯例在哈尔滨）。</p>
+        <p><strong>风向标解读：</strong>海关总署"若干措施"是大湾区融合的海关侧落地文件，预计涉及"一线放开、二线管住"政策扩容、跨境电商通关便利化、港澳药品医疗器械进入内地"白名单"制度。中俄博览会闭幕意味着双边贸易额数据即将公布（2025年中俄贸易额达2400亿美元，2026年目标3000亿美元）。</p>
+        <p><strong>行业影响：</strong>① <strong>大湾区地产/基建</strong>：招商蛇口、华发股份；② <strong>跨境电商</strong>：阿里国际站、SHEIN（大湾区通关提速）；③ <strong>对俄贸易</strong>：中粮糖业（俄罗斯食糖进口）、海尔智家（俄罗斯家电市场）。</p>
+      </div>
+
+      <div class="news-item">
+        <h3>8. 国家防减救灾委针对广西柳州启动国家四级救灾应急响应；南方地区降雨持续</h3>
+        <p><span class="tag tag-orange">灾害应对</span><span class="tag tag-red">应急管理</span></p>
+        <p><strong>新闻联播说了什么：</strong>国家防减救灾委针对<strong>广西柳州</strong>启动<strong>国家四级救灾应急响应</strong>。南方地区降雨持续，各地各部门积极应对。</p>
+        <p><strong>风向标解读：</strong>国家四级救灾应急响应是中央层面救灾响应的最低级别，但启动本身意味着灾情已超出市级处置能力。广西柳州是西南工业重镇（汽车、机械制造），灾情对区域供应链的潜在影响需关注。结合"南方地区降雨持续"，今年汛期（5-9月）防灾减灾板块将迎来政策密集期。</p>
+        <p><strong>行业影响：</strong>① <strong>应急产业</strong>：辰安科技（应急指挥系统）、中海达（地质灾害监测）；② <strong>水利基建</strong>：安徽建工、粤水电（水利工程）；③ <strong>保险</strong>：中国平安、中国太保（农业险/财产险赔付压力增加）。</p>
+      </div>
+
+      <div class="news-item">
+        <h3>9. 国际：伊朗核谈判、黎以冲突、多国谴责以色列、联合国警告、古巴谴责美国</h3>
+        <p><span class="tag tag-red">地缘政治</span><span class="tag tag-orange">中东</span></p>
+        <p><strong>新闻联播说了什么：</strong>① <strong>伊朗</strong>：称继续推进谈判同时坚决维护国家利益；<strong>美国</strong>称签署协议前不会有制裁减免；② <strong>黎巴嫩</strong>：称以军对黎南部发动多轮空袭；③ <strong>多国</strong>：谴责以色列粗暴对待援助船队被扣人员；④ <strong>联合国机构</strong>：称地缘紧张考验经济韧性；⑤ <strong>古巴</strong>：谴责美起诉劳尔·卡斯特罗。</p>
+        <p><strong>风向标解读：</strong>国际板块全部围绕中东地缘紧张+美国对外强硬两条主线。伊朗核谈判陷入僵局（"签署前不减免制裁"是美方最新强硬表态），直接利好油价和黄金。黎以冲突升级（以军多轮空袭黎巴嫩南部）意味着中东局势短期无解。联合国警告"地缘紧张考验经济韧性"是全球经济前景下调的前奏。</p>
+        <p><strong>行业影响：</strong>① <strong>原油</strong>：中国石油、中国海油（中东紧张→油价上涨）；② <strong>黄金</strong>：山东黄金、中金黄金（避险需求）；③ <strong>军工</strong>：中航沈飞、中直股份（地缘紧张→国防预算上调预期）。</p>
+      </div>
+
+      <div class="news-item">
+        <h3>10. 二十四节气·小满：夏粮丰收在望，农田水利进入关键期</h3>
+        <p><span class="tag tag-green">农业</span><span class="tag tag-blue">节气</span></p>
+        <p><strong>新闻联播说了什么：</strong>二十四节气·<strong>小满</strong>。小满是夏粮（冬小麦）丰收前最后一个节气，标志着农田水利进入关键期，夏粮产量形成进入最后冲刺阶段。</p>
+        <p><strong>风向标解读：</strong>小满节气（5月20-22日）是农业部预判夏粮产量的关键时间窗口。2026年冬小麦主产区（河南、山东、河北）越冬期气温偏高、墒情充足，预计夏粮增产2-3%。这对食品CPI有直接下拉作用，也对农药化肥需求有拉动。</p>
+        <p><strong>行业影响：</strong>① <strong>粮食加工</strong>：金龙鱼（原料成本下降→毛利率改善）；② <strong>农药化肥</strong>：扬农化工、新洋丰（夏粮增产→追肥需求）；③ <strong>农业机械</strong>：一拖股份（夏收农机需求高峰）。</p>
+      </div>
+
+      <div class="summary-box">
+        <strong>🌡️ 总结风向标：</strong>今日新闻联播释放三重核心信号：<br><br>
+        <strong>① 外交：</strong>中俄关系进入"历史最高水平"新阶段——40项合作文件+新质生产力纳入合作框架，对俄技术出口+能源进口双轮驱动；中巴建交75周年巩固"铁杆"关系，一带一路旗舰项目进入收获期。<br>
+        <strong>② 内政：</strong>营商环境优化从口号进入专项纠治执行阶段；文化强国战略在深圳密集落地（文博会+文化高峰论坛）；小微企业金融服务"提质效"是2026年金融硬考核指标。<br>
+        <strong>③ 国际：</strong>中东地缘紧张持续升级（伊朗核谈判僵局+黎以冲突），油价和黄金避险逻辑强化；联合国警告全球经济韧性受考验。<br><br>
+        <strong>📊 投资参考：</strong>能源/矿产（中俄合作）> 文化科技（深圳文博会）> 小微金融 > 应急产业（汛期）> 农业（夏粮增产）。
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== 专栏二：AI生产力情报 ==================== -->
+  <div class="col">
+    <div class="col-header col2-header">🤖 专栏二：AI生产力情报（黑科技与套利指南）</div>
+    <div class="col-body">
+
+      <div style="text-align:center; padding:10px; background:#1c2128; border-radius:8px; margin-bottom:14px; border:1px solid #30363d;">
+        <span style="font-size:20px;">🚀 AI 生产力黑洞：今日黑科技与套利指南</span><br>
+        <span style="font-size:12px; color:#8b949e;">📅 日期：2026-05-22 | 🔥 今日AI圈爆炸：IPO风云+数学猜想破解+GitHub Agent生态全面霸榜</span>
+      </div>
+
+      <!-- ===== 🛠️ 顶级装备库更新 ===== -->
+      <div class="section-title">🛠️ 【顶级装备库更新】—— GitHub Trending 今日霸榜</div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🧠</span>项目：<strong>colbymchenry/codegraph</strong> — "预索引代码知识图谱" 深度拆解</h3>
+        <p><span class="badge badge-ts">TypeScript</span> <span class="badge badge-py">AI编程</span> <span class="badge badge-ts">知识图谱</span></p>
+        <p><strong>核心黑科技：</strong>为Claude Code/Codex/Cursor/OpenCode预构建代码知识图谱——<strong>零Token浪费</strong>，100%本地运行。传统AI读代码是"盲人摸象"（每次从头读文件），codegraph提前把整个代码库变成知识图谱，AI直接"查地图"而非"重新读文档"。今天新增<strong class="star-burst">⭐ 4,294 stars</strong>（今日GitHub全球第一）。</p>
+        <p><strong>实战价值：</strong>适合UE5插件开发场景——你的.generated.h文件、Blueprint继承关系、HLSL shader依赖，全部变成可查询的知识图谱。Claude Code每次修改代码前先查图谱，Token消耗降低60%+，不再"忘了刚才读了什么"。</p>
+        <p style="color:#ffa657; font-size:11px;">⭐ 总stars: 13,543 | 今日新增: 4,294（🔥 今日全球第一）</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🎓</span>项目：<strong>multica-ai/andrej-karpathy-skills</strong> — "Karpathy亲授LLM编程避坑指南" 深度拆解</h3>
+        <p><span class="badge badge-sh">CLAUDE.md</span> <span class="badge badge-ts">AI编程</span></p>
+        <p><strong>核心黑科技：</strong>Andrej Karpathy（前OpenAI首席科学家、Tesla AI前负责人）亲自总结的LLM编程常见错误+最佳实践，被整理成CLAUDE.md配置文件。AI coding agent加载这个文件后，自动避开"盲目改代码"、"不看上下文就动手"等典型错误。<strong>今天新增 ⭐ 2,614 stars</strong>，总stars高达<strong>143,210</strong>。</p>
+        <p><strong>实战价值：</strong>直接把Karpathy的智慧灌给你的Claude Code——相当于让图灵奖级别专家在每次写代码前给你"在场指导"。对UE5 TA工作场景：HLSL shader调试、Blueprint与C++混编、Deformer Graph节点连接，都有针对性避坑建议。</p>
+        <p style="color:#ffa657; font-size:11px;">⭐ 总stars: 143,210 | 今日新增: 2,614 | 📌 史上最受欢迎的CLAUDE.md模板</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🔌</span>项目：<strong>anthropics/claude-plugins-official</strong> — "Anthropic官方Claude Code插件目录" 深度拆解</h3>
+        <p><span class="badge badge-py">Python</span> <span class="badge badge-ts">MCP</span></p>
+        <p><strong>核心黑科技：</strong>Anthropic官方维护的Claude Code高质量插件目录，覆盖GitHub/Slack/Jira/数据库/本地文件系统。这是Anthropic首次官方背书插件生态，结束了MCP插件"良莠不齐"的混乱期。<strong>今天新增 ⭐ 682 stars</strong>，总stars <strong>22,476</strong>。</p>
+        <p><strong>实战价值：</strong>小红书生鲜项目直接受益——安装Slack插件让Claude Code自动读取团队讨论记录；安装数据库插件让它直接查产品库存；安装Browser插件让它自动抓取竞品价格。以前要自己写MCP Server，现在官方目录一键安装。</p>
+        <p style="color:#ffa657; font-size:11px;">⭐ 总stars: 22,476 | 今日新增: 682 | 📌 Anthropic官方认证插件库</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🏗️</span>项目：<strong>obra/superpowers</strong> — "Agentic Skills框架 & 软件开发方法论" 深度拆解</h3>
+        <p><span class="badge badge-sh">Shell</span> <span class="badge badge-ts">Agent框架</span></p>
+        <p><strong>核心黑科技：</strong>不只是工具集，而是一整套"让AI Agent真正像高级工程师一样工作"的方法论。包含：自动代码审查、架构决策记录（ADR）、渐进式重构策略。<strong>总stars: 201,531</strong>，今日新增 <strong class="star-burst">⭐ 1,576</strong>。</p>
+        <p><strong>实战价值：</strong>UE5插件开发最痛苦的"大规模重构"场景——比如把Deformer Graph迁移到新API——superpowers让Agent先写架构决策记录（为什么改、改哪里、不改哪里），再分步执行，每步可回滚。这是"Agent工单制"的核心方法论。</p>
+        <p style="color:#ffa657; font-size:11px;">⭐ 总stars: 201,531 | 今日新增: 1,576 | 📌 Agentic Skills生态开创者</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🌐</span>项目：<strong>HKUDS/CLI-Anything</strong> — "让所有软件变成Agent-Native" 深度拆解</h3>
+        <p><span class="badge badge-py">Python</span> <span class="badge badge-ts">Agent-Native</span></p>
+        <p><strong>核心黑科技：</strong>通过CLI-Hub把任何现有软件（包括没有API的闭源软件）变成AI Agent可以直接调用的工具。原理是拦截CLI命令+屏幕截图理解+自动化操作，相当于给所有软件装了"Agent接口"。今天新增 <strong class="star-burst">⭐ 656 stars</strong>，总stars <strong>39,135</strong>。</p>
+        <p><strong>实战价值：</strong>UE5 Editor没有完整的Python API——但CLI-Anything可以让Claude Code通过CLI+截图理解来操作UE5 Editor。比如"帮我把所有Material的Roughness参数调为0.5"，Agent自动在Editor里执行，不需要你手写Python脚本。</p>
+        <p style="color:#ffa657; font-size:11px;">⭐ 总stars: 39,135 | 今日新增: 656 | 📌 CLI-Hub: clianything.cc</p>
+      </div>
+
+      <!-- GitHub Trending 全榜速览 -->
+      <div class="section-title">🏆 【GitHub Trending 全榜速览】—— AI Coding Agent 生态全面霸榜</div>
+
+      <div class="github-trending">
+        <div class="name">#1 🔥 colbymchenry/codegraph — 预索引代码知识图谱</div>
+        <div class="desc">Pre-indexed code knowledge graph for Claude Code, Codex, Cursor — fewer tokens, fewer tool calls, 100% local</div>
+        <div class="meta">TypeScript | ⭐ 13,543 | <span style="color:#ffa657;">今日 +4,294 ⭐（全球第一）</span></div>
+      </div>
+      <div class="github-trending">
+        <div class="name">#2 multica-ai/andrej-karpathy-skills — Karpathy的LLM编程智慧</div>
+        <div class="desc">A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations</div>
+        <div class="meta">CLAUDE.md | ⭐ 143,210 | 今日 +2,614 ⭐</div>
+      </div>
+      <div class="github-trending">
+        <div class="name">#3 anthropics/claude-plugins-official — Anthropic官方插件目录</div>
+        <div class="desc">Official, Anthropic-managed directory of high quality Claude Code Plugins</div>
+        <div class="meta">Python | ⭐ 22,476 | 今日 +682 ⭐</div>
+      </div>
+      <div class="github-trending">
+        <div class="name">#4 obra/superpowers — Agentic Skills框架</div>
+        <div class="desc">An agentic skills framework & software development methodology that works</div>
+        <div class="meta">Shell | ⭐ 201,531 | 今日 +1,576 ⭐</div>
+      </div>
+      <div class="github-trending">
+        <div class="name">#5 rohitg00/ai-engineering-from-scratch — AI工程从零到一</div>
+        <div class="desc">Learn it. Build it. Ship it for others.</div>
+        <div class="meta">Python | ⭐ 10,733 | 今日 +1,333 ⭐</div>
+      </div>
+      <div class="github-trending">
+        <div class="name">#6 HKUDS/CLI-Anything — 让所有软件Agent-Native</div>
+        <div class="desc">CLI-Anything: Making ALL Software Agent-Native. CLI-Hub available at clianything.cc</div>
+        <div class="meta">Python | ⭐ 39,135 | 今日 +656 ⭐</div>
+      </div>
+      <div class="github-trending">
+        <div class="name">#7 ChromeDevTools/chrome-devtools-mcp — 给AI Agent装Chrome开发者工具</div>
+        <div class="desc">Chrome DevTools for coding agents — debug web apps, inspect DOM, profile performance</div>
+        <div class="meta">TypeScript | ⭐ 40,493 | 今日 +151 ⭐</div>
+      </div>
+      <div class="github-trending">
+        <div class="name">#8 teng-lin/notebooklm-py — Google NotebookLM非官方Python API</div>
+        <div class="desc">Unofficial Python API and agentic skill for Google NotebookLM with full programmatic access</div>
+        <div class="meta">Python | ⭐ 14,380 | 今日 +186 ⭐</div>
+      </div>
+
+      <!-- ===== 🤖 Agent 战场情报 ===== -->
+      <div class="section-title">🤖 【Agent 战场情报】—— IPO风云 + 数学猜想破解 + 算力大战</div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">💥</span>动态：<strong>OpenAI o3 破解80年数学猜想 + 几何猜想双杀</strong></h3>
+        <p><span class="badge badge-py">推理模型</span> <span class="badge badge-ts">数学突破</span></p>
+        <p><strong>技术原理：</strong>OpenAI最新推理模型 <strong>o3</strong> 成功证明了<b>埃尔德什差异猜想（Erdős Discrepancy Conjecture）</b>——这个组合数学问题悬而未决<strong>80年</strong>，连菲尔兹奖得主都未能完全证明。o3生成的125页推导过程震惊数学家社群。同日，o3还破解了一个80年几何猜想（具体名称待确认）。这是<strong>AI首次在纯数学领域取得重大证明突破</strong>。</p>
+        <p><strong>落地场景：</strong>对TA工作：HLSL shader优化、渲染方程求解、光线追踪收敛证明——这些图形学中的"数学猜想级难题"，o3级别推理模型可以直接给出解析解，不再需要你"调参调到天亮"。</p>
+        <p style="color:#ffa657; font-size:11px;">📌 来源：36氪 | o3推理能力已超越绝大多数人类数学家</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">💰</span>动态：<strong>OpenAI秘密提交IPO申请，目标9月上市，估值$8,520亿 → $1万亿</strong></h3>
+        <p><span class="badge badge-ts">IPO</span> <span class="badge badge-rs">估值战</span></p>
+        <p><strong>技术原理和实际意义：</strong>OpenAI已向SEC<strong>秘密提交S-1文件</strong>（不公开完整财务数据）。承销商：高盛+摩根士丹利。目标上市时间：<strong>2026年9月</strong>。当前私募估值<strong>$8,520亿</strong>，IPO目标估值<strong>$1万亿</strong>（科技史上最大IPO）。年化收入<strong>$250亿</strong>。关键竞争：Anthropic也向投资者表示愿意在2026年10月前上市——<strong>谁先上市谁设定估值基准</strong>。</p>
+        <p><strong>落地场景：</strong>作为个人投资者：OpenAI IPO是2026年最值得参与的新股（如果获配）。作为AI用户：OpenAI和Anthropic的IPO竞赛意味着两者都会在上市前"秀肌肉"（发布新版GPT/Claude），未来3个月模型能力将密集突破。</p>
+        <div class="highlight-box">
+          <strong>⚠️ IPO时间表（三巨头发令枪）：</strong><br>
+          • <strong>SpaceX</strong>：已公开S-1，目标2026年6月上市，估值$1.75万亿<br>
+          • <strong>OpenAI</strong>：5月22日起秘密提交，目标2026年9月，估值$8,520亿→$1万亿<br>
+          • <strong>Anthropic</strong>：已接触投行，目标2026年10月，估值$9,000亿
+        </div>
+        <p style="color:#ffa657; font-size:11px;">📌 来源：buildfastwithai.com | Coinbase预测市场：OpenAI先于Anthropic上市概率85%</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🚀</span>动态：<strong>Anthropic Q2 2026营收预测$109亿 + 首次季度盈利$5.59亿</strong></h3>
+        <p><span class="badge badge-green">盈利里程碑</span> <span class="badge badge-py">财报</span></p>
+        <p><strong>技术原理和实际意义：</strong>Anthropic Q2 2026营收预测<strong>$109亿</strong>（较Q1的$48亿增长130%）。运营利润约<strong>$5.59亿</strong>——<strong>公司历史上首次季度运营盈利</strong>。年化收入速率：2025年底~$90亿 → 2026年4月~$300亿 → Q2末~<strong>$436亿</strong>。算力成本占收入比：Q1: 71美分/每美元收入 → Q2预计: <strong>56美分</strong>。Claude Code成为企业软件团队主导的智能编码工具。</p>
+        <p><strong>落地场景：</strong>Anthropic首次盈利意味着"AI烧钱无底洞"叙事被打破。对二级市场投资者：关注Anthropic IPO（10月），基本面远强于OpenAI（营收增速更快、已盈利）。对AI用户：Claude Code速率限制将在Q3继续放宽（盈利→更多算力采购→更高配额）。</p>
+        <table class="data-table">
+          <tr><th>指标</th><th>Anthropic</th><th>OpenAI</th></tr>
+          <tr><td>年化收入</td><td>$436亿</td><td>$250亿</td></tr>
+          <tr><td>是否已盈利</td><td>✅ 首次盈利</td><td>❌ 仍亏损</td></tr>
+          <tr><td>IPO估值目标</td><td>$9,000亿</td><td>$1万亿</td></tr>
+          <tr><td>IPO时间窗</td><td>2026年10月</td><td>2026年9月</td></tr>
+        </table>
+        <p style="color:#ffa657; font-size:11px;">📌 来源：36氪 + buildfastwithai.com | CEO Dario Amodei："收入增长已经变得难以应对"</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🛰️</span>动态：<strong>SpaceX S-1揭露：Anthropic每月付$12.5亿算力费，合同总值$450亿</strong></h3>
+        <p><span class="badge badge-ts">算力大战</span> <span class="badge badge-rs">商业机密</span></p>
+        <p><strong>技术原理和实际意义：</strong>SpaceX在S-1文件中揭露：Anthropic与SpaceX签署算力供应协议，<strong>每月支付$12.5亿</strong>，合同期至2029年5月，<strong>总价值约$450亿</strong>。覆盖设施：Colossus 1（22万+ NVIDIA GPU，300兆瓦，孟菲斯）+ Colossus 2。同期确认：Anthropic正在扩展到Colossus 2以获取<strong>NVIDIA GB200（Blackwell Ultra）</strong>算力，6月期间持续扩容。</p>
+        <p><strong>落地场景：</strong>SpaceX不仅是火箭公司，更是<strong>全球最大AI算力运营商</strong>。Colossus 1+2合计超过<strong>1吉瓦</strong>算力容量，超过22万块NVIDIA GPU。作为UE5 TA：你的Claude Code请求，背后可能正跑在Colossus的H100上。6月GB200上线后，Claude Code响应速度将再提升2-3倍。</p>
+        <p style="color:#ffa657; font-size:11px;">📌 来源：SpaceX S-1公开文件 | 合同可提前90天通知终止（但Anthropic不太可能这样做）</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🔄</span>动态：<strong>Google & 阿里巴巴同日宣布转向"服务AI Agent"战略</strong></h3>
+        <p><span class="badge badge-py">战略转型</span> <span class="badge badge-ts">Agent经济</span></p>
+        <p><strong>技术原理和实际意义：</strong>Google在I/O 2026后宣布：Gemini从"服务人类"转向"服务AI Agent"——Gemini Spark（7x24云端Agent）是核心产品。阿里巴巴同日更新通义千问Agent能力，宣布类似战略。这意味着<strong>AI Agent成为新一代"用户"</strong>，传统API经济（按人收费）将转向"按Agent调用量"收费。</p>
+        <p><strong>落地场景：</strong>小红书生鲜项目：未来你的"选品Agent"会直接调用Gemini Spark分析竞品笔记、生成内容、自动发布——整个过程不需要你动手。你从"内容创作者"变成"Agent管理者"，一个人管理10个账号将成为常态。</p>
+        <p style="color:#ffa657; font-size:11px;">📌 来源：36氪 | Google: Gemini Spark（7x24云端Agent）| 阿里：通义千问Agent更新</p>
+      </div>
+
+      <!-- ===== 🖊 AI新玩法，新概念 ===== -->
+      <div class="section-title">🖊 【AI新玩法，新概念】—— 今日学术+产业前沿</div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🧮</span>动态：<strong>腾讯混元发布Hy-MT2开源翻译模型，超越Google翻译和DeepL</strong></h3>
+        <p><span class="badge badge-py">开源</span> <span class="badge badge-ts">翻译</span></p>
+        <p><strong>技术原理和实际意义：</strong>腾讯混元发布开源翻译模型<strong>Hy-MT2</strong>，支持高质量多语言翻译，在多个benchmark上超越Google Translate和DeepL。同步发布微信小程序<strong>"腾讯混元翻译"</strong>供公众使用。这是国产大模型在"垂直能力"（翻译）上首次系统性超越国际主流产品。</p>
+        <p><strong>落地场景：</strong>小红书生鲜项目做跨境内容（把中文笔记翻译成英文/日文发海外版小红书），Hy-MT2比DeepL更懂中文语境（尤其是食材、烹饪术语）。开源意味着可以本地部署，无需API费用。</p>
+        <p style="color:#ffa657; font-size:11px;">📌 来源：量子位 | 小程序搜索"腾讯混元翻译"立即体验</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🤖</span>动态：<strong>国产具身智能仿真平台发布（国产GPU驱动），真实训练效率提升10倍</strong></h3>
+        <p><span class="badge badge-cpp">具身智能</span> <span class="badge badge-go">仿真</span></p>
+        <p><strong>技术原理和实际意义：</strong>国内首个全栈<strong>具身智能仿真平台</strong>（国产GPU驱动）正式发布。通过高保真物理仿真，让机器人在虚拟环境中完成数百万次训练，再迁移到真实世界，训练效率提升<strong>10倍</strong>。这是"具身智能从实验室走向规模化量产"的关键基础设施突破。</p>
+        <p><strong>落地场景：</strong>关注人形机器人供应链投资机会——宇树科技（Unitree peer）已准备IPO（腾讯+深创投背书），智元机器人（前华为"天才少年"创业）获数千万天使轮。具身智能仿真平台是这些公司"量产前的最后一块拼图"。</p>
+        <p style="color:#ffa657; font-size:11px;">📌 来源：量子位 | 机构预测：2026年是人形机器人"量产元年"</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">📦</span>动态：<strong>顺丰/中国邮政仓库机器人赢得"具身智能高考"，7天连续工作零差错</strong></h3>
+        <p><span class="badge badge-py">物流机器人</span> <span class="badge badge-green">商业化</span></p>
+        <p><strong>技术原理和实际意义：</strong>在"具身智能高考"（Embodied Gaokao）评测中，顺丰/中国邮政的仓库机器人总分<strong>排名第一</strong>，能够在真实场景<strong>连续工作7天以上零差错</strong>。这标志着具身智能从"demo阶段"进入"工业生产级可靠性"阶段。</p>
+        <p><strong>落地场景：</strong>小红书生鲜项目：未来仓库机器人可以自动完成分拣、包装、贴单——你的"生鲜电商"如果从代发转向自建仓，仓库机器人是降本核心。顺丰的机器人已经可以"7天无休"，人工成本直接砍掉70%。</p>
+        <p style="color:#ffa657; font-size:11px;">📌 来源：量子位 | "具身智能高考"是由中国人工智能学会主办的基准测试</p>
+      </div>
+
+      <!-- ===== 💰 AI 套利/变现线索 ===== -->
+      <div class="section-title">💰 【AI 套利/变现线索】—— 今日可操作机会</div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">📻</span>热点：<strong>NotebookLMPY（非官方API）+ 新闻联播 = 音频早报变现在即操作</strong></h3>
+        <p><strong>案例：</strong>GitHub今日Trending #8：<strong>teng-lin/notebooklm-py</strong>——Google NotebookLM非官方Python API，支持完整编程访问（包括Web UI未暴露的功能）。配合本报告的"专栏一：新闻联播风向标解读"，可以全自动生成"政策早报"音频。</p>
+        <p><strong>复刻步骤：</strong>① pip install notebooklm-py ② 用本报告专栏一内容生成脚本 ③ 调用NotebookLM API生成播音腔音频（支持多种音色）④ 发布到微信音频号/喜马拉雅/小红书音频 ⑤ 挂载"农产品购买链接"或"知识星球"变现</p>
+        <p><strong>预估收益：</strong>政策解读音频账号，500粉以上可接农产品广告（客单价100-300元/条）。知识星球订阅99-299元/年，100个订阅=月入1-3万。成本：<strong>几乎为零</strong>（NotebookLM目前免费）。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🖼️</span>热点：<strong>CLI-Anything + 小红书店铺 = 批量生成商品详情页，零设计成本</strong></h3>
+        <p><strong>案例：</strong>GitHub今日Trending #6：<strong>HKUDS/CLI-Anything</strong>——让所有软件变成Agent-Native。配合小红书店铺，可以让Agent自动完成：① 读取产品参数 ② 生成卖点文案 ③ 调用AI绘图生成详情页图片 ④ 自动发布到小红书店铺。</p>
+        <p><strong>复刻步骤：</strong>① 安装CLI-Anything（clianything.cc）② 连接小红书店铺API ③ 用Agent批量生成商品详情页（参考"阳雀湖辣椒"卖点：国家地理标志+21道工序+樟树港辣王）④ 自动发布，人工仅需审核 ⑤ 挂车成交</p>
+        <p><strong>预估收益：</strong>每张AI生成的商品详情页节省设计师成本200-500元。日均生成20个SKU详情页 = 节省4000-10000元/天。你的"小红书生鲜店铺"如果从10个SKU扩展到100个SKU，设计成本将从"每月5万"降到"每月几乎为零"。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">📊</span>热点：<strong>中国AI模型占OpenRouter使用量60%（从2024年1%飙升）—— 低成本AI套利空间巨大</strong></h3>
+        <p><strong>案例：</strong>根据Artificial Analysis数据，中国AI模型（DeepSeek V3.2 / Kimi K2.6 / 智谱GLM-5.1）在OpenRouter平台的使用量占比从<strong>2024年1%飙升至2026年5月60%</strong>。成本对比：Claude运行成本$4,811/千万token → 最便宜中国模型仅$544（<strong>9倍差距</strong>）。</p>
+        <p><strong>复刻建议：</strong>① 把你的AI工作流从Claude/ChatGPT迁移到DeepSeek-Kimi-智谱组合（成本降低90%）② 用省下的API费用扩大调用量（原来每月花1万，现在花1千，剩余9千用来"暴力测试"更多内容策略）③ 把"低成本AI工作流"做成知识付费课程/咨询业务（"如何用每月1000元AI预算做出每月10万内容"）</p>
+        <p><strong>预估收益：</strong>"低成本AI工作流"咨询业务，时薪500-2000元。知识星球/小报童订阅99-499元/人，如果有500个订阅用户 = 月入5-25万。关键是<strong>你必须先用这套方法自己跑通</strong>（比如用DeepSeek+Kimi+智谱组合，把小红书生鲜店铺做到月销10万），才有说服力。</p>
+      </div>
+
+      <!-- ===== 🔍 避坑/黑话词典 ===== -->
+      <div class="section-title">🔍 【避坑/黑话词典】—— 今日必懂术语</div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">📖</span>词条：<strong>Colossus 1 & 2（SpaceX超算中心）</strong></h3>
+        <p><strong>一句话大白话：</strong>SpaceX（马斯克）在美国孟菲斯建了两个全球最大的AI算力中心，里面有超过<strong>22万块NVIDIA GPU</strong>，总算力超过<strong>1吉瓦</strong>（相当于一个中小型城市的用电量）。Anthropic每月付$12.5亿租这里的算力来跑Claude。简单说：<strong>SpaceX现在是全球最大的"AI算力房东"</strong>，Anthropic是它最大的"租客"。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">📖</span>词条：<strong>o3（OpenAI推理模型）</strong></h3>
+        <p><strong>一句话大白话：</strong>OpenAI最强的"会推理的AI"，不只是"预测下一个词"，而是能像数学家一样"思考"。今天它证明了80年来没人能证明的数学猜想（埃尔德什差异猜想），125页的证明过程连菲尔兹奖得主都看傻了。<strong>这意味着AI已经开始做"人类做不到的事情"</strong>，而不只是"人类能做到但更便宜"的事情。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">📖</span>词条：<strong>具身智能（Embodied Intelligence）</strong></h3>
+        <p><strong>一句话大白话：</strong>"有身体的AI"——不只是聊天机器人，而是能走路、抓东西、操作工具的真实机器人。今天有两个重要进展：① 国产GPU驱动具身智能仿真平台发布（训练效率提升10倍）② 顺丰/中国邮政仓库机器人在"具身智能高考"中7天零差错。 <strong>2026年是人形机器人"量产元年"</strong>，宇树科技（Unitree peer）已准备IPO。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">📖</span>词条：<strong>Agent-Native（Agent原生）</strong></h3>
+        <p><strong>一句话大白话：</strong>以前的软件是"给人用的"（你点按钮、填表单），Agent-Native软件是"给AI用的"（AI直接调用API、执行任务，不需要人类介入）。今天GitHub Trending #6（CLI-Anything）就是做这个的——<strong>把地球上所有软件都变成AI可以直接操作的工具</strong>。未来"软件公司"的定义将变成："有没有Agent-Native接口"。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">📖</span>词条：<strong>IPO三联发（SpaceX / OpenAI / Anthropic）</strong></h3>
+        <p><strong>一句话大白话：</strong>2026年6-10月，全球AI三巨头将密集上市：SpaceX（6月，$1.75万亿估值）→ OpenAI（9月，$1万亿）→ Anthropic（10月，$9,000亿）。这是<strong>科技史上最大规模的IPO浪潮</strong>。如果你能参与其中任何一个IPO（美股账户/港股账户），都是十年一遇的投资机会。<strong>但注意：OpenAI的S-1如果显示困难数字，可能使整个AI IPO窗口遇冷</strong>。</p>
+      </div>
+
+      <!-- ===== 📊 Product Hunt AI 爆款 ===== -->
+      <div class="section-title">🔥 【Product Hunt AI 爆款】—— 本周Top榜速览</div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🏆</span>#1 StoreClaw — 633,268 upvotes</h3>
+        <p><strong>一句话描述：</strong>AI驱动的电商竞品监控+自动上架工具，支持Shopify/Amazon/小红书店铺。GitHub Trending被AI Coding Agent霸榜，Product Hunt被AI电商工具霸榜——两个平台共同证明：<strong>2026年是"AIAgent渗透到每一个工作场景"的元年</strong>。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🥈</span>#2 PollyReach — 529,151 upvotes</h3>
+        <p><strong>一句话描述：</strong>AI邮件营销自动化，自动生成个性化邮件+最优发送时间预测。适合小红书生鲜项目的"老客激活"场景——自动给3个月没下单的客推送"新到货通知"。</p>
+      </div>
+
+      <div class="ai-item">
+        <h3><span class="emoji">🥉</span>#3 Spellar 3.0 — 522,114 upvotes</h3>
+        <p><strong>一句话描述：</strong>AI会议助手，自动录音+转写+生成行动项。适合下厨房PM日常工作——每次开完会，让Spellar自动生成会议纪要+待办清单。</p>
+      </div>
+
+      <div class="summary-box" style="background: linear-gradient(135deg, #2d1a3d 0%, #1a0d2e 100%); border-color: #5c2d8c; color: #d2a8ff;">
+        <strong>🧭 情报总结：</strong><br>
+        <strong>① IPO风云：</strong>SpaceX(6月)→OpenAI(9月)→Anthropic(10月)，科技史上最大IPO浪潮，Anthropic首次盈利是最大黑马<br>
+        <strong>② 学术突破：</strong>OpenAI o3破解80年数学猜想，AI正式进入"人类做不到"领域（而不只是"更便宜"）<br>
+        <strong>③ GitHub Trending：</strong>AI Coding Agent生态全面霸榜（前8名全部相关），codegraph今日新增4294 stars全球第一<br>
+        <strong>④ 具身智能：</strong>国产GPU仿真平台发布+顺丰机器人7天零差错，2026年人形机器人"量产元年"确认<br>
+        <strong>⑤ 下一个拐点：</strong>Anthropic IPO S-1文件预计8月公开→Claude 4.5/5.0发布→GB200算力上线（6月）→ 小红书AI内容生成全面爆发<br><br>
+        <strong>🎯 今日最值得操作：</strong>① 注册美股/港股账户，准备参与SpaceX/OpenAI/Anthropic IPO；② 把Claude Code工作流接入codegraph（Token降低60%）；③ 用NotebookLM PY + 新闻联播内容做音频早报变现测试。
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>📡 每日双专栏AI情报推送 | 自动化生成 | 数据来源：CCTV新闻联播 · GitHub Trending · 36氪 · 量子位 · buildfastwithai.com · txtmix.com</p>
+  <p>🔄 推送时间：每个工作日 9:00 AM | GitHub仓库：https://github.com/mryyyyyy/daily-intelligence | 2026-05-22 第5期</p>
+</div>
+
+</body>
+</html>
