@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日情报推送 2026-05-28</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #0a0e1a; color: #e0e0e0; line-height: 1.7; }
+.container { max-width: 960px; margin: 0 auto; padding: 20px 16px; }
+
+/* Header */
+.header { text-align: center; padding: 32px 0 24px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 28px; }
+.header h1 { font-size: 26px; background: linear-gradient(135deg, #f97316, #ef4444, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 2px; }
+.header .date-badge { display: inline-block; margin-top: 10px; padding: 4px 18px; background: rgba(249,115,22,0.15); border-radius: 20px; font-size: 13px; color: #f97316; border: 1px solid rgba(249,115,22,0.3); }
+.header .sub { margin-top: 8px; font-size: 12px; color: #666; }
+
+/* Column Cards */
+.col-card { background: linear-gradient(145deg, #131a2e, #0f1629); border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); overflow: hidden; margin-bottom: 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+.col-header { padding: 18px 24px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.col-header.cctv { background: linear-gradient(90deg, rgba(220,38,38,0.15), transparent); }
+.col-header.ai { background: linear-gradient(90deg, rgba(139,92,246,0.15), transparent); }
+.col-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.col-icon.cctv-bg { background: linear-gradient(135deg, #dc2626, #b91c1c); }
+.col-icon.ai-bg { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+.col-title { font-size: 17px; font-weight: 700; }
+.col-title .en { font-size: 11px; color: #888; font-weight: 400; margin-left: 8px; }
+.col-body { padding: 20px 24px; }
+
+/* Sections */
+.section { margin-bottom: 22px; }
+.section:last-child { margin-bottom: 0; }
+.section-title { font-size: 15px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.section-title .emoji { font-size: 18px; }
+.core-signal { background: linear-gradient(135deg, rgba(239,68,68,0.12), rgba(245,158,11,0.08)); border-left: 3px solid #ef4444; padding: 14px 18px; border-radius: 0 10px 10px 0; margin-bottom: 18px; font-size: 14.5px; line-height: 1.8; }
+.core-signal.ai-signal { background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(59,130,246,0.08)); border-left-color: #8b5cf6; }
+
+/* News Items */
+.news-item { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px 18px; margin-bottom: 14px; border: 1px solid rgba(255,255,255,0.04); transition: all 0.2s; }
+.news-item:hover { border-color: rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); }
+.news-item:last-child { margin-bottom: 0; }
+.news-title { font-size: 14.5px; font-weight: 700; color: #fbbf24; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 6px; }
+.news-title .num { background: #ef4444; color: #fff; font-size: 11px; padding: 1px 7px; border-radius: 6px; flex-shrink: 0; margin-top: 2px; }
+.news-sub { margin-bottom: 8px; }
+.news-sub dt { font-size: 12.5px; font-weight: 600; color: #60a5fa; margin-bottom: 3px; display: inline; }
+.news-sub dd { font-size: 13px; color: #bbb; margin-bottom: 8px; padding-left: 0; display: list-item; list-style: none; }
+.news-tag { display: inline-block; padding: 2px 10px; border-radius: 6px; font-size: 11px; margin-right: 6px; margin-bottom: 4px; }
+.tag-cctv { background: rgba(220,38,38,0.15); color: #f87171; }
+.tag-policy { background: rgba(34,197,94,0.15); color: #4ade80; }
+.tag-economy { background: rgba(245,158,11,0.15); color: #fbbf24; }
+.tag-diplomacy { background: rgba(59,130,246,0.15); color: #60a5fa; }
+.tag-global { background: rgba(168,85,247,0.15); color: #c084fc; }
+.tag-risk { background: rgba(239,68,68,0.15); color: #f87171; }
+.summary-box { background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(6,182,212,0.06)); border: 1px solid rgba(16,185,129,0.25); border-radius: 12px; padding: 16px 18px; margin-top: 16px; }
+.summary-box .sum-title { font-size: 14px; font-weight: 700; color: #34d399; margin-bottom: 8px; }
+.summary-box p { font-size: 13.5px; color: #a5f3fc; line-height: 1.9; }
+
+/* AI Section Specifics */
+.ai-item { background: rgba(139,92,246,0.05); border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; border: 1px solid rgba(139,92,246,0.08); }
+.ai-item:hover { border-color: rgba(139,92,246,0.2); }
+.ai-name { font-size: 14px; font-weight: 700; color: #a78bfa; margin-bottom: 6px; }
+.ai-detail { font-size: 12.5px; color: #94a3b8; margin-bottom: 4px; }
+.ai-detail strong { color: #c4b5fd; }
+.ai-value { font-size: 12.5px; color: #10b981; margin-top: 4px; padding-left: 12px; border-left: 2px solid #10b981; }
+
+/* GitHub Table */
+.gh-table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-bottom: 12px; }
+.gh-table th { background: rgba(139,92,246,0.15); color: #c4b5fd; padding: 8px 10px; text-align: left; font-weight: 600; border-bottom: 2px solid rgba(139,92,246,0.3); }
+.gh-table td { padding: 8px 10px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; }
+.gh-table tr:hover td { background: rgba(139,92,246,0.05); }
+.gh-name { color: #a78bfa; font-weight: 600; font-family: 'Consolas', monospace; font-size: 12px; }
+.gh-stars { color: #fbbf24; font-weight: 600; }
+.gh-lang { font-size: 11px; padding: 2px 8px; border-radius: 4px; }
+.lang-py { background: rgba(59,130,246,0.2); color: #60a5fa; }
+.lang-ts { background: rgba(0,182,211,0.2); color: #22d3ee; }
+.lang-js { background: rgba(245,158,11,0.2); color: #fbbf24; }
+.lang-sh { background: rgba(107,114,128,0.2); color: #9ca3af; }
+.lang-html { background: rgba(220,38,38,0.2); color: #f87171; }
+
+/* Glossary */
+.glossary-item { display: flex; gap: 12px; padding: 10px 14px; background: rgba(245,158,11,0.06); border-radius: 8px; margin-bottom: 8px; border: 1px solid rgba(245,158,11,0.1); }
+.glossary-term { font-size: 13px; font-weight: 700; color: #fbbf24; min-width: 140px; flex-shrink: 0; }
+.glossary-def { font-size: 12.5px; color: #9ca3af; }
+
+/* Footer */
+.footer { text-align: center; padding: 20px; font-size: 11px; color: #444; border-top: 1px solid rgba(255,255,255,0.05); }
+.footer a { color: #555; text-decoration: none; }
+
+/* Highlight numbers */
+.hl-num { color: #f472b6; font-weight: 700; }
+.hl-green { color: #4ade80; font-weight: 700; }
+.hl-red { color: #f87171; font-weight: 700; }
+.hl-yellow { color: #fbbf24; font-weight: 700; }
+.hl-blue { color: #60a5fa; font-weight: 700; }
+.hl-purple { color: #c084fc; font-weight: 700; }
+
+/* Divider */
+.divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); margin: 4px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ==================== HEADER ==================== -->
+<div class="header">
+  <h1>🔥 每日情报双栏推送</h1>
+  <div class="date-badge">📅 2026年5月28日 星期四</div>
+  <div class="sub">新闻联播风向标解读 × AI生产力黑科技情报 | 自动生成 · 仅供参考</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 专栏一：新闻联播简报 -->
+<!-- ============================================================ -->
+<div class="col-card">
+  <div class="col-header cctv">
+    <div class="col-icon cctv-bg">📺</div>
+    <div class="col-title">专栏一：新闻联播每日简报<span class="en">（风向标解读版）</span></div>
+  </div>
+  <div class="col-body">
+
+    <!-- 核心风向 -->
+    <div class="core-signal">
+      <strong style="color:#ef4444;">🧭 核心风向：</strong>今日政策信号聚焦「高质量发展供给引领需求 + 外交经济双线并进」，国内以传统产业升级和法治建设为主线，外交层面李强出席东盟—中国—海合会三方经济论坛释放区域经济一体化加速信号；同时高考1335万报名人数创历史新高，教育公平与AI监管（高考禁用拍题答疑）成为社会焦点。
+    </div>
+
+    <!-- 分项解读 -->
+    <div class="section">
+      <div class="section-title"><span class="emoji">📋</span>分项解读（按重要性排序）</div>
+
+      <!-- 1 -->
+      <div class="news-item">
+        <div class="news-title"><span class="num">1</span>【新思想引领新征程】不断以高质量供给创造引领新需求</div>
+        <dl class="news-sub">
+          <dt>📢 新闻联播说了什么：</dt>
+          <dd>头条主题报道，强调以高质量发展为统领，通过供给侧结构性改革创造新需求、引领新消费。这是"十五五"开局系列报道的重要组成，延续此前传统产业"蝶变"跃迁的叙事主线。</dd>
+          <dt>🧭 风向标解读：</dt>
+          <dd>"高质量供给"关键词持续高频出现，意味着政策重心从单纯刺激消费转向<strong style="color:#fbbf24;">供给端提质增效</strong>。对制造业升级、新质生产力、专精特新企业构成持续利好信号。</dd>
+          <dt>📊 行业影响：</dt>
+          <dd><span class="tag tag-economy">受益行业</span>高端制造、新能源装备、新材料、消费品品牌升级 | <span class="tag tag-policy">关注方向</span>工业母机、芯片国产替代、绿色低碳技术</dd>
+        </dl>
+      </div>
+
+      <!-- 2 -->
+      <div class="news-item">
+        <div class="news-title"><span class="num">2</span>李强出席东盟—中国—海合会三方经济论坛开幕式并致辞</div>
+        <dl class="news-sub">
+          <dt>📢 新闻联播说了什么：</dt>
+          <dd>国务院总理李强出席在出访期间举办的"东盟—中国—海合会"三方经济论坛开幕式并发表主旨演讲，推动中国与东南亚及海湾国家经贸合作深化。</dd>
+          <dt>🧭 风向标解读：</dt>
+          <dd>东盟+海合会=能源+制造业的完美互补三角。这是中国"一带一路"从双边向<strong style="color:#60a5fa;">多边区域一体化</strong>升级的关键一步。中东石油资本+东南亚制造基地+中国市场——三大引擎联动。</dd>
+          <dt>📊 行业影响：</dt>
+          <dd><span class="tag tag-diplomacy">受益方向</span>跨境基建、能源合作、数字经济出海、人民币国际化结算 | <span class="tag tag-economy">机会</span>新能源车企中东布局、跨境电商东南亚渗透</dd>
+        </dl>
+      </div>
+
+      <!-- 3 -->
+      <div class="news-item">
+        <div class="news-title"><span class="num">3</span>推动少先队事业不断取得新成绩</div>
+        <dl class="news-sub">
+          <dt>📢 新闻联播说了什么：</dt>
+          <dd>习近平总书记致中国少年先锋队<strong style="color:#f472b6;">第九次全国代表大会</strong>贺信，引发全国各地热烈反响。</dd>
+          <dt>🧭 风向标解读：</dt>
+          <dd>少年先锋队九大召开属于五年一度的重要节点，总书记贺信释放<strong style="color:#fbbf24;">青少年教育优先</strong>的战略定调。结合近期教育改革动向，素质教育、科技素养培养将持续获得政策倾斜。</dd>
+          <dt>📊 行业影响：</dt>
+          <dd><span class="tag tag-policy">关联领域</span>教育科技（EdTech）、STEM教育硬件、青少年编程培训、校园安全设备</dd>
+        </dl>
+      </div>
+
+      <!-- 4 -->
+      <div class="news-item">
+        <div class="news-title"><span class="num">4</span>C919商业运营两周年 航线网络覆盖全国<span class="hl-num">16个城市</span></div>
+        <dl class="news-sub">
+          <dt>📢 新闻联播说了什么：</dt>
+          <dd>国产大飞机C919完成商业运营满两周年里程碑，航线网络已覆盖全国<span class="hl-num">16个</span>城市，累计运送旅客数量持续攀升。</dd>
+          <dt>🧭 风向标解读：</dt>
+          <dd>C919从"首飞成功"进入"规模化商业运营"新阶段。<strong style="color:#4ade80;">16城覆盖</strong>意味着干线航司接受度已跨过临界点，产业链上下游将迎来订单放量期。</dd>
+          <dt>📊 行业影响：</dt>
+          <dd><span class="tag tag-economy">直接受益</span>航空复合材料、航空发动机维修、机场配套服务 | <span class="tag tag-policy">长期逻辑</span>国产替代从军机向民航全面延伸</dd>
+        </dl>
+      </div>
+
+      <!-- 5 -->
+      <div class="news-item">
+        <div class="news-title"><span class="num">5</span>财政部今年将在香港发行<span class="hl-yellow">680亿元</span>人民币国债</div>
+        <dl class="news-sub">
+          <dt>📢 新闻联播说了什么：</dt>
+          <dd>财政部宣布2026年在香港发行<span class="hl-yellow">680亿元人民币</span>国债，规模创历史新高，进一步巩固香港离岸人民币中心地位。</dd>
+          <dt>🧭 风向标解读：</dt>
+          <dd><strong style="color:#fbbf24;">680亿</strong>较往年大幅提升，传递两个信号：①人民币国际化加速推进 ②中央坚定支持香港金融中心地位。对港股市场构成长期流动性利好。</dd>
+          <dt>📊 行业影响：</dt>
+          <dd><span class="tag tag-economy">利好</span>中资券商（承销业务）、港股通标的、离岸人民币债券市场</dd>
+        </dl>
+      </div>
+
+      <!-- 6 -->
+      <div class="news-item">
+        <div class="news-title"><span class="num">6</span>2026年全国高考报名人数达<span class="hl-red">1335万</span> 创历史新高</div>
+        <dl class="news-sub">
+          <dt>📢 新闻联播说了什么：</dt>
+          <dd>教育部公布2026年全国高考报名总人数为<span class="hl-red">1335万人</span>，再创历史纪录。同时多部门联合宣布：高考期间豆包、元宝、文心一言等AI平台将<strong style="color:#ef4444;">限制或暂停拍题识图、试题解答功能</strong>。</dd>
+          <dt>🧭 风向标解读：</dt>
+          <dd>1335万考生背后是庞大的教育消费群体和考试经济生态。<strong style="color:#f87171;">AI平台集体禁用高考功能</strong>标志着AI监管首次大规模介入国家级考试场景，合规边界正在清晰化。</dd>
+          <dt>📊 行业影响：</dt>
+          <dd><span class="tag tag-policy">监管信号</span>AI应用场景合规化加速 | <span class="tag tag-economy">短期热点</span>教培、志愿填报、考前冲刺类App | <span class="tag tag-risk">风险提示</span>AI教育工具需重新设计产品形态</dd>
+        </dl>
+      </div>
+
+      <!-- 7 -->
+      <div class="news-item">
+        <div class="news-title"><span class="num">7</span>王沪宁主持召开全国政协主席会议</div>
+        <dl class="news-sub">
+          <dt>📢 新闻联播说了什么：</dt>
+          <dd>全国政协主席王沪宁主持召开政协主席会议，研究部署重点工作。结合前一日国新办"十五五"法治建设发布会信息，法治中国建设持续推进。</dd>
+          <dt>🧭 风向标解读：</dt>
+          <dd>两会后政协系统密集开会，聚焦"十五五"规划建言献策。<strong style="color:#60a5fa;">法治建设</strong>作为"十五五"重点方向之一，数据安全法、人工智能立法等领域的推进节奏值得关注。</dd>
+          <dt>📊 行业影响：</dt>
+          <dd><span class="tag tag-policy">关注</span>网络安全/数据合规/AI立法进程 → 合规SaaS、法律科技、企业风控服务</dd>
+        </dl>
+      </div>
+
+      <!-- 8 -->
+      <div class="news-item">
+        <div class="news-title"><span class="num">8</span>1—<span class="hl-num">4月</span>可再生能源新增装机<span class="hl-green">1.28亿千瓦</span></div>
+        <dl class="news-sub">
+          <dt>📢 新闻联播说了什么：</dt>
+          <dd>国家能源局公布数据：今年1至4月全国可再生能源新增装机容量达到<span class="hl-green">1.28亿千瓦</span>，继续保持高速增长态势。</dd>
+          <dt>🧭 风向标解读：</dt>
+          <dd>1.28亿千瓦 ≈ 约<strong style="color:#4ade80;">1.3亿千瓦</strong>/4个月，折算年化近4亿千瓦，显示新能源装机仍在超预期扩张。"双碳"目标下风光储一体化项目加速落地。</dd>
+          <dt>📊 行业影响：</dt>
+          <dd><span class="tag tag-economy">受益链</span>光伏组件/风电整机/储能电池/电网智能化/虚拟电厂运营商</dd>
+        </dl>
+      </div>
+
+      <!-- 9 -->
+      <div class="news-item">
+        <div class="news-title"><span class="num">9</span>国际局势：俄称击落<span class="hl-red">296架</span>乌无人机 / 欧盟批准<span class="hl-purple">1500亿欧元</span>防卫项目 / 美星舰第<span class="hl-num">九次</span>试飞失败</div>
+        <dl class="news-sub">
+          <dt>📢 新闻联播说了什么：</dt>
+          <dd>①俄国防部称单日击落乌克兰<span class="hl-red">296架</span>无人机，规模空前；②欧盟批准总额<span class="hl-purple">1500亿欧元</span>防卫能力提升项目；③SpaceX"星舰"第<span class="hl-num">九次</span>试飞未能成功。</dd>
+          <dt>🧭 风向标解读：</dt>
+          <dd>俄乌冲突呈现<strong style="color:#f87171;">无人化战争</strong>趋势（296架/日），欧洲防务自主提速（1500亿欧元），航天商业化遇挫折但迭代速度惊人（9次试飞）。</dd>
+          <dt>📊 行业影响：</dt>
+          <dd><span class="tag tag-global">国防军工</span>无人机反制系统、低轨卫星通信、军用半导体 | <span class="tag tag-risk">风险</span>地缘冲突加剧→大宗商品波动↑</dd>
+        </dl>
+      </div>
+
+      <!-- 总结风向标 -->
+      <div class="summary-box">
+        <div class="sum-title">📌 三句话总结今日风向标</div>
+        <p>
+          <strong style="color:#34d399;">① 政策主线：</strong>高质量发展供给引领 + "十五五"法治建设 + 区域经济一体化（东盟×海合会）三箭齐发，宏观面偏暖。<br/>
+          <strong style="color:#34d399;">② 投资线索：</strong>C919商业化放量（16城→更多）→ 大飞机产业链；680亿离岸国债 → 港股流动性支撑；1.28亿千瓦新能源装机 → 光伏储能持续高景气。<br/>
+          <strong style="color:#fbbf24;">⚠️ 风险提示：</strong>高考AI禁令标志强监管周期开启，AI教育/考试类应用需规避合规雷区；俄欧军事动态加剧本已高企的大宗商品价格波动风险。
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 专栏二：AI生产力情报 -->
+<!-- ============================================================ -->
+<div class="col-card">
+  <div class="col-header ai">
+    <div class="col-icon ai-bg">🤖</div>
+    <div class="col-title">专栏二：AI生产力情报<span class="en">（黑科技与套利指南）</span></div>
+  </div>
+  <div class="col-body">
+
+    <div class="core-signal ai-signal" style="margin-bottom:20px;">
+      <strong style="color:#a78bfa;">🚀 今日AI核心信号：</strong>GPT-5.5「降智」实锤引爆信任危机 ↔ OpenRouter B轮融资$1.13亿证明中间商暴利模式 ↔ DeepSeek V4-Flash登顶全球调用榜（5.74万亿Token/周）↔ Google安卓Vibe Coding一周爆造25万个App — <strong style="color:#f472b6;">AI编程平民化时代正式降临</strong>，不会写代码的人也能做App变现。
+    </div>
+
+    <!-- ===== GitHub Trending ===== -->
+    <div class="section">
+      <div class="section-title"><span class="emoji">🔥</span>GitHub Trending 今日榜单（AI/Agent方向精选Top 10）</div>
+      <table class="gh-table">
+        <thead>
+          <tr><th>#</th><th>项目</th><th>Stars</th><th>今日+语言</th><th>一句话拆解</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>🥇</td>
+            <td class="gh-name">obra/superpowers</td>
+            <td class="gh-stars">209,539 ⭐</td>
+            <td>+1,511 <span class="gh-lang lang-sh">Shell</span></td>
+            <td>Agent技能框架天花板，定义了一套真正能用的Agentic软件开发方法论，209K stars不是盖的</td>
+          </tr>
+          <tr>
+            <td>🥈</td>
+            <td class="gh-name">affaan-m/ECC</td>
+            <td class="gh-stars">196,030 ⭐</td>
+            <td>+2,062 <span class="gh-lang lang-js">JS</span></td>
+            <td>Agent性能优化系统：Skills+本能+记忆+安全+研究优先开发，196K stars直逼superpowers</td>
+          </tr>
+          <tr>
+            <td>🥉</td>
+            <td class="gh-name">harry0703/MoneyPrinterTurbo</td>
+            <td class="gh-stars">62,039 ⭐</td>
+            <td>+1,742 <span class="gh-lang lang-py">Python</span></td>
+            <td>AI一键生成高清短视频，短视频创作者神器，今天+1742 stars增长极快</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td class="gh-name">Lum1104/Understand-Anything</td>
+            <td class="gh-stars">39,828 ⭐</td>
+            <td><span class="hl-green">+4,465</span> <span class="gh-lang lang-ts">TS</span></td>
+            <td>把任何代码变成可交互知识图谱！支持Claude Code/Cursor/Copilot/Gemini CLI，<strong>今日增速第一</strong></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td class="gh-name">moeru-ai/airi</td>
+            <td class="gh-stars">40,216 ⭐</td>
+            <td>+72 <span class="gh-lang lang-ts">TS</span></td>
+            <td>自托管Grok伴侣，二次元AI角色，支持实时语音聊天+Minecraft/Factorio游戏陪玩</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td class="gh-name">Leonxlnx/taste-skill</td>
+            <td class="gh-stars">24,257 ⭐</td>
+            <td>+2,715 <span class="gh-lang lang-sh">Shell</span></td>
+            <td>给AI装上"好品味"，专门解决AI输出千篇一律/无聊generic内容的问题</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td class="gh-name">shiyu-coder/Kronos</td>
+            <td class="gh-stars">26,884 ⭐</td>
+            <td>+401 <span class="gh-lang lang-py">Python</span></td>
+            <td>金融市场专用基础模型！金融LLM新物种，懂K线财报的AI</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td class="gh-name">anthropics/knowledge-work-plugins</td>
+            <td class="gh-stars">17,273 ⭐</td>
+            <td>+695 <span class="gh-lang lang-py">Python</span></td>
+            <td>Anthropic官方出品的知识工作者插件库，Claude Cowork原生插件生态</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td class="gh-name">p-e-w/heretic</td>
+            <td class="gh-stars">22,010 ⭐</td>
+            <td>+211 <span class="gh-lang lang-py">Python</span></td>
+            <td>全自动语言模型审查移除（去审查），让AI回复更自由</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td class="gh-name">mukul975/Anthropic-Cybersecurity-Skills</td>
+            <td class="gh-stars">10,964 ⭐</td>
+            <td><span class="hl-green">+886</span> <span class="gh-lang lang-py">Python</span></td>
+            <td>754项结构化网络安全技能库，映射MITRE ATT&CK/NIST CSF等5大框架</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ===== 顶级装备库 ===== -->
+    <div class="section">
+      <div class="section-title"><span class="emoji">🛠️</span>【顶级装备库更新】今日值得关注的工具</div>
+
+      <div class="ai-item">
+        <div class="ai-name">🏆 Understand-Anything — 代码知识图谱可视化</div>
+        <div class="ai-detail"><strong>核心黑科技：</strong>将任意代码仓库自动转化为<strong style="color:#c4b5fd;">交互式知识图谱</strong>，支持搜索、探索、问答。不只是一张漂亮的图——它能让AI"看懂"代码架构后再回答问题，而非盲猜。</div>
+        <div class="ai-detail"><strong>支持的IDE：</strong>Claude Code、Codex、Cursor、Copilot、Gemini CLI 全家桶</div>
+        <div class="ai-value">💡 实战价值：接代码私活时，先跑一遍这个 → 客户问你"这个模块怎么改"，你能3秒内给出精准方案。<strong>一个人顶一个资深架构师做代码审计。</strong>今日+4465 stars全站增速第一！</div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-name">🏆 MoneyPrinterTurbo — AI一键生成高清短视频</div>
+        <div class="ai-detail"><strong>核心黑科技：</strong>调用AI大模型实现<strong style="color:#c4b5fd;">端到端短视频自动生产</strong>：脚本→配音→画面生成→剪辑→字幕，全程零人工干预。</div>
+        <div class="ai-value">💡 实战价值：<strong style="color:#f472b6;">小红书生鲜项目直接可用！</strong>食材科普视频批量生产流水线：输入"樟树港辣椒vs普通辣椒区别"→ 自动产出30秒科普短视频。62K stars说明社区验证充分。</div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-name">🏆 Kronos — 金融市场的专属基础模型</div>
+        <div class="ai-detail"><strong>核心黑科技：</strong>专为金融领域训练的基础模型，理解<strong style="color:#c4b5fd;">金融语言、K线形态、财报术语、市场情绪</strong>，非通用LLM简单prompt能比。</div>
+        <div class="ai-value">💡 实战价值：配合你的日推情报系统做<strong style="color:#fbbf24;">金融数据智能解读</strong>——喂入当日行情数据自动生成分析文案，比通用模型的幻觉率低一个数量级。</div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-name">🏆 taste-skill — 给AI装上"审美"</div>
+        <div class="ai-detail"><strong>核心黑科技：</strong>专门解决AI输出的<strong style="color:#c4b5fd;">Generic Slop问题</strong>（千篇一律的套话废话）。通过Skill注入让AI生成更有个性、更有品味的文本。</div>
+        <div class="ai-value">💡 实战价值：<strong style="color:#f472b6;">小红书文案必备！</strong>AI写的笔记为什么像广告？因为没有"品味"。装上taste-skill后，AI生成的种草文案更像真人博主风格，降低平台判广概率。</div>
+      </div>
+    </div>
+
+    <!-- ===== Agent战场情报 ===== -->
+    <div class="section">
+      <div class="section-title"><span class="emoji">🤖</span>【Agent 战场情报】框架与平台动态</div>
+
+      <div class="ai-item">
+        <div class="ai-name">🔥 superpowers (209K⭐) vs ECC (196K⭐) — Agent方法论双雄争霸</div>
+        <div class="ai-detail"><strong>动态：</strong>GitHub上两个最大的Agent开发框架今天同时霸榜，合计超过<strong style="color:#f472b6;">40万stars</strong>。superpowers主打"Agentic技能框架+软件开发方法论"，ECC主打"Agent性能优化系统（技能/本能/记忆/安全）"。</div>
+        <div class="ai-detail"><strong>解读：</strong>Agent开发已经从"能不能跑"进化到"<strong style="color:#c4b5fd;">怎么跑得好</strong>"的阶段。ECC引入"Instincts（本能）"概念让Agent有直觉反应，不再纯靠prompt驱动。</div>
+        <div class="ai-value">💡 落地场景：配合你的小红书项目——搭建一个<strong style="color:#fbbf24;">内容生产Agent团队</strong>：经理Agent（ECC本能层）监控质量，内容Agent批量产稿，审核Agent打回不合格稿件。一个人管一个AI编辑部。</div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-name">🔥 Hermes Agent (NousResearch) — 16万⭐三个月杀到</div>
+        <div class="ai-detail"><strong>动态：</strong>NousResearch发布的Hermes Agent上线仅三月即突破<strong style="color:#f472b6;">160,000 stars</strong>，在11项CLI任务基准测试中以<strong style="color:#4ade80;">6:5击败OpenAI Codex</strong>（后者用Rust写，Hermes用Python）。</div>
+        <div class="ai-detail"><strong>解读：</strong>Python写的Agent打败Rust写的，关键在<strong style="color:#c4b5fd;">架构设计而非语言选择</strong>。启动时间从701ms优化到258ms，响应速度接近即时。</div>
+        <div class="ai-value">💡 落地场景：需要<strong style="color:#fbbf24;">快速响应</strong>的场景（客服Bot、实时互动内容生成），258ms启动速度意味着用户几乎无感知等待。</div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-name">🔥 OpenHuman — 桌面AI Agent，"上下文即产品"</div>
+        <div class="ai-detail"><strong>动态：</strong>TinyHumans AI开源的桌面AI Agent，6天内stars从3489飙到18600+，登顶GitHub榜首一周。核心理念：<strong style="color:#c4b5fd;">Context is the Product（上下文即产品）</strong>——主动积累用户数据构建记忆。</div>
+        <div class="ai-value">💡 落地场景：Product Hunt同期票数488，排名Top 8。桌面端Agent是下一个蓝海——<strong style="color:#f472b6;">浏览器扩展做不到的本地文件操作，桌面Agent可以。</strong></div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-name">⚡ Google Android Vibe Coding — 一周爆造25万个App</div>
+        <div class="ai-detail"><strong>动态：</strong>Google AI Studio上线免费生成原生Android App功能，上线一周已创建超<strong style="color:#f472b6;">25万个App</strong>。<strong style="color:#4ade80;">99%以上</strong>创作者无Android开发经验。</div>
+        <div class="ai-detail"><strong>解读：</strong>Vibe Coding（氛围编码）从概念变现实。不用学Java/Kotlin/Compose，自然语言→原生APK。这与腾讯"吐司"（应用宝AI生成APP可下载）形成<strong style="color:#c4b5fd;">中美双雄格局</strong>。</div>
+        <div class="ai-value">💡 落地场景：<strong style="color:#fbbf24;">变现思路：</strong>用Vibe Coding批量生成细分工具类App（如"生鲜选品计算器""食材保鲜期查询"）上架Google Play，广告+内购变现。一个人就是一支开发团队。</div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-name">⚡ Telegram Bot API 10.0 — AI Agent的原生通信层</div>
+        <div class="ai-detail"><strong>动态：</strong>Telegram 5月8日上线Bot API 10.0，核心突破：<strong style="color:#c4b5fd;">Bot之间可以互相对话</strong>。帖子获13万人围观。</div>
+        <div class="ai-detail"><strong>解读：</strong>这不再是"人→Bot"的单向交互，而是"<strong style="color:#c4b5fd;">Bot↔Bot</strong>"的多Agent协作通信层。每个Bot可以成为Agent网络中的一个节点。</div>
+        <div class="ai-value">💡 落地场景：搭建<strong style="color:#fbbf24;">Telegram自动化赚钱Bot矩阵</strong>——监控Bot→分析Bot→发布Bot三Bot协作运行，全自动运营Telegram频道/群组。</div>
+      </div>
+    </div>
+
+    <!-- ===== AI新玩法/新概念 ===== -->
+    <div class="section">
+      <div class="section-title"><span class="emoji">🖊️</span>【AI 新玩法 / 新概念】</div>
+
+      <div class="ai-item">
+        <div class="ai-name">🧠 Anthropic联创Jack Clark预言：<strong>2028年底AI递归自我改进概率超60%</strong></div>
+        <div class="ai-detail"><strong>提出者：</strong>Jack Clark（Anthropic联合创始人）</div>
+        <div class="ai-detail"><strong>解读：</strong>"递归自我改进"=AI自己改自己的代码让自己变得更聪明，然后循环。Clark认为到2028年底这个事件发生概率超过60%。这意味着<strong style="color:#c4b5fd;">从"工具AI"到"自主进化AI"的时间窗口可能只剩2年半</strong>。</div>
+        <div class="ai-detail"><strong>配套事件：</strong>DeepSeek研究员陈德里开发的DeliAutoResearch已实现AI执笔99%、人类仅投入2小时思考、6天完成46页论文。这还不是递归自我改进，但已经是<strong style="color:#f472b6;">AI4Science的雏形</strong>。</div>
+        <div class="ai-value">💡 对你的意义：趁AI还没完全自主，<strong style="color:#fbbf24;">现在是用AI建立竞争壁垒的最后窗口期</strong>——比如用AI建立的小红书选品知识库和内容体系，未来即使AI普及了，你积累的数据和认知依然是护城河。</div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-name">⛪ 教皇良十四世 × Anthropic 发布4.23万字AI专题通谕《壮丽人性》</div>
+        <div class="ai-detail"><strong>提出者：</strong>梵蒂冈（教皇良十四世）联合Anthropic共同发布</div>
+        <div class="ai-detail"><strong>解读：</strong>这是有史以来<strong style="color:#c4b5fd;">宗教界最系统的AI立场声明</strong>，核心观点10条，警告"AI不能统治人类"。宗教力量介入AI伦理讨论，意味着AI治理将从技术圈/政策圈扩展到全社会价值观层面。</div>
+        <div class="ai-value">💡 商机洞察：<strong style="color:#f472b6;">"符合伦理的AI"将成为新的差异化卖点。</strong>类似"清真认证""有机食品"，未来可能出现"AI伦理认证标签"——对消费者型AI产品来说是新的信任背书。</div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-name">🎮 moeru-ai/airi — "二次元灵魂容器"</div>
+        <div class="ai-detail"><strong>玩法：</strong>自托管的Grok伴侣，创建二次元AI角色（waifu/cyber livings），支持实时语音聊天+Minecraft游戏陪玩+Factorio工厂管理。</div>
+        <div class="ai-detail"><strong>解读：</strong>AI陪伴经济的<strong style="color:#c4b5fd;">硬核版</strong>——不只是聊天，而是真正"生活在一起"。40K stars说明市场需求真实存在。</div>
+        <div class="ai-value">💡 变现思路：参考日本"VTuber+AI"混合模式，打造<strong style="color:#fbbf24;">AI美食娘角色</strong>在小红书/B站运营——用airi框架让AI角色直播吃播/推荐食材，24小时不间断。</div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-name">📝 Claude Mythos 推翻80年数学猜想（埃尔德什单位距离猜想）</div>
+        <div class="ai-detail"><strong>动态：</strong>Anthropic的Claude Mythos推理模型在<strong style="color:#f472b6;">完全断网状态</strong>下独立解决了组合几何领域困扰学界80年的埃尔德什单位距离猜想（1946年提出）。</div>
+        <div class="ai-detail"><strong>对比：</strong>OpenAI同日也宣称攻克同一难题，但Claude的解法被评价为"比OpenAI更短更漂亮"。</div>
+        <div class="ai-value">💡 信号意义：AI从"研究助理"质变为"<strong style="color:#fbbf24;">科学发现者</strong>"。对普通人来说——AI做科研的能力已经在部分领域超越人类博士。</div>
+      </div>
+    </div>
+
+    <!-- ===== AI套利/变现线索 ===== -->
+    <div class="section">
+      <div class="section-title"><span class="emoji">💰</span>【AI 套利 / 变现线索】实操案例</div>
+
+      <div class="ai-item">
+        <div class="ai-name">🔥 Vibe Coding全民造App — 个人开发者黄金窗口</div>
+        <div class="ai-detail"><strong>案例：</strong>Google安卓Vibe Coding上线一周爆造<strong style="color:#f472b6;">25万App</strong>，腾讯"吐司"同步跟进。99%创作者零编程基础。</div>
+        <div class="ai-value">📌 复刻建议（具体步骤）：
+          <br/>① 打开 <strong style="color:#60a5fa;">Google AI Studio</strong> 或 <strong style="color:#60a5fa;">腾讯应用宝"吐司"</strong>
+          <br/>② 输入："做一个生鲜食材选品助手App，用户可以输入食材名称查看产地/季节/挑选技巧"
+          <br/>③ 自动生成 → 微调UI配色 → 下载APK
+          <br/>④ 上架Google Play / 国内应用商店，接入广告SDK（穿山甲/优量汇）
+          <br/>⑤ 用MoneyPrinterTurbo批量制作推广短视频分发抖音/小红书
+          <br/><strong style="color:#f472b6;">成本：0元 | 时间：半天 | 变现路径：广告+内购解锁高级选品数据库</strong>
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-name">🔥 OpenRouter B轮$1.13亿 — AI中间商暴利模式验证</div>
+        <div class="ai-detail"><strong>案例：</strong>AI模型路由平台OpenRouter完成B轮<strong style="color:#f472b6;">1.13亿美元</strong>融资，估值<strong style="color:#fbbf24;">13亿美元</strong>，CapitalG领投、英伟达跟投。周调用量级达万亿Token级别。</div>
+        <div class="ai-value">📌 复刻建议：
+          <br/>OpenRouter赚的是<strong style="color:#fbbf24;">信息差+聚合</strong>的钱——类似"AI界的携程"。
+          <br/>① 垂直领域版本：做一个"<strong style="color:#60a5fa;">中文AI写作路由器</strong>"，对接国内外所有写作模型，根据文体自动选最优模型（公文→通义/营销→GPT-4o/小说→Claude）
+          <br/>② 加价策略：批量采购API折扣价 + 智能路由降本 = 利润空间
+          <br/>③ 目标客户：自媒体公司/电商团队/MCN机构（他们不想研究哪个模型好用）
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-name">🔥 AI短剧赛道：商单报价高达百万元 / 月薪7000抽卡师成临时工</div>
+        <div class="ai-detail"><strong>案例：</strong>36氪报道"国产版爱死机"AI短片爆火，有商单报价高达<strong style="color:#f472b6;">百万元</strong>。但产业链已现分化：抽卡师月薪仅7000元且被视为"临时工"，涨价/卡审/分成下滑导致有人退圈。</div>
+        <div class="ai-value">📌 复刻建议：
+          <br/>❌ 不要去做"AI抽卡师"（被平台剥削的最底层）
+          <br/>✅ 做<strong style="color:#fbbf24;">"AI短剧制片人"</strong>——用MoneyPrinterTurbo自产内容 + 自有渠道分发：
+          <br/>　① 选定细分垂直（如"食材溯源故事"每集讲一种精品食材的产地故事）
+          <br/>　② 批量生产 → 建立自有矩阵号（抖音+小红书+B站）
+          <br/>　③ 接品牌方商单（生鲜品牌/厨具品牌天然匹配）
+          <br/>　④ 关键：你的<strong style="color:#f472b6;">选品专业知识</strong>是AI无法复制的壁垒
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-name">🔥 Cognition融资$100亿估值$250亿 — AI编程独角兽速度</div>
+        <div class="ai-detail"><strong>案例：</strong>AI编程初创Cognition完成超<strong style="color:#f472b6;">10亿美元</strong>融资，投前估值达<strong style="color:#fbbf24;">250亿美元</strong>。相比2025年9月（$4亿融资/$102亿估值）半年多时间<strong style="color:#f472b6;">身价翻倍+</strong>。Lux Capital和General Catalyst领投。</div>
+        <div class="ai-value">📌 信号：AI编程赛道正在经历<strong style="color:#fbbf24;">史上最快估值膨胀</strong>。对个人来说——学会使用AI编程工具（Cursor+Claude Code+Vibe Coding）= 在这个淘金热中至少拥有一把铲子。</div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-name">💡 星巴克AI盘库存翻车 — AI落地现实的冷水</div>
+        <div class="ai-detail"><strong>案例：</strong>星巴克北美<strong style="color:#f472b6;">1.1万家</strong>门店推广AI库存盘点工具（NomadGo开发），运行9个月后因频繁出错导致原料损耗上升<strong style="color:#f87171;">15%</strong>，被迫终止。</div>
+        <div class="ai-value">📌 教训：<strong style="color:#fbbf24;">AI不是万能药。</strong>在选择AI工具时必须验证：①该场景是否有足够的结构化数据 ②容错率是否足够高 ③有没有人工兜底机制。对你来说——用AI写小红书文案可以（错了重写成本低），用AI做财务预测要谨慎。</div>
+      </div>
+    </div>
+
+    <!-- ===== Product Hunt 新品 ===== -->
+    <div class="section">
+      <div class="section-title"><span class="emoji">🆕</span>【Product Hunt 本月热门AI新品】（5月330款新品Top 10）</div>
+      <table class="gh-table">
+        <thead>
+          <tr><th>排名</th><th>产品</th><th>票数</th><th>类型</th><th>一句话</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td class="gh-name">Brew</td><td class="gh-stars">709 🗳️</td><td>动态展示</td><td>本月PH王者，产品动态可视化展示工具</td></tr>
+          <tr><td>2</td><td class="gh-name">Unabyss</td><td class="gh-stars">659 🗳️</td><td>动态展示</td><td>Brew最大竞品，紧咬不放</td></tr>
+          <tr><td>3</td><td class="gh-name">StoreClaw</td><td class="gh-stars">633 🗳️</td><td>图像类</td><td>电商图片处理/识别工具</td></tr>
+          <tr><td>4</td><td class="gh-name">PollyReach</td><td class="gh-stars">529 🗳️</td><td>通讯/营销</td><td>AI驱动的邮件/消息触达优化</td></tr>
+          <tr><td>5</td><td class="gh-name">Spellar 3.0</td><td class="gh-stars">522 🗳️</td><td>动态展示</td><td>3.0版本大更新</td></tr>
+          <tr><td>6</td><td class="gh-name">mailX by mailwarm</td><td class="gh-stars">504 🗳️</td><td>邮件工具</td><td>YC S20孵化，邮件预热/送达率提升</td></tr>
+          <tr><td>7</td><td class="gh-name">Fere AI</td><td class="gh-stars">495 🗳️</td><td>AI平台</td><td>综合AI能力平台</td></tr>
+          <tr><td>8</td><td class="gh-name">OpenHuman</td><td class="gh-stars">488 🗳️</td><td>开源Agent</td><td>桌面AI Agent（GitHub同步上榜！）</td></tr>
+          <tr><td>9</td><td class="gh-name">Vivago Video Agent</td><td class="gh-stars">485 🗳️</td><td>视频AI</td><td>视频处理/生成Agent</td></tr>
+          <tr><td>10</td><td class="gh-name">Stitch 3.0 by Google</td><td class="gh-stars">473 🗳️</td><td>Google官方</td><td>谷歌官方出品，必有关键创新</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ===== 融资速报 ===== -->
+    <div class="section">
+      <div class="section-title"><span class="emoji">💵</span>【融资速报】今日重点融资事件</div>
+      <div class="ai-item">
+        <div class="ai-name">🏆 OpenRouter B轮 $1.13亿（估值$13亿）| CapitalG领投 + 英伟达跟投</div>
+        <div class="ai-detail">AI模型路由平台，万亿Token周调用量，"AI界的携程"商业模式得到资本市场认可。</div>
+      </div>
+      <div class="ai-item">
+        <div class="ai-name">🏆 Cognition 超$10亿（估值$250亿）| Lux Capital + General Catalyst</div>
+        <div class="ai-detail">AI编程独角兽，半年估值翻倍+，核心产品为自主AI软件工程Agent。</div>
+      </div>
+      <div class="ai-item">
+        <div class="ai-name">🏆 新智具身NeoteAI 天使轮近亿元 | 触觉具身智能</div>
+        <div class="ai-detail">专注视触觉传感器+数据采集平台+触觉大模型，已在工业场景POC验证。</div>
+      </div>
+      <div class="ai-item">
+        <div class="ai-name">🏆 深演智能 港股IPO 首日涨近300% | 营销决策AI第一</div>
+        <div class="ai-detail">北大系AI公司，发行价55.5港元，上市首日最高涨幅近300%，中国营销决策AI应用市场第一。</div>
+      </div>
+      <div class="ai-item">
+        <div class="ai-name">📊 字节跳动 Seed 豆包股认购 $13/股 | 估值$500亿?</div>
+        <div class="ai-detail">约2000名员工可参与，每股13美元，业内评估AI业务当前估值$500亿，或有近10倍增长空间。</div>
+      </div>
+    </div>
+
+    <!-- ===== 避坑/黑话词典 ===== -->
+    <div class="section">
+      <div class="section-title"><span class="emoji">🔍</span>【避坑 / 黑话词典】今日术语</div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">Vibe Coding（氛围编码）</div>
+        <div class="glossary-def">大白话：<strong>用自然说话的方式写代码。</strong>不用学编程语言，你告诉AI"我要一个红色按钮点一下弹窗"，它帮你写完代码。Google安卓Vibe Coding一周造了25万个App，99%的用户不会写代码。→ <strong style="color:#4ade80;">对普通人来说：这是最接近"说话就能赚钱"的技术。</strong></div>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">Generic Slop（通用垃圾）</div>
+        <div class="glossary-def">大白话：<strong>AI写的那些又长又空又正确的废话。</strong>"在当今数字化转型的浪潮中，我们需要以用户为中心..." —— 就是Slop。GitHub上taste-skill和stop-slop两个项目今天同时在榜，说明全世界都在烦这个事。→ <strong style="color:#4ade80;">对你的启示：小红书文案绝不能是Slop，否则用户划走只需0.3秒。</strong></div>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">AI 降智 / Silent Downgrade</div>
+        <div class="glossary-def">大白话：<strong>你花高价买的AI，偷偷给你换了个笨的。</strong>今天实锤：GPT-5.5超额使用后会静默降级为mini模型，Pro用户高负载时也会被限流，<strong style="color:#f87171;">没有任何提示！</strong>OpenAI官方文档已承认。→ <strong style="color:#f87171;">避坑：重要任务跑两遍对比结果，发现异常立刻切换模型。</strong></div>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">Recursive Self-Improvement（递归自我改进）</div>
+        <div class="glossary-def">大白话：<strong>AI自己改代码让自己变聪明，然后循环往复。</strong>像滚雪球一样越滚越大。Anthropic联创说2028年底前发生概率超60%。→ 这不是科幻——DeepSeek的DeliAutoResearch已经能做到"AI写论文只投入2小时人类思考"了。</div>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">FP4 训练</div>
+        <div class="glossary-def">大白话：<strong>用4位浮点数训练AI模型，而不是传统的16位或32位。</strong>好处：显存需求暴跌，训练速度快9-10%。坏处：以前大家觉得不稳定。今天AMD+宾大的新论文推翻了这个认知——问题不在精度而在误差累积方式。→ <strong style="color:#4ade80;">意味什么？训练AI的成本还要继续下降，小团队能训大模型的日子不远了。</strong></div>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">AI 中转站 Token 黄牛</div>
+        <div class="glossary-def">大白话：<strong>倒卖AI接口的二道贩子。</strong>最低价只有官方价格的1%，但你用的模型可能掺假、你的数据可能被转卖。上海警方已抓获非法倒卖Claude/GPT接口的站长。→ <strong style="color:#f87171;">避坑：贪便宜用来源不明API = 数据泄露+账号封禁双重风险。老老实实用官方渠道。</strong></div>
+      </div>
+    </div>
+
+    <!-- ===== 今日重磅数据速览 ===== -->
+    <div class="section">
+      <div class="section-title"><span class="emoji">📊</span>【今日重磅数据速览】一句话记住</div>
+      <div class="ai-item" style="background:rgba(239,68,68,0.08);border-color:rgba(239,68,68,0.15);">
+        <div class="ai-detail" style="font-size:13px;line-height:2;">
+          🔢 <strong style="color:#f87171;">25万</strong> — Google Vibe Coding一周生成的Android App数量<br/>
+          🔢 <strong style="color:#f87171;">5.74万亿</strong> — DeepSeek V4-Flash周调用量Token，全球第一<br/>
+          🔢 <strong style="color:#f87171;">$250亿</strong> — Cognition最新估值，AI编程赛道半年翻倍<br/>
+          🔢 <strong style="color:#f87171;">99%</strong> — GPT-5.5超额后静默降级的"透明度"<br/>
+          🔢 <strong style="color:#f87171;">4.23万字</strong> — 教皇×Anthropic AI通谕长度，史上最长<br/>
+          🔢 <strong style="color:#f87171;">$1万亿</strong> — 美光（Micron）市值，HBM产能2026全年售罄<br/>
+          🔢 <strong style="color:#f87171;">1335万</strong> — 2026高考报名人数，AI拍题功能全面禁用<br/>
+          🔢 <strong style="color:#f87171;">40万+</strong> — superpowers+ECC两大Agent框架合计stars
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>📡 每日情报推送系统 v2.0 | 自动生成于 2026-05-28 09:00 CST</p>
+  <p>信源：新闻联播 / AITNT / AIBase / 36氪 / GitHub Trending / Product Hunt / 量子位</p>
+  <p>⚠️ 仅供参考，不构成投资建议 | 数据可能存在延迟，请以官方渠道为准</p>
+</div>
+
+</div>
+</body>
+</html>
