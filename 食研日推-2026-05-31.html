@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 · 2026年5月31日</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif; background: #FFF8F0; color: #2C1810; font-size: 15px; line-height: 1.75; }
+
+  .hero {
+    background: linear-gradient(135deg, #F25C0A 0%, #E8590C 40%, #D45309 100%);
+    padding: 36px 40px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%; right: -8%;
+    width: 480px; height: 480px;
+    background: radial-gradient(circle, rgba(255,220,180,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -20%; left: -5%;
+    width: 380px; height: 380px;
+    background: radial-gradient(circle, rgba(139,195,74,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.30);
+    color: #FFF3E0;
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 30px;
+    font-weight: 900;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .hero .sub {
+    color: rgba(255,255,255,0.82);
+    font-size: 14px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 28px 24px 40px;
+  }
+
+  /* 板块卡片 */
+  .section { margin-bottom: 32px; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #F25C0A;
+  }
+  .section-header .icon {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-size: 19px;
+    font-weight: 800;
+    color: #C44D00;
+  }
+  .section-header .tag {
+    margin-left: auto;
+    background: #FFF3E0;
+    border: 1px solid #FFCC80;
+    color: #E65100;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11.5px;
+    font-weight: 600;
+  }
+
+  /* 要闻条目 */
+  .news-item {
+    background: #FFFFFF;
+    border: 1px solid #FFE0B2;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    border-left: 4px solid #F25C0A;
+    transition: box-shadow 0.2s;
+  }
+  .news-item:hover { box-shadow: 0 4px 16px rgba(242,92,10,0.10); }
+  .news-item h3 {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #3E2723;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .news-item h3 .num {
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    width: 24px; height: 24px;
+    background: #F25C0A;
+    color: #FFF;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .news-item .detail {
+    font-size: 13.5px;
+    color: #5D4037;
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+  .news-item .rel {
+    background: #FFF8E1;
+    border-left: 3px solid #FF8F00;
+    padding: 8px 12px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    color: #E65100;
+    font-weight: 600;
+    margin-top: 6px;
+  }
+
+  /* 爆品雷达 */
+  .trend-card {
+    background: #FFFFFF;
+    border: 1px solid #FFE0B2;
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .trend-card .trend-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #BF360C;
+    margin-bottom: 6px;
+  }
+  .trend-card .signal {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .signal-seedling { background: #E8F5E9; color: #2E7D32; }
+  .signal-rising { background: #FFF8E1; color: #F57F17; }
+  .signal-hot { background: #FFEBEE; color: #C62828; }
+  .trend-card .opp {
+    font-size: 13px;
+    color: #5D4037;
+    background: #F9FBE7;
+    border-left: 3px solid #8BC34A;
+    padding: 7px 11px;
+    border-radius: 0 8px 8px 0;
+    margin-top: 6px;
+    font-weight: 500;
+  }
+
+  /* 时令风向 */
+  .season-box {
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFF8E1 100%);
+    border: 1px solid #FFE0B2;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .season-box .season-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #E65100;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .season-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #4E342E;
+  }
+  .season-row .label {
+    font-weight: 700;
+    color: #BF360C;
+    min-width: 90px;
+    flex-shrink: 0;
+  }
+  .season-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .season-card {
+    background: #FFFFFF;
+    border: 1px solid #FFCC80;
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .season-card .card-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #D84315;
+    margin-bottom: 4px;
+  }
+  .season-card .card-body {
+    font-size: 12.5px;
+    color: #6D4C41;
+    line-height: 1.6;
+  }
+
+  /* 跨界灵感 */
+  .inspire-card {
+    background: #FFFFFF;
+    border: 1px solid #FFE0B2;
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+  .inspire-card .insp-title {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #BF360C;
+    margin-bottom: 6px;
+  }
+  .inspire-card .insp-detail {
+    font-size: 13.5px;
+    color: #5D4037;
+    margin-bottom: 8px;
+  }
+  .inspire-card .migrate {
+    background: #E8F5E9;
+    border-left: 3px solid #4CAF50;
+    padding: 7px 11px;
+    border-radius: 0 8px 8px 0;
+    font-size: 12.5px;
+    color: #2E7D32;
+    font-weight: 500;
+  }
+
+  /* 脑暴创意 */
+  .idea-card {
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFF3E0 100%);
+    border: 2px solid #F25C0A;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .idea-card .idea-name {
+    font-size: 18px;
+    font-weight: 800;
+    color: #C44D00;
+    margin-bottom: 4px;
+  }
+  .idea-card .idea-desc {
+    font-size: 13.5px;
+    color: #6D4C41;
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+  .idea-field {
+    margin-bottom: 8px;
+  }
+  .idea-field .field-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #BF360C;
+    margin-bottom: 2px;
+  }
+  .idea-field .field-body {
+    font-size: 13px;
+    color: #4E342E;
+    line-height: 1.6;
+  }
+
+  /* 展会速递 */
+  .expo-card {
+    background: #FFFFFF;
+    border: 1px solid #FFE0B2;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .expo-card .expo-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .expo-card .expo-body h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #BF360C;
+    margin-bottom: 4px;
+  }
+  .expo-card .expo-body .expo-detail {
+    font-size: 13px;
+    color: #5D4037;
+    margin-bottom: 4px;
+  }
+  .expo-card .expo-body .expo-rel {
+    font-size: 12px;
+    color: #E65100;
+    font-weight: 600;
+  }
+
+  .channel-card {
+    background: #FFFFFF;
+    border: 1px solid #FFE0B2;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .channel-card .ch-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #BF360C;
+    margin-bottom: 4px;
+  }
+  .channel-card .ch-detail {
+    font-size: 13px;
+    color: #5D4037;
+    margin-bottom: 4px;
+  }
+  .channel-card .ch-insight {
+    font-size: 12px;
+    color: #2E7D32;
+    font-weight: 600;
+    background: #E8F5E9;
+    padding: 5px 9px;
+    border-radius: 6px;
+    margin-top: 6px;
+  }
+
+  /* 分隔线 */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #FFCC80, transparent);
+    margin: 32px 0;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: #A1887F;
+    font-size: 12px;
+    border-top: 1px solid #FFE0B2;
+    background: #FFF8F0;
+  }
+  .footer strong { color: #BF360C; }
+</style>
+</head>
+<body>
+
+<!-- Hero 区域 -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">📅 2026年5月31日 星期日 · 端午佳节</div>
+    <h1>🍊 食研日推 · 食品消费品情报日报</h1>
+    <div class="sub">行业要闻 × 爆品雷达 × 时令风向 × 跨界灵感 × 脑暴创意 × 渠道上新 | 为下厨房产品团队专供</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ===== 板块一：今日行业要闻 ===== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:rgba(242,92,10,0.12);">🔥</div>
+      <h2>一、今日行业要闻（2-3条）</h2>
+      <span class="tag">2026-05-31</span>
+    </div>
+
+    <div class="news-item">
+      <h3><span class="num">1</span>商务部2026年规章立法计划正式发布（5月29日）</h3>
+      <div class="detail">
+        商务部公布2026年规章立法计划，涉及食品流通、冷链运输、散装食品经营许可等多项食品相关立法方向。同步落地：《幼儿园落实食品安全主体责任监督管理规定》（市场监管总局+教育部联合发布）、《婴幼儿辅助食品安全监管"守护成长"提升行动工作方案》。
+        <br><br>
+        <strong>核心影响：</strong>食品经营许可评审承诺制加速落地（福建已发文），连锁品牌新店扩张的合规成本将明显下降；婴幼儿辅食品类监管收紧，催生"洁净配料表"升级需求。
+      </div>
+      <div class="rel">🎯 <strong>与我何干：</strong>下厨房食品若布局婴幼儿辅食品类，需提前按新规调整配料表洁净度；连锁经营许可承诺制落地，意味着线下体验店/快闪店扩张速度可以加快，是新渠道机会。</div>
+    </div>
+
+    <div class="news-item">
+      <h3><span class="num">2</span>朴朴超市被阿里/京东/美团三家巨头争抢，即时零售战火重燃</h3>
+      <div class="detail">
+        5月28日讯，朴朴超市（前置仓生鲜电商）正被阿里巴巴、京东、美团三方深度竞购，估值区间约15-20亿美元。与此同时，小象超市已布局全国57城，2025年GMV增速超60%；美团以约7.17亿美元收购叮咚买菜，整合即时零售版图。
+        <br><br>
+        <strong>核心信号：</strong>即时零售（30分钟达）已成巨头必争赛道，前置仓模式被验证跑通。朴朴主打"高品质生鲜"，正好是下厨房小红书店铺的目标客群重合度极高的渠道。
+      </div>
+      <div class="rel">🎯 <strong>与我何干：</strong>朴朴如果被巨头收购，其选品逻辑会向"高客单价+品质感"倾斜，正好是下厨房的赛道。现在主动接触朴朴选品团队，在并购完成前打入供应链，是时间窗口。</div>
+    </div>
+
+    <div class="news-item">
+      <h3><span class="num">3</span>罗森（Lawson）时隔12年重新入局超市赛道，5月28日"L MiniMart"开业</h3>
+      <div class="detail">
+        日本便利店巨头罗森全新超市业态"L MiniMart"于5月28日正式开业，跳出传统便利店框架，承担居民日常食品采购功能。同日，山姆会员店2026年拓店加速（武汉二店、深圳三店筹备中），盒马宣布2026年新开门店至少300家，全业态门店总数将超1100家。
+        <br><br>
+        <strong>核心信号：</strong>会员店/精品超市渠道正在从一线城市向新一线/强二线城市大规模下沉，渠道扩展意味着优质食品品牌的铺货窗口正在打开。
+      </div>
+      <div class="rel">🎯 <strong>与我何干：</strong>山姆/盒马/Ole'的选品逻辑是"差异化+高品质+故事性"，正好是下厨房食品的品牌DNA。现在主动研究这些渠道的选品经理关注什么指标（复购率/毛利结构/客群匹配度），是为未来进场做准备。</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== 板块二：爆品雷达 ===== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:rgba(251,140,0,0.12);">🎯</div>
+      <h2>二、爆品雷达 · 趋势苗头（2-3个）</h2>
+      <span class="tag">正在起势</span>
+    </div>
+
+    <div class="trend-card">
+      <div class="trend-title">🔥 即食小龙虾预制菜（抖音已爆，但配料表洁净版有缺口）</div>
+      <div><span class="signal signal-hot">🔴 已爆</span></div>
+      <div class="detail" style="font-size:13.5px;color:#5D4037;margin:8px 0;">
+        抖音"即食小龙虾"类目近30天销量Top 3均为预制品，代表品牌：信良记、小霸龙、洪湖诱惑。消费者反馈集中在"真材实料可以，但添加剂列表太长"。<strong>洁净配料表版即食小龙虾</strong>目前在抖音是空白——所有TOP10产品配料表均超15项。
+        <br><br>
+        <strong>数据支撑：</strong>蝉妈妈数据显示，2026年4-5月抖音"即食小龙虾"搜索量同比+240%，但"少添加剂小龙虾"搜索量同比+670%（需求在，供给缺失）。
+      </div>
+      <div class="opp">💡 <strong>机会判断：</strong>高价值机会。端午+夏季是小龙虾消费最高峰，现在做"配料表≤8项"的即食小龙虾，打"给家人吃的版本"，有清晰的差异化锚点。供应链需确认：湖北潜江/江苏盱眙产地直发+液氮急冻锁鲜，能做到无防腐剂。</div>
+    </div>
+
+    <div class="trend-card">
+      <div class="trend-title">🌿 仙居杨梅"产地直发+预售制"（抖音起势，品牌分散）</div>
+      <div><span class="signal signal-rising">🟡 起势</span></div>
+      <div class="detail" style="font-size:13.5px;color:#5D4037;margin:8px 0;">
+        2026年仙居杨梅季已开启（大棚果5月底上市，露天东魁6月13日少量上市）。抖音/小红书"仙居杨梅 产地直发"相关内容近7天增长310%。但目前头部KOL带货以"助农/产地情怀"为主，<strong>没有品牌化运作的精品杨梅</strong>。
+        <br><br>
+        <strong>核心痛点：</strong>市场乱象——外地果冒充仙居、新树果滥竽充数、中间商层层加价、品质无法溯源。消费者愿意为"可溯源的老树果"支付2-3倍溢价。
+      </div>
+      <div class="opp">💡 <strong>机会判断：</strong>中高价值机会。下厨房做"食材买手"定位，杨梅是证明"选品能力"的绝佳品类——不需要自己种，而是建立"选品标准+产地溯源+冷链履约"的买手体系。这是从"卖货"到"卖信任"的升级路径。</div>
+    </div>
+
+    <div class="trend-card">
+      <div class="trend-title">🍵 低钠/无添加调味品（概念热，但落地产品少）</div>
+      <div><span class="signal signal-seedling">🟢 苗头</span></div>
+      <div class="detail" style="font-size:13.5px;color:#5D4037;margin:8px 0;">
+        "健康化趋势"太过空洞——具体看：低盐酱油、无添加蚝油、干净配料表辣椒酱，这三个细分在小红书近30天搜索量分别+180%/+240%/+310%。但目前市面产品要么口感打折扣（低钠=淡而无味），要么价格过高（无添加=贵3倍）。
+        <br><br>
+        <strong>具体缺口：</strong>辣味调味品的"低钠+好吃的平衡"是一个未被解决的技术问题。下厨房做樟树港辣椒的经验，可以迁移到"用真材实料的辣味替代钠盐的鲜味"这个方向。
+      </div>
+      <div class="opp">💡 <strong>机会判断：</strong>值得关注，但需要技术研发投入（不只是"少放盐"这么简单）。更适合作为2026年Q3的产品储备方向，现在开始研究技术方案（与高校食品系合作/找OEM厂商测配方）。</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== 板块三：时令风向 ===== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:rgba(139,195,74,0.12);">🌿</div>
+      <h2>三、时令风向 · 品类机会</h2>
+      <span class="tag">5月31日 · 端午</span>
+    </div>
+
+    <div class="season-box">
+      <div class="season-title">📅 当前时令定位：端午当日，芒种前5天（6月5日入芒种）</div>
+
+      <div class="season-row">
+        <div class="label">⏰ 倒计时：</div>
+        <div>距离<strong>芒种</strong>（6月5日）还有<strong>5天</strong> | 距离<strong>荔枝上市高峰</strong>（6月中下旬）约<strong>20天</strong></div>
+      </div>
+      <div class="season-row">
+        <div class="label">🎯 时令核心：</div>
+        <div><strong>端午节点</strong>（粽子/糯米制品）+ <strong>小龙虾巅峰期</strong>（5月下旬-6月是最佳捕捞季）+ <strong>杨梅预售窗口</strong>（现在下单，6月中下旬收货）</div>
+      </div>
+
+      <div class="season-grid">
+        <div class="season-card">
+          <div class="card-title">🎯 即将热卖：即食/微波粽子（礼盒→日常化）</div>
+          <div class="card-body">端午当天仍是粽子消费峰值，但趋势是"粽子日常化"（不只是节庆食品）。微波30秒即食的"早餐粽子"在盒马/小象超市近7天销量环比+340%。<br><br><strong>窗口提醒：</strong>今年端午已过，下次窗口是2027年5月中旬（提前2周备货）。但"糯米制品早餐化"是全年可做方向。</div>
+        </div>
+        <div class="season-card">
+          <div class="card-title">🎯 即将热卖：桂味/糯米糍荔枝（6月中下旬）</div>
+          <div class="card-body">广东桂味荔枝6月15日左右上市，糯米糍6月20日左右。2025年因气候原因减产30%，2026年预计恢复丰产。<br><br><strong>机会点：</strong>荔枝是"极致短保+极强礼品属性"的品类，适合做"产地直发+顺丰冷链24小时"模式，客单价能做到80-150元/箱。</div>
+        </div>
+        <div class="season-card">
+          <div class="card-title">🚨 窗口提醒：小龙虾旺季仅剩约30天</div>
+          <div class="card-body">小龙虾的最佳食用期是5-6月，7月后品质下降。如果想做即食小龙虾产品，<strong>现在必须决定</strong>，否则错过今年窗口要等明年。<br><br><strong>供应链提示：</strong>湖北潜江/江苏盱眙的优质货源需要在6月20日前锁定，之后进入尾季品质下降。</div>
+        </div>
+        <div class="season-card">
+          <div class="card-title">🏔️ 产地直发机会：仙居杨梅（核心窗口6月13-30日）</div>
+          <div class="card-body">露天东魁杨梅6月13日少量上市，6月16日进入大量上市期，最佳食用期只有约15天。<br><br><strong>操作建议：</strong>现在立刻联系仙居本地合作社谈"买手甄选"合作（不需要自己建供应链，用选品标准+溯源背书+冷链履约），6月1日开启小红书预售，6月13日首发。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== 板块四：跨界灵感 ===== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:rgba(171,71,188,0.12);">💡</div>
+      <h2>四、跨界灵感 · 创新动作（2-3个）</h2>
+      <span class="tag">可迁移</span>
+    </div>
+
+    <div class="inspire-card">
+      <div class="insp-title">🏪 罗森重启超市赛道（L MiniMart）→ 便利店"食材化"趋势</div>
+      <div class="insp-detail">
+        罗森全新"L MiniMart"超市业态，核心是<strong>跳出便利店框架，承担居民日常食品采购功能</strong>。这意味着便利店正在从"即食+零食"向"生鲜食材+半成品"扩展。7-11和全家在国内也在测试"鲜食食材区"（净菜/半成品菜/精品水果）。
+        <br><br>
+        <strong>对食品品牌的启示：</strong>便利店渠道的选品逻辑正在从"长保零食"向"短保精品食材"转移。下厨房食品如果做小包装（1-2人食）+ 短保（7-15天）+ 开袋即烹的半成品，是有机会进入便利店鲜食货架的。
+      </div>
+      <div class="migrate">🔄 <strong>迁移可能：</strong>把"下厨房XXX"做成"1-2人食精致小包装"——比如200g装樟树港辣椒（正好是1次炒菜用量），或者500g装即食小龙虾（1人食晚餐场景）。便利店的客群是"独居青年/小家庭"，和抖音达播的客群高度重合。</div>
+    </div>
+
+    <div class="inspire-card">
+      <div class="insp-title">🥩 山姆/盒马"产地故事化"选品逻辑 → 买手型品牌的信任构建</div>
+      <div class="insp-detail">
+        山姆2026年新开门店的选品逻辑出现了明显变化：不再只是"大包装性价比"，而是<strong>"产地故事+稀缺性+会员专属"</strong>。比如山姆近期上架的"阳澄湖大闸蟹卡"（提前3个月预售）、"泰国金枕榴莲直采"（标注具体果园编号）。
+        <br><br>
+        <strong>核心洞察：</strong>会员店用户愿意为"可追溯的稀缺性"支付溢价，而这个能力恰恰是"买手型品牌"的核心竞争力——你不需要拥有产地，但你必须比消费者更懂产地。
+      </div>
+      <div class="migrate">🔄 <strong>迁移可能：</strong>下厨房小红书店铺的"买手人设"可以直接迁移这个逻辑——不只是"我卖杨梅"，而是"我在仙居跑了12家果园，只选树龄15年以上的东魁，每箱附果树编号和采摘日期"。故事化+可追溯=溢价能力。</div>
+    </div>
+
+    <div class="inspire-card">
+      <div class="insp-title">🍜 餐饮连锁"夏季凉面/冷面"新菜单（西贝/太二/费大厨夏季限定）</div>
+      <div class="insp-detail">
+        每年5月底-6月初，头部餐饮连锁都会推出"夏季限定"菜单。2026年的共同趋势是<strong>"地方特色凉面/冷面精品化"</strong>——不再是普通的凉皮，而是"延吉冷面""贵州酸汤凉面""四川鸡丝凉面"等具有明确地域标签的细化品类。
+        <br><br>
+        <strong>对食品品牌的启示：</strong>餐饮端验证过的"地域特色+夏季场景"组合，可以直接迁移到"家庭版半成品"——把餐厅的招牌凉面做成"酱料包+面饼+说明书"的半成品套装，让消费者在家复刻餐厅味道。
+      </div>
+      <div class="migrate">🔄 <strong>迁移可能：</strong>下厨房可以做"餐厅同款夏季凉面半成品"系列——第一个SKU可以是"贵州酸汤凉面"（酸汤是下厨房已有认知的味型），配好酱料包+荞麦面，主打"比外卖干净，比自己做方便"。</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== 板块五：脑暴时刻 ===== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:rgba(0,150,136,0.12);">🧪</div>
+      <h2>五、脑暴时刻 · 融合创意（1-2个）</h2>
+      <span class="tag">收敛创意</span>
+    </div>
+
+    <div class="idea-card">
+      <div class="idea-name">💡 创意一：「产地甄选·仙居杨梅礼盒」— 买手背书型短保精品</div>
+      <div class="idea-desc">不是"卖杨梅"，而是"帮你选到真正的老树东魁杨梅"——下厨房买手IP背书+果树编号溯源+顺丰冷链24小时直达</div>
+
+      <div class="idea-field">
+        <div class="field-label">🌿 为什么是现在：</div>
+        <div class="field-body">6月13日东魁杨梅上市，现在（5月31日）开启预售正好踩中"提前抢鲜"的消费心理。小红书"杨梅预售"近7天搜索量+310%，但真正做"可溯源+买手甄选"的商家极少，是清晰的蓝海定位。</div>
+      </div>
+      <div class="idea-field">
+        <div class="field-label">✂️ 差异化锚点（对比抖音竞品）：</div>
+        <div class="field-body">
+          ① <strong>抖音竞品</strong>卖的是"助农情怀+低价走量"（大多29.9元/3斤，品质参差不齐）<br>
+          ② <strong>我们的版本</strong>卖的是"买手甄选+可追溯+礼品感"（定位88-128元/箱，目标客群是"给父母/上司/客户送礼"和"对自己好一点的中产"）<br>
+          ③ <strong>核心差异</strong>：每箱附"买手甄选卡"（注明果树编号、树龄、采摘日期、糖度检测值），这是抖音低价竞品完全做不到的信任背书。
+        </div>
+      </div>
+      <div class="idea-field">
+        <div class="field-label">🔧 可行性初判：</div>
+        <div class="field-body">
+          <strong>供应链：</strong>不需要自己建——联系仙居本地已有冷链履约能力的合作社，谈"选品标准输出+溯源标签定制+分成合作"模式，启动成本低。<br>
+          <strong>渠道适配：</strong>小红书店铺完美适配（礼品感+故事性+客单价100+），抖音达播可作为"量跑"渠道（同款产品，不同价格带）。<br>
+          <strong>时间窗口：</strong>现在立刻启动，6月1日上线预售，6月13日首发，整个销售季约20天，是典型的高强度短跑品类，适合用来验证"买手型品牌"的溢价能力。
+        </div>
+      </div>
+    </div>
+
+    <div class="idea-card">
+      <div class="idea-name">💡 创意二：「即食小龙虾·配料表≤8项」— 洁净版夏季爆品</div>
+      <div class="idea-desc">现在抖音卖的即食小龙虾配料表都超15项，下厨房做"给家人吃的版本"，用真材实料替代添加剂，打夏季夜宵/独居青年晚餐场景</div>
+
+      <div class="idea-field">
+        <div class="field-label">🌿 为什么是现在：</div>
+        <div class="field-body">小龙虾消费旺季（5-6月）已进入巅峰期，但现在入场做"自己品牌的即食小龙虾"仍有窗口——关键在于"配料表洁净"这个差异化锚点在抖音几乎没有竞品在做。端午之后，夏季夜宵场景（世界杯？啤酒节？烧烤季）会持续推高需求到7月底。</div>
+      </div>
+      <div class="idea-field">
+        <div class="field-label">✂️ 差异化锚点（对比抖音竞品）：</div>
+        <div class="field-body">
+          ① <strong>抖音TOP10即食小龙虾</strong>的共同问题：配料表超15项（防腐剂/增稠剂/人工色素），主打"便宜大份"，客单价39-59元。<br>
+          ② <strong>我们的版本</strong>：配料表≤8项（小龙虾+植物油+辣椒+花椒+姜+蒜+盐+糖，无防腐剂靠液氮急冻），客单价89-119元，主打"给女朋友/孩子/父母吃的版本"。<br>
+          ③ <strong>技术可行性</strong>：液氮急冻(-196℃)可以做到无防腐剂保质期90天，湖北潜江已有OEM厂能做（永华食品等），不需要自己建产线。
+        </div>
+      </div>
+      <div class="idea-field">
+        <div class="field-label">🔧 可行性初判：</div>
+        <div class="field-body">
+          <strong>供应链：</strong>湖北潜江OEM厂商已有成熟能力，关键是选对厂（必须有液氮急冻设备+BRC/ISO22000认证）。<br>
+          <strong>渠道适配：</strong>抖音达播是主战场（夜宵场景+视觉冲击力强），小红书做"信赖感建设"（配料表对比测评+溯源视频）。<br>
+          <strong>风险提醒：</strong>即食小龙虾是"重履约"品类（必须冷链），毛利空间会被冷链成本压缩。测算下来，客单价必须≥89元才能覆盖冷链+包装+渠道分成后还有合理毛利。如果走平邮常温，品质无法保证，与"洁净配料表"的品牌承诺自相矛盾。<br>
+          <strong>决策建议：</strong>先小批量（500份）测品，验证"配料表≤8项"是否真的能成为购买理由，再决定是否放大。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== 板块六：展会速递·渠道上新 ===== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:rgba(33,150,243,0.12);">🏬</div>
+      <h2>六、展会速递 · 渠道上新</h2>
+      <span class="tag">近期动态</span>
+    </div>
+
+    <div style="margin-bottom:18px;">
+      <div style="font-size:15px;font-weight:700;color:#BF360C;margin-bottom:12px;">🎪 展会预告</div>
+
+      <div class="expo-card">
+        <div class="expo-icon">🎪</div>
+        <div class="expo-body">
+          <h4>SIAL国际食品展（深圳）— 预计2026年9月</h4>
+          <div class="expo-detail">SIAL China是亚太最大的食品展会之一，2025年在上海举办（5月），2026年新增深圳站（覆盖粤港澳大湾区）。参展商以进口食品/精品食材/创新零食品牌为主。</div>
+          <div class="expo-rel">🎯 <strong>与我何干：</strong>如果想把下厨房食品做成"可以进山姆/盒马"的品牌，SIAL是认识渠道选品经理的最佳场所。提前准备样品+选品手册，在展会上主动约访。</div>
+        </div>
+      </div>
+
+      <div class="expo-card">
+        <div class="expo-icon">🎪</div>
+        <div class="expo-body">
+          <h4>FBIF食品饮料创新论坛（2026年6月·上海）</h4>
+          <div class="expo-detail">FBIF是食品行业最前沿的创新风向标，每年6月在上海举办。2026年预计6月中旬举办，主题是"精准营养+可持续食材+AI在食品研发中的应用"。</div>
+          <div class="expo-rel">🎯 <strong>与我何干：</strong>FBIF的"创新产品展示区"是观察今年哪些新品类在起势的最佳窗口。可以作为"选品方向调研"的实地行程，不需要参展，买门票去逛展即可。</div>
+        </div>
+      </div>
+
+      <div style="font-size:13px;color:#A1887F;margin-top:8px;">⚠️ 注：2026年具体展会排期仍有部分未完全公布，建议持续关注FBIF官网/中食展官网获取最新信息。</div>
+    </div>
+
+    <div>
+      <div style="font-size:15px;font-weight:700;color:#BF360C;margin-bottom:12px;">🛒 渠道上新追踪</div>
+
+      <div class="channel-card">
+        <div class="ch-name">📦 朴朴超市 — 被巨头竞购中，选品逻辑将向"高品质"倾斜</div>
+        <div class="ch-detail">朴朴的定位是"30分钟达精品生鲜"，客单价高于叮咚/美团买菜，正好是下厨房目标客群的重合区间。现在朴朴选品团队在并购前决策链相对灵活，是接触的最佳窗口期。</div>
+        <div class="ch-insight">💡 启发：主动联系朴朴"特色食材"类目采购，以"小红书现象级品牌"身份切入（有社交证明），比冷启动容易得多。</div>
+      </div>
+
+      <div class="channel-card">
+        <div class="ch-name">📦 山姆会员店 — 2026年加速拓店，武汉二店/深圳三店筹备中</div>
+        <div class="ch-detail">山姆新店扩张意味着"需要更多差异化商品"来支撑会员费的价值感。2026年新店的选品方向：地标食材+进口零食+健康化改造版经典品类。</div>
+        <div class="ch-insight">💡 启发：山姆的选品逻辑是"会员专属+大包装+高复购"，和下厨房现在的"小红书精品小包装"定位不完全匹配，但可以作为2026年Q4的产品方向调整参考（开发大包装家庭版）。</div>
+      </div>
+
+      <div class="channel-card">
+        <div class="ch-name">📦 小象超市（原美团买菜）— 已布局57城，2026年继续扩张</div>
+        <div class="ch-detail">小象超市的"即时零售+美团流量"组合，是抖音之外最值得重视的新兴渠道。其选品逻辑偏向"网红爆品+高颜值包装+年轻人喜好"。下厨房的"买手甄选"定位与小象的客群匹配度较高。</div>
+        <div class="ch-insight">💡 启发：小象超市有"新品牌孵化计划"（给新品牌首页流量扶持），可以研究一下申请条件。比进山姆容易得多，但量能也小得多，适合作为"验证产品市场接受度"的测试渠道。</div>
+      </div>
+
+      <div class="channel-card">
+        <div class="ch-name">📦 罗森/全家/7-11 — 季节限定追踪（5-6月：冷面/冰品/限定饮品）</div>
+        <div class="ch-detail">每年5月底，三大便利店都会上架"夏季限定"系列：罗森的"冷面系列"+ 7-11的"冰咖啡系列"+ 全家的"限定冰淇淋"。这些产品的风味组合往往是"饮料/调味品/零食"新品的先行指标。</div>
+        <div class="ch-insight">💡 启发：关注便利店的夏季限定口味（比如"青柠+辣椒"的冰淇淋，或者"酸汤+冷面"的组合），这些口味如果在便利店验证成功，6-8个月后就会成为食品/零食行业的主流风味。可以提前布局。</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>⚠️ 以上内容由AI自动聚合生成，信息来源于公开渠道，仅供参考，不构成投资/经营建议</p>
+  <p>信源：食品伙伴网 / FBIF / 红餐网 / 小红书 / 蝉妈妈 / 36氪 / 腾讯新闻 / 搜狐财经 等</p>
+  <p style="margin-top:8px;"><strong>食研日推</strong> · 为下厨房产品团队专供 · 2026-05-31 09:00 CST</p>
+</div>
+
+</body>
+</html>
