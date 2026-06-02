@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日双专栏情报 | 2026-06-02</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e8;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            background: linear-gradient(135deg, #0f0c29 0%, #1a1a3e 50%, #24243e 100%);
+            border-radius: 20px;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(236, 72, 153, 0.06) 0%, transparent 50%);
+            animation: aurora 20s ease-in-out infinite;
+        }
+
+        @keyframes aurora {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(2%, -1%) rotate(1deg); }
+            66% { transform: translate(-1%, 2%) rotate(-1deg); }
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 2px;
+        }
+
+        .header .date {
+            font-size: 1.1em;
+            color: #a0a0b8;
+            margin-top: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .subtitle {
+            font-size: 0.9em;
+            color: #808098;
+            margin-top: 4px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Two Column Layout */
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .columns { grid-template-columns: 1fr; }
+        }
+
+        /* Column Card */
+        .column-card {
+            background: linear-gradient(145deg, #12121f 0%, #0e0e1a 100%);
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .column-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 6px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid;
+        }
+
+        .column1 .column-title {
+            color: #f59e0b;
+            border-bottom-color: rgba(245, 158, 11, 0.3);
+        }
+
+        .column2 .column-title {
+            color: #8b5cf6;
+            border-bottom-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .column-subtitle {
+            font-size: 0.85em;
+            color: #808098;
+            margin-bottom: 20px;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 1.15em;
+            font-weight: 700;
+            margin-bottom: 12px;
+            padding-left: 12px;
+            border-left: 3px solid;
+        }
+
+        .column1 .section-title { border-left-color: #f59e0b; color: #f59e0b; }
+        .column2 .section-title { border-left-color: #8b5cf6; color: #8b5cf6; }
+
+        /* News Item */
+        .news-item {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: border-color 0.2s;
+        }
+
+        .news-item:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .news-item h3 {
+            font-size: 1.05em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #f0f0f8;
+        }
+
+        .news-item h3 .num {
+            color: #f59e0b;
+            font-weight: 700;
+            margin-right: 4px;
+        }
+
+        .column2 .news-item h3 .num {
+            color: #8b5cf6;
+        }
+
+        .detail-block {
+            margin-bottom: 8px;
+            padding-left: 14px;
+            border-left: 2px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .detail-block .label {
+            font-size: 0.82em;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .label-content { color: #e8b86d; }
+        .label-interpret { color: #5eead4; }
+        .label-industry { color: #fb7185; }
+        .label-tech { color: #a78bfa; }
+        .label-value { color: #34d399; }
+        .label-scene { color: #60a5fa; }
+        .label-copy { color: #fbbf24; }
+        .label-jargon { color: #f472b6; }
+
+        .detail-block p {
+            font-size: 0.92em;
+            color: #c0c0d0;
+            line-height: 1.65;
+        }
+
+        .highlight { color: #f59e0b; font-weight: 500; }
+        .highlight2 { color: #8b5cf6; font-weight: 500; }
+        .highlight3 { color: #34d399; font-weight: 500; }
+        .highlight-red { color: #fb7185; font-weight: 500; }
+
+        /* Core Wind */
+        .core-wind {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(245, 158, 11, 0.02) 100%);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(245, 158, 11, 0.15);
+        }
+
+        .core-wind .label { color: #f59e0b; font-weight: 700; font-size: 0.9em; }
+        .core-wind p { color: #e0d0b0; font-size: 0.95em; margin-top: 6px; }
+
+        /* Summary */
+        .summary-box {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(236, 72, 153, 0.05) 100%);
+            border-radius: 12px;
+            padding: 18px;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            margin-top: 20px;
+        }
+
+        .column2 .summary-box {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.05) 100%);
+            border-color: rgba(139, 92, 246, 0.2);
+        }
+
+        .summary-box .label { color: #f59e0b; font-weight: 700; font-size: 0.9em; }
+        .column2 .summary-box .label { color: #8b5cf6; }
+        .summary-box p { color: #d0d0e0; font-size: 0.93em; margin-top: 6px; }
+
+        /* Emoji section header */
+        .emoji-header {
+            font-size: 1.2em;
+            font-weight: 700;
+            margin: 20px 0 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        /* Tag */
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-right: 6px;
+            margin-bottom: 4px;
+        }
+
+        .tag-hot { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+        .tag-new { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
+        .tag-money { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .tag-agent { background: rgba(139, 92, 246, 0.15); color: #a78bfa; border: 1px solid rgba(139, 92, 246, 0.3); }
+        .tag-hardware { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+
+        /* Quick News List */
+        .quick-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .quick-list li {
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            font-size: 0.9em;
+            color: #b0b0c0;
+            border-left: 3px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .quick-list li strong { color: #e0e0f0; }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #505068;
+            font-size: 0.8em;
+        }
+
+        /* Scroll indicator */
+        .source-note {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-bottom: 16px;
+            font-size: 0.78em;
+            color: #707088;
+        }
+
+        .source-note strong { color: #9090a8; }
+
+        /* GitHub Trending Table */
+        .trending-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 0.85em;
+        }
+
+        .trending-table th {
+            text-align: left;
+            padding: 8px 10px;
+            background: rgba(139, 92, 246, 0.08);
+            color: #a78bfa;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .trending-table td {
+            padding: 7px 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: #b0b0c0;
+        }
+
+        .trending-table tr:hover td {
+            background: rgba(139, 92, 246, 0.04);
+        }
+
+        .trending-table .stars { color: #fbbf24; font-weight: 600; }
+        .trending-table .lang { color: #60a5fa; }
+        .trending-table .name { color: #e0e0f0; font-weight: 500; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <h1>📡 每日双专栏情报</h1>
+        <div class="date">2026年6月2日 · 星期二</div>
+        <div class="subtitle">新闻联播风向标 × AI生产力黑洞</div>
+    </div>
+
+    <!-- Two Columns -->
+    <div class="columns">
+
+        <!-- ========== 专栏一：新闻联播 ========== -->
+        <div class="column1 column-card">
+            <div class="column-title">🏛️ 专栏一：新闻联播每日简报</div>
+            <div class="column-subtitle">风向标解读版 · 6月1日晚间播出（6月2日尚未播出）</div>
+
+            <div class="source-note">
+                📡 <strong>信源</strong>：央视新闻联播文字稿（0645.cn）+ 腾讯新闻速览28条
+            </div>
+
+            <!-- 核心风向 -->
+            <div class="core-wind">
+                <div class="label">⚡ 核心风向</div>
+                <p>习近平亲自定调未来产业路线图——<span class="highlight">量子科技与生物制造</span>为国家战略优先方向，叠加制造业智能化转型加速（AI直接相关产业增幅超50%），政策+产业双轮驱动新质生产力进入落地期。</p>
+            </div>
+
+            <!-- 分项解读 -->
+            <div class="section">
+                <div class="section-title">📋 分项解读（按重要性排序）</div>
+
+                <!-- 1 -->
+                <div class="news-item">
+                    <h3><span class="num">1.</span> 习近平《求是》发文：前瞻布局和发展未来产业</h3>
+                    <div class="detail-block">
+                        <div class="label label-content">📰 新闻联播说了什么</div>
+                        <p>第11期《求是》杂志发表习近平总书记重要文章《前瞻布局和发展未来产业》，明确提出在<span class="highlight">量子科技、生物制造</span>等领域聚焦发力。五大举措：①加强统筹谋划——因地制宜错位发展；②以科技创新为引领——坚持"产业出题、科技答题"，加大关键核心技术攻关；③发挥企业主体作用——培育科技领军企业、独角兽企业；④营造良好政策环境——发展科技金融、优化政府采购；⑤健全治理体系——构建技术监测、风险预警、应急响应体系。</p>
+                    </div>
+                    <div class="detail-block">
+                        <div class="label label-interpret">🧭 风向标解读</div>
+                        <p>这是最高层首次在《求是》发文专门定调未来产业，从"统筹谋划"到"治理体系"形成完整闭环。核心信号：<span class="highlight">量子科技和生物制造已从"前沿探索"升级为"国家战略优先"</span>。"产业出题、科技答题"意味着企业需求反推科研选题，而非科研自行选题——产学研协作模式发生根本性转变。独角兽企业被写入顶层设计，意味着未来产业赛道将获得更宽松的融资和上市政策。</p>
+                    </div>
+                    <div class="detail-block">
+                        <div class="label label-industry">🏭 行业影响</div>
+                        <p><span class="highlight3">受益</span>：量子计算（国盾量子、本源量子）、生物制造（凯赛生物、华恒生物）、科技金融（银行科技支行）、独角兽企业上市通道<br><span class="highlight-red">风险</span>：低水平重复建设（如各地蜂拥上量子园区）、传统制造业转型压力加大</p>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="news-item">
+                    <h3><span class="num">2.</span> 制造业高端化智能化转型加速：AI相关产业增幅超50%</h3>
+                    <div class="detail-block">
+                        <div class="label label-content">📰 新闻联播说了什么</div>
+                        <p>国家税务总局发票数据显示，今年1至4月全国制造业销售收入同比增长<span class="highlight">6.9%</span>，高技术制造业销售收入同比增长<span class="highlight">14.9%</span>。与人工智能直接相关的<span class="highlight">电子专用材料制造、集成电路制造销售收入增幅超50%</span>。典型案例：浙江诸暨刺绣机产业融入AI技术，推出超高速刺绣机，速度比传统产品提升30%以上。</p>
+                    </div>
+                    <div class="detail-block">
+                        <div class="label label-interpret">🧭 风向标解读</div>
+                        <p>税务局发票数据是最硬核的经济指标——不是问卷、不是预估，是真金白银的交易记录。<span class="highlight">AI相关产业增幅超50%</span>说明AI赋能制造业已从"概念"进入"财报兑现"阶段。刺绣机这种传统产业+AI的案例更具信号意义：不是AI公司做AI，而是传统产业用AI做出更好的产品。</p>
+                    </div>
+                    <div class="detail-block">
+                        <div class="label label-industry">🏭 行业影响</div>
+                        <p><span class="highlight3">受益</span>：工业AI解决方案商、集成电路产业链、智能制造设备商<br><span class="highlight-red">关注</span>：传统纺织/轻工行业"不AI即淘汰"的分化加速</p>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="news-item">
+                    <h3><span class="num">3.</span> 韩正会见巴西外长：中巴合作向高科技创新方向迈进</h3>
+                    <div class="detail-block">
+                        <div class="label label-content">📰 新闻联播说了什么</div>
+                        <p>国家副主席韩正6月1日在北京会见巴西外长维埃拉。韩正表示推动中巴合作朝着<span class="highlight">更高科技含量、更大附加值和更强战略性</span>方向迈进。巴方表示"当前多边主义正在遭受前所未有的打击，巴中深化命运共同体建设尤为重要"。</p>
+                    </div>
+                    <div class="detail-block">
+                        <div class="label label-interpret">🧭 风向标解读</div>
+                        <p>"更高科技含量"替代了以往"更大规模"的表述，信号明确：中巴合作从资源贸易向科技合作升级。巴西拥有全球最大热带雨林碳汇+丰富矿产资源，在生物制造、新能源、农业科技领域与中国高度互补。巴方主动强调"多边主义受打击"，暗示金砖机制正成为南南合作的核心平台。</p>
+                    </div>
+                    <div class="detail-block">
+                        <div class="label label-industry">🏭 行业影响</div>
+                        <p><span class="highlight3">受益</span>：中巴科技合作项目、新能源出海企业、生物制造技术出口、跨境电商（中巴物流通道）</p>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="news-item">
+                    <h3><span class="num">4.</span> 河南、重庆"十五五"规划：研发投入目标明确</h3>
+                    <div class="detail-block">
+                        <div class="label label-content">📰 新闻联播说了什么</div>
+                        <p>河南：全社会研发经费投入年均增长<span class="highlight">10%以上</span>，战略性新兴产业增加值占规上工业比重达<span class="highlight">30%</span>，粮食综合生产能力达<span class="highlight">1400亿斤</span>。重庆：全社会研发投入强度从2.65%提高到<span class="highlight">3.25%</span>，部署392项重点任务，经西部陆海新通道货运量到2030年超<span class="highlight">50万标箱</span>，建设300个"高品质生活服务圈"。</p>
+                    </div>
+                    <div class="detail-block">
+                        <div class="label label-interpret">🧭 风向标解读</div>
+                        <p>两省市研发投入目标远超GDP增速，说明"十五五"期间科技创新是地方政绩考核的核心KPI。重庆3.25%的研发强度目标已接近一线城市水平，叠加西部陆海新通道50万标箱目标，意味着重庆正从"内陆城市"向"东盟门户"转型。河南10%的研发经费增速+30%的战略新兴产业占比，传统农业大省的转型决心超预期。</p>
+                    </div>
+                    <div class="detail-block">
+                        <div class="label label-industry">🏭 行业影响</div>
+                        <p><span class="highlight3">受益</span>：重庆AI/智能制造产业园、西部陆海新通道物流企业、河南生物农业、科技金融（银行对研发贷款倾斜）</p>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="news-item">
+                    <h3><span class="num">5.</span> 多项法规今起施行：数据算法纳入商业秘密保护</h3>
+                    <div class="detail-block">
+                        <div class="label label-content">📰 新闻联播说了什么</div>
+                        <p>6月1日起多项法规施行：《商业秘密保护规定》将<span class="highlight">"数据""算法"</span>纳入商业秘密保护范畴，聚焦集成电路、人工智能、生物医药等领域建立重点企业保护清单；《供水条例》将农村规模化供水纳入适用范围；网络餐饮新规要求外卖平台对商户实名登记和资质实质审查，商户须具备真实实体门店。</p>
+                    </div>
+                    <div class="detail-block">
+                        <div class="label label-interpret">🧭 风向标解读</div>
+                        <p>"数据和算法纳入商业秘密保护"是AI行业最关键的法规变化之一——此前AI公司的模型权重、训练数据、算法细节缺乏法律保护，此规定填补了这一空白。对AI创业公司是重大利好，人才跳槽带不走核心知识产权了。网络餐饮新规打击"幽灵厨房"，利好有实体门店的品牌餐饮。</p>
+                    </div>
+                    <div class="detail-block">
+                        <div class="label label-industry">🏭 行业影响</div>
+                        <p><span class="highlight3">受益</span>：AI/半导体公司（知识产权保护强化）、品牌连锁餐饮、农村水务企业<br><span class="highlight-red">利空</span>：纯外卖店/幽灵厨房、算法剽窃者</p>
+                    </div>
+                </div>
+
+                <!-- 6 -->
+                <div class="news-item">
+                    <h3><span class="num">6.</span> 长征十二号乙首飞成功；哈伊高铁2小时直达</h3>
+                    <div class="detail-block">
+                        <div class="label label-content">📰 新闻联播说了什么</div>
+                        <p>长征十二号乙遥一运载火箭在东风商业航天创新试验区首次飞行成功，搭载千帆极轨08组卫星，是长征系列第<span class="highlight">647次</span>飞行。哈伊高铁开行首趟动车组测试列车，哈尔滨至伊春运行时间由7小时压缩至<span class="highlight">2小时以内</span>。</p>
+                    </div>
+                    <div class="detail-block">
+                        <div class="label label-interpret">🧭 风向标解读</div>
+                        <p>长征十二号乙是新一代商业火箭，首次飞行即成功+商业航天创新试验区发射=中国商业航天基础设施正在快速成熟。哈伊高铁压缩5小时意味着东北"高铁经济圈"正在形成，沿线旅游、农产品冷链物流直接受益。</p>
+                    </div>
+                    <div class="detail-block">
+                        <div class="label label-industry">🏭 行业影响</div>
+                        <p><span class="highlight3">受益</span>：商业航天产业链（火箭制造、卫星组网）、东北高铁沿线旅游地产、冷链物流</p>
+                    </div>
+                </div>
+
+                <!-- 7 -->
+                <div class="news-item">
+                    <h3><span class="num">7.</span> 科技赋能夏收：AI机器人一天作业100亩</h3>
+                    <div class="detail-block">
+                        <div class="label label-content">📰 新闻联播说了什么</div>
+                        <p>新疆塔城启用<span class="highlight">智能机器人</span>在麦田套种玉米，依托AI视觉识别技术，一天完成<span class="highlight">100多亩</span>作业量。预计小麦亩产600公斤、玉米亩产600-800公斤，每亩地收益增加<span class="highlight">800元</span>，实现"一地两作、一季双收"。安徽投入16万台（套）收割机，小麦机收损失率控制在<span class="highlight">1%以内</span>。</p>
+                    </div>
+                    <div class="detail-block">
+                        <div class="label label-interpret">🧭 风向标解读</div>
+                        <p>农业AI从"监测"升级到"执行"——AI机器人直接干农活，不是在办公室看大屏。每亩增收800元对农民是实打实的收入提升，复制推广意愿极高。"一地两作"模式如果跑通，全国适用地区面积巨大。</p>
+                    </div>
+                    <div class="detail-block">
+                        <div class="label label-industry">🏭 行业影响</div>
+                        <p><span class="highlight3">受益</span>：农业机器人、AI视觉识别、智慧农业解决方案商、农业保险</p>
+                    </div>
+                </div>
+
+                <!-- 8 -->
+                <div class="news-item">
+                    <h3><span class="num">8.</span> 全面进入汛期：长江珠江可能发生超警洪水</h3>
+                    <div class="detail-block">
+                        <div class="label label-content">📰 新闻联播说了什么</div>
+                        <p>6月1日起全国全面进入汛期，南方地区进入主汛期。可能发生超警以上洪水的河流：长江中下游干流及洞庭湖/鄱阳湖水系，珠江流域西江/北江/东江/韩江，太湖，浙江钱塘江，福建闽江等。6月降水预测：江南东部、华南、西南东南部偏多1到2成。</p>
+                    </div>
+                    <div class="detail-block">
+                        <div class="label label-interpret">🧭 风向标解读</div>
+                        <p>汛期叠加降雨偏多，防洪工程、应急物资、农业减灾是短期刚需。对生鲜行业意味着：南方产区（杨梅、荔枝、水蜜桃）采摘和运输可能受影响，冷链和保鲜技术需求上升。</p>
+                    </div>
+                    <div class="detail-block">
+                        <div class="label label-industry">🏭 行业影响</div>
+                        <p><span class="highlight3">受益</span>：水利工程、防汛设备、应急通信、冷链保鲜技术<br><span class="highlight-red">风险</span>：南方水果产区（杨梅/荔枝/水蜜桃）运输延迟、品质下降</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 国际新闻快览 -->
+            <div class="section">
+                <div class="section-title">🌍 国际要闻快览</div>
+                <ul class="quick-list">
+                    <li><strong>美伊对峙升级</strong>：美军打击霍尔木兹海峡附近伊朗军事设施（戈鲁克地区和格什姆岛），伊方回击美军空军基地。伊方坚持不讨论核问题，特朗普称协议写入"伊朗不会拥有核武器"</li>
+                    <li><strong>以色列升级黎巴嫩行动</strong>：内塔尼亚胡指示打击贝鲁特南郊达希耶地区，埃及谴责、法英德敦促停火</li>
+                    <li><strong>扎波罗热核电站再遭袭</strong>：5月30-31日接连遭袭，国际原子能机构总干事格罗西称"袭击核设施不可接受"</li>
+                    <li><strong>英国最大铁路运营商收归国有</strong>：戈维亚泰晤士连线铁路公司即日起国有化，承担英国约1/6铁路客运量</li>
+                    <li><strong>墨西哥总统指责美国干涉内政</strong>：美方要求引渡10名墨公民，墨方称无证据、不容干涉</li>
+                </ul>
+            </div>
+
+            <!-- 总结 -->
+            <div class="summary-box">
+                <div class="label">🎯 总结风向标</div>
+                <p>今日政策信号极为清晰：<span class="highlight">新质生产力进入落地期</span>。从习近平亲自定调未来产业路线图，到税务局数据验证AI赋能制造业已兑现到财报，再到数据算法纳入商业秘密保护——从顶层设计到产业数据到法规护航，形成完整闭环。<br><br"><strong>投资建议</strong>：重点关注量子科技（国家战略优先级最高）、生物制造（习近平点名+河南重庆大力投入）、AI+制造业（增幅超50%已非概念）、农业AI机器人（执行层落地+农民增收可量化）。汛期来临，南方水果产区运输风险需纳入生鲜业务考量。国际方面，美伊对峙+霍尔木兹海峡局势紧张，油价和航运保险费可能上行。</p>
+            </div>
+        </div>
+
+        <!-- ========== 专栏二：AI生产力情报 ========== -->
+        <div class="column2 column-card">
+            <div class="column-title">🚀 专栏二：AI生产力情报</div>
+            <div class="column-subtitle">黑科技与套利指南 · 每日更新</div>
+
+            <div class="source-note">
+                📡 <strong>信源</strong>：Microsoft Build 2026官方 · GitHub Trending · xix.ai · AIToolly · 量子位 · 36氪 · Product Hunt Hunted.space
+            </div>
+
+            <!-- 🛠️ 顶级装备库 -->
+            <div class="emoji-header">🛠️ 【顶级装备库更新】</div>
+
+            <div class="news-item">
+                <h3><span class="num">1.</span> Microsoft Build 2026 开幕："Project Polaris"取代GPT-4</h3>
+                <span class="tag tag-hot">重磅</span><span class="tag tag-agent">Agent</span><span class="tag tag-new">自研模型</span>
+                <div class="detail-block">
+                    <div class="label label-tech">🔧 核心黑科技</div>
+                    <p>微软发布自研AI编程模型<span class="highlight2">Project Polaris</span>——混合专家（Mixture-of-Experts）架构，针对不同编程语言有专门优化的子模块，在HumanEval和MBPP基准上超越GPT-4 Turbo，Rust/Haskell等低资源语言表现尤为突出。Pro版支持<span class="highlight2">10万行多文件上下文</span>+自主测试生成。运行在Azure自研<span class="highlight2">Maia AI加速器</span>上，8月开始自动替换GPT-4。</p>
+                </div>
+                <div class="detail-block">
+                    <div class="label label-value">💰 实战价值</div>
+                    <p>微软首次端到端掌控模型+推理基础设施+开发者体验。对GitHub Copilot用户：8月前评估现有代码在Polaris上的行为，3个月回退期。对独立开发者：Polaris在低资源语言上的优势意味着<span class="highlight2">用Rust/Haskell写高性能工具的门槛大幅降低</span>，一个人顶一个开发小组不再是口号。</p>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <h3><span class="num">2.</span> Windows Agent Framework v1.0：MIT开源，Agent成为OS一等公民</h3>
+                <span class="tag tag-agent">Agent</span><span class="tag tag-new">开源</span>
+                <div class="detail-block">
+                    <div class="label label-tech">🔧 核心黑科技</div>
+                    <p>三层架构：①<span class="highlight2">WAF v1.0</span>（MIT开源）——Agent用YAML定义，同一套manifest从笔记本→Windows 365→Azure无缝扩展；②<span class="highlight2">Agent Runtime</span>——Agent作为OS级公民运行，不是应用进程（6月Insider预览）；③<span class="highlight2">Agent Store</span>——精选市场，85%收入归开发者。支持<span class="highlight2">Ambient Agents</span>在后台持续运行（邮件分类、定期报告、CI/CD配置漂移检测）。</p>
+                </div>
+                <div class="detail-block">
+                    <div class="label label-value">💰 实战价值</div>
+                    <p>MIT许可证意味着可以在微软云之外fork和部署——<span class="highlight2">这是做企业内部Agent市场的基础设施</span>。配合小红书项目：Ambient Agent做自动选品数据采集+内容质量审核，不合格直接打回重做。Agent Store的85%分成模式，意味着你可以把开发的Agent当产品卖。</p>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <h3><span class="num">3.</span> NVIDIA RTX Spark：1 PetaFLOP的AI PC芯片</h3>
+                <span class="tag tag-hardware">硬件</span><span class="tag tag-hot">Computex</span>
+                <div class="detail-block">
+                    <div class="label label-tech">🔧 核心黑科技</div>
+                    <p>联发科合作<span class="highlight2">20核Grace CPU + Blackwell RTX GPU</span>（6144 CUDA核心），<span class="highlight2">128GB LPDDR5X统一内存</span>，AI性能1 PetaFLOP。CPU与GPU通过NVLink-C2C互联。黄仁勋称AI驱动CPU是<span class="highlight2">2000亿美元</span>的市场机遇。首批AI PC今年秋季上市（戴尔/联想/惠普/华硕）。</p>
+                </div>
+                <div class="detail-block">
+                    <div class="label label-value">💰 实战价值</div>
+                    <p>128GB统一内存=本地跑70B参数模型成为可能。对TA/开发者：本地推理不再需要云端GPU，<span class="highlight2">HLSL调试+AI辅助编码全在本地完成</span>。对生鲜项目：产品图AI生成+视频剪辑全流程可在轻薄本上完成，出差也能生产内容。</p>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <h3><span class="num">4.</span> 阿里Qwen3.7-Plus多模态大模型：中国第一全球前五</h3>
+                <span class="tag tag-new">国产模型</span>
+                <div class="detail-block">
+                    <div class="label label-tech">🔧 核心黑科技</div>
+                    <p>升级视觉-语言能力，在Vision Arena排名<span class="highlight2">全球前五、中国第一</span>。集成GUI和CLI交互，实现端到端自动化。实际演示：自主应用开发、桌面应用复刻、云控制台操作。可用渠道：阿里云百炼、Qwen Studio。</p>
+                </div>
+                <div class="detail-block">
+                    <div class="label label-value">💰 实战价值</div>
+                    <p>最适合中国开发者的多模态模型——<span class="highlight2">中文理解+视觉识别+代码生成一体化</span>。配合生鲜项目：截图分析竞品内容→自动生成小红书文案+封面模板，打通从选品到内容生产的全链路。</p>
+                </div>
+            </div>
+
+            <!-- 🤖 Agent战场 -->
+            <div class="emoji-header">🤖 【Agent 战场情报】</div>
+
+            <div class="news-item">
+                <h3><span class="num">5.</span> Azure Agent Mesh：联邦化Agent执行控制平面</h3>
+                <span class="tag tag-agent">Agent</span><span class="tag tag-money">Q4 GA</span>
+                <div class="detail-block">
+                    <div class="label label-tech">🧩 解读</div>
+                    <p>在本地Windows服务器、Windows 365 Cloud PC、Azure Arc边缘设备三个部署目标之间联邦化Agent执行。用同一套本地WAF API，Mesh根据延迟和GPU可用性自动路由。Q4 GA，基于消费量计费。</p>
+                </div>
+                <div class="detail-block">
+                    <div class="label label-scene">🎯 落地场景</div>
+                    <p>企业Agent从单机扩展到跨区域500台机器——原本需要大量改造，Mesh抽象了这层复杂性。<span class="highlight2">配合生鲜项目：北京总部定义选品Agent→Mesh分发到上海/广州仓库的边缘设备执行品控</span>，全程同一套manifest。</p>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <h3><span class="num">6.</span> Copilot Workspace GA：从"AI辅助编码"到"AI委托编码"</h3>
+                <span class="tag tag-agent">Agent</span><span class="tag tag-new">正式版</span>
+                <div class="detail-block">
+                    <div class="label label-tech">🧩 解读</div>
+                    <p>Copilot Workspace退出beta正式GA。新增：①<span class="highlight2">Copilot Extensions</span>（Jira/Datadog/ServiceNow集成）；②<span class="highlight2">Fleet mode</span>（自主运行代码库任务，无需每步确认）；③<span class="highlight2">Autopilot mode</span>（后台按计划自主运行，无人值守处理依赖更新、测试覆盖率、文档漂移）。</p>
+                </div>
+                <div class="detail-block">
+                    <div class="label label-scene">🎯 落地场景</div>
+                    <p>Autopilot模式是终极生产力：<span class="highlight2">设定"每天检查npm依赖安全漏洞并自动修复"→Copilot在后台无人值守完成→你只看结果</span>。对兼职开发者（白天上班、晚上做副业）尤其友好——8小时上班时间让Copilot帮你处理技术债务。</p>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <h3><span class="num">7.</span> OpenAI正式成立"OpenAI Robotics"团队</h3>
+                <span class="tag tag-hot">重磅</span><span class="tag tag-agent">机器人</span>
+                <div class="detail-block">
+                    <div class="label label-tech">🧩 解读</div>
+                    <p>6月1日，联合创始人Greg Brockman在X平台官宣"OpenAI Robotics"团队快速推进，目标"打造能在物理世界帮助人类的AI"，四大核心岗位正式开招。这是OpenAI时隔6年重启机器人业务，短期押注<span class="highlight2">协助型机器人</span>。</p>
+                </div>
+                <div class="detail-block">
+                    <div class="label label-scene">🎯 落地场景</div>
+                    <p>大模型+机器人的组合意味着：自然语言指令→机器人执行。<span class="highlight2">生鲜仓储场景：语音说"把杨梅按大小分拣成三个等级"→机器人视觉识别+机械臂分拣</span>。2-3年内可能成为仓储标准化设备。</p>
+                </div>
+            </div>
+
+            <!-- 🖊 AI新玩法 -->
+            <div class="emoji-header">🖊【AI新玩法，新概念】</div>
+
+            <div class="news-item">
+                <h3><span class="num">8.</span> 美团CEO王兴将AI Agent确立为新战略重点</h3>
+                <div class="detail-block">
+                    <div class="label label-tech">🧩 解读</div>
+                    <p>美团AI助手"小美"将接入腾讯元宝，用户可通过元宝直接使用外卖等本地生活服务。CEO王兴将<span class="highlight2">AI Agent确立为消费端和商家端之外的新战略重点</span>——从单平台服务转向跨平台AI协作，利用美团履约体系重塑使用场景。</p>
+                </div>
+                <div class="detail-block">
+                    <div class="label label-scene">🎯 落地场景</div>
+                    <p>美团+腾讯元宝=中国版"超级Agent"。对生鲜卖家意味着：<span class="highlight2">未来可能通过元宝直接触达美团履约网络</span>，小红书种草→元宝下单→美团配送的跨平台闭环或将成型。</p>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <h3><span class="num">9.</span> 材料版AlphaFold：AI4S行业大突破</h3>
+                <div class="detail-block">
+                    <div class="label label-tech">🧩 解读</div>
+                    <p>40个工业任务全方位SOTA，<span class="highlight2">AI for Science从蛋白质结构预测扩展到材料性能预测</span>。新药研发周期有望从10年缩短到3年，新材料发现从实验室试错转向AI定向设计。</p>
+                </div>
+                <div class="detail-block">
+                    <div class="label label-scene">🎯 落地场景</div>
+                    <p>对食品行业：食品包装材料（可降解、高阻隔）的AI加速研发；对生鲜冷链：更优的保温材料+保鲜涂层可缩短上市周期。</p>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <h3><span class="num">10.</span> 复旦×通义提出CUA训练范式：别只给Agent加Tool了</h3>
+                <div class="detail-block">
+                    <div class="label label-tech">🧩 解读</div>
+                    <p>当前Agent训练范式问题：给Agent加了很多工具（Tool），但Agent<span class="highlight2">根本选不明白用哪个</span>。复旦×通义提出Computer Use Agent（CUA）新训练范式，<span class="highlight2">让Agent学会"什么时候不需要工具"</span>——减少无效调用，提高决策效率。</p>
+                </div>
+                <div class="detail-block">
+                    <div class="label label-scene">🎯 落地场景</div>
+                    <p>做选品Agent时：不再给Agent塞50个数据源工具然后祈祷它选对，而是训练Agent判断"这个问题我直接用内部知识就能答，不需要调API"——<span class="highlight2">降低Token成本50%以上</span>。</p>
+                </div>
+            </div>
+
+            <!-- 💰 套利/变现 -->
+            <div class="emoji-header">💰 【AI 套利/变现线索】</div>
+
+            <div class="news-item">
+                <h3><span class="num">11.</span> Anthropic秘密提交IPO：估值600亿美元</h3>
+                <span class="tag tag-money">资本</span>
+                <div class="detail-block">
+                    <div class="label label-copy">🔥 热点</div>
+                    <p>Anthropic已向SEC秘密提交IPO申请，估值目标<span class="highlight2">600亿美元</span>，采用公益公司架构。SEC已完成审查，财务细节将在路演前15天披露。同期Alphabet计划融资800亿美元（其中100亿定向伯克希尔·哈撒韦）资助AI基建，年度资本支出预期达<span class="highlight2">1800-1900亿美元</span>。</p>
+                </div>
+                <div class="detail-block">
+                    <div class="label label-copy">📋 复刻建议</div>
+                    <p>Anthropic IPO是AI行业从VC驱动转向公开市场的标志性事件。对个人套利者：<span class="highlight2">①IPO前关注Anthropic生态链（Claude API的ISV/集成商可能获得估值提升）；②Anthropic以"AI安全"为差异化叙事上市，安全合规类AI工具有望成为下一个风口</span>。</p>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <h3><span class="num">12.</span> VAST完成近2亿美元融资：世界模型Project Eden</h3>
+                <span class="tag tag-money">资本</span><span class="tag tag-new">世界模型</span>
+                <div class="detail-block">
+                    <div class="label label-copy">🔥 热点</div>
+                    <p>VAST完成A+及A++轮合计近2亿美元融资（渶策资本、国寿长三角科创基金领投），同时发布世界模型路线<span class="highlight2">Project Eden</span>：底层状态推演与视觉呈现原生解耦，实现环境持久化、场景复用与多玩家交互——"场景永不消失，多人真正同在一个世界"。</p>
+                </div>
+                <div class="detail-block">
+                    <div class="label label-copy">📋 复刻建议</div>
+                    <p>世界模型=AI生成3D交互世界。对游戏/影视行业是革命性的：<span class="highlight2">①用文字描述→AI生成3D场景→多人实时交互，省掉80%建模成本；②对生鲜品牌：虚拟农场/产地直播的3D化，让消费者"走进"樟树港辣椒田</span>。VAST的"场景永不消失"概念值得密切关注。</p>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <h3><span class="num">13.</span> 豆包6月下旬正式付费+抖音电商打通</h3>
+                <span class="tag tag-money">商业化</span>
+                <div class="detail-block">
+                    <div class="label label-copy">🔥 热点</div>
+                    <p>字节跳动旗下豆包AI将于6月下旬正式推出付费模式，并加速打通抖音电商。这意味着：<span class="highlight2">AI对话→商品推荐→下单购买</span>的闭环即将在抖音生态内实现。</p>
+                </div>
+                <div class="detail-block">
+                    <div class="label label-copy">📋 复刻建议</div>
+                    <p>抖音电商+AI对话=中国最大的AI电商实验场。<span class="highlight2">提前布局：在抖音开设生鲜品牌号，配合豆包AI做"智能选品推荐"内容，用户问"今晚吃什么"→豆包推荐你的辣椒炒肉专用椒+附购买链接</span>。这个闭环一旦打通，先入场者吃最大红利。</p>
+                </div>
+            </div>
+
+            <!-- GitHub Trending -->
+            <div class="emoji-header">📊 【GitHub Trending 今日Top 10】</div>
+
+            <table class="trending-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>项目</th>
+                        <th>描述</th>
+                        <th>⭐今日</th>
+                        <th>语言</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td class="name">MoneyPrinterTurbo</td>
+                        <td>AI一键生成高清短视频</td>
+                        <td class="stars">+3,375</td>
+                        <td class="lang">Python</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td class="name">markitdown</td>
+                        <td>文件/Office转Markdown</td>
+                        <td class="stars">+3,034</td>
+                        <td class="lang">Python</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td class="name">VoxCPM</td>
+                        <td>无分词器多语言TTS</td>
+                        <td class="stars">+888</td>
+                        <td class="lang">Python</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td class="name">Scrapling</td>
+                        <td>自适应Web爬虫框架</td>
+                        <td class="stars">+1,486</td>
+                        <td class="lang">Python</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td class="name">build-your-own-x</td>
+                        <td>重建技术学编程</td>
+                        <td class="stars">+1,212</td>
+                        <td class="lang">Markdown</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td class="name">hermes-webui</td>
+                        <td>Hermes Agent Web界面</td>
+                        <td class="stars">+945</td>
+                        <td class="lang">Python</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td class="name">train-llm-from-scratch</td>
+                        <td>从零训练LLM教程</td>
+                        <td class="stars">+861</td>
+                        <td class="lang">Jupyter</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td class="name">supermemory</td>
+                        <td>AI时代记忆引擎API</td>
+                        <td class="stars">+647</td>
+                        <td class="lang">TypeScript</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td class="name">harness</td>
+                        <td>元技能设计Agent团队</td>
+                        <td class="stars">+524</td>
+                        <td class="lang">HTML</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td class="name">impeccable</td>
+                        <td>AI设计语言框架</td>
+                        <td class="stars">+485</td>
+                        <td class="lang">JavaScript</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Product Hunt -->
+            <div class="emoji-header">🏆 【Product Hunt 6月AI新品Top 5】div>
+
+            <div class="news-item">
+                <h3>6月AI品类票数排行</h3>
+                <div class="detail-block">
+                    <div class="label label-content">📊 榜单</div>
+                    <p>
+                        🥇 <span class="highlight2">Mina Meeting Assistant</span>（38,969票）—— AI会议助手<br>
+                        🥈 <span class="highlight2">Databox MCP</span>（28,451票）—— MCP数据集成<br>
+                        🥉 <span class="highlight2">Dune Keypad</span>（26,950票）—— 数据查询工具<br>
+                        4️⃣ <span class="highlight2">folk</span>（25,067票）—— CRM工具<br>
+                        5️⃣ <span class="highlight2">Typeahead</span>（22,731票）—— 智能搜索<br>
+                        🔥 特别关注：<span class="highlight2">Databox MCP</span>——MCP协议的Product Hunt大热门，说明MCP生态正从开发者圈层向产品化快速扩展
+                    </p>
+                </div>
+            </div>
+
+            <!-- 避坑/黑话 -->
+            <div class="emoji-header">🔍 【避坑/黑话词典】</div>
+
+            <div class="news-item">
+                <h3>词条：WAF (Windows Agent Framework)</h3>
+                <div class="detail-block">
+                    <div class="label label-jargon">💬 一句话大白话</div>
+                    <p><span class="highlight2">给Windows装了个"AI员工管理系统"</span>。以前AI Agent在电脑上运行就像临时工——没有编制、没有管理、随时崩溃。现在WAF让Agent变成"正式员工"：有YAML简历（manifest）、有统一调度（从笔记本到云端）、有后台值班（Ambient Agent）、还有晋升通道（Agent Store卖钱）。微软说"Windows不再只是人类的平台"——翻译过来就是：<span class="highlight2">你的电脑以后一半时间在替你干活，你只需要审核结果</span>。</p>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <h3>词条：MoE (Mixture-of-Experts)</h3>
+                <div class="detail-block">
+                    <div class="label label-jargon">💬 一句话大白话</div>
+                    <p><span class="highlight2">AI界的"专科会诊"</span>。不是一个大模型什么都干（全科医生），而是一群专科医生（专家模块），每次根据问题类型只激活最合适的几个——省算力、更精准。Polaris用MoE架构意味着：写Python调用Python专家，写Rust调用Rust专家，互不干扰。<span class="highlight2">就像一个律所，民事找民事律师，刑案找刑案律师，而不是让一个律师什么案子都接</span>。</p>
+                </div>
+            </div>
+
+            <!-- 融资速览 -->
+            <div class="emoji-header">💵 【今日融资速览】</div>
+            <ul class="quick-list">
+                <li><strong>Anthropic</strong>：秘密提交IPO申请，估值目标$600亿，公益公司架构</li>
+                <li><strong>VAST</strong>：A+及A++轮合计近$2亿（渶策资本/国寿长三角科创基金领投），发布世界模型Project Eden</li>
+                <li><strong>Alphabet</strong>：计划融资$800亿（含$100亿定向伯克希尔），年度AI资本支出$1800-1900亿</li>
+                <li><strong>量坤科技</strong>：数亿元天使轮，AI4S量子级精度数据</li>
+                <li><strong>Micro-LED AI眼镜</strong>：近2亿元融资，无损Micro-LED加速AI眼镜全彩化</li>
+                <li><strong>SpaceX</strong>：IPO文件披露，计划分配最多5%股份给员工，警告数据中心供水面临严重稀缺</li>
+            </ul>
+
+            <!-- WSL3 + DirectML -->
+            <div class="emoji-header">💻 【开发者必看】</div>
+
+            <div class="news-item">
+                <h3><span class="num">14.</span> WSL 3 + DirectML 2.0：Windows成为本地AI开发环境</h3>
+                <div class="detail-block">
+                    <div class="label label-tech">🔧 核心变化</div>
+                    <p>WSL 3完全重新架构Linux内核集成，内核在轻量级VM中运行，<span class="highlight2">准虚拟化访问Windows GPU和NPU</span>，AI/ML工作负载以接近原生速度运行。DirectML 2.0抽象Intel/AMD/Qualcomm/NVIDIA四家NPU差异——<span class="highlight2">同一份代码在四种芯片上跑AI推理，不需要按芯片写条件代码</span>。</p>
+                </div>
+                <div class="detail-block">
+                    <div class="label label-value">💰 实战价值</div>
+                    <p>对TA/UE5开发者：<span class="highlight2">Windows+WSL3=无需双系统即可用PyTorch/JAX/CUDA完整工具链训练模型</span>。配合NVIDIA RTX Spark的128GB统一内存，本地调试大模型不再是梦。直接利好：HLSL调试→AI辅助编码→本地推理全流程打通。</p>
+                </div>
+            </div>
+
+            <!-- 总结 -->
+            <div class="summary-box">
+                <div class="label">🎯 今日AI情报总结</div>
+                <p><span class="highlight2">Microsoft Build 2026是今日绝对主角</span>——Polaris自研模型取代GPT-4、Windows Agent Framework MIT开源、Copilot Workspace正式GA、WSL3+DirectML2.0——微软一口气把"AI操作系统"的完整拼图端上桌。<br><br>NVIDIA RTX Spark在Computex同日发布，1 PetaFLOP+128GB统一内存让本地AI PC成为现实。<br><br>OpenAI杀入机器人赛道、Anthropic秘密IPO、VAST世界模型近2亿美元融资——<span class="highlight2">AI行业正从"软件竞赛"升级为"软硬一体+资本涌入"的新阶段</span>。个人套利窗口：<span class="highlight2">Agent Store 85%分成、豆包+抖音电商闭环、MCP生态产品化</span>。</p>
+            </div>
+        </div>
+
+    </div><!-- end columns -->
+
+    <div class="footer">
+        <p>📡 每日双专栏情报 · 由AI自动生成 · 数据来源见各专栏信源说明</p>
+        <p>新闻联播文字稿 | GitHub Trending | Product Hunt | xix.ai | 量子位 | 36氪</p>
+    </div>
+</div>
+
+</body>
+</html>
