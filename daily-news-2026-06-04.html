@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日双专栏情报 | 2026-06-04</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #0f0f1a; color: #e0e0e0; line-height: 1.7; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+  .header { text-align: center; padding: 40px 20px 30px; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); border-radius: 16px; margin-bottom: 24px; border: 1px solid rgba(255,255,255,0.08); }
+  .header h1 { font-size: 2em; background: linear-gradient(90deg, #e94560, #ff6b6b, #ffd93d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+  .header .date { color: #8892b0; font-size: 1.1em; }
+  .header .subtitle { color: #64ffda; font-size: 0.95em; margin-top: 8px; }
+
+  .dual-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 900px) { .dual-columns { grid-template-columns: 1fr; } }
+
+  .column { background: #1a1a2e; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); }
+  .col-header { padding: 20px 24px; font-size: 1.2em; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+  .col-header.red { background: linear-gradient(135deg, #c0392b, #e74c3c); }
+  .col-header.blue { background: linear-gradient(135deg, #0f3460, #1a5276); }
+  .col-header .icon { font-size: 1.3em; }
+
+  .content { padding: 20px 24px; }
+  .section { margin-bottom: 24px; }
+  .section-title { font-size: 1.05em; font-weight: 700; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 2px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 8px; }
+  .section-title .badge { font-size: 0.7em; padding: 2px 8px; border-radius: 10px; font-weight: 500; }
+  .badge-hot { background: #e94560; color: #fff; }
+  .badge-new { background: #00b894; color: #fff; }
+  .badge-money { background: #fdcb6e; color: #2d3436; }
+  .badge-warn { background: #e17055; color: #fff; }
+
+  .news-item { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px; margin-bottom: 14px; border-left: 3px solid #e94560; transition: background 0.2s; }
+  .news-item:hover { background: rgba(255,255,255,0.06); }
+  .news-item h3 { font-size: 1em; color: #ff6b6b; margin-bottom: 8px; }
+  .news-item .detail { color: #b0b8c8; font-size: 0.9em; margin-bottom: 6px; }
+  .news-item .detail strong { color: #ffd93d; }
+  .news-item .interpretation { color: #64ffda; font-size: 0.88em; margin-top: 6px; padding-top: 6px; border-top: 1px dashed rgba(100,255,218,0.2); }
+  .news-item .impact { color: #fdcb6e; font-size: 0.88em; margin-top: 4px; }
+
+  .ai-item { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px; margin-bottom: 14px; border-left: 3px solid #64ffda; transition: background 0.2s; }
+  .ai-item:hover { background: rgba(255,255,255,0.06); }
+  .ai-item h3 { font-size: 1em; color: #64ffda; margin-bottom: 8px; }
+  .ai-item .tech { color: #b0b8c8; font-size: 0.9em; margin-bottom: 6px; }
+  .ai-item .tech strong { color: #ffd93d; }
+  .ai-item .value { color: #00b894; font-size: 0.88em; margin-top: 6px; padding-top: 6px; border-top: 1px dashed rgba(0,184,148,0.2); }
+  .ai-item .scene { color: #fdcb6e; font-size: 0.88em; margin-top: 4px; }
+
+  .github-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.85em; }
+  .github-table th { background: rgba(100,255,218,0.1); color: #64ffda; padding: 8px 10px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .github-table td { padding: 7px 10px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #b0b8c8; }
+  .github-table tr:hover td { background: rgba(255,255,255,0.03); }
+  .github-table .star { color: #ffd93d; font-weight: 600; }
+  .github-table .trend { color: #00b894; }
+
+  .ph-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.85em; }
+  .ph-table th { background: rgba(253,203,110,0.1); color: #fdcb6e; padding: 8px 10px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .ph-table td { padding: 7px 10px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #b0b8c8; }
+  .ph-table tr:hover td { background: rgba(255,255,255,0.03); }
+  .ph-table .votes { color: #fdcb6e; font-weight: 600; }
+
+  .summary-box { background: linear-gradient(135deg, rgba(233,69,96,0.15), rgba(100,255,218,0.1)); border-radius: 12px; padding: 16px; margin-top: 16px; border: 1px solid rgba(255,255,255,0.08); }
+  .summary-box h3 { color: #ff6b6b; margin-bottom: 8px; font-size: 1em; }
+  .summary-box p { color: #b0b8c8; font-size: 0.9em; }
+
+  .dict-item { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 14px; margin-bottom: 10px; border-left: 3px solid #e17055; }
+  .dict-item .term { color: #e17055; font-weight: 700; font-size: 1em; }
+  .dict-item .explain { color: #b0b8c8; font-size: 0.9em; margin-top: 4px; }
+
+  .footer { text-align: center; padding: 30px 20px; color: #4a5568; font-size: 0.8em; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 0.75em; margin-right: 4px; }
+  .tag-red { background: rgba(233,69,96,0.2); color: #e94560; }
+  .tag-green { background: rgba(0,184,148,0.2); color: #00b894; }
+  .tag-yellow { background: rgba(253,203,110,0.2); color: #fdcb6e; }
+  .tag-blue { background: rgba(100,255,218,0.2); color: #64ffda; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- 头部 -->
+<div class="header">
+  <h1>📡 每日双专栏情报</h1>
+  <div class="date">2026年6月4日 · 星期三</div>
+  <div class="subtitle">新闻联播风向标 + AI生产力黑洞 · 每日9:00自动生成</div>
+</div>
+
+<!-- 双栏主体 -->
+<div class="dual-columns">
+
+<!-- ============ 专栏一：新闻联播 ============ -->
+<div class="column">
+  <div class="col-header red">
+    <span class="icon">📺</span>
+    专栏一：新闻联播每日简报（风向标解读版）
+  </div>
+  <div class="content">
+
+    <!-- 核心风向 -->
+    <div class="section">
+      <div class="section-title">🎯 一、核心风向</div>
+      <div class="summary-box">
+        <p><strong style="color:#ff6b6b;">陆海新通道提速+外资加码硬科技+物流重回扩张——政策组合拳定调"十五五"开局稳中求进</strong></p>
+        <p style="margin-top:6px; font-size:0.85em;">西部陆海新通道跑出高水平开放"加速度"领衔头条，长线外资持续加码硬科技释放信心信号，5月物流业景气指数重回扩张区间验证经济修复动能。"十五五"多省市密集规划，北京锚定城市战略定位、山西坚定转型、西藏奋力现代化。</p>
+      </div>
+    </div>
+
+    <!-- 分项解读 -->
+    <div class="section">
+      <div class="section-title">📊 二、分项解读</div>
+
+      <div class="news-item">
+        <h3>1. 西部陆海新通道跑出高水平对外开放"加速度"</h3>
+        <div class="detail"><strong>新闻联播说了什么：</strong>【新思想引领新征程】头条聚焦西部陆海新通道建设，通道连接西部13省市区、通达全球120个国家/地区的500多个港口，打通了西部地区向南出海的"大动脉"。通道物流总额持续增长，铁海联运班列开行量大幅提升，成为"一带一路"标志性工程。</div>
+        <div class="interpretation">📌 <strong>风向标解读：</strong>头条位置释放明确信号——西部陆海新通道已从"规划蓝图"进入"跑出加速度"阶段，这意味着国家正在加速推进中西部开放格局重构，从"向东看"转向"南北并进"。通道沿线的基础设施、物流园区、加工贸易产业是重点受益方向。</div>
+        <div class="impact">💰 <strong>行业影响：</strong>受益：西部港口/物流（北部湾港、重庆物流港）、跨境贸易服务商、铁海联运基础设施。关注：中老铁路沿线水果贸易（中老跨境游火热+水果"鲜"达餐桌同日报道）。</div>
+      </div>
+
+      <div class="news-item">
+        <h3>2. 丁薛祥在云南调研</h3>
+        <div class="detail"><strong>新闻联播说了什么：</strong>丁薛祥在云南调研，重点关注西南地区经济发展和边疆治理。云南作为面向南亚东南亚辐射中心，调研内容预计涉及中老铁路经济带、跨境贸易、生态保护等议题。</div>
+        <div class="interpretation">📌 <strong>风向标解读：</strong>丁薛祥调研云南与头条西部陆海新通道形成政策呼应，高层正在系统性推进西南开放战略。云南定位正从"边疆省份"升级为"开放前沿"。</div>
+        <div class="impact">💰 <strong>行业影响：</strong>受益：云南跨境贸易、中老铁路沿线园区、绿色能源（云南水电铝硅）、文旅康养。</div>
+      </div>
+
+      <div class="news-item">
+        <h3>3. 长线外资看好中国，持续加码硬科技</h3>
+        <div class="detail"><strong>新闻联播说了什么：</strong>报道长线外资持续加码中国硬科技投资，表明国际资本对中国科技自主创新的长期信心。具体涉及半导体、新能源、人工智能等领域的投资案例。</div>
+        <div class="interpretation">📌 <strong>风向标解读：</strong>在中美科技竞争背景下，官媒重点报道"外资加码硬科技"，是在释放"中国市场依然开放且有利可图"的信号，也是对"脱钩论"的有力回应。长线资金（主权基金、养老基金等）的布局方向值得跟踪。</div>
+        <div class="impact">💰 <strong>行业影响：</strong>受益：半导体设备/材料、AI芯片、新能源电池、量子计算。信号：硬科技赛道中长期资金面改善，利好头部公司估值修复。</div>
+      </div>
+
+      <div class="news-item">
+        <h3>4. 李强签署国务院令 公布《政务数据共享条例》</h3>
+        <div class="detail"><strong>新闻联播说了什么：</strong>李强签署国务院令，正式公布《政务数据共享条例》，这是我国首部专门规范政务数据共享的行政法规。条例明确了政务数据共享的范围、程序、安全和监督机制。</div>
+        <div class="interpretation">📌 <strong>风向标解读：</strong>政务数据共享立法化，是数字政府建设的关键基础设施。此前政务数据长期存在"不愿共享、不敢共享、不会共享"痛点，条例落地将打通数据要素流通的"最先一公里"。结合此前数据算法纳入商业秘密保护的政策，数据要素市场正在加速成型。</div>
+        <div class="impact">💰 <strong>行业影响：</strong>受益：政务信息化（数字政府）、数据安全/隐私计算、数据交易所、大数据服务商。关注：政务数据授权运营试点城市。</div>
+      </div>
+
+      <div class="news-item">
+        <h3>5. 5月份中国物流业景气指数重回扩张区间</h3>
+        <div class="detail"><strong>新闻联播说了什么：</strong>5月份中国物流业景气指数回升至50%以上扩张区间，新订单指数、业务量指数均有所改善，显示物流行业运行企稳向好。</div>
+        <div class="interpretation">📌 <strong>风向标解读：</strong>物流景气指数是经济活跃度的先行指标。重回扩张区间验证了5月经济修复动能增强，与此前PMI数据相互印证。物流先行回升，意味着生产端和消费端的传导正在加速。</div>
+        <div class="impact">💰 <strong>行业影响：</strong>受益：快递物流（顺丰、京东物流）、仓储自动化、冷链物流。信号：经济复苏链上，物流是第一站回暖。</div>
+      </div>
+
+      <div class="news-item">
+        <h3>6. "十五五"开局：北京/山西/西藏锚定方向</h3>
+        <div class="detail"><strong>新闻联播说了什么：</strong>北京锚定城市战略定位推进高质量发展；山西坚定有序推进转型发展；西藏奋力谱写中国式现代化新篇章。三地"十五五"规划各有侧重——北京强调首都功能、山西推进能源革命、西藏聚焦基础设施和民生。</div>
+        <div class="interpretation">📌 <strong>风向标解读：</strong>"十五五"开局年，地方规划密集出台。山西转型信号最强（从煤到新），西藏持续获得基建倾斜，北京则延续减量发展+科技创新路线。</div>
+        <div class="impact">💰 <strong>行业影响：</strong>山西：新能源/氢能/煤化工转型；西藏：交通基建/清洁能源/文旅；北京：AI/量子/生物制造等未来产业。</div>
+      </div>
+
+      <div class="news-item">
+        <h3>7. 多部门推动科研助理岗位开发 促毕业生就业</h3>
+        <div class="detail"><strong>新闻联播说了什么：</strong>多部门联合发文推动科研助理岗位开发，为高校毕业生提供更多就业机会。科研助理岗位覆盖高校、科研院所、企业研发部门等。</div>
+        <div class="interpretation">📌 <strong>风向标解读：</strong>2026届毕业生规模再创新高，科研助理岗位开发是"稳就业+强科研"的双赢策略。信号：科研经费将持续增加，人才下沉到科研一线是政策鼓励方向。</div>
+        <div class="impact">💰 <strong>行业影响：</strong>受益：科研服务/仪器设备、高校/院所信息化。信号：科研经费加码，利好科研工具和平台型公司。</div>
+      </div>
+
+      <div class="news-item">
+        <h3>8. 南水北调东线北延完成年度调水 + 大同—怀来—天津南特高压全面架线</h3>
+        <div class="detail"><strong>新闻联播说了什么：</strong>南水北调东线一期北延应急供水工程完成年度调水任务；大同—怀来—天津南特高压工程进入全面架线阶段，该工程将有效支撑华北地区电力供应。</div>
+        <div class="interpretation">📌 <strong>风向标解读：</strong>水资源调配+电力输送基础设施同步推进，保障华北地区"水电网"安全。特高压建设加速，是新能源消纳的关键支撑。</div>
+        <div class="impact">💰 <strong>行业影响：</strong>受益：特高压设备（国电南瑞、许继电气）、水利信息化、新能源发电运营。</div>
+      </div>
+
+      <div class="news-item">
+        <h3>9. 国际动态：韩正会见下任联合国秘书长候选人 + 伊朗美军动态 + 以军袭击黎巴嫩</h3>
+        <div class="detail"><strong>新闻联播说了什么：</strong>韩正会见下任联合国秘书长候选人；伊朗称打击美军基地等目标，美国称空袭伊朗格什姆岛，伊朗与美国信息交换已暂停；以军袭击黎巴嫩南部多地；孟加拉国外长卡利勒当选第81届联大主席；丹麦新政府坚守格陵兰岛主权；刚果（金）埃博拉确诊死亡达60例。</div>
+        <div class="interpretation">📌 <strong>风向标解读：</strong>中东局势持续紧张，美伊信息交换暂停是危险信号。丹麦格陵兰主权表态回应美国觊觎。联合国秘书长换届博弈进入关键期，中方积极参与人事布局。</div>
+        <div class="impact">💰 <strong>行业影响：</strong>关注：油价波动风险（中东）、黄金避险需求、军工板块情绪催化。埃博拉疫情关注医疗防护出口。</div>
+      </div>
+
+    </div>
+
+    <!-- 总结 -->
+    <div class="section">
+      <div class="section-title">🧭 三、总结风向标</div>
+      <div class="summary-box">
+        <h3>政策走向</h3>
+        <p>今日新闻联播释放三大核心信号：<br>
+        ① <strong style="color:#ff6b6b;">开放提速</strong>——西部陆海新通道头条定调，西南开放从"规划"进入"加速跑"阶段；<br>
+        ② <strong style="color:#64ffda;">科技自信</strong>——外资加码硬科技+政务数据共享条例，科技自主+数据要素双线推进；<br>
+        ③ <strong style="color:#fdcb6e;">基建托底</strong>——物流回暖+特高压+南水北调，传统基建和新基建同步发力。</p>
+        <p style="margin-top:10px;"><strong>投资建议：</strong>关注西部物流/港口、数据要素、特高压设备三条主线；中东局势升温利好黄金和军工短线；"十五五"开局年地方规划密集出台，关注山西转型和西藏基建主题。</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ 专栏二：AI生产力情报 ============ -->
+<div class="column">
+  <div class="col-header blue">
+    <span class="icon">🤖</span>
+    专栏二：AI生产力情报（黑科技与套利指南）
+  </div>
+  <div class="content">
+
+    <div style="text-align:center; padding:8px 0 16px; color:#64ffda; font-size:0.95em;">
+      🚀 AI 生产力黑洞：今日黑科技与套利指南<br>
+      📅 日期：2026-06-04
+    </div>
+
+    <!-- 顶级装备库更新 -->
+    <div class="section">
+      <div class="section-title">🛠️ 【顶级装备库更新】</div>
+
+      <div class="ai-item">
+        <h3>🔥 Headroom — Token压缩神器，砍掉60-95%上下文</h3>
+        <div class="tech"><strong>核心黑科技：</strong>AI Agent上下文压缩层，在所有内容（工具输出、日志、RAG chunks、文件、对话历史）到达LLM之前进行智能压缩。实测代码搜索场景压缩92%、事件调试场景压缩88%，<strong>答案质量不变</strong>。兼容Claude Code、Codex、Cursor等主流Agent，支持跨Agent内存共享和可逆压缩。今日GitHub +3,530⭐登顶Trending #1，总量9,710⭐。</div>
+        <div class="value">✅ <strong>实战价值：</strong>直接降低API调用成本60-95%，对长对话/复杂Agent场景效果最显著。配合RAG应用效果极佳——检索出来的长文档先过Headroom再喂给LLM，token消耗断崖式下降。</div>
+        <div class="scene">🎯 <strong>落地场景：</strong>① 用Headroom压缩新闻联播文字稿再喂给LLM做摘要，成本降9成；② 长代码仓库搜索+调试场景，token消耗从每次$0.5降到$0.05；③ MCP服务器集成，所有Agent调用自动压缩。</div>
+      </div>
+
+      <div class="ai-item">
+        <h3>🔥 微软MAI模型家族 — 7款自研模型齐发</h3>
+        <div class="tech"><strong>核心黑科技：</strong>Build 2026大会一口气发布7款自研模型——<strong>MAI Thinking 1</strong>（推理模型，MoE 1T/35B激活，SWE-bench Pro 53%追平Opus 4.6，AIME数学97%，零蒸馏全商用数据训练）；<strong>MAI Code 1 Flash</strong>（5B参数编码模型，SWE-bench Pro 51%，Haiku体量旗舰能力）；<strong>MAI Image 2.5</strong>（文生图Arena第三、图像编辑第二）；<strong>MAI Transcribe 1.5</strong>（43种语言，全球第一准确率，5倍速度）；<strong>MAI Voice 2</strong>（15种语言，细粒度情绪语音合成）。</div>
+        <div class="value">✅ <strong>实战价值：</strong>MAI Code 1 Flash仅5B参数就能编程SOTA，意味着本地跑编程Agent成为可能。MAI Thinking 1零蒸馏+商用数据训练，企业合规痛点彻底解决。</div>
+        <div class="scene">🎯 <strong>落地场景：</strong>① MAI Code Flash部署到本地4GB GPU做轻量编程Agent；② MAI Transcribe替代Whisper做会议录音转写，43种语言+5倍速度；③ 全部模型已上架Foundry+OpenRouter+Fireworks AI，可直接API调用。</div>
+      </div>
+
+      <div class="ai-item">
+        <h3>Microsoft MarkItDown — 文档转Markdown工具持续爆发</h3>
+        <div class="tech"><strong>核心黑科技：</strong>将PDF/Word/Excel/PPT等Office文档一键转Markdown，专为RAG和LLM预处理设计。今日GitHub +1,984⭐，总量142,860⭐。与Headroom形成"文档→Markdown→压缩"完整pipeline。</div>
+        <div class="value">✅ <strong>实战价值：</strong>RAG场景第一步就是文档解析，MarkItDown把所有格式统一成LLM友好的Markdown，再配合Headroom压缩，端到端token成本降90%+。</div>
+        <div class="scene">🎯 <strong>落地场景：</strong>企业知识库建设、技术文档检索、合同/财报自动摘要。</div>
+      </div>
+
+    </div>
+
+    <!-- Agent战场情报 -->
+    <div class="section">
+      <div class="section-title">🤖 【Agent 战场情报】</div>
+
+      <div class="ai-item">
+        <h3>🏗️ Windows正式化身Agent操作系统</h3>
+        <div class="tech"><strong>动态：</strong>微软Build 2026大会核心发布——<strong>MXC（Microsoft执行容器）</strong>是操作系统级Agent沙箱策略层，四档隔离（进程/会话/VM/Windows 365），Windows内核强制执行。现场演示OpenClaw删桌面文件被只读沙箱死死摁住。OpenClaw Foundation同时成立，确保开源中立。<br><br><strong>Copilot四合一</strong>：Chat+Cowork+Code+Autopilot一个入口。首个<strong>Autopilot"Scout"</strong>可加入Teams群聊、常驻Outlook、拥有独立身份和生产力许可证。<br><br><strong>Surface RTX Spark</strong>：1 PetaFLOP算力+128GB统一内存，现场同时跑3个本地大模型（最大1200亿参数），本地处理340万token全部免费。黄仁勋金句："PC从个人电脑进化成个人AI"。</div>
+        <div class="value">✅ <strong>解读：</strong>这是Agent从"玩具"到"生产级工具"的关键转折点。MXC沙箱解决了企业安全顾虑（Agent删文件？不可能），Autopilot让Agent拥有"员工身份"可合规运行。16亿Windows用户一夜进入Agent时代。</div>
+        <div class="scene">🎯 <strong>落地场景：</strong>① Scout自动处理Teams讨论线程+邮件，适合项目管理场景；② 本地120B模型+128GB统一内存，UE插件开发可在本地完成代码审查+调试；③ OpenClaw+MXC企业内部部署，安全合规跑Agent。</div>
+      </div>
+
+      <div class="ai-item">
+        <h3>🐙 ECC — Agent性能优化框架，205K⭐持续爆发</h3>
+        <div class="tech"><strong>动态：</strong>ECC（Agent性能优化系统）为Claude Code、Codex、Opencode、Cursor等提供<strong>技能、本能、记忆、安全和研究优先开发</strong>。今日+2,141⭐，总量205,738⭐。定义了Agent的"操作系统级"能力框架。</div>
+        <div class="value">✅ <strong>解读：</strong>ECC本质上在做Agent的"标准化操作系统"——技能是可复用能力包，本能是条件反射机制，记忆是跨会话持久化。与Windows MXC从不同维度解决同一个问题：让Agent从"野跑"变成"合规跑"。</div>
+        <div class="scene">🎯 <strong>落地场景：</strong>配合小红书项目，定义"选品分析"技能+"价格比对"本能+"历史选品"记忆，Agent自动完成竞品分析+定价建议。</div>
+      </div>
+
+      <div class="ai-item">
+        <h3>🦎 Hermes Agent — "与你一起成长"的Agent框架</h3>
+        <div class="tech"><strong>动态：</strong>NousResearch的Hermes Agent今日+1,735⭐，总量179,111⭐。v0.11.0（Interface Release）里程碑版本，累计1,556次代码提交。核心能力：动态技能学习、用户偏好适配、跨会话记忆。配套<strong>Hermes WebUI</strong>支持网页端和手机端使用。</div>
+        <div class="value">✅ <strong>解读：</strong>"grows with you"不是营销话术——Hermes的核心差异化是<strong>持续学习用户习惯</strong>，不像传统Agent每次对话从零开始。WebUI发布意味着非技术用户也能用Agent了。</div>
+        <div class="scene">🎯 <strong>落地场景：</strong>个人知识管理Agent——它会记住你的阅读偏好、关注领域，自动推送相关信息，越用越懂你。</div>
+      </div>
+
+      <div class="ai-item">
+        <h3>🤝 Skill商店大战：腾讯/阿里/字节混战</h3>
+        <div class="tech"><strong>动态：</strong>3月腾讯、阿里、字节先后上线Skill商店后，5-6月智谱、美团、小红书接连入场。字节双线并行：火山引擎Find Skill面向企业（整合ClawHub+GitHub），扣子Skill商店面向开发者。腾讯依托小程序生态横向覆盖，阿里深耕商业流程纵向。Skill就是给AI Agent的"操作手册"。</div>
+        <div class="value">✅ <strong>解读：</strong>Skill商店正在成为AI时代的"App Store"。关键区别：腾讯走小程序路线（规模覆盖），阿里走B2B深耕（流程打通），字节走双线（企业+开发者）。</div>
+        <div class="scene">🎯 <strong>落地场景：</strong>把自己的选品能力封装成Skill上架扣子商店——"食材选品评估"Skill，其他小红书店主直接调用。</div>
+      </div>
+
+    </div>
+
+    <!-- AI新玩法新概念 -->
+    <div class="section">
+      <div class="section-title">🖊️ 【AI新玩法，新概念】</div>
+
+      <div class="ai-item">
+        <h3>🧠 MiniMax M3 — 国内首个"前沿三件套"开源模型</h3>
+        <div class="tech"><strong>动态：</strong>MiniMax 6月1日发布M3旗舰模型，集齐前沿Coding+1M超长上下文+原生多模态三大核心。自研稀疏注意力架构，预填充提速9.7倍，解码提速15.6倍。多项基准超越GPT-5.5和Gemini 3.1 Pro。10天内开源权重。同时宣布A股科创板IPO辅导，2025年总收入7900万美元（70%海外）。</div>
+        <div class="value">✅ <strong>解读：</strong>MiniMax走的是"开源打口碑+低价抢开发者+海外赚收入"路线。M3的1M上下文+Computer Use能力，意味着它可以直接操作电脑完成复杂任务，是Agent时代的"操作系统级模型"。</div>
+        <div class="scene">🎯 <strong>落地场景：</strong>① Computer Use能力直接操控浏览器做竞品调研；② 1M上下文一次性吃进整个代码仓库做代码审查；③ 开源后本地部署，数据不出域。</div>
+      </div>
+
+      <div class="ai-item">
+        <h3>🌍 星源智 — 10个月融资10亿，做机器人"大脑"</h3>
+        <div class="tech"><strong>动态：</strong>智源研究院孵化公司星源智成立仅10个月即融资10亿，不做硬件只做世界模型（机器人的"大脑"）。对标智谱成长路径（智源曾孵化智谱，如今港股市值8000亿+）。星源智锚定端侧世界模型量产落地。</div>
+        <div class="value">✅ <strong>解读：</strong>世界模型是具身智能的"操作系统"——机器人需要先"理解世界"才能"操作世界"。10个月10亿的速度说明资本认定这是下一个万亿赛道。</div>
+        <div class="scene">🎯 <strong>落地场景：</strong>关注世界模型在工业机器人、仓储物流中的应用——"看一眼就知道怎么抓"的机器人即将量产。</div>
+      </div>
+
+      <div class="ai-item">
+        <h3>💼 OpenAI Codex加入ChatGPT — 变成"打工bot"</h3>
+        <div class="tech"><strong>动态：</strong>Codex能力将深入整合到ChatGPT入口，新增6个面向具体岗位的插件（数据分析、文档处理等）。同时推出Sites功能（把成果做成交互式网页分享）和Annotations功能（批注协作）。GPT-5.6暂未发布。注意：Uber四个月耗尽AI编程工具年度预算，微软已开始取消Claude Code许可证。</div>
+        <div class="value">✅ <strong>解读：</strong>Codex从"编程工具"进化为"数字员工"，6个岗位插件意味着OpenAI在定义AI劳动力的"岗位分类"。但token成本正在成为企业级问题——Uber和微软的案例说明"AI很贵"不是空话。</div>
+        <div class="scene">🎯 <strong>落地场景：</strong>用Codex Sites把数据报告一键做成交互式网页分享给团队；Annotations做团队协作批注。</div>
+      </div>
+
+    </div>
+
+    <!-- AI套利/变现线索 -->
+    <div class="section">
+      <div class="section-title">💰 【AI 套利/变现线索】</div>
+
+      <div class="ai-item">
+        <h3>🎵 Suno — AI音乐独角兽估值54亿美元</h3>
+        <div class="tech"><strong>热点：</strong>Suno完成4亿美元D轮融资，投后估值达54亿美元。"互联网女皇"Mary Meeker基金领投。付费用户3个月翻倍至200万，ARR触及3亿美元。尽管面临多家唱片公司版权诉讼，增长依然强劲。Suno宣布未来数月将推出首款与音乐产业合作开发的音乐模型。</div>
+        <div class="value">✅ <strong>复刻建议：</strong>① 用Suno生成品牌主题曲/短视频BGM，小红书店铺号背景音乐零成本；② AI音乐+品牌联名——与食品品牌合作推出"限定口味配限定歌曲"营销；③ 版权注意：Suno正面临诉讼，商用需谨慎，建议仅用于营销素材不做核心产品。</div>
+      </div>
+
+      <div class="ai-item">
+        <h3>🔥 DeepSeek首轮融资500亿 — 估值冲3500-4000亿</h3>
+        <div class="tech"><strong>热点：</strong>DeepSeek即将完成首轮外部融资约500亿元人民币。创始人梁文锋个人注资200亿，腾讯拟投100亿，宁德时代拟投50亿。投后估值3500-4000亿元（约520-590亿美元）。国家AI产业投资基金、网易、京东、IDG资本等在最后谈判中。DeepSeek同时在内蒙古自建数据中心，宁德时代可提供储能和备份系统。</div>
+        <div class="value">✅ <strong>复刻建议：</strong>① DeepSeek V4.1版本即将推出，关注其API降价节奏——国产大模型价格战将持续，开发者是最大受益者；② 宁德时代+DeepSeek的组合意味着"从模型到供电"的AI全链条自主可控，数据中心储能是隐形赛道；③ DeepSeek开源生态仍在扩大，基于其开源模型做垂直应用是当前最优解。</div>
+      </div>
+
+      <div class="ai-item">
+        <h3>📊 Headroom + MarkItDown — Token成本断崖式下降</h3>
+        <div class="tech"><strong>热点：</strong>Headroom（压缩60-95% token）+ MarkItDown（文档转Markdown）形成黄金组合，已有开发者在社区分享"文档解析→Markdown→压缩→LLM"的完整pipeline，端到端token成本降90%+。</div>
+        <div class="value">✅ <strong>复刻建议：</strong>① 搭建本地"情报压缩站"：每天自动抓取新闻→MarkItDown转格式→Headroom压缩→喂给LLM生成摘要，成本从每天$2降到$0.1；② 把这套pipeline封装成MCP服务器，所有Agent自动享受压缩；③ 做成Skill上架扣子商店——"智能摘要压缩"Skill。</div>
+      </div>
+
+    </div>
+
+    <!-- GitHub Trending -->
+    <div class="section">
+      <div class="section-title">📈 【GitHub Trending 今日TOP 10】</div>
+      <table class="github-table">
+        <tr><th>#</th><th>项目</th><th>语言</th><th>⭐ 总量</th><th>📈 今日</th></tr>
+        <tr><td>1</td><td><strong>chopratejas/headroom</strong></td><td>Python</td><td class="star">9,710</td><td class="trend">+3,530</td></tr>
+        <tr><td>2</td><td><strong>affaan-m/ECC</strong></td><td>JavaScript</td><td class="star">205,738</td><td class="trend">+2,141</td></tr>
+        <tr><td>3</td><td><strong>microsoft/markitdown</strong></td><td>Python</td><td class="star">142,860</td><td class="trend">+1,984</td></tr>
+        <tr><td>4</td><td><strong>NousResearch/hermes-agent</strong></td><td>Python</td><td class="star">179,111</td><td class="trend">+1,735</td></tr>
+        <tr><td>5</td><td><strong>D4Vinci/Scrapling</strong></td><td>Python</td><td class="star">60,236</td><td class="trend">+1,067</td></tr>
+        <tr><td>6</td><td><strong>nesquena/hermes-webui</strong></td><td>Python</td><td class="star">13,099</td><td class="trend">+719</td></tr>
+        <tr><td>7</td><td><strong>Open-LLM-VTuber</strong></td><td>Python</td><td class="star">8,953</td><td class="trend">+693</td></tr>
+        <tr><td>8</td><td><strong>supermemoryai/supermemory</strong></td><td>TypeScript</td><td class="star">25,172</td><td class="trend">+600</td></tr>
+        <tr><td>9</td><td><strong>opendataloader-pdf</strong></td><td>Java</td><td class="star">23,268</td><td class="trend">+570</td></tr>
+        <tr><td>10</td><td><strong>HKUDS/Vibe-Trading</strong></td><td>Python</td><td class="star">9,916</td><td class="trend">+197</td></tr>
+      </table>
+    </div>
+
+    <!-- Product Hunt -->
+    <div class="section">
+      <div class="section-title">🏆 【Product Hunt 6月AI新品TOP 10】</div>
+      <table class="ph-table">
+        <tr><th>#</th><th>产品</th><th>描述</th><th>票数</th></tr>
+        <tr><td>1</td><td><strong>Fundraisly</strong></td><td>AI fundraising工具</td><td class="votes">1,025,261</td></tr>
+        <tr><td>2</td><td><strong>Mina Meeting Assistant</strong></td><td>AI会议助手（记录+待办+纪要）</td><td class="votes">479,135</td></tr>
+        <tr><td>3</td><td><strong>Vokal</strong></td><td>AI语音交互工具</td><td class="votes">45,655</td></tr>
+        <tr><td>4</td><td><strong>Databox MCP</strong></td><td>MCP协议数据分析工具</td><td class="votes">34,354</td></tr>
+        <tr><td>5</td><td><strong>Gigacatalyst</strong></td><td>B2B SaaS AI低代码搭建</td><td class="votes">34,138</td></tr>
+        <tr><td>6</td><td><strong>Dune Keypad</strong></td><td>AI快捷键工具</td><td class="votes">32,851</td></tr>
+        <tr><td>7</td><td><strong>Typeahead</strong></td><td>AI输入联想补全</td><td class="votes">29,041</td></tr>
+        <tr><td>8</td><td><strong>folk</strong></td><td>AI CRM智能跟进</td><td class="votes">28,871</td></tr>
+        <tr><td>9</td><td><strong>Brief</strong></td><td>AI信息摘要工具</td><td class="votes">24,531</td></tr>
+        <tr><td>10</td><td><strong>Paste MCP & AI Tools</strong></td><td>MCP剪贴板管理+跨工具流转</td><td class="votes">22,218</td></tr>
+      </table>
+    </div>
+
+    <!-- 避坑/黑话词典 -->
+    <div class="section">
+      <div class="section-title">🔍 【避坑/黑话词典】</div>
+
+      <div class="dict-item">
+        <div class="term">MXC (Microsoft Execution Container)</div>
+        <div class="explain">大白话：微软给Agent套的"安全笼子"。Agent能碰什么、不能碰什么，全由Windows内核强制执行。四档隔离从"同进程"到"云端独立虚拟机"。以后Agent删你文件？MXC说不行就不行。</div>
+      </div>
+
+      <div class="dict-item">
+        <div class="term">Autopilot vs Copilot</div>
+        <div class="explain">大白话：Copilot是你问它才答的"助手"，Autopilot是你不用管它自己跑的"员工"。Scout是第一个Autopilot——它会自己加入Teams群聊、自己读邮件、自己处理任务，拥有独立的"工牌"（身份和许可证）。</div>
+      </div>
+
+      <div class="dict-item">
+        <div class="term">Skill商店</div>
+        <div class="explain">大白话：AI时代的App Store。Skill就是给Agent装"技能包"——装了"选品评估"技能的Agent就会选品，装了"数据爬取"技能的Agent就会爬数据。腾讯/阿里/字节三巨头争夺的，是谁来定义"技能标准"和收"上架费"。</div>
+      </div>
+
+      <div class="dict-item">
+        <div class="term">Headroom压缩</div>
+        <div class="explain">大白话：给LLM喂东西之前先"脱水"。同样一碗汤，把水挤掉90%再喝，营养不减但胃不撑了。对RAG应用尤其有效——检索出来的长文档先脱水再喂LLM，省90%的token钱。</div>
+      </div>
+
+      <div class="dict-item">
+        <div class="term">世界模型（World Model）</div>
+        <div class="explain">大白话：给机器人装一个"物理世界模拟器"。机器人不是靠试错学习，而是在虚拟世界里先模拟几百万遍再动手。星源智10个月融10亿，做的就是这件事——给所有机器人厂商卖"大脑"。</div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+</div><!-- dual-columns end -->
+
+<!-- 底部 -->
+<div class="footer">
+  📡 每日双专栏情报 · 自动生成于 2026-06-04 09:00<br>
+  信源：央视新闻联播 · GitHub Trending · Product Hunt · 36氪 · 量子位 · 新智元 · 智东西<br>
+  Powered by WorkBuddy AI · 数据截至北京时间 2026-06-04 08:50
+</div>
+
+</div>
+</body>
+</html>
