@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小红书生鲜电商每日作战情报 · 2026-06-06</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card-bg: #1a1d2e;
+    --card-hover: #1e2138;
+    --text: #e8eaed;
+    --text-secondary: #9aa0a6;
+    --accent: #ff6b6b;
+    --accent-glow: rgba(255,107,107,0.3);
+    --green: #51cf66;
+    --green-bg: rgba(81,207,102,0.12);
+    --orange: #ffa94d;
+    --orange-bg: rgba(255,169,77,0.12);
+    --blue: #4dabf7;
+    --blue-bg: rgba(77,171,247,0.12);
+    --purple: #cc5de8;
+    --purple-bg: rgba(204,93,232,0.12);
+    --border: #2d3148;
+    --badge-bg: #252840;
+    --radius: 14px;
+    --radius-sm: 10px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 780px; margin: 0 auto; padding: 32px 20px 80px; }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #1a1d2e 0%, #252840 50%, #1e1630 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: ''; position: absolute;
+    top: -40px; right: -40px;
+    width: 160px; height: 160px;
+    background: radial-gradient(circle, rgba(255,107,107,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .header-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 16px;
+  }
+  .header-date {
+    font-size: 13px; color: var(--text-secondary);
+    letter-spacing: 0.5px;
+  }
+  .header-badge {
+    background: var(--accent); color: #fff;
+    font-size: 12px; font-weight: 700;
+    padding: 4px 12px; border-radius: 20px;
+    letter-spacing: 1px;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255,107,107,0.5); }
+    50% { box-shadow: 0 0 0 12px rgba(255,107,107,0); }
+  }
+  .header h1 {
+    font-size: 28px; font-weight: 800; letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #ff6b6b, #ffa94d);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 4px;
+  }
+  .header-subtitle {
+    font-size: 14px; color: var(--text-secondary); margin-top: 4px;
+  }
+
+  /* Countdown bar */
+  .countdown-bar {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px;
+  }
+  .countdown-chip {
+    background: var(--badge-bg); border: 1px solid var(--border);
+    border-radius: 20px; padding: 5px 14px; font-size: 12px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .countdown-chip.hot {
+    border-color: var(--accent); background: rgba(255,107,107,0.1);
+  }
+  .countdown-chip .label { color: var(--text-secondary); }
+  .countdown-chip .value { font-weight: 700; }
+  .countdown-chip.hot .value { color: var(--accent); }
+
+  /* Section */
+  .section-title {
+    font-size: 17px; font-weight: 700; margin: 32px 0 16px;
+    padding-bottom: 12px; border-bottom: 2px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+    letter-spacing: -0.3px;
+  }
+  .section-title .icon { font-size: 20px; }
+
+  /* Cards */
+  .card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 24px; margin-bottom: 16px;
+  }
+  .card-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 16px;
+  }
+  .card-tag {
+    font-size: 11px; font-weight: 700; padding: 3px 10px;
+    border-radius: 12px; letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  .card-tag.red { background: rgba(255,107,107,0.15); color: var(--accent); }
+  .card-tag.green { background: var(--green-bg); color: var(--green); }
+  .card-tag.orange { background: var(--orange-bg); color: var(--orange); }
+  .card-tag.blue { background: var(--blue-bg); color: var(--blue); }
+  .card-tag.purple { background: var(--purple-bg); color: var(--purple); }
+  .card-title { font-size: 16px; font-weight: 700; }
+  .card-body p { font-size: 14px; color: var(--text-secondary); margin-bottom: 10px; line-height: 1.8; }
+  .card-body p strong { color: var(--text); }
+
+  /* Stat grid */
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 16px; }
+  .stat-item {
+    background: var(--badge-bg); border-radius: var(--radius-sm); padding: 14px 16px;
+    text-align: center;
+  }
+  .stat-value { font-size: 24px; font-weight: 800; color: var(--accent); }
+  .stat-value.green { color: var(--green); }
+  .stat-value.blue { color: var(--blue); }
+  .stat-label { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
+
+  /* Product table */
+  .product-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+  .product-table th {
+    text-align: left; font-size: 11px; color: var(--text-secondary);
+    font-weight: 600; padding: 10px 12px; border-bottom: 1px solid var(--border);
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .product-table td {
+    padding: 14px 12px; border-bottom: 1px solid rgba(45,49,72,0.5);
+    font-size: 13px;
+  }
+  .product-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .product-name { font-weight: 700; color: var(--text); }
+  .product-price { font-weight: 800; color: var(--accent); font-size: 15px; }
+  .product-source { font-size: 11px; color: var(--text-secondary); }
+  .product-verdict {
+    font-size: 11px; padding: 3px 8px; border-radius: 10px; font-weight: 600;
+    display: inline-block;
+  }
+  .verdict-recommend { background: var(--green-bg); color: var(--green); }
+  .verdict-watch { background: var(--orange-bg); color: var(--orange); }
+
+  /* Action item */
+  .action-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 14px 0; border-bottom: 1px solid var(--border);
+  }
+  .action-priority {
+    min-width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 800; color: #fff;
+  }
+  .priority-p0 { background: var(--accent); }
+  .priority-p1 { background: var(--orange); }
+  .priority-p2 { background: var(--blue); }
+  .action-content { flex: 1; }
+  .action-title { font-size: 14px; font-weight: 600; }
+  .action-desc { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+  .action-deadline { font-size: 11px; color: var(--accent); margin-top: 4px; display: flex; align-items: center; gap: 4px; }
+
+  /* Timeline */
+  .timeline { margin-top: 16px; }
+  .timeline-item {
+    display: flex; gap: 14px; padding: 12px 0;
+    border-left: 2px solid var(--border); margin-left: 8px; padding-left: 20px;
+    position: relative;
+  }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -6px; top: 18px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--border);
+  }
+  .timeline-item.active::before { background: var(--accent); box-shadow: 0 0 12px var(--accent-glow); }
+  .timeline-item.past::before { background: var(--green); }
+  .timeline-date { font-size: 11px; color: var(--text-secondary); min-width: 70px; margin-top: 2px; }
+  .timeline-content { flex: 1; }
+  .timeline-title { font-size: 13px; font-weight: 600; }
+  .timeline-desc { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+
+  /* Alert box */
+  .alert {
+    background: rgba(255,107,107,0.08); border: 1px solid rgba(255,107,107,0.25);
+    border-radius: var(--radius-sm); padding: 16px 20px; margin: 16px 0;
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .alert-icon { font-size: 20px; flex-shrink: 0; }
+  .alert-content { flex: 1; }
+  .alert-title { font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+  .alert-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+
+  /* Footer */
+  .footer {
+    margin-top: 40px; padding: 20px 0;
+    border-top: 1px solid var(--border);
+    text-align: center; font-size: 11px; color: var(--text-secondary);
+  }
+  .footer span { margin: 0 4px; }
+
+  /* Quote */
+  .quote {
+    background: var(--card-bg); border-left: 3px solid var(--accent);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 16px 20px; margin: 16px 0; font-style: italic;
+  }
+  .quote-text { font-size: 14px; color: var(--text-secondary); margin-bottom: 4px; }
+  .quote-author { font-size: 12px; color: var(--accent); text-align: right; }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .container { padding: 16px 12px 60px; }
+    .header { padding: 20px; }
+    .header h1 { font-size: 22px; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ====== HEADER ====== -->
+<div class="header">
+  <div class="header-top">
+    <span class="header-date">2026年6月6日 · 周六</span>
+    <span class="header-badge">🔥 BIG DAY 今日开战</span>
+  </div>
+  <h1>小红书生鲜电商每日作战情报</h1>
+  <p class="header-subtitle">精品生鲜赛道 · 数据驱动 · 科普选品型</p>
+
+  <!-- Countdown bar -->
+  <div class="countdown-bar">
+    <div class="countdown-chip hot">
+      <span class="label">🎯 Big Day 6.6</span>
+      <span class="value">TODAY</span>
+    </div>
+    <div class="countdown-chip">
+      <span class="label">618全周期</span>
+      <span class="value">Day 15</span>
+    </div>
+    <div class="countdown-chip">
+      <span class="label">距618收官</span>
+      <span class="value">剩12天</span>
+    </div>
+    <div class="countdown-chip">
+      <span class="label">LEAP UP</span>
+      <span class="value">Day 26</span>
+    </div>
+    <div class="countdown-chip">
+      <span class="label">后免佣时代</span>
+      <span class="value">Day 22</span>
+    </div>
+    <div class="countdown-chip">
+      <span class="label">AI标签逾期</span>
+      <span class="value">6天</span>
+    </div>
+  </div>
+</div>
+
+<!-- ====== BIG DAY 6.6 实战速览 ====== -->
+<h2 class="section-title"><span class="icon">🎯</span>Big Day 6.6 实战速览</h2>
+
+<div class="card">
+  <div class="card-header">
+    <div>
+      <span class="card-tag red">P0 行动</span>
+      <span class="card-title">今日是小红书66周年庆 Big Day</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p>今日（6月6日）是小红书<strong>66周年庆</strong>的Big Day，也是618大促期间<strong>流量最高峰之一</strong>。平台以"好货主场"为名打造全域盛宴，从买手时代到主理人店播，小红书自己的618已进化到第三年。</p>
+    <p>京东生鲜618开门红战报（6月2日发布）关键数据：
+      <strong>"包圆"商品销量同比增长210%</strong>，
+      <strong>地理标志、非遗食材及新奇特生鲜销售额同比增长200%</strong>，
+      多个百万级单品成为全域热销爆款。源头"包圆"模式覆盖超30个核心品类。</p>
+    <p><em>来源：百度百家号京东生鲜618开门红战报 (2026-06-02)</em></p>
+
+    <div class="stat-grid">
+      <div class="stat-item">
+        <div class="stat-value">+210%</div>
+        <div class="stat-label">京东"包圆"商品销量增长</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value green">+200%</div>
+        <div class="stat-label">地理标志食材销售额增长</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value blue">30+</div>
+        <div class="stat-label">"包圆"模式覆盖核心品类</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="alert">
+  <div class="alert-icon">⚡</div>
+  <div class="alert-content">
+    <div class="alert-title">Big Day 作战提醒</div>
+    <div class="alert-desc">
+      今日流量是一周内最高峰，所有内容（笔记/直播/挂车）必须在下午2点前发布完毕。竞品（京东/天猫/拼多多）同步发起大促攻势，小红书内生鲜精品赛道今日竞争激烈。建议：<strong>发布1条场景转化型笔记 + 配合限时优惠挂车</strong>。
+    </div>
+  </div>
+</div>
+
+<!-- ====== 本周精品风向标 ====== -->
+<h2 class="section-title"><span class="icon">🌶️</span>本周精品风向标（6月第一周）</h2>
+
+<table class="product-table">
+  <thead>
+    <tr>
+      <th>品类</th>
+      <th>当季状态</th>
+      <th>参考价格</th>
+      <th>溢价力</th>
+      <th>数据来源</th>
+      <th>判定</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <div class="product-name">🫑 樟树港辣椒</div>
+        <div class="product-source">湖南湘阴·GI认证</div>
+      </td>
+      <td>🔥 核心产季（5-7月）<br>头茬椒上市中</td>
+      <td class="product-price">288元/斤</td>
+      <td>⭐⭐⭐⭐⭐<br>辣椒界爱马仕</td>
+      <td class="product-source">历史数据 / 搜索确认</td>
+      <td><span class="product-verdict verdict-recommend">强烈推荐</span></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="product-name">🍒 桂味荔枝</div>
+        <div class="product-source">广东·核心产区减产90%</div>
+      </td>
+      <td>🔥 刚上市（6月上旬）<br>产量极少</td>
+      <td class="product-price">45-62.6元/斤</td>
+      <td>⭐⭐⭐⭐<br>"荔枝天花板"</td>
+      <td class="product-source">盒马/叮咚 6月实时</td>
+      <td><span class="product-verdict verdict-recommend">推荐（稀缺溢价）</span></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="product-name">🍑 阳山水蜜桃</div>
+        <div class="product-source">无锡·GI认证·桃中爱马仕</div>
+      </td>
+      <td>⏳ 6月中下旬上市<br>目前少量早熟品种</td>
+      <td class="product-price">88-298元/箱</td>
+      <td>⭐⭐⭐⭐⭐<br>颜值王者</td>
+      <td class="product-source">历史数据 / 搜索确认</td>
+      <td><span class="product-verdict verdict-watch">重点关注</span></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="product-name">🫐 东魁杨梅</div>
+        <div class="product-source">仙居·GI认证</div>
+      </td>
+      <td>⏳ 6月中旬上市<br>正值推广黄金窗口</td>
+      <td class="product-price">预估100-200元/斤</td>
+      <td>⭐⭐⭐⭐<br>"杨梅之王"</td>
+      <td class="product-source">历史数据 / 搜索确认</td>
+      <td><span class="product-verdict verdict-watch">重点关注</span></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="product-name">🍈 猫山王榴莲</div>
+        <div class="product-source">马来西亚·液氮冷冻</div>
+      </td>
+      <td>🔥 全年在线<br>618折扣季</td>
+      <td class="product-price">108元/个起</td>
+      <td>⭐⭐⭐⭐<br>榴莲之王</td>
+      <td class="product-source">京东/盒马 实时</td>
+      <td><span class="product-verdict verdict-recommend">推荐（618促销窗口）</span></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="product-name">🫐 大兴安岭蓝莓</div>
+        <div class="product-source">内蒙古·GI认证</div>
+      </td>
+      <td>⏳ 7-8月成熟<br>目前可预售</td>
+      <td class="product-price">预估80-150元/斤</td>
+      <td>⭐⭐⭐<br>野生产品稀缺</td>
+      <td class="product-source">历史数据</td>
+      <td><span class="product-verdict verdict-watch">观望（距离上市较远）</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ====== 竞品动态扫描 ====== -->
+<h2 class="section-title"><span class="icon">🔍</span>竞品动态扫描</h2>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-tag orange">京东生鲜</span>
+    <span class="card-title">618开门红"包圆"模式大爆发</span>
+  </div>
+  <div class="card-body">
+    <p>京东618开门红（5.31-6.2），生鲜品类依托源头"包圆"模式实现全面增长。核心亮点：</p>
+    <p>• "包圆"商品<strong>销量同比增长210%</strong>，从产地直采到用户餐桌全链路控制<br>
+    • 地理标志、非遗食材、新奇特生鲜<strong>销售额同比增长200%</strong><br>
+    • 覆盖超<strong>30个核心品类</strong>，多个百万级单品成全域爆款</p>
+    <p><strong>启示：</strong>京东包圆模式验证了"源头品质+平台背书"对高端生鲜的放大效应。小红书精品生鲜可借鉴此逻辑——<strong>买手选品 = 另一种形式的"包圆"</strong>。</p>
+    <p><em>来源：百度百家号 (2026-06-02)</em></p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="card-tag blue">小红书自己</span>
+    <span class="card-title">66周年庆Big Day：好货主场验证</span>
+  </div>
+  <div class="card-body">
+    <p>小红书2026年618以"66周年庆"为名，从5月22日开启至6月18日收官。平台定位从"买手时代"进化到"主理人店播"，强调信任式购买与非标品优势。</p>
+    <p>对精品生鲜的关键意义：<strong style="color: var(--accent);">小红书是唯一能让"区域特色鲜明、有品质故事、有差异化卖点的非标产品"跑出来的平台</strong>——标准品在比价逻辑中无法突出。</p>
+    <p><em>来源：人人都是产品经理 (2026-04-29) / 微信公众号 (2026-06-01)</em></p>
+  </div>
+</div>
+
+<div class="quote">
+  <p class="quote-text">"真正有机会在小红书上跑出来的，不是统一、康师傅这类标品巨头的产品，而是那些区域特色鲜明、有品质故事、有差异化卖点的非标产品。"</p>
+  <p class="quote-author">—— 人人都是产品经理 · 小红书618分析</p>
+</div>
+
+<!-- ====== 行动清单 ====== -->
+<h2 class="section-title"><span class="icon">✅</span>今日行动清单</h2>
+
+<div class="action-item">
+  <div class="action-priority priority-p0">P0</div>
+  <div class="action-content">
+    <div class="action-title">Big Day 场景转化笔记发布</div>
+    <div class="action-desc">发布1条"618必入精品生鲜"场景化笔记（如：端午节聚会/送礼场景）。科普选品+挂车，重点推桂味荔枝+樟树港辣椒组合。</div>
+    <div class="action-deadline">⏰ 截止时间：今日下午2点前</div>
+  </div>
+</div>
+<div class="action-item">
+  <div class="action-priority priority-p1">P1</div>
+  <div class="action-content">
+    <div class="action-title">东魁杨梅 & 阳山水蜜桃预约种草</div>
+    <div class="action-desc">两者均为6月中旬上市，当前处于"种草窗口期"。提前发布科普/预告型笔记，建立"杨梅专家""水蜜桃指南"人设标签。</div>
+    <div class="action-deadline">⏰ 本周内</div>
+  </div>
+</div>
+<div class="action-item">
+  <div class="action-priority priority-p1">P1</div>
+  <div class="action-content">
+    <div class="action-title">猫山王榴莲618折扣挂车</div>
+    <div class="action-desc">榴莲全年在线但618折扣季是转化高峰。对比"一颗大"的爆款策略：用场景化内容+限时折扣实现放量。</div>
+    <div class="action-deadline">⏰ 6月6日-6月8日</div>
+  </div>
+</div>
+<div class="action-item">
+  <div class="action-priority priority-p2">P2</div>
+  <div class="action-content">
+    <div class="action-title">AI标签合规补标</div>
+    <div class="action-desc">AI标签强制标注已在5月底截止，当前逾期6天。检查店铺号全部内容是否已标注AI生成声明，避免平台处罚。</div>
+    <div class="action-deadline">⚠️ 逾期6天，立即处理</div>
+  </div>
+</div>
+<div class="action-item">
+  <div class="action-priority priority-p2">P2</div>
+  <div class="action-content">
+    <div class="action-title">竞品618战报追踪</div>
+    <div class="action-desc">持续关注京东/天猫/盒马618生鲜战报，提取精品生鲜爆款模式用于小红书内容策略优化。</div>
+    <div class="action-deadline">📊 持续追踪至6月18日</div>
+  </div>
+</div>
+
+<!-- ====== 每日情报日历 ====== -->
+<h2 class="section-title"><span class="icon">📅</span>618情报日历</h2>
+
+<div class="timeline">
+  <div class="timeline-item past">
+    <div class="timeline-date">5.11</div>
+    <div class="timeline-content">
+      <div class="timeline-title">LEAP UP 启动</div>
+      <div class="timeline-desc">小红书电商升级计划开启</div>
+    </div>
+  </div>
+  <div class="timeline-item past">
+    <div class="timeline-date">5.15</div>
+    <div class="timeline-content">
+      <div class="timeline-title">后免佣时代启动 / 宠粉清单上线</div>
+      <div class="timeline-desc">免佣政策调整，宠粉清单玩法开启</div>
+    </div>
+  </div>
+  <div class="timeline-item past">
+    <div class="timeline-date">5.19</div>
+    <div class="timeline-content">
+      <div class="timeline-title">SIAL 2026 上海开幕</div>
+      <div class="timeline-desc">全球食品创新展，发布WGSN四大趋势（本地奢华/质朴原生/全球风味融合/健康功能性）</div>
+    </div>
+  </div>
+  <div class="timeline-item past">
+    <div class="timeline-date">5.21</div>
+    <div class="timeline-content">
+      <div class="timeline-title">天猫618预售启动</div>
+      <div class="timeline-desc">天猫618预售正式开始</div>
+    </div>
+  </div>
+  <div class="timeline-item past">
+    <div class="timeline-date">5.22</div>
+    <div class="timeline-content">
+      <div class="timeline-title">小红书618全周期开启</div>
+      <div class="timeline-desc">以"66周年庆·好货主场"为名，从5.22至6.18</div>
+    </div>
+  </div>
+  <div class="timeline-item past">
+    <div class="timeline-date">5.31</div>
+    <div class="timeline-content">
+      <div class="timeline-title">京东618开门红</div>
+      <div class="timeline-desc">"包圆"商品销量+210%，地理标志食材+200%</div>
+    </div>
+  </div>
+  <div class="timeline-item past">
+    <div class="timeline-date">5月底</div>
+    <div class="timeline-content">
+      <div class="timeline-title">AI标签强制标注截止 ⚠️ 已逾期</div>
+      <div class="timeline-desc">平台要求所有AI生成内容完成标注，逾期6天</div>
+    </div>
+  </div>
+  <div class="timeline-item active">
+    <div class="timeline-date">6.6 🔥</div>
+    <div class="timeline-content">
+      <div class="timeline-title" style="color: var(--accent);">Big Day 6.6 · 今日开战！</div>
+      <div class="timeline-desc">小红书66周年庆Big Day，全平台流量高峰。京东/天猫同步大促。</div>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-date">6.18</div>
+    <div class="timeline-content">
+      <div class="timeline-title">618收官</div>
+      <div class="timeline-desc">距今天还有12天，倒计时冲刺阶段</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== 昨日复盘摘要 ====== -->
+<h2 class="section-title"><span class="icon">📝</span>昨日复盘（6月5日）</h2>
+
+<div class="card">
+  <div class="card-body">
+    <p>• 桂味荔枝正式进入精品区（盒马45-62.6元/斤），减产90%稀缺性进一步验证<br>
+    • 东魁杨梅6月中旬上市窗口期确认，内容预热本周启动<br>
+    • SIAL 2026趋势（本地奢华/质朴原生/全球风味融合/健康功能性）持续消化<br>
+    • Git推送持续失败（网络问题，GitHub token需检查），待修复<br>
+    • 精品选品框架五维标准持续验证有效</p>
+  </div>
+</div>
+
+<!-- ====== 精品品类池更新 ====== -->
+<h2 class="section-title"><span class="icon">🆕</span>新品类发现日志</h2>
+
+<div class="card">
+  <div class="card-body">
+    <p><strong>本期无新增满足五维标准的品类。</strong>搜索关键词覆盖了"国家地理标志 高价 时令 高端 食材"以及"精品生鲜 礼盒"，结果中出现的品类（如丹东蓝莓、釜山88小番茄）均因<strong>溢价维度不达标</strong>（批发价10元/斤级，零售端难以突破50元/斤门槛）被过滤。</p>
+    <p>当前精品品类池（6月第一周）：樟树港辣椒、桂味荔枝、东魁杨梅、阳山水蜜桃、猫山王榴莲。其中樟树港辣椒与桂味荔枝为当前可即时转化的核心品类。</p>
+  </div>
+</div>
+
+<!-- ====== Footer ====== -->
+<div class="footer">
+  <span>📊 数据来源：WebSearch · 小红书MCP · 精品生鲜选品框架v1.0</span><br>
+  <span>⏱️ 生成时间：2026-06-06 08:50 · 自动批量生成</span><br>
+  <span>🎯 「食材买手实验室」· 科普选品型精品生鲜店铺号</span><br>
+  <span style="color: var(--text-secondary);">⚠️ 信息解读纪律：所有数据需≥2独立来源交叉验证，负面信息区分个案vs系统性</span>
+</div>
+
+</div>
+</body>
+</html>
