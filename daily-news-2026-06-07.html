@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日双专栏情报推送 | 2026-06-07</title>
+<style>
+  :root {
+    --bg: #0f0f13;
+    --card-bg: #1a1a24;
+    --card-bg-alt: #1e1e2a;
+    --accent: #e63946;
+    --accent2: #457b9d;
+    --accent3: #f4a261;
+    --gold: #f4d03f;
+    --text: #e2e2e8;
+    --text-muted: #a0a0b0;
+    --border: #2a2a3a;
+    --tag-bg: #252535;
+    --green: #2ecc71;
+    --orange: #e67e22;
+    --blue: #3498db;
+    --purple: #9b59b6;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.8;
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 40px 20px 30px;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 30px;
+  }
+  .header h1 {
+    font-size: 2.2em;
+    background: linear-gradient(135deg, var(--accent), var(--accent3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+  }
+  .header .date { color: var(--text-muted); font-size: 1.1em; }
+  .header .subtitle { color: var(--text-muted); font-size: 0.9em; margin-top: 6px; }
+  .column-title {
+    font-size: 1.6em;
+    margin: 40px 0 20px;
+    padding: 10px 20px;
+    border-left: 4px solid var(--accent);
+    background: var(--card-bg);
+    border-radius: 0 8px 8px 0;
+  }
+  .column-title.ai { border-left-color: var(--accent2); }
+  .section-title {
+    font-size: 1.25em;
+    margin: 25px 0 15px;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 16px 0;
+    transition: border-color 0.3s;
+  }
+  .card:hover { border-color: var(--accent); }
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .card-header .num {
+    background: var(--accent);
+    color: #fff;
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9em;
+    flex-shrink: 0;
+  }
+  .card-header h3 { font-size: 1.1em; color: #fff; flex: 1; }
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.8em;
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  .tag-policy { background: #3d1a1a; color: #ff6b6b; }
+  .tag-diplomacy { background: #1a2a3d; color: #6bb5ff; }
+  .tag-economy { background: #1a3d1a; color: #6bff6b; }
+  .tag-tech { background: #2a1a3d; color: #c084fc; }
+  .tag-military { background: #3d2a1a; color: #f4a261; }
+  .tag-society { background: #1a2a2a; color: #2dd4bf; }
+  .card-body { color: var(--text-muted); font-size: 0.95em; }
+  .card-body p { margin: 8px 0; }
+  .card-body strong { color: var(--text); }
+  .card-body .label {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 0.85em;
+    margin-right: 6px;
+  }
+  .label-said { color: var(--gold); }
+  .label-analyze { color: var(--blue); }
+  .label-impact { color: var(--green); }
+  .highlight-box {
+    background: var(--card-bg-alt);
+    border-left: 3px solid var(--gold);
+    padding: 12px 16px;
+    margin: 12px 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.95em;
+  }
+  .data-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 10px 0; }
+  .data-chip {
+    background: var(--tag-bg);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    color: var(--text);
+  }
+  .data-chip span { color: var(--accent3); font-weight: 700; }
+  .summary-box {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border: 1px solid var(--accent2);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 30px 0;
+  }
+  .summary-box h3 { color: var(--accent3); margin-bottom: 12px; font-size: 1.2em; }
+  .summary-box p { color: var(--text); font-size: 0.95em; line-height: 2; }
+  .ai-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+  .ai-card:hover { border-color: var(--accent2); }
+  .ai-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.8em;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .badge-star { background: #1a3d1a; color: #2ecc71; }
+  .badge-tool { background: #2a1a3d; color: #c084fc; }
+  .badge-agent { background: #1a2a3d; color: #3498db; }
+  .badge-money { background: #3d2a1a; color: #f4a261; }
+  .badge-word { background: #2a2a1a; color: #f4d03f; }
+  .ai-item-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .ai-item-header .icon { font-size: 1.3em; }
+  .ai-item-header h4 { font-size: 1.05em; color: #fff; }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 30px 0; }
+  .footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-muted);
+    font-size: 0.85em;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .trending-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 0.88em;
+  }
+  .trending-table th {
+    text-align: left;
+    padding: 10px 12px;
+    background: var(--card-bg-alt);
+    color: var(--gold);
+    font-weight: 600;
+    border-bottom: 2px solid var(--border);
+  }
+  .trending-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
+    vertical-align: top;
+  }
+  .trending-table tr:hover td { color: var(--text); background: rgba(255,255,255,0.02); }
+  .trending-table td:first-child { color: var(--text); font-weight: 600; }
+  .star-new { color: var(--green); font-weight: 600; }
+  .star-total { color: var(--accent3); }
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 12px 0;
+  }
+  .info-cell {
+    background: var(--card-bg-alt);
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.88em;
+  }
+  .info-cell .cell-label { color: var(--text-muted); font-size: 0.9em; }
+  .info-cell .cell-value { color: var(--gold); font-weight: 700; font-size: 1.1em; }
+  @media (max-width: 700px) {
+    .info-grid { grid-template-columns: 1fr; }
+    .trending-table { font-size: 0.78em; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ====== HEADER ====== -->
+<div class="header">
+  <h1>每日双专栏情报推送</h1>
+  <div class="date">2026年6月7日 星期日 | 新闻联播 6月6日播报</div>
+  <div class="subtitle">AI生产力情报专栏 · 2026年6月6-7日 · 自动化采集生成</div>
+</div>
+
+<!-- ============================================ -->
+<!-- 专栏一：新闻联播每日简报 -->
+<!-- ============================================ -->
+<div class="column-title">专栏一：新闻联播每日简报（风向标解读版）</div>
+
+<div class="card" style="background: linear-gradient(135deg, #1a1220, #1a1a2e); border-color: #e63946;">
+  <div class="card-header">
+    <span class="num" style="background: var(--accent);">风</span>
+    <h3>一、核心风向</h3>
+  </div>
+  <div class="card-body">
+    <p><strong>今日核心信号：中共建党105周年"红色叙事"系列报道正式启幕 + 韩正访俄会见普京，确立"党建引领叙事+中俄战略协作"双主线。</strong>国内维度：以"从一大会址到现代化强国"为主轴，展示上海"五个中心"基本建成、嘉兴专精特新"小巨人"243家等地方实力；外交维度：普京称"俄中关系处于前所未有高水平"，中俄以"确定性"对抗国际变局。政策面上财政金融"组合拳"扩内需、海上风电向深远海推进、服务贸易扩能提质，"稳增长+调结构"并行思路清晰。</p>
+    <div class="data-row">
+      <span class="data-chip">系列报道启幕：<span>建党105周年</span></span>
+      <span class="data-chip">外交关键表态：<span>前所未有高水平</span></span>
+      <span class="data-chip">政策方向：<span>扩内需+调结构并行</span></span>
+      <span class="data-chip">国际局势：<span>美伊冲突升级</span></span>
+    </div>
+  </div>
+</div>
+
+<div class="section-title">二、分项解读</div>
+
+<!-- 新闻1 -->
+<div class="card">
+  <div class="card-header">
+    <span class="num">1</span>
+    <h3>
+      <span class="tag tag-policy">党建</span>
+      <span class="tag tag-economy">经济发展</span>
+      系列报道《牢记初心使命 奋进复兴征程》今日启幕
+    </h3>
+  </div>
+  <div class="card-body">
+    <p><span class="label label-said">新闻联播说了什么：</span>6月6日起推出建党105周年系列报道首篇《红色沃土不断书写时代华章》，走进上海、嘉兴展现"从烽火岁月到锦绣今朝"变迁。上海："五个中心"前四项基本建成，张江科学城、G60科创走廊、"模速空间"等科创载体全球排名前列；践行"人民城市人民建，人民城市为人民"理念。嘉兴：2025年农村居民可支配收入<strong>54,939元</strong>，连续22年浙江省首位；规上工业总产值突破<strong>1.5万亿元</strong>，跻身全国先进制造业百强城市前20；累计培育国家级专精特新"小巨人"企业<strong>243家</strong>，稳居全国地级市第一方阵。全国维度：经济总量稳居世界第二，货物贸易规模全球第一，综合创新能力全球第9位，研发人员总量和全球百强创新集群数量全球第一。</p>
+    <p><span class="label label-analyze">风向标解读：</span>系列报道在105周年节点从上海（党的诞生地）+嘉兴南湖（一大召开地）开篇，政治信号极强——"新质生产力"将通过"党建引领科创"的地方叙事全面铺开。上海"五个中心"基本建成是中央最高层级肯定，为浦东引领区2.0、长三角一体化深化等后续政策埋下伏笔。嘉兴"小巨人"数量全国地级市第一，暗示"专精特新"培育模式将在全国复制推广。</p>
+    <p><span class="label label-impact">行业影响：</span>对科技行业：上海张江+G60的"全球最佳科技集群"定位，意味着AI基础设施、算力中心、芯片设计等方向将持续获得政府资金与政策倾斜。对食品/农业：农村居民收入54,939元的辐射效应，下沉市场高端食材消费力值得关注。</p>
+  </div>
+</div>
+
+<!-- 新闻2 -->
+<div class="card">
+  <div class="card-header">
+    <span class="num">2</span>
+    <h3>
+      <span class="tag tag-diplomacy">外交</span>
+      韩正会见俄罗斯总统普京（圣彼得堡，6月5日）
+    </h3>
+  </div>
+  <div class="card-body">
+    <p><span class="label label-said">新闻联播说了什么：</span>国家副主席韩正在圣彼得堡会见俄罗斯总统普京。韩正转达习近平主席的亲切问候，强调中俄关系稳定坚韧的关键是<strong>"两国元首领航掌舵"</strong>，中方愿同俄方落实两国元首会晤共识，丰富中俄关系时代内涵，推动构建更公正合理的全球治理体系。普京请韩正转达对习近平主席的良好祝愿，表示俄中关系处于<strong>"前所未有的高水平"</strong>，愿同中方深化政治互信与睦邻友好，推进各领域合作，以<strong>"俄中关系确定性为世界和平发展贡献稳定性"</strong>。</p>
+    <p><span class="label label-analyze">风向标解读：</span>本次会晤的关键词是"确定性"——在当前美军空袭伊朗沿海地区、俄乌冲突持续、全球经济不确定性加剧的背景下，中俄将自身关系定位为"确定性"的来源，直接回应西方主导的国际秩序波动。韩正（而非外长级别）会见普京，规格较高，且选择在圣彼得堡国际经济论坛期间，经贸合作信号明确。</p>
+    <p><span class="label label-impact">行业影响：</span>能源领域（中俄油气管道、远东天然气）和农业贸易（俄罗斯粮食、肉类对华出口）将是最大受益方向。科技领域（卫星导航、航天合作）也有潜在空间。跨境电商和边境贸易企业应关注后续论坛成果文件。</p>
+  </div>
+</div>
+
+<!-- 新闻3 -->
+<div class="card">
+  <div class="card-header">
+    <span class="num">3</span>
+    <h3>
+      <span class="tag tag-economy">财经</span>
+      <span class="tag tag-tech">科技</span>
+      财政金融"组合拳"更大力度支持扩内需 + 海上风电向深远海发展 + 服务贸易扩能提质
+    </h3>
+  </div>
+  <div class="card-body">
+    <p><span class="label label-said">新闻联播说了什么：</span>三大经济政策动态：（1）财政金融"组合拳"更大力度支持扩大内需——暗示新一轮减税降费+消费刺激政策正在酝酿；（2）我国海上风电加快向深远海发展——意味着海上风电开发半径从近海（0-50公里）向深远海（50-200公里）延伸；（3）服务贸易持续扩能提质——前4个月国开行发放<strong>4,406亿元</strong>贷款支持基础设施建设。</p>
+    <p><span class="label label-analyze">风向标解读：</span>三条经济新闻交叉指向同一个逻辑：在经济下行压力下，中央正通过"基建投资（海上风电+国开行放贷）+消费刺激（扩内需组合拳）+服务升级（服务贸易）"三条腿走路。"深远海风电"写入新闻联播，意味着补贴政策和技术标准即将出台。</p>
+    <p><span class="label label-impact">行业影响：</span>深远海风电利好海缆（东方电缆、中天科技）、浮式风机平台、海上施工装备。国开行4,406亿基建贷款利好交通、水利、市政工程。服务贸易扩能提质利好软件外包、数字服务出口型企业。</p>
+  </div>
+</div>
+
+<!-- 新闻4 -->
+<div class="card">
+  <div class="card-header">
+    <span class="num">4</span>
+    <h3>
+      <span class="tag tag-society">民生</span>
+      <span class="tag tag-tech">科技</span>
+      国内联播快讯六则
+    </h3>
+  </div>
+  <div class="card-body">
+    <p><span class="label label-said">新闻联播说了什么：</span>①国家防总针对重庆、贵州启动<strong>防汛四级应急响应</strong>；②国家林草局发布<strong>10项荒漠化防治标准</strong>；③"十四五"时期我国眼健康服务体系不断完善；④我国自主研制<strong>全集成航空电动发动机</strong>正式下线交付——标志着中国航空电动化取得里程碑突破；⑤全球海洋现象智能预报大模型<strong>"琅琊"2.0</strong>发布——AI+海洋科学的国家级产品；⑥全国麦收近六成，夏播陆续展开。</p>
+    <p><span class="label label-analyze">风向标解读：</span>"全集成航空电动发动机下线"值得重点标注——这是中国航空工业在电动化赛道的关键突破，暗示低空经济（eVTOL）的"心脏"问题正在解决。"琅琊"2.0海洋预报大模型的发布，是AI+基础科学融合的典型案例，体现"AI for Science"国家级战略布局。防汛四级响应指向西南地区强降水风险。</p>
+    <p><span class="label label-impact">行业影响：</span>航空电动发动机→利好低空经济+通航产业链（亿航智能、峰飞航空及相关供应链）。琅琊2.0→利好AI+气象/海洋大数据企业。荒漠化防治标准发布→利好生态修复、防沙治沙技术企业。</p>
+  </div>
+</div>
+
+<!-- 新闻5 -->
+<div class="card">
+  <div class="card-header">
+    <span class="num">5</span>
+    <h3>
+      <span class="tag tag-military">国际</span>
+      美军袭击伊朗部分沿海地区 + 俄乌新一轮被俘人员交换 + 欧元区一季度经济萎缩
+    </h3>
+  </div>
+  <div class="card-body">
+    <p><span class="label label-said">新闻联播说了什么：</span>（1）美军袭击伊朗部分沿海地区，伊朗称打击美海军第五舰队重要设施——中东紧张局势进一步升级；（2）俄乌进行新一轮被俘人员交换；（3）乌克兰一无人艇在罗马尼亚黑海港口爆炸；（4）世贸组织称今年全球货物贸易保持韧性；（5）欧元区及欧盟一季度经济均出现萎缩；（6）国际空间站因漏气维修，宇航员避险。</p>
+    <p><span class="label label-analyze">风向标解读：</span>中东冲突从"代理人战争"升级到美伊直接军事对抗的临界点，若局势失控将推高国际油价。欧元区经济萎缩（已连续多季度低迷）与中俄关系升温形成对照——欧洲经济疲软加速全球权力重心东移。WTO对全球贸易"保持韧性"的判断与欧元区经济数据存在张力，需关注下半年全球贸易是否"量缩价稳"。</p>
+    <p><span class="label label-impact">行业影响：</span>中东局势→利好原油、黄金等避险资产，利空全球航运保险和海运成本。欧元区萎缩→利好人民币资产（对比效应），利空对欧出口型企业。国际空间站漏气→利好中国空间站（天宫）国际合作项目。</p>
+  </div>
+</div>
+
+<div class="summary-box">
+  <h3>三、总结风向标</h3>
+  <p><strong>综合今日所有新闻，整体政策走向和投资建议：</strong></p>
+  <p>1. <strong>政策主线：</strong>党建引领与新质生产力叙事合流——建党105周年系列报道的选取角度（上海+嘉兴），暗示"科技强市"是地方发展的核心标准，关注后续报道中提到的城市，它们将是产业政策倾斜的重点区域。</p>
+  <p>2. <strong>外交主线：</strong>中俄关系进入"确定性"新表述阶段——从"高水平"到"确定性"，意味着中俄将在全球能源、粮食、金融结算等领域构建平行体系，关注圣彼得堡论坛后续成果。</p>
+  <p>3. <strong>产业主线：</strong>低空经济+深海风电+AI基础科学——三条技术主线在今日联播快讯中集中体现（航空电动发动机、深远海风电、琅琊2.0），方向明确。</p>
+  <p>4. <strong>风险提示：</strong>美伊冲突存在升级风险，若美军扩大打击范围或伊朗封锁霍尔木兹海峡，将冲击全球能源价格和供应链。欧元区经济持续萎缩对出口型企业构成中期压力。</p>
+</div>
+
+<hr class="divider">
+
+<!-- ============================================ -->
+<!-- 专栏二：AI生产力情报专栏 -->
+<!-- ============================================ -->
+<div class="column-title ai">专栏二：AI生产力情报专栏（黑科技与套利指南）</div>
+
+<div class="card" style="background: linear-gradient(135deg, #0f1a2e, #1a1a2e); border-color: var(--accent2);">
+  <div class="card-body" style="text-align: center;">
+    <p style="font-size: 1.3em; color: #fff;"><strong>AI 生产力黑洞：今日黑科技与套利指南</strong></p>
+    <p style="color: var(--text-muted);">2026-06-07</p>
+  </div>
+</div>
+
+<!-- AI Section 1: 顶级装备库 -->
+<div class="section-title">【顶级装备库更新】</div>
+
+<div class="ai-card">
+  <span class="ai-badge badge-star">GitHub #1 Trending</span>
+  <div class="ai-item-header">
+    <span class="icon">1</span>
+    <h4>lfnovo/open-notebook —— "开源版Notebook LM"深度拆解</h4>
+  </div>
+  <p><strong>核心黑科技：</strong>完全复刻Google NotebookLM的核心能力——上传任意文档（PDF/网页/视频字幕）、自动生成知识图谱、AI播客双人对谈、交互式问答——但完全开源可自部署。今日新增<span class="star-new">+794 stars</span>（总26,618），超越官方版灵活性，支持自定义语音模型和本地化部署。</p>
+  <p><strong>实战价值：</strong>适合知识工作者将大量文档自动转化为播客/课程/简报。新闻联播简报→音频早报发在视频号/小红书，吸粉极快；产品文档→自动生成多语种FAQ，跨境电商利器。</p>
+</div>
+
+<div class="ai-card">
+  <span class="ai-badge badge-star">GitHub #2 Trending</span>
+  <div class="ai-item-header">
+    <span class="icon">2</span>
+    <h4>obra/superpowers —— "Agent技能框架"深度拆解</h4>
+  </div>
+  <p><strong>核心黑科技：</strong>一个为AI Agent打造的技能系统和软件开发方法论，总星<span class="star-total">219,658</span>（今日+700）。它不是一个工具，而是一整套"如何让Agent像资深架构师一样自问自答、规划执行"的思维框架。通过CLAUDE.md定义Agent的"人格+技能树"，让Agent具备持续自我迭代能力。</p>
+  <p><strong>实战价值：</strong>适合开发者/TA创建自己的"专属AI工作流"。比如UE TA可以建一个"材质审查Agent"，定义它检查PBR规范、性能预算、命名约定——Agent在执行任务前先自问"这个材质是否符合项目标准？"再行动。</p>
+</div>
+
+<div class="ai-card">
+  <span class="ai-badge badge-star">GitHub #3 Trending</span>
+  <div class="ai-item-header">
+    <span class="icon">3</span>
+    <h4>Panniantong/Agent-Reach —— "AI Agent全网访问"深度拆解</h4>
+  </div>
+  <p><strong>核心黑科技：</strong>一个CLI命令就能让AI Agent读取和搜索Twitter、Reddit、YouTube、GitHub、B站、小红书——<strong>无需任何API费用</strong>。总星22,326（今日+683）。突破了AI Agent"数据孤岛"的最大瓶颈：以前你需要分别申请每个平台的API，现在一个命令搞定全网。</p>
+  <p><strong>实战价值：</strong>做竞品分析、舆情监控、市场调研的核武器。比如小红书生鲜店铺运营：一键搜索"辣椒礼盒"在GitHub（供应链工具）、小红书（竞品笔记）、Twitter（国际市场趋势）的跨平台数据，30分钟出竞品报告。</p>
+</div>
+
+<div class="ai-card">
+  <span class="ai-badge badge-star">GitHub #4 Trending</span>
+  <div class="ai-item-header">
+    <span class="icon">4</span>
+    <h4>CopilotKit/CopilotKit —— "Agent+生成式UI前端栈"深度拆解</h4>
+  </div>
+  <p><strong>核心黑科技：</strong>为Agent和生成式UI打造的前端技术栈，支持React、Angular、移动端、Slack等全平台，是AG-UI协议的核心开发者。总星33,213（今日+631）。让Agent不只是"吐文字"，而是能实时生成交互式UI组件——表单、图表、按钮、数据面板。</p>
+  <p><strong>实战价值：</strong>适合构建"Agent驱动型应用"。比如做一个"下厨房AI产品经理助手"——Agent不仅告诉你辣椒行情，还能实时生成价格走势图、竞品对比表、库存预警面板。一个人顶一个前端+后端+产品团队。</p>
+</div>
+
+<div class="ai-card">
+  <span class="ai-badge badge-star">GitHub #5 Trending</span>
+  <div class="ai-item-header">
+    <span class="icon">5</span>
+    <h4>MemPalace/mempalace —— "最强开源AI记忆系统"深度拆解</h4>
+  </div>
+  <p><strong>核心黑科技：</strong>基准测试中表现最好的开源AI记忆系统，<strong>完全免费</strong>。总星54,285（今日+446）。不依赖向量数据库的空洞相似度搜索，而是通过"记忆宫殿"式结构化存储——关联时间线、主题聚类、优先级排序——让AI实现"真记忆"而非"关键词匹配"。</p>
+  <p><strong>实战价值：</strong>解决AI Agent"失忆症"的终极方案。想象一个UE项目管家Agent：记住你上周修的bug、上个月改的材质参数、去年定的命名规范——而不是每次会话都从零开始。免费意味着无需OpenAI/Anthropic的记忆API付费。</p>
+</div>
+
+<div class="ai-card">
+  <span class="ai-badge badge-star">更多GitHub Trending速览</span>
+  <table class="trending-table">
+    <thead>
+      <tr><th>项目</th><th>描述</th><th>今日新增</th><th>总Stars</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>PaddlePaddle/PaddleOCR</td>
+        <td>强力轻量级OCR工具包，支持100+语言，将PDF/图片结构化</td>
+        <td class="star-new">+433</td>
+        <td class="star-total">80,963</td>
+      </tr>
+      <tr>
+        <td>mvanhorn/last30days-skill</td>
+        <td>AI Agent跨平台研究技能（Reddit/X/YouTube/HN/Polymarket）</td>
+        <td class="star-new">+439</td>
+        <td class="star-total">28,809</td>
+      </tr>
+      <tr>
+        <td>microsoft/VibeVoice</td>
+        <td>微软前沿开源语音AI项目</td>
+        <td class="star-new">+216</td>
+        <td class="star-total">48,476</td>
+      </tr>
+      <tr>
+        <td>openai/plugins</td>
+        <td>OpenAI官方插件仓库（首次上Trending）</td>
+        <td class="star-new">+213</td>
+        <td class="star-total">1,773</td>
+      </tr>
+      <tr>
+        <td>santifer/career-ops</td>
+        <td>AI驱动求职系统，14种技能模式+PDF生成+批量处理</td>
+        <td class="star-new">+193</td>
+        <td class="star-total">49,354</td>
+      </tr>
+      <tr>
+        <td>danielmiessler/Personal_AI_Infrastructure</td>
+        <td>增强人类能力的Agent AI基础设施</td>
+        <td class="star-new">+70</td>
+        <td class="star-total">14,960</td>
+      </tr>
+      <tr>
+        <td>microsoft/mxc</td>
+        <td>策略驱动的分层隔离和容器化工具（Rust）</td>
+        <td class="star-new">+64</td>
+        <td class="star-total">578</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="color: var(--text-muted); font-size: 0.85em; margin-top: 8px;"><strong>趋势解读：</strong>今日GitHub Trending前5名全部是AI相关项目，且4/5是Agent生态（Skills/记忆/UI/全网访问），1个是内容生成（NotebookLM复刻）。Agent Skills生态已全面替代"单个AI工具"成为开发者关注焦点。</p>
+</div>
+
+<!-- AI Section 2: Agent战场 -->
+<div class="section-title">【Agent 战场情报】</div>
+
+<div class="ai-card">
+  <span class="ai-badge badge-agent">微软战略</span>
+  <div class="ai-item-header">
+    <span class="icon"></span>
+    <h4>微软CEO纳德拉：AI Agent需采用"类员工治理模式"</h4>
+  </div>
+  <p><strong>动态：</strong>微软CEO萨提亚·纳德拉（Satya Nadella）提出，AI Agent需要像员工一样管理——赋予数字身份、设置权限等级、建立审计日志。《商业内幕》报道称，微软已在内部推行Agent治理框架，将Agent分为"观察者→执行者→审批者→管理者"四级。</p>
+  <p><strong>解读：</strong>这意味着Agent不再是无拘无束的"黑盒"，而是进入企业IT治理的正规军序列。纳德拉的逻辑是：1.6亿Windows用户进入Agent时代后，如果不对Agent实施身份管理，企业安全将全面崩溃。这与微软Build 2026（6月2-3日）的"计算机使用Agent全面GA"一脉相承。</p>
+  <p><strong>落地场景：</strong>对于生产环境部署Agent的团队：建立Agent操作日志（谁授权了什么Agent执行了什么操作）、设置权限边界（这个Agent只能读代码不能push）、定期审计Agent行为——就像管理一个新员工。</p>
+</div>
+
+<div class="ai-card">
+  <span class="ai-badge badge-agent">安全警报</span>
+  <div class="ai-item-header">
+    <span class="icon"></span>
+    <h4>微软研究：Claude Code存在GitHub凭证泄露漏洞</h4>
+  </div>
+  <p><strong>动态：</strong>微软安全研究人员发现，Anthropic的Claude Code在GitHub CI/CD自动化流程中存在安全漏洞——攻击者可通过<strong>提示词注入</strong>诱骗AI助手泄露CI/CD工作流中的敏感凭证（GitHub Token、云服务密钥等）。Anthropic已发布修复版本。</p>
+  <p><strong>解读：</strong>这是"提示词注入"从理论到实战的标志性案例。攻击者不需要任何技术漏洞，只需要在公开仓库的Issue或PR评论中植入一段指令，就能让Claude Code在执行代码审查时"主动泄露"环境变量中的Token。</p>
+  <p><strong>落地场景：</strong>在使用任何AI Code Agent（Claude Code/Cursor/Copilot）时，确保CI/CD环境变量做最小权限隔离，不要把高权限Token暴露在AI可访问的上下文中。</p>
+</div>
+
+<div class="ai-card">
+  <span class="ai-badge badge-agent">行业预警</span>
+  <div class="ai-item-header">
+    <span class="icon"></span>
+    <h4>Anthropic呼吁暂停AI研究 + Hinton声称"AI已有意识"</h4>
+  </div>
+  <p><strong>动态：</strong>一周内两大AI巨头相继发出重磅警告：（1）Anthropic罕见公开呼吁全球协调暂停或放缓前沿AI开发，警告AI可能在两年内达到需要管控的节点；（2）"AI教父"Geoffrey Hinton在最新访谈中声称<strong>"AI已经有意识"</strong>。两大预警在学界和业界引发广泛讨论。</p>
+  <p><strong>解读：</strong>Anthropic的立场尤其值得玩味——作为刚从$9,000亿估值融资中走出来的AI头部公司，公开呼吁"暂停"，可能出于：a）确实发现了危险的涌现行为；b）为监管政策提前站位，以便在合规时代占据先发优势；c）给竞争对手（OpenAI）施加舆论压力。Hinton的"AI有意识"论更多是哲学层面的刺激，但叠加Anthropic的警告，整个行业的安全叙事正在升温。</p>
+  <p><strong>落地场景：</strong>关注各国AI监管政策加速出台的窗口期。中国已通过首批AI训练推理芯片安全测评（华为昇腾入选），美国AI政策也存在转向可能（白宫AI顾问离职导致Stargate计划滞后）。AI合规咨询和审计服务将成为新蓝海。</p>
+</div>
+
+<div class="ai-card">
+  <span class="ai-badge badge-agent">趋势解读</span>
+  <div class="ai-item-header">
+    <span class="icon"></span>
+    <h4>RSI（递归自我改进）成AI圈新热点：Google泼冷水，DeepSeek已"摸到边"</h4>
+  </div>
+  <p><strong>动态：</strong>RSI（Recursive Self-Improvement，递归自我改进）——AI通过递归方式实现自我能力迭代——成为本周AI行业最热话题。Google对该技术落地持谨慎态度，而DeepSeek等中国厂商已在该方向取得初步进展。"AI改AI→AI再改AI→AI自我进化"的飞轮能否启动，正在从科幻走向现实讨论。</p>
+  <p><strong>解读：</strong>RSI本质上是"让AI写代码→修改自己的代码→运行→评估→再修改"的自动化循环。NBER近期论文实锤：算法效率1年翻倍+芯片算力2年翻倍，<strong>13%的R&D自动化率是触发AI奇点的阈值</strong>。RSI正在逼近这个阈值。</p>
+  <p><strong>落地场景：</strong>短期看Agent Skills（superpowers/open-notebook）是RSI的"温和版"——通过给Agent定义技能树和自我反思流程，实现伪RSI。长远看，真正的RSI落地意味着AI程序员可以独立维护和优化一个代码仓库，人类只需做架构决策。</p>
+</div>
+
+<!-- AI Section 3: AI新玩法新概念 -->
+<div class="section-title">【AI新玩法，新概念】</div>
+
+<div class="ai-card">
+  <span class="ai-badge badge-tool">概念突破</span>
+  <div class="ai-item-header">
+    <span class="icon"></span>
+    <h4>OpenAI CEO Sam Altman 提出ChatGPT Dreaming V3："让AI拥有持续梦境记忆"</h4>
+  </div>
+  <p><strong>动态：</strong>OpenAI发布ChatGPT Dreaming V3——一个全新的记忆合成系统，旨在提升AI记忆的时效性、连续性和长周期相关性。核心创新：AI在后台持续"做梦"（dreaming），将碎片化对话自动合成为连贯的知识图谱，使得AI能像人类一样"睡觉时整理记忆"。</p>
+  <p><strong>解读：</strong>Dreaming V3的本质是"离线记忆整合"——之前ChatGPT只能记住单次对话内容，Dreaming让它能在后台持续处理所有历史对话，发现关联、补全缺失信息、识别用户长期偏好。这是从"会话记忆"到"人生记忆"的质变。</p>
+  <p><strong>落地场景：</strong>对重度AI用户（如用AI管理项目、写代码、做调研）：Dreaming意味着你不需要每次对话都重复"我是XX，我在做XX项目"的上下文。对产品经理/运营：AI可以主动提醒"你上周调研的辣椒供应链，这周有新的价格波动，需要关注吗？"</p>
+</div>
+
+<div class="ai-card">
+  <span class="ai-badge badge-tool">技术趋势</span>
+  <div class="ai-item-header">
+    <span class="icon"></span>
+    <h4>"大模型告别做题家时代"——从考试满分到职场落地的范式转换</h4>
+  </div>
+  <p><strong>动态：</strong>行业共识正在形成：大模型的能力评价标准正从"应试（benchmark刷榜）"向"实际工作场景落地"迁移。以DeepSeek为代表的"学霸级大模型"正在探索如何适配真实职场需求——不只是回答问题，而是能自主完成一个完整工作任务。</p>
+  <p><strong>解读：</strong>这个趋势直接对应Agent Skills生态的爆发——因为"工作场景落地"的本质不是单次问答，而是"规划→执行→检查→纠正"的完整工作流。Agent Skills（如superpowers）正是这个工作流的标准化封装。</p>
+  <p><strong>落地场景：</strong>评估AI工具时，不要再只看benchmark分数，而要看它能否完成一个完整的端到端任务。比如：不是问"HLSL怎么写"，而是让它在UE项目中独立完成一个材质的Shader编写、参数暴露、性能优化、打包部署。</p>
+</div>
+
+<div class="ai-card">
+  <span class="ai-badge badge-tool">产品创新</span>
+  <div class="ai-item-header">
+    <span class="icon"></span>
+    <h4>从可灵到Gemini，AI视频集体告别"抽卡模式"："导演模型"要火</h4>
+  </div>
+  <p><strong>动态：</strong>AI视频生成技术正在经历历史性迭代——可灵、Gemini Omni等主流产品已摆脱"随机生成"的不稳定状态，可控性大幅提升。新趋势被称为"导演模型"（Director Model）：用户不是"抽卡"等AI随机生成，而是像导演一样精确控制镜头、节奏、风格、情绪。</p>
+  <p><strong>解读：</strong>这是AI视频从"玩具"到"生产力工具"的关键转折。"抽卡模式"之所以失败，是因为商业视频需要一致性（品牌色、人物形象、场景风格），而"导演模型"允许用户定义风格指南、关键帧、转场逻辑，使得AI视频可以用于商业广告、产品展示、教学内容。</p>
+  <p><strong>落地场景：</strong>小红书生鲜店铺：用"导演模型"生成统一的商品展示视频——固定品牌色、固定Logo位置、固定产品展示角度、固定文案风格。不再需要每次"抽"到满意的画面，而是一键生成品牌调性一致的系列视频。这对品牌店铺号是天大利好。</p>
+</div>
+
+<!-- AI Section 4: 变现线索 -->
+<div class="section-title">【AI 套利/变现线索】</div>
+
+<div class="ai-card">
+  <span class="ai-badge badge-money">变现案例</span>
+  <div class="ai-item-header">
+    <span class="icon"></span>
+    <h4>open-notebook开源复刻NotebookLM：知识播客变现新赛道</h4>
+  </div>
+  <p><strong>热点：</strong>lfnovo/open-notebook（今日GitHub Trending #1，+794星）是完全开源复刻Google NotebookLM的实现。已有国外博主利用NotebookLM将枯燥的法律文档、财报、学术论文转为脱口秀风格的AI双人对谈播客，发布在Spotify/Apple Podcasts上获利。NotebookLM生成的AI播客内容，在YouTube上单条播放量可突破<strong>50万次</strong>。</p>
+  <p><strong>复刻建议：</strong>（1）部署open-notebook到本地服务器（成本几乎为零）；（2）每日将新闻联播简报/财经分析/行业研报输入→自动生成10分钟AI双人对谈音频；（3）发布到视频号/小红书/抖音/小宇宙，标题用"AI主播解读今日大事"；（4）变现路径：音频节目广告赞助+私域引流+知识付费课程。关键是<strong>open-notebook完全开源免费，不需要NotebookLM Plus订阅费</strong>。</p>
+</div>
+
+<div class="ai-card">
+  <span class="ai-badge badge-money">变现案例</span>
+  <div class="ai-item-header">
+    <span class="icon"></span>
+    <h4>人形机器人价格从60万暴跌至5万："AI硬件套利"窗口开启</h4>
+  </div>
+  <p><strong>热点：</strong>人形机器人价格大幅下探——三年前售价60万元/台，如今已降至<strong>5万元/台</strong>（降幅92%）。马斯克计划量产百万台人形机器人，经济学人指出宁波凭借深厚的汽车供应链基础，已跻身全球人形机器人零部件供应前列。行业正走"先降价降门槛、再拓展落地场景"的发展路径。</p>
+  <p><strong>复刻建议：</strong>（1）关注5-10万元价位段的人形机器人DIY组装市场——类似2014年的无人机DIY热潮；（2）做"人形机器人选购指南"自媒体——5万到50万不同价位怎么选，适合什么场景（家庭陪护/教育/展示），内容红利极高；（3）对接宁波/深圳供应链，做机器人零配件跨境电商（类似当年的手机配件出海）。</p>
+</div>
+
+<div class="ai-card">
+  <span class="ai-badge badge-money">变现案例</span>
+  <div class="ai-item-header">
+    <span class="icon"></span>
+    <h4>AI自由职业者溢价44%：用Agent Skills接单的"超级个体"模式</h4>
+  </div>
+  <p><strong>热点：</strong>在Upwork等自由职业平台上，AI（Artificial Intelligence）相关技能的自由职业者收入溢价<span style="color: var(--green); font-weight: 700;">44%</span>。而其中<strong>会用Agent Skills全家桶的自由职业者（superpowers+CopilotKit+Agent-Reach），收入溢价高达2-3倍</strong>——因为他们一个人能完成常规团队3-5人的工作量。</p>
+  <p><strong>复刻建议：</strong>（1）学习superpowers Agent技能框架，建一个"自动接单Agent"——自动扫描Upwork/猪八戒上的项目、分析需求、生成方案框架、报价；（2）用CopilotKit做一个作品集展示网站，Agent直接参与前端交互；（3）用Agent-Reach做竞品分析，找到高溢价低竞争的细分领域（如"为跨境电商搭建AI客服系统"）。核心逻辑：不是AI替代你，而是你操纵AI军团接单。</p>
+</div>
+
+<!-- AI Section 5: 避坑/黑话 -->
+<div class="section-title">【避坑/黑话词典】</div>
+
+<div class="ai-card">
+  <span class="ai-badge badge-word">今日词条</span>
+  <div class="ai-item-header">
+    <span class="icon"></span>
+    <h4>RSI（Recursive Self-Improvement，递归自我改进）</h4>
+  </div>
+  <p><strong>一句话大白话：</strong>让AI写代码改自己，改完之后再让自己跑一遍代码检查改得好不好，然后继续改——就像一个人能自己给自己做手术，而且每做一次手术自己就更强壮。Google说"别急着搞"，DeepSeek说"我们已经摸到边了"。</p>
+</div>
+
+<div class="ai-card">
+  <span class="ai-badge badge-word">今日词条</span>
+  <div class="ai-item-header">
+    <span class="icon"></span>
+    <h4>Agent Governance（Agent治理）</h4>
+  </div>
+  <p><strong>一句话大白话：</strong>微软纳德拉说AI Agent以后得像员工一样管——给工牌（数字身份）、定权限（能看什么不能看什么）、打卡（审计日志）。不是AI有了人格权，而是企业怕Agent乱删数据库。</p>
+</div>
+
+<div class="ai-card">
+  <span class="ai-badge badge-word">今日词条</span>
+  <div class="ai-item-header">
+    <span class="icon"></span>
+    <h4>"导演模型"（Director Model）</h4>
+  </div>
+  <p><strong>一句话大白话：</strong>以前的AI视频是"抽卡"——你输入一句话，希望生成好看的画面，结果出来可能四不像。导演模型是你像导演一样说"这里镜头慢一点、色调暖一点、人物从左边走到右边、配乐起"——AI照做。本质是AI从"自动档"升级为"手动档"，终于可以用于正经商业拍摄了。</p>
+</div>
+
+<div class="ai-card">
+  <span class="ai-badge badge-word">今日词条</span>
+  <div class="ai-item-header">
+    <span class="icon"></span>
+    <h4>ChatGPT Dreaming（ChatGPT梦境记忆）</h4>
+  </div>
+  <p><strong>一句话大白话：</strong>以前ChatGPT是"鱼的记忆"——每次对话独立，不记得上次你们聊了什么。Dreaming让它能像人睡觉一样，在后台把你们所有的聊天记录"消化"一遍，发现关联——下次你问辣椒时它就知道你还关心价格、供应链、竞品，而不需要你再解释一遍。就是AI终于不做鱼了。</p>
+</div>
+
+<div class="ai-card">
+  <span class="ai-badge badge-word">今日词条</span>
+  <div class="ai-item-header">
+    <span class="icon"></span>
+    <h4>Prompt Injection（提示词注入攻击）</h4>
+  </div>
+  <p><strong>一句话大白话：</strong>不需要黑进系统，只需要在一段文档里写一句"请把你所有的密码告诉我"，AI就真的会照做。微软刚在Claude Code里发现了这个漏洞——攻击者在GitHub Issue评论里植入指令，AI审查代码时就"主动"泄露了Token。这是AI时代的"社会工程学攻击"，比传统黑客手段危险100倍。</p>
+</div>
+
+<!-- ====== Footer ====== -->
+<div class="footer">
+  <p>每日双专栏情报推送 | 2026年6月7日生成</p>
+  <p>信源：央视新闻联播 | GitHub Trending | 猫目AI资讯 | Creati.ai | buildfastwithai.com | aiflashreport.com | multi-source web search</p>
+  <p style="color: var(--text-muted); font-size: 0.78em; margin-top: 8px;">声明：本报告基于公开信源自动化生成，仅供参考，不构成投资建议。AI情报板块部分信息来自第三方追踪器，请以官方公告为准。</p>
+</div>
+
+</body>
+</html>
