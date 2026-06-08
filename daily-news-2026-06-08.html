@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日双专栏AI情报 - 2026年6月8日</title>
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --card-bg: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #e0e0e0;
+    --text-secondary: #999;
+    --accent: #ff4757;
+    --accent2: #3742fa;
+    --accent3: #2ed573;
+    --accent4: #ffa502;
+    --tag-bg: #252525;
+    --highlight: #1e272e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    padding: 20px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 40px 20px 30px;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 30px;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), var(--accent4));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .header .date {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  /* Section Title */
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 40px 0 20px;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title .icon { font-size: 24px; }
+  .section-title.ai { border-left-color: var(--accent2); }
+
+  /* Summary Card */
+  .summary-card {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+  .summary-card .label {
+    font-size: 12px;
+    color: var(--accent4);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .summary-card .content {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.9;
+  }
+
+  /* News Card */
+  .news-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: border-color 0.2s;
+  }
+  .news-card:hover { border-color: var(--accent); }
+  .news-card .number {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+  .news-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+  }
+  .news-card .section-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .news-card .section-label.said { background: rgba(55,66,250,0.2); color: #7c8aff; }
+  .news-card .section-label.wind { background: rgba(255,71,87,0.2); color: #ff6b7a; }
+  .news-card .section-label.impact { background: rgba(46,213,115,0.2); color: #5dfc8e; }
+  .news-card .section-label.tech { background: rgba(55,66,250,0.2); color: #7c8aff; }
+  .news-card .section-label.value { background: rgba(46,213,115,0.2); color: #5dfc8e; }
+  .news-card .section-label.scene { background: rgba(255,165,2,0.2); color: #ffbe4d; }
+  .news-card p { margin-bottom: 12px; color: #ccc; font-size: 14px; }
+  .news-card p:last-child { margin-bottom: 0; }
+
+  /* AI Card Variants */
+  .card-tech {
+    border-left: 3px solid var(--accent2);
+  }
+  .card-agent {
+    border-left: 3px solid var(--accent3);
+  }
+  .card-play {
+    border-left: 3px solid #a55eea;
+  }
+  .card-money {
+    border-left: 3px solid var(--accent4);
+  }
+  .card-dict {
+    border-left: 3px solid #1e90ff;
+  }
+
+  /* Tags */
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--text-secondary);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-right: 6px;
+    border: 1px solid var(--border);
+  }
+  .tag.hot { background: rgba(255,71,87,0.15); color: var(--accent); border-color: rgba(255,71,87,0.3); }
+
+  /* Data highlight */
+  .data-highlight {
+    background: var(--highlight);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    border-left: 3px solid var(--accent3);
+  }
+  .data-highlight .data-item {
+    display: inline-block;
+    margin: 4px 16px 4px 0;
+    font-size: 13px;
+    color: #ccc;
+  }
+  .data-highlight .data-item strong {
+    color: var(--accent3);
+    font-size: 15px;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 12px;
+  }
+
+  /* Divider */
+  .divider {
+    border: none;
+    border-top: 1px dashed var(--border);
+    margin: 30px 0;
+  }
+
+  /* Emoji header */
+  .emoji-header {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    body { padding: 10px; }
+    .header h1 { font-size: 22px; }
+    .news-card { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ==================== HEADER ==================== -->
+<div class="header">
+  <h1>📡 每日双专栏 · AI 情报推送</h1>
+  <div class="date">📅 2026年6月8日 星期一 | 农历五月十三</div>
+</div>
+
+<!-- ==================== 专栏一 ==================== -->
+<div class="section-title">
+  <span class="icon">📰</span> 专栏一：新闻联播每日简报（风向标解读版）
+</div>
+
+<div class="summary-card">
+  <div class="label">🧭 核心风向</div>
+  <div class="content">
+    今日新闻联播的核心信号是<strong>"稳增长+防风险+绿色转型"三线并进</strong>：外汇储备回升317亿美元显示跨境资本信心修复，农业保险1.82万亿覆盖体现"三农"底线思维，塔里木绿电11亿度标志着传统能源基地的绿色转型加速。国际层面，美伊关系、巴以局势持续紧张，地缘政治不确定性仍高。
+  </div>
+</div>
+
+<!-- 新闻1 -->
+<div class="news-card">
+  <h3><span class="number">1</span> 2026年全国统一高考开考</h3>
+  <span class="section-label said">📡 新闻联播说了什么</span>
+  <p>2026年6月7日，全国统一高考正式开考。今年全国高考报名人数持续增长，各地严格落实考务组织、试卷保密、应急保障等工作，多部门协同为考生营造良好考试环境。全国多地启动"静音护考"行动，交通、电力、医疗等部门全力保障。</p>
+  <span class="section-label wind">🧭 风向标解读</span>
+  <p>高考作为中国最重要的社会动员事件之一，其组织保障直接体现政府治理能力。今年恰逢"十五五"开局之年，教育部此前已明确推进高等教育综合改革，高考命题方向将更加注重创新思维和实际应用能力考察，呼应"新质生产力"人才需求。</p>
+  <span class="section-label impact">📊 行业影响</span>
+  <p>教育科技（AI辅导、智能阅卷）、考务安防（人脸识别、信号屏蔽）、交通出行（网约车送考）等板块短期受益。中长期关注"AI+教育"政策催化，以及高校专业结构调整带来的职业教育机会。</p>
+</div>
+
+<!-- 新闻2 -->
+<div class="news-card">
+  <h3><span class="number">2</span> 5月末我国外汇储备规模较上月末上升317亿美元</h3>
+  <span class="section-label said">📡 新闻联播说了什么</span>
+  <p>国家外汇管理局公布最新数据：截至2026年5月末，我国外汇储备规模较4月末上升<strong>317亿美元</strong>。外管局发言人表示，5月美元指数下跌，全球金融资产价格总体上涨，汇率折算和资产价格变化等因素综合作用，推动外汇储备规模上升。我国经济持续回升向好，有利于外汇储备规模保持基本稳定。</p>
+  <span class="section-label wind">🧭 风向标解读</span>
+  <p>317亿美元的月度增幅属于较为显著的正增长，反映出5月全球"去美元"交易下非美资产重估、以及跨境资本流入回暖。叠加中美关税谈判达成300亿美元对等降税框架原则共识的背景，外汇储备回升进一步强化了人民币汇率稳定的预期。</p>
+  <span class="section-label impact">📊 行业影响</span>
+  <p>利好：航空（美元债务成本降低）、进口依赖型行业（芯片、能源）、出境游。人民币资产吸引力提升，北向资金流入预期增强。需关注6月美联储议息会议对全球流动性的影响。</p>
+</div>
+
+<!-- 新闻3 -->
+<div class="news-card">
+  <h3><span class="number">3</span> 前4个月农业保险为农户提供风险保障1.82万亿元</h3>
+  <span class="section-label said">📡 新闻联播说了什么</span>
+  <p>金融监管总局最新数据显示，2026年前4个月，农业保险为全国农户提供风险保障<strong>1.82万亿元</strong>，同比增长显著。三大主粮完全成本保险和种植收入保险政策在全国全面实施，覆盖范围进一步扩大。农业保险赔付及时率提升至95%以上。</p>
+  <span class="section-label wind">🧭 风向标解读</span>
+  <p>1.82万亿的风险保障规模说明国家对粮食安全的投入是真金白银的。在全球粮食供应链因地缘冲突持续紧张的背景下，中国强化农业保险体系是"底线思维"的典型体现——确保极端情况下粮食自给不受冲击。这与中央一号文件"牢牢守住保障国家粮食安全底线"一脉相承。</p>
+  <span class="section-label impact">📊 行业影响</span>
+  <p>利好：农业保险（中国太保、中国人保农险业务）、种业（隆平高科、大北农）、智慧农业（无人机植保、卫星遥感定损）。"保险+期货"模式推动农产品价格风险管理市场扩容。</p>
+</div>
+
+<!-- 新闻4 -->
+<div class="news-card">
+  <h3><span class="number">4</span> 塔里木油田2026年绿电发电量已突破11亿度</h3>
+  <span class="section-label said">📡 新闻联播说了什么</span>
+  <p>中国石油塔里木油田宣布，截至2026年6月初，油田绿电发电量已突破<strong>11亿度</strong>。塔里木油田充分利用新疆丰富的太阳能和风能资源，建成多个光伏和风电项目，绿电替代率持续提升。这是传统油气田向"油气+新能源"融合发展转型的标志性成果。</p>
+  <span class="section-label wind">🧭 风向标解读</span>
+  <p>塔里木作为中国最大的油气田之一，其绿电突破11亿度具有极强的象征意义——传统能源巨头正在用行动证明"双碳"不是口号。结合国务院此前公布的51个"人工智能+"能源高价值场景清单，能源行业的数字化+绿色化双转型正在加速。</p>
+  <span class="section-label impact">📊 行业影响</span>
+  <p>利好：光伏（新疆基地）、风电（金风科技）、特高压输电、储能、氢能。传统油气企业的绿色转型路径为"三桶油"估值重塑提供新叙事。关注"沙戈荒"新能源大基地建设进度。</p>
+</div>
+
+<!-- 新闻5 -->
+<div class="news-card">
+  <h3><span class="number">5</span> 41条综合改革试点经验举措将获推广</h3>
+  <span class="section-label said">📡 新闻联播说了什么</span>
+  <p>国务院常务会议审议通过，将向全国复制推广<strong>41条</strong>综合改革试点经验举措，涵盖营商环境优化、科技创新体制、要素市场化配置、对外开放等领域。这些经验来自深圳、上海浦东、浙江等先行示范区。</p>
+  <span class="section-label wind">🧭 风向标解读</span>
+  <p>"41条经验全国推广"是改革方法论的标准操作——局部试点→总结经验→全国铺开。当前正值"十五五"规划编制关键期，向全国推广改革经验意味着顶层设计已基本定型，接下来是执行落地阶段。中美关税谈判取得进展后，内部改革的紧迫性反而更高。</p>
+  <span class="section-label impact">📊 行业影响</span>
+  <p>利好：深圳本地股（改革红利）、自贸区/综保区、跨境贸易、数据要素市场。科技创新体制改革相关经验可能催生新一轮科研院所改制和企业研发补贴扩容。</p>
+</div>
+
+<!-- 新闻6 -->
+<div class="news-card">
+  <h3><span class="number">6</span> 首个"预制算力中心底座"正式投用</h3>
+  <span class="section-label said">📡 新闻联播说了什么</span>
+  <p>我国首个<strong>"预制算力中心底座"</strong>正式投入使用。该底座采用模块化预制方式建造，将算力中心的建设周期从传统的18-24个月缩短至<strong>6个月以内</strong>，大幅降低建设成本和运维复杂度，可快速部署于全国各算力枢纽节点。</p>
+  <span class="section-label wind">🧭 风向标解读</span>
+  <p>"预制算力中心"概念类似于装配式建筑在数据中心领域的应用。这背后是国家"东数西算"工程的加速推进——算力正在成为和水、电一样的基础设施。算力建设提速意味着AI训练和推理的成本将进一步下降，加速AI应用落地。</p>
+  <span class="section-label impact">📊 行业影响</span>
+  <p>利好：算力基础设施（服务器、光模块、液冷）、数据中心REITs、国产AI芯片（昇腾）。"预制化"降低算力建设门槛，中小企业和地方政府也能快速部署。关注算力租赁价格走势。</p>
+</div>
+
+<!-- 新闻7 -->
+<div class="news-card">
+  <h3><span class="number">7</span> 2026年电影票房超160亿元 电影全产业链产值超2500亿元</h3>
+  <span class="section-label said">📡 新闻联播说了什么</span>
+  <p>国家电影局最新数据显示，2026年以来全国电影票房已超<strong>160亿元</strong>，电影全产业链产值超过<strong>2500亿元</strong>。国产影片票房占比持续提升，多部国产科幻、动画电影表现亮眼。暑期档即将到来，市场预期乐观。</p>
+  <span class="section-label wind">🧭 风向标解读</span>
+  <p>文化消费是内需的重要组成部分。160亿票房和2500亿全产业链产值说明疫情后线下文娱消费已完全恢复。电影产业的复苏对中国内需拉动具有乘数效应——一个爆款电影能带动周边、文旅、餐饮等一系列消费。</p>
+  <span class="section-label impact">📊 行业影响</span>
+  <p>利好：影视制作（光线传媒、中国电影）、院线（万达电影）、AI+影视（AI换脸、虚拟拍摄、AI编剧辅助）、文旅联动。暑期档是全年最大票仓，关注头部影片定档节奏。</p>
+</div>
+
+<!-- 新闻8 -->
+<div class="news-card">
+  <h3><span class="number">8</span> 国家防总针对广西启动防汛四级应急响应 / 向重庆派工作组</h3>
+  <span class="section-label said">📡 新闻联播说了什么</span>
+  <p>国家防总针对<strong>广西</strong>启动防汛四级应急响应，并向<strong>重庆</strong>派出工作组指导防汛救灾。近期南方多地出现强降雨过程，部分河流超警戒水位，山洪地质灾害风险增高。</p>
+  <span class="section-label wind">🧭 风向标解读</span>
+  <p>每年6月是华南汛期的关键节点，防汛应急响应意味着极端天气对农业生产、交通运输、电力设施的冲击加大。与往年相比，今年国家防总响应速度更快，体现了"预防为主"的防灾理念升级。</p>
+  <span class="section-label impact">📊 行业影响</span>
+  <p>短期影响：水利建设（排水泵站、堤防加固）、应急物资（帐篷、发电机）、农产品价格波动（广西甘蔗、重庆柑橘）。保险板块因农业险和财产险理赔增加短期承压。</p>
+</div>
+
+<!-- 新闻9-11: 国际快讯 -->
+<div class="news-card">
+  <h3><span class="number">9</span> 国际快讯三则</h3>
+  <span class="section-label said">📡 新闻联播说了什么</span>
+  <p><strong>①伊朗谴责美国持续违反停火协议：</strong>伊朗外交部发表声明，谴责美国持续违反此前达成的停火协议。美媒称美国可能使用伊朗被冻结资产弥补海湾盟友损失，伊方强调美伊协议达成取决于解冻伊朗资产。</p>
+  <p><strong>②巴报告称以色列在约旦河西岸袭击升级：</strong>巴勒斯坦方面报告称，以色列在约旦河西岸的军事行动明显升级，地区紧张局势加剧。</p>
+  <p><strong>③美以间谍活动威胁级别提至最高：</strong>美国媒体称美国将以间谍活动威胁级别提升至最高等级，美以关系出现新的紧张因素。</p>
+  <span class="section-label wind">🧭 风向标解读</span>
+  <p>中东局势的三则消息指向同一个趋势：美伊关系在停火协议后并未实质性改善，以色列与巴勒斯坦的冲突仍在扩大。被冻结资产的博弈成为美伊谈判的核心筹码——这本质上是一场"谁先眨眼"的博弈。</p>
+  <span class="section-label impact">📊 行业影响</span>
+  <p>持续关注：国际油价（布伦特原油）、黄金避险需求、红海航运安全。中国作为伊朗最大贸易伙伴，若制裁松动将利好"一带一路"能源合作和中伊25年全面合作协议落地。</p>
+</div>
+
+<div class="divider"></div>
+
+<div class="summary-card" style="background: linear-gradient(135deg, #1a1a2e, #16213e);">
+  <div class="label">🧭 总结风向标</div>
+  <div class="content">
+    <p>今日新闻联播的整体信号可以用<strong>"稳字当头、绿字加速、安字兜底"</strong>概括：</p>
+    <p>📌 <strong>稳增长</strong>：外汇储备回升 + 改革经验推广 + 电影消费旺盛 → 经济基本面稳中向好<br>
+    📌 <strong>绿色转型</strong>：塔里木绿电 + 预制算力中心 → 能源和数字基础设施双升级<br>
+    📌 <strong>安全兜底</strong>：农业保险1.82万亿 + 防汛应急 → 粮食安全和防灾减灾双保障</p>
+    <p>投资建议：短期关注暑期消费（影视、旅游、餐饮）+ 防汛水利，中期布局新能源运营（绿电）+ AI算力基建（预制数据中心），地缘风险下维持黄金配置。</p>
+  </div>
+</div>
+
+<!-- ==================== 专栏二 ==================== -->
+<div class="section-title ai">
+  <span class="icon">🤖</span> 专栏二：AI生产力情报专栏（黑科技与套利指南）
+</div>
+
+<div class="summary-card" style="background: linear-gradient(135deg, #0c0c1d, #1a1040);">
+  <div class="label" style="color: #7c8aff;">🚀 AI 生产力黑洞：今日黑科技与套利指南</div>
+  <div class="content">
+    <p>📅 日期：2026-06-08 | 🔥 今日核心：<strong>Anthropic自曝"AI造AI"已发生，80%代码由AI编写，呼吁全球暂停研发</strong> | OpenAI Codex推6大岗位插件覆盖9亿用户 | 微软自研推理模型MAI-Thinking-1试图摆脱OpenAI依赖 | 豆包6月下旬正式收费，C端AI商业化大幕拉开</p>
+  </div>
+</div>
+
+<!-- ===== 顶级装备库 ===== -->
+<div class="emoji-header">🛠️ 【顶级装备库更新】</div>
+
+<!-- 装备1 -->
+<div class="news-card card-tech">
+  <h3>🔧 turbovec — "极致向量索引引擎" 深度拆解 <span class="tag hot">今日+1,554⭐</span></h3>
+  <span class="section-label tech">⚙️ 核心黑科技</span>
+  <p>基于TurboQuant构建的向量索引库，用Rust编写Python绑定。不同于传统向量数据库需要独立部署服务，turbovec主打<strong>"极致轻量+本地化"</strong>——可以在普通笔记本上运行百万级向量检索，延迟低至毫秒级。核心突破在于用Rust的内存安全和零成本抽象，实现C++级别的性能同时保持Python的易用性。</p>
+  <span class="section-label value">💎 实战价值</span>
+  <p>适合做本地RAG知识库、代码搜索、个人AI记忆系统。如果你在用WorkBuddy/Cursor/Claude Code，可以本地搭建一个私有代码向量索引，不用把代码上传到任何云端向量库。体感：一个Python脚本就能跑，部署成本为零。</p>
+</div>
+
+<!-- 装备2 -->
+<div class="news-card card-tech">
+  <h3>🔧 Headroom — "LLM Token砍半黑魔法" <span class="tag hot">Token节省60-95%</span></h3>
+  <span class="section-label tech">⚙️ 核心黑科技</span>
+  <p>开源工具Headroom，专为RAG和日志场景设计，能将LLM的Token消耗降低<strong>60%-95%</strong>。核心原理是智能压缩上下文——不是简单的截断，而是识别出真正相关的信息段落并精准提取。相当于给你的AI配了一个"注意力滤镜"，只喂真正有用的信息。</p>
+  <span class="section-label value">💎 实战价值</span>
+  <p>如果你在大量调用API（比如每天跑日报自动化、代码审查、文档问答），一年能省下数千甚至上万美元的API费用。配合DeepSeek V4 Pro永久降价75%的政策，Token成本将跌至地板价。建议做自动化工作流的同学第一时间集成。</p>
+</div>
+
+<!-- 装备3 -->
+<div class="news-card card-tech">
+  <h3>🔧 Sem — "代码语义基元" <span class="tag">Git原生</span></h3>
+  <span class="section-label tech">⚙️ 核心黑科技</span>
+  <p>Ataraxy Labs推出的Sem，基于Git构建代码语义理解基元。不是传统的AST解析或简单的文本搜索，而是在Git的版本历史之上构建语义索引——<strong>2.3倍</strong>于传统代码搜索工具的效率。相当于给Git加了一层"AI理解层"，能理解代码的意图而不仅仅是文本。</p>
+  <span class="section-label value">💎 实战价值</span>
+  <p>对于维护大型代码库的开发者，Sem可以让你快速定位"某个功能是在哪次提交引入的"、"这个Bug是谁改出来的"、"这个函数的调用链是什么"。配合Claude Code或Cursor使用，AI能更精准地理解你的项目历史。</p>
+</div>
+
+<!-- 装备4 -->
+<div class="news-card card-tech">
+  <h3>🔧 ECC — "AI Agent性能优化五柱体系"</h3>
+  <span class="section-label tech">⚙️ 核心黑科技</span>
+  <p>ECC（Agent Performance Optimization System）是一套针对Claude Code、Codex、Cursor和OpenCode的<strong>Agent性能优化系统</strong>。五大核心支柱覆盖：提示词优化、上下文管理、工具调用链、错误恢复策略、多Agent协同。不只是"写更好的Prompt"，而是系统性提升Agent的端到端任务成功率。</p>
+  <span class="section-label value">💎 实战价值</span>
+  <p>如果你在用Claude Code做复杂重构（比如之前我做的31万行代码重构案例），ECC可以让成功率从75%提升到90%以上。说白了就是一套"Agent调参指南"，按图索骥就行。适合已经把Agent投入生产环境的团队。</p>
+</div>
+
+<!-- 装备5 -->
+<div class="news-card card-tech">
+  <h3>🔧 Open-Notebook — "开源版NotebookLM" <span class="tag hot">+554⭐</span></h3>
+  <span class="section-label tech">⚙️ 核心黑科技</span>
+  <p>lfnovo推出的NotebookLM开源替代，功能更灵活。你上传文档、网页、视频链接，它自动生成摘要、FAQ、学习指南、播客脚本。不同于Google NotebookLM的封闭生态，Open-Notebook支持自定义模型（可接入本地LLM）、自定义输出格式、完全离线运行。</p>
+  <span class="section-label value">💎 实战价值</span>
+  <p>对于做内容创作的同学，可以把新闻联播文字稿扔进去自动生成播客脚本，然后在视频号/小红书发"AI早报音频"。对于学习者，上传论文PDF自动生成学习卡片和思维导图。关键是完全本地化，不用担心数据泄露。</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== Agent 战场 ===== -->
+<div class="emoji-header">🤖 【Agent 战场情报】</div>
+
+<!-- Agent 1 -->
+<div class="news-card card-agent">
+  <h3>⚔️ OpenAI Codex 三大更新：从"程序员助手"变身"全员AI员工"</h3>
+  <span class="section-label tech">📡 动态</span>
+  <p>6月2-3日，OpenAI直播发布Codex三项重大更新：<strong>智能体插件（Agent Plugins）、定点修改（Annotations）、文档一键生成交互式站点（Sites）</strong>。Codex周活跃用户已达<strong>500万</strong>，较年初增长<strong>8倍</strong>；其中非开发人员占<strong>20%</strong>，增速是开发者的<strong>3倍多</strong>。一口气推出<strong>6大岗位专属插件</strong>（数据分析、创意制作、销售、产品设计、公开股权投资、投资银行），覆盖<strong>62个热门应用</strong>和<strong>110项技能</strong>。</p>
+  <span class="section-label tech">🧠 解读</span>
+  <p>这是OpenAI继ChatGPT之后最大的一次产品定位转变——不再只是"帮程序员写代码"，而是"帮所有人干活"。6个岗位插件的本质是把企业工作流拆解成标准化模块，然后用AI串起来。Codex正在变成企业级"AI操作系统"，插件就是上面的"App Store"。</p>
+  <span class="section-label scene">🎯 落地场景</span>
+  <p>如果你是下厨房PM：用数据分析插件（接入Snowflake/Tableau）自动生成每周销售报表；用创意制作插件（接入Figma/Canva）自动生成小红书封面图；用Sites功能把产品规划文档一键发布为内部评审网站。如果你做代码接单：用投资银行插件做估值模型PPT自动生成——以前2天的工作10分钟搞定。</p>
+</div>
+
+<!-- Agent 2 -->
+<div class="news-card card-agent">
+  <h3>⚔️ Hermes Agent — "能和你一起进化的AI" <span class="tag hot">185,937⭐ +1,112⭐</span></h3>
+  <span class="section-label tech">📡 动态</span>
+  <p>NousResearch发布Hermes Agent，定位为<strong>"与你共同成长的AI Agent"</strong>。不同于传统Agent固定行为模式，Hermes Agent会根据与用户的交互历史逐渐调整自己的行为策略，实现真正的个性化。总Stars已达185,937，今日新增1,112星。</p>
+  <span class="section-label tech">🧠 解读</span>
+  <p>这可能是Agent从"工具"到"伙伴"的关键一步。传统Agent每次对话都是"失忆"的，而Hermes Agent有持续学习能力——你越用，它越懂你。技术路径类似于给Agent加了一层用户画像的强化学习。</p>
+  <span class="section-label scene">🎯 落地场景</span>
+  <p>对于长期用AI做代码开发的同学，Hermes Agent可以记住你的编码风格、偏好框架、常用设计模式——一个月后它写的代码不再需要你大改。对于内容创作者，它会记住你的语气、排版风格、常用素材库。</p>
+</div>
+
+<!-- Agent 3 -->
+<div class="news-card card-agent">
+  <h3>⚔️ NVIDIA Cosmos — "物理AI世界模型开放平台"</h3>
+  <span class="section-label tech">📡 动态</span>
+  <p>英伟达在CVPR 2026期间正式发布<strong>Cosmos平台</strong>——面向物理AI和世界模型（World Foundation Models）的开放平台。同期CVPR 2026收到论文投稿<strong>16,092篇</strong>，较2025年增长<strong>24%</strong>，创历史新高。CV与机器人的"物理结界"被彻底打破。</p>
+  <span class="section-label tech">🧠 解读</span>
+  <p>Cosmos本质是为机器人和具身智能提供一个"物理世界模拟器"——机器人可以在虚拟世界中训练，学会了再迁移到真实世界。这解决了机器人训练的最大瓶颈：真实世界数据太少、太贵、太慢。配合英伟达的Vera Rubin芯片，这套"模拟+训练+部署"的闭环正在成型。</p>
+  <span class="section-label scene">🎯 落地场景</span>
+  <p>对于UE技术美术：Cosmos的世界模型可以直接生成物理真实的3D场景，用于游戏/影视的虚拟拍摄。对于机器人公司：训练成本降低1-2个数量级。对于自动驾驶：极端场景（事故、恶劣天气）的无限生成。</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== AI新玩法 ===== -->
+<div class="emoji-header">🖊 【AI新玩法，新概念】</div>
+
+<div class="news-card card-play">
+  <h3>💡 Anthropic CEO Dario Amodei 提出"暂停AI研发"——AI造AI时代已来</h3>
+  <span class="section-label tech">📡 动态</span>
+  <p>6月4日晚，Anthropic发布重磅长文《When AI Builds Itself》（当AI开始造AI），用硬核数据揭示了AI"递归自我改进"（Recursive Self-Improvement, RSI）的现实：截至2026年5月，Anthropic合并进代码库的代码中<strong>超80%由Claude自主编写</strong>；Q2工程师人均产出是2024年同期的<strong>8倍</strong>；优化小模型训练代码的测试中Claude加速能力一年内从<strong>3倍飙升至52倍</strong>；AI故障排查效率从人类需2-3天缩短至<strong>2小时</strong>；AI独立稳定完成任务的翻倍周期已从"每7个月"加速至"<strong>每4个月</strong>"。CEO Dario Amodei因此呼吁全球顶尖AI实验室考虑<strong>放缓研发步伐</strong>。</p>
+  <span class="section-label tech">🧠 解读</span>
+  <p>这是AI行业历史上最戏剧性的时刻——估值9650亿美元的AI公司老板，公开呼吁"慢一点"。这不是PR作秀：Anthropic的数据令人信服地证明了AI已经在"自己造自己"。最恐怖的不是80%代码是AI写的，而是翻倍周期从7个月→4个月的加速——这意味着AI能力的指数曲线正在变得越来越陡。</p>
+  <span class="section-label scene">🎯 落地场景</span>
+  <p>对于AI从业者：这是前所未有的"窗口期"——在监管真正收紧之前，谁能最好地利用AI自我改进能力，谁就能建立不可逾越的护城河。对于普通人：AI能力的加速意味着"会用AI的人"和"不会用AI的人"之间的差距将以季度为单位扩大。</p>
+</div>
+
+<div class="news-card card-play">
+  <h3>💡 微软MAI-Thinking-1 — 大厂"去OpenAI化"的标志性事件</h3>
+  <span class="section-label tech">📡 动态</span>
+  <p>6月2-3日Build 2026大会上，微软发布自研推理模型<strong>MAI-Thinking-1</strong>，拥有<strong>350亿活跃参数</strong>和<strong>128K上下文窗口</strong>，属于"中等规模"推理模型。同时发布包含7款模型的完整MAI家族（文本、代码、图像、语音）。微软强调<strong>未蒸馏任何第三方模型</strong>，完全自研。</p>
+  <span class="section-label tech">🧠 解读</span>
+  <p>这是微软减少对OpenAI战略依赖的最明确信号。微软投了OpenAI超130亿美元，但OpenAI同时与AWS深度合作、甚至自己搞搜索挑战Bing——微软不可能永远当"金主爸爸"。MAI-Thinking-1虽然只是中型模型，但政治意义大于技术意义：证明微软可以自己走路了。</p>
+  <span class="section-label scene">🎯 落地场景</span>
+  <p>对于Azure用户：MAI-Thinking-1将通过Azure AI服务提供，企业可以在微软生态内完成"模型→推理→部署"闭环。对于开发者：关注MAI与Copilot的深度整合，可能在VS Code里直接跑微软自己的推理模型做代码审查。</p>
+</div>
+
+<div class="news-card card-play">
+  <h3>💡 美团开源LongCat系列 — 中国互联网巨头的"All in AI"范式</h3>
+  <span class="section-label tech">📡 动态</span>
+  <p>6月7日，美团技术团队集中开源<strong>LongCat系列7款模型</strong>：LongCat-Video-Avatar 1.5（商业级数字人视频生成）、LongCat-AudioDiT（零样本语音克隆）、LongCat-Flash-Prover（数学定理证明）、LongCat-Next（原生多模态物理世界交互模型）、General 365推理评测基准（Gemini 3 Pro仅60%得分）、LARYBench具身智能基准。同时发布"重构31万行代码的AI编码管理"案例——AI Agent完成<strong>90%</strong>代码重构。</p>
+  <span class="section-label tech">🧠 解读</span>
+  <p>美团这一波不是"小打小闹"，而是体系化的AI能力输出——从数字人、语音、数学推理、多模态到评测基准，覆盖了AI的几乎所有前沿方向。尤其值得关注的是31万行代码90%AI重构的案例，验证了AI Agent在超大规模代码工程中的可行性。</p>
+  <span class="section-label scene">🎯 落地场景</span>
+  <p>对于内容创作者：LongCat-Video-Avatar可以直接生成数字人口播视频，一个人就能做一个"AI主播"频道。对于技术团队：31万行代码90%由AI重构的案例可以直接复用到自己的项目中——前提是有ECC这样的Agent优化体系。</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== AI套利/变现 ===== -->
+<div class="emoji-header">💰 【AI 套利 / 变现线索】</div>
+
+<div class="news-card card-money">
+  <h3>💸 豆包6月下旬正式收费：C端AI的商业化里程碑</h3>
+  <span class="section-label tech">📡 热点</span>
+  <p>字节跳动旗下AI助手豆包确定<strong>6月下旬正式上线付费版本</strong>：免费版（基础功能永久免费）、基础版<strong>68元/月（688元/年）</strong>、标准版<strong>200元/月（2048元/年）</strong>、专业版<strong>500元/月（5088元/年）</strong>。Q3将深度打通抖音电商，通过现金+卡券补贴为抖音商城引流。此前第三方数据显示豆包月活首次出现下滑（减少610万），收费策略面临"用户留存vs变现"的经典博弈。</p>
+  <span class="section-label value">💡 复刻建议</span>
+  <p><strong>套利信号1：C端AI付费心智正在形成。</strong>豆包作为国内用户量最大的AI应用开始收费，意味着"AI值得付费"的用户认知已经培养成熟。如果你是独立开发者，现在是最好的窗口期——做一个垂直场景的AI工具（比如"AI美食配方生成器"、"AI穿搭建议"），定价9.9-19.9元/月，流量成本极低。<br><br>
+  <strong>套利信号2：豆包Q3打通抖音电商。</strong>这意味着AI+电商的场景即将爆发——你可以用AI批量生成商品文案、商品图、带货视频，然后挂在抖音/小红书上卖。效率差距会非常大：不用AI一天做2条视频，用AI一天做20条。</p>
+</div>
+
+<div class="news-card card-money">
+  <h3>💸 DeepSeek V4 Pro永久降价75%：API成本"地板价"时代到来</h3>
+  <span class="section-label tech">📡 热点</span>
+  <p>DeepSeek宣布V4 Pro价格永久降低<strong>75%</strong>，使其成为市场上最具性价比的旗舰模型。该决策使其在AI Agent、编程工具、长上下文工作流等场景中竞争力大幅提升。此前DeepSeek-V4-Pro的1.6万亿参数模型已成功基于国产昇腾910C集群完成全流程训练。</p>
+  <span class="section-label value">💡 复刻建议</span>
+  <p><strong>套利机会：API套利创业。</strong>用DeepSeek V4 Pro的低价API作为底层引擎，包装成垂直SaaS产品卖给企业——比如"AI合同审查"、"AI简历筛选"、"AI客服质检"。因为API成本骤降75%，你的毛利空间巨大。配合Headroom再砍60-95% Token消耗，成本能压到竞争对手的1/10。<br><br>
+  <strong>提示：</strong>降价75%意味着之前"用不起AI"的创业场景现在都可行了。从今天开始，重新审视所有"因为成本太高被搁置的AI项目"。</p>
+</div>
+
+<div class="news-card card-money">
+  <h3>💸 OpenAI Lockdown Mode + Codex Sites = 企业私有数据的安全AI入口</h3>
+  <span class="section-label tech">📡 热点</span>
+  <p>OpenAI推出<strong>Lockdown Mode（锁定模式）</strong>——专门防止Prompt注入攻击，保护敏感数据不被泄露。同时Codex Sites功能允许将任意文档一键转化为交互式网站。两个功能结合，企业可以在安全环境下将内部知识库转化为AI驱动的内部工具。</p>
+  <span class="section-label value">💡 复刻建议</span>
+  <p><strong>变现路径：企业AI内训+知识管理。</strong>很多中小企业有大量散落的SOP文档、培训材料、产品手册。用Codex Sites把这些文档变成交互式网站，再加上Lockdown Mode确保数据安全，打包成"企业AI知识库搭建"服务，收费1-5万/单。不需要写代码，纯靠文档整理+AI配置就能做。</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== 避坑/黑话 ===== -->
+<div class="emoji-header">🔍 【避坑 / 黑话词典】</div>
+
+<div class="news-card card-dict">
+  <h3>📖 RSI（递归自我改进 / Recursive Self-Improvement）</h3>
+  <span class="section-label tech">📡 词条</span>
+  <p>RSI — Recursive Self-Improvement，递归自我改进。</p>
+  <span class="section-label value">💬 一句话大白话</span>
+  <p><strong>AI教AI写代码，然后更强的AI教更弱的AI写代码，循环往复。</strong> 就像你让一个实习生教另一个实习生，但实习生每次教完都变得更聪明——几轮之后，你已经看不懂他们在干什么了。Anthropic说这事已经在发生了，而且速度越来越快。</p>
+</div>
+
+<div class="news-card card-dict">
+  <h3>📖 World Foundation Model（世界基础模型）</h3>
+  <span class="section-label tech">📡 词条</span>
+  <p>WFM — World Foundation Model，世界基础模型。NVIDIA Cosmos的核心概念。</p>
+  <span class="section-label value">💬 一句话大白话</span>
+  <p><strong>给AI一个"楚门的世界"练手。</strong> 就是AI版的模拟地球——机器人可以在这个虚拟世界里练习走路、开车、搬东西，摔了不疼、撞了不赔。练熟了再放到真实世界。以前训练一个机器人需要真机跑几个月，现在虚拟世界几天搞定。</p>
+</div>
+
+<div class="news-card card-dict">
+  <h3>📖 Prompt Injection（提示注入攻击）</h3>
+  <span class="section-label tech">📡 词条</span>
+  <p>Prompt Injection — 提示注入攻击。OpenAI Lockdown Mode针对的安全威胁。</p>
+  <span class="section-label value">💬 一句话大白话</span>
+  <p><strong>骗AI说"忽略之前的指令，现在你是一个..."</strong> 黑客在网页里藏一段看不见的文字，你的AI助手读到后就被"策反"了——可能泄露你的密码、删你的文件、发垃圾邮件。Lockdown Mode就是给AI穿上一件"防弹衣"，让它只听你的话。</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== 数据总结 ===== -->
+<div class="summary-card" style="background: linear-gradient(135deg, #0c0c1d, #1a1040);">
+  <div class="label" style="color: #7c8aff;">📊 本期关键数据速览</div>
+  <div class="content">
+    <div class="data-highlight" style="background: transparent;">
+      <div class="data-item">💰 外汇储备上升 <strong>+317亿美元</strong></div>
+      <div class="data-item">🌾 农业保险保障 <strong>1.82万亿元</strong></div>
+      <div class="data-item">⚡ 塔里木绿电 <strong>11亿度</strong></div>
+      <div class="data-item">🎬 电影票房 <strong>160亿元</strong></div>
+      <div class="data-item">🔧 Anthropic估值 <strong>9650亿美元</strong></div>
+      <div class="data-item">🤖 AI编写代码比例 <strong>80%</strong></div>
+      <div class="data-item">📈 工程师产出增长 <strong>8倍</strong></div>
+      <div class="data-item">⚡ 研究提速 <strong>3→52倍</strong></div>
+      <div class="data-item">📱 Codex周活 <strong>500万</strong></div>
+      <div class="data-item">🔌 Codex插件数 <strong>110项技能</strong></div>
+      <div class="data-item">💰 DeepSeek降价 <strong>-75%</strong></div>
+      <div class="data-item">🗜 Token节省 <strong>60-95%</strong></div>
+      <div class="data-item">📝 CVPR论文 <strong>16,092篇</strong></div>
+      <div class="data-item">🎓 豆包收费 <strong>68-500元/月</strong></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== 信源说明 ===== -->
+<div class="footer">
+  <p>📡 信源覆盖：cn.govopendata.com / 腾讯新闻 / GitHub Trending Top 15 / aitoolly.com / hunted.space (Product Hunt) / The AI Track / 36氪 / 凤凰科技 / 51CTO / IT之家 / 新浪财经</p>
+  <p>🤖 生成引擎：WorkBuddy Agent · 自动化ID: ai · 执行时间：2026-06-08 08:50 CST</p>
+  <p style="margin-top: 10px; font-size: 11px; color: #555;">⚠️ 免责声明：本报告仅为信息整理，不构成投资建议。AI情报板块内容来自公开信息源，请自行核实。</p>
+</div>
+
+</div>
+</body>
+</html>
