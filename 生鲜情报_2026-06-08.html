@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小红书生鲜电商每日作战情报 · 2026年6月8日</title>
+<style>
+:root {
+  --bg: #0f0f0f;
+  --card: #1a1a1a;
+  --border: #2a2a2a;
+  --text: #e0e0e0;
+  --text2: #999;
+  --accent: #ff4444;
+  --green: #00c853;
+  --orange: #ff9800;
+  --blue: #448aff;
+  --purple: #aa66ff;
+  --hot: #ff1744;
+  --warn: #ff9100;
+  --tag-bg: #252525;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 20px; }
+.container { max-width: 900px; margin: 0 auto; }
+.header { text-align: center; padding: 30px 0 20px; border-bottom: 2px solid var(--accent); margin-bottom: 24px; }
+.header h1 { font-size: 28px; color: var(--accent); }
+.header .sub { color: var(--text2); font-size: 14px; margin-top: 6px; }
+.header .meta { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 10px; }
+.header .meta span { background: var(--tag-bg); padding: 3px 10px; border-radius: 12px; font-size: 12px; color: var(--text2); }
+
+/* 仪表盘 */
+.dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 24px; }
+.dash-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; }
+.dash-card .num { font-size: 32px; font-weight: 700; }
+.dash-card .label { font-size: 13px; color: var(--text2); margin-top: 4px; }
+.dash-card.red .num { color: var(--accent); }
+.dash-card.green .num { color: var(--green); }
+.dash-card.orange .num { color: var(--orange); }
+.dash-card.blue .num { color: var(--blue); }
+
+/* 阶段进度条 */
+.progress-bar { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 24px; }
+.progress-bar .phase { display: flex; justify-content: space-between; align-items: center; font-size: 13px; margin-bottom: 8px; }
+.progress-bar .bar { height: 6px; background: #333; border-radius: 3px; overflow: hidden; }
+.progress-bar .bar .fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--orange)); border-radius: 3px; transition: width .5s; }
+.progress-bar .pct { font-size: 12px; color: var(--text2); margin-top: 4px; text-align: right; }
+
+/* 板块 */
+.section { margin-bottom: 24px; }
+.section-title { font-size: 18px; font-weight: 700; color: var(--accent); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+.section-title .icon { font-size: 20px; }
+
+/* 品类卡片 */
+.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.product-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px; position: relative; }
+.product-card .name { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.product-card .price { font-size: 24px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+.product-card .price .unit { font-size: 14px; color: var(--text2); font-weight: 400; }
+.product-card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.product-card .tag { font-size: 11px; padding: 2px 8px; border-radius: 4px; background: var(--tag-bg); color: var(--text2); }
+.product-card .tag.hot { background: rgba(255,68,68,.15); color: var(--accent); }
+.product-card .tag.gi { background: rgba(170,102,255,.15); color: var(--purple); }
+.product-card .tag.scarce { background: rgba(255,152,0,.15); color: var(--orange); }
+.product-card .metric { font-size: 12px; color: var(--text2); margin-top: 6px; line-height: 1.8; }
+.product-card .metric strong { color: var(--text); }
+.badge { position: absolute; top: 12px; right: 12px; font-size: 11px; padding: 3px 10px; border-radius: 12px; font-weight: 600; }
+.badge.hot { background: var(--hot); color: #fff; }
+.badge.new { background: var(--purple); color: #fff; }
+.badge.watch { background: var(--orange); color: #fff; }
+
+/* 竞品 */
+.compact-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.compact-table th, .compact-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+.compact-table th { color: var(--text2); font-weight: 500; font-size: 11px; text-transform: uppercase; }
+.compact-table tr:hover { background: rgba(255,255,255,.02); }
+.compact-table .score { font-weight: 700; }
+
+/* 行动清单 */
+.task-list { list-style: none; }
+.task-list li { padding: 10px 14px; margin-bottom: 6px; background: var(--card); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; font-size: 13px; display: flex; align-items: flex-start; gap: 10px; }
+.task-list li.p0 { border-left-color: var(--hot); }
+.task-list li.p1 { border-left-color: var(--orange); }
+.task-list li.p2 { border-left-color: var(--blue); }
+.task-list .priority { font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 3px; min-width: 28px; text-align: center; }
+.task-list .priority.p0 { background: var(--hot); color: #fff; }
+.task-list .priority.p1 { background: var(--orange); color: #fff; }
+.task-list .priority.p2 { background: var(--blue); color: #fff; }
+
+/* 风险 */
+.risk-list { list-style: none; }
+.risk-list li { padding: 8px 12px; margin-bottom: 4px; font-size: 12px; border-radius: 6px; display: flex; align-items: flex-start; gap: 8px; }
+.risk-list li.high { background: rgba(255,23,68,.1); border: 1px solid rgba(255,23,68,.2); }
+.risk-list li.med { background: rgba(255,152,0,.1); border: 1px solid rgba(255,152,0,.2); }
+.risk-list li.low { background: rgba(0,200,83,.1); border: 1px solid rgba(0,200,83,.2); }
+.risk-list .level { font-weight: 700; font-size: 11px; min-width: 40px; }
+.risk-list .level.high { color: var(--hot); }
+.risk-list .level.med { color: var(--orange); }
+.risk-list .level.low { color: var(--green); }
+
+/* 亮点 */
+.highlight-box { background: linear-gradient(135deg, rgba(255,68,68,.08), rgba(255,152,0,.08)); border: 1px solid rgba(255,68,68,.2); border-radius: 10px; padding: 16px 20px; margin-bottom: 24px; }
+.highlight-box h3 { color: var(--accent); font-size: 15px; margin-bottom: 8px; }
+.highlight-box ul { list-style: none; font-size: 13px; }
+.highlight-box ul li { padding: 4px 0; }
+.highlight-box ul li::before { content: "▸ "; color: var(--accent); }
+
+.footer { text-align: center; padding: 20px; color: var(--text2); font-size: 11px; border-top: 1px solid var(--border); margin-top: 30px; }
+.source-tag { font-size: 10px; color: var(--text2); background: var(--tag-bg); padding: 1px 6px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>🌶️ 小红书生鲜电商每日作战情报</h1>
+  <div class="sub">2026年6月8日 周一 · Big Day后复盘启动 · 距618终局仅10天</div>
+  <div class="meta">
+    <span>📅 生成时间 08:50</span>
+    <span>🔴 Big Day +2天</span>
+    <span>⏰ 618冲刺 10天</span>
+    <span>📡 数据源: WebSearch + 公开报道</span>
+  </div>
+</div>
+
+<!-- 今日核心判断 -->
+<div class="highlight-box">
+  <h3>📌 今日核心判断</h3>
+  <ul>
+    <li><strong>618终局冲刺启动：</strong>6/6 Big Day刚过，今天进入复盘+冲刺双线作战。宠粉清单9折补贴持续到6.18，最后10天是转化窗口。</li>
+    <li><strong>桂味荔枝天价确认：</strong>广东官方数据证实减产约80-90%，零售价50-100元/斤已成定局，单粒5.75元"贵过榴莲"，是精品赛道完美标的。</li>
+    <li><strong>东魁杨梅一周内上市：</strong>与618冲刺期完美重合，仙居东魁预计6月中旬上市，高颜值+短时令=爆款潜力。</li>
+    <li><strong>樟树港辣椒时令收窄：</strong>头茬进入尾声，稀缺性推高溢价，但供应窗口在缩小。</li>
+  </ul>
+</div>
+
+<!-- 618战况仪表盘 -->
+<div class="section">
+  <div class="section-title"><span class="icon">📊</span>618战役仪表盘</div>
+  <div class="dashboard">
+    <div class="dash-card red">
+      <div class="num">10天</div>
+      <div class="label">距6.18终局</div>
+    </div>
+    <div class="dash-card orange">
+      <div class="num">+2天</div>
+      <div class="label">66周年庆Big Day后</div>
+    </div>
+    <div class="dash-card blue">
+      <div class="num">D+28</div>
+      <div class="label">LEAP UP启动后</div>
+    </div>
+    <div class="dash-card green">
+      <div class="num">D+24</div>
+      <div class="label">宠粉清单·9折补贴中</div>
+    </div>
+    <div class="dash-card red">
+      <div class="num">D+24</div>
+      <div class="label">后免佣时代</div>
+    </div>
+    <div class="dash-card orange">
+      <div class="num">-8天</div>
+      <div class="label">AI标签逾期⚠️</div>
+    </div>
+  </div>
+
+  <!-- 618阶段进度 -->
+  <div class="progress-bar">
+    <div class="phase"><span>预热期 5.22-5.31</span><span>爆发期 6.1-6.6</span><span>🔥冲刺期 6.7-6.18</span></div>
+    <div class="bar"><div class="fill" style="width:68%"></div></div>
+    <div class="pct">618全周期进度 68% ─ 冲刺期第2天</div>
+  </div>
+</div>
+
+<!-- 本周精品风向标 -->
+<div class="section">
+  <div class="section-title"><span class="icon">🎯</span>本周精品风向标（6月第2周）</div>
+  <div class="product-grid">
+
+    <!-- 桂味荔枝 -->
+    <div class="product-card">
+      <div class="badge hot">🔥 本周焦点</div>
+      <div class="name">桂味荔枝</div>
+      <div class="price">50-100<span class="unit"> 元/斤</span></div>
+      <div class="tags">
+        <span class="tag gi">🏅 国家地理标志</span>
+        <span class="tag scarce">⚠️ 减产80-90%</span>
+        <span class="tag hot">💎 极度稀缺</span>
+      </div>
+      <div class="metric">
+        <div><strong>上市：</strong>6月下旬少量上市（东莞厚街已少量早熟）</div>
+        <div><strong>产量：</strong>广东桂味成花率仅~20%，较2025大幅减产</div>
+        <div><strong>行情：</strong>田间采摘价预估60元/斤，零售50-100元/斤</div>
+        <div><strong>爆点：</strong>高州早熟桂味单粒5.75元，"贵过榴莲"</div>
+        <div><strong>五维评分：</strong>地标✓ 稀缺✓✓ 溢价✓✓ 颜值✓ 故事✓</div>
+        <div style="margin-top:4px"><span class="source-tag">源: 广东省农业农村厅 / 什么值得买 / 人民网深圳</span></div>
+      </div>
+    </div>
+
+    <!-- 樟树港辣椒 -->
+    <div class="product-card">
+      <div class="badge watch">⏳ 窗口收窄</div>
+      <div class="name">樟树港辣椒</div>
+      <div class="price">288<span class="unit"> 元/斤</span></div>
+      <div class="tags">
+        <span class="tag gi">🏅 国家地理标志</span>
+        <span class="tag scarce">⚠️ 核心区&lt;1km²</span>
+        <span class="tag hot">👑 辣椒界爱马仕</span>
+      </div>
+      <div class="metric">
+        <div><strong>阶段：</strong>头茬进入尾声，时令窗口收窄</div>
+        <div><strong>行情：</strong>288元/斤核心产区价维持，供应量逐减</div>
+        <div><strong>策略：</strong>内容重点转向"最后一波头茬"，制造稀缺感</div>
+        <div><strong>五维评分：</strong>地标✓ 稀缺✓✓ 溢价✓✓ 颜值✓ 故事✓✓</div>
+      </div>
+    </div>
+
+    <!-- 东魁杨梅 -->
+    <div class="product-card">
+      <div class="badge new">🆕 即将上市</div>
+      <div class="name">东魁杨梅</div>
+      <div class="price">80-120<span class="unit"> 元/斤（预估）</span></div>
+      <div class="tags">
+        <span class="tag gi">🏅 国家地理标志</span>
+        <span class="tag scarce">⏱ 时令极短（~15天）</span>
+        <span class="tag hot">📸 出片率极高</span>
+      </div>
+      <div class="metric">
+        <div><strong>上市：</strong>仙居东魁6月中旬，1周内进入窗口</div>
+        <div><strong>品相：</strong>乒乓球大小，深红色，礼盒装仪式感强</div>
+        <div><strong>策略：</strong>预热内容本周启动，抢618冲刺期流量</div>
+        <div><strong>五维评分：</strong>地标✓ 稀缺✓ 溢价✓ 颜值✓✓ 故事✓</div>
+      </div>
+    </div>
+
+    <!-- 阳山水蜜桃 -->
+    <div class="product-card">
+      <div class="badge watch">👀 持续观察</div>
+      <div class="name">阳山水蜜桃</div>
+      <div class="price">40-60<span class="unit"> 元/斤（早桃）</span></div>
+      <div class="tags">
+        <span class="tag gi">🏅 国家地理标志</span>
+        <span class="tag">🍑 早桃→中桃过渡</span>
+      </div>
+      <div class="metric">
+        <div><strong>阶段：</strong>早桃期，白凤/湖景等核心品种待7月</div>
+        <div><strong>溢价：</strong>早桃溢价有限，核心品种可达80-150元/斤</div>
+        <div><strong>策略：</strong>618非核心档期，7月白凤上市时重点发力</div>
+        <div><strong>五维评分：</strong>地标✓ 稀缺△ 溢价△ 颜值✓ 故事✓</div>
+      </div>
+    </div>
+
+    <!-- 猫山王榴莲 -->
+    <div class="product-card">
+      <div class="name">猫山王榴莲</div>
+      <div class="price">108<span class="unit"> 元/斤（液氮冷冻）</span></div>
+      <div class="tags">
+        <span class="tag gi">🏅 马来西亚GI</span>
+        <span class="tag hot">👑 榴莲之王</span>
+      </div>
+      <div class="metric">
+        <div><strong>供应：</strong>液氮冷冻全年稳定，新鲜季6-8月</div>
+        <div><strong>行情：</strong>零售108元/斤左右，礼盒装300-600元</div>
+        <div><strong>策略：</strong>与桂味荔枝形成"高端水果CP"组合推荐</div>
+        <div><strong>五维评分：</strong>地标✓ 稀缺✓ 溢价✓ 颜值✓ 故事✓</div>
+      </div>
+    </div>
+
+    <!-- 大兴安岭蓝莓 -->
+    <div class="product-card">
+      <div class="name">大兴安岭蓝莓</div>
+      <div class="price">60-80<span class="unit"> 元/斤</span></div>
+      <div class="tags">
+        <span class="tag gi">🏅 国家地理标志</span>
+        <span class="tag">🫐 野生有机</span>
+      </div>
+      <div class="metric">
+        <div><strong>上市：</strong>7月中旬进入采摘季</div>
+        <div><strong>差异化：</strong>野生vs种植，花青素含量高，健康叙事</div>
+        <div><strong>策略：</strong>6月底启动预热，7月接档杨梅/荔枝</div>
+        <div><strong>五维评分：</strong>地标✓ 稀缺△ 溢价✓ 颜值✓ 故事✓</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 竞品动态 -->
+<div class="section">
+  <div class="section-title"><span class="icon">👁️</span>竞品动态速览</div>
+  <table class="compact-table">
+    <tr>
+      <th>竞品</th>
+      <th>类型</th>
+      <th>618动态（基于历史规律推断）</th>
+      <th>关注点</th>
+    </tr>
+    <tr>
+      <td><strong>一颗大番茄</strong></td>
+      <td>品牌旗舰店</td>
+      <td>Big Day后复盘 + 冲刺期内容矩阵。预计加强"反漏斗模型"投放，按城市定制618场景内容。</td>
+      <td>618期间GMV是否突破新高</td>
+    </tr>
+    <tr>
+      <td><strong>阳雀湖产地商家</strong></td>
+      <td>产地直发</td>
+      <td>樟树港头茬尾声，内容转向"错过等明年"紧迫感。可能推出618限定礼盒。</td>
+      <td>是否跟进降价/优惠策略</td>
+    </tr>
+    <tr>
+      <td><strong>盒界生鲜</strong></td>
+      <td>高客单价型</td>
+      <td>Big Day后单品爆款策略延续，可能推出618返场活动。</td>
+      <td>复购率数据</td>
+    </tr>
+    <tr>
+      <td><strong>油辣椒品牌</strong></td>
+      <td>调味品型</td>
+      <td>KOC矩阵持续铺量，场景化种草为主。618期间或加强直播带货。</td>
+      <td>内容互动率是否维持>10%</td>
+    </tr>
+  </table>
+  <div style="margin-top:8px;font-size:11px;color:var(--text2);text-align:center">
+    ⚠️ 注：小红书站内数据采集（MCP）连续多日超时，竞品动态基于公开信息和历史规律推断
+  </div>
+</div>
+
+<!-- 本周行动清单 -->
+<div class="section">
+  <div class="section-title"><span class="icon">⚡</span>本周行动清单（6/8 - 6/14）</div>
+  <ul class="task-list">
+    <li class="p0">
+      <span class="priority p0">P0</span>
+      <div><strong>Big Day数据复盘（6/8-6/9）：</strong>导出6/6当天店铺数据（访客/转化/客单价/ROI），对比618预热期均值，定位爆款SKU和流失节点。必须在6/9晚前完成，为冲刺期策略调整提供依据。</div>
+    </li>
+    <li class="p0">
+      <span class="priority p0">P0</span>
+      <div><strong>桂味荔枝预售/种草内容（6/8起）：</strong>减产80-90%=天然稀缺叙事。产出"2026荔枝自由终结？一颗5.75元的桂味凭什么"科普向笔记，预热带货链接。务必引用广东省农业农村厅官方数据增加权威性。</div>
+    </li>
+    <li class="p0">
+      <span class="priority p0">P0</span>
+      <div><strong>东魁杨梅预热启动（6/9-6/11）：</strong>距上市仅1周，产出"仙居东魁杨梅为什么比乒乓球还大"图文笔记。挂预售链接或引导关注+预约通知。</div>
+    </li>
+    <li class="p0">
+      <span class="priority p0">P0</span>
+      <div><strong>618冲刺10天内容排期（6/8）：</strong>规划6/9-6/18共10天内容日历：3篇产品种草+2篇科普选品+2场直播+2篇信任人设+1篇促销冲刺。所有内容挂618宠粉清单9折标识。</div>
+    </li>
+    <li class="p0">
+      <span class="priority p0">P0</span>
+      <div><strong>樟树港辣椒收尾策略（本周内）：</strong>内容转向"头茬最后一波"，配合"错过等一年"紧迫感。如有库存可推出618限定双拼礼盒（辣椒+腊肉/豆豉）。</div>
+    </li>
+    <li class="p1">
+      <span class="priority p1">P1</span>
+      <div><strong>直播冲刺规划：</strong>6/10和6/16安排两场直播，主题"618精品食材开箱"。重点展示桂味荔枝开箱+东魁杨梅试吃+猫山王榴莲现开。提前准备直播间优惠券和限量礼盒。</div>
+    </li>
+    <li class="p1">
+      <span class="priority p1">P1</span>
+      <div><strong>AI标签合规检查：</strong>AI标签强制标注已逾期8天，立即检查所有笔记是否已打标。如未完成，今日内补齐。平台随时可能开始处罚。</div>
+    </li>
+    <li class="p2">
+      <span class="priority p2">P2</span>
+      <div><strong>7月品类预热规划：</strong>阳山水蜜桃白凤/湖景（7月）+ 大兴安岭蓝莓（7月中）。提前调研供应商和物流方案，6月底启动种草内容。</div>
+    </li>
+    <li class="p2">
+      <span class="priority p2">P2</span>
+      <div><strong>小红书MCP连接排查：</strong>如果仍需要站内精准数据，检查小红书MCP服务状态（登录态/MCP Server配置）。</div>
+    </li>
+  </ul>
+</div>
+
+<!-- 风险预警 -->
+<div class="section">
+  <div class="section-title"><span class="icon">🛡️</span>风险预警</div>
+  <ul class="risk-list">
+    <li class="high">
+      <span class="level high">🔴 高</span>
+      <div><strong>AI标签逾期8天：</strong>小红书要求5月底前完成AI生成内容标注，逾期未标注可能面临流量降权或违规处罚。归因：平台政策合规。</div>
+    </li>
+    <li class="high">
+      <span class="level high">🔴 高</span>
+      <div><strong>桂味荔枝供应极度紧张：</strong>减产80-90%意味着即使有订单也可能无货可发。预售需谨慎承诺交付时间，建议明确标注"预计X月X日起发货"，保留调货弹性。归因：自然灾害（气候+台风）。</div>
+    </li>
+    <li class="med">
+      <span class="level med">🟠 中</span>
+      <div><strong>冷链物流618高峰期压力：</strong>618尾程物流高峰+夏季高温，生鲜冷链破损率可能上升。需与物流方确认保障方案，并在商品页备注"签收后30分钟内开箱检查"。归因：行业季节性因素。</div>
+    </li>
+    <li class="med">
+      <span class="level med">🟠 中</span>
+      <div><strong>东魁杨梅上市窗口极短：</strong>~15天时令，且正值618尾程高峰。如果预热节奏晚了5天，可能错过最佳转化窗口。归因：时令限制。</div>
+    </li>
+    <li class="low">
+      <span class="level low">🟢 低</span>
+      <div><strong>樟树港辣椒假货/擦边风险：</strong>高溢价吸引大量非核心产区仿冒品。如经营樟树港辣椒，需严格溯源并保留产地证明。归因：市场竞争。</div>
+    </li>
+  </ul>
+</div>
+
+<!-- 数据来源说明 -->
+<div class="section" style="font-size:12px;color:var(--text2);padding:16px;background:var(--card);border-radius:10px;border:1px solid var(--border);">
+  <strong>📡 数据源与时效性</strong><br>
+  · 广东省农业农村厅2026荔枝产业数据（5.18发布）<br>
+  · 人民网深圳"南山荔枝"报道（6.4）<br>
+  · 什么值得买"桂味减产九成"深度分析（6.3）<br>
+  · 百度百家号荔农/果商采访（5月中下旬）<br>
+  · 品类价格基于公开报道交叉验证（≥2来源）<br>
+  · 小红书站内数据：❌ MCP连续多日超时，竞品动态依赖历史规律推断<br>
+  · 生成时间：2026-06-08 08:50 CST
+</div>
+
+<div class="footer">
+  🌶️ 小红书生鲜电商每日作战情报 · 2026.06.08 · 仅供内部决策参考<br>
+  数据来源：公开报道 + 搜索聚合 | 品类筛选遵循五维标准（地标/稀缺/溢价/颜值/故事）
+</div>
+
+</div>
+</body>
+</html>
