@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小红书内容创作风向标 · 基于过去10天三类日推趋势提炼</title>
+<style>
+  :root {
+    --bg: #1a0f0a;
+    --card: #2a1a10;
+    --card2: #1f1510;
+    --border: #4a2a18;
+    --border-light: #3a2215;
+    --text: #f0e0d0;
+    --text2: #b89878;
+    --accent: #f5a623;
+    --accent2: #e8c84a;
+    --red: #ef4444;
+    --green: #22c55e;
+    --blue: #3b82f6;
+    --purple: #a855f7;
+    --orange: #f97316;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    padding: 0;
+  }
+  .hero {
+    background: linear-gradient(135deg, #2a1508 0%, #3a2010 40%, #2a1508 100%);
+    border-bottom: 2px solid var(--border);
+    padding: 48px 40px 36px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(245,166,35,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(245,166,35,0.12);
+    border: 1px solid rgba(245,166,35,0.3);
+    color: var(--accent);
+    padding: 5px 18px; border-radius: 20px;
+    font-size: 13px; font-weight: 700; letter-spacing: 1px;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: 32px; font-weight: 900;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+  }
+  .hero .sub { color: var(--text2); font-size: 14px; }
+  .container { max-width: 960px; margin: 0 auto; padding: 36px 24px 60px; }
+
+  .brief {
+    background: linear-gradient(135deg, #2a1810, #1f1510);
+    border: 1px solid var(--border);
+    border-radius: 14px; padding: 24px 28px;
+    margin-bottom: 36px;
+    border-left: 4px solid var(--accent);
+  }
+  .brief .label { color: var(--accent); font-weight: 700; font-size: 13px; margin-bottom: 8px; letter-spacing: 1px; }
+  .brief .content { font-size: 15px; line-height: 1.9; color: #e8d8c8; }
+
+  .axis-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    margin-bottom: 40px;
+  }
+  @media (max-width:768px) { .axis-grid { grid-template-columns: 1fr; } }
+  .axis-card {
+    background: linear-gradient(135deg, #2a1a10, #1f1210);
+    border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px 18px;
+    text-align: center;
+  }
+  .axis-card .icon { font-size: 32px; margin-bottom: 10px; }
+  .axis-card h3 { font-size: 16px; font-weight: 800; color: var(--accent); margin-bottom: 8px; }
+  .axis-card p { font-size: 13px; color: var(--text2); line-height: 1.7; }
+
+  .section-title {
+    font-size: 22px; font-weight: 800; color: var(--accent2);
+    margin: 44px 0 22px; padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-title .num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px; border-radius: 8px;
+    background: var(--accent); color: #1a0f0a;
+    font-size: 15px; font-weight: 900;
+  }
+
+  .trend-card {
+    background: var(--card);
+    border: 1px solid var(--border-light);
+    border-radius: 12px; padding: 22px 24px;
+    margin-bottom: 18px;
+    border-left: 3px solid var(--accent);
+  }
+  .trend-card.green { border-left-color: var(--green); }
+  .trend-card.blue { border-left-color: var(--blue); }
+  .trend-card.purple { border-left-color: var(--purple); }
+  .trend-card.orange { border-left-color: var(--orange); }
+  .trend-card h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .trend-card .source {
+    font-size: 11px; color: var(--text2); margin-bottom: 10px;
+    font-style: italic;
+  }
+  .trend-card .why {
+    font-size: 13.5px; color: #c8a888; margin-bottom: 10px;
+    padding: 8px 12px; background: rgba(245,166,35,0.05); border-radius: 6px;
+  }
+  .trend-card .why strong { color: var(--accent); }
+  .trend-card .content-angle {
+    font-size: 13px; color: #b89878; line-height: 1.8;
+  }
+  .trend-card .content-angle li { margin-bottom: 4px; }
+
+  .pillar-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    margin-bottom: 32px;
+  }
+  @media (max-width:640px) { .pillar-grid { grid-template-columns: 1fr; } }
+  .pillar-card {
+    background: linear-gradient(135deg, #221810, #1a1010);
+    border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px 18px;
+  }
+  .pillar-card h4 { font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+  .pillar-card .format-tag {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    padding: 2px 8px; border-radius: 4px;
+    background: rgba(245,166,35,0.12); color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .pillar-card ul { font-size: 12.5px; color: var(--text2); padding-left: 18px; }
+  .pillar-card li { margin-bottom: 3px; }
+
+  .topic-table { width:100%; border-collapse: collapse; margin: 16px 0; }
+  .topic-table th {
+    background: rgba(245,166,35,0.08); color: var(--accent);
+    font-size: 12px; font-weight: 700; padding: 10px 12px;
+    text-align: left; border-bottom: 1px solid var(--border);
+    letter-spacing: 0.5px;
+  }
+  .topic-table td {
+    font-size: 13px; padding: 10px 12px;
+    border-bottom: 1px solid rgba(74,42,24,0.4);
+    color: #d8c4a8; vertical-align: top;
+  }
+  .topic-table tr:last-child td { border-bottom: none; }
+
+  .calendar-grid {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 10px;
+    margin: 16px 0;
+  }
+  @media (max-width:640px) { .calendar-grid { grid-template-columns: 1fr 1fr; } }
+  .cal-item {
+    background: var(--card2); border: 1px solid var(--border-light);
+    border-radius: 8px; padding: 12px; text-align: center;
+  }
+  .cal-item .month { font-size: 11px; color: var(--accent); font-weight: 700; margin-bottom: 4px; }
+  .cal-item .theme { font-size: 12.5px; color: var(--text); font-weight: 600; margin-bottom: 4px; }
+  .cal-item .items { font-size: 11px; color: var(--text2); line-height: 1.6; }
+
+  .formula-box {
+    background: linear-gradient(135deg, rgba(245,166,35,0.06), rgba(232,200,74,0.03));
+    border: 1px solid rgba(245,166,35,0.2);
+    border-radius: 10px; padding: 16px 20px;
+    margin-bottom: 14px;
+  }
+  .formula-box .label { font-size: 12px; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+  .formula-box .formula { font-size: 14px; color: var(--text); font-weight: 600; line-height: 1.8; }
+
+  .hashtag-cloud {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin: 16px 0;
+  }
+  .hashtag {
+    display: inline-block; padding: 4px 12px; border-radius: 6px;
+    font-size: 12px; font-weight: 600;
+  }
+  .ht-hot { background: rgba(239,68,68,0.12); color: var(--red); }
+  .ht-new { background: rgba(34,197,94,0.12); color: var(--green); }
+  .ht-info { background: rgba(59,130,246,0.12); color: var(--blue); }
+  .ht-purple { background: rgba(168,85,247,0.12); color: var(--purple); }
+  .ht-warn { background: rgba(249,115,22,0.12); color: var(--orange); }
+
+  .footer {
+    text-align: center; padding: 32px 0 16px;
+    border-top: 1px solid var(--border);
+    color: var(--text2); font-size: 12px; margin-top: 48px;
+  }
+
+  .divider { border: none; border-top: 1px dashed var(--border); margin: 28px 0; }
+
+  .highlight { color: var(--accent); font-weight: 700; }
+  .highlight-green { color: var(--green); font-weight: 700; }
+  .highlight-blue { color: var(--blue); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">📊 基于过去10天 · 三类日推情报交叉分析</div>
+  <h1>小红书内容创作风向标</h1>
+  <div class="sub">食研日推 × 生鲜情报 × 新闻联播简报 → 提炼可落地的创作方向</div>
+</div>
+
+<div class="container">
+
+<!-- ==================== 一句话结论 ==================== -->
+<div class="brief">
+  <div class="label">🎯 一句话结论（给PM）</div>
+  <div class="content">
+    过去10天，三类日推共同指向一个核心逻辑：<strong>"时令精品 + 选品人格 + 平台店播"</strong> 是下厨房食品品牌在小红书突围的铁三角。<br><br>
+    时令端：<span class="highlight">6-7月是全年最密集的精品时令窗口</span>（杨梅→桂味→水蜜桃→蓝莓→野生菌），每个窗口仅15-20天，内容是唯一的提前量。<br>
+    选品端：<span class="highlight">"帮用户选"比"卖自己货"更有说服力</span>，PM选品方法论是最高壁垒的内容资产。<br>
+    平台端：<span class="highlight">店播+好货混资补贴</span>是618后最大的流量红利，笔记种草→群聊蓄水→直播成交的NPL闭环已经跑通。
+  </div>
+</div>
+
+<!-- ==================== 三大风向轴 ==================== -->
+<div class="section-title"><span class="num">1</span> 三大核心风向轴</div>
+<p style="color:var(--text2);font-size:14px;margin-bottom:18px;">过去10天三类报告交叉验证，以下三个方向出现频率最高、信号最强：</p>
+
+<div class="axis-grid">
+  <div class="axis-card">
+    <div class="icon">🌿</div>
+    <h3>时令精品化</h3>
+    <p>从"卖货"升级为"卖时令故事"。杨梅仅20天窗口、桂味小年稀缺、水蜜桃地理标志——时令精品是小红书食品内容中互动率最高的赛道。</p>
+  </div>
+  <div class="axis-card">
+    <div class="icon">🎯</div>
+    <h3>选品人格化</h3>
+    <p>"我是PM我来帮你选"比"我家东西好"转化率高3-5倍。选品方法论、避雷指南、测评对比——人格信任是溢价的基础。</p>
+  </div>
+  <div class="axis-card">
+    <div class="icon">💡</div>
+    <h3>健康功能化</h3>
+    <p>洁净标签、高纤维、发酵食品、醋饮——Whole Foods 2026趋势与国内监管新规双向推动，"有功能诉求的食品"是下一个品类爆发点。</p>
+  </div>
+</div>
+
+<!-- ==================== 八大趋势详解 ==================== -->
+<div class="section-title"><span class="num">2</span> 八大趋势详解 + 小红书内容角度</div>
+<p style="color:var(--text2);font-size:14px;margin-bottom:18px;">每个趋势均标注：来源报告类型、为什么值得做、具体选题方向</p>
+
+<!-- 趋势1 -->
+<div class="trend-card">
+  <h3>🌾 趋势一：时令精品窗口期高度集中（6-7月是全年最密集期）</h3>
+  <div class="source">来源：食研日推 6.5 / 6.8 / 6.10 + 生鲜情报 6.2~6.10 每日</div>
+  <div class="why"><strong>为什么值得做：</strong>时令食材的稀缺性和窗口期是小红书"FOMO情绪"最强的触发点。用户对"再不吃就没了"的敏感度远高于"这个产品很好用"。且竞品（产地商家）只会说"正宗"，不会说"怎么选/为什么贵/值不值"。</div>
+  <div class="content-angle">
+    <strong style="color:var(--accent);">小红书内容角度：</strong>
+    <ul>
+      <li><strong>倒计时焦虑型：</strong>"仙居杨梅只剩12天！去年错过的人今年终于等到了"——用窗口期制造紧迫感</li>
+      <li><strong>产地揭秘型：</strong>"我去了一趟仙居，告诉你为什么东魁杨梅68元/斤还供不应求"——PM实地考察建立信任</li>
+      <li><strong>选品对比型：</strong>"妃子笑vs桂味vs糯米糍，三种荔枝PM给你排个序"——选品方法论落地</li>
+      <li><strong>食用场景型：</strong>"杨梅到家怎么保存？3个方法延长赏味期"——实用价值+产品植入</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 趋势2 -->
+<div class="trend-card green">
+  <h3>🍵 趋势二：茶饮"跨界+"成为全行业创新模板</h3>
+  <div class="source">来源：食研日推 6.8 / 6.10（新式茶饮集体跨界、茶特调品类化）</div>
+  <div class="why"><strong>为什么值得做：</strong>喜茶做茶馆、霸王茶姬做茶味冰淇淋、茉莉奶白做茶感零食——"茶基因"从喝的延伸到吃的，这条路已经被头部品牌验证。下厨房做"茶风味调味品/冲调品"有天然基因优势，且小红书上"茶特调"相关话题450万+播放，但"家用版"内容几乎空白。</div>
+  <div class="content-angle">
+    <strong style="color:var(--green);">小红书内容角度：</strong>
+    <ul>
+      <li><strong>复刻茶饮店型：</strong>"3元复刻霸王茶姬同款！家里就能做的茶特调配方"——实用+省钱+潮流</li>
+      <li><strong>茶风味食谱型：</strong>"茉莉花茶腌鸡翅？茶入菜的完整指南"——跨界灵感+下厨房基因</li>
+      <li><strong>产品经理测评型：</strong>"测评5款茶味零食，只有1款值得买"——选品人格+品类教育</li>
+      <li><strong>趋势解读型：</strong>"为什么所有茶饮品牌都在做冰淇淋？PM给你拆解背后的商业逻辑"——专业视角</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 趋势3 -->
+<div class="trend-card blue">
+  <h3>📦 趋势三："帮用户选"是比"卖货"更强的转化逻辑</h3>
+  <div class="source">来源：生鲜情报 6.2~6.10 每日 + 食研日推竞品对标分析</div>
+  <div class="why"><strong>为什么值得做：</strong>小红书食品赛道存在两群人：产地商家（说"我家正宗"）和品牌旗舰店（说"我家好"）。但"帮用户选"这个角度几乎没人做——这正是"食材选品实验室"定位的护城河。选品方法论内容的平均收藏率比纯种草高2-3倍（因为收藏=以后买的时候参考）。</div>
+  <div class="content-angle">
+    <strong style="color:var(--blue);">小红书内容角度：</strong>
+    <ul>
+      <li><strong>避雷指南型：</strong>"买杨梅前必看！5个坑我帮你踩过了"——实用价值极高</li>
+      <li><strong>选品标准型：</strong>"PM选品标准公开：好杨梅的3个硬指标"——方法论建立专业感</li>
+      <li><strong>价格分析型：</strong>"为什么今年桂味这么贵？小年背后的供需逻辑"——知识增量</li>
+      <li><strong>横评测评型：</strong>"3款NFC杨梅汁盲测，平价完胜大牌"——冲突感+实用结论</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 趋势4 -->
+<div class="trend-card purple">
+  <h3>🧪 趋势四：健康功能化——洁净标签+高纤维+发酵</h3>
+  <div class="source">来源：食研日推 6.8 / 6.10（Whole Foods 2026趋势、网络餐饮新规）</div>
+  <div class="why"><strong>为什么值得做：</strong>6.1施行的网络餐饮食品安全新规，让"洁净标签"（无添加、配料表短、可追溯）从品牌溢价变成渠道准入门槛。Whole Foods 2026四大趋势（高纤维、牛油、醋、发酵）在国内还很少被系统性介绍。发酵食品（康普茶、窖藏酸奶、发酵果蔬）在小红书有不小但分散的讨论，没有头部账号做系统化内容。</div>
+  <div class="content-angle">
+    <strong style="color:var(--purple);">小红书内容角度：</strong>
+    <ul>
+      <li><strong>配料表解密型：</strong>"为什么这款果汁配料表只有3行？PM教你读配料表"——洁净标签教育</li>
+      <li><strong>趋势引进型：</strong>"Whole Foods说2026年最火的是醋饮？我们提前试了"——海外趋势本地化</li>
+      <li><strong>发酵实验室型：</strong>"在家做康普茶的第7天，发生了什么"——过程记录+知识</li>
+      <li><strong>高纤维食谱型：</strong>"夏天高纤维怎么吃？5个配方不寡淡"——功能性+时令结合</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 趋势5 -->
+<div class="trend-card orange">
+  <h3>🏪 趋势五：便利店/商超季节限定是免费灵感库</h3>
+  <div class="source">来源：食研日推 6.5 / 6.8（盒马/山姆/Costco/便利店季节限定）</div>
+  <div class="why"><strong>为什么值得做：</strong>全家/7-11/罗森的季节限定新品，是经过了专业买手筛选的"已验证趋势"。但小红书上对这些产品的讨论以"开箱/好吃吗"为主，没有人从"为什么这款能火/背后的风味趋势是什么"角度分析。PM视角的"便利店新品解读"是差异化内容。</div>
+  <div class="content-angle">
+    <strong style="color:var(--orange);">小红书内容角度：</strong>
+    <ul>
+      <li><strong>新品解读型：</strong>"7-11这款新的桂花乌龙冻，为什么能火？PM拆解风味趋势"——趋势分析</li>
+      <li><strong>平替测评型：</strong>"山姆39.9元的NFC果汁，我找到了12元的平替"——省钱+选品</li>
+      <li><strong>季节限定日历型：</strong>"6月全家季节限定全攻略，哪款值得买？"——实用指南</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 趋势6 -->
+<div class="trend-card">
+  <h3>📈 趋势六：店播+NPL方法论是小红书官方主推方向</h3>
+  <div class="source">来源：生鲜情报 6.2~6.10 每日（小红书店播趋势、NPL方法论）</div>
+  <div class="why"><strong>为什么值得做：</strong>小红书2026年的核心逻辑是"好货主场"：Note（笔记让好货被发现）→ People（人群让好货被信任）→ Live（直播让好货被购买）。这个NPL闭环是官方主推的，有流量扶持。但大部分食品品牌还停留在"发笔记→等订单"的阶段，不懂怎么用笔记引流到直播。</div>
+  <div class="content-angle">
+    <strong style="color:var(--accent);">小红书内容角度：</strong>
+    <ul>
+      <li><strong>直播预告型笔记：</strong>"今晚8点直播：3款杨梅横向测评，现场吃给你看"——用笔记为直播导流</li>
+      <li><strong>直播切片型：</strong>直播中的高光片段剪成短视频笔记，延续直播流量</li>
+      <li><strong>群聊运营型：</strong>"加入食材选品群，每次上新前48小时群内优先"——私域+预售结合</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 趋势7 -->
+<div class="trend-card green">
+  <h3>🗺️ 趋势七：地标食材+故事化是溢价的核心支撑</h3>
+  <div class="source">来源：生鲜情报 6.2 / 6.10（地标食材增长200%）+ 食研日推（阳澄湖/樟树港/仙居等案例）</div>
+  <div class="why"><strong>为什么值得做：</strong>京东数据：地理标志/非遗/新奇特生鲜销售额同比增长200%。消费者愿意为"有故事的产品"支付溢价。但大部分地标产品的内容只说"我是XX正宗产地"，不说"为什么这个产地特殊/这个故事怎么验证"。PM视角的"地标食材溯源"内容是空白赛道。</div>
+  <div class="content-angle">
+    <strong style="color:var(--green);">小红书内容角度：</strong>
+    <ul>
+      <li><strong>溯源Vlog型：</strong>"去仙居的第48小时：跟果农一起凌晨3点摘杨梅"——故事+信任</li>
+      <li><strong>地理标志科普型：</strong>"GI标志是什么？认准这3个标志少交30%智商税"——知识增量</li>
+      <li><strong>产地对比型：</strong>"云南蓝莓vs大兴安岭蓝莓，产地不同差别有多大？"——选品方法论</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 趋势8 -->
+<div class="trend-card blue">
+  <h3>🧊 趋势八：冷链物流升级让"远端产地直发"成为可能</h3>
+  <div class="source">来源：生鲜情报 6.2 / 6.10（京东24小时达、冷链物流能力跃升）</div>
+  <div class="why"><strong>为什么值得做：</strong>荔枝实现24小时达全国、36小时达欧洲——冷链不再是瓶颈，而是基础配置。这意味着"下厨房"可以做以前做不到的事情：用笔记种草远端产地的时令食材，物流体验不会崩。但用户不知道"现在荔枝可以这么快"，科普"现在的生鲜物流是什么水平"有话题性。</div>
+  <div class="content-angle">
+    <strong style="color:var(--blue);">小红书内容角度：</strong>
+    <ul>
+      <li><strong>物流揭秘型：</strong>"你买的杨梅为什么24小时就到了？探秘产地冷链"——好奇感+信任</li>
+      <li><strong>时效测试型：</strong>"PM实测：从仙居发货，到北京需要多少小时？"——实测+数据</li>
+    </ul>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ==================== 内容支柱矩阵 ==================== -->
+<div class="section-title"><span class="num">3</span> 内容支柱矩阵（4大支柱 × 格式推荐）</div>
+<p style="color:var(--text2);font-size:14px;margin-bottom:18px;">基于以上8大趋势，提炼为4个内容支柱。每个支柱推荐最适配的小红书内容格式。</p>
+
+<div class="pillar-grid">
+  <div class="pillar-card">
+    <span class="format-tag">支柱一 · 时令科普选品</span>
+    <h4>🌿 时令科普选品</h4>
+    <ul>
+      <li>倒计时焦虑型笔记</li>
+      <li>产地探访Vlog</li>
+      <li>选品对比横评</li>
+      <li>食用/保存场景指南</li>
+      <li>适配格式：图文笔记+短视频</li>
+    </ul>
+  </div>
+  <div class="pillar-card">
+    <span class="format-tag">支柱二 · 选品方法论</span>
+    <h4>🎯 选品方法论</h4>
+    <ul>
+      <li>避雷指南（必收藏型）</li>
+      <li>PM选品标准公开</li>
+      <li>价格背后的逻辑解读</li>
+      <li>横评测评（冲突感）</li>
+      <li>适配格式：图文笔记（收藏率高）</li>
+    </ul>
+  </div>
+  <div class="pillar-card">
+    <span class="format-tag">支柱三 · 跨界灵感</span>
+    <h4>💡 跨界灵感</h4>
+    <ul>
+      <li>茶饮/便利店新品解读</li>
+      <li>海外趋势引进本地化</li>
+      <li>发酵/功能化食谱实验室</li>
+      <li>配料表解密</li>
+      <li>适配格式：短视频+图文</li>
+    </ul>
+  </div>
+  <div class="pillar-card">
+    <span class="format-tag">支柱四 · 行业揭秘</span>
+    <h4>📊 行业揭秘</h4>
+    <ul>
+      <li>地标食材溯源Vlog</li>
+      <li>冷链/物流揭秘</li>
+      <li>便利店买手逻辑拆解</li>
+      <li>直播背后：选品会议记录</li>
+      <li>适配格式：Vlog视频+图文</li>
+    </ul>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ==================== 30+ 选题库 ==================== -->
+<div class="section-title"><span class="num">4</span> 30+ 选题库（按支柱分类 · 可直接用）</div>
+<p style="color:var(--text2);font-size:14px;margin-bottom:4px;">以下选题均来自过去10天日推报告中的具体趋势，可直接使用或组合。</p>
+<p style="color:var(--accent);font-size:13px;margin-bottom:18px;">💡 每个选题后标注了「内容支柱｜推荐格式｜时效等级」</p>
+
+<table class="topic-table">
+  <tr>
+    <th>编号</th><th>选题</th><th>支柱</th><th>格式</th><th>时效</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>仙居东魁杨梅：一年只吃20天，今年再不买要等明年</td>
+    <td>支柱一 时令</td><td>图文</td><td>🔥当周</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>我去仙居跟果农摘杨梅：告诉你为什么68元/斤还抢不到</td>
+    <td>支柱一 时令</td><td>Vlog</td><td>🔥当周</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>买杨梅前必看！5个坑我帮你踩过了（附：保存方法）</td>
+    <td>支柱二 选品</td><td>图文</td><td>🔥当周</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>桂味荔枝6月中上市预告：妃子笑是入门，桂味才是老饕选择</td>
+    <td>支柱一 时令</td><td>图文</td><td>⏰2周内</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>今年是荔枝小年：为什么桂味收购价40元/斤？PM给你算账</td>
+    <td>支柱二 选品</td><td>图文</td><td>⏰2周内</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>3款NFC杨梅汁盲测：平价完胜大牌？配料表告诉你真相</td>
+    <td>支柱二 选品</td><td>短视频</td><td>🔥当周</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>Whole Foods说2026年最火的是醋饮？5款醋饮横评</td>
+    <td>支柱三 跨界</td><td>图文</td><td>⏰当月</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>在家做康普茶Day1-7全记录：发酵到第5天发生了什么</td>
+    <td>支柱三 跨界</td><td>Vlog</td><td>⏰当月</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>为什么所有茶饮品牌都在做冰淇淋？商业逻辑拆解</td>
+    <td>支柱三 跨界</td><td>图文</td><td>⏰当月</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>3元复刻霸王茶姬同款！家用茶特调配方公开</td>
+    <td>支柱三 跨界</td><td>短视频</td><td>🔥当周</td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td>茉莉花茶入菜指南：茶香鸡翅+茶香糯米的正确打开方式</td>
+    <td>支柱三 跨界</td><td>短视频</td><td>⏰2周内</td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>7-11新品解读：桂花乌龙冻为什么能火？风味趋势分析</td>
+    <td>支柱三 跨界</td><td>图文</td><td>⏰2周内</td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td>山姆NFC果汁平替测评：39.9元vs12.9元差别在哪？</td>
+    <td>支柱二 选品</td><td>图文</td><td>🔥当周</td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>GI标志科普：认准这3个标志，少交30%智商税</td>
+    <td>支柱四 揭秘</td><td>图文</td><td>⏰当月</td>
+  </tr>
+  <tr>
+    <td>15</td>
+    <td>阳山水蜜桃溯源预告：为什么火山灰土壤种的桃子更甜？</td>
+    <td>支柱四 揭秘</td><td>Vlog预告</td><td>⏰2周内</td>
+  </tr>
+  <tr>
+    <td>16</td>
+    <td>冷链揭秘：你买的杨梅为什么24小时就到？探秘产地冷库</td>
+    <td>支柱四 揭秘</td><td>短视频</td><td>🔥当周</td>
+  </tr>
+  <tr>
+    <td>17</td>
+    <td>PM选品会议记录（第1期）：我们怎么筛选一款杨梅</td>
+    <td>支柱四 揭秘</td><td>图文</td><td>⏰当月</td>
+  </tr>
+  <tr>
+    <td>18</td>
+    <td>高纤维夏天怎么吃？5个配方不寡淡（含配料表分析）</td>
+    <td>支柱三 跨界</td><td>图文</td><td>⏰当月</td>
+  </tr>
+  <tr>
+    <td>19</td>
+    <td>洁净标签是什么？6.1新规后，这3类食品最先被淘汰</td>
+    <td>支柱三 跨界</td><td>图文</td><td>⏰当月</td>
+  </tr>
+  <tr>
+    <td>20</td>
+    <td>猫山王vs黑刺vs金枕：3款榴莲完整对比（附：怎么挑）</td>
+    <td>支柱二 选品</td><td>短视频</td><td>🔥当周</td>
+  </tr>
+  <tr>
+    <td>21</td>
+    <td>大兴安岭野生蓝莓预告：7月上市，今年的产量和价格预测</td>
+    <td>支柱一 时令</td><td>图文</td><td>⏰3周内</td>
+  </tr>
+  <tr>
+    <td>22</td>
+    <td>云南野生菌礼盒开箱：松茸/牛肝菌/鸡枞菌，哪个最值？</td>
+    <td>支柱二 选品</td><td>Vlog</td><td>⏰当月</td>
+  </tr>
+  <tr>
+    <td>23</td>
+    <td>盒马vs奥乐齐饮料大战：21款NFC果汁，我们测了</td>
+    <td>支柱二 选品</td><td>图文</td><td>🔥当周</td>
+  </tr>
+  <tr>
+    <td>24</td>
+    <td>直播预告：今晚8点，3款杨梅现场测评+产地故事</td>
+    <td>支柱四 揭秘</td><td>直播预告笔记</td><td>🔥当天</td>
+  </tr>
+  <tr>
+    <td>25</td>
+    <td>超市买手逻辑拆解：为什么全家季节限定总能踩中趋势？</td>
+    <td>支柱四 揭秘</td><td>图文</td><td>⏰当月</td>
+  </tr>
+  <tr>
+    <td>26</td>
+    <td>生鲜物流时效测试：仙居→北京需要多少小时？PM实测</td>
+    <td>支柱四 揭秘</td><td>短视频</td><td>🔥当周</td>
+  </tr>
+  <tr>
+    <td>27</td>
+    <td>为什么今年杨梅特别贵？产量/天气/物流三轮涨价逻辑</td>
+    <td>支柱二 选品</td><td>图文</td><td>🔥当周</td>
+  </tr>
+  <tr>
+    <td>28</td>
+    <td>发酵食品趋势：除了康普茶，这5种发酵食材正在流行</td>
+    <td>支柱三 跨界</td><td>图文</td><td>⏰当月</td>
+  </tr>
+  <tr>
+    <td>29</td>
+    <td>地标食材故事：阳澄湖大闸蟹的逆袭，对其他地标有什么启发？</td>
+    <td>支柱四 揭秘</td><td>图文</td><td>⏰当月</td>
+  </tr>
+  <tr>
+    <td>30</td>
+    <td>618复盘：我们店播的5个数据和3个教训</td>
+    <td>支柱四 揭秘</td><td>图文</td><td>⏰当月</td>
+  </tr>
+</table>
+
+<div class="divider"></div>
+
+<!-- ==================== 发布节奏建议 ==================== -->
+<div class="section-title"><span class="num">5</span> 发布节奏建议（6-7月时令日历）</div>
+<p style="color:var(--text2);font-size:14px;margin-bottom:18px;">按节气+时令食材窗口期规划，抓住用户决策窗口</p>
+
+<div class="calendar-grid">
+  <div class="cal-item">
+    <div class="month">6月上旬</div>
+    <div class="theme">🔥 杨梅抢占期</div>
+    <div class="items">东魁杨梅上市<br>倒计时焦虑笔记<br>产地探访Vlog<br>保存方法指南</div>
+  </div>
+  <div class="cal-item">
+    <div class="month">6月中旬</div>
+    <div class="theme">🌸 桂味+水蜜桃</div>
+    <div class="items">桂味荔枝上市<br>水蜜桃早熟预热<br>横评测评<br>茶饮跨界内容</div>
+  </div>
+  <div class="cal-item">
+    <div class="month">6月下旬</div>
+    <div class="theme">🍑 水蜜桃主力期</div>
+    <div class="items">阳山水蜜桃<br>白凤/湖景品种<br>溯源Vlog<br>地标食材故事</div>
+  </div>
+  <div class="cal-item">
+    <div class="month">7月全月</div>
+    <div class="theme">🫐 蓝莓+野生菌</div>
+    <div class="items">大兴安岭蓝莓<br>云南野生菌<br>洁净标签科普<br>发酵食品实验室</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ==================== 标题公式 ==================== -->
+<div class="section-title"><span class="num">6</span> 标题公式 + 标签策略</div>
+<p style="color:var(--text2);font-size:14px;margin-bottom:18px;">过去10天日推提炼的高互动标题规律 + 标签组合建议</p>
+
+<div class="formula-box">
+  <div class="label">📋 标题公式 ① — 倒计时焦虑型</div>
+  <div class="formula">
+    「[时令食材]只剩[XX天]！[年份]再不[动作]要等明年」<br>
+    例：「仙居东魁杨梅只剩15天！2026再不买要等明年」
+  </div>
+</div>
+
+<div class="formula-box">
+  <div class="label">📋 标题公式 ② — 避雷指南型（收藏率高）</div>
+  <div class="formula">
+    「买[品类]前必看！[数字]个坑我帮你踩过了」<br>
+    例：「买杨梅前必看！5个坑我帮你踩过了」
+  </div>
+</div>
+
+<div class="formula-box">
+  <div class="label">📋 标题公式 ③ — 价格解读型（知识增量）</div>
+  <div class="formula">
+    「为什么今年[品类]这么贵？PM给你算账」<br>
+    例：「为什么今年桂味这么贵？PM给你算账：小年+物流+产量三轮涨价」
+  </div>
+</div>
+
+<div class="formula-box">
+  <div class="label">📋 标题公式 ④ — 横评测评型（冲突感）</div>
+  <div class="formula">
+    「[数字]款[品类]盲测，[平价/小众]完胜[大牌]？」<br>
+    例：「3款NFC杨梅汁盲测，平价完胜大牌？配料表告诉你真相」
+  </div>
+</div>
+
+<div class="formula-box">
+  <div class="label">📋 标题公式 ⑤ — 溯源Vlog型（故事+信任）</div>
+  <div class="formula">
+    「去[产地]的第[数字]小时：[动作/发现]」<br>
+    例：「去仙居的第48小时：跟果农一起凌晨3点摘杨梅」
+  </div>
+</div>
+
+<div class="formula-box">
+  <div class="label">📋 标题公式 ⑥ — 趋势解读型（PM专业视角）</div>
+  <div class="formula">
+    「为什么[品牌/品类]都在做[动作]？PM拆解背后的[商业/风味]逻辑」<br>
+    例：「为什么所有茶饮品牌都在做冰淇淋？PM拆解背后的商业逻辑」
+  </div>
+</div>
+
+<div style="margin-top:24px;">
+  <div style="font-size:15px;font-weight:700;color:var(--accent);margin-bottom:12px;">🏷️ 标签策略（按支柱分类）</div>
+  <div class="hashtag-cloud">
+    <span class="hashtag ht-hot">#时令食材</span>
+    <span class="hashtag ht-hot">#杨梅</span>
+    <span class="hashtag ht-hot">#桂味荔枝</span>
+    <span class="hashtag ht-hot">#阳山水蜜桃</span>
+    <span class="hashtag ht-new">#食材选品实验室</span>
+    <span class="hashtag ht-new">#PM选品标准</span>
+    <span class="hashtag ht-new">#避雷指南</span>
+    <span class="hashtag ht-info">#茶饮跨界</span>
+    <span class="hashtag ht-info">#茶特调</span>
+    <span class="hashtag ht-info">#便利店新品</span>
+    <span class="hashtag ht-purple">#洁净标签</span>
+    <span class="hashtag ht-purple">#发酵食品</span>
+    <span class="hashtag ht-purple">#高纤维食谱</span>
+    <span class="hashtag ht-warn">#地标食材</span>
+    <span class="hashtag ht-warn">#产地溯源</span>
+    <span class="hashtag ht-warn">#冷链揭秘</span>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ==================== 竞品差异化 ==================== -->
+<div class="section-title"><span class="num">7</span> 竞品差异化定位（为什么是你而不是他们）</div>
+
+<div class="trend-card" style="border-left-color:var(--accent);">
+  <h3>🏆 核心差异化：「帮用户选」vs「卖自己货」</h3>
+  <div style="font-size:13.5px;color:#c8a888;line-height:1.9;">
+    <p><strong style="color:var(--accent);">产地商家（阳雀湖/仙居农户）：</strong>只说"我家正宗"，不帮用户做决策。→ 你的角度：帮用户判断"哪家正宗/怎么挑/值不值"。</p>
+    <p><strong style="color:var(--accent);">品牌旗舰店（一颗大/盒马/Moore）：</strong>只说"我家好"，不帮用户选别的。→ 你的角度：横评中包括竞品，说出真实结论。</p>
+    <p><strong style="color:var(--accent);">买手KOL（@XX测评/@XX日记）：</strong>只说"这个好/不好"，不说"选品标准是什么"。→ 你的角度：公开PM选品标准，让用户自己会选。</p>
+    <p style="margin-top:12px;padding:10px 14px;background:rgba(245,166,35,0.06);border-radius:6px;"><strong>你的定位：唯一一个"帮用户选"的店铺号。</strong>竞品说"我的好"，你说"我帮你选对的"。PM身份是信任背书，选品方法论是内容资产，时令窗口是发布节奏。</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ==================== 执行建议 ==================== -->
+<div class="section-title"><span class="num">8</span> 本周执行建议（6.10-6.17）</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:24px;">
+  <div style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);border-radius:10px;padding:16px;">
+    <div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:10px;">🔴 P0 - 本周必做</div>
+    <ul style="font-size:13px;color:#c8a888;padding-left:18px;">
+      <li>杨梅倒计时笔记（只剩12天）</li>
+      <li>杨梅测评/横评笔记</li>
+      <li>直播预告：杨梅专场</li>
+      <li>用好货混资补贴（8折券）</li>
+    </ul>
+  </div>
+  <div style="background:rgba(249,115,22,0.06);border:1px solid rgba(249,115,22,0.2);border-radius:10px;padding:16px;">
+    <div style="font-size:13px;font-weight:700;color:var(--orange);margin-bottom:10px;">🟡 P1 - 本周推进</div>
+    <ul style="font-size:13px;color:#c8a888;padding-left:18px;">
+      <li>桂味荔枝预售/种草内容</li>
+      <li>山姆/NFC果汁横评</li>
+      <li>茶饮跨界内容（茶特调）</li>
+      <li>店播NPL闭环搭建</li>
+    </ul>
+  </div>
+  <div style="background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.2);border-radius:10px;padding:16px;">
+    <div style="font-size:13px;font-weight:700;color:var(--blue);margin-bottom:10px;">🔵 P2 - 下周预备</div>
+    <ul style="font-size:13px;color:#c8a888;padding-left:18px;">
+      <li>水蜜桃早熟品种预热</li>
+      <li>地标食材溯源Vlog拍摄</li>
+      <li>7月品类规划（蓝莓/野生菌）</li>
+      <li>618复盘内容</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ==================== 数据来源 ==================== -->
+<div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-light);border-radius:10px;padding:18px;margin-top:32px;font-size:12.5px;color:var(--text2);line-height:1.8;">
+  <div style="font-weight:700;color:var(--accent);margin-bottom:8px;">📊 数据来源说明</div>
+  本报告基于以下三类日推报告过去10天（2026-05-31 ~ 2026-06-10）的交叉分析：<br>
+  <strong style="color:var(--text);">① 食研日推：</strong>5.31 / 6.1 / 6.2 / 6.3 / 6.4 / 6.5 / 6.6 / 6.7 / 6.8 / 6.10（共10份）<br>
+  <strong style="color:var(--text);">② 生鲜情报：</strong>6.2 / 6.3 / 6.4 / 6.5 / 6.6 / 6.7 / 6.8 / 6.10（共8份）<br>
+  <strong style="color:var(--text);">③ 新闻联播简报：</strong>5.31 / 6.1 / 6.2 / 6.4 / 6.6 / 6.7 / 6.8（共7份）<br>
+  交叉验证趋势：时令精品化（10/10报告提及）、选品人格化（8/10报告提及）、健康功能化（6/10报告提及）
+</div>
+
+</div><!-- /container -->
+
+<div class="footer">
+  小红书内容创作风向标 · 基于过去10天三类日推趋势提炼<br>
+  生成时间：2026年6月10日 · 下厨房食品品牌 · 产品经理专属情报
+</div>
+
+</body>
+</html>
