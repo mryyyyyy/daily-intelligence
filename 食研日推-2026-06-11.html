@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 · 2026-06-11</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #1a1410;
+    color: #e8ddd0;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #2d1f14 0%, #3d2818 40%, #1a1410 100%);
+    border-bottom: 1px solid #3d2a1c;
+    padding: 36px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%; right: -8%;
+    width: 480px; height: 480px;
+    background: radial-gradient(circle, rgba(230,140,50,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -25%; left: -5%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(140,180,80,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(230,140,50,0.14);
+    border: 1px solid rgba(230,140,50,0.3);
+    color: #e6943a;
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #f5e6d3;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+  .hero .sub {
+    color: #a89880;
+    font-size: 14px;
+  }
+  .hero .seasonal-ticker {
+    margin-top: 14px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .hero .ticker-item {
+    background: rgba(230,140,50,0.08);
+    border: 1px solid rgba(230,140,50,0.2);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #d4a86a;
+  }
+  .ticker-item strong { color: #f0c080; }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 28px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 960px) {
+    .container { grid-template-columns: 1fr; }
+  }
+
+  /* Cards */
+  .card {
+    background: #1e1814;
+    border: 1px solid #2d2218;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .card-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #2d2218;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-header .icon {
+    width: 34px; height: 34px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .card-header h2 {
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .card-body { padding: 20px; }
+
+  /* Section-specific card headers */
+  .sec-news .card-header { background: linear-gradient(135deg, #2a1e16 0%, #1e1814 100%); }
+  .sec-news .icon { background: rgba(230,100,40,0.14); color: #e66428; }
+  .sec-news .card-header h2 { color: #e66428; }
+
+  .sec-radar .card-header { background: linear-gradient(135deg, #222016 0%, #1e1814 100%); }
+  .sec-radar .icon { background: rgba(220,160,30,0.14); color: #dca01e; }
+  .sec-radar .card-header h2 { color: #dca01e; }
+
+  .sec-season .card-header { background: linear-gradient(135deg, #1e2418 0%, #1e1814 100%); }
+  .sec-season .icon { background: rgba(120,180,60,0.14); color: #78b43c; }
+  .sec-season .card-header h2 { color: #78b43c; }
+
+  .sec-cross .card-header { background: linear-gradient(135deg, #201e24 0%, #1e1814 100%); }
+  .sec-cross .icon { background: rgba(150,120,200,0.14); color: #9678c8; }
+  .sec-cross .card-header h2 { color: #9678c8; }
+
+  .sec-brain .card-header { background: linear-gradient(135deg, #241a1e 0%, #1e1814 100%); }
+  .sec-brain .icon { background: rgba(220,80,120,0.14); color: #dc5078; }
+  .sec-brain .card-header h2 { color: #dc5078; }
+
+  .sec-expo .card-header { background: linear-gradient(135deg, #1a2020 0%, #1e1814 100%); }
+  .sec-expo .icon { background: rgba(60,170,170,0.14); color: #3caaaa; }
+  .sec-expo .card-header h2 { color: #3caaaa; }
+
+  /* News items */
+  .news-item {
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #2d2218;
+  }
+  .news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .news-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #f0e6d8;
+    margin-bottom: 8px;
+  }
+  .news-body { color: #c8b898; font-size: 13.5px; margin-bottom: 8px; }
+  .relevance-tag {
+    display: inline-block;
+    background: rgba(230,140,50,0.1);
+    border-left: 3px solid #e6943a;
+    padding: 8px 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: #e6b870;
+    margin-top: 4px;
+  }
+  .relevance-tag strong { color: #f0c880; }
+
+  /* Signal tags */
+  .signal-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  .sig-green { background: rgba(100,180,60,0.12); color: #78b43c; }
+  .sig-yellow { background: rgba(220,160,30,0.12); color: #dca01e; }
+  .sig-red { background: rgba(230,100,40,0.12); color: #e66428; }
+
+  /* Radar items */
+  .radar-item {
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #2d2218;
+  }
+  .radar-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .radar-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #f0e6d8;
+    margin-bottom: 6px;
+  }
+  .radar-desc { color: #c8b898; font-size: 13.5px; margin-bottom: 6px; }
+  .radar-opp {
+    background: rgba(220,160,30,0.08);
+    border-left: 3px solid #dca01e;
+    padding: 8px 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: #e6c060;
+    margin-top: 4px;
+  }
+
+  /* Season section */
+  .season-box {
+    background: rgba(120,180,60,0.06);
+    border: 1px solid rgba(120,180,60,0.15);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .season-box h4 {
+    color: #78b43c;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .season-box .countdown {
+    background: rgba(230,100,40,0.12);
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #e66428;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .season-item { color: #c0b090; font-size: 13.5px; margin-bottom: 6px; padding-left: 8px; border-left: 2px solid rgba(120,180,60,0.3); }
+  .season-item strong { color: #e0d0b0; }
+
+  /* Cross inspiration */
+  .cross-item {
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #2d2218;
+  }
+  .cross-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .cross-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #f0e6d8;
+    margin-bottom: 4px;
+  }
+  .cross-desc { color: #c8b898; font-size: 13.5px; margin-bottom: 4px; }
+  .cross-migrate {
+    background: rgba(150,120,200,0.08);
+    border-left: 3px solid #9678c8;
+    padding: 8px 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: #c0a8e8;
+  }
+
+  /* Brainstorm card */
+  .brain-card {
+    background: linear-gradient(135deg, rgba(220,80,120,0.06), rgba(230,140,50,0.04));
+    border: 1px solid rgba(220,80,120,0.15);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .brain-card:last-child { margin-bottom: 0; }
+  .brain-card h4 {
+    color: #dc5078;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  .brain-card .brain-field {
+    margin-bottom: 6px;
+    font-size: 13.5px;
+  }
+  .brain-field .label {
+    color: #a08060;
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  .brain-field .value { color: #d0c0a0; }
+
+  /* Expo section */
+  .expo-item {
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #2d2218;
+  }
+  .expo-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .expo-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #3caaaa;
+    margin-bottom: 4px;
+  }
+  .expo-desc { color: #b0a090; font-size: 13px; margin-bottom: 4px; }
+  .expo-rel {
+    color: #8a9a80;
+    font-size: 12.5px;
+    padding-left: 8px;
+    border-left: 2px solid rgba(60,170,170,0.3);
+  }
+
+  /* Summary box */
+  .summary-box {
+    background: linear-gradient(135deg, rgba(230,140,50,0.05), rgba(140,180,80,0.04));
+    border: 1px solid rgba(230,140,50,0.15);
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 16px;
+  }
+  .summary-box h4 {
+    color: #e6943a;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .summary-box p {
+    color: #b0a080;
+    font-size: 13.5px;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: #6b5d4a;
+    font-size: 12px;
+    border-top: 1px solid #2d2218;
+    margin-top: 8px;
+  }
+  .footer a { color: #e6943a; text-decoration: none; }
+
+  /* Full width card for bottom row */
+  .full-width { grid-column: 1 / -1; }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">📅 2026年6月11日 星期四 · 芒种第7天 · 距端午还有8天</div>
+    <h1>🍲 食研日推 · 每日行业情报</h1>
+    <div class="sub">专注食材品类升级 · 让每个开品决策都有信息支撑 | 下厨房食品品牌内部参考</div>
+    <div class="seasonal-ticker">
+      <span class="ticker-item">🦞 小龙虾：低位运行</span>
+      <span class="ticker-item">🍒 东魁杨梅：6月中下旬上市</span>
+      <span class="ticker-item">🍑 阳山水蜜桃：头茬已开采</span>
+      <span class="ticker-item">🫘 端午粽子：最后8天冲刺</span>
+      <span class="ticker-item">🍈 桂味荔枝：稀缺溢价</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ===== 板块一：今日行业要闻 ===== -->
+<div class="col-half sec-news">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🔥</div>
+      <h2>一、今日行业要闻</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="news-item">
+        <div class="news-title">市场监管总局通报32批次食品抽检不合格 — 苯甲酸、脱氢乙酸、胭脂红成重灾区</div>
+        <div class="news-body">
+          6月10日，市场监管总局公布最新食品安全监督抽检结果：1678批次中32批次不合格，涉及黄豆酱油、绿豆等多个品牌，覆盖线上线下多渠道。不合格项目集中在防腐剂（苯甲酸及其钠盐、脱氢乙酸）和色素（胭脂红）超标。这是继6月1日网络餐饮新规施行后，监管落地的又一记重拳。
+        </div>
+        <div class="relevance-tag">
+          <strong>与我何干：</strong>配料表洁净度已从"品牌加分项"变成"渠道准入门槛"。32批次里不乏常见品牌——消费者对添加剂的敏感度正在从"看不懂"变成"主动查"。我们做洁净标签、短保食材的方向，正踩在这个监管+消费意识双重升级的点上。现在是"干净配料表"溢价最高的窗口期。
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-title">工信部+市场监管总局联合启动2026"吃货季"食品提质扩需 — 政策级食品消费刺激来了</div>
+        <div class="news-body">
+          6月10日，两部门联合发文开展"吃货季"食品提质扩需工作。核心动作：深化产销对接、鼓励名品企业集中展示、推动原料-加工-流通全链条融合。这是国家层面专门针对食品消费的刺激政策，信号意义极强。
+        </div>
+        <div class="relevance-tag">
+          <strong>与我何干：</strong>政策明确鼓励"品质化、特色化"食品——正好是我们的赛道。名品企业集中展示的机会、产销对接会都是渠道拓展窗口。建议关注后续各地"吃货季"的具体活动排期，争取参与产地直发/清洁标签主题展区。
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-title">量贩零食双巨头联合"反内卷" — 鸣鸣很忙×万辰共同声明、新鲜零食赛道崛起</div>
+        <div class="news-body">
+          6月9日，东海证券周报披露：鸣鸣很忙与万辰集团联合发表"共筑健康行业生态"声明，坚决反对无序内卷和不当竞争。"保质期短、现场制作、添加剂少"的新鲜零食模式热度快速攀升，成为量贩零食差异化的第二增长曲线。
+        </div>
+        <div class="relevance-tag">
+          <strong>与我何干：</strong>渠道端从"卷价格"转向"卷品质"，对供应链端的品质方是巨大利好。新鲜零食（短保+少添加）正好是下厨房的产品DNA。渠道需要差异化SKU，我们有洁净标签能力——对接时机到了。
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== 板块二：爆品雷达 ===== -->
+<div class="col-half sec-radar">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🎯</div>
+      <h2>二、爆品雷达·趋势苗头</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="radar-item">
+        <div class="radar-title">
+          <span class="signal-tag sig-yellow">🟡 起势</span> 养生粽×IP联名 · 粽子"去节令化"
+        </div>
+        <div class="radar-desc">
+          今年端午粽子不再是"甜咸之争"。成都市场出现医院研发的"养生粽"（药食同源食材入粽）、潮玩IP联名款爆发，商超自有品牌抢滩礼盒区——沃尔玛已将五芳斋挤到货架末端。粽子从节令食品向"健康友好型日常食品"进化。市场规模预计破120亿元。
+        </div>
+        <div class="radar-opp">
+          <strong>机会判断：</strong>值得关注但谨慎入场——粽子赛道极度集中（嘉兴占全国50%产能），正面竞争不划算。但"养生食材粽"（如紫薯、藜麦、杂粮基底）的小众差异化有空间，尤其是小红书种草+礼盒场景。端午后粽子日常化趋势值得长期跟踪。
+        </div>
+      </div>
+
+      <div class="radar-item">
+        <div class="radar-title">
+          <span class="signal-tag sig-yellow">🟡 起势</span> 茶饮品牌集体跨界做"茶+零食/冰淇淋" · 茶基因全品类渗透
+        </div>
+        <div class="radar-desc">
+          霸王茶姬推出13款Geelato茶味意式冰淇淋（伯牙绝弦等茶底入冰）、茉莉奶白上线"小零脆"茶感坚果薄脆、奈雪首发康普茶特调（发酵茶×肠胃功能）、蜜雪冰城冰淇淋小屋单日3万人次排队5小时。6个头部品牌共上新31款冰品。茶饮行业从"卖饮品"转向"经营门店全时段价值"。
+        </div>
+        <div class="radar-opp">
+          <strong>机会判断：</strong>高价值信号！茶风味从饮料端向食品端渗透是不可逆趋势。茉莉/乌龙/伯爵茶风味的调味料、腌料、零食在食品端几乎空白——这正是下厨房可以做"茶风味×洁净食材"跨界产品的窗口。参考：茉莉花茶腌料、乌龙茶蜜酱。
+        </div>
+      </div>
+
+      <div class="radar-item">
+        <div class="radar-title">
+          <span class="signal-tag sig-green">🟢 苗头</span> TikTok"蛋白质零食化" · 全球性趋势的中国空白
+        </div>
+        <div class="radar-desc">
+          2026年TikTok全球食品趋势：Cottage Cheese Cloud Bread（三种原料、高蛋白低碳面包）持续爆火，蛋白质从"健身补剂"向"日常零食"迁移。功能零食化（高纤维、高蛋白、益生菌）成为全平台主线。但中国食品端——高蛋白/高纤维的清洁标签零食——几乎空白。
+        </div>
+        <div class="radar-opp">
+          <strong>机会判断：</strong>超前信号但值得埋点。中国消费者对"配料表干净+高蛋白"的零食需求正在萌芽（参考SIAL趋势："不严肃的健康"成为主流）。可从小众品类试水——如高蛋白豆制品零食、鹰嘴豆脆片等，以"洁净标签+功能化"双锚点切入。
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== 板块三：时令风向 ===== -->
+<div class="full-width sec-season">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🌿</div>
+      <h2>三、时令风向·品类机会</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="season-box">
+        <h4>📅 当前时令定位</h4>
+        <p style="color:#c0b090;font-size:14px;margin-bottom:8px;">
+          芒种第7天（6.5芒种），正奔向夏至（6.21）。这是一年中最密集的时令食材窗口——荔枝、杨梅、水蜜桃、粽子、小龙虾五大品类同时在线。端午（6.19）仅剩8天，物流截单约6.15。
+        </p>
+        <span class="countdown">⏰ 倒计时：距端午物流截单还有4天 | 距夏至还有10天</span>
+      </div>
+
+      <div class="season-box">
+        <h4>🎯 即将热卖品类</h4>
+        <div class="season-item"><strong>🫘 粽子礼盒（最后冲刺）</strong> — 端午前最后一周是礼盒爆发期。养生粽+IP联名是新突破口，商超自有品牌正在抢滩传统品牌的货架。但注意物流截单在即。</div>
+        <div class="season-item"><strong>🍒 东魁杨梅（6月中下旬集中上市）</strong> — 仙居核心产区大果80-120元/斤，三门大棚版已提前50天抢鲜。杨梅是高颜值+高话题+高溢价的"三高"品类，产地直发极适合小红书种草。</div>
+        <div class="season-item"><strong>🍑 阳山水蜜桃（头茬日川6.10已开采）</strong> — 早熟品种上线，7月进入盛产期。水蜜桃是"出片率"最高的水果之一，但冷链要求极高。</div>
+        <div class="season-item"><strong>🍈 桂味荔枝（持续稀缺溢价）</strong> — 小年减产，产地收购价40元/斤，零售50-100元。稀缺=高溢价，但窗口极短（仅6月中下旬）。</div>
+      </div>
+
+      <div class="season-box">
+        <h4>🚨 开品窗口提醒</h4>
+        <div class="season-item"><strong>端午粽子</strong> — 预售窗口还有4天（物流截单6.15），如果今年没做粽子，现在进入已来不及，建议关注明年3月的前置窗口。</div>
+        <div class="season-item"><strong>小龙虾</strong> — 价格持续低位（7-9元/斤），99元6斤套餐烂大街。纯卖虾已无利润空间，差异化在"大规格虾+独家调味料包"。</div>
+        <div class="season-item"><strong>桂味荔枝</strong> — 小年窗口极短（6月中下旬），如果要做产地直发，本周必须锁定供应链。</div>
+      </div>
+
+      <div class="season-box">
+        <h4>🏔️ 产地直发机会</h4>
+        <div class="season-item"><strong>仙居东魁杨梅</strong> — 浙江台州仙居，6月中下旬，大果80-120元/斤。机会点：东魁是杨梅品类中最具"奢侈品感"的品种，适合精品礼盒+产地溯源故事。</div>
+        <div class="season-item"><strong>阳山水蜜桃</strong> — 江苏无锡阳山，日川品种已开采，7月白凤/湖景接档。机会点：水蜜桃是"颜值经济"代表，出片率极高，但冷链物流成本高（约30元/单），客单价必须100元以上。</div>
+        <div class="season-item"><strong>广东/广西桂味荔枝</strong> — 6月中下旬，产地收购价40元/斤。机会点：小年稀缺=天然溢价理由，适合"限定100份"饥饿营销+产地探访Vlog。</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== 板块四：跨界灵感 ===== -->
+<div class="col-half sec-cross">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">💡</div>
+      <h2>四、跨界灵感·创新动作</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="cross-item">
+        <div class="cross-title">🍵 新茶饮"茶特调+"全品类作战 — 从一杯茶到一种生活方式</div>
+        <div class="cross-desc">
+          霸王茶姬茶味Gelato、茉莉奶白茶感坚果零食、奈雪康普茶功能特调、蜜雪冰城冰淇淋单日3万人次——茶饮品牌正在完成从"卖饮品"到"经营全时段价值"的战略跃迁。核心逻辑：用茶基因做品类延伸，不脱离品牌DNA。
+        </div>
+        <div class="cross-migrate">
+          <strong>迁移可能：</strong>借鉴"茶基因全品类渗透"逻辑——如果下厨房的核心DNA是"食材升级+洁净标签"，那可以在调味料、即食零食、腌料等品类上做"食材基因延伸"。比如：用阳雀湖辣椒做辣椒酱→用樟树港辣椒做低温烘干辣椒酥→用当季杨梅做零添加杨梅干。一套供应链，多个SKU。
+        </div>
+      </div>
+
+      <div class="cross-item">
+        <div class="cross-title">🏪 商超自有品牌围剿传统品牌 — 山姆/沃尔玛/盒马在端午战场上的降维打击</div>
+        <div class="cross-desc">
+          沃尔玛将粽子龙头五芳斋挤到货架末端，自有品牌占据黄金位置。商超正在用"渠道霸权+价格优势"抢夺每个节令的品类话语权。这不止是粽子——每个节令品类都在重复这个剧本。
+        </div>
+        <div class="cross-migrate">
+          <strong>迁移可能：</strong>商超自有品牌强在"渠道+价格"，弱在"产品故事+情感连接"。我们的机会恰恰在于商超做不到的事：产地溯源故事、PM选品人设、小批量精品化。做商超做不了的"小而美"，而不是和商超拼价格。
+        </div>
+      </div>
+
+      <div class="cross-item">
+        <div class="cross-title">🧪 SIAL趋势验证：药食同源从"概念"到"量化" — 健康不再是口号，是配方表里的数字</div>
+        <div class="cross-desc">
+          2026 SIAL西雅展核心趋势：清洁标签从卖点变成标配，药食同源进入"可量化"阶段——不再说"添加了枸杞"，而是说"花青素含量XXmg/100g"。天津"乡野人家"减盐75%轻盐鸭蛋已通过SGS 213项检测，出口美国、新西兰。
+        </div>
+        <div class="cross-migrate">
+          <strong>迁移可能：</strong>这是直接可落地的产品开发思路。做任何"健康向"产品时，不要只停留在概念层——要用可量化的指标说话。比如：如果做杨梅干，标注花青素含量；如果做低钠调味料，标注减盐百分比。量化=信任=溢价。
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== 板块五：脑暴时刻 ===== -->
+<div class="col-half sec-brain">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🧪</div>
+      <h2>五、脑暴时刻·融合创意</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="brain-card">
+        <h4>🍵 创意一：「茶瘾小食盒」— 茶风味×洁净零食的跨界组合</h4>
+        <div class="brain-field"><span class="label">一句话描述：</span><span class="value">一套以经典茶底（茉莉花/乌龙/伯爵）为风味线索的洁净标签零食组合——茉莉花茶腌料鸡胸肉干+桂花乌龙蜜酱+伯爵茶坚果脆。</span></div>
+        <div class="brain-field"><span class="label">为什么是现在：</span><span class="value">茶饮品牌集体跨界验证了"茶基因渗透力"（茉莉奶白的小零脆、霸王茶姬的茶拉朵）；TikTok蛋白质零食化趋势表明消费者要"好吃+健康"；洁净标签正从加分项变标配。</span></div>
+        <div class="brain-field"><span class="label">差异化锚点：</span><span class="value">抖音上茶味零食多是"茶粉调味"的工业品，配料表一长串。我们做"真茶叶+真食材+短配料"——用真实茉莉花茶腌渍、用真桂花入酱、用真伯爵茶调坚果。配料表干净是核心竞争力。</span></div>
+        <div class="brain-field"><span class="label">可行性初判：</span><span class="value">供应链难度中等（茶底和蜂蜜供应链成熟，坚果/鸡胸肉需要找OEM）。渠道适配抖音达播（"茶瘾少女"人群精准）。客单价可做到99-129元（3件套），符合百元以上门槛。</span></div>
+      </div>
+
+      <div class="brain-card">
+        <h4>🍒 创意二：「东魁十二时辰」— 从枝头到舌尖24小时极鲜体验</h4>
+        <div class="brain-field"><span class="label">一句话描述：</span><span class="value">仙居东魁杨梅产地直发，配"PM选品笔记"溯源卡+花青素含量检测报告+杨梅食用指南（冰镇/泡酒/做酱三吃法），用产品经理的方式卖一颗杨梅。</span></div>
+        <div class="brain-field"><span class="label">为什么是现在：</span><span class="value">东魁6月中下旬集中上市（窗口仅2-3周）；大果80-120元/斤的客单价天然适配精品赛道；SIAL趋势验证"可量化健康"是信任货币（标注花青素含量）；小红书"杨梅"话题每年6月流量峰值。</span></div>
+        <div class="brain-field"><span class="label">差异化锚点：</span><span class="value">竞品卖杨梅只说"大甜爆汁"，我们卖"一颗PM选过的杨梅"——配检测报告+产地GPS坐标+采摘时间戳+三吃法指南。把选品过程产品化，让消费者感觉到"这颗杨梅是有人帮我把过关的"。</span></div>
+        <div class="brain-field"><span class="label">可行性初判：</span><span class="value">供应链需本周锁定（窗口极短），冷链物流单票成本约30元。建议做限量200份预售（198元/2斤礼盒装），用稀缺性对冲物流成本。内容端配合"去仙居的第X小时"产地Vlog系列。</span></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== 板块六：展会速递 ===== -->
+<div class="full-width sec-expo">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🏬</div>
+      <h2>六、展会速递·渠道上新</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="expo-item">
+        <div class="expo-title">🎪 HNC健康营养展（第十六届中国国际健康产品展览会）</div>
+        <div class="expo-desc">
+          6月15-17日 · 上海国家会展中心 | 同期：健康天然原料展+食品配料展+淀粉展四展联动。
+          <br><strong>看点：</strong>意大利国家展团再度集结（"科学驱动+意式匠心"），宝恒集团"酶菌肽"技术亮相。功能性食品配料、天然营养品、药食同源量化产品集中展示。
+        </div>
+        <div class="expo-rel"><strong>与我何干：</strong>这是SIAL之后最直接的功能性食材/配料展。如果要做"功能量化"产品（标注花青素、标注减盐%），这里是找原料供应商和技术方案的最佳场合。还剩4天开展，值得关注会后报告。</div>
+      </div>
+
+      <div class="expo-item">
+        <div class="expo-title">🎪 中食博·郑州食品博览会</div>
+        <div class="expo-desc">
+          7月29-31日 · 郑州国际会展中心 | 覆盖食品全链路：创新新品→经典爆品→供应链配套→品牌营销。
+        </div>
+        <div class="expo-rel"><strong>与我何干：</strong>定位"掘金下半年食品万亿市场"，适合找OEM/ODM代工厂和看下半年品类风向。郑州是中部食品产业聚集地，供应链资源密集。</div>
+      </div>
+
+      <div class="expo-item">
+        <div class="expo-title">🎪 晋江食交会（第九届海峡两岸食品交易会）</div>
+        <div class="expo-desc">
+          7月 · 晋江国际会展中心 | 8万㎡、8大主题馆、1600家展商。闽台特色食品+休闲零食出口导向型展会。
+        </div>
+        <div class="expo-rel"><strong>与我何干：</strong>如果考虑做休闲零食线（茶味坚果、洁净标签零食），晋江是中国休闲零食产业链最完整的地方之一，适合找代工资源。</div>
+      </div>
+
+      <div class="expo-item">
+        <div class="expo-title">🛒 渠道上新速报</div>
+        <div class="expo-desc">
+          <strong>沃尔玛/物美：</strong>端午礼盒区自有品牌占据黄金货架，五芳斋被挤到末端——渠道自有品牌攻势持续升级。
+          <br><strong>喜茶：</strong>海外首家茶坊落地纽约曼哈顿，厦门"喜拉朵实验室"开业——茶饮出海从"卖产品"到"输出业态"。
+          <br><strong>全家/罗森/711：</strong>夏季冰品大战升级，"冷热双萃"技术成便利店咖啡新标配。
+          <br><strong>朴朴超市：</strong>面临盒马/小象双重挤压，纯前置仓模式弊端凸显，正寻求差异化。
+        </div>
+      </div>
+
+      <div class="expo-item">
+        <div class="expo-title">🌏 海外信号</div>
+        <div class="expo-desc">
+          <strong>日本：</strong>便利店夏季甜品风潮持续，舒芙蕾布丁（320日元）等"200-300日元高颜值甜品"霸榜。日本6月1078种食品涨价（延续趋势）。
+          <br><strong>韩国：</strong>夏季清凉营销提前开打，各大食品企业5月已上架冰饮/凉感食品，较往年提前2-3周。
+          <br><strong>TikTok全球：</strong>"食品挑战"类内容搜索热度持续高于"病毒零食"，蛋白质零食化、发酵食品、高端冷冻餐食三大方向领跑。
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Summary -->
+<div class="full-width">
+  <div class="summary-box">
+    <h4>📌 今日核心信号总结</h4>
+    <p>
+      <strong>监管加压 × 政策利好 × 渠道转型 = 品质供应链方的黄金窗口。</strong>
+      今天三条主线交汇：①市场监管总局32批次不合格通报 + 6.1网络餐饮新规，<strong>配料表洁净从加分项变保命项</strong>；
+      ②工信部启动"吃货季"食品提质扩需，品质化食品有政策背书；
+      ③量贩零食反内卷 + 商超自有品牌围剿传统品牌，渠道在主动找"能做出差异化品质产品"的供应商。
+      下厨房的核心竞争力（洁净标签+食材升级+PM选品逻辑）正踩在这三股力量的交汇点上。
+      <br><br>
+      <strong>本周行动建议：</strong>①东魁杨梅产地直发供应链本周锁定（窗口仅2-3周）；②关注6.15-17上海HNC展会后报告，找功能性配料资源；③着手研究"茶风味×洁净零食"产品概念验证。
+    </p>
+  </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>⚠️ 以上内容由AI情报分析师自动聚合生成，信息来源于公开渠道，仅供下厨房食品品牌内部参考，不构成投资建议</p>
+  <p>信源：市场监管总局 / 工信部 / 东海证券 / SIAL西雅展 / Foodaily / 蝉妈妈 / 一亩田 / 抖音 / 小红书 / 新浪财经 / 羊城晚报 / 华夏时报 / TikTok / Innova / 日本食品新闻 等</p>
+  <p style="margin-top:8px;">Generated by 食研日推 · 2026-06-11 09:00 CST</p>
+</div>
+
+</body>
+</html>
