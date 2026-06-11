@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日双专栏情报 | 2026-06-11</title>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --card-bg: #13131a;
+    --card-border: #1e1e2e;
+    --text-primary: #e8e8ed;
+    --text-secondary: #8b8b9e;
+    --accent-red: #ff4757;
+    --accent-blue: #4facfe;
+    --accent-green: #00d2a0;
+    --accent-purple: #a855f7;
+    --accent-orange: #ff8c42;
+    --accent-yellow: #ffd93d;
+    --accent-pink: #ff6b9d;
+    --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    line-height: 1.7;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 40px 20px;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, rgba(102,126,234,0.15), rgba(118,75,162,0.15));
+    border-radius: 20px;
+    border: 1px solid rgba(102,126,234,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(102,126,234,0.08) 0%, transparent 70%);
+    animation: pulse 8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+  .header h1 {
+    font-size: 2.2em;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .header .date {
+    font-size: 1.1em;
+    color: var(--text-secondary);
+    position: relative;
+  }
+  .header .subtitle {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+    margin-top: 8px;
+    position: relative;
+  }
+  .columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 30px;
+  }
+  @media (max-width: 900px) {
+    .columns { grid-template-columns: 1fr; }
+  }
+  .column {
+    background: var(--card-bg);
+    border-radius: 16px;
+    border: 1px solid var(--card-border);
+    overflow: hidden;
+  }
+  .column-header {
+    padding: 20px 24px;
+    font-size: 1.3em;
+    font-weight: 700;
+    border-bottom: 1px solid var(--card-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .column-header.red { background: linear-gradient(135deg, rgba(255,71,87,0.12), rgba(255,71,87,0.04)); }
+  .column-header.blue { background: linear-gradient(135deg, rgba(79,172,254,0.12), rgba(79,172,254,0.04)); }
+  .column-body { padding: 20px 24px; }
+  .section-title {
+    font-size: 1.15em;
+    font-weight: 700;
+    margin: 24px 0 12px 0;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent-blue);
+  }
+  .section-title:first-child { margin-top: 0; }
+  .section-title.red { border-left-color: var(--accent-red); }
+  .section-title.purple { border-left-color: var(--accent-purple); }
+  .section-title.green { border-left-color: var(--accent-green); }
+  .section-title.orange { border-left-color: var(--accent-orange); }
+  .section-title.yellow { border-left-color: var(--accent-yellow); }
+  .section-title.pink { border-left-color: var(--accent-pink); }
+  .core-wind {
+    background: linear-gradient(135deg, rgba(255,71,87,0.1), rgba(255,140,66,0.08));
+    border: 1px solid rgba(255,71,87,0.2);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    font-size: 1.05em;
+    line-height: 1.8;
+  }
+  .core-wind strong { color: var(--accent-red); }
+  .news-item {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    transition: border-color 0.3s;
+  }
+  .news-item:hover { border-color: rgba(255,255,255,0.1); }
+  .news-item h3 {
+    font-size: 1.05em;
+    margin-bottom: 10px;
+    color: var(--accent-blue);
+  }
+  .news-item .label {
+    display: inline-block;
+    font-size: 0.78em;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+  }
+  .label.content { background: rgba(79,172,254,0.15); color: var(--accent-blue); }
+  .label.insight { background: rgba(168,85,247,0.15); color: var(--accent-purple); }
+  .label.industry { background: rgba(0,210,160,0.15); color: var(--accent-green); }
+  .news-item p { margin: 6px 0; color: var(--text-secondary); font-size: 0.92em; }
+  .news-item p strong { color: var(--text-primary); }
+  .summary-box {
+    background: linear-gradient(135deg, rgba(255,217,61,0.08), rgba(255,140,66,0.06));
+    border: 1px solid rgba(255,217,61,0.2);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-top: 20px;
+  }
+  .summary-box h3 {
+    color: var(--accent-yellow);
+    font-size: 1.05em;
+    margin-bottom: 8px;
+  }
+  .ai-section {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    transition: border-color 0.3s;
+  }
+  .ai-section:hover { border-color: rgba(79,172,254,0.2); }
+  .ai-section h3 {
+    font-size: 1.05em;
+    margin-bottom: 10px;
+  }
+  .ai-section h3 .emoji { margin-right: 6px; }
+  .ai-item {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .ai-item:last-child { border-bottom: none; }
+  .ai-item h4 {
+    font-size: 0.98em;
+    margin-bottom: 6px;
+    color: var(--accent-orange);
+  }
+  .ai-item p { margin: 4px 0; color: var(--text-secondary); font-size: 0.9em; }
+  .ai-item p strong { color: var(--text-primary); }
+  .github-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  @media (max-width: 700px) {
+    .github-grid { grid-template-columns: 1fr; }
+  }
+  .github-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    padding: 12px 14px;
+    transition: transform 0.2s, border-color 0.3s;
+  }
+  .github-card:hover { transform: translateY(-2px); border-color: rgba(79,172,254,0.3); }
+  .github-card .name {
+    font-weight: 700;
+    font-size: 0.92em;
+    color: var(--accent-blue);
+    margin-bottom: 4px;
+  }
+  .github-card .desc {
+    font-size: 0.82em;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .github-card .meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78em;
+    color: var(--text-secondary);
+  }
+  .github-card .stars { color: var(--accent-yellow); font-weight: 600; }
+  .dict-entry {
+    background: rgba(168,85,247,0.06);
+    border: 1px solid rgba(168,85,247,0.15);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+  }
+  .dict-entry .term {
+    font-weight: 700;
+    color: var(--accent-purple);
+    font-size: 0.95em;
+  }
+  .dict-entry .plain {
+    color: var(--accent-green);
+    font-size: 0.9em;
+    margin-top: 4px;
+  }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+  .tag {
+    font-size: 0.75em;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--text-secondary);
+  }
+  .tag.hot { background: rgba(255,71,87,0.12); border-color: rgba(255,71,87,0.2); color: var(--accent-red); }
+  .tag.new { background: rgba(0,210,160,0.12); border-color: rgba(0,210,160,0.2); color: var(--accent-green); }
+  .footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-secondary);
+    font-size: 0.8em;
+    border-top: 1px solid var(--card-border);
+    margin-top: 30px;
+  }
+  .ph-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  @media (max-width: 700px) {
+    .ph-grid { grid-template-columns: 1fr; }
+  }
+  .ph-card {
+    background: rgba(255,140,66,0.04);
+    border: 1px solid rgba(255,140,66,0.12);
+    border-radius: 10px;
+    padding: 10px 14px;
+  }
+  .ph-card .name { font-weight: 700; color: var(--accent-orange); font-size: 0.92em; }
+  .ph-card .votes { color: var(--accent-yellow); font-size: 0.85em; margin-top: 4px; }
+  .highlight-num {
+    font-size: 1.1em;
+    font-weight: 700;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--card-border), transparent);
+    margin: 20px 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🔭 每日双专栏情报</h1>
+  <div class="date">📅 2026年6月11日 · 星期三</div>
+  <div class="subtitle">新闻联播风向标解读 × AI生产力黑科技与套利指南</div>
+</div>
+
+<div class="columns">
+
+<!-- ==================== 专栏一：新闻联播 ==================== -->
+<div class="column">
+  <div class="column-header red">
+    📺 专栏一：新闻联播每日简报
+    <span style="font-size:0.6em;color:var(--text-secondary);margin-left:auto;">风向标解读版</span>
+  </div>
+  <div class="column-body">
+
+    <div class="core-wind">
+      <strong>核心风向：</strong>农业现代化提速定调"十五五"开局，期货成交额暴增40%+汽车出口延续高增，经济数据释放结构性回暖信号——但中东局势升级（美伊互击）构成外部风险。
+    </div>
+
+    <div class="section-title red">一、分项解读</div>
+
+    <div class="news-item">
+      <h3>1. 【新思想引领新征程】提升农业综合生产能力 加快农业现代化步伐</h3>
+      <p><span class="label content">新闻联播说了什么</span>习近平总书记指出"强国必先强农，农强方能国强"，"十五五"开局之年，我国把提升农业综合生产能力和质量效益作为主攻方向，加快农业现代化步伐。今年"三夏"呈现出高质高效的新变化。</p>
+      <p><span class="label insight">风向标解读</span>头条定调农业现代化，是"十五五"规划核心抓手。从"三夏"高质高效信号看，智慧农业、农机装备、种业振兴是政策重点投入方向。农业不再只是"保供给"，而是向"高质量+科技驱动"转型。</p>
+      <p><span class="label industry">行业影响</span>利好：智慧农业（无人机植保/精准灌溉）、农机装备（智能收割机）、种业龙头、农业大数据平台。期货品种：豆粕、玉米等农产品可能因增产预期承压。</p>
+    </div>
+
+    <div class="news-item">
+      <h3>2. 李希在河南调研</h3>
+      <p><span class="label content">新闻联播说了什么</span>中共中央政治局常委、中央纪委书记李希在河南省进行调研。</p>
+      <p><span class="label insight">风向标解读</span>纪委书记外出调研通常关联反腐败或作风建设重点。河南是农业大省和粮食核心区，结合头条"农业现代化"主题，调研大概率聚焦基层治理与涉农腐败问题。</p>
+      <p><span class="label industry">行业影响</span>关注河南本地基建/农业项目合规性审查，可能影响涉农补贴发放节奏和招投标流程。</p>
+    </div>
+
+    <div class="news-item">
+      <h3>3. 树立和践行正确政绩观学习教育 · 4个中央指导组完成进驻</h3>
+      <p><span class="label content">新闻联播说了什么</span>树立和践行正确政绩观学习教育继续推进，<strong>4个</strong>中央指导组已完成进驻。</p>
+      <p><span class="label insight">风向标解读</span>"正确政绩观"是2026年作风建设关键词，4个中央指导组进驻意味着从"学习"转向"督导"。关注后续是否有地方官员因"形象工程""面子工程"被通报。</p>
+      <p><span class="label industry">行业影响</span>地方基建项目审批可能趋严，特别是无收益的"景观工程""地标建筑"类项目。但民生类基建（水利/电网/交通）不受影响。</p>
+    </div>
+
+    <div class="news-item">
+      <h3>4. 5月CPI总体平稳 · PPI继续上涨</h3>
+      <p><span class="label content">新闻联播说了什么</span>5月居民消费价格指数（CPI）总体平稳，工业生产者出厂价格指数（PPI）继续上涨。</p>
+      <p><span class="label insight">风向标解读</span>CPI平稳+PPI上涨 = "上游通胀、下游通缩"格局仍在延续。工业企业利润空间受挤压，但PPI上涨也意味着原材料需求不弱，经济动能仍在。</p>
+      <p><span class="label industry">行业影响</span>上游资源品（煤炭/钢铁/有色）受益于PPI上涨；下游消费品企业利润承压。货币政策短期内大概率维持稳健，降息概率降低。</p>
+    </div>
+
+    <div class="news-item">
+      <h3>5. 5月汽车出口延续快速增长态势</h3>
+      <p><span class="label content">新闻联播说了什么</span>5月汽车出口延续快速增长态势。</p>
+      <p><span class="label insight">风向标解读</span>汽车出口是中国制造"走出去"的核心引擎。2025年中国汽车出口已超500万辆，2026年持续高增说明海外市场份额仍在扩大，尤其是新能源车和商用车。</p>
+      <p><span class="label industry">行业影响</span>利好：整车出口龙头（比亚迪/上汽/奇瑞）、汽车零部件出口商、滚装船运输。风险：贸易壁垒升级（欧盟关税/美国限制）。</p>
+    </div>
+
+    <div class="news-item">
+      <h3>6. 【一线调研】新型电网筑牢能源大国绿色转型基石</h3>
+      <p><span class="label content">新闻联播说了什么</span>一线调研聚焦新型电网在能源绿色转型中的基础性作用。</p>
+      <p><span class="label insight">风向标解读</span>新型电网 = 特高压+智能电网+储能+虚拟电厂。这是"双碳"目标的基础设施层，政策确定性和资金投入极高。</p>
+      <p><span class="label industry">行业影响</span>利好：特高压设备（国电南瑞/许继电气）、储能（宁德时代/阳光电源）、智能电表/配网自动化。电网投资是2026年基建投资的核心增量。</p>
+    </div>
+
+    <div class="news-item">
+      <h3>7. 1-5月全国期货市场累计成交额同比增长40.13%</h3>
+      <p><span class="label content">新闻联播说了什么</span>1-5月全国期货市场累计成交额同比增长<span class="highlight-num">40.13%</span>。</p>
+      <p><span class="label insight">风向标解读</span>40%+增速极其罕见！说明市场波动大、套保需求旺盛、投机活跃度回升。期货市场成交额是"实体经济温度计"——波动越大，企业越需要套期保值。</p>
+      <p><span class="label industry">行业影响</span>利好：期货公司（永安期货/中信期货）、金融IT系统供应商。商品期货高成交额也暗示大宗商品价格波动剧烈，需关注有色金属、能化品种。</p>
+    </div>
+
+    <div class="news-item">
+      <h3>8. 前5个月全国水路客运量达1.2亿人次</h3>
+      <p><span class="label content">新闻联播说了什么</span>前5个月全国水路客运量达到<span class="highlight-num">1.2亿人次</span>。</p>
+      <p><span class="label insight">风向标解读</span>水路客运主要是内河游轮和海岛旅游，1.2亿人次说明旅游消费持续复苏。水上旅游是"文旅融合"的重要载体。</p>
+      <p><span class="label industry">行业影响</span>利好：水上旅游运营商、游轮制造、港口配套服务。关注三峡/珠江/漓江等热门航线。</p>
+    </div>
+
+    <div class="news-item">
+      <h3>9-10. 《2026中国海洋经济发展指数》发布 · "全民反诈"集中宣传月启动</h3>
+      <p><span class="label content">新闻联播说了什么</span>《2026中国海洋经济发展指数》发布；"全民反诈在行动"集中宣传月活动启动。</p>
+      <p><span class="label insight">风向标解读</span>海洋经济指数发布是"海洋强国"战略推进的量化标志；反诈宣传月是社会治理+数字安全的结合——背后是AI反诈/数字身份验证的巨大市场。</p>
+      <p><span class="label industry">行业影响</span>海洋经济利好：海洋工程装备、深海养殖、海上风电。反诈利好：AI安全、数字身份认证、金融科技合规。</p>
+    </div>
+
+    <div class="news-item">
+      <h3>11. 美称打击伊朗防空系统 · 伊朗称打击美军基地</h3>
+      <p><span class="label content">新闻联播说了什么</span>美国声称打击了伊朗防空系统等目标，伊朗声称打击了美军基地。</p>
+      <p><span class="label insight">风向标解读</span>美伊军事对抗升级！这是中东局势重大转折点——从"代理人战争"升级为"直接军事交锋"。此前6月9日双方曾宣布"暂停袭击对方"，如今互相打击意味着停火破裂。</p>
+      <p><span class="label industry">行业影响</span>利空：全球供应链（特别是霍尔木兹海峡油运）、航空业。利好：原油（可能短期飙升）、黄金（避险）、军工、航运保险。A股石油板块和黄金板块需密切关注。</p>
+    </div>
+
+    <div class="news-item">
+      <h3>12. 以色列空袭黎巴嫩南部提尔地区 · 刚果（金）埃博拉598例</h3>
+      <p><span class="label content">新闻联播说了什么</span>以色列空袭黎巴嫩南部提尔地区；刚果（金）埃博拉确诊病例升至<span class="highlight-num">598例</span>。</p>
+      <p><span class="label insight">风向标解读</span>中东双线冲突（美伊+以黎）叠加非洲公共卫生危机，全球地缘风险升至2024年以来最高水平。埃博拉598例已接近大流行警戒线。</p>
+      <p><span class="label industry">行业影响</span>地缘风险利好：黄金/原油/军工/疫苗。关注WHO对埃博拉的响应级别升级，可能带动医药冷链和检测概念。</p>
+    </div>
+
+    <div class="summary-box">
+      <h3>🎯 总结风向标</h3>
+      <p>今日新闻联播释放<strong>三重信号</strong>：</p>
+      <p><strong>1. 内政稳增长</strong>：农业现代化定调+期货成交额暴增40%+汽车出口高增+新型电网投资 → 经济结构性回暖确定，政策持续发力基建和农业。</p>
+      <p><strong>2. 改革深化</strong>：正确政绩观4个指导组进驻 → 地方投资从"大干快上"转向"精准有效"，短期审批收紧，长期利好高质量发展。</p>
+      <p><strong>3. 外部风险急升</strong>：美伊直接军事交锋+以黎空袭+埃博拉598例 → 地缘风险升级至近两年高位，原油/黄金避险配置优先。</p>
+      <p><strong>投资建议</strong>：短期防守为主（黄金+高股息），中期逢低布局电网投资链+汽车出口链，关注农业现代化主题ETF。</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== 专栏二：AI生产力情报 ==================== -->
+<div class="column">
+  <div class="column-header blue">
+    🤖 专栏二：AI生产力情报
+    <span style="font-size:0.6em;color:var(--text-secondary);margin-left:auto;">黑科技与套利指南</span>
+  </div>
+  <div class="column-body">
+
+    <div class="section-title orange">🚀 【顶级装备库更新】</div>
+
+    <div class="ai-section">
+      <h3><span class="emoji">⚡</span>Claude Fable 5 / Mythos 5 双模型齐发</h3>
+      <div class="ai-item">
+        <h4>Anthropic 6月9日放出"核弹级"双发</h4>
+        <p><strong>核心黑科技</strong>：Fable 5 是首个面向公众的 Mythos 级模型，SWE-Bench Pro <span class="highlight-num">80.3%</span>（史上首次破80%），FrontierCode 29.3%（是Opus 4.8的两倍、GPT-5.5的五倍）。Mythos 5 专攻网络安全，ExploitBench 达78%。关键创新：Fable 5 在高风险话题自动回退至Opus 4.8，至少95%会话由Fable自身完成——"高能力+强护栏"组合策略。</p>
+        <p><strong>实测炸裂</strong>：Stripe 5000万行Ruby代码库，Fable 5 一天完成原需两个多月的迁移工作！极简agent框架通关了GBA《宝可梦 火红》。Anthropic投入超1000小时红队测试，未发现一个可用越狱方案。</p>
+        <p><strong>实战价值</strong>：①大型重构/跨文件迁移/端到端agent流程——任务越长越复杂，Fable 5 领先幅度越大 ②定价$10/$50（Opus 4.8两倍），6月22日前Pro/Max免费 ③⚠️注意：Anthropic新规要求所有流量保留30天，即使企业此前签了零留存协议！</p>
+      </div>
+      <div class="ai-item">
+        <h4>GPT-5.6 紧急内测，精准狙击 Mythos</h4>
+        <p><strong>核心黑科技</strong>：OpenAI内部代号kepler/kindle，kindle-alpha已被选为发布候选版(RC)。最大亮点是<strong>前端/UI生成能力大幅提升</strong>——不需要复杂提示词就能产出精美界面。推理/编码/agentic能力也有改善。</p>
+        <p><strong>实测分歧</strong>：网友mark_k称"GPT-5.6在多个agentic coding基准上击败Mythos"；但网友Leo实测认为"kindle相比kepler反而退步，会被Mythos轻松击败"。内部版本不稳定，OpenAI可能弃用kindle候选版。</p>
+        <p><strong>实战价值</strong>：预计6月晚些时候正式发布。如果能力与Mythos持平但价格更低，在真实采用率上可能扳回一城。当前真正交出卷子的只有Anthropic一家——OpenAI和Google都在"路上"。</p>
+      </div>
+      <div class="ai-item">
+        <h4>last30days-skill — 跨平台AI研究摘要神器</h4>
+        <p><strong>核心黑科技</strong>：可跨Reddit、X、YouTube、HN、Polymarket和网页研究任意主题，生成有依据的综合摘要。今日新增<span class="highlight-num">2,535⭐</span>登顶GitHub Trending。</p>
+        <p><strong>实战价值</strong>：完美适配"日推情报"场景——用它替代手工多源搜索，自动汇总跨平台热点，5分钟生成行业摘要。搭配小红书选品，输入品类关键词即可抓取全网讨论热度。</p>
+      </div>
+    </div>
+
+    <div class="section-title purple">🤖 【Agent 战场情报】</div>
+
+    <div class="ai-section">
+      <div class="ai-item">
+        <h4>Microsoft Agent Framework 1.0 GA — Build 2026 四大更新</h4>
+        <p><strong>动态</strong>：微软Agent Framework正式GA，融合AutoGen+Semantic Kernel为统一平台。Build 2026发布四大核心能力：</p>
+        <p>①<strong>Agent Harness</strong>：生产级模式内置化——自动上下文压缩、文件记忆、TodoProvider、规划/执行双模式、后台子Agent扇出编排。一行代码把任何chat client变成全功能智能体套件。</p>
+        <p>②<strong>Foundry Hosted Agents</strong>：从本地到生产无缝部署，支持缩放到零+保留文件系统恢复+每会话VM隔离沙箱。</p>
+        <p>③<strong>CodeAct</strong>：让模型写Python程序一次调用所有工具（在Hyperlight微VM沙箱中运行），比传统串行调用<strong>快52.4%+省63.9% Token</strong>！</p>
+        <p>④<strong>Handoff多Agent编排</strong>：声明式定义Agent拓扑，框架自动注入交接工具，Agent自行决定路由。</p>
+        <p><strong>落地场景</strong>：①用Agent Harness构建"小红书选品Agent"——规划模式拆解选品任务，执行模式调用last30days-skill+WebSearch ②用CodeAct优化日推生成——把多源搜索并行化，生成速度翻倍 ③用Handoff搭建"经理Agent审核员工Agent"的工作流——经理审核质量，不合格打回重做。</p>
+      </div>
+      <div class="ai-item">
+        <h4>OpenClaw 2026.6.1 — Agent原生支持Windows节点</h4>
+        <p><strong>动态</strong>：OpenClaw发布2026.6.1版本，首次引入Windows节点原生支持，Agent可直接访问Windows屏幕、摄像头等设备。</p>
+        <p><strong>解读</strong>：这是Agent从"云端工具"进化为"桌面同事"的关键一步——Agent终于能在本地Windows环境直接操作，不用再绕道WSL或远程桌面。</p>
+        <p><strong>落地场景</strong>：配合日推生成流程，让Agent直接在Windows桌面打开浏览器/编辑器完成全流程——从搜索→生成→保存→Git推送全自动。</p>
+      </div>
+      <div class="ai-item">
+        <h4>百度智能云 × FluxA — Agent经济全球支付基础设施</h4>
+        <p><strong>动态</strong>：百度智能云与FluxA达成战略合作，共建Agent经济的全球支付基础设施（基于OPC协议）。</p>
+        <p><strong>解读</strong>：Agent要赚钱，先要有"收银台"。百度+FluxA做的是Agent经济的基础设施层——让Agent之间的服务调用能自动计费和结算。这是"Agent即服务"商业化的前提。</p>
+        <p><strong>落地场景</strong>：未来你的选品Agent可以按次收费服务其他小红书商家——Agent自动完成选品→自动计费→自动结算。</p>
+      </div>
+    </div>
+
+    <div class="section-title green">🖊 【AI新玩法，新概念】</div>
+
+    <div class="ai-section">
+      <div class="ai-item">
+        <h4>Anthropic CEO Dario Amodei 提出"高能力+强护栏"双轨模型策略</h4>
+        <p><strong>动态</strong>：Fable 5/Mythos 5同日发布，共享底座但安全策略不同。Fable面向公众（高风险自动降级），Mythos面向特定机构（保留全部能力）。Anthropic在发布前数日公开警告"AI正变得过于危险"，随后放出最强模型——看似矛盾实为精心设计。</p>
+        <p><strong>解读</strong>："双轨策略"是AI安全的新范式——不限制能力发展，但在不同场景用不同"安全档位"。类似汽车的"运动模式"和"安全模式"切换。这很可能成为行业标准做法。</p>
+        <p><strong>落地场景</strong>：做Agent产品时，也可以设计"双轨模式"——普通用户用Fable级（有护栏），专业用户用Mythos级（无限制），按需付费升级。</p>
+      </div>
+      <div class="ai-item">
+        <h4>DeepSeek开招"土木老哥" — 自建GW级数据中心</h4>
+        <p><strong>动态</strong>：DeepSeek开始大规模招聘土木工程人才，自建GW（吉瓦）级数据中心。这是AI公司从"租算力"转向"自建算力"的标志性事件。</p>
+        <p><strong>解读</strong>：当AI公司开始招土木工程师，说明算力需求已经大到"必须自己建数据中心"的程度。DeepSeek的GW级规划意味着其模型训练规模可能比公开信息大一个数量级。</p>
+        <p><strong>落地场景</strong>：算力基建概念值得关注——液冷/供电/光模块等配套产业将受益。对个人而言，模型降价趋势持续，越晚用AI越便宜。</p>
+      </div>
+    </div>
+
+    <div class="section-title yellow">💰 【AI 套利/变现线索】</div>
+
+    <div class="ai-section">
+      <div class="ai-item">
+        <h4>热点：618首个"AI原生大促元年" — AI重塑电商全链路</h4>
+        <p><strong>热点</strong>：2026年618被业内称为"首个AI原生大促元年"。各大电商平台集体按下"简化键"，从跨店满减的复杂算式到"官方立减""一件直降"，AI驱动的智能定价和个性化推荐全面替代传统运营手段。</p>
+        <p><strong>复刻建议</strong>：①用Fable 5/Mythos 5的编码能力快速搭建"AI选品+定价+文案"一体化工具，卖给中小电商 ②用last30days-skill监控618期间各品类爆款讨论热度，提前预判爆品 ③做"AI帮砍价/帮比价"小红书内容——帮用户选最便宜的，科普选品型内容天然有传播力</p>
+      </div>
+      <div class="ai-item">
+        <h4>热点：华尔街精英排队付费学AI — 一节课收17万</h4>
+        <p><strong>热点</strong>：据量子位报道，有人教华尔街精英用AI，一节课收费17万，排队付费。核心卖点是"让传统金融从业者快速掌握AI工具提升效率"。</p>
+        <p><strong>复刻建议</strong>：①做"AI+垂直行业"培训——不教通用AI，教具体场景（如"AI+食品PM选品""AI+电商运营"） ②结合小红书账号做"AI选品方法论"付费社群——从免费科普引流到付费深度教学 ③定价策略：初级免费（笔记引流）→ 中级99元（方法论课程）→ 高级9999元（1v1陪跑）</p>
+      </div>
+      <div class="ai-item">
+        <h4>热点：NVIDIA 4亿美元收购Kumo AI — 从卖算力到懂数据</h4>
+        <p><strong>热点</strong>：NVIDIA于6月3日以超4亿美元收购预测性AI初创Kumo AI。Kumo专注于帮助企业从结构化数据中做预测，是NVIDIA从"算力供应商"转型"全栈AI公司"的关键一步。</p>
+        <p><strong>复刻建议</strong>：①NVIDIA买Kumo说明"预测性AI"是下一个商业化爆发点——把AI用在"预测"而非"生成"上 ②做"生鲜价格预测"工具——用历史数据+时令模型预测品类价格走势，帮商家做采购决策 ③小红书笔记方向："AI预测今年XX要涨价，现在囤还来得及"——制造紧迫感，转化率极高</p>
+      </div>
+    </div>
+
+    <div class="section-title pink">🔍 【避坑/黑话词典】</div>
+
+    <div class="dict-entry">
+      <div class="term">CodeAct</div>
+      <div class="plain">大白话：让AI一次写完所有操作代码再执行，而不是一个一个工具慢慢调。就像你让秘书"帮我查天气+订机票+订酒店"，以前他要跑三趟，现在他一次写好三个任务清单交给你，5分钟全搞定——速度快一倍，话费省六成。</div>
+    </div>
+    <div class="dict-entry">
+      <div class="term">Agent Harness</div>
+      <div class="plain">大白话：Agent的"万能工具箱+安全带"。以前做Agent要从零搭记忆、文件管理、任务追踪、审批流程，现在微软帮你全装好了，一行代码启用——就像买精装房不用自己装修。</div>
+    </div>
+    <div class="dict-entry">
+      <div class="term">Hyperlight 微VM</div>
+      <div class="plain">大白话：给AI代码跑的"迷你沙盒"。每次执行都是全新的隔离环境，AI写的代码再野也搞不坏你的系统——就像给小孩一个充气城堡，随便闹不会出事。</div>
+    </div>
+    <div class="dict-entry">
+      <div class="term">Fable 安全回退机制</div>
+      <div class="plain">大白话：AI界的"限速器"。Fable 5遇到危险话题自动降级到弱一级的Opus 4.8回答，就像跑车上装了电子限速——踩到底也只能到250km/h，不会飞出去。至少95%的时候你开的是跑车，5%的时候自动切换安全模式。</div>
+    </div>
+    <div class="dict-entry">
+      <div class="term">OPC (Open Payments Protocol)</div>
+      <div class="plain">大白话：Agent之间的"支付宝"。让AI Agent互相提供服务时能自动计费、自动结算——以后你的Agent找别的Agent帮忙干活，钱自动付，不用你操心。</div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<!-- ==================== GitHub Trending × Product Hunt ==================== -->
+<div class="column" style="max-width:100%;margin-bottom:24px;">
+  <div class="column-header" style="background:linear-gradient(135deg, rgba(0,210,160,0.12), rgba(79,172,254,0.08));">
+    🔥 GitHub Trending + Product Hunt 热榜
+  </div>
+  <div class="column-body">
+
+    <div class="section-title green">GitHub Trending Top 10（AI相关）</div>
+    <div class="github-grid">
+      <div class="github-card">
+        <div class="name">🏆 mvanhorn/last30days-skill</div>
+        <div class="desc">跨平台AI研究摘要：Reddit/X/YouTube/HN/Polymarket多源研究+综合摘要</div>
+        <div class="meta"><span class="stars">+2,535⭐</span><span>Python · 39K总</span></div>
+      </div>
+      <div class="github-card">
+        <div class="name">🏆 obra/superpowers</div>
+        <div class="desc">Agent技能框架+软件开发方法论，Agent生态基础设施</div>
+        <div class="meta"><span class="stars">+1,104⭐</span><span>Shell · 224K总</span></div>
+      </div>
+      <div class="github-card">
+        <div class="name">🥈 harry0703/MoneyPrinterTurbo</div>
+        <div class="desc">AI大模型一键生成高清短视频，内容创作者神器</div>
+        <div class="meta"><span class="stars">+1,389⭐</span><span>Python · 85K总</span></div>
+      </div>
+      <div class="github-card">
+        <div class="name">🥉 addyosmani/agent-skills</div>
+        <div class="desc">面向AI编码代理的生产级工程技能库</div>
+        <div class="meta"><span class="stars">+821⭐</span><span>Shell · 52K总</span></div>
+      </div>
+      <div class="github-card">
+        <div class="name">4️⃣ phuryn/pm-skills</div>
+        <div class="desc">产品经理技能市场：100+代理技能覆盖需求→策略→上线全流程</div>
+        <div class="meta"><span class="stars">+804⭐</span><span>15K总</span></div>
+      </div>
+      <div class="github-card">
+        <div class="name">5️⃣ roboflow/supervision</div>
+        <div class="desc">可复用的计算机视觉工具库，CV开发者的Swiss Army Knife</div>
+        <div class="meta"><span class="stars">+695⭐</span><span>Python · 44K总</span></div>
+      </div>
+      <div class="github-card">
+        <div class="name">6️⃣ maziyarpanahi/openmed</div>
+        <div class="desc">开源医疗AI项目——AI+医疗健康落地加速</div>
+        <div class="meta"><span class="stars">+527⭐</span><span>Python · 2.3K总</span></div>
+      </div>
+      <div class="github-card">
+        <div class="name">7️⃣ ruvnet/RuView</div>
+        <div class="desc">WiFi信号转实时空间智能——无需摄像头即可监测生命体征</div>
+        <div class="meta"><span class="stars">+420⭐</span><span>Rust · 73K总</span></div>
+      </div>
+      <div class="github-card">
+        <div class="name">8️⃣ x1xhlol/system-prompts</div>
+        <div class="desc">30+AI工具完整系统提示和内部工具信息（Cursor/Devin/Claude Code等）</div>
+        <div class="meta"><span class="stars">+393⭐</span><span>140K总</span></div>
+      </div>
+      <div class="github-card">
+        <div class="name">9️⃣ google/skills</div>
+        <div class="desc">面向Google产品和技术的代理技能库，Google官方出品</div>
+        <div class="meta"><span class="stars">+211⭐</span><span>Python · 13K总</span></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-title orange">Product Hunt 6月 AI类 Top 10</div>
+    <div class="ph-grid">
+      <div class="ph-card">
+        <div class="name">🥇 Fundraisly</div>
+        <div class="votes">1,027票 · AI融资平台</div>
+      </div>
+      <div class="ph-card">
+        <div class="name">🥈 Honen</div>
+        <div class="votes">493票</div>
+      </div>
+      <div class="ph-card">
+        <div class="name">🥉 VC Boom</div>
+        <div class="votes">486票</div>
+      </div>
+      <div class="ph-card">
+        <div class="name">4. Minimi</div>
+        <div class="votes">485票</div>
+      </div>
+      <div class="ph-card">
+        <div class="name">5. Mina Meeting Assistant</div>
+        <div class="votes">479票 · AI会议助手</div>
+      </div>
+      <div class="ph-card">
+        <div class="name">6. Vokal</div>
+        <div class="votes">456票</div>
+      </div>
+      <div class="ph-card">
+        <div class="name">7. Browse.sh</div>
+        <div class="votes">452票</div>
+      </div>
+      <div class="ph-card">
+        <div class="name">8. Leni</div>
+        <div class="votes">383票</div>
+      </div>
+      <div class="ph-card">
+        <div class="name">9. TypingMind</div>
+        <div class="votes">383票 · LLM前端客户端</div>
+      </div>
+      <div class="ph-card">
+        <div class="name">10. Dreambeans by Google Labs</div>
+        <div class="votes">360票 · Google Labs出品</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="tag-row">
+      <span class="tag hot">🔥 Claude Fable 5</span>
+      <span class="tag hot">🔥 GPT-5.6内测</span>
+      <span class="tag hot">🔥 美伊军事交锋</span>
+      <span class="tag new">✨ CodeAct</span>
+      <span class="tag new">✨ Agent Harness</span>
+      <span class="tag new">✨ last30days-skill</span>
+      <span class="tag">NVIDIA收购Kumo</span>
+      <span class="tag">DeepSeek自建数据中心</span>
+      <span class="tag">618 AI原生大促</span>
+      <span class="tag">期货成交额+40%</span>
+      <span class="tag">汽车出口高增</span>
+      <span class="tag">埃博拉598例</span>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  <p>🔬 每日双专栏情报 · 自动化生成 · 数据来源：新闻联播/36氪/量子位/GitHub Trending/Product Hunt/Twitter/X</p>
+  <p>Generated at 2026-06-11 08:50 CST</p>
+</div>
+
+</body>
+</html>
