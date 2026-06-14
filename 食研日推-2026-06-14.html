@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 2026-06-14</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #1a1410; color: #f0e6da; font-size: 15px; line-height: 1.7; }
+
+  .hero {
+    background: linear-gradient(135deg, #2a1a10 0%, #1f1510 50%, #1a1410 100%);
+    border-bottom: 1px solid #3d2e22;
+    padding: 32px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%; right: -8%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(230,126,34,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%; left: -5%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(192,57,43,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(230,126,34,0.12);
+    border: 1px solid rgba(230,126,34,0.3);
+    color: #e67e22;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #faf3ed;
+    margin-bottom: 8px;
+  }
+  .hero .sub {
+    color: #9a8575;
+    font-size: 14px;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 24px 20px;
+  }
+
+  /* 卡片通用 */
+  .card {
+    background: #211a14;
+    border: 1px solid #3d2e22;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .card-header {
+    background: linear-gradient(135deg, #2a1f18 0%, #211a14 100%);
+    padding: 16px 20px;
+    border-bottom: 1px solid #3d2e22;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-header .icon {
+    width: 34px; height: 34px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .card-header h2 {
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .card-body {
+    padding: 20px;
+  }
+
+  /* 板块色彩体系 */
+  .s1 .card-header { background: linear-gradient(135deg, #2d1a18 0%, #211a14 100%); }
+  .s1 .icon { background: rgba(192,57,43,0.15); color: #e74c3c; }
+  .s1 .card-header h2 { color: #f1948a; }
+
+  .s2 .card-header { background: linear-gradient(135deg, #2d2418 0%, #211a14 100%); }
+  .s2 .icon { background: rgba(230,126,34,0.15); color: #e67e22; }
+  .s2 .card-header h2 { color: #f0b27a; }
+
+  .s3 .card-header { background: linear-gradient(135deg, #1a2d1e 0%, #211a14 100%); }
+  .s3 .icon { background: rgba(39,174,96,0.15); color: #27ae60; }
+  .s3 .card-header h2 { color: #82e0aa; }
+
+  .s4 .card-header { background: linear-gradient(135deg, #1a2028 0%, #211a14 100%); }
+  .s4 .icon { background: rgba(52,152,219,0.15); color: #3498db; }
+  .s4 .card-header h2 { color: #85c1e9; }
+
+  .s5 .card-header { background: linear-gradient(135deg, #2a1a2d 0%, #211a14 100%); }
+  .s5 .icon { background: rgba(155,89,182,0.15); color: #9b59b6; }
+  .s5 .card-header h2 { color: #c39bd3; }
+
+  .s6 .card-header { background: linear-gradient(135deg, #2d2a18 0%, #211a14 100%); }
+  .s6 .icon { background: rgba(241,196,15,0.15); color: #f1c40f; }
+  .s6 .card-header h2 { color: #f9e79f; }
+
+  /* 内容样式 */
+  .news-item {
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #3d2e22;
+  }
+  .news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .news-item h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #faf3ed;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .news-item h3 .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px; height: 22px;
+    background: rgba(192,57,43,0.15);
+    color: #e74c3c;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .detail-line {
+    color: #c9b9a8;
+    font-size: 13.5px;
+    margin-top: 4px;
+    padding-left: 12px;
+    border-left: 2px solid #4a3828;
+  }
+  .detail-line strong { color: #f0e6da; font-weight: 600; }
+
+  .why-me {
+    background: rgba(230,126,34,0.08);
+    border-left: 3px solid #e67e22;
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #f0b27a;
+  }
+
+  .signal-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    font-weight: 600;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .signal-green { background: rgba(39,174,96,0.12); color: #82e0aa; }
+  .signal-yellow { background: rgba(241,196,15,0.12); color: #f9e79f; }
+  .signal-red { background: rgba(231,76,60,0.12); color: #f1948a; }
+
+  .timing-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 8px 0;
+    border-bottom: 1px solid #312518;
+  }
+  .timing-row:last-child { border-bottom: none; }
+  .timing-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+  .timing-content { flex: 1; }
+  .timing-label { color: #9a8575; font-size: 12px; margin-bottom: 2px; }
+  .timing-value { color: #f0e6da; font-size: 14px; font-weight: 600; }
+  .timing-note { color: #c9b9a8; font-size: 13px; margin-top: 2px; }
+
+  .idea-card {
+    background: linear-gradient(135deg, rgba(155,89,182,0.06), rgba(230,126,34,0.06));
+    border: 1px solid #3d2e22;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .idea-card:last-child { margin-bottom: 0; }
+  .idea-name {
+    font-size: 16px;
+    font-weight: 800;
+    color: #faf3ed;
+    margin-bottom: 8px;
+  }
+  .idea-field {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+  .idea-field .label {
+    color: #9a8575;
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+  .idea-field .value {
+    color: #c9b9a8;
+  }
+
+  .channel-item {
+    background: #1a1410;
+    border: 1px solid #3d2e22;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+  .channel-item:last-child { margin-bottom: 0; }
+  .channel-name { color: #f9e79f; font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+  .channel-desc { color: #c9b9a8; font-size: 13px; margin-bottom: 4px; }
+  .channel-note { color: #9a8575; font-size: 12px; }
+
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: #5a4a3a;
+    font-size: 12px;
+    border-top: 1px solid #3d2e22;
+  }
+  .footer a { color: #e67e22; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">🌿 2026年6月14日 星期六 · 芒种后第9天</div>
+    <h1>🔥 食研日推 · 行业情报</h1>
+    <div class="sub">专注食品消费品 · 服务开品决策 · 拒绝水文只给弹药 | 自动生成，仅供参考</div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ========== 板块一：今日行业要闻 ========== -->
+<div class="s1">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🔥</div>
+      <h2>一、今日行业要闻</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="news-item">
+        <h3><span class="num">1</span>阿里15亿美元竞购朴朴超市，即时零售终局之战打响</h3>
+        <div class="detail-line"><strong>事件：</strong>6月12日彭博报道，阿里巴巴出价15亿美元（约101.5亿人民币）竞购朴朴超市，报价是高鑫零售此前6亿美元出价的2倍多，远超美团收购叮咚买菜的7.17亿美元对价。三巨头（阿里/美团/京东）同步竞购，标的估值被推至20-50亿美元。</div>
+        <div class="why-me"><strong>与我何干：</strong>朴朴2024年营收约300亿已盈利，前置仓模式被验证。阿里拿下朴朴后，生鲜电商格局将从"三国杀"变为"双雄争霸"（阿里朴朴+盒马 vs 美团叮咚+小象）。对食材品类而言，渠道集中度提升意味着入场门槛变高，但也意味着头部渠道选品标准更统一——配料表洁净、短保新鲜的产品更容易被两大体系同时选中。</div>
+      </div>
+
+      <div class="news-item">
+        <h3><span class="num">2</span>网络餐饮严管新规6月1日施行，"幽灵外卖"整治落地</h3>
+        <div class="detail-line"><strong>事件：</strong>《网络餐饮服务经营者落实食品安全主体责任监督管理规定》6月1日起正式施行，要求全链条严管，从原料采购到配送各环节明确主体责任。整治重点包括无实体店"幽灵外卖"、食材溯源、加工过程透明化。</div>
+        <div class="why-me"><strong>与我何干：</strong>严管=合规成本上升=小作坊加速出清。对于做配料表干净、产地可溯源的食材品牌，这是实质性利好——合规本身就是差异化护城河。"合规友好型供应商"标签将成为渠道选品的新加分项。</div>
+      </div>
+
+      <div class="news-item">
+        <h3><span class="num">3</span>泸溪河完成A+轮融资超1亿元，新中式烘焙赛道最大单轮</h3>
+        <div class="detail-line"><strong>事件：</strong>中式糕点品牌泸溪河获启承资本、厚生投资A+轮超1亿元融资，为2026年新中式烘焙赛道金额最大的单轮融资。品牌全国超300家门店，正从"桃酥发家"向中式糕点组合矩阵转型。</div>
+        <div class="why-me"><strong>与我何干：</strong>资本在烘焙寒冬期逆势加注中式糕点，说明"传统糕点+现代供应链"仍有增长逻辑。对食材端的启发：中式糕点用到的核心食材（绿豆、红豆、芝麻、桂花等）存在品质升级空间——比如有机绿豆、古法芝麻、产地桂花，可以做"中式糕点食材升级供应商"。</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ========== 板块二：爆品雷达·趋势苗头 ========== -->
+<div class="s2">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🎯</div>
+      <h2>二、爆品雷达·趋势苗头</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="news-item">
+        <h3><span class="num">1</span>茶特调——全行业标配赛道，抖音话题播放超亿次</h3>
+        <div class="detail-line"><strong>现象：</strong>2026年茶饮品牌集体押注"茶特调"：喜茶"轻酵黄皮康普茶特调"半日小红书浏览27万+；霸王茶姬"走走系列"世界茶特调5月上新；奈雪康普茶特调系列消费者"求全国上新"。抖音"茶特调"话题累计播放超亿次，小红书超10万用户发帖讨论。定价19-25元，中上价格带但质价比突出。</div>
+        <div class="detail-line"><strong>信号强度：</strong><span class="signal-tag signal-red">🔴已爆</span></div>
+        <div class="why-me"><strong>机会判断：</strong>茶特调的核心是"茶底+鲜果+发酵/花草"三层风味结构。这个逻辑完全可以迁移到食材场景——"茶味食材"如茶香糯米（粽子）、茶熏肉、茶渍菌菇等，都有在抖音做"食材特调"概念的空间。但茶特调本身已在茶饮端爆了，直接抄没意义，要找"茶特调的食材版"——用茶的风味逻辑做食材升级。</div>
+      </div>
+
+      <div class="news-item">
+        <h3><span class="num">2</span>药食同源食品——从粽子开始破圈</h3>
+        <div class="detail-line"><strong>现象：</strong>屈之源食品推出山楂陈皮粽、黄精枸杞粽、有机藜麦菌菇粽等10余款药食同源粽，市场反响良好。与此同时，奈雪康普茶特调主打"调理肠胃、辅助减脂"功能属性，爷爷不泡茶以"功能性食材应用"在2026新茶饮排名中表现突出。药食同源正从保健品类渗透到日常食品。</div>
+        <div class="detail-line"><strong>信号强度：</strong><span class="signal-tag signal-yellow">🟡起势</span></div>
+        <div class="why-me"><strong>机会判断：</strong>药食同源是"健康化"的升级版——不是减糖减盐这种被动健康，而是主动添加功能成分。"黄精枸杞粽"说明消费者愿意为功能属性买单，这比纯低糖有更强的价值感知。食材品类的药食同源化（如黄芪炖鸡汤料包、山药薏米粥料包）是差异化切入点，但必须注意合规——不能做医疗声称。</div>
+      </div>
+
+      <div class="news-item">
+        <h3><span class="num">3</span>羽衣甘蓝——从绿化带到20元/斤，茶饮推手持续加码</h3>
+        <div class="detail-line"><strong>现象：</strong>羽衣甘蓝价格从2024年0.8元/斤飙升至20-30元/斤，涨幅30倍。山姆29.9元"可食用羽衣甘蓝盆栽"上线半小时售罄，代购炒至50元+。喜茶"羽衣纤体瓶"首月售350万杯，多家茶饮品牌跟进构建"羽衣甘蓝宇宙"。主产区地头价半年涨7倍，新菜未采收就被茶饮品牌预付定金锁定。</div>
+        <div class="detail-line"><strong>信号强度：</strong><span class="signal-tag signal-red">🔴已爆</span></div>
+        <div class="why-me"><strong>机会判断：</strong>羽衣甘蓝本身已爆，但有两个细分机会：①"羽衣甘蓝+"的食材组合（如羽衣甘蓝+坚果沙拉包、羽衣甘蓝青酱意面料包）在抖音有差异化空间；②羽衣甘蓝的供应链极度紧张，谁能做"产地直发+短保锁鲜"的羽衣甘蓝鲜品，在渠道端有议价权。但要注意：价格暴涨后必有回调，不要追高囤货。</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ========== 板块三：时令风向·品类机会 ========== -->
+<div class="s3">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🌿</div>
+      <h2>三、时令风向·品类机会</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="timing-row">
+        <div class="timing-icon">📅</div>
+        <div class="timing-content">
+          <div class="timing-label">当前时令定位</div>
+          <div class="timing-value">芒种后第9天 · 端午倒计时5天 · 夏至倒计时7天</div>
+          <div class="timing-note">6月14日=文化和自然遗产日，国潮消费热度叠加端午预热，双节点连击</div>
+        </div>
+      </div>
+
+      <div class="timing-row">
+        <div class="timing-icon">🎯</div>
+        <div class="timing-content">
+          <div class="timing-label">即将热卖</div>
+          <div class="timing-value">① 仙居东魁杨梅 — 本周大量上市，荸荠种10-20元/斤，东魁最高100元/斤</div>
+          <div class="timing-note">6月2日荸荠种率先上市被抢购，东魁杨梅端午前后大量上市，窗口仅约20天</div>
+          <div class="timing-value" style="margin-top:6px;">② 精品荔枝 — 桂味批发价30-50元/斤，糯米糍60-100元/斤</div>
+          <div class="timing-note">2026荔枝"小年"确认：全国减产37%，桂味成花率仅20%，仙进奉仅30%。精品品种逆势涨价，与大众妃子笑暴跌形成剪刀差</div>
+          <div class="timing-value" style="margin-top:6px;">③ 低糖冰粽/甜品化粽子 — 盒马同比增超两成</div>
+          <div class="timing-note">粽子从节庆主食变日常甜品/零食，黑金抹茶乳酪粽、什锦迷你水晶冰粽、星巴克星冰粽集体走甜品化路线</div>
+        </div>
+      </div>
+
+      <div class="timing-row">
+        <div class="timing-icon">🚨</div>
+        <div class="timing-content">
+          <div class="timing-label">窗口提醒</div>
+          <div class="timing-value">粽子窗口即将关闭！端午6/19，剩5天冲刺期</div>
+          <div class="timing-note">如果还没上粽子品，现在只能赶末班车；如果已在售，抓紧618+端午双节放量。端午节后粽子品类断崖式下滑，勿恋战</div>
+        </div>
+      </div>
+
+      <div class="timing-row">
+        <div class="timing-icon">🏔️</div>
+        <div class="timing-content">
+          <div class="timing-label">产地直发机会</div>
+          <div class="timing-value">仙居东魁杨梅 — 浙江仙居 · 6月中旬大量上市 · 15.3万亩持证上市</div>
+          <div class="timing-note">仙居政府严把质量关，"持证上市"本身就是品质背书。产地直发窗口期极短（约20天），需要提前锁定供应链</div>
+          <div class="timing-value" style="margin-top:6px;">小龙虾 — 湖北潜江 · 6月价格触底 · 小青6-8元/斤</div>
+          <div class="timing-note">2026年小龙虾因暖冬提前上市，价格已进入全年最低区间。此时做"产地直发小龙虾+调料包"组合，成本最优。但利润极薄，必须靠规格和组合溢价</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ========== 板块四：跨界灵感·创新动作 ========== -->
+<div class="s4">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">💡</div>
+      <h2>四、跨界灵感·创新动作</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="news-item">
+        <h3><span class="num">1</span>喜茶"轻酵黄皮康普茶特调"：发酵+时令鲜果+茶底三层结构</h3>
+        <div class="detail-line"><strong>创新动作：</strong>黄皮（岭南时令水果）+康普茶（发酵茶）+轻酵工艺，上新半日小红书话题浏览27万+。这是"茶特调"品类的标杆之作——三层风味（前调黄皮酸甜、中调康普茶微发酵、后调茶香回甘），且黄皮本身就是6月时令水果。</div>
+        <div class="why-me"><strong>迁移可能：</strong>三层风味逻辑→食材场景。"杨梅+冷萃菌菇汤底+桂花"——前调杨梅酸甜、中调菌菇鲜、后调桂花香，做成"杨梅冷萃菌菇汤"即食/半成品。或者"荔枝+乌龙茶+洛神花"做荔枝茶味糯米——粽子/汤圆的食材升级版。</div>
+      </div>
+
+      <div class="news-item">
+        <h3><span class="num">2</span>日本7-11"韩国美食季"+玉米茶6/16全国上架</h3>
+        <div class="detail-line"><strong>创新动作：</strong>日本7-11 6月推出韩国美食季限定系列，同时6月16日全国上架"7-Premium玉米茶"（600ml/108日元）。玉米茶品类在日本年销1.5亿瓶，正从日韩向中国市场渗透。全家则推"巨大全明星祭"加量不加价系列，罗森主打炸鸡新品。</div>
+        <div class="why-me"><strong>迁移可能：</strong>玉米茶在中国是空白品类——不是玉米须茶，而是烘焙玉米粒泡的茶，有焦香+甜香，既健康又有记忆点。国内目前几乎没有品牌做即饮版玉米茶，这是先发机会。烘焙玉米粒作为食材（做玉米茶/玉米糊/玉米沙拉的原料）也有升级空间。</div>
+      </div>
+
+      <div class="news-item">
+        <h3><span class="num">3</span>山姆"可食用羽衣甘蓝盆栽"：种一次吃一年</h3>
+        <div class="detail-line"><strong>创新动作：</strong>山姆4月上线可食用羽衣甘蓝盆栽，定价29.9元，"种一次吃一年"概念引发疯抢，半小时售罄，代购翻倍。产品核心创新不在食材本身，而在"体验型消费"——消费者买的不是菜，是"我能自己种超级食物"的仪式感。</div>
+        <div class="why-me"><strong>迁移可能：</strong>"种一次吃一年"的体验型食材消费逻辑可以复制——可食用薄荷盆栽（拌沙拉/泡水）、可食用迷迭香盆栽（烤肉/烤面包）、可食用小葱盆栽（做菜佐料）。关键不是卖植物，而是卖"我拥有了一个活着的食材"的情绪价值+社交分享价值。</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ========== 板块五：脑暴时刻·融合创意 ========== -->
+<div class="s5">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🧪</div>
+      <h2>五、脑暴时刻·融合创意</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="idea-card">
+        <div class="idea-name">🍊 杨梅康普茶·时令限定鲜饮套盒</div>
+        <div class="idea-field">
+          <span class="label">一句话描述</span>
+          <span class="value">仙居东魁杨梅鲜果+冷萃菌菇茶底+桂花蜜，DIY冲泡的时令限定饮品套盒</span>
+        </div>
+        <div class="idea-field">
+          <span class="label">为什么是现在</span>
+          <span class="value">杨梅窗口仅20天（6月中-7月初）+康普茶正被茶饮品牌教育市场+端午/夏至双节送礼需求。三者时间窗口完美叠加</span>
+        </div>
+        <div class="idea-field">
+          <span class="label">差异化锚点</span>
+          <span class="value">抖音/小红书目前杨梅产品只有鲜果和杨梅酒，没有"杨梅+发酵茶"的DIY套盒。对比喜茶单杯25元，套盒128元含6杯量+杨梅鲜果，有质价比优势</span>
+        </div>
+        <div class="idea-field">
+          <span class="label">可行性初判</span>
+          <span class="value">供应链：杨梅产地直发已有渠道（仙居），菌菇茶底可找云南菌菇供应商代工。难点在杨梅鲜果冷链+短保（7天），需预售模式。渠道适配抖音达播，"开盒冲泡"过程天然适合短视频展示</span>
+        </div>
+      </div>
+
+      <div class="idea-card">
+        <div class="idea-name">🍵 烘焙玉米粒·日式玉米茶家庭装</div>
+        <div class="idea-field">
+          <span class="label">一句话描述</span>
+          <span class="value">精选东北甜玉米粒，日式烘焙工艺，冷泡热泡两用，国产版"即饮玉米茶"原料包</span>
+        </div>
+        <div class="idea-field">
+          <span class="label">为什么是现在</span>
+          <span class="value">日本7-11玉米茶6/16全国上架，日韩年销1.5亿瓶，品类认知正在形成但中国空白。玉米茶有焦香+甜香记忆点，零咖啡因适合全人群，夏至消暑场景天然适配</span>
+        </div>
+        <div class="idea-field">
+          <span class="label">差异化锚点</span>
+          <span class="value">国内市场玉米茶几乎空白（只有玉米须茶），先发品牌可定义品类。对比日本108日元/瓶，国产原料包成本更低、更新鲜。配料表只有"烘焙玉米粒"，极致洁净</span>
+        </div>
+        <div class="idea-field">
+          <span class="label">可行性初判</span>
+          <span class="value">供应链难度低——东北玉米粒+烘焙代工，长保产品。核心挑战是消费者教育，需要内容种草（"日本人为什么爱喝玉米茶"+"烘焙玉米粒的焦香魔法"）。适合小红书图文+抖音冲泡短视频</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ========== 板块六：展会速递·渠道上新 ========== -->
+<div class="s6">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🏬</div>
+      <h2>六、展会速递·渠道上新</h2>
+    </div>
+    <div class="card-body">
+
+      <div style="font-size:14px;font-weight:700;color:#f9e79f;margin-bottom:12px;">🎪 展会预告</div>
+
+      <div class="channel-item">
+        <div class="channel-name">ProPak China 2026 · 上海国际加工包装展览会</div>
+        <div class="channel-desc">6月15-17日 · 国家会展中心（上海） · 超20万㎡ · 2500+企业</div>
+        <div class="channel-note">看点：食品加工与包装最新技术，短保锁鲜包装方案。与我何干：冷链/锁鲜包装技术是产地直发的核心基建，看有没有更便宜更好用的短保方案</div>
+      </div>
+
+      <div class="channel-item">
+        <div class="channel-name">台北国际食品展</div>
+        <div class="channel-desc">6月25-28日 · 台北南港展览馆</div>
+        <div class="channel-note">看点：台湾地区食品创新+日韩新趋势窗口。与我何干：台湾是日韩食品趋势的"中转站"，可以提前看到哪些日韩爆款即将进入大陆</div>
+      </div>
+
+      <div style="font-size:14px;font-weight:700;color:#f9e79f;margin:16px 0 12px;">🛒 渠道上新</div>
+
+      <div class="channel-item">
+        <div class="channel-name">盒马 · 黑金抹茶乳酪粽 + 什锦迷你水晶冰粽</div>
+        <div class="channel-desc">卖点：冷藏后口感类似冰淇淋慕斯，抹茶乳酪走甜品化路线；水晶冰粽含生巧/抹茶/杨枝甘露三味，迷你装适配一人食场景</div>
+        <div class="channel-note">启发：粽子甜品化已是渠道共识，但"粽子+茶"的组合还没人做——低糖粽配冷萃茶，做"端午下午茶套盒"</div>
+      </div>
+
+      <div class="channel-item">
+        <div class="channel-name">山姆 · 6月上新30+款（黑虎虾肉肠/朝日唯品联名抹茶布丁/羽衣甘蓝盆栽）</div>
+        <div class="channel-desc">卖点：5月济南青岛双店同开首日爆款上午售罄，新品上市即断货。黑虎虾肉肠走"餐厅级体验"路线，抹茶布丁联名朝日唯品</div>
+        <div class="channel-note">启发：山姆选品逻辑="少折腾+高感知"——产品自带"消费者价值感知"，不需要教育。对标做抖音选品，也要选"一眼值"的产品</div>
+      </div>
+
+      <div class="channel-item">
+        <div class="channel-name">叮咚买菜 · 句容站端午主题开业</div>
+        <div class="channel-desc">卖点："端阳有粽 岁岁安康"开业主题，甄选鲜粽+小龙虾等端午品类</div>
+        <div class="channel-note">启发：叮咚继续拓城，区域站开业=本地化选品机会。关注叮咚在各城市的差异化选品策略</div>
+      </div>
+
+      <div class="channel-item">
+        <div class="channel-name">日本7-11 · 玉米茶6/16全国上架 + 韩国美食季限定</div>
+        <div class="channel-desc">卖点：7-Premium玉米茶600ml/108日元（约5.5元），零咖啡因烘焙玉米粒泡制。韩国美食季推辣炒年糕/韩式炸鸡等限定</div>
+        <div class="channel-note">启发：玉米茶从日韩向中国渗透是确定性趋势，但国产版目前空白。先做原料包（烘焙玉米粒）比做即饮更轻、更快</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>⚠️ 以上内容由AI自动聚合生成，信息来源于公开渠道，仅供参考，不构成投资建议</p>
+  <p>信源：FBIF / 食品板 / 蝉妈妈 / 什么值得买 / 21世纪经济报道 / 澎湃新闻 / 新浪财经 / 百度百科等</p>
+  <p style="margin-top:8px;">食研日推 · Generated by WorkBuddy · 2026-06-14 09:00 CST</p>
+</div>
+
+</body>
+</html>
