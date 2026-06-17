@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 2026-06-17</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #1a1410; color: #f0e6d8; font-size: 15px; line-height: 1.7; }
+
+  .hero {
+    background: linear-gradient(135deg, #2a1a10 0%, #1a1410 50%, #1e1610 100%);
+    border-bottom: 1px solid #3d2e22;
+    padding: 32px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(232,134,58,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%; left: -5%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(200,120,50,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(232,134,58,0.15);
+    border: 1px solid rgba(232,134,58,0.3);
+    color: #e8863a;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #faf0e4;
+    margin-bottom: 8px;
+  }
+  .hero .sub {
+    color: #a09080;
+    font-size: 14px;
+  }
+  .hero .highlight-badge {
+    display: inline-block;
+    background: rgba(220,60,40,0.18);
+    border: 1px solid rgba(220,60,40,0.35);
+    color: #e85540;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-left: 10px;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 20px;
+  }
+
+  .card {
+    background: #221810;
+    border: 1px solid #3d2e22;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .card-header {
+    background: linear-gradient(135deg, #2a1e14 0%, #221810 100%);
+    padding: 16px 20px;
+    border-bottom: 1px solid #3d2e22;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-header .icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .card-header h2 {
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .card-body {
+    padding: 20px;
+  }
+
+  /* 板块一：行业要闻 */
+  .section-1 .card-header { background: linear-gradient(135deg, #2e1a14 0%, #221810 100%); }
+  .section-1 .icon { background: rgba(220,60,40,0.15); color: #e85540; }
+  .section-1 .card-header h2 { color: #e8863a; }
+
+  .news-item {
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #3d2e22;
+  }
+  .news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .news-item h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #faf0e4;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .news-item h3 .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px; height: 22px;
+    background: rgba(232,134,58,0.15);
+    color: #e8863a;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .news-detail { margin-bottom: 8px; }
+  .news-detail strong {
+    color: #f0e6d8;
+    font-weight: 600;
+  }
+  .news-detail p {
+    color: #c8b8a8;
+    font-size: 13.5px;
+    margin-top: 4px;
+    padding-left: 12px;
+    border-left: 2px solid #4d3e32;
+  }
+  .impact-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    font-weight: 600;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .impact-high { background: rgba(220,60,40,0.12); color: #e85540; }
+  .impact-mid { background: rgba(232,134,58,0.12); color: #e8863a; }
+  .impact-low { background: rgba(180,140,80,0.12); color: #c8a060; }
+
+  /* 板块二：爆品雷达 */
+  .section-2 .card-header { background: linear-gradient(135deg, #2a1a18 0%, #221810 100%); }
+  .section-2 .icon { background: rgba(240,160,50,0.15); color: #f0a032; }
+  .section-2 .card-header h2 { color: #f0a032; }
+
+  .trend-item {
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #3d2e22;
+  }
+  .trend-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .trend-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #faf0e4;
+    margin-bottom: 6px;
+  }
+  .trend-desc {
+    color: #c8b8a8;
+    font-size: 13.5px;
+    margin-bottom: 8px;
+  }
+  .signal-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 8px;
+  }
+  .signal-green { background: rgba(80,160,80,0.15); color: #60b060; }
+  .signal-yellow { background: rgba(232,134,58,0.15); color: #e8863a; }
+  .signal-red { background: rgba(220,60,40,0.15); color: #e85540; }
+  .trend-opportunity {
+    background: rgba(232,134,58,0.08);
+    border-left: 3px solid #e8863a;
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13.5px;
+    color: #f0e6d8;
+  }
+
+  /* 板块三：时令风向 */
+  .section-3 .card-header { background: linear-gradient(135deg, #1e2a14 0%, #221810 100%); }
+  .section-3 .icon { background: rgba(80,160,80,0.15); color: #60b060; }
+  .section-3 .card-header h2 { color: #80c080; }
+
+  .season-item {
+    margin-bottom: 12px;
+    padding-left: 12px;
+    border-left: 2px solid #4d4032;
+  }
+  .season-item .label {
+    font-weight: 700;
+    color: #e8863a;
+    font-size: 14px;
+  }
+  .season-item .content {
+    color: #c8b8a8;
+    font-size: 13.5px;
+  }
+  .season-alert {
+    background: rgba(220,60,40,0.08);
+    border: 1px solid rgba(220,60,40,0.2);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 14px;
+  }
+  .season-alert .alert-title {
+    color: #e85540;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .season-alert .alert-body {
+    color: #c8b8a8;
+    font-size: 13.5px;
+  }
+
+  /* 板块四：跨界灵感 */
+  .section-4 .card-header { background: linear-gradient(135deg, #2a1a22 0%, #221810 100%); }
+  .section-4 .icon { background: rgba(160,120,200,0.15); color: #b080d0; }
+  .section-4 .card-header h2 { color: #c0a0e0; }
+
+  .idea-item {
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #3d2e22;
+  }
+  .idea-item:last-child { border-bottom: none; }
+  .idea-source {
+    font-size: 15px;
+    font-weight: 700;
+    color: #faf0e4;
+    margin-bottom: 6px;
+  }
+  .idea-desc {
+    color: #c8b8a8;
+    font-size: 13.5px;
+    margin-bottom: 8px;
+  }
+  .idea-transfer {
+    background: rgba(160,120,200,0.08);
+    border-left: 3px solid #b080d0;
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13.5px;
+    color: #f0e6d8;
+  }
+
+  /* 板块五：脑暴时刻 */
+  .section-5 .card-header { background: linear-gradient(135deg, #282010 0%, #221810 100%); }
+  .section-5 .icon { background: rgba(220,180,60,0.15); color: #e0c040; }
+  .section-5 .card-header h2 { color: #e0c040; }
+
+  .brain-card {
+    background: linear-gradient(135deg, rgba(220,180,60,0.06), rgba(232,134,58,0.04));
+    border: 1px solid rgba(220,180,60,0.2);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+  }
+  .brain-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #e0c040;
+    margin-bottom: 8px;
+  }
+  .brain-field {
+    margin-bottom: 8px;
+  }
+  .brain-field .field-label {
+    color: #e8863a;
+    font-weight: 700;
+    font-size: 13.5px;
+  }
+  .brain-field .field-content {
+    color: #c8b8a8;
+    font-size: 13.5px;
+  }
+
+  /* 板块六：展会速递 */
+  .section-6 .card-header { background: linear-gradient(135deg, #1a2020 0%, #221810 100%); }
+  .section-6 .icon { background: rgba(100,180,220,0.15); color: #80c0e0; }
+  .section-6 .card-header h2 { color: #a0d0e8; }
+
+  .expo-item {
+    margin-bottom: 14px;
+    padding-left: 12px;
+    border-left: 2px solid #4d4032;
+  }
+  .expo-item .expo-name {
+    font-weight: 700;
+    color: #a0d0e8;
+    font-size: 14px;
+  }
+  .expo-item .expo-detail {
+    color: #c8b8a8;
+    font-size: 13.5px;
+  }
+  .channel-item {
+    margin-bottom: 14px;
+    padding-left: 12px;
+    border-left: 2px solid #4d4032;
+  }
+  .channel-item .channel-name {
+    font-weight: 700;
+    color: #e8863a;
+    font-size: 14px;
+  }
+  .channel-item .channel-detail {
+    color: #c8b8a8;
+    font-size: 13.5px;
+  }
+
+  .summary-box {
+    background: linear-gradient(135deg, rgba(232,134,58,0.06), rgba(220,180,60,0.04));
+    border: 1px solid #3d2e22;
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 16px;
+  }
+  .summary-box h4 {
+    color: #e8863a;
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .summary-box p {
+    color: #a09080;
+    font-size: 13.5px;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: #605040;
+    font-size: 12px;
+    border-top: 1px solid #3d2e22;
+  }
+  .footer a { color: #e8863a; text-decoration: none; }
+</style>
+</head>
+
+<body>
+
+<!-- Hero 区域 -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">📅 2026年6月17日 星期三 · 端午正日</div>
+    <h1>🔥 食研日推 · 端午特别版</h1>
+    <div class="sub">下厨房食品品牌PM的每日行业情报 · 今日端午 · 芒种后第12天 · 夏至倒计时4天 <span class="highlight-badge">端午正日</span></div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ==================== 板块一：今日行业要闻 ==================== -->
+<div class="card section-1">
+  <div class="card-header">
+    <div class="icon">🔥</div>
+    <h2>板块一：今日行业要闻</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="news-item">
+      <h3><span class="num">1</span>溜溜梅港股上市首日暴涨190% — "青梅零食第一股"市值逼近100亿港元</h3>
+      <div class="news-detail">
+        <p><strong>📋 事件：</strong>6月15日，溜溜梅（06658.HK）正式在港交所挂牌，发行价43.58港元，开盘价95港元（+118%），盘中最高127.2港元（+192%）。公开招股超购<strong>6500倍</strong>，刷新港股纪录。27年只做一颗青梅，从安徽芜湖到港股"果类零食第一股"。</p>
+        <p><strong>🎯 与我何干：</strong><span class="impact-tag impact-high">高</span>单一品类极致深耕的资本化路径被验证——"品类冠军+长周期坚守"能跑通IPO。对下厨房而言：选对品类（有真实消费基数但品牌分散），用洁净配料表做真升级，7年专注一个品类也能跑出资本市场。同时，梅品类热度被溜溜梅引爆，<strong>青梅衍生品（杨梅×青梅复配、低糖青梅酱、青梅冷萃）</strong>短期搜索量会跳增。</p>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <h3><span class="num">2</span>新茶饮品牌柠季接手哈根达斯中国门店 — 茶饮×冰淇淋深度融合信号</h3>
+      <div class="news-detail">
+        <p><strong>📋 事件：</strong>6月2日，通用磨坊宣布将哈根达斯中国内地门店业务授权给柠季（含投资者集团），柠季获得独家许可经营哈根达斯中国门店。2021年成立的柠檬茶品牌，3平米小店起步，4年后"吞下"轻奢冰淇淋——茶饮新贵整合老牌冰品，"茶饮+冰淇淋"风潮进入资本层面。</p>
+        <p><strong>🎯 与我何干：</strong><span class="impact-tag impact-high">高</span>"茶饮×冰淇淋"不再是试验性联名，而是正经的商业整合。喜茶gelato lab、霸王茶姬"茶拉朵"已经验证了<strong>茶味冰淇淋的消费者价值感知</strong>。对食材品牌而言：<strong>冷饮型食材</strong>（杨梅冰、桂花酒酿冰淇淋底料、冷萃茶底）有了跨界渠道可能性。冷吃粽+冰淇淋底料的组合，也指向"即食甜品化"方向。</p>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <h3><span class="num">3</span>生态环境部拟推新规：食品添加剂需"双重登记" — 行业合规门槛重大升级</h3>
+      <div class="news-detail">
+        <p><strong>📋 事件：</strong>6月11日，生态环境部发布《新化学物质环境管理登记办法（修订征求意见稿）》，拟将食品、食品添加剂纳入新化学物质登记范围。此前食品和添加剂明确不适用该办法，修订后<strong>未列入IECSC名录的食品原料/添加剂需同时做卫健委"三新食品"申报和生态环境部登记</strong>，双重合规。征求意见截止7月12日。</p>
+        <p><strong>🎯 与我何干：</strong><span class="impact-tag impact-mid">中高</span>如果落地，<strong>配料表洁净变成合规优势</strong>——用天然食材而非新化学物质做产品，天然规避双重登记的合规成本和时间门槛。对下厨房的"洁净配料表"定位是<strong>法规层面的护城河加分</strong>。同时提醒：新品开发阶段，原料选择要提前确认是否在IECSC名录内。</p>
+      </div>
+    </div>
+
+    <div class="summary-box">
+      <h4>📌 今日要闻核心信号</h4>
+      <p><strong>资本验证品类深耕+跨界整合加速+合规门槛升级</strong>。溜溜梅证明"一颗青梅做到极致"能IPO；柠季×哈根达斯证明茶饮×冰淇淋不是联名而是商业整合；生态环境部新规意味着<strong>洁净配料表从消费偏好变成合规优势</strong>。端午正日，粽子赛道竞争白热——冷吃粽日销万份，甜品化粽销售额同比增超两成。</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== 板块二：爆品雷达 ==================== -->
+<div class="card section-2">
+  <div class="card-header">
+    <div class="icon">🎯</div>
+    <h2>板块二：爆品雷达·趋势苗头</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="trend-item">
+      <div class="trend-name">🧊 冷吃粽 — 开袋即食，日销超万份</div>
+      <div class="trend-desc">叮咚买菜推出的冷吃粽系列，开袋即食、冷热皆宜，涵盖红豆/碱水/蜜枣/鲜肉/白米五款口味。日销超万份，最近一周总销售额超百万元。粽子市场2025年规模110亿元，<strong>非端午周期消费占比将突破35%</strong>——粽子正在从节庆主食变成日常食品。</div>
+      <div style="margin-bottom:8px;">
+        <span class="signal-tag signal-yellow">🟡起势</span>信号强度：抖音端午销售曲线较去年提前10天启动，冷吃粽是新增长引擎
+      </div>
+      <div class="trend-opportunity">
+        <strong>🎯 机会判断：</strong>冷吃粽的本质是<strong>"粽子→即食甜品"</strong>的品类重定义。对下厨房而言：冷吃技术（开袋即食+冷链锁鲜）可以迁移到<strong>冷吃杨梅、冷吃汤底、冷吃菌菇</strong>等食材品类——把"必须加热"的食材变成"开袋即食"，是真实品类升级而非概念包装。
+      </div>
+    </div>
+
+    <div class="trend-item">
+      <div class="trend-name">🫒 荔枝"超级小年" — 桂味产量仅5%，零售价涨5倍</div>
+      <div class="trend-desc">2026年全国荔枝减产<strong>37%</strong>，桂味产能仅为去年的5%左右，糯米糍约5%，零售价涨4-5倍。深圳果农：桂味去年产14万斤，今年7000斤。减产幅度和价格涨幅之间差好几倍——中间有渠道囤货溢价。但<strong>仙进奉等晚熟品种在茂名逆势稳产</strong>，品种改良+精细管理可对抗大小年。</div>
+      <div style="margin-bottom:8px;">
+        <span class="signal-tag signal-red">🔴已爆</span>信号强度：价格信号已超正常供需关系，渠道囤货成分大
+      </div>
+      <div class="trend-opportunity">
+        <strong>🎯 机会判断：</strong>荔枝小年≠没机会。<strong>精品荔枝逆势涨价是"稀缺溢价"的真实验证</strong>——对下厨房精品定位而言，桂味/仙进奉的稀缺叙事正是内容资产。但注意：零售价涨5倍中有大量渠道囤货溢价，不是产地真实成本。切入点：<strong>产地直发+避囤货中间层+可追溯来源</strong>，做"小年不小骗"的信任定位。
+      </div>
+    </div>
+
+    <div class="trend-item">
+      <div class="trend-name">🫖 茶饮"地域风物觉醒" — 深挖各地"土味"原料</div>
+      <div class="trend-desc">2026年茶咖赛道新趋势：从"一杯奶茶"跳出来，<strong>冰淇淋、零食、早餐、咖啡等非茶饮品类密集上线</strong>。喜茶gelato lab、霸王茶姬"茶拉朵"引爆茶×冰淇淋融合。同时，地域风味觉醒——各地风物（杨梅、荔枝、蜜瓜、桃李）成为品牌争抢的流量密码。蜜雪冰城一个月新开1196家店。</div>
+      <div style="margin-bottom:8px;">
+        <span class="signal-tag signal-yellow">🟡起势</span>信号强度：头部品牌集体押注，地域风物成流量密码
+      </div>
+      <div class="trend-opportunity">
+        <strong>🎯 机会判断：</strong>茶饮验证过的地域风味→食材品牌的品类灵感。<strong>杨梅/荔枝/蜜瓜/桃李</strong>这些时令水果被茶饮带出圈后，消费者认知已建立——食材品牌可以接棒做<strong>"茶饮验证过的新鲜食材版"</strong>，天然配料表+产地直发+即食场景，做茶饮品牌做不到的"真实食材升级"。
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== 板块三：时令风向 ==================== -->
+<div class="card section-3">
+  <div class="card-header">
+    <div class="icon">🌿</div>
+    <h2>板块三：时令风向·品类机会</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="season-alert">
+      <div class="alert-title">🚨 端午正日·关键提醒</div>
+      <div class="alert-body">今天是<strong>端午正日（6月17日）</strong>，粽子消费已达峰值，<strong>窗口正在关闭</strong>。但"冷吃粽"和"甜品化粽"打开了粽子日常化的新赛道——端午后才是真机会窗口的起点。夏至（6/21）倒计时<strong>4天</strong>，消夏食品即将接力。</div>
+    </div>
+
+    <div class="season-item">
+      <span class="label">📅 当前时令定位：</span>
+      <span class="content">芒种后第12天 → 端午正日 → 夏至倒计时4天。时令转换期：从端午消费峰值→消夏品类接力。杨梅/荔枝窗口重叠期，小龙虾价格触底。</span>
+    </div>
+
+    <div class="season-item">
+      <span class="label">⏰ 倒计时：</span>
+      <span class="content">夏至（6/21）4天 → 小暑（7/7）20天 → 仙居东魁杨梅赏味期剩余约<strong>25天</strong>（6/15-7/20）</span>
+    </div>
+
+    <div class="season-item">
+      <span class="label">🎯 即将热卖：</span>
+      <span class="content"><strong>①消夏冷汤/冷萃品类</strong> — 夏至后"冷食"搜索量跳增，冷吃粽已验证"冷食即食"消费者价值 <strong>②杨梅深加工品</strong> — 东魁杨梅6/15大量上市，鲜果窗口短（~25天），但杨梅酱/杨梅酒/杨梅冰可延展全年 <strong>③精品荔枝</strong> — 小年溢价叙事+产地直发信任=差异化切入点</span>
+    </div>
+
+    <div class="season-item">
+      <span class="label">🚨 窗口提醒：</span>
+      <span class="content"><strong>粽子传统赛道窗口关闭</strong> — 端午正日是峰值，节后3天传统粽子销量骤降。但冷吃粽/甜品化粽的<strong>日常化窗口正在开启</strong>（非端午消费占比将突破35%），端午后立刻测冷吃品类。 <strong>仙居东魁杨梅赏味窗口仅剩25天</strong> — 鲜果必须本周内决策，深加工品可以延展。</span>
+    </div>
+
+    <div class="season-item">
+      <span class="label">🏔️ 产地机会：</span>
+      <span class="content"><strong>①仙居东魁杨梅</strong> — 6/15大量上市，今年大丰收品质佳，100+元/斤，产地直发+冷链空运已成熟，出口订单也在增长。无人机下山+智能分拣+冷库锁鲜全链路可借鉴。<strong>②荔枝（仙进奉）</strong> — 茂名高州600亩果园今年稳产十几万斤，晚熟品种错峰上市，产地直发+可追溯。 <strong>③小龙虾</strong> — 中青12元/斤、大青16元/斤（杭州），湖北潜江供货量减少，江苏/安徽产地轮换，价格触底=即食小龙虾成品成本优势窗口。</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== 板块四：跨界灵感 ==================== -->
+<div class="card section-4">
+  <div class="card-header">
+    <div class="icon">💡</div>
+    <h2>板块四：跨界灵感·创新动作</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="idea-item">
+      <div class="idea-source">🫖 柠季×哈根达斯 — 茶饮新贵整合轻奢冰品门店</div>
+      <div class="idea-desc">成立4年的柠檬茶品牌，获得通用磨坊独家许可，接手哈根达斯中国全部门店。这不是联名，是正经的商业整合——茶饮终端变冰品终端，"柠檬茶+冰淇淋"合体店模式。</div>
+      <div class="idea-transfer">
+        <strong>🔄 迁移可能：</strong>"食材品牌×冰淇淋底料"——杨梅冰、桂花酒酿冰淇淋、冷萃茶冰淇淋。冷吃粽已经验证了<strong>"即食甜品化"</strong>路径，冰淇淋底料是下一个迁移方向。关键是：<strong>天然食材做冰淇淋风味来源</strong>而非人工香精，配料表洁净就是差异化。
+      </div>
+    </div>
+
+    <div class="idea-item">
+      <div class="idea-source">🧊 叮咚冷吃粽 — 粽子从"必须热食"到"开袋即食"</div>
+      <div class="idea-desc">叮咚买菜冷吃粽系列日销超万份，开袋即食+冷热皆宜+极简配料表。粽子市场非端午周期消费占比将突破35%，早餐/下午茶/夜宵/露营场景成为主力。</div>
+      <div class="idea-transfer">
+        <strong>🔄 迁移可能：</strong>冷吃技术迁移到<strong>汤底/菌菇/时令食材</strong>——"冷吃杨梅""冷吃桂花酒酿""冷吃菌菇汤底"。核心逻辑：<strong>把"必须加热/加工"的食材变成"开袋即食"</strong>。冷萃菌菇汤（夏天喝的汤）=真实品类升级，不是概念包装。
+      </div>
+    </div>
+
+    <div class="idea-item">
+      <div class="idea-source">🇯🇵 日本7-11韩国美食季+北海道玉米茶 — 玉米茶品类向中国渗透</div>
+      <div class="idea-desc">日本7-11于6/16全国上架北海道玉米茶（烤玉米风味热/冷泡茶），无咖啡因、天然玉米甜味。韩国便利店CU也在推玉米饮品。朝日啤酒6/2起全国限量发售江头联名啤酒。日本便利店饭团逼近200日元（两轮涨价）。</div>
+      <div class="idea-transfer">
+        <strong>🔄 迁移可能：</strong>玉米茶在国内<strong>品类空白</strong>——无咖啡因+天然甜味+冷泡适配夏天。东北甜玉米是产地资源，可以做<strong>"国产玉米茶·产地直发"</strong>：东北甜玉米烘焙→冷泡茶包，天然无添加，对位日本玉米茶但价格更亲民+产地叙事更真实。
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== 板块五：脑暴时刻 ==================== -->
+<div class="card section-5">
+  <div class="card-header">
+    <div class="icon">🧪</div>
+    <h2>板块五：脑暴时刻·融合创意</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="brain-card">
+      <div class="brain-title">🧊 冷吃杨梅·即食甜品化食材</div>
+      <div class="brain-field"><span class="field-label">一句话描述：</span><span class="field-content">仙居东魁杨梅+冷吃技术，开袋即食的杨梅甜品——杨梅冰沙口感、0加热、极简配料表（杨梅+冰糖+柠檬汁），冷链锁鲜。</span></div>
+      <div class="brain-field"><span class="field-label">为什么是现在：</span><span class="field-content">①冷吃粽已验证"即食甜品化"消费者价值（日销万份）②东魁杨梅6/15大量上市，赏味窗口仅25天，鲜果太短但冷吃可延展③夏至倒计时4天，消夏食品搜索量即将跳增④茶饮已帮杨梅建立消费者认知（杨梅甘露等）</span></div>
+      <div class="brain-field"><span class="field-label">差异化锚点：</span><span class="field-content">对比抖音杨梅鲜果（同质化严重、冷链损耗高）→冷吃杨梅是<strong>"鲜果→即食甜品"</strong>的品类重定义，配料表只有3种天然原料，vs竞品杨梅汁/杨梅酱（配料表10+种）。对比盒马杨梅甘露（饮料）→冷吃杨梅是<strong>"吃的杨梅"</strong>不是"喝的杨梅"，口感层次更丰富。</span></div>
+      <div class="brain-field"><span class="field-label">可行性初判：</span><span class="field-content">供应链：仙居产地直发+冷链空运成熟（无人机下山+智能分拣已落地），冷吃工艺参考冷吃粽，-18°C冷冻+冷链配送。渠道适配：抖音达播（产地溯源Vlog+冷吃体验短视频），天猫旗舰店（冷链配送覆盖主要城市）。风险：杨梅窗口短，需6月底前完成首批投产。</span></div>
+    </div>
+
+    <div class="brain-card">
+      <div class="brain-title">🫒 冷萃菌菇汤·夏天喝的汤</div>
+      <div class="brain-field"><span class="field-label">一句话描述：</span><span class="field-content">冷萃菌菇汤底，开瓶即饮——夏天不用炖汤，一瓶冷萃汤底+热水/冷水冲泡即得鲜汤。云南野生菌+东北榛蘑复配，配料表只有菌菇+水+盐。</span></div>
+      <div class="brain-field"><span class="field-label">为什么是现在：</span><span class="field-content">①夏至4天后"消夏食品"搜索量跳增②冷吃粽验证了"即食化"消费者价值③茶饮地域风物觉醒=菌菇的地域叙事已建立④京东地标菌菇增长200%信号（5月memory记录）</span></div>
+      <div class="brain-field"><span class="field-label">差异化锚点：</span><span class="field-content">对比抖音菌菇干货（需要泡发+炖煮2小时）→冷萃菌菇汤是<strong>"干货→即食汤"</strong>的品类升级。对比预制菜菌菇汤（配料表复杂+添加剂）→冷萃版配料表只有3种天然原料。对比菌菇酱/菌菇油（调味品）→冷萃汤是<strong>"喝的菌菇"</strong>，场景是夏天喝汤。</span></div>
+      <div class="brain-field"><span class="field-label">可行性初判：</span><span class="field-content">供应链：云南野生菌产地直发+冷萃工艺（低温慢萃保留鲜味，无需高温灭菌），瓶装冷链配送。渠道适配：抖音达播（产地溯源Vlog+冷萃工艺展示），天猫旗舰店。风险：冷萃工艺需研发验证，菌菇季节性供应需提前锁量。</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== 板块六：展会速递 ==================== -->
+<div class="card section-6">
+  <div class="card-header">
+    <div class="icon">🏬</div>
+    <h2>板块六：展会速递·渠道上新</h2>
+  </div>
+  <div class="card-body">
+
+    <div style="font-size:14px;font-weight:700;color:#a0d0e8;margin-bottom:14px;">🎪 展会预告</div>
+
+    <div class="expo-item">
+      <span class="expo-name">ProPak China 2026 + HNC健康营养展</span>
+      <span class="expo-detail"> | 6/15-17 国家会展中心（上海虹桥） | <strong>今天是最后一天</strong> | 看点：食品加工包装机械+健康营养原料，与食材品牌供应链相关 | 与我何干：包装/冷链技术供应商对接窗口</span>
+    </div>
+
+    <div class="expo-item">
+      <span class="expo-name">台北国际食品展 FOOD TAIPEI</span>
+      <span class="expo-detail"> | 6/24-27 南港展览馆（中国台北） | 看点：亚洲重要食品专业采购展 | 与我何干：台湾特色食材（乌龙茶、凤梨酥、菌菇）供应链对接机会</span>
+    </div>
+
+    <div class="expo-item">
+      <span class="expo-name">深圳食博会（全球高端食品及优质农产品博览会）</span>
+      <span class="expo-detail"> | 7/2-5 深圳会展中心（福田） | 看点：湾区首选食饮贸易展，"环球美味 点食成金" | 与我何干：<strong>华南渠道对接+新品发布窗口</strong>，7月参展可衔接端午后消夏品类</span>
+    </div>
+
+    <div style="font-size:14px;font-weight:700;color:#e8863a;margin-bottom:14px;margin-top:20px;">🛒 渠道上新</div>
+
+    <div class="channel-item">
+      <span class="channel-name">🛒 盒马：</span>
+      <span class="channel-detail">低糖红枣粽（麦多多·减糖配方）、什锦迷你水晶冰粽、黑金抹茶乳酪粽 — <strong>甜品化+低糖双线</strong>，粽子销售额同比增超两成 | 杨梅甘露 | 诸老大联名粽 | 桂花酒酿大福 | 甜心莲子（海南产地前置） | 启发：<strong>"甜品化"是粽子日常化的核心路径</strong></span>
+    </div>
+
+    <div class="channel-item">
+      <span class="channel-name">🛒 叮咚买菜：</span>
+      <span class="channel-detail">冷吃粽系列（日销万份·开袋即食） | 粽子DIY套餐（鲜粽叶13.9元/50片+一站式配齐） | 启发：<strong>冷吃技术+DIY套餐降低门槛=品类扩张新打法</strong></span>
+    </div>
+
+    <div class="channel-item">
+      <span class="channel-name">🛒 山姆：</span>
+      <span class="channel-detail">6月新品30+款 | 小龙虾（即食小龙虾肉） | 芋泥芝士巴斯克蛋糕 | 炸鸡桶39元 | 荔枝茉莉冰茶 | 启发：<strong>山姆小龙虾=即食成品赛道信号，价格触底期切入成本优势</strong></span>
+    </div>
+
+    <div class="channel-item">
+      <span class="channel-name">🛒 日本7-11：</span>
+      <span class="channel-detail">6/16全国上架北海道玉米茶（烤玉米风味·冷热泡） | 韩国美食季限定 | 朝日江头啤酒6/2起全国限量 | 启发：<strong>玉米茶品类空白=国产玉米茶机会窗口</strong></span>
+    </div>
+
+    <div class="channel-item">
+      <span class="channel-name">🛒 全进华×张家齐：</span>
+      <span class="channel-detail">6/9荔枝产地直播冲上抖音带货总榜第一，超越与辉同行 | "蹲在树底下边摘边吃"的朴实直播逆风出圈 | 启发：<strong>产地直发直播=信任感>华丽布景</strong>，食材品牌可以复制"产地Vlog+边摘边吃"模式</span>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  食研日推 · 下厨房食品品牌PM每日情报 · 自动生成仅供参考 · 信息来源：FBIF/蝉妈妈/央视财经/澎湃/丁香医生/小红书/彭博/各渠道官方<br>
+  <a href="https://github.com/mryyyyyy/daily-intelligence">GitHub仓库</a> · 提示词版本 v2.0 · 2026-06-17
+</div>
+
+</body>
+</html>
