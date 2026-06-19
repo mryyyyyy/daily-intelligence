@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 · 2026-06-19</title>
+<style>
+  :root {
+    --bg: #1a1410;
+    --card-bg: #231d16;
+    --border: #3d3224;
+    --text: #f0e6d3;
+    --text-secondary: #bfa98a;
+    --accent-red: #e87040;
+    --accent-orange: #f0a050;
+    --accent-gold: #e0b860;
+    --accent-green: #7ab860;
+    --accent-teal: #50a890;
+    --accent-cream: #f5e6d0;
+    --accent-rust: #c07040;
+    --tag-bg-red: rgba(232,112,64,0.12);
+    --tag-bg-orange: rgba(240,160,80,0.12);
+    --tag-bg-gold: rgba(224,184,96,0.12);
+    --tag-bg-green: rgba(122,184,96,0.12);
+    --tag-bg-teal: rgba(80,168,144,0.12);
+    --highlight-red: rgba(232,112,64,0.08);
+    --highlight-gold: rgba(224,184,96,0.08);
+    --highlight-green: rgba(122,184,96,0.08);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #2a1a0a 0%, #1a1410 40%, #1a1810 100%);
+    border-bottom: 2px solid var(--border);
+    padding: 36px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%; right: -5%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(240,160,80,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%; left: -5%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(122,184,96,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: var(--tag-bg-orange);
+    border: 1px solid rgba(240,160,80,0.3);
+    color: var(--accent-orange);
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent-cream);
+    margin-bottom: 8px;
+  }
+  .hero .sub {
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+
+  /* Main container */
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 28px 20px 40px;
+  }
+
+  /* Section */
+  .section { margin-bottom: 32px; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-header .icon {
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent-cream);
+  }
+  .section-header .badge {
+    font-size: 12px;
+    color: var(--text-secondary);
+    background: rgba(255,255,255,0.06);
+    padding: 2px 10px;
+    border-radius: 10px;
+    margin-left: auto;
+  }
+
+  /* Card */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-bottom: 14px;
+  }
+  .card:last-child { margin-bottom: 0; }
+  .card-title {
+    font-weight: 700;
+    font-size: 15.5px;
+    color: var(--accent-cream);
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  .card-desc {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    line-height: 1.7;
+  }
+  .card-relate {
+    background: var(--highlight-gold);
+    border-left: 3px solid var(--accent-gold);
+    padding: 8px 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: #e8c870;
+    margin-top: 8px;
+    line-height: 1.6;
+  }
+  .card-relate::before {
+    content: '💡 与我何干：';
+    font-weight: 700;
+    color: var(--accent-gold);
+    margin-right: 4px;
+  }
+
+  /* Signal tags */
+  .signal {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 6px;
+  }
+  .signal-green { background: var(--tag-bg-green); color: var(--accent-green); }
+  .signal-orange { background: var(--tag-bg-orange); color: var(--accent-orange); }
+  .signal-red { background: var(--tag-bg-red); color: var(--accent-red); }
+
+  /* Opportunity tag */
+  .opp-tag {
+    display: inline-block;
+    background: var(--tag-bg-green);
+    color: var(--accent-green);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 6px;
+  }
+
+  /* Timeline */
+  .timeline {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+  .tl-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(61,50,36,0.5);
+    font-size: 13.5px;
+  }
+  .tl-row:last-child { border-bottom: none; }
+  .tl-emoji { flex-shrink: 0; font-size: 16px; width: 24px; text-align: center; }
+  .tl-content strong { color: var(--accent-orange); }
+  .tl-content { color: var(--text-secondary); line-height: 1.6; }
+
+  /* Creative card */
+  .creative-card {
+    background: linear-gradient(135deg, rgba(240,160,80,0.06), rgba(232,112,64,0.04));
+    border: 1px solid rgba(240,160,80,0.2);
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-bottom: 14px;
+  }
+  .creative-name {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--accent-orange);
+    margin-bottom: 10px;
+  }
+  .creative-line {
+    margin-bottom: 12px;
+    font-size: 13.5px;
+    line-height: 1.7;
+  }
+  .creative-line strong {
+    color: var(--accent-cream);
+    margin-right: 6px;
+  }
+  .creative-highlight {
+    background: rgba(224,184,96,0.1);
+    border-left: 3px solid var(--accent-gold);
+    padding: 8px 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: #e8c870;
+    margin-top: 8px;
+  }
+
+  /* Expo / Channel */
+  .expo-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    font-size: 13.5px;
+    line-height: 1.7;
+  }
+  .expo-item strong { color: var(--accent-teal); }
+  .expo-tag {
+    display: inline-block;
+    background: var(--tag-bg-teal);
+    color: var(--accent-teal);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    font-weight: 600;
+    margin-right: 6px;
+  }
+
+  .divider {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: 24px 0;
+  }
+
+  .urgent-banner {
+    background: linear-gradient(135deg, rgba(232,112,64,0.1), rgba(240,160,80,0.06));
+    border: 1px solid rgba(232,112,64,0.25);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: var(--accent-orange);
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #6b5d4a;
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+    line-height: 1.8;
+  }
+
+  strong { color: var(--accent-cream); font-weight: 600; }
+  em { color: var(--accent-gold); font-style: normal; }
+  .highlight-green { color: var(--accent-green); font-weight: 600; }
+  .highlight-red { color: var(--accent-red); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">📅 2026年6月19日 星期五 · 端午·夏至前2天</div>
+    <h1>🍳 食研日推 · 每日行业情报</h1>
+    <div class="sub">为下厨房食品品牌产品经理定制的开品决策弹药 | 距夏至（6.21）<span style="color:#e87040;font-weight:700;">2天</span>，节后开品窗口全面打开</div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- 紧急提醒 -->
+<div class="urgent-banner">
+  🐲 端午节点战报：抖音粽子品类6.18销量同比+170%、822万单。节后开品重心立即切换到<strong>夏至消暑 + 7月暑期</strong>，6月22-30日是7月冷面/凉皮/消暑食材上新的最后决策期。
+</div>
+
+<!-- ===== 板块一：今日行业要闻 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">🔥</span>
+    <h2>一、今日行业要闻</h2>
+    <span class="badge">3条精选</span>
+  </div>
+
+  <div class="card">
+    <div class="card-title">1. 抖音电商618粽子战报：销量同比+170%、榴莲冰粽+77%、地方特色粽全面破圈</div>
+    <div class="card-desc">
+      6月18日《2026抖音电商粽子消费趋势报告》发布：近30天平台粽子搜索量241万次、累计售出822万单、534万人次下单。结构性数据：①传统肉粽+蛋黄粽+蜜枣豆沙粽仍占70%+份额；②<strong>榴莲冰粽订单同比+77%、健康养生粽成交额+40%</strong>；③<strong>金华梅干菜肉粽+397%、桂林墨米粽+298%、衢州辣粽+60%、闽南海鲜粽+37%</strong>；④25-35岁占49%（31-35岁单年龄段第一），新一线城市占26.7%居首；⑤抖音"严选粽子计划"已125店铺/360款商品入选。
+    </div>
+    <div class="card-relate">
+      三个直接启发：①<strong>地方特色粽是最大增量</strong>，且增速来自"地域风味被全国看见"——同样的逻辑适用于辣椒/杨梅/水蜜桃等地域品类；②<strong>冰皮/冰粽+健康养生</strong>是两大高增长细分，与下厨房"洁净短保"DNA高度契合；③消费者结构年轻化+下沉化（25-35岁+新一线+二三线）=抖音<strong>"选品人格化"内容仍有红利</strong>，但需要"产地溯源+地方风物"的内容锚点。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">2. 溜溜梅6.15港股上市首日暴涨189%、市值近百亿港元，6500倍超额认购创消费股纪录</div>
+    <div class="card-desc">
+      6月15日，中国青梅零食龙头<strong>溜溜梅（06658.HK）</strong>登陆港交所主板。发行价43.58港元/股，首日收盘126港元，<strong>涨幅189.12%</strong>，盘中最高127.20港元，总市值99.3亿港元（一度破百亿）。认购阶段<strong>超6500倍超额</strong>，超过蜜雪集团、布鲁可等明星消费股，居港股消费新股之首。上市募集净额约4.4亿港元，将用于扩产能、提品牌、新品研发、渠道拓展等六大方向。
+    </div>
+    <div class="card-relate">
+      青梅品类+港股资本+消费复苏三重信号：①<strong>梅子/酸甜风味零食是真实增长赛道</strong>，溜溜梅验证了"细分品类+长供应链"路线的资本可行性；②青梅+中药/草本/花茶组合（如陈皮梅、乌梅、紫苏梅）是健康化升级方向；③<strong>下厨房可关注"梅子系列"作为7-8月消暑食材</strong>（酸梅汤原料+冰品搭配），但需差异化在<strong>配料表洁净+产地溯源</strong>，避开溜溜梅的传统糖渍路线。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">3. 国务院食安办通报校园食材抽检问题，叠加端午艾草/鲜花销量同比翻倍</div>
+    <div class="card-desc">
+      端午节点央视《新闻联播》6.18报道：上海老字号乌米豆沙粽（结合江南初夏吃乌米饭传统）热销；<strong>江苏启东艾草基地日产10万+花束</strong>，发往长三角商超；<strong>昆明最大鲜花线上批发平台端午花材热卖29.5万扎，同比+100%</strong>。同时端午前夕国务院食安办通报多起校园食材抽检不合格，<strong>学校食堂食材溯源</strong>成为监管重点。
+    </div>
+    <div class="card-relate">
+      两个交叉信号：①<strong>艾草+花束+民俗食材</strong>是端午节点被严重低估的"周边品类"，适合做<strong>"食材+节令"组合礼盒</strong>（如艾草花束+粽子+雄黄酒原料+五彩绳的端午一篮子）；②<strong>校园食材合规化</strong>的趋势在节后监管动作只会更严，<strong>面向学校/团餐的预包装+可溯源+小份装</strong>食材是有政策窗口的B端机会，下厨房可考虑B2B2C路径。
+    </div>
+  </div>
+</div>
+
+<!-- ===== 板块二：爆品雷达·趋势苗头 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">🎯</span>
+    <h2>二、爆品雷达·趋势苗头</h2>
+    <span class="badge">3个信号</span>
+  </div>
+
+  <div class="card">
+    <div class="card-title">
+      <span class="signal signal-orange">🟡 起势</span>
+      "冰感烘焙"引爆夏季冷冻新赛道，山姆/盒马/泸溪河集体入局
+    </div>
+    <div class="card-desc">
+      6月初全联烘焙业公会发布：<strong>冰蛋挞/冰面包/冰蛋糕</strong>等"冰感烘焙"（解冻即食）正在改写冷冻食品6-9月淡季逻辑。山姆会员店主推冰面包（单品月销10万+）、盒马推出夏季冰感烘焙专区、泸溪河把冰面包作为"百城万店"加盟核心品类。<strong>冰感烘焙=冷冻短保+夏季消费场景+年轻化</strong>，是2026夏季烘焙市场的黑马。
+    </div>
+    <div class="opp-tag">🎯 机会判断：值得关注</div>
+    <div style="font-size:13px;color:var(--text-secondary);margin-top:6px;line-height:1.6;">
+      与下厨房的契合点：①<strong>冷链短保+夏季消暑</strong>符合品牌DNA；②抖音上<strong>"冰镇XX"内容形式</strong>（如冰镇杨梅、冰镇荔枝、冰镇酸梅汤果冻）天然适配；③差异化切入口：<strong>不做"冰面包"红海，做"冰镇时令食材"小赛道</strong>——比如冰镇杨梅果冻、冰镇荔枝椰冻、冰镇酸梅汤冰棍。冰感+时令+真材实料的组合是品类空白。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">
+      <span class="signal signal-orange">🟡 起势</span>
+      新茶饮集体跨界"冰淇淋+新鲜零食"，30+新品锁定夏日增长
+    </div>
+    <div class="card-desc">
+      6月1日喜茶"喜拉朵"冰淇淋首店登陆厦门万象城，<strong>复刻多肉葡萄/芝芝桃桃</strong>等茶饮口味；霸王茶姬推出"伯牙绝弦"意式冰淇淋；蜜雪冰城推出独立"冰淇淋小屋"+薄荷冰淇淋；茉莉奶白5.29上线"小零脆"茶味薄脆；茶颜悦色4月在长沙落地"吉时赏味"鲜食店（中式点心+卤味+坚果）。红餐数据显示2025年新茶饮规模1870亿、增速降至6.4%，跨界成"全时段+全品类"必然选择。
+    </div>
+    <div class="opp-tag">🎯 机会判断：强烈关注</div>
+    <div style="font-size:13px;color:var(--text-secondary);margin-top:6px;line-height:1.6;">
+      茶饮品牌集体"用爆款茶底复刻到零食/冰品"——这意味着<strong>茶基因（茉莉、桂花、乌龙、伯爵红茶、抹茶）正在成为食品端风味的核心变量</strong>。对下厨房：①可以做<strong>茶味食材组合</strong>（茶香粽子、茶味凉面酱、茶香冰粉底料）；②"茶+冰感+短保"的三角组合是<strong>冰品/冰粉/果冻等品类的新风味源</strong>；③如果做酱料/调味品，<strong>茶香腌料、桂花蜜茶酱</strong>是抖音还没充分教育过的新风味。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">
+      <span class="signal signal-green">🟢 苗头</span>
+      哈根达斯中国业务被通用磨坊"授权"给本土柠檬茶品牌柠季，跨国巨头退场信号
+    </div>
+    <div class="card-desc">
+      6月2日美国通用磨坊宣布，将哈根达斯在中国内地门店业务授权给包含<strong>柠季（柠檬茶品牌）</strong>在内的投资者集团。哈根达斯曾是高端冰激凌标杆，但近年在华门店持续收缩（从80+收缩到50家左右）。这是<strong>"跨国食品巨头+本土新茶饮/餐饮品牌"的首次大规模业务重组</strong>，预示高端冰品赛道格局重构。
+    </div>
+    <div class="opp-tag">🎯 机会判断：关注</div>
+    <div style="font-size:13px;color:var(--text-secondary);margin-top:6px;line-height:1.6;">
+      哈根达斯"中国失守"的三重信号：①<strong>高端进口冰品的需求被本土新茶饮冰品（喜拉朵/茶颜/霸王茶姬）挤占</strong>；②新茶饮品牌有"原料供应链+门店+会员"等高价值资产，可反哺冰品业务；③<strong>中国本土"真材实料+真产地"的精品冰品</strong>有结构性机会。下厨房可考虑以"产地水果+真材实料"做差异化冰品（如真榴莲冰棍、阳山蜜桃冰棒、桂味荔枝冰沙），走精品礼盒路线避开低价红海。
+    </div>
+  </div>
+</div>
+
+<!-- ===== 板块三：时令风向 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">🌿</span>
+    <h2>三、时令风向·品类机会</h2>
+    <span class="badge">端午→夏至</span>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-row">
+      <span class="tl-emoji">📅</span>
+      <span class="tl-content"><strong>当前：</strong>端午当天（6.19），粽子GMV爆发170%已收官，节后开品焦点立即切换到<strong>夏至+暑期消暑+7月大品类</strong></span>
+    </div>
+    <div class="tl-row">
+      <span class="tl-emoji">⏰</span>
+      <span class="tl-content"><strong>倒计时：</strong>距夏至（6.21）仅<strong style="color:#e87040;">2天</strong> | 距小暑（7.7）<strong style="color:#e87040;">18天</strong> | 距大暑（7.22）<strong style="color:#e87040;">33天</strong> | 距立秋（8.7）<strong style="color:#e87040;">49天</strong></span>
+    </div>
+    <div class="tl-row">
+      <span class="tl-emoji">🎯</span>
+      <span class="tl-content"><strong>即将热卖：</strong>①<strong>夏至面/凉面/凉皮</strong>——"冬至饺子夏至面"民俗驱动+北方刚需，6.21-7月是全年最旺季；②<strong>消暑汤料（绿豆/百合/莲子/酸梅汤原料）</strong>——夏至后家庭自制需求暴增，配料包形式有差异化空间；③<strong>冷感冰品+时令水果冰棒</strong>——喜拉朵等冰品上市引爆"冰感品类"，7月进入全年高峰</span>
+    </div>
+    <div class="tl-row">
+      <span class="tl-emoji">🚨</span>
+      <span class="tl-content"><strong>窗口提醒：</strong>①<strong>粽子开品窗口已完全关闭</strong>，关注节后粽叶/糯米等原料价格回落，明年备料可谈长协；②<strong>仙居东魁杨梅窗口即将关闭</strong>（6月底），想做杨梅相关产品的需在10天内决策；③<strong>桂味荔枝价格仍在历史高位</strong>（产地收购40元/斤、零售50-100元/斤），窗口可持续到6月底但溢价空间收窄</span>
+    </div>
+    <div class="tl-row">
+      <span class="tl-emoji">🏔️</span>
+      <span class="tl-content"><strong>产地机会：</strong>①<strong>云南野生菌（松茸/牛肝菌/鸡枞菌）</strong>——6月中-7月底集中上市，京东地标频道菌菇礼盒同比+200%；②<strong>无锡阳山水蜜桃（朝阳品种）</strong>——本周刚开园上市，4-6两精品果118-208元/盒，朝阳/白凤/湖景蜜露接棒直到8月；③<strong>新疆哈密美人杏</strong>——赏味期仅剩2天（6.20下市），糖度18-23，下周可启动"时令末日"话题营销</span>
+    </div>
+  </div>
+
+  <div class="card" style="background:linear-gradient(135deg, rgba(122,184,96,0.06), rgba(80,168,144,0.04));border-color:rgba(122,184,96,0.2);">
+    <div class="card-title" style="color:var(--accent-green);">🔭 提前量预判：7月时令风向</div>
+    <div class="card-desc">
+      <strong>冷面/凉皮/凉粉</strong>进入全年最旺季，去年抖音凉皮品类7月GMV环比+300%。<strong>绿豆/百合/莲子</strong>等消暑食材搜索量将在夏至后暴增。<strong>真材实料冰品</strong>（冰棍/冰棒/冰粉）7-8月是销售旺季。<strong>大闸蟹蟹券</strong>预售8月中启动，<strong>产地调研和供应链锁定需7月完成</strong>。<strong>中秋月饼开品决策需在7月底前敲定</strong>（8月进入备货期）。<strong>8月7日立秋</strong>前需完成"夏季消暑→秋季贴膘"的内容/选品切换。
+    </div>
+  </div>
+</div>
+
+<!-- ===== 板块四：跨界灵感 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">💡</span>
+    <h2>四、跨界灵感·创新动作</h2>
+    <span class="badge">3个迁移</span>
+  </div>
+
+  <div class="card">
+    <div class="card-title">
+      <span class="expo-tag">跨界源</span> 哈根达斯中国业务被本土茶饮品牌"接盘"——高端进口冰品的"国产化"成为新故事
+    </div>
+    <div class="card-desc">
+      哈根达斯的中国门店业务被授权给包含柠季在内的本土投资者，<strong>核心变化是"跨国标准+本土口味+茶饮渠道"的三合一</strong>。柠季/喜拉朵/霸王茶姬冰品都在用"茶底+本土水果"做差异化，客单价18-24元/球，瞄准25-35岁女性。
+    </div>
+    <div class="card-relate">
+      <strong>迁移可能：</strong>下厨房可以做"产地+冰品"的反向故事——不卖冰品，而是卖<strong>冰品级冷冻食材</strong>：①真材实料的<strong>冰棒/冰棍DIY食材包</strong>（如阳山蜜桃冰棒DIY套盒：蜜桃果肉+冰棒模具+配方卡）；②<strong>冷冻新鲜果泥</strong>（HPP处理后冷冻，DIY冰品/冰沙基底）；③抖音"夏日冰品实验室"系列内容——用产地食材做冰品配方+溯源+教学。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">
+      <span class="expo-tag">跨界源</span> 抖音粽子"地方特色粽"全面破圈：金华梅干菜+397%、桂林墨米+298%、闽南海鲜+37%
+    </div>
+    <div class="card-desc">
+      端午节点<strong>"地域风味被全国看见"</strong>是2026年食品端最确定的故事。金华梅干菜、桂林墨米、衢州辣、福建海鲜、天津枣泥豆沙、新疆天山酸奶、内蒙古奶皮子、宁夏枸杞、陕西蜂蜜凉粽、甘肃玫瑰百合、安徽黄山灰汁粽、四川火锅牛肉粽、海南黑猪肉粽——<strong>10+地域风味通过电商被全国消费</strong>，且增速都在30%-400%之间。
+    </div>
+    <div class="card-relate">
+      <strong>迁移可能：</strong>地域风味品类的爆发不是粽子专属，是<strong>整个食品端的品类机会</strong>。对下厨房：①"地域特色"叙事可<strong>全年应用到辣椒/杨梅/水蜜桃/大米/醋/酱油/腊味/酸菜</strong>等所有地域食材；②抖音的"PM溯源笔记"内容形式可以从辣椒扩展到<strong>全国地标食材</strong>（一个省一个代表风物）；③可以做<strong>"中国地标食材地图"</strong>系列内容，每月一个省，深耕地域文化。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">
+      <span class="expo-tag">跨界源</span> 新茶饮品牌"茶+零食/茶+鲜食/茶+早餐咖啡"全时段作战
+    </div>
+    <div class="card-desc">
+      茉莉奶白"小零脆"茶味薄脆（5.29）、茶颜悦色"吉时赏味"鲜食店（4月）、蜜雪冰城"早餐系列"五红奶/五黑奶/玉米奶（5元/杯）、古茗将咖啡从10-15%占比提升至20-25%。<strong>茶饮品牌把"一杯茶"扩展为"全时段全品类"</strong>，本质是用"门店密度+会员复购"做新场景。
+    </div>
+    <div class="card-relate">
+      <strong>迁移可能：</strong>食材端可以反向做"茶+一切"组合：①<strong>茶味主食调料</strong>（茉莉花茶腌料、桂花乌龙酱、伯爵红茶煮奶茶底料）；②<strong>茶味时令食材组合</strong>（茶+杨梅/茶+荔枝/茶+水蜜桃的HPP果茶组合）；③<strong>茶+早餐</strong>（茶味燕麦/茶味杂粮/茶味酸奶基底料包）。茶基因的食品化是2026-2027年最确定的风味趋势之一。
+    </div>
+  </div>
+</div>
+
+<!-- ===== 板块五：脑暴时刻 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">🧪</span>
+    <h2>五、脑暴时刻·融合创意</h2>
+    <span class="badge">2个收敛创意</span>
+  </div>
+
+  <div class="creative-card">
+    <div class="creative-name">🎯 创意一：「夏至面·食材LAB」地域冷面礼盒</div>
+    <div class="creative-line">
+      <strong>一句话描述：</strong>用PM选品思维做夏至冷面——四种地域风味的"手作冷面套装"（含面条+4袋地域酱料包+配方卡+溯源笔记）
+    </div>
+    <div class="creative-line">
+      <strong>为什么是现在：</strong>①夏至2天后，北方"夏至面"刚需爆发；②冷面/凉皮抖音7月GMV环比+300%；③抖音粽子"地域特色"增速400%+已验证"地域风物×全国市场"模型
+    </div>
+    <div class="creative-line">
+      <strong>差异化锚点：</strong>①<strong>4地域酱料</strong>：东北麻酱+川式红油+上海葱油+日式柚子醋，每袋都是"地域风物"级别而非复合调味；②<strong>面条基底</strong>用华北/江南/西北的差异面粉/荞麦/藜麦；③对比抖音冷面：<strong>不是"1袋酱+1袋面"的标准化</strong>，而是"地域风物盲盒"+"PM溯源卡"
+    </div>
+    <div class="creative-line">
+      <strong>可行性初判：</strong>供应链难度中（酱料包需找4-6家地域小厂代工，但都可对接）；渠道适配度高（抖音+小红书内容素材丰富，#夏至面 本身就是节令流量词）
+    </div>
+    <div class="creative-highlight">
+      💡 关键价值点：把"夏至面"从单一品类升级为"地域风物体验"，对标"抖音地方特色粽+400%"的爆发模型，踩中"地域叙事+节令刚需+洁净酱料"三热点。
+    </div>
+  </div>
+
+  <div class="creative-card">
+    <div class="creative-name">🎯 创意二：「产地冰棒研究所」HPP果泥DIY套装</div>
+    <div class="creative-line">
+      <strong>一句话描述：</strong>用产地HPP冷冻果泥+硅胶冰棒模具+风味配方卡+溯源故事的"自制冷棒三件套"——客单价89-129元/盒
+    </div>
+    <div class="creative-line">
+      <strong>为什么是现在：</strong>①山姆冰面包/喜拉朵/哈根达斯"国产化"三重信号——<strong>冰品赛道正经历"高端进口→本土真材实料"切换</strong>；②"冰感烘焙"夏季冷冻新赛道已被验证；③消费者自己DIY"冰品"是抖音#夏日冰品话题的隐藏需求
+    </div>
+    <div class="creative-line">
+      <strong>差异化锚点：</strong>①<strong>不是卖冰棒</strong>，而是卖"做冰棒的食材"（客单价更高/毛利率更厚）；②<strong>HPP冷冻果泥+当季真水果</strong>（如阳山蜜桃/增城荔枝/新疆杏/福建杨梅）；③对比抖音冰棒：<strong>不做"预制冰棒"</strong>，而做"产地食材+DIY体验+溯源故事"组合
+    </div>
+    <div class="creative-line">
+      <strong>可行性初判：</strong>供应链难度中（HPP果泥需要冷链，目前供应商可对接深圳/广州HPP工厂）；渠道适配度极高（抖音短视频展示"DIY冰棒过程"是天然内容形式；小红书#自制冰棒 #夏日冰品 是高互动话题）
+    </div>
+    <div class="creative-highlight">
+      💡 关键价值点：踩中"冰感烘焙新赛道+哈根达斯国产化+地域风物"三波信号，做出"DIY食材包"差异化品类，绕开预制冰品红海竞争。
+    </div>
+  </div>
+</div>
+
+<!-- ===== 板块六：展会速递 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">🏬</span>
+    <h2>六、展会速递·渠道上新</h2>
+    <span class="badge">4条动态</span>
+  </div>
+
+  <div class="expo-item">
+    <span class="expo-tag">🎪 展会</span>
+    <strong>2026中国（郑州）国际食材展览会·良之隆</strong> 6月底-7月 郑州<br>
+    <strong>看点：</strong>良之隆全国食材供应链展会矩阵布局中部核心展会，同期举办第三届全球肉类产业博览会 + 第三届中国豫菜食材电商节<br>
+    <strong>与我何干：</strong>中部地区是预制食材和面食/面点/粮油品类的主战场，<strong>地域冷面/凉面/面筋/牛羊肉</strong>等地域风物可在此对接产地供应商
+  </div>
+
+  <div class="expo-item">
+    <span class="expo-tag">🎪 展会</span>
+    <strong>FOOD&DRINKS MALAYSIA by SIAL 马来西亚食品展</strong> 7.21-23 吉隆坡<br>
+    <strong>看点：</strong>东南亚最大食品展之一，覆盖东南亚风味/热带水果/包装食品<br>
+    <strong>与我何干：</strong><strong>猫山王/黑刺榴莲、山竹、椰青、热带水果</strong>等东南亚直采食材是高端水果品类机会，<strong>7月正是马来西亚榴莲大旺季</strong>，展会前可对接当地果园资源
+  </div>
+
+  <div class="expo-item">
+    <span class="expo-tag">🛒 渠道</span>
+    <strong>山姆/盒马/泸溪河扎堆"冰感烘焙"</strong> 6月起持续上新<br>
+    <strong>卖点：</strong>冰蛋挞/冰面包/冰蛋糕"解冻即食"成夏季冷冻新赛道，山姆冰面包月销10万+<br>
+    <strong>启发：</strong>"冰感"是2026夏季食品端的关键词，<strong>可考虑"冰感+时令"组合产品</strong>（冰镇杨梅、冰镇荔枝、冰镇绿豆汤）
+  </div>
+
+  <div class="expo-item">
+    <span class="expo-tag">🛒 渠道</span>
+    <strong>喜茶"喜拉朵"冰淇淋首店（6.1厦门万象城）+ 茶颜"吉时赏味"鲜食店（长沙）</strong> 6月持续扩张<br>
+    <strong>卖点：</strong>新茶饮品牌把"门店+会员+供应链"做冰淇淋+新鲜零食的延伸，瞄准25-35岁年轻女性<br>
+    <strong>启发：</strong>茶饮品牌的"全品类"打法倒推食材端<strong>"茶味食材组合包"</strong>的空白机会，<strong>茶+时令水果+冷冻短保</strong>的三角组合值得探索
+  </div>
+
+</div>
+
+<div class="footer">
+  🍳 食研日推 · 为下厨房食品品牌产品经理定制的开品决策弹药<br>
+  📅 2026-06-19 · 端午节 · 夏至前2天 · 第 41 期<br>
+  数据来源：央视新闻联播、抖音电商、FBIF食品饮料创新、新华网、淘宝/小红书、央视财经、Asian Metal、人民日报等
+</div>
+
+</div>
+
+</body>
+</html>
