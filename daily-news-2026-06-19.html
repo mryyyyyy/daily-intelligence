@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日双专栏情报 | 2026-06-19</title>
+<style>
+:root {
+  --bg-dark: #0a0e17;
+  --bg-card: #131827;
+  --bg-card-hover: #1a2035;
+  --accent-red: #ff4757;
+  --accent-blue: #3742fa;
+  --accent-green: #2ed573;
+  --accent-gold: #ffa502;
+  --accent-purple: #a855f7;
+  --accent-cyan: #06b6d4;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border-color: #1e293b;
+  --gradient-fire: linear-gradient(135deg, #ff4757 0%, #ff6348 50%, #ffa502 100%);
+  --gradient-tech: linear-gradient(135deg, #3742fa 0%, #a855f7 50%, #06b6d4 100%);
+  --gradient-ai: linear-gradient(135deg, #06b6d4 0%, #2ed573 50%, #a855f7 100%);
+  --shadow-glow-red: 0 0 30px rgba(255,71,87,0.15);
+  --shadow-glow-blue: 0 0 30px rgba(55,66,250,0.15);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+.header {
+  text-align: center;
+  padding: 40px 20px 30px;
+  background: linear-gradient(180deg, rgba(10,14,23,0) 0%, var(--bg-dark) 100%);
+  position: relative;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gradient-fire);
+}
+.header .date {
+  font-size: 14px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.header h1 {
+  font-size: 32px;
+  font-weight: 800;
+  background: var(--gradient-fire);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 2px;
+}
+.header .subtitle {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.column-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 40px 0 20px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  position: relative;
+}
+.column-header.col1 {
+  background: rgba(255,71,87,0.08);
+  border: 1px solid rgba(255,71,87,0.2);
+  box-shadow: 0 0 30px rgba(255,71,87,0.15);
+}
+.column-header.col2 {
+  background: rgba(6,182,212,0.08);
+  border: 1px solid rgba(6,182,212,0.2);
+  box-shadow: 0 0 30px rgba(6,182,212,0.15);
+}
+.column-header .icon { font-size: 28px; }
+.column-header h2 { font-size: 22px; font-weight: 700; }
+.column-header.col1 h2 { color: var(--accent-red); }
+.column-header.col2 h2 { color: var(--accent-cyan); }
+.column-header .tag {
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-left: auto;
+}
+.column-header.col1 .tag {
+  background: rgba(255,71,87,0.15);
+  color: var(--accent-red);
+}
+.column-header.col2 .tag {
+  background: rgba(6,182,212,0.15);
+  color: var(--accent-cyan);
+}
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  transition: all 0.3s;
+}
+.card:hover {
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+.card .card-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card .card-title .badge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+.badge-hot { background: rgba(255,71,87,0.2); color: var(--accent-red); }
+.badge-policy { background: rgba(255,165,2,0.2); color: var(--accent-gold); }
+.badge-tech { background: rgba(6,182,212,0.2); color: var(--accent-cyan); }
+.badge-money { background: rgba(46,213,115,0.2); color: var(--accent-green); }
+.badge-global { background: rgba(168,85,247,0.2); color: var(--accent-purple); }
+.badge-ai { background: rgba(6,182,212,0.2); color: var(--accent-cyan); }
+.badge-new { background: rgba(255,165,2,0.2); color: var(--accent-gold); }
+.badge-agent { background: rgba(168,85,247,0.2); color: var(--accent-purple); }
+.badge-warning { background: rgba(255,71,87,0.15); color: #ff6348; }
+.section-label {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+}
+.section-label.red { color: var(--accent-red); }
+.section-label.gold { color: var(--accent-gold); }
+.section-label.green { color: var(--accent-green); }
+.section-label.cyan { color: var(--accent-cyan); }
+.section-label.purple { color: var(--accent-purple); }
+.section-label.blue { color: var(--accent-blue); }
+.card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+.card p strong { color: var(--text-primary); font-weight: 600; }
+.card ul { list-style: none; padding: 0; }
+.card ul li {
+  font-size: 14px;
+  color: var(--text-secondary);
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(30,41,59,0.5);
+  position: relative;
+  padding-left: 16px;
+}
+.card ul li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent-cyan);
+  font-size: 12px;
+}
+.card ul li:last-child { border-bottom: none; }
+.highlight-box {
+  background: rgba(255,165,2,0.06);
+  border: 1px solid rgba(255,165,2,0.15);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px 0;
+}
+.highlight-box p { color: var(--accent-gold); font-weight: 600; font-size: 14px; }
+.insight-box {
+  background: rgba(6,182,212,0.06);
+  border: 1px solid rgba(6,182,212,0.15);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px 0;
+}
+.insight-box p { color: var(--accent-cyan); font-size: 14px; }
+.impact-box {
+  background: rgba(46,213,115,0.06);
+  border: 1px solid rgba(46,213,115,0.15);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px 0;
+}
+.impact-box p { color: var(--accent-green); font-size: 14px; }
+.warning-box {
+  background: rgba(255,71,87,0.06);
+  border: 1px solid rgba(255,71,87,0.15);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px 0;
+}
+.warning-box p { color: var(--accent-red); font-size: 14px; }
+.divider {
+  height: 1px;
+  background: var(--border-color);
+  margin: 30px 0;
+}
+.summary-card {
+  background: linear-gradient(135deg, rgba(255,71,87,0.1) 0%, rgba(255,165,2,0.1) 100%);
+  border: 1px solid rgba(255,71,87,0.3);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 40px;
+  box-shadow: 0 0 30px rgba(255,71,87,0.15);
+}
+.summary-card h3 { font-size: 18px; color: var(--accent-red); margin-bottom: 12px; }
+.summary-card p { font-size: 14px; color: var(--text-secondary); }
+.tool-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(6,182,212,0.3);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: all 0.3s;
+}
+.tool-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(6,182,212,0.5);
+}
+.tool-card .tool-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.tool-card .tool-icon { font-size: 24px; }
+.tool-card .tool-name { font-size: 17px; font-weight: 700; color: var(--accent-cyan); }
+.tool-card .tool-sub { font-size: 13px; color: var(--text-muted); }
+.tool-card p { font-size: 14px; color: var(--text-secondary); margin-bottom: 8px; }
+.github-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+}
+.github-table th {
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  letter-spacing: 1px;
+}
+.github-table td {
+  font-size: 13px;
+  color: var(--text-secondary);
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(30,41,59,0.3);
+}
+.github-table td:first-child { color: var(--accent-cyan); font-weight: 600; }
+.github-table .stars { color: var(--accent-gold); font-weight: 600; }
+.footer {
+  text-align: center;
+  padding: 30px 20px;
+  color: var(--text-muted);
+  font-size: 12px;
+  border-top: 1px solid var(--border-color);
+  margin-top: 40px;
+}
+.data-source {
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 12px 16px;
+  background: rgba(30,41,59,0.3);
+  border-radius: 8px;
+  margin: 20px 0;
+}
+.number-highlight {
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 15px;
+}
+.trending-tag {
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  margin-right: 4px;
+}
+.tag-fire { background: rgba(255,71,87,0.2); color: var(--accent-red); }
+.tag-new { background: rgba(46,213,115,0.2); color: var(--accent-green); }
+.tag-hot { background: rgba(255,165,2,0.2); color: var(--accent-gold); }
+.ph-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.ph-rank {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--accent-gold);
+  min-width: 32px;
+}
+.ph-info { flex: 1; }
+.ph-name { font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+.ph-desc { font-size: 13px; color: var(--text-secondary); }
+.ph-votes { font-size: 13px; color: var(--accent-gold); font-weight: 600; margin-top: 4px; }
+@media (max-width: 768px) {
+  .header h1 { font-size: 24px; }
+  .card { padding: 16px; }
+  .container { padding: 0 12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="date">📅 2026-06-19 | 周四 · 端午假期前</div>
+  <h1>每日双专栏情报卡片</h1>
+  <div class="subtitle">新闻联播风向标 × AI生产力黑科技 · 双引擎驱动认知升级</div>
+</div>
+
+<div class="container">
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 专栏一：新闻联播每日简报 -->
+<!-- ════════════════════════════════════════════════════════════ -->
+
+<div class="column-header col1">
+  <span class="icon">🔴</span>
+  <h2>专栏一：新闻联播每日简报（风向标解读版）</h2>
+  <span class="tag">2026-06-18 · 端午前夜</span>
+</div>
+
+<div class="data-source">
+  📡 信源：cn.govopendata.com 6月18日完整文字稿 | 注：6月19日早8:50，昨日节目已播出，今日节目尚未播出，使用6月18日数据
+</div>
+
+<!-- 核心风向 -->
+<div class="card">
+  <div class="card-title">
+    <span class="badge badge-hot">🔥 核心风向</span>
+    一句话定调
+  </div>
+  <div class="highlight-box">
+    <p>📌 建党105周年节点，习近平回信定调"传承红色基因"；中央党建领导小组印发学习贯彻通知，党建思想体系化落地加速；外交信号密集（韩正点名中加AI+新能源汽车合作）；"两新"2000亿资金加速下达；<strong>美伊正式签署谅解备忘录，霍尔木兹海峡重开</strong>——端午前夜，全球能源格局重塑。</p>
+  </div>
+</div>
+
+<!-- 新闻1 -->
+<div class="card">
+  <div class="card-title">
+    <span class="badge badge-policy">🏛️ 1</span>
+    习近平给新华社102岁老党员张连生回信——传承红色基因
+  </div>
+  <div class="section-label red">▸ 新闻联播说了什么：</div>
+  <p>在中国共产党成立<strong>105周年</strong>之际，习近平给新华社<strong>102岁老党员张连生</strong>回信，向他和全国老党员致以诚挚问候。张连生是解放战争时期中央纵队"<strong>四大队</strong>"报务员，在烽火硝烟中跟随党中央<strong>转战陕北</strong>。习近平表示："<strong>新时代共产党人要传承红色基因，不忘初心、牢记使命，履职尽责、实干担当，在新征程上书写优异答卷</strong>。"</p>
+  <div class="section-label gold">▸ 风向标解读：</div>
+  <div class="highlight-box">
+    <p>📌 建党105周年节点回信，核心信号是"红色基因传承"——这不是简单的怀旧，而是在<strong>党建思想体系化</strong>的大背景下，<strong>强化组织纪律和精神传承的全党动员</strong>。结合当天"中央党的建设工作领导小组印发学习贯彻习近平党建思想的通知"，<strong>党建思想从理论走向全党强制性落地</strong>的节奏在加快。</p>
+  </div>
+  <div class="section-label green">▸ 直接影响：</div>
+  <div class="impact-box">
+    <p>✅ 红色文旅产业迎来建党105周年窗口期<br>
+    ✅ 党建信息化平台、主题教育数字化工具需求释放<br>
+    ⚠️ 非公有制经济领域需关注党建引领的制度化趋势</p>
+  </div>
+</div>
+
+<!-- 新闻2 -->
+<div class="card">
+  <div class="card-title">
+    <span class="badge badge-policy">🏛️ 2</span>
+    中央党的建设工作领导小组印发《关于学习贯彻习近平党建思想的通知》
+  </div>
+  <div class="section-label red">▸ 新闻联播说了什么：</div>
+  <p>《通知》指出，学习贯彻习近平党建思想有利于推动全党深刻领悟"<strong>两个确立</strong>"的决定性意义、坚决做到"<strong>两个维护</strong>"；有利于<strong>深化党的创新理论武装</strong>；有利于<strong>持之以恒推进全面从严治党</strong>。《通知》强调要深入学习领会习近平党建思想的<strong>科学内涵、理论品格、实践基础和理论渊源</strong>。各级党委（党组）要把学习贯彻作为<strong>当前和今后一个时期的重要政治任务</strong>。</p>
+  <div class="section-label gold">▸ 风向标解读：</div>
+  <div class="highlight-box">
+    <p>📌 这是<strong>党建思想从"学术理论"升级为"全党强制性政治任务"</strong>的关键信号。从6月15日全国党建工作座谈会蔡奇出席，到6月16-18日连续三天新闻联播头条聚焦党建思想，<strong>党建思想的体系化学习贯彻正在加速</strong>。对企业和社会组织来说，党建不再只是"软性要求"，而是<strong>硬性政治任务</strong>。</p>
+  </div>
+  <div class="section-label green">▸ 直接影响：</div>
+  <div class="impact-box">
+    <p>✅ 党建培训/学习平台赛道爆发（线上党课、党建云）<br>
+    ✅ 国企党建合规咨询需求上升<br>
+    ✅ 党建思想出版物、理论阐释内容创作迎来政策红利期</p>
+  </div>
+</div>
+
+<!-- 新闻3 -->
+<div class="card">
+  <div class="card-title">
+    <span class="badge badge-global">🌍 3</span>
+    韩正会见加拿大工业部长+丹麦诺和诺德主席——外交信号密集
+  </div>
+  <div class="section-label red">▸ 新闻联播说了什么：</div>
+  <p>韩正6月18日在北京<strong>分别会见</strong>加拿大工业部长<strong>乔利</strong>率领的知名企业家代表团、丹麦<strong>诺和诺德基金会主席兼公司董事会主席索文森</strong>。<br><br>
+  会见乔利时，韩正表示：今年1月<strong>习近平同卡尼总理在北京成功举行会晤</strong>，中加经济互补性强，合作潜力巨大。中方愿同加方一道，<strong>巩固传统领域合作，加强新能源汽车、人工智能等新兴领域合作</strong>，推动中加新型战略伙伴关系发展。<br><br>
+  会见索文森时，韩正表示："<strong>十五五</strong>"时期将<strong>加快建设健康中国，努力使人均预期寿命提高到80岁</strong>。希望诺和诺德公司发挥自身优势，积极参与健康中国建设。</p>
+  <div class="section-label gold">▸ 风向标解读：</div>
+  <div class="highlight-box">
+    <p>📌 <strong>两条外交信号叠加释放重大信号</strong>：①加拿大——从中加"新型战略伙伴关系"到点名<strong>新能源汽车+人工智能</strong>合作，这是高层明确将AI列为双边战略合作领域的信号；②丹麦诺和诺德——全球最大胰岛素/减肥药公司，"<strong>人均预期寿命提高到80岁</strong>"的健康中国目标，意味着<strong>医药健康赛道是十五五核心民生赛道</strong>。</p>
+  </div>
+  <div class="section-label green">▸ 直接影响：</div>
+  <div class="impact-box">
+    <p>✅ AI+新能源汽车跨境合作赛道明确受益<br>
+    ✅ 医药健康赛道确定性高（诺和诺德+健康中国80岁目标）<br>
+    ✅ 减肥药/慢病管理/健康科技迎来政策明确信号<br>
+    ✅ 外资企业在华营商环境持续改善信号</p>
+  </div>
+</div>
+
+<!-- 新闻4 -->
+<div class="card">
+  <div class="card-title">
+    <span class="badge badge-money">💰 4</span>
+    "两新"资金加速下达——2000亿设备更新+625亿消费品以旧换新
+  </div>
+  <div class="section-label red">▸ 新闻联播说了什么：</div>
+  <p>国家发展改革委消息：<strong>6月底前</strong>，国家将下达<strong>今年全部2000亿元设备更新项目清单</strong>和<strong>第三批625亿元消费品以旧换新资金</strong>。今年以来已分两批下达设备更新资金<strong>1851亿元</strong>，共支持<strong>老旧小区加装电梯、养老机构设备更新等11000多个项目</strong>，带动总投资<strong>超过8400亿元</strong>。1—5月已下达消费品以旧换新资金<strong>1250亿元</strong>，已累计带动相关商品销售额<strong>超过8200亿元</strong>，惠及<strong>超过1.1亿人次</strong>。</p>
+  <div class="section-label gold">▸ 风向标解读：</div>
+  <div class="highlight-box">
+    <p>📌 "两新"政策进入<strong>资金密集下达期</strong>——6月底前全部2000亿设备更新清单+第三批625亿消费品以旧换新要到位。<strong>8400亿总投资带动</strong>+<strong>8200亿消费带动</strong>+<strong>1.1亿人次惠及</strong>，这是<strong>宏观政策从"规划"走向"落地加速"的关键信号</strong>。端午假期消费市场叠加"两新"资金释放，<strong>6月下旬到7月上旬消费数据有望显著反弹</strong>。</p>
+  </div>
+  <div class="section-label green">▸ 直接影响：</div>
+  <div class="impact-box">
+    <p>✅ 消费电子/家电/汽车换新赛道直接受益（8200亿消费带动）<br>
+    ✅ 老旧小区改造/养老设备/医疗设备更新赛道确定性强<br>
+    ✅ 银行信贷配套"两新"贷款产品放量<br>
+    ✅ 端午假期消费数据有望超预期</p>
+  </div>
+</div>
+
+<!-- 新闻5 -->
+<div class="card">
+  <div class="card-title">
+    <span class="badge badge-policy">🏛️ 5</span>
+    "在高质量发展中保障和改善民生"形势政策系列报告会首场
+  </div>
+  <div class="section-label red">▸ 新闻联播说了什么：</div>
+  <p>首场报告会在北京举行，交通运输部党组书记、部长<strong>刘伟</strong>表示："十四五"时期综合交通运输体系建设实现<strong>突破性进展</strong>。"十五五"时期要围绕完善现代化综合交通运输体系，<strong>突出数智化升级，注重绿色化转型</strong>，办好交通为民实事，努力当好中国式现代化的<strong>开路先锋</strong>。</p>
+  <div class="section-label gold">▸ 风向标解读：</div>
+  <div class="highlight-box">
+    <p>📌 "<strong>数智化升级</strong>"和"<strong>绿色化转型</strong>"被并列提为十五五交通两大方向，<strong>智能交通/交通AI</strong>是确定性赛道。系列报告会后续预计将覆盖教育、医疗、社保等领域，<strong>十五五民生保障路线图正在逐步清晰</strong>。</p>
+  </div>
+  <div class="section-label green">▸ 直接影响：</div>
+  <div class="impact-box">
+    <p>✅ 智能交通/交通AI赛道（自动驾驶/智慧高速/交通大数据）<br>
+    ✅ 绿色交通/新能源交通基础设施<br>
+    ✅ 后续系列报告会将持续释放民生领域信号</p>
+  </div>
+</div>
+
+<!-- 新闻6 -->
+<div class="card">
+  <div class="card-title">
+    <span class="badge badge-global">🌍 6</span>
+    美伊正式签署谅解备忘录——霍尔木兹海峡重开，全球能源格局重塑
+  </div>
+  <div class="section-label red">▸ 新闻联播说了什么：</div>
+  <p>美国总统<strong>特朗普</strong>17日在法国<strong>七国集团峰会</strong>期间签署与伊朗达成的谅解备忘录。伊朗总统<strong>佩泽希齐扬</strong>已签署。主要内容包括：①美伊立即并永久停止所有战线军事行动（含黎巴嫩）；②<strong>重新开放霍尔木兹海峡</strong>及放宽对伊朗部分金融限制；③伊朗重申<strong>不会获取或研制核武器</strong>，双方同意在国际原子能机构监督下对<strong>浓缩铀进行现场稀释</strong>；④<strong>最多60天内谈判达成最终协议</strong>。<br><br>
+  <strong>巴基斯坦总理</strong>宣布备忘录<strong>立即生效</strong>。已有<strong>至少3艘共载500万桶原油的伊朗油轮通过霍尔木兹海峡</strong>。</p>
+  <div class="section-label gold">▸ 风向标解读：</div>
+  <div class="highlight-box">
+    <p>📌 这是<strong>2026年全球地缘政治最大变量</strong>。霍尔木兹海峡承载全球<strong>约20%石油运输</strong>，此前封锁导致油价飙升。备忘录签署意味着：①<strong>油价短期承压下行</strong>（500万桶伊朗原油已通过海峡）；②<strong>60天谈判窗口期</strong>充满不确定性——备忘录是框架性文件，最终协议涉及核问题、制裁解除、重建资金3000亿美元等硬骨头；③<strong>G7峰会未发联合公报</strong>，说明美欧在气候/多边体系上分歧严重，美伊协议更像是特朗普单边操作。</p>
+  </div>
+  <div class="section-label green">▸ 直接影响：</div>
+  <div class="impact-box">
+    <p>✅ 国际油价短期下行利好航空/化工/物流等用油行业<br>
+    ✅ 伊朗原油回归市场，全球原油供应量增加<br>
+    ⚠️ 60天谈判期不确定性极高，油价可能反复波动<br>
+    ⚠️ 中东局势稳定≠持久和平，最终协议落空风险存在<br>
+    ✅ 海运/航运通道恢复正常化利好国际贸易</p>
+  </div>
+</div>
+
+<!-- 国际快讯 -->
+<div class="card">
+  <div class="card-title">
+    <span class="badge badge-global">🌍 7</span>
+    国际关键信号：G7无联合公报 + 美联储加息预期升温 + 俄乌战况升级
+  </div>
+  <div class="section-label red">▸ 新闻联播说了什么：</div>
+  <p>①<strong>G7峰会闭幕再次未发联合公报</strong>——法国总统马克龙称美国与其他六国在<strong>气候问题、联合国多边体系</strong>上存在不同立场。这是<strong>继2025年后连续第二次</strong>G7峰会未能达成联合公报。<br>
+  ②<strong>美联储今年连续第四次维持利率不变</strong>（3.5%-3.75%），但经济预测摘要显示官员对2026年联邦基金利率预测中值从<strong>3.4%提高至3.8%</strong>，<strong>意味着预期今年会加息</strong>。9月加息概率已超过维持不变概率。<br>
+  ③<strong>俄军称在顿涅茨克取得重要进展</strong>，摧毁乌军在红利曼的最后一条补给线。<strong>莫斯科上空击落180架无人机</strong>（两年来最大规模无人机袭击），乌方称<strong>再度击中莫斯科地区一座炼油厂</strong>。</p>
+  <div class="section-label gold">▸ 风向标解读：</div>
+  <div class="highlight-box">
+    <p>📌 <strong>三大国际信号叠加</strong>：①G7分裂——美国单边主义加剧，多边体系进一步松动；②<strong>美联储鹰派转向</strong>——加息预期从0%跳到30基点，<strong>全球流动性收紧预期升温</strong>，对新兴市场资产和A股偏不利；③<strong>俄乌战况升级</strong>——莫斯科两年来最大规模无人机袭击+炼油厂被击中，<strong>战争烈度在上升而非缓和</strong>。</p>
+  </div>
+  <div class="section-label green">▸ 直接影响：</div>
+  <div class="warning-box">
+    <p>⚠️ 全球流动性收紧预期升温，新兴市场资产承压<br>
+    ⚠️ 美联储加息→美元走强→人民币贬值压力<br>
+    ⚠️ 俄乌战争烈度上升，欧洲能源/粮食安全风险上升<br>
+    ✅ A股短期受外部流动性收紧预期影响偏负面</p>
+  </div>
+</div>
+
+<!-- 国内快讯 -->
+<div class="card">
+  <div class="card-title">
+    <span class="badge badge-money">📊</span>
+    国内联播快讯精选（直接有用的数字）
+  </div>
+  <ul>
+    <li><strong>1亿元中央救灾资金</strong>预拨：0.8亿支持闽赣湘粤桂洪涝地质灾害抢险；0.2亿支持青海地震灾害排危</li>
+    <li><strong>海南自贸港全岛封关半年</strong>："一线"报关单申报项目从105项精简至33项；"零关税"进口货物26.45亿元、同比增<strong>1.2倍</strong>；新增海关备案企业10325家、同比增<strong>57.8%</strong></li>
+    <li><strong>前5个月西部陆海新通道进出口4218.9亿元</strong>，创历史新高，同比增<strong>13.2%</strong>；覆盖全球<strong>120多个国家和地区590多个港口</strong></li>
+    <li><strong>我国首个重点工业产品碳足迹数据库上线</strong>：汇聚近十年工业产品碳足迹实景数据<strong>十万余条</strong>，覆盖光伏、锂电池、有色金属等<strong>27个重点行业</strong></li>
+    <li><strong>广西大藤峡水利枢纽工程通过竣工验收</strong>，总投资<strong>357.36亿元</strong>，全面转入常态化运行</li>
+    <li><strong>2026年度电影票房超165亿元</strong>；《给阿嬷的情书》票房超17.7亿元，今日起在港澳及新马文莱等地上映</li>
+    <li><strong>端午假期铁路预计发送旅客8300万人次</strong>（6月18-22日，共5天）</li>
+  </ul>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 今日风向标总结 -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="summary-card">
+  <h3>📌 今日风向标总结（一条就够）</h3>
+  <p>①<strong>党建体系化加速</strong>：党建思想从理论走向全党强制性落地，企业党建合规需求上升；<br>
+  ②<strong>外交AI信号</strong>：韩正点名中加"新能源汽车+AI"合作，AI正式进入高层外交双边合作表述；<br>
+  ③<strong>"两新"资金加速落地</strong>：8400亿总投资+8200亿消费带动，端午消费数据有望超预期；<br>
+  ④<strong>美伊协议重塑能源格局</strong>：霍尔木兹海峡重开，油价短期承压，60天谈判窗口期不确定性高；<br>
+  ⑤<strong>美联储鹰派转向</strong>：加息预期升温，全球流动性收紧，新兴市场资产承压。</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 专栏二：AI生产力情报 -->
+<!-- ════════════════════════════════════════════════════════════ -->
+
+<div class="column-header col2">
+  <span class="icon">🤖</span>
+  <h2>专栏二：AI生产力情报（工具·模型·行业·大佬·投融资）</h2>
+  <span class="tag">2026-06-19 · 端午前</span>
+</div>
+
+<div class="data-source">
+  📡 信源：TrendingAI.cn + GitHub Trending + 36氪/量子位/新浪科技 + Product Hunt + OpenAI财务文件报道 + 知乎/小红书AI话题
+</div>
+
+<!-- 重磅AI发布 -->
+<div class="card">
+  <div class="card-title">
+    <span class="badge badge-ai">🚀 重磅</span>
+    GLM-5.2 智谱开源炸场：Code Arena全球第一，专攻长程任务
+  </div>
+  <div class="section-label red">▸ 发生了什么：</div>
+  <p><strong>6月17日</strong>，智谱AI正式上线并开源新一代旗舰大模型<strong>GLM-5.2</strong>。在全球百万用户参与盲测的前端开发评估系统<strong>Code Arena</strong>上，GLM-5.2取得<strong>全球可用模型第一</strong>的表现。在Arena WebDev榜单中，GLM-5.2仅次于Anthropic最新发布的Claude Fable 5，位列<strong>全球第二</strong>，同时稳坐<strong>开源模型头把交椅</strong>。</p>
+  <div class="section-label gold">▸ 三大核心特性：</div>
+  <ul>
+    <li><strong>1M无损上下文</strong>：专为长程任务能力打造，支持超长代码库理解和超长文档处理</li>
+    <li><strong>Day 0适配国产算力平台</strong>：首发支持华为昇腾等国产AI芯片，国产算力生态突破</li>
+    <li><strong>MIT开源协议</strong>：完全开源，可商用，无使用限制</li>
+  </ul>
+  <div class="section-label cyan">▸ 行业反应：</div>
+  <div class="insight-box">
+    <p>📌 资本市场对GLM-5.2反应积极——在Claude Fable 5被美国政府强制全球停用后，GLM-5.2被市场视为"最丝滑的承接者"。智谱同步宣布ZCode 3.0全面切换自研ZCode Agent内核，深度适配GLM-5.2，不再内置或维护其他Agent适配。</p>
+  </div>
+  <div class="section-label green">▸ 怎么用：</div>
+  <div class="impact-box">
+    <p>✅ <strong>今天就能用</strong>：GLM-5.2已在智谱开放平台(open.bigmodel.cn)上线，免费额度可用<br>
+    ✅ <strong>编程场景首选</strong>：Code Arena全球第一，长程coding任务显著优于Claude Code<br>
+    ✅ <strong>国产算力用户</strong>：Day 0适配昇腾，国产算力平台可无缝部署<br>
+    ⚠️ 英文推理能力仍略逊于Claude Fable 5，国际化项目需实测</p>
+  </div>
+</div>
+
+<!-- AI大佬动态 -->
+<div class="card">
+  <div class="card-title">
+    <span class="badge badge-agent">👥 大佬动态</span>
+    Andrej Karpathy加入Anthropic + Ilya Sutskever创立SafeMind
+  </div>
+  <div class="section-label red">▸ Andrej Karpathy（5月19日宣布）：</div>
+  <p>OpenAI创始成员、前Tesla AI负责人、"vibe coding"概念提出者Andrej Karpathy在X平台宣布<strong>正式加入Anthropic</strong>，将参与<strong>Claude预训练与autoresearch团队</strong>。这是在Claude Fable 5被美国政府封杀后，Anthropic史上最强人才招入。</p>
+  <div class="section-label red">▸ Ilya Sutskever（6月8日宣布）：</div>
+  <p>OpenAI联合创始人、前首席科学家Ilya Sutskever通过个人社交媒体正式宣布<strong>离开OpenAI</strong>，将创立新公司<strong>SafeMind</strong>，专注于<strong>AI安全与超级智能对齐研究</strong>。这是继2024年离开OpenAI后，Ilya再度引发行业地震的人事变动。</p>
+  <div class="section-label gold">▸ 风向解读：</div>
+  <div class="highlight-box">
+    <p>📌 <strong>AI顶级人才正在加速向Anthropic聚集</strong>——Karpathy加入Anthropic是标志性事件，叠加Claude Fable 5被美国政府封杀后用户外溢，Anthropic正在成为"后Claude Fable 5时代"的最大受益者。<strong>Ilya创立SafeMind则意味着AI安全赛道独立融资化</strong>，超级对齐研究从OpenAI内部项目变成独立公司。</p>
+  </div>
+</div>
+
+<!-- OpenAI财务泄露 -->
+<div class="card">
+  <div class="card-title">
+    <span class="badge badge-warning">⚠️ 重磅</span>
+    OpenAI财务文件泄露：2025年亏损390亿美元，IPO前夜的真相
+  </div>
+  <div class="section-label red">▸ 发生了什么：</div>
+  <p><strong>6月16日</strong>，独立记者<strong>Ed Zitron</strong>获取并经《金融时报》核实的OpenAI经审计财务文件首次完整曝光。几乎同一时间，OpenAI向股东披露的<strong>2026年第一季度数据</strong>也浮出水面。</p>
+  <div class="section-label gold">▸ 关键数字：</div>
+  <ul>
+    <li><strong>2024年亏损约50亿美元</strong> → <strong>2025年亏损约390亿美元</strong>（主因是先前架构相关的非现金会计费用支出）</li>
+    <li>若剔除费用和其他非现金支出（员工股票薪酬+微软提供的运算能力），OpenAI的<strong>实际运营亏损为80亿美元</strong></li>
+    <li><strong>2025年总收入约130亿美元</strong>；总支出升至<strong>340亿美元</strong></li>
+    <li>研发支出约<strong>190亿美元</strong>；销售和营销成本约<strong>60亿美元</strong></li>
+    <li>OpenAI已向美国SEC<strong>秘密提交S-1招股书草案</strong>（6月8日宣布），目标IPO估值<strong>超1万亿美元</strong></li>
+  </ul>
+  <div class="section-label gold">▸ 风向解读：</div>
+  <div class="warning-box">
+    <p>📌 <strong>这不是AI泡沫破裂，但也不是好消息</strong>。OpenAI的真实财务状况暴露了一个核心矛盾：<strong>收入增长（130亿）远跟不上支出增长（340亿）</strong>。IPO是OpenAI的唯一出路——用公开市场的钱继续烧。对行业的警示是：<strong>大模型公司的"规模换收入"模式在没找到真正可持续的盈利路径前，风险极高</strong>。</p>
+  </div>
+</div>
+
+<!-- GitHub Trending -->
+<div class="card">
+  <div class="card-title">
+    <span class="badge badge-tech">🔥 GitHub Trending</span>
+    今日AI项目热榜 Top 10
+  </div>
+  <div class="section-label cyan">▸ 数据来源：GitHub Trending Today（2026-06-19）</div>
+  <table class="github-table">
+    <tr>
+      <th>排名</th>
+      <th>项目</th>
+      <th>语言</th>
+      <th>今日新增</th>
+      <th>总星标</th>
+    </tr>
+    <tr>
+      <td>🥇</td>
+      <td>DeusData/<strong>codebase-memory-mcp</strong></td>
+      <td>C</td>
+      <td class="stars">+2,322 🔥</td>
+      <td>7,040</td>
+    </tr>
+    <tr>
+      <td>🥈</td>
+      <td>obra/<strong>superpowers</strong></td>
+      <td>Shell</td>
+      <td class="stars">+1,429</td>
+      <td>232,413</td>
+    </tr>
+    <tr>
+      <td>🥉</td>
+      <td>Kilo-Org/<strong>kilocode</strong></td>
+      <td>TypeScript</td>
+      <td class="stars">+1,345</td>
+      <td>22,143</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>google-research/<strong>timesfm</strong></td>
+      <td>Python</td>
+      <td class="stars">+844</td>
+      <td>23,175</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>makeplane/<strong>plane</strong></td>
+      <td>TypeScript</td>
+      <td class="stars">+613</td>
+      <td>51,837</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>freeCodeCamp/<strong>freeCodeCamp</strong></td>
+      <td>TypeScript</td>
+      <td class="stars">+417</td>
+      <td>449,541</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>n0-computer/<strong>iroh</strong></td>
+      <td>Rust</td>
+      <td class="stars">+369</td>
+      <td>10,004</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>withastro/<strong>flue</strong></td>
+      <td>TypeScript</td>
+      <td class="stars">+162</td>
+      <td>5,501</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>alibaba/<strong>zvec</strong></td>
+      <td>C++</td>
+      <td class="stars">+259</td>
+      <td>11,220</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>zai-org/<strong>GLM-5</strong></td>
+      <td>-</td>
+      <td class="stars">+202 🆕</td>
+      <td>4,124</td>
+    </tr>
+  </table>
+  <div class="section-label gold">▸ 今日最大亮点：</div>
+  <div class="highlight-box">
+    <p>📌 <strong>codebase-memory-mcp 单日+2322⭐登顶</strong>：将代码库索引为持久化知识图谱的MCP服务器，C语言单二进制零依赖，覆盖158种语言，查询亚毫秒级，可减少99%的token消耗——这是<strong>AI编程助手代码检索的范式转移</strong>。<br><br>
+    <strong>Kilo Code + superpowers 双雄并立</strong>：Agentic Engineering（智能体工程）正在取代Vibe Coding成为新范式，Kilo Code是全功能Agent工程平台，superpowers是Agent技能框架，两者今日合计新增<strong>2774⭐</strong>。</p>
+  </div>
+</div>
+
+<!-- 详解Top3 AI工具 -->
+<div class="card">
+  <div class="card-title">
+    <span class="badge badge-ai">🛠️</span>
+    今日必看AI工具详解
+  </div>
+
+  <div class="tool-card">
+    <div class="tool-header">
+      <span class="tool-icon">🔥</span>
+      <div>
+        <div class="tool-name">DeusData/codebase-memory-mcp</div>
+        <div class="tool-sub">高性能代码智能MCP服务器 · C语言 · 今日+2322⭐</div>
+      </div>
+    </div>
+    <p><strong>是什么</strong>：将代码库索引到持久化知识图谱的MCP服务器，让AI编程助手能毫秒级检索跨文件代码上下文。</p>
+    <p><strong>为什么今日爆火</strong>：单静态二进制文件、零依赖、覆盖<strong>158种语言</strong>、查询<strong>亚毫秒级</strong>、可减少<strong>99%的token消耗</strong>——直接解决了AI编程助手"上下文窗口不够+检索慢+token贵"的三大痛点。</p>
+    <p><strong>怎么用</strong>：<code>npm install -g @modelcontextprotocol/server-codebase-memory</code> 或下载Release单二进制文件，配置到Claude Desktop/Cursor/Windsurf即可。</p>
+    <div class="impact-box"><p>✅ <strong>今天就能用</strong>，直接对接现有MCP客户端，5分钟部署</p></div>
+  </div>
+
+  <div class="tool-card">
+    <div class="tool-header">
+      <span class="tool-icon">🤖</span>
+      <div>
+        <div class="tool-name">Kilo-Org/kilocode</div>
+        <div class="tool-sub">一站式Agentic Engineering平台 · TypeScript · 今日+1345⭐</div>
+      </div>
+    </div>
+    <p><strong>是什么</strong>：All-in-one Agentic Engineering Platform，是<strong>最受欢迎的开源编码智能体</strong>，支持VS Code、JetBrains和CLI，支持500+ LLM模型切换。</p>
+    <p><strong>为什么重要</strong>：从"Vibe Coding"（靠感觉写代码）升级到"Agentic Engineering"（智能体工程化），Kilo Code提供<strong>协调器模式、云Agent、记忆库</strong>，让AI编码从"对话生成"变成"工程化协作"。</p>
+    <p><strong>怎么用</strong>：VS Code扩展市场搜索"Kilo Code"安装，或JetBrains插件市场安装，支持免费版+Pro版。</p>
+  </div>
+
+  <div class="tool-card">
+    <div class="tool-header">
+      <span class="tool-icon">📊</span>
+      <div>
+        <div class="tool-name">google-research/timesfm</div>
+        <div class="tool-sub">谷歌时间序列基础模型 · Python · 今日+844⭐</div>
+      </div>
+    </div>
+    <p><strong>是什么</strong>：Google Research研发的时间序列基础模型，用于<strong>时间序列预测</strong>，Pre-trained权重开放下载。</p>
+    <p><strong>为什么重要</strong>：时间序列预测是金融、供应链、IoT、业务预测的核心能力。TimesFM作为<strong>Foundation Model for Time Series</strong>，零样本推理能力强，无需针对每个数据集重新训练。</p>
+    <p><strong>怎么用</strong>：<code>pip install timesfm</code>，Google AI Blog有详细教程，支持CPU和GPU推理。</p>
+  </div>
+</div>
+
+<!-- Android 17 -->
+<div class="card">
+  <div class="card-title">
+    <span class="badge badge-new">📱 新发布</span>
+    Android 17正式推送：Gemini深度集成，移动端AI Agent化
+  </div>
+  <div class="section-label red">▸ 发生了什么：</div>
+  <p><strong>6月16日</strong>，Google正式向Pixel设备推送<strong>Android 17</strong>正式版，同步发布Wear OS 7。本次最大变革是<strong>Gemini从独立App升级为操作系统底层服务</strong>，系统级AI Agent正式落地移动端。</p>
+  <div class="section-label gold">▸ 核心新功能：</div>
+  <ul>
+    <li><strong>Gemini OS级集成</strong>：Gemini不再是App，而是系统底层服务，可跨App调用、屏幕理解、上下文记忆</li>
+    <li><strong>AppFunctions（MCP协议支持）</strong>：Android 17原生支持MCP（Model Context Protocol），第三方App可通过标准化接口向Gemini暴露功能</li>
+    <li><strong>Lyria 3音乐生成模型</strong>：设备端运行，无需联网</li>
+    <li><strong>多任务革新</strong>：全新气泡多任务界面，Gemini可跨App协同执行复杂任务</li>
+    <li><strong>Pixel专属功能包</strong>：最新Gemini模型（Omni多模态）、AudioLM、Pixel Screenshot智能截图等</li>
+  </ul>
+  <div class="section-label cyan">▸ 风向解读：</div>
+  <div class="insight-box">
+    <p>📌 Android 17是<strong>移动操作系统全面Agent化</strong>的历史转折点。MCP协议被写入Android系统底层，意味着<strong>手机上的每一个App都可以成为Gemini Agent的工具</strong>——就像OpenAI的Function Calling，但是系统级、跨App、无需每个开发者单独适配。这对<strong>移动端AI应用生态</strong>是范式级变化。</p>
+  </div>
+</div>
+
+<!-- Product Hunt -->
+<div class="card">
+  <div class="card-title">
+    <span class="badge badge-new">🎯 Product Hunt</span>
+    近期AI产品热榜精选
+  </div>
+  <div class="section-label cyan">▸ 数据来源：Product Hunt via hunted.space + programnotes.cn</div>
+
+  <div class="ph-card">
+    <div class="ph-rank">1</div>
+    <div class="ph-info">
+      <div class="ph-name">🤖 Android 17 AI Features</div>
+      <div class="ph-desc">面向智能体与多设备协同的Android 17，MCP协议系统级支持，Gemini OS级集成</div>
+      <div class="ph-votes">▲ 175 票</div>
+    </div>
+  </div>
+
+  <div class="ph-card">
+    <div class="ph-rank">2</div>
+    <div class="ph-info">
+      <div class="ph-name">🛠️ Deep Work Plan</div>
+      <div class="ph-desc">面向开发团队，把仓库变成可续跑的AI执行规范，任务拆解、验收与校验全写进代码库</div>
+      <div class="ph-votes">▲ 106 票</div>
+    </div>
+  </div>
+
+  <div class="ph-card">
+    <div class="ph-rank">3</div>
+    <div class="ph-info">
+      <div class="ph-name">🎙️ Flow by Wispr</div>
+      <div class="ph-desc">AI语音输入工具，支持跨App语音转文字，上下文感知，连续对话</div>
+      <div class="ph-votes">6月Top 1（历史数据）</div>
+    </div>
+  </div>
+
+  <div class="section-label gold">▸ 风向解读：</div>
+  <div class="highlight-box">
+    <p>📌 Product Hunt的AI产品正在从"单点工具"（语音输入/图片生成）进化到"<strong>系统级AI基础设施</strong>"（Android 17的MCP支持）和"<strong>工程化AI协作</strong>"（Deep Work Plan把AI执行规范写进代码库）。这是<strong>AI从"玩具"到"生产力基础设施"的明确信号</strong>。</p>
+  </div>
+</div>
+
+<!-- RFC 10008 -->
+<div class="card">
+  <div class="card-title">
+    <span class="badge badge-tech">🔧 技术动态</span>
+    RFC 10008 正式发布：HTTP QUERY方法——AI时代的新HTTP动词
+  </div>
+  <div class="section-label red">▸ 发生了什么：</div>
+  <p>IETF正式发布<strong>RFC 10008</strong>，新增HTTP <strong>QUERY方法</strong>，用于<strong>安全且幂等</strong>地携带请求体进行检索操作。这是自1999年HTTP/1.1（RFC 2616）以来，<strong>首次新增HTTP方法</strong>。</p>
+  <div class="section-label gold">▸ 为什么与AI相关：</div>
+  <div class="insight-box">
+    <p>📌 AI Agent执行HTTP调用时，经常遇到GET请求无法携带请求体（body）的限制，不得不改用POST，破坏了RESTful语义。<strong>HTTP QUERY方法允许安全、幂等地携带请求体</strong>，对AI Agent调用API、MCP协议底层通信、GraphQL查询等场景有重大意义。<strong>这是为AI Agent时代量身定制的HTTP协议升级</strong>。</p>
+  </div>
+</div>
+
+<!-- AI投融资 -->
+<div class="card">
+  <div class="card-title">
+    <span class="badge badge-money">💰 投融资</span>
+    AI行业资本动态
+  </div>
+  <ul>
+    <li><strong>OpenAI秘密提交S-1</strong>：目标IPO估值超<strong>1万亿美元</strong>，2025年亏损390亿美元，IPO是 continuation of the burn模式</li>
+    <li><strong>Anthropic估值飙升</strong>：Karpathy加入+Claude Fable 5封杀用户外溢，Anthropic新一轮融资估值预计大幅上调</li>
+    <li><strong>智谱GLM-5.2开源</strong>：国产大模型全球排名最高（Code Arena），国产算力适配+MIT协议，开源生态迎来转机</li>
+    <li><strong>codebase-memory-mcp爆火</strong>：MCP生态工具单日+2322⭐，MCP协议正在成为AI应用的标准基础设施</li>
+  </ul>
+  <div class="section-label gold">▸ 风向解读：</div>
+  <div class="highlight-box">
+    <p>📌 <strong>2026年AI投融资的核心矛盾</strong>：头部公司（OpenAI/Anthropic）估值继续飙升，但OpenAI的亏损数字（390亿/年）让二级市场投资者开始质疑"规模换收入"模式的可持续性。<strong>真正的机会在基础设施层</strong>（MCP协议生态、向量数据库、代码智能工具），而非应用层的内卷。</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 今日AI风向标总结 -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="summary-card">
+  <h3>📌 今日AI风向标总结（一条就够）</h3>
+  <p>①<strong>GLM-5.2开源炸场</strong>：Code Arena全球第一，Claude Fable 5封杀后的最丝滑承接者，今天就能免费用；<br>
+  ②<strong>Agentic Engineering取代Vibe Coding</strong>：Kilo Code+superpowers+codebase-memory-mcp今日GitHub Trending前三，AI编程从"感觉驱动"升级为"工程化协作"；<br>
+  ③<strong>Android 17系统级MCP支持</strong>：移动端AI Agent化历史转折点，Gemini成为OS级服务；<br>
+  ④<strong>OpenAI财务真相暴露</strong>：年亏390亿美元，IPO是唯一出路，大模型"规模换收入"模式风险显现；<br>
+  ⑤<strong>AI顶级人才向Anthropic聚集</strong>：Karpathy加入+Ilya出走创立SafeMind，行业人才重构加速。</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- 脑机接口特别篇（用户兴趣领域） -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="card">
+  <div class="card-title">
+    <span class="badge badge-ai">🧠 特别篇</span>
+    脑机接口 × AI Agent 交叉动态
+  </div>
+  <div class="section-label red">▸ 本期暂无重大新闻</div>
+  <p>今日新闻联播和AI情报中暂未出现脑机接口（BCI）相关重大动态。持续关注：Neuralink临床试验进展、Synchron脑机接口商业化、中国脑计划二期落地情况。</p>
+  <div class="insight-box">
+    <p>📌 <strong>提醒</strong>：脑机接口与AI Agent的交叉是2026-2027年最值得关注的底层技术融合方向之一。Android 17的MCP协议系统级支持，为"脑机接口→手机→AI Agent"的无缝链路提供了OS级基础。<strong>下一个爆发点可能是"意念控制AI Agent"</strong>。</p>
+  </div>
+</div>
+
+</div><!-- end container -->
+
+<div class="footer">
+  <p>Generated by WorkBuddy AI · 2026-06-19 08:50 CST</p>
+  <p style="margin-top:8px;">数据源：cn.govopendata.com · GitHub Trending · TrendingAI.cn · 36氪 · 量子位 · 新浪科技 · Product Hunt · 金融时报</p>
+  <p style="margin-top:8px; color: var(--accent-red);">⚠️ 本情报仅供参考，投资决策请咨询专业顾问。新闻联播内容以央视官方播出为准。</p>
+</div>
+
+</body>
+</html>
