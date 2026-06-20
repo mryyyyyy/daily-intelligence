@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小红书生鲜电商每日作战情报 · 2026-06-20</title>
+<style>
+  :root {
+    --bg: #0f0f14;
+    --card-bg: #1a1a24;
+    --card-bg2: #1e1e2a;
+    --border: #2a2a3a;
+    --text: #e0e0e0;
+    --text-secondary: #999;
+    --accent: #ff6b6b;
+    --accent2: #ffd93d;
+    --green: #51cf66;
+    --blue: #4dabf7;
+    --purple: #cc5de8;
+    --orange: #ff922b;
+    --pink: #f06595;
+    --tag-bg: rgba(255,107,107,0.1);
+    --star: #ffd93d;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7;
+    max-width: 860px; margin: 0 auto; padding: 24px 20px 60px;
+  }
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    border: 1px solid var(--border); border-radius: 16px; padding: 32px 28px;
+    margin-bottom: 24px; position: relative; overflow: hidden;
+  }
+  .header::before {
+    content: ''; position: absolute; top: -40px; right: -40px;
+    width: 160px; height: 160px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,107,107,0.15) 0%, transparent 70%);
+  }
+  .header .date { font-size: 14px; color: var(--text-secondary); margin-bottom: 4px; }
+  .header h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; background: linear-gradient(135deg, #ff6b6b, #ffd93d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .header .subtitle { font-size: 15px; color: #aaa; line-height: 1.5; }
+  .header .stage-badge {
+    display: inline-block; margin-top: 12px; padding: 6px 16px;
+    background: rgba(255,107,107,0.15); border: 1px solid rgba(255,107,107,0.3);
+    border-radius: 20px; font-size: 13px; font-weight: 600; color: var(--accent);
+  }
+  .section { 
+    background: var(--card-bg); border: 1px solid var(--border); 
+    border-radius: 12px; padding: 24px; margin-bottom: 20px;
+  }
+  .section h2 {
+    font-size: 18px; font-weight: 700; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section h3 { font-size: 15px; font-weight: 700; margin: 16px 0 8px; color: var(--accent2); }
+  .breaking {
+    background: linear-gradient(135deg, #1a0a0a 0%, #1a1a2e 100%);
+    border-color: rgba(255,107,107,0.3);
+  }
+  .breaking-item {
+    background: var(--card-bg2); border-radius: 10px; padding: 16px 18px;
+    margin-bottom: 12px; border-left: 3px solid var(--accent);
+  }
+  .breaking-item .tag {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 11px; font-weight: 700; margin-right: 8px;
+  }
+  .tag-new { background: rgba(81,207,102,0.2); color: var(--green); }
+  .tag-hot { background: rgba(255,107,107,0.2); color: var(--accent); }
+  .tag-warn { background: rgba(255,146,43,0.2); color: var(--orange); }
+  .tag-info { background: rgba(77,171,247,0.2); color: var(--blue); }
+  .radar-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 16px;
+  }
+  .radar-card {
+    background: var(--card-bg2); border-radius: 10px; padding: 18px;
+    border: 1px solid var(--border); position: relative;
+  }
+  .radar-card.featured { border-color: rgba(255,217,61,0.3); background: linear-gradient(135deg, #1e1e2a 0%, #1a1a2e 100%); }
+  .radar-card .name { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+  .radar-card .stars { color: var(--star); font-size: 14px; margin-bottom: 6px; }
+  .radar-card .meta { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+  .radar-card .price { font-size: 20px; font-weight: 800; color: var(--accent); margin: 8px 0; }
+  .radar-card .price span { font-size: 13px; font-weight: 400; color: var(--text-secondary); }
+  .radar-card .status {
+    display: inline-block; padding: 3px 10px; border-radius: 12px;
+    font-size: 12px; font-weight: 600; margin-top: 4px;
+  }
+  .status-peak { background: rgba(81,207,102,0.15); color: var(--green); }
+  .status-ending { background: rgba(255,146,43,0.15); color: var(--orange); }
+  .status-new { background: rgba(77,171,247,0.15); color: var(--blue); }
+  .status-done { background: rgba(255,107,107,0.1); color: var(--accent); }
+  .dimension-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+  .dim-tag {
+    font-size: 11px; padding: 2px 8px; border-radius: 10px;
+    background: var(--tag-bg); color: var(--text-secondary);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .dim-tag.active { background: rgba(255,217,61,0.15); color: var(--accent2); border-color: rgba(255,217,61,0.3); }
+  .insight-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 16px;
+  }
+  .insight-card {
+    background: var(--card-bg2); border-radius: 10px; padding: 18px;
+    border: 1px solid var(--border);
+  }
+  .insight-card .num {
+    font-size: 28px; font-weight: 900; color: var(--accent); opacity: 0.3;
+    margin-bottom: -12px;
+  }
+  .insight-card h4 { font-size: 15px; font-weight: 700; margin: 6px 0; }
+  .insight-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+  .action-list { list-style: none; }
+  .action-list li {
+    padding: 10px 14px; margin-bottom: 8px; border-radius: 8px;
+    background: var(--card-bg2); font-size: 13px; line-height: 1.6;
+    border-left: 3px solid transparent;
+  }
+  .action-list li.p0 { border-left-color: var(--accent); }
+  .action-list li.p1 { border-left-color: var(--orange); }
+  .action-list li.p2 { border-left-color: var(--blue); }
+  .action-list .badge {
+    display: inline-block; padding: 1px 8px; border-radius: 4px;
+    font-size: 11px; font-weight: 700; margin-right: 6px;
+    color: #fff;
+  }
+  .badge-p0 { background: var(--accent); }
+  .badge-p1 { background: var(--orange); }
+  .badge-p2 { background: var(--blue); }
+  .title-list li {
+    padding: 8px 12px; margin-bottom: 6px; background: var(--card-bg2);
+    border-radius: 8px; font-size: 13px; line-height: 1.5;
+  }
+  .title-list .num { color: var(--accent); font-weight: 700; }
+  .source { font-size: 11px; color: #666; margin-top: 2px; }
+  .timeline {
+    display: flex; gap: 0; overflow-x: auto; padding: 8px 0;
+  }
+  .timeline-item {
+    flex: 1; min-width: 100px; text-align: center; padding: 12px 8px;
+    background: var(--card-bg2); border-radius: 8px; margin-right: 8px;
+    border-top: 3px solid var(--border);
+  }
+  .timeline-item.now { border-top-color: var(--accent); background: rgba(255,107,107,0.05); }
+  .timeline-item .date { font-size: 11px; color: var(--text-secondary); }
+  .timeline-item .event { font-size: 12px; font-weight: 600; }
+  .timeline-item .detail { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
+  .risk-item { 
+    padding: 10px 14px; margin-bottom: 6px; background: rgba(255,107,107,0.05);
+    border-radius: 8px; font-size: 13px; border-left: 2px solid rgba(255,107,107,0.2);
+  }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+  .footer { text-align: center; font-size: 12px; color: #555; margin-top: 32px; }
+  .highlight { color: var(--accent2); font-weight: 600; }
+  .compare-table {
+    width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0;
+  }
+  .compare-table th {
+    background: var(--card-bg2); padding: 10px 12px; text-align: left;
+    font-weight: 700; color: var(--accent2); border-bottom: 2px solid var(--border);
+  }
+  .compare-table td {
+    padding: 10px 12px; border-bottom: 1px solid var(--border);
+  }
+  .compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+  @media (max-width: 600px) {
+    body { padding: 12px 10px 40px; }
+    .header { padding: 20px 16px; }
+    .header h1 { font-size: 22px; }
+    .radar-grid, .insight-grid { grid-template-columns: 1fr; }
+    .timeline { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<div class="header">
+  <div class="date">2026年6月20日 星期六 · 夏至前一天</div>
+  <h1>🌶️ 小红书生鲜电商每日作战情报</h1>
+  <div class="subtitle">618终局落幕 → 时令精品接力战 · 本期聚焦：水蜜桃家族全面开花 + 桂味品质巅峰 + 东魁最后10天</div>
+  <div class="stage-badge">📊 阶段判断：618后复盘期 Day 2 · 夏季品类接力第1天</div>
+</div>
+
+<!-- ========== 618后时间线 ========== -->
+<div class="section">
+  <h2>📅 618后水蜜桃家族接力时间线</h2>
+  <div class="timeline">
+    <div class="timeline-item" style="border-top-color:#555">
+      <div class="date">6/16</div>
+      <div class="event">盒马水蜜桃首发</div>
+      <div class="detail">上海定制版上架</div>
+    </div>
+    <div class="timeline-item" style="border-top-color:#555">
+      <div class="date">6/18</div>
+      <div class="event">618终局</div>
+      <div class="detail">猫山王限时3天折扣开启</div>
+    </div>
+    <div class="timeline-item now">
+      <div class="date">⬤ 6/20 今天</div>
+      <div class="event">复盘+接力启动</div>
+      <div class="detail">猫山王折扣最后1天！日川仅剩5天！</div>
+    </div>
+    <div class="timeline-item">
+      <div class="date">6/22-25</div>
+      <div class="event">日川下市</div>
+      <div class="detail">朝阳接棒</div>
+    </div>
+    <div class="timeline-item">
+      <div class="date">6/25-30</div>
+      <div class="event">白凤上市</div>
+      <div class="detail">产量占全年60%</div>
+    </div>
+    <div class="timeline-item">
+      <div class="date">6月底</div>
+      <div class="event">东魁下市</div>
+      <div class="detail">桂味继续</div>
+    </div>
+    <div class="timeline-item" style="border-top-color: var(--purple)">
+      <div class="date">7月</div>
+      <div class="event">野生菌主力</div>
+      <div class="detail">湖景蜜露登场</div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== BREAKING NEWS ========== -->
+<div class="section breaking">
+  <h2>🔥 本期 BREAKING NEWS</h2>
+  
+  <div class="breaking-item">
+    <span class="tag tag-hot">🆕 新上市</span>
+    <strong>阳山水蜜桃家族全面开花！日川收尾 + 朝阳登场 + 金奖一号横空出世</strong>
+    <p style="margin-top:6px;font-size:13px;color:var(--text-secondary)">
+      企鹅吃喝指南6.18推文一口气上了4款水蜜桃：日川赏味期仅剩约5天（今年状态最佳、甜度15.6）、朝阳/银花露老品种重现（仅100-150盒总量、118-208元）、金奖一号保密新品种专利中（山东4000万果园、129-149元）。盒马定制版6.9已在上海所有门店上架，甜度↑5-10%。<br>
+      <span class="source">来源：企鹅吃喝指南6.18推文、盒马×阳山镇政府6.16联合发布会（东方网）</span>
+    </p>
+  </div>
+
+  <div class="breaking-item">
+    <span class="tag tag-hot">⚠️ 量极少</span>
+    <strong>桂味荔枝品质巅峰已至！增城30年老树果，95元/斤，糯米糍全线下架</strong>
+    <p style="margin-top:6px;font-size:13px;color:var(--text-secondary)">
+      企鹅吃喝指南确认：桂味状态已稳定，"无论是风味还是口感都已到今年最佳状态"。增城核心产区30年+老树、广东省首批标杆农场（全增城区第一）、农科院教授团队。市场价70-100元/斤，企鹅2.5斤装238元（≈95元/斤）。致命信号：糯米糍品质不达标→今年全线下架！量极少，"且吃且珍惜"。<br>
+      <span class="source">来源：企鹅吃喝指南6.18推文</span>
+    </p>
+  </div>
+
+  <div class="breaking-item">
+    <span class="tag tag-warn">⏰ 最后1天</span>
+    <strong>猫山王618限时折扣今天最后一天！AAA/AA立减30元，黑刺减40元</strong>
+    <p style="margin-top:6px;font-size:13px;color:var(--text-secondary)">
+      马来西亚鲜榴莲大旺季×618折扣叠加，限时3天（6.18-20）。20年+老树果、高山种植、核心产区保真。今天24:00折扣截止。6.18当天推文明确标注"限时3天"，今天是最后机会。<br>
+      <span class="source">来源：企鹅吃喝指南6.18推文</span>
+    </p>
+  </div>
+
+  <div class="breaking-item">
+    <span class="tag tag-info">📊 数据</span>
+    <strong>618精品生鲜赛道独立增长再验证：京东"包圆"+210%、地标+200%、视频号生鲜+14%</strong>
+    <p style="margin-top:6px;font-size:13px;color:var(--text-secondary)">
+      京东618开门红战报（6.2）：源头"包圆"商品销量同比增长210%，地理标志/非遗食材+200%。友望数据：视频号6月上半月生鲜行业销售额/销量环比同步增长14%，海鲜水产+水果占近五成。这再次验证精品赛道与低价赛道完全脱钩的判断。<br>
+      <span class="source">来源：京东618开门红战报（百家号6.2）、友望数据（youwant.cn 6.17）</span>
+    </p>
+  </div>
+
+  <div class="breaking-item">
+    <span class="tag tag-new">🏪 竞品</span>
+    <strong>盒马阳山水蜜桃"定制版"全面铺货：政府联合背书 + 知识产权包装 + 全流程追溯</strong>
+    <p style="margin-top:6px;font-size:13px;color:var(--text-secondary)">
+      6.9上海所有盒马门店上架→6.16联合阳山镇政府正式发布。核心亮点：比国标更严的种植规范、甜度↑5-10%、定制化包装（防伪+地理标志）、政府企业联合打假。新增四颗装/六颗装小份量包装降低尝鲜门槛。这是"地标食材+渠道品牌"深度绑定的教科书案例。<br>
+      <span class="source">来源：东方网6.16报道</span>
+    </p>
+  </div>
+</div>
+
+<!-- ========== 精品风向标 ========== -->
+<div class="section">
+  <h2>📡 精品风向标 · 品类雷达</h2>
+  <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">
+    五维标准：地标 · 稀缺 · 溢价(≥50元/斤) · 颜值 · 故事 ｜ 🔥=本期主角 ｜ 数据来源标注于各卡片
+  </p>
+  
+  <div class="radar-grid">
+    
+    <!-- 阳山水蜜桃家族 -->
+    <div class="radar-card featured">
+      <div class="name">🍑 阳山水蜜桃家族</div>
+      <div class="stars">⭐⭐⭐⭐⭐ · 🔥本期主角</div>
+      <div class="meta">
+        <b>日川</b>：赏味期仅剩~5天 · 甜度15.6（早熟桃顶级） · 5两+大桃 · <span style="color:var(--orange)">即将下市</span><br>
+        <b>朝阳/银花露</b>：🆕老品种重现 · 限量100-150盒 · 118-208元 · <span style="color:var(--blue)">新上市</span><br>
+        <b>金奖一号</b>：🆕保密新品种 · 专利申请中 · 129-149元 · <span style="color:var(--blue)">独家首发</span><br>
+        <b>白凤</b>：预计6月下旬上市 · 占全年产量60% · <span style="color:var(--blue)">即将登场</span>
+      </div>
+      <div class="price">118-208元/盒<span>（8只装）</span></div>
+      <div class="dimension-tags">
+        <span class="dim-tag active">地标 GI认证</span>
+        <span class="dim-tag active">稀缺 日川5天/朝阳150盒</span>
+        <span class="dim-tag active">溢价 ✓</span>
+        <span class="dim-tag active">颜值 粉嫩出片</span>
+        <span class="dim-tag active">故事 桃中爱马仕/老品种</span>
+      </div>
+      <div class="source">来源：企鹅吃喝指南6.18、盒马6.16发布会（东方网）</div>
+    </div>
+
+    <!-- 东魁杨梅 -->
+    <div class="radar-card">
+      <div class="name">🍇 仙居东魁杨梅</div>
+      <div class="stars">⭐⭐⭐⭐☆</div>
+      <div class="meta">
+        盛产期末段 · 窗口约8-10天（6月底下市）<br>
+        企鹅吃喝指南第8年售卖 · 25年老树 · 9成熟采摘 · 20g+起<br>
+        "不是全网最便宜的，但品质最顶"<br>
+        48小时枝头到家
+      </div>
+      <div class="price">约200元/斤<span>（老树精品果）</span></div>
+      <span class="status status-ending">窗口收窄 最后~10天</span>
+      <div class="dimension-tags">
+        <span class="dim-tag active">地标 GI认证</span>
+        <span class="dim-tag active">稀缺 25年老树</span>
+        <span class="dim-tag active">溢价 ✓</span>
+        <span class="dim-tag">颜值 乒乓球大</span>
+        <span class="dim-tag">故事 8年口碑</span>
+      </div>
+      <div class="source">来源：企鹅吃喝指南6.18推文</div>
+    </div>
+
+    <!-- 桂味荔枝 -->
+    <div class="radar-card featured">
+      <div class="name">🍈 增城桂味荔枝</div>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <div class="meta">
+        品质巅峰已至 · 量极少"且吃且珍惜"<br>
+        增城核心产区 · 30年+老树 · 半山果园<br>
+        广东省首批标杆农场（全增城区第一）<br>
+        ⚠️ 糯米糍今年全线下架！
+      </div>
+      <div class="price">70-100元/斤<span>（企鹅238元/2.5斤≈95元/斤）</span></div>
+      <span class="status status-peak">品质巅峰 量极少</span>
+      <div class="dimension-tags">
+        <span class="dim-tag active">地标 GI认证</span>
+        <span class="dim-tag active">稀缺 减产90%+</span>
+        <span class="dim-tag active">溢价 ✓</span>
+        <span class="dim-tag">颜值 中规</span>
+        <span class="dim-tag active">故事 桂花香/30年老树</span>
+      </div>
+      <div class="source">来源：企鹅吃喝指南6.18推文</div>
+    </div>
+
+    <!-- 猫山王榴莲 -->
+    <div class="radar-card">
+      <div class="name">🫒 猫山王榴莲</div>
+      <div class="stars">⭐⭐⭐⭐☆</div>
+      <div class="meta">
+        大旺季 · 618限时折扣今天最后一天！<br>
+        AAA/AA立减30元 · 黑刺AA立减40元<br>
+        20年+老树果 · 高山种植 · 核心产区保真<br>
+        限时3天（6.18-20）→ <span style="color:var(--accent)">今晚24:00截止</span>
+      </div>
+      <div class="price">限时折扣中<span>（原价-30至-40元）</span></div>
+      <span class="status status-warn">折扣最后1天！</span>
+      <div class="dimension-tags">
+        <span class="dim-tag active">地标 马来西亚核心产区</span>
+        <span class="dim-tag active">稀缺 20年+老树</span>
+        <span class="dim-tag active">溢价 ✓</span>
+        <span class="dim-tag">颜值 金黄诱人</span>
+        <span class="dim-tag">故事 液氮冷冻→鲜果时代</span>
+      </div>
+      <div class="source">来源：企鹅吃喝指南6.18推文</div>
+    </div>
+
+    <!-- 泰国空运山竹 -->
+    <div class="radar-card">
+      <div class="name">🍈 泰国空运山竹</div>
+      <div class="stars">⭐⭐⭐☆</div>
+      <div class="meta">
+        正当季 · 4A→5A免费升级<br>
+        30年老树 · 空运直达 · 口感如果冻级嫩滑<br>
+        5斤268元（原4A升级5A不加价）
+      </div>
+      <div class="price">268元/5斤<span>（免费升级5A）</span></div>
+      <span class="status status-peak">正当季</span>
+      <div class="dimension-tags">
+        <span class="dim-tag">地标 泰国东部</span>
+        <span class="dim-tag">稀缺 30年老树</span>
+        <span class="dim-tag">溢价 53.6元/斤</span>
+        <span class="dim-tag">颜值 雪白果肉</span>
+        <span class="dim-tag">故事 空运品质升级</span>
+      </div>
+      <div class="source">来源：企鹅吃喝指南6.18推文</div>
+    </div>
+
+    <!-- 荔枝盲盒 -->
+    <div class="radar-card">
+      <div class="name">🎁 豪华荔枝盲盒（18品种）</div>
+      <div class="stars">⭐⭐⭐⭐☆ · 🆕趋势品类</div>
+      <div class="meta">
+        广东省科学技术厅认证品种选育基地<br>
+        华南农业大学教学实践基地<br>
+        含金星糯/兰香玉/青龙荔等极稀有品种<br>
+        "今年小年但品质有保证"
+      </div>
+      <div class="price">288元/3斤·3品种<span>（348元/4斤·4品种）</span></div>
+      <span class="status status-new">稀缺体验型</span>
+      <div class="dimension-tags">
+        <span class="dim-tag">地标 广东核心产区</span>
+        <span class="dim-tag active">稀缺 18个稀有品种</span>
+        <span class="dim-tag active">溢价 96-87元/斤</span>
+        <span class="dim-tag active">故事 科研基地/盲盒玩法</span>
+        <span class="dim-tag">颜值 品种对比有趣</span>
+      </div>
+      <div class="source">来源：企鹅吃喝指南6.18推文</div>
+    </div>
+
+    <!-- 新疆美人杏 -->
+    <div class="radar-card" style="opacity:0.7">
+      <div class="name">🍑 新疆美人杏</div>
+      <div class="stars">⭐⭐⭐ · ⚠️已下市</div>
+      <div class="meta">
+        哈密四堡镇核心产区 · 甜度18-23<br>
+        亩产仅1吨（普通杏子20%）<br>
+        礼盒装79元/30枚 → 已售罄下市<br>
+        <span style="color:var(--orange)">作为极短窗口期品类案例研究</span>
+      </div>
+      <span class="status status-done">已下市</span>
+      <div class="dimension-tags">
+        <span class="dim-tag active">地标 哈密GI</span>
+        <span class="dim-tag active">稀缺 亩产1吨</span>
+        <span class="dim-tag active">溢价 79-108元</span>
+        <span class="dim-tag active">故事 杏桃奶昔口感</span>
+        <span class="dim-tag">颜值 金黄</span>
+      </div>
+      <div class="source">来源：企鹅吃喝指南6.18推文</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========== 水蜜桃家族对比 ========== -->
+<div class="section">
+  <h2>🍑 阳山水蜜桃家族 · 选购对比表</h2>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>品种</th>
+        <th>状态</th>
+        <th>特点</th>
+        <th>价格</th>
+        <th>窗口期</th>
+        <th>适合场景</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>日川</b></td>
+        <td><span class="status status-ending">仅剩~5天</span></td>
+        <td>花蜜香明显、柔软多汁、甜度15.6、今年状态最佳</td>
+        <td>5两+大桃限量</td>
+        <td>6/25前</td>
+        <td>收尾种草、最后一口鲜</td>
+      </tr>
+      <tr>
+        <td><b>朝阳/银花露</b></td>
+        <td><span class="status status-new">🆕刚上市</span></td>
+        <td>无锡老品种、纤维极少、入口即化、童年记忆</td>
+        <td>118-208元/8只</td>
+        <td>约2周</td>
+        <td>故事型内容、老品种情怀</td>
+      </tr>
+      <tr>
+        <td><b>金奖一号</b></td>
+        <td><span class="status status-new">🆕首发</span></td>
+        <td>保密新品种、4000万果园、省级金奖、甜度13+</td>
+        <td>129-149元</td>
+        <td>新品期货</td>
+        <td>独家首发、稀缺感内容</td>
+      </tr>
+      <tr>
+        <td><b>白凤</b></td>
+        <td style="color:var(--blue)">⏳即将登场</td>
+        <td>产量占全年60%、经典品种、性价比之王</td>
+        <td>预计128-188元</td>
+        <td>6月下旬-7月中</td>
+        <td>主力冲量SKU、科普对比</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:#666;margin-top:8px;">价格参考：4-5两礼盒约128元/8个，6-7两礼盒约188元（来源：什么值得买6.14时令指南、企鹅吃喝指南6.18）</p>
+</div>
+
+<!-- ========== 三大洞察 ========== -->
+<div class="section">
+  <h2>💡 本期三大核心洞察</h2>
+  <div class="insight-grid">
+    
+    <div class="insight-card">
+      <div class="num">01</div>
+      <h4>水蜜桃家族"四代同堂"=全年最大品类红利窗口</h4>
+      <p>
+        日川收尾（最后5天）+ 朝阳登场（限量稀缺）+ 金奖一号（独家新品）+ 白凤预热（主力即将上市），4个品种在6月下旬同时存在，形成罕见的"四代同堂"品类矩阵。这意味着：<br>
+        ① 每个品种都有独立内容故事（收尾/老品种/新品/预告）<br>
+        ② 日川"即将下市"制造紧迫感→朝阳"老品种重现"制造稀缺感→金奖一号"保密新品种"制造独家感→白凤"主力预告"持续种草<br>
+        ③ 这是全年唯一的"桃子家族全矩阵"内容窗口，错过等明年
+      </p>
+    </div>
+
+    <div class="insight-card">
+      <div class="num">02</div>
+      <h4>糯米糍全线下架=精品生鲜"标准>供应"的信号</h4>
+      <p>
+        企鹅吃喝指南明确表示"糯米糍今年品质达不到标准→不会上架了💔"。这不是供应问题，是品控标准的胜利。精品生鲜的核心壁垒不是"有多少货"，而是"敢不敢不上架"。当竞品在卖品质不达标的糯米糍时，精品渠道用"不上架"建立了信任护城河。桂味虽贵但品质稳定→反而成为稀缺中的稀缺。
+      </p>
+    </div>
+
+    <div class="insight-card">
+      <div class="num">03</div>
+      <h4>618后复盘数据再证精品赛道独立性</h4>
+      <p>
+        京东"包圆"+210%、地标食材+200%、视频号生鲜+14%——三条数据交叉验证：618大促非但没有压缩精品生鲜空间，反而加速了品类增长。核心原因：① 精品赛道用户对价格不敏感，大促反而降低了"尝鲜门槛" ② 地标食材自带信任背书，在促销环境中更具竞争力 ③ 水蜜桃/东魁/桂味等时令品类天然适合618时间窗口。精品生鲜不需要"卷价格"，需要"卷品质+卷内容+卷时效"。
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========== 618复盘速览 ========== -->
+<div class="section">
+  <h2>📊 618复盘速览 · 精品生鲜关键数据</h2>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>平台/指标</th>
+        <th>数据</th>
+        <th>对精品生鲜的意义</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>京东生鲜"包圆"</td>
+        <td>销量 <b>+210%</b></td>
+        <td>源头直采模式验证，精品生鲜也可"包园"</td>
+      </tr>
+      <tr>
+        <td>京东地标食材</td>
+        <td>销售额 <b>+200%</b></td>
+        <td>地标=最强溢价标签，与精品选品框架完全吻合</td>
+      </tr>
+      <tr>
+        <td>视频号生鲜行业</td>
+        <td>销售额/销量 <b>+14%</b> (6月上半月)</td>
+        <td>多平台生鲜增长趋势，考虑视频号+小红书双阵地</td>
+      </tr>
+      <tr>
+        <td>视频号禽肉蛋品</td>
+        <td>环比 <b>+49.05%</b></td>
+        <td>生鲜不止水果，禽肉蛋品是高复购品类机会</td>
+      </tr>
+      <tr>
+        <td>企鹅吃喝指南618</td>
+        <td>单篇8个SKU时令推文</td>
+        <td>内容型精品生鲜的标杆打法：一篇长文覆盖全品类</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:#666;margin-top:8px;">来源：京东618开门红战报（6.2百家号）、友望数据（6.17 youwant.cn）、企鹅吃喝指南（6.18腾讯新闻）</p>
+</div>
+
+<!-- ========== 竞品动态 ========== -->
+<div class="section">
+  <h2>👀 竞品动态扫描</h2>
+  
+  <div class="breaking-item">
+    <span class="tag tag-info">企鹅吃喝指南</span>
+    <strong>6.18发布超长时令水果种草文，覆盖8个SKU，是精品生鲜内容标杆</strong>
+    <p style="margin-top:6px;font-size:13px;color:var(--text-secondary)">
+      东魁杨梅 + 桂味荔枝 + 金奖一号水蜜桃 + 阳山朝阳水蜜桃 + 猫山王/黑刺榴莲 + 泰国山竹 + 新疆美人杏 + 荔枝盲盒(18品种)。一篇推文同时完成：时令紧迫感（"只剩2天""赏味期仅剩一周"）+ 品质信任（"25年老树""9成熟""增城第一""30年+老树"）+ 价格对比（"市场价70-100元，我们2.5斤238元"）+ 差异化（"不是全网最便宜的，但品质最顶"）。<br>
+      <b>启示</b>：精品生鲜的内容不是"描述产品有多好"，而是"解释为什么这个价格值得"。
+    </p>
+  </div>
+
+  <div class="breaking-item">
+    <span class="tag tag-info">盒马鲜生</span>
+    <strong>阳山水蜜桃"定制版"政企联合打法：知识产权包装+全流程追溯+政府背书</strong>
+    <p style="margin-top:6px;font-size:13px;color:var(--text-secondary)">
+      三大差异化动作：① 制定比国标更严的种植规范（甜度↑5-10%）② 定制化包装+防伪元素+联合打假 ③ 新增四颗装/六颗装降低尝鲜门槛。这本质上是把"地标食材"变成了"渠道品牌独家产品"。<br>
+      <b>启示</b>：如果做水蜜桃，必须走"产地深度绑定+品质差异化"路线，单纯"阳山产地直发"已经没有竞争力。
+    </p>
+  </div>
+
+  <div class="breaking-item">
+    <span class="tag tag-info">小红书站内</span>
+    <strong>MCP未登录（连续多日），站内笔记数据缺失</strong>
+    <p style="font-size:13px;color:var(--text-secondary)">
+      需要尽快扫码登录恢复站内数据获取能力。建议下次手动执行时完成扫码。
+    </p>
+  </div>
+</div>
+
+<!-- ========== 行动清单 ========== -->
+<div class="section">
+  <h2>🎯 本周行动清单</h2>
+  
+  <h3>P0 · 本周必做</h3>
+  <ul class="action-list">
+    <li class="p0">
+      <span class="badge badge-p0">P0</span>
+      <strong>618完整复盘</strong>：导出618期间所有内容数据（笔记互动/直播数据/转化率），对比Big Day 6.6和终局6.18两波数据，提炼精品生鲜内容ROI模型。重点分析：哪些品类内容互动率最高？哪些标题公式转化最好？
+    </li>
+    <li class="p0">
+      <span class="badge badge-p0">P0</span>
+      <strong>水蜜桃家族四代内容矩阵</strong>：「日川最后5天」制造紧迫感 →「朝阳老品种重现」讲情怀故事 →「金奖一号保密新品种」制造独家感 →「白凤即将登场」持续种草。每天一篇，形成内容节奏。
+    </li>
+    <li class="p0">
+      <span class="badge badge-p0">P0</span>
+      <strong>桂味荔枝限量发售</strong>：稀缺性营销——"今年糯米糍全线下架，桂味品质巅峰但量极少，第一批XX盒先到先得"。配合"为什么今年糯米糍不卖了？"科普内容建立品质信任。
+    </li>
+    <li class="p0">
+      <span class="badge badge-p0">P0</span>
+      <strong>东魁杨梅最后10天冲刺</strong>：利用窗口收窄制造紧迫感——"今年最后一波老树东魁，再过10天就要等明年"。可考虑组合装（杨梅+水蜜桃=江南初夏CP礼盒）。
+    </li>
+    <li class="p0">
+      <span class="badge badge-p0">P0</span>
+      <strong>猫山王最后1天折扣收割</strong>：如果今天还有时间窗口，紧急发布"618折扣最后几小时"催单内容。过了今天折扣归零。
+    </li>
+  </ul>
+
+  <h3>P1 · 本周推进</h3>
+  <ul class="action-list">
+    <li class="p1">
+      <span class="badge badge-p1">P1</span>
+      <strong>山竹时令内容</strong>：泰国空运山竹正当季，口感"如果冻级嫩滑"是强卖点。可做横评（空运vs陆运品质差距）。
+    </li>
+    <li class="p1">
+      <span class="badge badge-p1">P1</span>
+      <strong>618后品类接力排期</strong>：制定6月下旬→7月品类日历：东魁收尾(6月底)→桂味继续(6-7月)→白凤主力(6月下旬-7月中)→湖景蜜露(7月)→野生菌(7月主力)→蓝莓(8月)。
+    </li>
+    <li class="p1">
+      <span class="badge badge-p1">P1</span>
+      <strong>视频号多平台可行性调研</strong>：视频号生鲜环比增长14%，禽肉蛋品暴涨49%，考虑小程序+视频号双平台布局。
+    </li>
+  </ul>
+
+  <h3>P2 · 持续关注</h3>
+  <ul class="action-list">
+    <li class="p2">
+      <span class="badge badge-p2">P2</span>
+      <strong>618内容效果复盘报告</strong>：将618期间各品类内容数据化，形成可复用的内容ROI模型。
+    </li>
+    <li class="p2">
+      <span class="badge badge-p2">P2</span>
+      <strong>小红书MCP重新登录</strong>：手动扫码恢复站内数据获取能力。
+    </li>
+    <li class="p2">
+      <span class="badge badge-p2">P2</span>
+      <strong>云南野生菌7月预热</strong>：618后下一个增量品类，需提前2周开始种草。
+    </li>
+  </ul>
+</div>
+
+<!-- ========== 标题灵感 ========== -->
+<div class="section">
+  <h2>✍️ 本期标题灵感（6条）</h2>
+  <ol class="title-list">
+    <li>
+      <span class="num">① 倒计时焦虑型</span><br>
+      「日川水蜜桃只剩最后5天！今年状态最好的早熟桃，错过等明年」<br>
+      <span style="font-size:11px;color:#666">#时令食材 #水蜜桃 #阳山</span>
+    </li>
+    <li>
+      <span class="num">② 稀缺故事型</span><br>
+      「无锡人小时候的味道回来了！阳山朝阳水蜜桃全国只剩150盒，我们抢到了XX盒」<br>
+      <span style="font-size:11px;color:#666">#老品种 #地标食材 #限时抢购</span>
+    </li>
+    <li>
+      <span class="num">③ 品质信任型</span><br>
+      「今年糯米糍为什么全线下架？PM告诉你精品生鲜的选品底线」<br>
+      <span style="font-size:11px;color:#666">#选品标准 #避雷指南 #桂味荔枝</span>
+    </li>
+    <li>
+      <span class="num">④ 横评对比型</span><br>
+      「阳山水蜜桃4个品种怎么选？日川vs朝阳vs金奖一号vs白凤，PM的选桃指南」<br>
+      <span style="font-size:11px;color:#666">#横评 #水蜜桃选购 #食材选品实验室</span>
+    </li>
+    <li>
+      <span class="num">⑤ 618复盘型</span><br>
+      「618结束了，精品生鲜卖得怎么样？3组数据告诉你：「包圆」+210%、地标+200%」<br>
+      <span style="font-size:11px;color:#666">#618复盘 #精品生鲜 #数据解读</span>
+    </li>
+    <li>
+      <span class="num">⑥ 组合推荐型</span><br>
+      「江南初夏CP礼盒：最后10天的老树东魁 + 刚上市的阳山水蜜桃，这样吃是最高级仪式感」<br>
+      <span style="font-size:11px;color:#666">#礼盒推荐 #时令搭配 #仪式感</span>
+    </li>
+  </ol>
+</div>
+
+<!-- ========== 风险提示 ========== -->
+<div class="section">
+  <h2>⚠️ 风险提示</h2>
+  <div class="risk-item">
+    <strong>🍑 水蜜桃家族品种多、窗口短</strong>：日川仅剩5天、朝阳限量150盒、金奖一号独家期货，如果内容排期不及时可能错过窗口。建议今明两天就发日川收尾内容。
+  </div>
+  <div class="risk-item">
+    <strong>🍈 桂味荔枝量极少</strong>：企鹅明确表示"量很少，能发的量有限"+"且吃且珍惜"。如果要做桂味必须第一时间确认货源，否则可能出现发了种草内容但无法交付的情况。
+  </div>
+  <div class="risk-item">
+    <strong>🫒 猫山王折扣今晚截止</strong>：今天的折扣最后机会如果要做内容，必须上午发布才能在下午-晚上的下单高峰转化。
+  </div>
+  <div class="risk-item">
+    <strong>📱 小红书MCP未登录</strong>（连续多日）：站内竞品笔记和品类趋势数据缺失，影响竞品分析和选题判断。建议尽快扫码登录。
+  </div>
+  <div class="risk-item">
+    <strong>🔗 供应链风险</strong>：618后冷链物流可能回落但仍处于高位。水蜜桃/杨梅类极短保质期品类，必须确认物流时效。
+  </div>
+</div>
+
+<!-- ========== 品类动态池更新 ========== -->
+<div class="section">
+  <h2>🗂️ 动态品类池更新 (6/20)</h2>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>品类</th>
+        <th>状态</th>
+        <th>价格带</th>
+        <th>窗口期</th>
+        <th>操作建议</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>🍑 阳山水蜜桃家族</td>
+        <td>🔥本期主角</td>
+        <td>118-208元/盒</td>
+        <td>四代同堂~3周</td>
+        <td>日川收尾→朝阳故事→金奖独家→白凤预热</td>
+      </tr>
+      <tr>
+        <td>🍇 东魁杨梅</td>
+        <td>窗口收窄</td>
+        <td>~200元/斤</td>
+        <td>最后~10天</td>
+        <td>倒计时冲刺+组合礼盒</td>
+      </tr>
+      <tr>
+        <td>🍈 桂味荔枝</td>
+        <td>品质巅峰</td>
+        <td>70-100元/斤</td>
+        <td>约2-3周</td>
+        <td>限量发售+品质科普</td>
+      </tr>
+      <tr>
+        <td>🫒 猫山王榴莲</td>
+        <td>折扣收尾</td>
+        <td>折扣价</td>
+        <td>折扣今晚截止</td>
+        <td>紧急催单（如果来得及）</td>
+      </tr>
+      <tr>
+        <td>🍈 泰国山竹</td>
+        <td>正当季</td>
+        <td>268元/5斤</td>
+        <td>持续</td>
+        <td>时令内容+空运品质对比</td>
+      </tr>
+      <tr>
+        <td>🎁 荔枝盲盒(18品种)</td>
+        <td>🆕趋势品类</td>
+        <td>288-348元</td>
+        <td>荔枝季</td>
+        <td>体验型内容、非主力带货</td>
+      </tr>
+      <tr>
+        <td>🍄 云南野生菌</td>
+        <td>618后预埋</td>
+        <td>待查</td>
+        <td>7月主力</td>
+        <td>提前2周种草</td>
+      </tr>
+      <tr>
+        <td>🫐 大兴安岭蓝莓</td>
+        <td>8月预埋</td>
+        <td>待查</td>
+        <td>8月</td>
+        <td>长线关注</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<hr class="divider">
+<div class="footer">
+  <p>📅 生成时间：2026-06-20 08:50 CST · 自动化任务：automation-1778234478574</p>
+  <p>📊 数据来源：企鹅吃喝指南(6.18)、盒马×阳山镇政府发布会/东方网(6.16)、京东618开门红战报(6.2)、友望数据(6.17)</p>
+  <p>⚠️ 本报告遵守5条信息解读纪律：负面区分/绝对值标注/交叉验证/归因标注/精品过滤</p>
+  <p style="margin-top:8px;color:#555">🌶️ 小红书生鲜电商每日作战情报 · 食材选品实验室 · 618后复盘特辑</p>
+</div>
+
+</body>
+</html>
