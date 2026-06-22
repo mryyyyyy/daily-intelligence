@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 2026-06-22</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #1a1410; color: #f5ebe0; font-size: 15px; line-height: 1.75; }
+
+  .hero {
+    background: linear-gradient(135deg, #2c1e14 0%, #3d2b1f 50%, #1a1410 100%);
+    border-bottom: 1px solid #4a3728;
+    padding: 36px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%; right: -8%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(232,144,80,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -25%; left: -3%;
+    width: 380px; height: 380px;
+    background: radial-gradient(circle, rgba(168,92,48,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(232,144,80,0.14);
+    border: 1px solid rgba(232,144,80,0.3);
+    color: #e89050;
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #faf3e8;
+    margin-bottom: 8px;
+  }
+  .hero .sub {
+    color: #a08060;
+    font-size: 14px;
+  }
+
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 28px 24px;
+  }
+
+  .card {
+    background: #231a14;
+    border: 1px solid #3d2b1f;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .card-header {
+    padding: 18px 22px;
+    border-bottom: 1px solid #3d2b1f;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .card-header .icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 19px;
+    flex-shrink: 0;
+  }
+  .card-header h2 {
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .card-body {
+    padding: 22px;
+  }
+
+  /* 板块一：行业要闻 */
+  .s1 .card-header { background: linear-gradient(135deg, #2e1f16 0%, #231a14 100%); }
+  .s1 .icon { background: rgba(232,144,80,0.18); color: #e89050; }
+  .s1 .card-header h2 { color: #e89050; }
+
+  .core-wind {
+    background: rgba(232,144,80,0.1);
+    border-left: 3px solid #e89050;
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #f5d5b0;
+  }
+
+  .news-item {
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #3d2b1f;
+  }
+  .news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .news-item h3 {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #faf3e8;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .news-item h3 .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px; height: 24px;
+    background: rgba(232,144,80,0.18);
+    color: #e89050;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .news-detail p {
+    color: #d4b896;
+    font-size: 13.5px;
+    margin-top: 6px;
+    padding-left: 12px;
+    border-left: 2px solid #4a3728;
+    line-height: 1.65;
+  }
+  .news-detail strong { color: #f5ebe0; font-weight: 600; }
+
+  .wind-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    font-weight: 600;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .wind-up { background: rgba(76,175,80,0.15); color: #66bb6a; }
+  .wind-down { background: rgba(232,144,80,0.15); color: #e89050; }
+  .wind-neutral { background: rgba(210,153,34,0.15); color: #d29922; }
+
+  /* 板块二：爆品雷达 */
+  .s2 .card-header { background: linear-gradient(135deg, #2e2016 0%, #231a14 100%); }
+  .s2 .icon { background: rgba(255,183,77,0.18); color: #ffb74d; }
+  .s2 .card-header h2 { color: #ffb74d; }
+
+  .radar-item {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #3d2b1f;
+  }
+  .radar-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .radar-item h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #faf3e8;
+    margin-bottom: 8px;
+  }
+  .signal-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 8px;
+  }
+  .signal-green { background: rgba(76,175,80,0.15); color: #66bb6a; }
+  .signal-yellow { background: rgba(255,183,77,0.15); color: #ffb74d; }
+  .signal-red { background: rgba(232,80,60,0.15); color: #e85040; }
+  .radar-desc { color: #d4b896; font-size: 13.5px; margin-top: 6px; line-height: 1.6; }
+  .radar-desc strong { color: #f5ebe0; }
+
+  /* 板块三：时令风向 */
+  .s3 .card-header { background: linear-gradient(135deg, #1f2e1a 0%, #231a14 100%); }
+  .s3 .icon { background: rgba(76,175,80,0.18); color: #66bb6a; }
+  .s3 .card-header h2 { color: #66bb6a; }
+
+  .season-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 14px;
+    font-size: 14px;
+  }
+  .season-row .emoji { font-size: 17px; flex-shrink: 0; margin-top: 2px; }
+  .season-row strong { color: #f5ebe0; }
+  .season-row span { color: #d4b896; }
+
+  .season-category {
+    background: rgba(76,175,80,0.06);
+    border: 1px solid rgba(76,175,80,0.15);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .season-category h4 {
+    color: #66bb6a;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .season-category p {
+    color: #d4b896;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  /* 板块四：跨界灵感 */
+  .s4 .card-header { background: linear-gradient(135deg, #2a1e2e 0%, #231a14 100%); }
+  .s4 .icon { background: rgba(171,71,188,0.18); color: #ab47bc; }
+  .s4 .card-header h2 { color: #ce93d8; }
+
+  .inspire-item {
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #3d2b1f;
+  }
+  .inspire-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .inspire-item h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #faf3e8;
+    margin-bottom: 6px;
+  }
+  .inspire-desc { color: #d4b896; font-size: 13.5px; line-height: 1.6; }
+  .inspire-desc strong { color: #ce93d8; }
+  .migrate-tag {
+    display: inline-block;
+    background: rgba(171,71,188,0.12);
+    border-left: 2px solid #ab47bc;
+    padding: 6px 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 12.5px;
+    color: #ce93d8;
+    margin-top: 8px;
+  }
+
+  /* 板块五：脑暴时刻 */
+  .s5 .card-header { background: linear-gradient(135deg, #2e1a1f 0%, #231a14 100%); }
+  .s5 .icon { background: rgba(232,80,60,0.18); color: #e85040; }
+  .s5 .card-header h2 { color: #ef5350; }
+
+  .idea-card {
+    background: linear-gradient(135deg, rgba(232,80,60,0.08), rgba(232,144,80,0.05));
+    border: 1px solid rgba(232,80,60,0.2);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+  }
+  .idea-card:last-child { margin-bottom: 0; }
+  .idea-card .idea-name {
+    font-size: 18px;
+    font-weight: 800;
+    color: #ef5350;
+    margin-bottom: 8px;
+  }
+  .idea-card .idea-one {
+    color: #f5ebe0;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .idea-field {
+    margin-bottom: 10px;
+    font-size: 13.5px;
+    color: #d4b896;
+    line-height: 1.6;
+  }
+  .idea-field strong { color: #f5ebe0; font-weight: 600; }
+
+  /* 板块六：展会速递 */
+  .s6 .card-header { background: linear-gradient(135deg, #1a2328 0%, #231a14 100%); }
+  .s6 .icon { background: rgba(100,181,246,0.18); color: #64b5f6; }
+  .s6 .card-header h2 { color: #64b5f6; }
+
+  .expo-item {
+    margin-bottom: 14px;
+    font-size: 13.5px;
+    color: #d4b896;
+    line-height: 1.6;
+  }
+  .expo-item:last-child { margin-bottom: 0; }
+  .expo-item strong { color: #64b5f6; }
+
+  .channel-item {
+    background: rgba(100,181,246,0.06);
+    border: 1px solid rgba(100,181,246,0.12);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+  .channel-item:last-child { margin-bottom: 0; }
+  .channel-item strong { color: #64b5f6; font-size: 13.5px; }
+  .channel-item p { color: #d4b896; font-size: 13px; margin-top: 4px; }
+
+  .section-divider {
+    text-align: center;
+    color: #5a4030;
+    font-size: 12px;
+    padding: 6px 0;
+    margin-bottom: 24px;
+    letter-spacing: 2px;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 28px;
+    color: #5a4030;
+    font-size: 12px;
+    border-top: 1px solid #3d2b1f;
+  }
+
+  .summary-box {
+    background: linear-gradient(135deg, rgba(232,144,80,0.08), rgba(168,92,48,0.06));
+    border: 1px solid rgba(232,144,80,0.2);
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 16px;
+  }
+  .summary-box h4 {
+    color: #e89050;
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .summary-box p {
+    color: #d4b896;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">🌿 2026年6月22日 · 夏至后第1天 · 芒种第17天</div>
+    <h1>🔥 食研日推 · 每日行业情报</h1>
+    <div class="sub">专注食材品类升级 · 只给弹药不给水文 | 下厨房食品品牌 PM 专用</div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ==================== 板块一：今日行业要闻 ==================== -->
+<div class="card s1">
+  <div class="card-header">
+    <div class="icon">🔥</div>
+    <h2>一、今日行业要闻</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="core-wind">
+      🧭 核心风向：夏至刚过，时令窗口全年最密——杨梅/荔枝/水蜜桃/野生菌/小龙虾同台竞技；猫山王十年最低价触发原料套利信号；酸奶正在变成"超级容器"
+    </div>
+
+    <div class="news-item">
+      <h3><span class="num">1</span>猫山王榴莲价格跌至十年新低 — 零售35-45元/斤，较去年同期腰斩50%+</h3>
+      <div class="news-detail">
+        <p><strong>事件：</strong>2026年6月，马来西亚猫山王榴莲国内零售价已回落至35-45元/斤区间，A级鲜果60元/斤以下，B级果22-23元/斤。海南自贸港封关后猫山王75.8元/斤已被视为"划算"——说明去年价格百元时代已成历史。批发端跌幅50-60%，品质投诉占比76.6%（"生包/死包"问题突出）。</p>
+        <p><span class="wind-tag wind-down">原料红利</span><strong>与我何干：</strong>原料端十年最低价=榴莲深加工产品的成本红利窗口。冰感榴莲甜品、榴莲冰面包、榴莲即食甜品化——现在开品，毛利率比去年高出15-20个百分点。但要注意品质稳定性，"生包死包"投诉说明冷链选品门槛不能省。</p>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <h3><span class="num">2</span>盒马布德维希腊酸奶碗上新 — 酸奶+亚麻籽油+籽仁，12.9元/碗，年销增长300%</h3>
+      <div class="news-detail">
+        <p><strong>事件：</strong>6月10日盒马冷藏货架新上架布德维希腊酸奶碗：200g希腊酸奶+10ml有机亚麻籽油+15g无花果混合籽仁，售价12.9元。理论基础来自"布德维疗法"——富含α-亚麻酸的油脂与含硫蛋白质结合促进营养吸收。盒马此前酸奶品类年销增长300%，酸奶正从饮品变成"功能餐容器"。</p>
+        <p><span class="wind-tag wind-up">趋势验证</span><strong>与我何干：</strong>酸奶碗是"健康功能化+配料表洁净"趋势的具体信号——消费者愿意为12.9元的"一碗功能性餐食"买单，核心不是酸奶本身而是搭配逻辑。迁移到食材品类：如果我们做"辣椒炒肉专用椒+功能化搭配包"（辣椒+蒜+豆豉+低钠酱油一盒），同样是"食材容器化"思路。</p>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <h3><span class="num">3</span>食品标识监督管理办法2027年3月施行 — 配料表标注更严，洁净配料变成合规竞争力</h3>
+      <div class="news-detail">
+        <p><strong>事件：</strong>市场监管总局2025年3月发布《食品标识监督管理办法》（第100号令），将于<strong>2027年3月16日起施行</strong>。核心变化：预包装食品配料表标注要求更严格，必须如实标注所有成分、不得隐瞒。同时，生态环境部拟推新规：食品添加剂需双重登记（卫健委+生态环境部）。</p>
+        <p><span class="wind-tag wind-up">合规优势</span><strong>与我何干：</strong>配料表洁净的品牌合规成本更低——双登记制度下，用5-6种天然配料的产品比用15-20种添加剂的产品合规压力小得多。我们的品牌DNA"配料表洁净"从差异化优势变成合规竞争力。提前布局，2027年3月前完成所有SKU的配料表合规审计。</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section-divider">— · — · — · —</div>
+
+<!-- ==================== 板块二：爆品雷达 ==================== -->
+<div class="card s2">
+  <div class="card-header">
+    <div class="icon">🎯</div>
+    <h2>二、爆品雷达·趋势苗头</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="radar-item">
+      <h3>冰感烘焙 — 冰面包/冰蛋挞月销10万+，改写冻品淡季逻辑</h3>
+      <span class="signal-tag signal-yellow">🟡起势</span>
+      <div class="radar-desc">
+        <p><strong>信号：</strong>2026年初夏，解冻即食的冰蛋挞、冰面包、冰蛋糕正改写冻品淡季（6-9月）逻辑。千味央厨、鲍师傅、好利来、瑞幸（5.9-9元冰面包）、泸溪河集体入场，盒马冰蛋挞月销破百万。<strong>核心创新点：</strong>外皮保留面包松软嚼劲，内馅如冰淇淋般冰凉顺滑——不是"冷冻食品"而是"冰着吃的烘焙甜品"。</p>
+        <p><strong>机会判断：</strong>值得关注但谨慎入场。冰感烘焙赛道6月总规模约630亿，品牌扎堆意味着3-6个月内将出现价格战。差异化切入点：不是做冰面包本身（太卷），而是做<strong>冰感食材升级版</strong>——比如冰感辣椒蛋糕（辣椒×冰甜品跨界）、冰感杨梅蛋糕卷，把时令食材嫁接到冰感烘焙框架里。</p>
+      </div>
+    </div>
+
+    <div class="radar-item">
+      <h3>Gelato跨界 — 喜茶喜拉朵独立门店+柠季接手哈根达斯171家店+霸王茶姬入局</h3>
+      <span class="signal-tag signal-yellow">🟡起势</span>
+      <div class="radar-desc">
+        <p><strong>信号：</strong>2026年6月，茶饮×冰淇淋深度融合进入资本层面。喜茶2月将Gelato纳入四大战略业务板块，6月厦门首家喜拉朵实验室+店开业（单球18-24元）；柠季接手哈根达斯中国171家门店运营权；霸王茶姬密集推出Gelato产品线。上海乌鲁木齐中路500米聚集6家Gelato专门店。</p>
+        <p><strong>机会判断：</strong>茶饮×冰淇淋融合趋势对食材品类有间接启发——<strong>风味跨界</strong>是核心信号。辣椒×冰淇淋、杨梅×Gelato这类"食材风味嫁接甜品"在小红书有天然出片率。但注意：Gelato赛道门槛高（需要门店+冷链设备），不建议直接做，而是做<strong>Gelato风味的食材包</strong>——"在家做出辣椒Gelato"的即食食材组合。</p>
+      </div>
+    </div>
+
+    <div class="radar-item">
+      <h3>酸奶超级容器 — 酸奶从饮品变"功能餐"，年销增长300%</h3>
+      <span class="signal-tag signal-green">🟢苗头</span>
+      <div class="radar-desc">
+        <p><strong>信号：</strong>盒马酸奶品类年销增长300%，布德维希腊酸奶碗（酸奶+油+籽仁）定价12.9元验证了"酸奶作为功能性餐食容器"的消费意愿。配料表极简（生牛乳+发酵菌+亚麻籽油+籽仁），与健康功能化趋势高度契合。</p>
+        <p><strong>机会判断：</strong>值得密切关注。"容器化"思路可以迁移到食材品类——不是卖单品辣椒，而是卖"辣椒炒肉一餐解决方案"（辣椒+肉+酱+调料一步到位）。消费者为<strong>一步到位的功能餐食</strong>买单的意愿正在上升。</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section-divider">— · — · — · —</div>
+
+<!-- ==================== 板块三：时令风向 ==================== -->
+<div class="card s3">
+  <div class="card-header">
+    <div class="icon">🌿</div>
+    <h2>三、时令风向·品类机会</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="season-row">
+      <span class="emoji">📅</span>
+      <span><strong>当前时令定位：</strong>夏至后第1天（6/22），全年时令窗口最密集期——杨梅、荔枝、水蜜桃、野生菌、小龙虾同台竞技</span>
+    </div>
+    <div class="season-row">
+      <span class="emoji">⏰</span>
+      <span><strong>倒计时：</strong>距离<strong>小暑</strong>（7/7）还有15天 → 消暑食品品类窗口正在打开</span>
+    </div>
+
+    <div class="season-category">
+      <h4>🎯 即将热卖品类</h4>
+      <p><strong>①冷面/凉面食材包</strong> — 夏至"冬至饺子夏至面"刚需，延吉冷面夏至日销量翻4倍（6/21验证）。冷面食材包（荞麦面+冷汤+配菜）是即食化机会<br>
+      <strong>②消暑汤料/冷吃汤</strong> — 云南野生菌正当季，冷吃概念已有冷吃粽日销万份验证，冷吃菌菇汤是空白品类<br>
+      <strong>③冰感甜品化食材</strong> — 冰面包/冰蛋挞赛道630亿规模验证，时令水果嫁接冰感框架（杨梅冰蛋糕卷/水蜜桃冰蛋挞）</p>
+    </div>
+
+    <div class="season-category">
+      <h4>🚨 窗口提醒</h4>
+      <p><strong>①仙居东魁杨梅</strong> — 赏味窗口<strong>约剩10-15天</strong>（6月底前高峰，7月初收尾）。今年丰产年全省77万吨+10%，批发价15-25元/斤，是窗口期开品的好时机——但要快，7月初价格回升但品质下降<br>
+      <strong>②桂味荔枝</strong> — 超级小年，产量仅约5%。萝岗市场6/15开市桂味43元/斤、糯米糍55元/斤。窗口7月中关闭，但价格太高不适合大众品类，适合做<strong>限量尝鲜礼盒</strong><br>
+      <strong>③小龙虾</strong> — 价格已触底（中青9元/斤，大规格19元/斤，同比降幅50%），7月后品质下降→现在是<strong>小龙虾即食/半成品化</strong>的窗口期</p>
+    </div>
+
+    <div class="season-category">
+      <h4>🏔️ 产地直发机会</h4>
+      <p><strong>①阳山水蜜桃</strong> — 6/16盒马首发"定制版"（甜度+5-10%），7月白凤主力上市。产地无锡阳山，盒马独家→我们可以做<strong>非盒马渠道的差异化版本</strong><br>
+      <strong>②云南野生菌</strong> — 见手青260元/公斤（批量上市回落），松茸10000-12000元/公斤。6-8月是菌季，<strong>小份尝鲜盲盒</strong>是降低试错门槛的品类机会<br>
+      <strong>③猫山王榴莲</strong> — 十年最低价35-45元/斤，6-8月旺季持续。原料成本红利窗口→<strong>榴莲冰感甜品化</strong>的最佳开品时机</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="section-divider">— · — · — · —</div>
+
+<!-- ==================== 板块四：跨界灵感 ==================== -->
+<div class="card s4">
+  <div class="card-header">
+    <div class="icon">💡</div>
+    <h2>四、跨界灵感·创新动作</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="inspire-item">
+      <h3>盒马布德维酸奶碗 → "食材容器化"组合逻辑</h3>
+      <div class="inspire-desc">
+        <p>盒马把酸奶从单品变成"功能餐容器"——酸奶+油+籽仁的组合逻辑，消费者为<strong>一步到位的功能搭配</strong>买单（12.9元）。</p>
+      </div>
+      <div class="migrate-tag">
+        <strong>迁移可能：</strong>辣椒炒肉专用椒可以做"食材容器化升级"——辣椒+蒜+豆豉+低钠酱油一盒搞定，不是卖辣椒而是卖"一餐解决方案"
+      </div>
+    </div>
+
+    <div class="inspire-item">
+      <h3>喜茶Gelato+柠季哈根达斯 → 风味跨界深度融合</h3>
+      <div class="inspire-desc">
+        <p>茶饮×冰淇淋从试水升级为系统化进攻。喜茶喜拉朵厦门首店单日排号170+，验证了<strong>风味嫁接甜品</strong>的消费爆发力——茶饮风味×冰淇淋口感=全新体验。</p>
+      </div>
+      <div class="migrate-tag">
+        <strong>迁移可能：</strong>食材风味嫁接冰感甜品——"辣椒×冰面包""杨梅×Gelato""水蜜桃×冰蛋挞"，出片率高+差异化强+不撞品类
+      </div>
+    </div>
+
+    <div class="inspire-item">
+      <h3>日本7-11韩国美食季 → 韩式凉拌即食化空白</h3>
+      <div class="inspire-desc">
+        <p>日本7-11推出韩国美食季（韩式拌饭/冷面/泡菜组合），SUNSUN联名系列。全家冷面+巨大全明星祭（加量不加价）。韩国GS25提前6月中旬上架养生消暑简餐。</p>
+      </div>
+      <div class="migrate-tag">
+        <strong>迁移可能：</strong>韩式凉拌食材包（泡菜+冷面+酱料一步到位）在中国市场是空白——抖音/天猫没有品牌做"韩式凉拌一餐解决方案"，但便利店端验证了需求
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section-divider">— · — · — · —</div>
+
+<!-- ==================== 板块五：脑暴时刻 ==================== -->
+<div class="card s5">
+  <div class="card-header">
+    <div class="icon">🧪</div>
+    <h2>五、脑暴时刻·融合创意</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="idea-card">
+      <div class="idea-name">🧊 冷吃菌菇汤 · 夏天喝的汤</div>
+      <div class="idea-one">一句话：云南野生菌冷吃汤——冷藏即饮/微波30秒，夏天也能喝菌汤</div>
+      <div class="idea-field"><strong>为什么是现在：</strong>①夏至后消暑刚需全面释放（冷面翻4倍验证）；②云南野生菌正当季（见手青260元/公斤批量上市）；③冷吃概念已有冷吃粽日销万份验证；④汤品类夏季是低谷，冷吃汤=反季节增量</div>
+      <div class="idea-field"><strong>差异化锚点：</strong>抖音/天猫没有"冷吃汤"品类——现有菌汤都是热饮版。冷吃菌菇汤=菌汤×凉面×冷吃粽三重概念嫁接，消费者认知零门槛</div>
+      <div class="idea-field"><strong>可行性初判：</strong>供应链难度中等（野生菌冷链已有成熟路径），配料表可以极简（菌菇+水+少量调味），渠道适配度高（抖音冷链+小红书出片），毛利预估40-50%</div>
+    </div>
+
+    <div class="idea-card">
+      <div class="idea-name">🫠 榴莲冰感甜品化 · 十年最低价的套利窗口</div>
+      <div class="idea-one">一句话：猫山王榴莲×冰感烘焙——榴莲冰面包/榴莲冰蛋挞，原料成本十年最低</div>
+      <div class="idea-field"><strong>为什么是现在：</strong>①猫山王零售35-45元/斤（十年最低），原料成本红利窗口；②冰感烘焙赛道630亿规模验证+品牌扎堆入场；③榴莲×冰感组合在小红书天然出片（黄色+冰凉+香甜）</div>
+      <div class="idea-field"><strong>差异化锚点：</strong>现有冰感烘焙赛道没有榴莲风味入局者——瑞幸做冰面包5.9元（芒果/草莓），泸溪河做冰蛋挞（原味/抹茶），没有人做榴莲版。榴莲冰面包=冰感赛道+榴莲风味双重差异化</div>
+      <div class="idea-field"><strong>可行性初判：</strong>供应链难度中等偏高（榴莲冷链+品质稳定性是门槛，"生包死包"投诉率76.6%），需要严选A级果+冷链保障。毛利预估35-45%（原料便宜但冷链成本高）。风险点：榴莲品质波动大，建议先用榴莲果肉/榴莲酱而非鲜果</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section-divider">— · — · — · —</div>
+
+<!-- ==================== 板块六：展会速递 ==================== -->
+<div class="card s6">
+  <div class="card-header">
+    <div class="icon">🏬</div>
+    <h2>六、展会速递·渠道上新</h2>
+  </div>
+  <div class="card-body">
+
+    <div style="font-size:14px;font-weight:700;color:#64b5f6;margin-bottom:14px;">🎪 近期展会预告</div>
+
+    <div class="expo-item">
+      <strong>深圳食博会</strong> 7/2-4 深圳会展中心（福田） | <strong>看点：</strong>全球高端食品+优质农产品+渔业三展联动，华南最大食品展 | <strong>与我何干：</strong>华南供应链对接窗口，重点关注野生菌/海鲜/东南亚食材供应商
+    </div>
+    <div class="expo-item">
+      <strong>广州茶博会</strong> 7/2-5 广州 | <strong>看点：</strong>茶饮×食材跨界灵感，抹茶/花茶类供应链对接 | <strong>与我何干：</strong>茶饮风味嫁接食材的供应链验证
+    </div>
+    <div class="expo-item">
+      <strong>山东济南肉类博览会</strong> 7/3-5 | <strong>看点：</strong>肉类供应链新品/加工技术 | <strong>与我何干：</strong>辣椒炒肉专用椒的肉类搭配供应链对接
+    </div>
+
+    <div style="font-size:14px;font-weight:700;color:#64b5f6;margin-bottom:14px;margin-top:20px;">🛒 渠道上新速递</div>
+
+    <div class="channel-item">
+      <strong>盒马</strong> 布德维希腊酸奶碗12.9元 | <strong>卖点：</strong>酸奶+亚麻籽油+籽仁功能餐组合 | <strong>启发：</strong>"食材容器化"组合逻辑可迁移
+      <p>阳山水蜜桃定制版首发 | <strong>卖点：</strong>甜度+5-10%，区域限定 | <strong>启发：</strong>"定制版"概念可复用到其他产地食材</p>
+      <p>冰粽月环比增长300%+ | <strong>卖点：</strong>抹茶/生巧风味冰粽，AI订货量估算 | <strong>启发：</strong>节令食品冷藏甜品化趋势持续验证</p>
+    </div>
+
+    <div class="channel-item">
+      <strong>山姆</strong> 6月30+新品上架 | <strong>卖点：</strong>星巴克即饮能量饮料（正官庄红参加持）首发 | <strong>启发：</strong>"提神+养生"融合概念，食材品类可以做辣椒×养生茶组合
+      <p>MM油焖小龙虾 | <strong>卖点：</strong>即食小龙虾，产地直供 | <strong>启发：</strong>小龙虾即食化验证渠道端需求</p>
+    </div>
+
+    <div class="channel-item">
+      <strong>日本便利店</strong> 7-11韩国美食季+SUNSUN联名+水馒头甜品 | <strong>启发：</strong>韩式凉拌即食化空白+甜品冰感化双重信号
+      <p>全家冷面+巨大全明星祭（加量不加价） | <strong>启发：</strong>冷面品类需求验证+量感策略</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- 总结 -->
+<div class="summary-box">
+  <h4>📌 今日核心一句话</h4>
+  <p>夏至刚过，全年时令窗口最密期开始——<strong>杨梅倒计时10天、荔枝超级小年但43元/斤、水蜜桃定制版验证产地直发升级、野生菌批量上市价回落、小龙虾触底9元/斤</strong>。猫山王十年最低价35元/斤=榴莲深加工套利窗口。酸奶变身"超级容器"验证了食材容器化逻辑。冰感烘焙630亿赛道+Gelato茶饮跨界=风味嫁接甜品是差异化方向。合规层面：食品标识新规2027年3月施行，洁净配料表从差异化变成合规竞争力。</p>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>⚠️ 以上内容由AI自动聚合生成，信息来源于公开渠道，仅供参考，不构成投资建议</p>
+  <p>信源：FBIF / 食品板 / Foodaily / 什么值得买 / 联商网 / 人民日报 / 新京报 / 搜狐 / 昆明野生菌市场 / 仙居农业农村局 等</p>
+  <p style="margin-top:8px;">食研日推 · WorkBuddy Daily Intelligence · 2026-06-22 09:00 CST</p>
+</div>
+
+</body>
+</html>
