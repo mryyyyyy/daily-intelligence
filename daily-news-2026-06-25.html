@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日双专栏情报 | 2026-06-25</title>
+<style>
+:root {
+  --bg: #0f0f14;
+  --card-bg: #1a1a24;
+  --card-bg-alt: #1e1e2a;
+  --primary: #e63946;
+  --primary-dim: #c1121f;
+  --ai-accent: #00b4d8;
+  --ai-accent-dim: #0077b6;
+  --text: #e0e0e0;
+  --text-dim: #9ca3af;
+  --text-muted: #6b7280;
+  --border: #2a2a3a;
+  --highlight: #f4a261;
+  --tag-bg: rgba(230, 57, 70, 0.1);
+  --tag-ai-bg: rgba(0, 180, 216, 0.1);
+  --green: #2ecc71;
+  --orange: #f39c12;
+  --purple: #9b59b6;
+  --red: #e74c3c;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 40px 20px 30px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border-bottom: 3px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(230,57,70,0.08) 0%, transparent 50%),
+              radial-gradient(circle at 70% 50%, rgba(0,180,216,0.08) 0%, transparent 50%);
+  z-index: 0;
+}
+
+.header-content { position: relative; z-index: 1; }
+
+.header h1 {
+  font-size: 2.4em;
+  font-weight: 900;
+  background: linear-gradient(135deg, #e63946, #f4a261);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+}
+
+.header .subtitle {
+  font-size: 1.1em;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+}
+
+.header .date-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.08);
+  padding: 6px 20px;
+  border-radius: 20px;
+  font-size: 0.95em;
+  color: var(--text-dim);
+  margin-top: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Section Tabs */
+.section-tabs {
+  display: flex;
+  gap: 0;
+  margin: 30px 0 0;
+  border-bottom: 2px solid var(--border);
+}
+
+.section-tab {
+  padding: 14px 32px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.05em;
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  position: relative;
+  transition: all 0.3s;
+  letter-spacing: 1px;
+}
+
+.section-tab.active {
+  color: var(--primary);
+}
+
+.section-tab.ai-tab.active {
+  color: var(--ai-accent);
+}
+
+.section-tab::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: transparent;
+  transition: all 0.3s;
+}
+
+.section-tab.active::after {
+  background: var(--primary);
+}
+
+.section-tab.ai-tab.active::after {
+  background: var(--ai-accent);
+}
+
+/* Column Grid */
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+@media (max-width: 900px) {
+  .columns { grid-template-columns: 1fr; }
+}
+
+/* Cards */
+.card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3em;
+  flex-shrink: 0;
+}
+
+.icon-news { background: rgba(230,57,70,0.15); color: var(--primary); }
+.icon-ai { background: rgba(0,180,216,0.15); color: var(--ai-accent); }
+.icon-github { background: rgba(244,162,97,0.15); color: var(--highlight); }
+.icon-money { background: rgba(46,204,113,0.15); color: var(--green); }
+.icon-trend { background: rgba(155,89,182,0.15); color: var(--purple); }
+
+.card-title {
+  font-size: 1.15em;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+/* News Broadcast Styles */
+.section-label {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.label-policy { background: rgba(230,57,70,0.12); color: var(--primary); }
+.label-economy { background: rgba(46,204,113,0.12); color: var(--green); }
+.label-tech { background: rgba(0,180,216,0.12); color: var(--ai-accent); }
+.label-diplomacy { background: rgba(155,89,182,0.12); color: var(--purple); }
+.label-people { background: rgba(244,162,97,0.12); color: var(--highlight); }
+.label-international { background: rgba(231,76,60,0.12); color: var(--red); }
+
+.news-item {
+  margin-bottom: 28px;
+  padding: 20px;
+  background: var(--card-bg-alt);
+  border-radius: 10px;
+  border-left: 3px solid var(--primary);
+}
+
+.news-item.ai-theme { border-left-color: var(--ai-accent); }
+.news-item.economy-theme { border-left-color: var(--green); }
+.news-item.diplomacy-theme { border-left-color: var(--purple); }
+.news-item.international-theme { border-left-color: var(--red); }
+
+.news-item h3 {
+  font-size: 1.08em;
+  color: var(--text);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.news-content {
+  color: var(--text-dim);
+  font-size: 0.92em;
+  margin-bottom: 12px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  line-height: 1.8;
+}
+
+.news-content strong {
+  color: var(--highlight);
+}
+
+.news-analysis {
+  padding: 12px 16px;
+  background: rgba(230,57,70,0.06);
+  border-radius: 8px;
+  font-size: 0.9em;
+  color: var(--text);
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+
+.news-analysis .an-label {
+  display: inline-block;
+  font-size: 0.8em;
+  font-weight: 700;
+  color: var(--primary);
+  margin-right: 6px;
+}
+
+.news-impact {
+  padding: 10px 16px;
+  background: rgba(46,204,113,0.06);
+  border-radius: 8px;
+  font-size: 0.88em;
+  color: var(--green);
+  line-height: 1.8;
+}
+
+.news-impact .im-label {
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+/* AI Intelligence Styles */
+.ai-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+}
+
+.ai-card:hover {
+  border-color: var(--ai-accent);
+}
+
+.ai-item {
+  margin-bottom: 20px;
+  padding: 18px;
+  background: var(--card-bg-alt);
+  border-radius: 10px;
+  border-left: 3px solid var(--ai-accent);
+}
+
+.ai-item.github-item { border-left-color: var(--highlight); }
+.ai-item.money-item { border-left-color: var(--green); }
+.ai-item.concept-item { border-left-color: var(--purple); }
+
+.ai-item h3 {
+  font-size: 1em;
+  color: var(--text);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.ai-item .meta {
+  font-size: 0.82em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.ai-item .desc {
+  font-size: 0.9em;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+
+.ai-item .insight {
+  padding: 10px 14px;
+  background: rgba(0,180,216,0.06);
+  border-radius: 8px;
+  font-size: 0.88em;
+  color: var(--ai-accent);
+  line-height: 1.7;
+}
+
+.ai-item .insight .in-label,
+.ai-item .use-case .uc-label {
+  font-weight: 700;
+  margin-right: 4px;
+  font-size: 0.85em;
+}
+
+.ai-item .use-case {
+  padding: 10px 14px;
+  background: rgba(46,204,113,0.06);
+  border-radius: 8px;
+  font-size: 0.88em;
+  color: var(--green);
+  margin-top: 8px;
+  line-height: 1.7;
+}
+
+.github-stats {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  background: rgba(244,162,97,0.12);
+  border-radius: 4px;
+  font-size: 0.82em;
+  color: var(--highlight);
+  font-weight: 700;
+}
+
+/* Highlight Box */
+.highlight-box {
+  background: linear-gradient(135deg, rgba(230,57,70,0.1), rgba(0,180,216,0.1));
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.highlight-box h2 {
+  font-size: 1.3em;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.highlight-box p {
+  color: var(--text-dim);
+  font-size: 0.95em;
+  line-height: 1.8;
+}
+
+/* Summary Section */
+.summary-section {
+  margin-top: 30px;
+  padding: 24px;
+  background: linear-gradient(135deg, rgba(230,57,70,0.05), rgba(0,180,216,0.05));
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.summary-section h2 {
+  font-size: 1.15em;
+  color: var(--text);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.summary-section p {
+  color: var(--text-dim);
+  font-size: 0.95em;
+  line-height: 1.8;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 30px;
+  color: var(--text-muted);
+  font-size: 0.85em;
+  border-top: 1px solid var(--border);
+  margin-top: 30px;
+}
+
+/* Divider */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary), var(--ai-accent), transparent);
+  margin: 30px 0;
+  opacity: 0.3;
+}
+
+/* Stats Row */
+.stats-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.stat-chip {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.82em;
+  font-weight: 700;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text-dim);
+}
+
+.stat-chip .num {
+  color: var(--highlight);
+}
+
+/* First column styles */
+.col-news .section-title {
+  color: var(--primary);
+  font-size: 1.3em;
+  font-weight: 900;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(230,57,70,0.3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.col-ai .section-title {
+  color: var(--ai-accent);
+  font-size: 1.3em;
+  font-weight: 900;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(0,180,216,0.3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-content">
+    <h1>📡 每日双专栏情报</h1>
+    <div class="subtitle">新闻联播风向标解读 & AI 生产力黑洞套利指南</div>
+    <div class="date-badge">📅 2026年6月25日（周四） · 信源截止6月24日19:00</div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- CORE WIND VANE -->
+<div class="highlight-box">
+  <h2>🎯 今日核心风向</h2>
+  <p>
+    习近平山东德州考察定调"农业农村现代化"——粮食安全升至"中国式现代化全局和成色"高度，李强达沃斯论坛喊话全球"中国机遇2.0"vs开放型世界经济，中国超算"灵晟"八年后再登顶全球TOP500（2.19EFlops）标志着科技自立进入新纪元。
+    <strong>AI侧同日炸裂：Anthropic发布Claude Tag将AI嵌入Slack成为"永不休眠的AI同事"，字节豆包2.1 Pro日均Token调用突破180万亿（市场份额49.5%），Sakana Fugu重新定义多Agent编排范式。</strong>
+  </p>
+</div>
+
+<!-- COLUMNS -->
+<div class="columns">
+
+<!-- ============ COLUMN 1: NEWS BROADCAST ============ -->
+<div class="col-news">
+
+<div class="section-title">📺 专栏一：新闻联播每日简报（风向标解读版）</div>
+
+<!-- 1. 习近平山东德州考察 -->
+<div class="news-item">
+  <span class="section-label label-policy">头条·最高信号</span>
+  <h3>1. 习近平山东德州考察：农业农村现代化定调"全局和成色"</h3>
+  <div class="news-content">
+    <strong>新闻联播说了什么：</strong>6月24日，习近平在山东省委书记林武和省长周乃翔陪同下，来到德州市考察调研。在陵城区边临镇东于架村，听取"三夏"生产汇报。今年<strong>小麦亩产又有提高，玉米播种不误农时、进度很快</strong>。习近平强调"保障粮食等重要农产品稳定供给是农业生产的重中之重"，要求"落实粮食生产各项支持政策，做好农资保供稳价，积极推广先进适用品种、技术、装备，稳步提高单产和效益"。随后考察"全国文明村"西于架村，深入村民于鑫辉家拉家常，关切询问就业收入、老人健康、孩子学习。习近平特别提到<strong>"七一"即将迎来党的105岁生日</strong>，祝愿"乡亲们在党的领导下把家园建设得越来越美"。何立峰陪同考察。
+  </div>
+  <div class="news-analysis">
+    <span class="an-label">🔍 风向标解读：</span>在"七一"建党105周年前夕亲自下到田间地头，这是典型的"把方向、定基调"式考察。"农业农村现代化关系中国式现代化全局和成色"这一表述是<strong>首次将农业与"中国式现代化成色"直接挂钩</strong>，提升了农业在十五五规划开局中的政治权重。结合此前《求是》发文点名"量子科技+生物制造"，两条路线并行：前沿科技+粮食安全——双轨战略清晰。
+  </div>
+  <div class="news-impact">
+    <span class="im-label">💼 行业影响：</span>种业（先进品种推广）、智慧农业（水肥一体化设施）、高标准农田建设、农业防灾减灾（气象预警监测）直接受益。农资保供稳价政策信号明确，化肥农药上游利空。关注大北农、隆平高科等种业龙头。
+  </div>
+</div>
+
+<!-- 2. 李强达沃斯 -->
+<div class="news-item economy-theme">
+  <span class="section-label label-economy">经济信号</span>
+  <h3>2. 李强达沃斯论坛双场演讲："中国机遇2.0"与"产业竞争力非补贴"</h3>
+  <div class="news-content">
+    <strong>新闻联播说了什么：</strong>6月24日上午，李强在大连出席<strong>2026年夏季达沃斯论坛</strong>开幕式。论坛主题"规模化创新"。李强用"<strong>稳、新、活、融</strong>"四字概括中国经济多维图景，首次提出<strong>"中国机遇2.0"</strong>概念——"中国的新兴领域技术和产品，带给世界的不是冲击而是机遇，不是威胁而是赋能"。下午在工商界代表座谈会上，李强明确表示<strong>"中国的产业竞争力不是靠补贴补出来的，而是来自于自身综合优势"</strong>，来自<strong>30多个国家和地区约150位工商界人士</strong>与会。发言企业代表称"中国是可信赖的长期合作伙伴，对未来世界经济发展发挥引领作用"。吴政隆参加活动。
+  </div>
+  <div class="news-analysis">
+    <span class="an-label">🔍 风向标解读：</span>"中国机遇2.0"是本次达沃斯中国释放的最重要概念创新，对标此前"中国机遇1.0"（加入WTO后的制造业红利），2.0版强调<strong>新兴技术+市场规模+制度型开放</strong>三位一体。"不靠补贴"的表态是对西方"中国产能过剩论"的直接回应。30国150位工商界人士出席，说明国际资本对"十五五"开局仍有强烈兴趣。
+  </div>
+  <div class="news-impact">
+    <span class="im-label">💼 行业影响：</span>外资准入进一步放宽预期强化，新能源汽车、AI、生物医药等"新质生产力"赛道外资布局加速。中欧贸易关系改善窗口。关注外资重仓的中国科技股。
+  </div>
+</div>
+
+<!-- 3. 超算灵晟 -->
+<div class="news-item ai-theme">
+  <span class="section-label label-tech">硬核科技</span>
+  <h3>3. 中国超算"灵晟"登顶全球TOP500：八年后再回世界之巅</h3>
+  <div class="news-content">
+    <strong>新闻联播说了什么：</strong>6月23日，第67期全球超级计算机500强榜单在德国汉堡ISC 2026大会上发布，国家超级计算深圳中心全国产"灵晟"超级计算机位列榜首。<strong>系统实测持续性能达2.19EFlops（每秒219亿亿次浮点运算），是世界首台持续性能超200亿亿次（2EFlops）的超算系统</strong>，领先美欧E级超算。自研LX2 CPU，304核1.55GHz，创新<strong>超智融合架构</strong>。这是自2017年"神威·太湖之光"之后，中国超算再次登顶。
+  </div>
+  <div class="news-analysis">
+    <span class="an-label">🔍 风向标解读：</span>八年蛰伏、一鸣惊人。灵晟的登顶不仅是技术突破，更是<strong>美国芯片制裁背景下中国自主芯片生态的里程碑式验证</strong>——纯CPU方案+全国产，证明了中国有能力在不依赖进口先进制程的情况下构建世界顶级算力。超智融合架构意味着灵晟不只是一台传统超算，同时可以支撑AI训练推理，是中国AI基础设施的"定海神针"。
+  </div>
+  <div class="news-impact">
+    <span class="im-label">💼 行业影响：</span>国产芯片（LX2架构）、超算产业链（中科曙光、浪潮信息）、AI大模型训练基础设施直接受益。科学计算（气候模拟、药物筛选、材料计算）迎来算力井喷。华为昇腾、寒武纪等国产AI芯片生态获国家超算背书。
+  </div>
+</div>
+
+<!-- 4. 全国统一大市场 -->
+<div class="news-item economy-theme">
+  <span class="section-label label-economy">制度变革</span>
+  <h3>4. 全国人大专题询问全国统一大市场：赵乐际出席</h3>
+  <div class="news-content">
+    <strong>新闻联播说了什么：</strong>十四届全国人大常委会第二十三次会议24日在京举行联组会议，审议国务院关于建设<strong>全国统一大市场</strong>工作情况的报告并开展专题询问。赵乐际委员长出席。<strong>10位与会同志</strong>围绕建设目标和进展、公平竞争审查制度、行政执法标准跨区域协调衔接、规范地方财政补贴政策、<strong>规范地方招商引资行为、完善全国统一电力市场体系、加强平台经济监管</strong>等问题提出询问。国务院副总理张国清，国家发改委、工信部、财政部、交通运输部、商务部、市场监管总局等部门负责同志到会回答询问。肖捷副委员长主持会议。
+  </div>
+  <div class="news-analysis">
+    <span class="an-label">🔍 风向标解读：</span>全国人大层面对统一大市场进行专题询问，规格极高。10个询问维度覆盖了当前市场经济最核心的痛点：<strong>地方补贴竞赛、招商引资内卷、电力市场分割、平台监管标准不一</strong>——这些都是长期以来制约国内大循环的关键堵点。特别值得注意的是"规范地方招商引资行为"被单独提出，意味着地方通过税收返还、土地优惠等方式恶性竞争的时代正在终结。
+  </div>
+  <div class="news-impact">
+    <span class="im-label">💼 行业影响：</span>电力市场化改革受益（绿电交易、跨省电力调度），平台经济监管标准统一利好互联网巨头（减少合规成本），地方政府补贴收缩对依赖补贴的新能源、半导体企业构成短期压力，但长期利好行业集中度提升。
+  </div>
+</div>
+
+<!-- 5. 财政数据 -->
+<div class="news-item economy-theme">
+  <span class="section-label label-economy">关键数据</span>
+  <h3>5. 前五月财政收入突破10万亿，增值税增速4个月连升</h3>
+  <div class="news-content">
+    <strong>新闻联播说了什么：</strong>财政部数据显示，今年1—5月，全国一般公共预算收入<strong>100465亿元，同比增长4%</strong>，增幅比1—4月提高0.5个百分点。主体税种表现良好——<strong>国内增值税增长6.2%，增幅连续4个月提高</strong>，反映出经济增长的潜力得到进一步释放和提升。审计署年度报告显示，截至4月底，针对2024年度审计查出问题，已<strong>整改1.41万亿元问题金额，制定完善制度1150多项，处理处分3690多人</strong>。
+  </div>
+  <div class="news-analysis">
+    <span class="an-label">🔍 风向标解读：</span>10万亿级财政收入+增值税4个月连升是<strong>二季度经济回暖最强证据</strong>。增值税是企业经营活跃度的直接映射，6.2%增速说明企业经营现金流改善。审计1.41万亿整改金额侧面说明财政纪律收紧力度不减。综合来看，"稳增长+严纪律"双基调在财政数据中得到印证。
+  </div>
+  <div class="news-impact">
+    <span class="im-label">💼 行业影响：</span>经济复苏信号利好顺周期板块（消费、制造业），财政收入改善为下半年更大力度减税降费打开空间，审计整改高压利好合规软件、政务数字化赛道。
+  </div>
+</div>
+
+<!-- 6. 政协高质量发展 -->
+<div class="news-item">
+  <span class="section-label label-policy">顶层设计</span>
+  <h3>6. 全国政协常委会聚焦"十五五"高质量发展：王沪宁主持闭幕</h3>
+  <div class="news-content">
+    <strong>新闻联播说了什么：</strong>政协第十四届全国委员会常务委员会第十七次会议24日下午闭幕，会议以<strong>"坚持高质量发展，推动经济持续健康发展和社会全面进步"</strong>为议题协商议政。王沪宁主持闭幕会。14位常委作大会发言：刘家强常委代表民革中央建议<strong>"加快构建人工智能多元共治生态"</strong>；徐晓兰常委代表致公党中央建议<strong>"壮大耐心资本，加快构建多层次、长周期、强协同的资本支持体系"</strong>；程红常委代表民盟中央提出"推进丝绸之路经济带核心区建设"；易军常委建议"加快建筑业全面绿色低碳转型"。会议决定增补李晓红为教科卫体委员会副主任、肖培为社会和法制委员会副主任，决定免去王晓东农业和农村委员会副主任职务并撤销委员资格。
+  </div>
+  <div class="news-analysis">
+    <span class="an-label">🔍 风向标解读：</span>14位常委发言涵盖面极广——AI多元共治、耐心资本、一带一路、绿色建筑、新就业形态劳动者权益——说明"十五五"的<strong>政策工具箱已经全面铺开</strong>。"壮大耐心资本"首次出现在政协常委会级别发言中，意味着长期资本、创投退出机制改革可能在十五五规划中重点体现。王晓东被免释放持续反腐信号。
+  </div>
+  <div class="news-impact">
+    <span class="im-label">💼 行业影响：</span>AI治理法治化利好合规科技，耐心资本政策利好创投/私募退出机制改革，绿色建筑产业链（装配式建筑、低碳建材）获政策背书，丝绸之路核心区建设利好新疆板块。
+  </div>
+</div>
+
+<!-- 7. 民族法 -->
+<div class="news-item">
+  <span class="section-label label-policy">新法速递</span>
+  <h3>7. 《民族团结进步促进法》7月1日施行：新时代首部民族专门法律</h3>
+  <div class="news-content">
+    <strong>新闻联播说了什么：</strong>国务院新闻办24日举行新闻发布会，介绍<strong>《中华人民共和国民族团结进步促进法》</strong>有关情况。该法在今年3月十四届全国人大四次会议高票通过，<strong>7月1日起施行</strong>。相关负责人介绍，这是新时代第一部民族领域的专门法律，是处理民族事务和开展民族工作的基本法律，为铸牢中华民族共同体意识、推进中华民族共同体建设夯实法治根基。
+  </div>
+  <div class="news-analysis">
+    <span class="an-label">🔍 风向标解读：</span>从"民族区域自治"到"民族团结进步"再到"铸牢中华民族共同体意识"，中国民族政策法律化进程进入新阶段。7月1日恰逢建党105周年第二天施行，时间点意味深长——<strong>民族工作的法治化是"七一"后党的重要部署之一</strong>。
+  </div>
+  <div class="news-impact">
+    <span class="im-label">💼 行业影响：</span>对资本市场直接影响有限，但民族地区基础设施、教育、文旅融合项目可能获得政策倾斜。关注新疆、西藏、内蒙古等民族地区基建投资。
+  </div>
+</div>
+
+<!-- 8. 链博会 -->
+<div class="news-item economy-theme">
+  <span class="section-label label-economy">开放信号</span>
+  <h3>8. 第四届链博会：676家企业参展，超200境外团组来华</h3>
+  <div class="news-content">
+    <strong>新闻联播说了什么：</strong>第四届链博会吸引了<strong>676家企业和行业机构参展，超200个境外团组专程来华观展洽谈</strong>。一位澳大利亚参展嘉宾去年独自参展，今年带来十来个新能源领域伙伴。多国嘉宾表示"中国经济活力足，产业链供应链韧性强、竞争力突出"。目前已有多个企业、项目密集签约。
+  </div>
+  <div class="news-analysis">
+    <span class="an-label">🔍 风向标解读：</span>链博会是观察全球供应链重构的窗口。"从一个人到十来个伙伴"的案例典型说明：<strong>脱钩断链叙事与产业现实之间存在巨大温差</strong>。超200境外团组的数据是国际贸易摩擦背景下中国供应链不可替代性的
