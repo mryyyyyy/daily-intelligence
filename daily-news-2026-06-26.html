@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日双专栏情报 | 2026-06-26</title>
+  <style>
+    :root {
+      --bg: #f4f6f9;
+      --card-bg: #ffffff;
+      --text: #1f2937;
+      --text-secondary: #4b5563;
+      --accent-red: #dc2626;
+      --accent-blue: #2563eb;
+      --accent-gold: #d97706;
+      --accent-purple: #7c3aed;
+      --accent-green: #059669;
+      --border: #e5e7eb;
+      --radius: 16px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .header {
+      text-align: center;
+      padding: 40px 24px;
+      background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 32px;
+      letter-spacing: 1px;
+    }
+    .header .date {
+      margin-top: 10px;
+      font-size: 18px;
+      opacity: 0.85;
+    }
+    .column {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow);
+    }
+    .column-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 3px solid;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .col1 .column-title { border-color: var(--accent-red); color: var(--accent-red); }
+    .col2 .column-title { border-color: var(--accent-blue); color: var(--accent-blue); }
+    .section {
+      margin-bottom: 24px;
+    }
+    .section-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .news-item {
+      background: #f9fafb;
+      border-left: 4px solid var(--accent-blue);
+      padding: 16px;
+      margin-bottom: 16px;
+      border-radius: 0 12px 12px 0;
+    }
+    .news-item h4 {
+      margin: 0 0 10px 0;
+      font-size: 16px;
+      color: #111827;
+    }
+    .news-item p {
+      margin: 6px 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .news-item .label {
+      display: inline-block;
+      font-weight: 600;
+      color: var(--text);
+      min-width: 80px;
+    }
+    .highlight {
+      background: #fff7ed;
+      border-left-color: var(--accent-gold);
+    }
+    .summary-box {
+      background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 100%);
+      border-radius: 12px;
+      padding: 18px;
+      border: 1px solid #dbeafe;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .ai-card {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid var(--border);
+    }
+    .ai-card h4 {
+      margin: 0 0 10px 0;
+      color: var(--accent-purple);
+      font-size: 15px;
+    }
+    .ai-card p { margin: 6px 0; font-size: 14px; color: var(--text-secondary); }
+    .tag {
+      display: inline-block;
+      background: #e0e7ff;
+      color: #3730a3;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-size: 12px;
+      margin-right: 6px;
+      margin-bottom: 4px;
+    }
+    .github-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    .github-row:last-child { border-bottom: none; }
+    .github-row .rank {
+      min-width: 28px;
+      height: 28px;
+      background: #1f2937;
+      color: #fff;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .github-row .info { flex: 1; }
+    .github-row .info .name {
+      font-weight: 700;
+      color: #111827;
+      font-size: 14px;
+    }
+    .github-row .info .meta {
+      font-size: 13px;
+      color: #6b7280;
+    }
+    .github-row .info .desc {
+      font-size: 13px;
+      color: #4b5563;
+      margin-top: 2px;
+    }
+    .footer {
+      text-align: center;
+      color: #9ca3af;
+      font-size: 13px;
+      margin-top: 20px;
+    }
+    .warning { background: #fef3c7; border-left-color: #f59e0b; }
+    .danger { background: #fee2e2; border-left-color: #ef4444; }
+    .success { background: #d1fae5; border-left-color: #10b981; }
+    @media (max-width: 640px) {
+      body { padding: 12px; }
+      .header h1 { font-size: 24px; }
+      .column { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📰 每日双专栏情报</h1>
+      <div class="date">2026年6月26日 · 星期五</div>
+    </div>
+
+    <!-- 专栏一 -->
+    <div class="column col1">
+      <div class="column-title">🇨🇳 专栏一：新闻联播每日简报（风向标解读版）</div>
+      
+      <div class="section">
+        <div class="section-title">🎯 一、核心风向</div>
+        <div class="summary-box">
+          6月25日《新闻联播》释放的核心政策信号是：<strong>「三农为本、科技强国、向西开放、能源自主」</strong>——习近平在山东德州考察夏收夏种与乡村振兴；全国发电装机突破40亿千瓦；第九届中国—亚欧博览会在乌鲁木齐开幕；全国人大常委会审议商标法修订、注册会计师法修改及2025年中央决算。整体政策重心落在粮食安全、能源转型、西部陆海新通道与法治化营商环境上。
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">📋 二、分项解读（按新闻重要性排序）</div>
+
+        <div class="news-item">
+          <h4>1. 习近平山东德州考察：夏收夏种、乡村振兴与粮食安全</h4>
+          <p><span class="label">新闻联播说了什么：</span>“三夏”生产关键时期，习近平总书记来到<strong>山东德州陵城区边临镇东于架村</strong>，走进田间地头，了解小麦收成、玉米种植、农资供应等情况。该村<strong>1000多亩小麦</strong>刚刚喜获丰收，乡亲们正忙着种植玉米。总书记在西于架村党群服务中心询问村党组织建设和便民服务情况，并在村民于鑫辉家关切就业收入、老人健康、孩子学习等情况。他强调，保障粮食等重要农产品稳定供给是农业生产的重中之重，要落实粮食生产各项支持政策，做好农资保供稳价，积极推广先进适用品种、技术、装备，稳步提高单产和效益，力争全年粮食丰收。</p>
+          <p><span class="label">风向标解读：</span>这是习近平年内少有的直接下乡考察农业，时间点选在夏收夏种窗口期，释放出<strong>粮食安全被置于宏观政策更优先位置</strong>的信号。山东作为“齐鲁粮仓”被选中，既是粮食大省示范，也暗示后续将有针对种业、农机、农资稳价的配套政策。强调“党组织引领”和“为民造福是最大政绩”，说明乡村振兴将从基础设施投资转向基层治理与民生获得感。</p>
+          <p><span class="label">行业影响：</span>受益领域包括<strong>种业、农机装备、化肥农药、智慧农业、冷链物流</strong>；农资保供稳价政策可能压制部分农化品涨价空间，但规模化种植与农业社会化服务将加速。关注标的：隆平高科、一拖股份、北大荒及区域性粮食供应链企业。</p>
+        </div>
+
+        <div class="news-item">
+          <h4>2. 全国发电装机容量突破40亿千瓦，非化石能源占比62%</h4>
+          <p><span class="label">新闻联播说了什么：</span>国家能源局6月25日公布的数据显示，截至<strong>5月底</strong>，全国累计发电装机容量突破<strong>40亿千瓦</strong>大关，达到<strong>40.1亿千瓦</strong>，居世界首位。这一规模是“十四五”初期的1.8倍、“十三五”初期的2.6倍，占全球总装机量近三成，相当于欧盟和美国装机总和的1.7倍。其中，非化石能源发电装机容量占比达到<strong>62%</strong>，比2012年提高约30个百分点。海南启源海上风电场第二批机组近日并网，作为我国最南端的海上风电项目，8月底前全部投产后一年可发电<strong>16亿度</strong>。</p>
+          <p><span class="label">风向标解读：</span>“40亿千瓦”是能源安全的标志性里程碑，意味着中国电力供给能力已能支撑更大规模的电气化、AI算力中心与新能源车扩张。非化石能源占比62%说明<strong>清洁能源从“增量补充”进入“存量主导”阶段</strong>，海上风电、核电、沙戈荒大基地是未来5年核心增量。海南启源项目强调“满足海南自贸港绿电需求”，预示区域能源自给与绿电交易将被政策反复提及。</p>
+          <p><span class="label">行业影响：</span>直接利好<strong>海上风电、核电、光伏、储能、特高压、电网智能化</strong>；绿电溢价与碳足迹认证将为出口型制造业提供成本优势。数据中心、算力集群的绿电配套需求将催生“源网荷储一体化”项目。可关注：东方电缆、明阳智能、中国核电、国电南瑞、阳光电源。</p>
+        </div>
+
+        <div class="news-item">
+          <h4>3. 第九届中国—亚欧博览会开幕，丁薛祥提出“四点建议”</h4>
+          <p><span class="label">新闻联播说了什么：</span>第九届中国—亚欧博览会6月25日在<strong>新疆乌鲁木齐</strong>开幕，中共中央政治局常委、国务院副总理<strong>丁薛祥</strong>出席开幕式并致辞。他指出，亚欧大陆是共建“一带一路”国际合作重点区域，习近平主席强调要弘扬丝路精神。丁薛祥提出4点建议：①持续深化发展战略对接；②持续扩大高水平开放，降低关税与非关税壁垒；③持续构筑多元高效联通网络，加强基础设施“硬联通”和规则标准“软联通”；④持续培育壮大发展新动能，把握发展新质生产力机遇，构筑更具韧性的产业链供应链。哈萨克斯坦副总理茹曼加林、吉尔吉斯斯坦副总理阿昆别科夫、巴基斯坦国民议会副议长穆斯塔法出席并致辞。</p>
+          <p><span class="label">风向标解读：</span>在美方关税压力尚未完全消退的背景下，中国向西开放的战略价值进一步抬升。博览会选址新疆，既是对新疆“丝绸之路经济带核心区”定位的再确认，也是在为<strong>中亚—里海—中东能源通道与贸易走廊</strong>铺路。“降低关税与非关税壁垒”“规则标准软联通”等表述，暗示未来可能与亚欧国家形成更制度化的经贸安排。</p>
+          <p><span class="label">行业影响：</span>利好<strong>新疆本地基建、口岸物流、跨境贸易、能源管道、铁路装备</strong>；中欧班列、中吉乌铁路、西部陆海新通道相关标的将长期受益。国际工程承包（中国交建、中国中铁）、跨境电商、冷链物流亦值得关注。</p>
+        </div>
+
+        <div class="news-item">
+          <h4>4. 全国人大常委会审议2025年中央决算、商标法修订与注册会计师法修改</h4>
+          <p><span class="label">新闻联播说了什么：</span>十四届全国人大常委会第六十九次委员长会议6月25日下午在<strong>北京人民大会堂</strong>举行，<strong>赵乐际</strong>委员长主持。会议听取了全国人大宪法法律委主任委员<strong>信春鹰</strong>作的关于商标法修订草案修改意见、修改注册会计师法的决定草案修改意见的汇报，以及关于授权香港特别行政区对皇岗口岸港方口岸区及相关延伸区实施管辖的决定草案审议结果的报告。会议还听取了全国人大财经委副主任委员、全国人大常委会预算工作委员会主任<strong>许宏才</strong>作的关于2025年中央决算草案和中央决算报告审查情况的汇报，审议了关于批准2025年中央决算的决议草案代拟稿。</p>
+          <p><span class="label">风向标解读：</span>商标法修订与注册会计师法修改同步推进，释放出<strong>强化知识产权保护、提高财会审计质量、净化资本市场生态</strong>的信号。香港皇岗口岸管辖授权则服务于深港融合与大湾区要素流动。中央决算审查进入最后阶段，后续财政支出结构将更关注“稳增长、保民生、促创新”的效能。</p>
+          <p><span class="label">行业影响：</span>知识产权服务、会计审计合规、资本市场法律服务需求提升；注册会计师事务所集中度可能提高。对造假威慑加强将利好优质上市公司估值修复，劣质壳公司与财务存疑企业风险上升。</p>
+        </div>
+
+        <div class="news-item warning">
+          <h4>5. 全国土地日：盘活存量土地198万亩，单位GDP建设用地使用面积下降19.36%</h4>
+          <p><span class="label">新闻联播说了什么：</span>6月25日是第35个全国土地日，主题为“珍惜每一寸土地 促进高质量发展”。自然资源部表示，今年以来我国节约集约用地取得积极成效，土地资源利用效率全面提升。目前，广东全省正加速推进低效用地再开发试点，全国还有<strong>99个城市</strong>同步纳入试点体系。最新数据显示，试点城市已累计盘活存量土地<strong>198万亩</strong>。通过盘活存量土地和低效用地，全国单位GDP建设用地使用面积下降<strong>19.36%</strong>。“十五五”期间将进一步统筹存量和增量建设用地供应，完善闲置土地处置制度。</p>
+          <p><span
