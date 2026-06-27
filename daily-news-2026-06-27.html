@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日双专栏情报 | 2026-06-27</title>
+<style>
+:root {
+  --bg: #0f0f14;
+  --card-bg: #1a1a24;
+  --card-bg-alt: #1e1e2a;
+  --primary: #e63946;
+  --primary-dim: #c1121f;
+  --ai-accent: #00b4d8;
+  --ai-accent-dim: #0077b6;
+  --text: #e0e0e0;
+  --text-dim: #9ca3af;
+  --text-muted: #6b7280;
+  --border: #2a2a3a;
+  --highlight: #f4a261;
+  --tag-bg: rgba(230,57,70,0.1);
+  --tag-ai-bg: rgba(0,180,216,0.1);
+  --green: #2ecc71;
+  --orange: #f39c12;
+  --purple: #9b59b6;
+  --red: #e74c3c;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  padding: 0;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.header {
+  text-align: center; padding: 40px 20px 30px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border-bottom: 3px solid var(--border); position: relative; overflow: hidden;
+}
+.header::before {
+  content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(230,57,70,0.08) 0%, transparent 50%),
+              radial-gradient(circle at 70% 50%, rgba(0,180,216,0.08) 0%, transparent 50%);
+  z-index: 0;
+}
+.header-content { position: relative; z-index: 1; }
+.header h1 { font-size: 2.4em; font-weight: 900; background: linear-gradient(135deg, #e63946, #f4a261); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; }
+.header .subtitle { font-size: 1.1em; color: var(--text-dim); letter-spacing: 2px; }
+.header .date-badge { display: inline-block; background: rgba(255,255,255,0.08); padding: 6px 20px; border-radius: 20px; font-size: 0.95em; color: var(--text-dim); margin-top: 12px; border: 1px solid rgba(255,255,255,0.1); }
+.highlight-box {
+  background: linear-gradient(135deg, rgba(230,57,70,0.1), rgba(0,180,216,0.1));
+  border: 2px solid var(--border); border-radius: 12px; padding: 24px; margin: 20px 0; text-align: center;
+}
+.highlight-box h2 { font-size: 1.3em; color: var(--text); margin-bottom: 10px; }
+.highlight-box p { color: var(--text-dim); font-size: 0.95em; line-height: 1.8; }
+.columns { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+@media (max-width: 900px) { .columns { grid-template-columns: 1fr; } }
+.section-title { font-size: 1.3em; font-weight: 900; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid; display: flex; align-items: center; gap: 10px; }
+.col-news .section-title { color: var(--primary); border-color: rgba(230,57,70,0.3); }
+.col-ai .section-title { color: var(--ai-accent); border-color: rgba(0,180,216,0.3); }
+.news-item { margin-bottom: 28px; padding: 20px; background: var(--card-bg-alt); border-radius: 10px; border-left: 3px solid var(--primary); }
+.news-item.ai-theme { border-left-color: var(--ai-accent); }
+.news-item.economy-theme { border-left-color: var(--green); }
+.news-item.diplomacy-theme { border-left-color: var(--purple); }
+.news-item.international-theme { border-left-color: var(--red); }
+.news-item h3 { font-size: 1.05em; color: var(--text); margin-bottom: 10px; font-weight: 700; }
+.news-content { color: var(--text-dim); font-size: 0.92em; margin-bottom: 12px; padding: 12px 16px; background: rgba(255,255,255,0.03); border-radius: 8px; line-height: 1.8; }
+.news-content strong { color: var(--highlight); }
+.news-analysis { padding: 12px 16px; background: rgba(230,57,70,0.06); border-radius: 8px; font-size: 0.9em; color: var(--text); margin-bottom: 8px; line-height: 1.8; }
+.news-analysis .an-label { display: inline-block; font-size: 0.8em; font-weight: 700; color: var(--primary); margin-right: 6px; }
+.news-impact { padding: 10px 16px; background: rgba(46,204,113,0.06); border-radius: 8px; font-size: 0.88em; color: var(--green); line-height: 1.8; }
+.news-impact .im-label { font-weight: 700; margin-right: 4px; }
+.section-label { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 0.78em; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
+.label-policy { background: rgba(230,57,70,0.12); color: var(--primary); }
+.label-economy { background: rgba(46,204,113,0.12); color: var(--green); }
+.label-tech { background: rgba(0,180,216,0.12); color: var(--ai-accent); }
+.label-diplomacy { background: rgba(155,89,182,0.12); color: var(--purple); }
+.label-people { background: rgba(244,162,97,0.12); color: var(--highlight); }
+.label-international { background: rgba(231,76,60,0.12); color: var(--red); }
+.stats-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+.stat-chip { padding: 6px 14px; border-radius: 20px; font-size: 0.82em; font-weight: 700; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); color: var(--text-dim); }
+.stat-chip .num { color: var(--highlight); }
+.ai-card { background: var(--card-bg); border: 1px solid var(--border); }
+.ai-card:hover { border-color: var(--ai-accent); }
+.ai-item { margin-bottom: 20px; padding: 18px; background: var(--card-bg-alt); border-radius: 10px; border-left: 3px solid var(--ai-accent); }
+.ai-item.github-item { border-left-color: var(--highlight); }
+.ai-item.money-item { border-left-color: var(--green); }
+.ai-item.concept-item { border-left-color: var(--purple); }
+.ai-item h3 { font-size: 1em; color: var(--text); margin-bottom: 8px; font-weight: 700; }
+.ai-item .meta { font-size: 0.82em; color: var(--text-muted); margin-bottom: 8px; }
+.ai-item .desc { font-size: 0.9em; color: var(--text-dim); margin-bottom: 10px; line-height: 1.7; }
+.ai-item .insight { padding: 10px 14px; background: rgba(0,180,216,0.06); border-radius: 8px; font-size: 0.88em; color: var(--ai-accent); line-height: 1.7; }
+.ai-item .insight .in-label, .ai-item .use-case .uc-label { font-weight: 700; margin-right: 4px; font-size: 0.85em; }
+.ai-item .use-case { padding: 10px 14px; background: rgba(46,204,113,0.06); border-radius: 8px; font-size: 0.88em; color: var(--green); margin-top: 8px; line-height: 1.7; }
+.github-stats { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; background: rgba(244,162,97,0.12); border-radius: 4px; font-size: 0.82em; color: var(--highlight); font-weight: 700; }
+.summary-section { margin-top: 30px; padding: 24px; background: linear-gradient(135deg, rgba(230,57,70,0.05), rgba(0,180,216,0.05)); border-radius: 12px; border: 1px solid var(--border); }
+.summary-section h2 { font-size: 1.15em; color: var(--text); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.summary-section p { color: var(--text-dim); font-size: 0.95em; line-height: 1.8; }
+.footer { text-align: center; padding: 30px; color: var(--text-muted); font-size: 0.85em; border-top: 1px solid var(--border); margin-top: 30px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-content">
+    <h1>📡 每日双专栏情报</h1>
+    <div class="subtitle">新闻联播风向标解读 & AI 生产力黑洞套利指南</div>
+    <div class="date-badge">📅 2026年6月27日（周六） · 信源截止6月26日19:00 · 周日无联播，使用6/26内容</div>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="highlight-box">
+  <h2>🎯 今日核心风向</h2>
+  <p>
+    习近平一日双会见（柬埔寨洪森+孟加拉国塔里克），中柬构建"全天候命运共同体"、中孟关系升至"新时代孟中命运共同体"——<strong>周边外交顶层设计完成"命运共同体"全覆盖</strong>。同日十四届全国人大常委会第二十三次会议通过《商标法》修订+《注册会计师法》修正，主席令第七十七、七十八、七十九号同日签署。<strong>AI侧Google遭遇史诗级人才崩盘：4名核心研究员+Transformer之父Shazeer一周内集体出逃，Alphabet两天蒸发$2700亿市值</strong>。OpenAI首款自研推理芯片Jalapeño已进入工程样片阶段。
+  </p>
+</div>
+
+<div class="columns">
+
+<!-- ===== COLUMN 1: NEWS BROADCAST ===== -->
+<div class="col-news">
+<div class="section-title">📺 专栏一：新闻联播每日简报（风向标解读版）</div>
+
+<!-- 1. 习近平会见洪森 -->
+<div class="news-item diplomacy-theme">
+  <span class="section-label label-diplomacy">头条·周边外交</span>
+  <h3>1. 习近平会见柬埔寨人民党主席洪森：构建全天候命运共同体</h3>
+  <div class="news-content">
+    <strong>新闻联播说了什么：</strong>6月26日上午，习近平在人民大会堂会见柬埔寨人民党主席、参议院主席洪森。习近平祝贺柬埔寨人民党成立<strong>75周年</strong>，表示去年4月访柬以来，两国"开启构建新时代全天候中柬命运共同体新篇章"。提出"四个打造"：①<strong>筑牢战略互信根基</strong>（深化党际交往+治党治国经验交流）；②<strong>走稳发展振兴之路</strong>（推动"工业发展走廊"和"鱼米走廊"取得实质进展+释放中柬自贸协定潜能）；③<strong>维护各自国家长治久安</strong>（建立安全伙伴关系+清剿电诈"毒瘤"）；④<strong>打造战略协作典范</strong>（加强"五角战略"和"一带一路"对接）。洪森表示柬方愿同中方共同落实"四大全球倡议"，坚定支持中国实现国家完全统一、反对"台独"分裂。王毅参加会见。
+  </div>
+  <div class="news-analysis">
+    <span class="an-label">🔍 风向标解读：</span>"全天候命运共同体"是迄今为止中国对外关系最高级别定位。习近平在访柬后仅14个月就把双边关系升格为"全天候"，节奏罕见。"电诈清剿"被列入安全合作核心议题，意味着<strong>中柬联合执法将进入"白热化"阶段</strong>——这与近期缅北诈骗集团崩盘、菲律宾离岸博彩整治形成"东南亚清诈三连击"。"工业发展走廊+鱼米走廊"是柬埔寨版"两廊一圈"建设——柬方在RCEP框架下承接中国制造业转移的"桥头堡"角色正式确立。
+  </div>
+  <div class="news-impact">
+    <span class="im-label">💼 行业影响：</span>柬埔寨承接中国制造业转移利好纺织、家电、汽车零部件企业。电诈清剿升级利好合规出海服务、安防科技、海外安保行业。"鱼米走廊"利好中国种业、农资、农机出口（柬埔寨主要粮食产区）。
+  </div>
+</div>
+
+<!-- 2. 习近平会见孟加拉国总理 -->
+<div class="news-item diplomacy-theme">
+  <span class="section-label label-diplomacy">外交升级</span>
+  <h3>2. 习近平会见孟加拉国总理塔里克：中孟关系升至"新时代孟中命运共同体"</h3>
+  <div class="news-content">
+    <strong>新闻联播说了什么：</strong>6月26日上午，习近平在人民大会堂会见来华正式访问的孟加拉国总理塔里克。<strong>两国领导人共同宣布构建新时代中孟命运共同体</strong>，推动两国关系向更高水平发展。习近平表示"今年是中国共产党成立105周年。回顾历史，我们团结带领中国人民从积贫积弱成功走出中国式现代化道路，靠的就是坚持独立自主、自立自强"。愿同孟方高质量共建"一带一路"，<strong>挖掘绿色低碳、数字经济、信息技术、人工智能等领域合作潜力</strong>，<strong>推进中缅孟经济走廊建设</strong>。塔里克表示<strong>孟方坚定恪守一个中国原则，认为台湾是中国领土不可分割的一部分</strong>，反对任何形式的"台独"，<strong>坚决捍卫联大第2758号决议的权威</strong>。王毅参加会见。
+  </div>
+  <div class="news-analysis">
+    <span class="an-label">🔍 风向标解读：</span>这是2026年迄今中孟关系的最高规格升级。孟加拉国是南亚人口大国（1.7亿+）+印度洋出海口的"地缘枢纽"——中孟命运共同体的构建对<strong>"环印度洋经济带"建设</strong>具有战略意义。"中缅孟经济走廊"重启意味着绕开马六甲海峡的陆路+海路双通道正在打通。AI合作被列为重点——中国AI出海有了人口稠密、电力充足（孟加拉湾气电）、承接中国产业链的"南亚桥头堡"。塔里克<strong>点名"捍卫联大2758号决议"</strong>是极其罕见的强力表态，说明孟加拉国新政府对华关系"换挡提速"。
+  </div>
+  <div class="news-impact">
+    <span class="im-label">💼 行业影响：</span>中缅孟经济走廊利好云南基建（昆明-瑞丽-曼德勒-达卡）、跨境物流、AI出海（孟加拉数字基础设施薄弱+人口红利）、绿色低碳（光伏+储能+电动车）企业。关注大基建央企（中铁、中建）、跨境支付、AI算力出海企业。
+  </div>
+</div>
+
+<!-- 3. 主席令三连签 -->
+<div class="news-item">
+  <span class="section-label label-policy">法治建设</span>
+  <h3>3. 习近平签署第七十七、七十八、七十九号主席令：商标法+注会法大修+免关志鸥</h3>
+  <div class="news-content">
+    <strong>新闻联播说了什么：</strong>6月26日，习近平签署<strong>第七十七号、七十八号、第七十九号</strong>主席令。<strong>第七十七号主席令</strong>：修订后的<strong>《中华人民共和国商标法》</strong>经十四届全国人大常委会第二十三次会议通过，<strong>自2027年1月1日起施行</strong>。<strong>第七十八号主席令</strong>：《全国人民代表大会常务委员会关于修改〈中华人民共和国注册会计师法〉的决定》同日通过，亦自<strong>2027年1月1日起施行</strong>。<strong>第七十九号主席令</strong>：根据常委会决定，<strong>免去关志鸥的自然资源部部长职务</strong>。同日，会议<strong>任命王忠林为全国人大环境与资源保护委员会副主任委员</strong>。
+  </div>
+  <div class="news-analysis">
+    <span class="an-label">🔍 风向标解读：</span>主席令"三连签"+两大重要经济法律同步大修+重要人事调整=十四届人大常委会第二十三次会议的"闭幕大礼"。<strong>《商标法》27年来首次大修</strong>，预计将引入"惩罚性赔偿+恶意抢注黑名单+品牌出海便利化"等条款——直接对应中国品牌全球化战略。<strong>《注册会计师法》修正</strong>与近期国务院"财务造假零容忍"基调一致，是资本市场长牙带刺的制度建设。关志鸥从自然资源部部长任上被免，<strong>原因尚未披露</strong>，但与6月22日人大常委会决定接受其辞职形成"完整闭环"——大概率与审计/反腐有关。王忠林从湖北省委书记调任全国人大环资委副主任，<strong>环保系统人事调整或预示"双碳"战略执行层面将有大动作</strong>。
+  </div>
+  <div class="news-impact">
+    <span class="im-label">💼 行业影响：</span>商标法大修利好品牌企业（消费品、文创、出口品牌）和知识产权代理行业。注会法修正强化"四大"会计师事务所的合规责任，利空小型事务所+利好头部事务所。关志鸥被免+王忠林任命——环保系统人事调整或预示<strong>"双碳"战略执行层面将有大动作</strong>。
+  </div>
+</div>
+
+<!-- 4. 委内瑞拉地震 -->
+<div class="news-item international-theme">
+  <span class="section-label label-international">国际·灾难</span>
+  <h3>4. 习近平就委内瑞拉强烈地震致慰问电 + 遇难升至235人</h3>
+  <div class="news-content">
+    <strong>新闻联播说了什么：</strong>6月26日，国家主席习近平就委内瑞拉发生强烈地震向委内瑞拉代总统罗德里格斯致慰问电。委内瑞拉西北部当地时间6月24日发生7级以上强震（<strong>百年来最强</strong>），截至6月25日<strong>遇难人数升至235人</strong>，受伤人数升至1520人，157人失踪，约200人被困，<strong>250栋建筑受损</strong>，连续发生<strong>138次余震</strong>。联合国以及多国专业救援队已抵达。委内瑞拉宣布多项措施应对灾情。罗德里格斯称"地震已造成该国至少188人死亡、1520人受伤"（前后数据有更新）。委内瑞拉地处加勒比石油带，地震+石油设施风险叠加。
+  </div>
+  <div class="news-analysis">
+    <span class="an-label">🔍 风向标解读：</span>百年最强震+委内瑞拉是OPEC创始成员国+加勒比石油带核心产油国——这是油价上行风险的潜在催化剂。但当前霍尔木兹海峡刚恢复通航（6/24日均通航量回升至战前57%），市场避险情绪短期被中东风险分散。习近平紧急致慰问电+联合国多国救援队抵达——委内瑞拉虽是反美急先锋，但在人道主义灾难面前中国仍承担"负责任大国"角色，为未来中委关系修复留出空间。
+  </div>
+  <div class="news-impact">
+    <span class="im-label">💼 行业影响：</span>国际油价短期波动加剧，避险资产（黄金、美元）短期利好。中国基建出海企业（中铁、中建、中交）若有相关援建项目可关注灾后重建订单。中国地震救援装备产业（生命探测仪、应急通信、卫星定位）受益。
+  </div>
+</div>
+
+<!-- 5. 十四届人大闭幕 -->
+<div class="news-item economy-theme">
+  <span class="section-label label-policy">立法成果</span>
+  <h3>5. 十四届全国人大常委会第二十三次会议闭幕：通过商标法+注会法大修</h3>
+  <div class="news-content">
+    <strong>新闻联播说了什么：</strong>6月26日下午，<strong>十四届全国人大常委会第二十三次会议在北京人民大会堂闭幕</strong>。会议经表决，通过了新修订的<strong>《中华人民共和国商标法》</strong>、《全国人民代表大会常务委员会关于修改〈中华人民共和国注册会计师法〉的决定》、检察公益诉讼法草案、南极活动与环境保护法等多项立法成果；任命<strong>王忠林为全国人大环境与资源保护委员会副主任委员</strong>，免去关志鸥的自然资源部部长职务。会议6月23日开始，会期4天。
+  </div>
+  <div class="news-analysis">
+    <span class="an-label">🔍 风向标解读：</span>本次会议是2026年"两会"后最重要的一次立法窗口。核心成果四件：①<strong>商标法大修</strong>（品牌出海法律保障升级）；②<strong>注会法修正</strong>（资本市场"看门人"责任强化）；③<strong>检察公益诉讼法</strong>（公益诉讼有专门程序法，公益诉讼案件效率将提升）；④<strong>南极活动与环境保护法</strong>（中国南极科考/资源开发有法可依+生态保护义务）。四部法律涉及<strong>市场+资本+公益+极地</strong>四个维度——立法节奏快、覆盖面广，十五五立法规划在"十五五开局"已经全面铺开。
+  </div>
+  <div class="news-impact">
+    <span class="im-label">💼 行业影响：</span>商标法+注会法叠加利好知识产权+合规审计服务。检察公益诉讼法利好环保公益组织、消费者权益保护机构。南极法利好极地装备制造、远洋船舶。
+  </div>
+</div>
+
+<!-- 6. 丁薛祥新疆调研 -->
+<div class="news-item">
+  <span class="section-label label-policy">高层调研</span>
+  <h3>6. 丁薛祥新疆调研6月25-26日：出席亚欧博览会+高等教育调研</h3>
+  <div class="news-content">
+    <strong>新闻联播说了什么：</strong>6月25日至26日，中共中央政治局常委、国务院副总理丁薛祥在新疆调研。25日，丁薛祥出席<strong>第九届中国-亚欧博览会开幕式</strong>并致辞，强调"亚欧大陆自古便是文明交汇、商贸融通之地，如今已成为共建'一带一路'国际合作重点区域"。26日下午，丁薛祥在<strong>新疆轻工职业技术学院</strong>调研民族地区高等教育发展等情况。新华社乌鲁木齐6月26日电：丁薛祥强调"要认真学习贯彻习近平总书记重要指示精神，完整准确全面贯彻新时代党的治疆方略"。
+  </div>
+  <div class="news-analysis">
+    <span class="an-label">🔍 风向标解读：</span>丁薛祥在亚欧博览会致辞+民族地区高等教育调研的双重信号：①亚欧博览会是中国-中亚-欧洲贸易走廊的"年度大戏"——中亚五国+蒙古+俄罗斯均有代表团参加，规格升级意味<strong>"一带一路"向西开放进入"快车道"</strong>；②选择轻工职业技术学院调研而非985高校，<strong>突出"职业教育+民族团结+就业"三重维度</strong>——这是丁薛祥作为中央新疆工作协调小组组长的"长期跟踪议题"。结合6/26习近平会见孟加拉国+塔吉克斯坦+中亚方向的整体外交节奏，新疆在"中亚枢纽"中的战略地位持续抬升。
+  </div>
+  <div class="news-impact">
+    <span class="im-label">💼 行业影响：</span>亚欧博览会+中亚合作利好跨境物流（中欧班列）、新疆基建（乌鲁木齐-霍尔果斯/阿拉山口口岸）、能源合作（中亚天然气D线）、职业教育（民办高校+培训机构）。
+  </div>
+</div>
+
+<!-- 7. 新型能源体系 -->
+<div class="news-item economy-theme">
+  <span class="section-label label-economy">十五五开好局</span>
+  <h3>7. 到2030年我国将初步建成新型能源体系：风光装机+储能+特高压三件套</h3>
+  <div class="news-content">
+    <strong>新闻联播说了什么：</strong>【"十五五"开好局起好步】专栏报道，<strong>到2030年我国将初步建成新型能源体系</strong>。报道指出，新型能源体系是推动能源高质量发展的关键载体。当前我国正从能源生产、输送、储存、消费全链条协同发力，加快构建清洁低碳、安全充裕、经济高效、供需协同、灵活智能的新型电力系统。具体进展：<strong>天台抽水蓄能电站6月25日23:59全面投产</strong>（装机170万千瓦，世界额定水头最高、国内单机容量最大，"十五五"首个全面投产抽水蓄能电站）；<strong>大渡河双江口水电站首台机组并网发电</strong>；<strong>渝昆高铁全线隧道全部贯通</strong>（昭通隧道6月26日上午9时贯通，乌蒙山腹地，Ⅰ级高风险）。
+  </div>
+  <div class="news-analysis">
+    <span class="an-label">🔍 风向标解读：</span>"2030年初步建成新型能源体系"是<strong>"双碳"目标实施路径的关键时间节点</strong>。从今天的三个工程看：抽水蓄能（电网级储能）+水电（清洁基荷）+高铁（电气化交通）——"十五五"开局能源体系建设的重点是<strong>"电网级储能+清洁基荷+电气化负荷"</strong>三大方向。渝昆高铁（重庆-昆明，设计时速350km/h）隧道全部贯通意味着"西部陆海新通道"的陆路骨架即将完成——昆明-重庆-上海-东南亚的"泛亚铁路网"已具雏形。
+  </div>
+  <div class="news-impact">
+    <span class="im-label">💼 行业影响：</span>抽水蓄能利好东方电气、哈尔滨电气等水电设备龙头；双江口水电站利好川投能源/雅砻江水电等水电运营商；渝昆高铁利好中国中铁、中国铁建等基建央企。储能、清洁能源、电气化铁路全产业链长期看好。
+  </div>
+</div>
+
+<!-- 8. AI微短剧标准 -->
+<div class="news-item ai-theme">
+  <span class="section-label label-tech">AI监管</span>
+  <h3>8. 广电总局发布《AI微短剧分类分层标准》：7月1日施行</h3>
+  <div class="news-content">
+    <strong>新闻联播说了什么：</strong>6月25日，国家广电总局网络视听司发布<strong>《管理提示（AI微短剧分类分层标准）》</strong>规范性文件。<strong>本标准自2026年7月1日起施行</strong>。管理提示称，人工智能技术在微短剧领域广泛应用，提高了工作效率、拓展了创作边界、赋能行业发展，同时"较大地"改变了内容生产传播方式。文件对AI在微短剧领域的应用提出<strong>分类分层管理要求</strong>。同期，<strong>网络销售重点工业产品清单（2026年版）</strong>发布，自2026年12月1日起施行，共纳入<strong>99种重点工业产品</strong>，电子商务经营者须严格履行质量安全义务。<strong>养老服务师职业资格制度</strong>正式设立。
+  </div>
+  <div class="news-analysis">
+    <span class="an-label">🔍 风向标解读：</span>这是继5月网信办《AI合成内容标识办法》后，<strong>首个针对"AI微短剧"细分赛道的国家级分类标准</strong>。从6月1日《标识办法》到7月1日《微短剧分类分层标准》——中国AI内容监管"月度迭代"的速度在加快。"分类分层"是关键词，意味着不是"一刀切禁止"，而是"按风险分级管理"——利好头部合规平台。<strong>网络销售99种重点工业产品清单</strong>是电商平台监管的"负面清单"——电动车电池、燃气具、儿童用品等高风险品类将纳入专项抽查。
+  </div>
+  <div class="news-impact">
+    <span class="im-label">💼 行业影响：</span>AI微短剧合规利好头部短视频平台（抖音、快手）+合规AI内容生成工具。网络销售清单利空劣质电商卖家，利好品牌自营电商。养老服务师职业资格制度利好康养职业培训、养老地产、智慧养老设备行业。
+  </div>
+</div>
+
+<!-- 9. 国际禁毒日 -->
+<div class="news-item">
+  <span class="section-label label-people">社会治理</span>
+  <h3>9. 国际禁毒日：公安部公布2025年打击毒品犯罪十大典型案例</h3>
+  <div class="news-content">
+    <strong>新闻联播说了什么：</strong>6月26日是<strong>第39个国际禁毒日</strong>，各地开展形式多样的禁毒主题宣传活动。公安部公布了2025年打击毒品犯罪十大典型案例。其中<strong>贵州公安禁毒部门"7·27"特大毒品犯罪集团案</strong>入选——经过3年艰苦侦查，抓获公安部公开悬赏通缉的十大毒枭之一龙华等犯罪嫌疑人79名，缴获冰毒<strong>209.8公斤</strong>。此案是跨境禁毒执法的标志性成果。
+  </div>
+  <div class="news-analysis">
+    <span class="an-label">🔍 风向标解读：</span>国际禁毒日与"清剿电诈"在新闻联播同日出现，说明<strong>中国对东南亚/跨境犯罪的两线围剿已进入常态化</strong>。"7·27"案件耗时3年，涉及中、缅、泰、柬多国协作，说明中国主导的<strong>澜湄执法合作中心</strong>机制已实质性发挥作用。最高法同日发布10件惩治新型毒品犯罪典型案事例，重点指向"未列管成瘾性物质+未成年人药物滥用"——这是新型毒品监管的最新战场。
+  </div>
+  <div class="news-impact">
+    <span class="im-label">💼 行业影响：</span>禁毒执法升级利好安防科技（毒品检测设备、边境监控系统）、合规医药物流、心理健康服务行业。
+  </div>
+</div>
+
+<!-- 10. 红色旅游 -->
+<div class="news-item">
+  <span class="section-label label-people">文旅·党建</span>
+  <h3>10. 红色旅游升温 汇聚奋进力量：建党105周年前夕</h3>
+  <div class="news-content">
+    <strong>新闻联播说了什么：</strong>在中国共产党成立<strong>105周年</strong>即将到来之际，全国各地红色旅游景区迎来客流高峰。今年是中国共产党成立105周年、红军长征胜利90周年，全国各地红色展览馆、纪念馆迎来参观热潮。"红色+"推动文旅产业发展，以大数据、人工智能、虚拟现实等前沿技术不断增强红色文化的表现力、传播力，"圈粉"年轻一代。
+  </div>
+  <div class="news-analysis">
+    <span class="an-label">🔍 风向标解读：</span>红色旅游在建党105周年前夕被重点报道，这是<strong>"七一"系列宣传的前奏</strong>。与6月24日习近平山东德州考察时"与村民拉家常""七一即将迎来党的105岁生日"的叙事形成呼应——"人民领袖+乡土情怀+红色传承"是今年七一宣传的核心主轴。红色旅游+AI/VR技术融合是文旅新赛道，利好数字文旅、红色IP运营企业。
+  </div>
+  <div class="news-impact">
+    <span class="im-label">💼 行业影响：</span>红色文旅利好地方文旅平台、数字文旅技术（VR/AR红色体验）、红色IP内容制作、党建培训服务行业。
+  </div>
+</div>
+
+<!-- 11. 霍尔木兹海峡 -->
+<div class="news-item international-theme">
+  <span class="section-label label-international">国际·能源</span>
+  <h3>11. 霍尔木兹海峡通航量恢复至战前近六成 + 伊朗阿曼外长通话</h3>
+  <div class="news-content">
+    <strong>新闻联播说了什么：</strong>伊朗和阿曼两国外长通话讨论霍尔木兹海峡问题。报告称<strong>霍尔木兹海峡通航量恢复至战前近六成</strong>。标普全球能源公司6月25日发布报告说，6月24日共有<strong>78艘船舶通过霍尔木兹海峡</strong>，创下伊朗战事爆发以来单日最高通航纪录。本月霍尔木兹海峡的船舶日均通航量已恢复至冲突前水平的约<strong>57%</strong>。委内瑞拉强震遇难人数升至235人，救援持续进行。
+  </div>
+  <div class="news-analysis">
+    <span class="an-label">🔍 风向标解读：</span>海峡通航量从冲突期间最低点（约20%）回升至57%，说明<strong>美伊谅解备忘录的实际效力正在显现</strong>。但57%仍未完全恢复，说明航运保险费用依然高企、部分船东仍持观望态度。伊朗与阿曼外长通话——阿曼是美伊秘密谈判的传统"中间人"，此次通话说明<strong>美伊后续谈判可能通过阿曼渠道继续推进</strong>。委内瑞拉地震与霍尔木兹局势同期叠加，全球能源供应链进入"双扰动"模式。
+  </div>
+  <div class="news-impact">
+    <span class="im-label">💼 行业影响：</span>霍尔木兹通航恢复利好国际油价下行（能源成本降低），利好航运、石化、航空板块。航运保险、海事法律服务的需求回升。
+  </div>
+</div>
+
+<!-- 12. 国际联播快讯 -->
+<div class="news-item international-theme">
+  <span class="section-label label-international">国际速览</span>
+  <h3>12. 国际联播快讯：以军黎南部+白俄罗斯警告乌克兰</h3>
+  <div class="news-content">
+    <strong>新闻联播说了什么：</strong>①<strong>以称以军将无限期驻留黎南部等地区</strong>——这是以色列对黎巴嫩主权的最大尺度公开表态，意味着黎以停火协议实质性破裂。②<strong>白俄罗斯总统卢卡申科警告乌克兰勿激化局势</strong>——白俄罗斯是俄罗斯最核心的军事盟友，此表态与俄军在乌克兰东部攻势提速形成呼应，说明俄罗斯正在通过白俄罗斯向乌克兰施加"北线压力"。
+  </div>
+  <div class="news-analysis">
+    <span class="an-label">🔍 风向标解读：</span>以军"无限期驻留黎南部"是2026年中东局势最危险的信号之一——这意味着以色列正在将"占领"从加沙扩展至黎巴嫩南部，与1978-2000年"安全区"模式如出一辙。<strong>本轮中东冲突的"外溢效应"正在超出伊朗-以色列双边框架</strong>，向黎巴嫩、叙利亚、约旦河西岸全面扩散。白俄罗斯警告乌克兰则是"北线施压"的信号——俄白联军在乌克兰北部的存在感正在回升。
+  </div>
+  <div class="news-impact">
+    <span class="im-label">💼 行业影响：</span>中东局势升温利空全球风险资产，利好黄金、美元、原油。军工板块（导弹防御、无人机）受益。白俄罗斯方向压力升高利好北约防务开支相关企业。
+  </div>
+</div>
+
+<!-- NEWS SUMMARY -->
+<div class="summary-section">
+  <h2>📊 总结风向标</h2>
+  <p>
+    今日新闻联播释放三重核心信号：<strong>①周边外交"命运共同体"全覆盖→中柬全天候+中孟新时代命运共同体，中国南亚东南亚"战略弧"完成闭环</strong>；<strong>②立法提速：商标法27年首修+注会法修正+检察公益诉讼法，十五五法治建设"开局即加速"</strong>；<strong>③新型能源体系2030年节点明确+天台抽水蓄能投产+渝昆高铁贯通，"十五五"能源+交通双基建已进入实质推进期</strong>。<br><br>
+    综合判断：周边外交+立法提速+能源基建三箭齐发，政策重心在"十五五开局"全面提速。AI微短剧分类标准7月1日施行，AI内容监管从"大模型"延伸至"应用层"的速度在加快。国际层面委内瑞拉地震+霍尔木兹通航恢复+以军黎南部驻留三件叠加，全球能源与地缘风险进入"多点扰动"模式。
+  </p>
+</div>
+
+</div><!-- /col-news -->
+
+<!-- ===== COLUMN 2: AI INTELLIGENCE ===== -->
+<div class="col-ai">
+
+<div class="section-title">🤖 专栏二：AI生产力情报专栏（黑科技与套利指南）</div>
+
+<div class="stats-row">
+  <div class="stat-chip">GitHub Trending <span class="num">17</span> 项目</div>
+  <div class="stat-chip">AI大佬动态 <span class="num">5</span> 条</div>
+  <div class="stat-chip">Product Hunt <span class="num">25</span> 新品</div>
+  <div class="stat-chip">中文AI媒体 <span class="num">10+</span> 信源</div>
+</div>
+
+<!-- ===== AI BLACK HOLE ARBITRAGE ===== -->
+<div class="ai-card" style="padding:20px; border-radius:12px; margin-bottom:20px;">
+  <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--border);">
+    <div style="width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.3em; background:rgba(230,57,70,0.15); color:var(--primary);">🕳️</div>
+    <div style="font-size:1.15em; font-weight:700; color:var(--text);">AI生产力黑洞·本周套利指南</div>
+  </div>
+
+  <div style="background:var(--card-bg-alt); padding:16px; border-radius:10px; margin-bottom:16px; border-left:3px solid var(--ai-accent);">
+    <div style="font-weight:700; color:var(--ai-accent); margin-bottom:8px;">📌 本周"AI黑话"小词典</div>
+    <div style="font-size:0.9em; color:var(--text-dim); line-height:1.8;">
+      <strong style="color:var(--highlight);">MCP（Model Context Protocol）</strong>：Anthropic推出的AI模型与外部工具/数据源之间的"通用插头"，就像USB-C让所有设备用同一根线——MCP让所有AI模型用同一套协议调用工具。<strong style="color:var(--highlight);">为什么重要？</strong>以前每个AI工具都要为每个模型单独写接口，现在有了MCP，Claude能用的工具，GPT也能用，开发效率提升10倍。目前<strong>aws/agent-toolkit-for-aws</strong>（今日GitHub Trending #12）就是AWS官方出的MCP工具包。<br><br>
+      <strong style="color:var(--highlight);">Agentic视频制作</strong>：不是"输入文字输出视频"，而是多个AI Agent像电影团队一样分工协作——脚本Agent写剧本、分镜Agent画故事板、配音Agent配旁白、剪辑Agent负责后期。OpenMontage（今日GitHub Trending #11，+1,754⭐）就是这个方向的全球首个开源系统。<br><br>
+      <strong style="color:var(--highlight);">推理专用芯片（Inference Chip）</strong>：训练和推理是两件事。训练是"教AI学习"，推理是"AI回答问题"。OpenAI的Jalapeño芯片专门优化推理，不负责训练——因为<strong>全球AI算力80%都消耗在推理上</strong>，专用推理芯片比通用GPU便宜50%，这就是Broadcom CEO说的"50%成本节约"的来源。
+    </div>
+  </div>
+
+  <div style="background:var(--card-bg-alt); padding:16px; border-radius:10px; margin-bottom:16px; border-left:3px solid var(--green);">
+    <div style="font-weight:700; color:var(--green); margin-bottom:8px;">💡 本周AI套利案例（真实可操作）</div>
+    <div style="font-size:0.9em; color:var(--text-dim); line-height:1.8;">
+      <strong style="color:var(--highlight);">案例1：OpenMontage + 剪映/即梦 = 零成本短视频工厂</strong><br>
+      OpenMontage今日GitHub +1,754⭐，是全球首个开源Agentic视频制作系统。你可以：①Fork这个项目 → ②接入剪映/即梦API → ③用自然语言描述一个视频创意 → ④12条Agent流水线自动完成脚本+分镜+配音+字幕+特效。一套5分钟视频以前要8小时，现在<strong>30分钟</strong>。适合做科普短视频、产品演示、教育培训。<br><br>
+      <strong style="color:var(--highlight);">案例2：MinerU（今日GitHub +960⭐）+ Claude Code = 文档瞬间变Agent知识库</strong><br>
+      MinerU能把PDF/Word/PPT精准转换成Markdown/JSON（保留表格、公式、图片），Claude Code/OpenAI Codex能直接读取这些结构化文档。套利路径：①帮企业把堆积如山的PDF文档（合同、报告、手册）转换成AI就绪格式 → ②接入企业知识库 → ③卖"AI文档智能化"服务，<strong>单价5-20万/单</strong>。<br><br>
+      <strong style="color:var(--highlight);">案例3：MediaCrawler（今日GitHub +673⭐）= 小红书/抖音/B站数据批量爬虫</strong><br>
+      这个项目能爬取小红书笔记/评论、抖音视频/评论、B站视频/评论、知乎问答——全套主流中文内容平台。适合做：①竞品监测（定期爬取竞品在小红书的笔记+评论情绪分析）②KOL筛选（爬取某赛道所有KOL数据，按互动量排序）③内容选题挖掘（爬取高热度笔记，提取爆款要素）。这些都是<strong>企业营销部门的刚需</strong>，可做SaaS工具或定制服务。
+    </div>
+  </div>
+
+  <div style="background:rgba(230,57,70,0.06); padding:16px; border-radius:10px; border-left:3px solid var(--primary);">
+    <div style="font-weight:700; color:var(--primary); margin-bottom:8px;">⚠️ 本周AI概念甄别（别被割韭菜）</div>
+    <div style="font-size:0.9em; color:var(--text-dim); line-height:1.8;">
+      <strong style="color:var(--red);">❌ "AI算命/占卜/风水"类应用</strong>：近期多个此类产品在社交平台爆火，但<strong>广电总局AI微短剧分类分层标准7月1日施行</strong>，内容监管正在全面收紧，此类应用面临下架风险。<br>
+      <strong style="color:var(--red);">❌ "AI自动炒币/炒股"机器人</strong>：GitHub上多个此类项目（如ai-stock-trading-bot）star数虚高，但实际回测收益与实盘差距巨大，且面临金融监管风险。<br>
+      <strong style="color:var(--green);">✅ 真正值得投入的方向</strong>：MCP工具开发（aws/agent-toolkit-for-aws今日Trending证明需求真实）、Agentic视频制作（OpenMontage验证）、多模态文档智能（MinerU验证）、中文内容平台数据服务（MediaCrawler验证）。
+    </div>
+  </div>
+</div>
+
+<!-- ===== TOP EQUIPMENT ===== -->
+<div class="card ai-card" style="margin-bottom:20px;">
+  <div class="card-header">
+    <div class="card-icon icon-ai">🛠️</div>
+    <div class="card-title">顶级装备库更新</div>
+  </div>
+
+  <!-- Google Labs design.md -->
+  <div class="ai-item">
+    <h3>Google Labs design.md：让AI Agent"懂设计"的格式规范</h3>
+    <div class="meta">GitHub Trending #2 · <span class="github-stats">⭐ 21,252</span> <span style="color:#e74c3c;font-weight:700">+2,407今日</span> · TypeScript · google-labs/design.md</div>
+    <div class="desc">
+      <strong>核心黑科技：</strong>DESIGN.md是一种"格式规范"，用来向编码Agent描述视觉标识——让Agent对设计系统有<strong>持久、结构化的理解</strong>，而不是每次都要重新解释"我要的是Material Design风格"。Google Labs把它开源了，意味着你可以直接在自己的Claude Code/Cursor里用。
+    </div>
+    <div class="insight">
+      <span class="in-label">🔬 解读：</span>这是AI辅助设计领域的"README.md时刻"——就像README.md让人类快速理解一个项目，DESIGN.md让AI Agent快速理解一个设计系统。技术突破在于"持久性"：以前你每次让AI生成一个UI组件都要重新描述设计风格，现在只要在DESIGN.md里写一次，所有Agent都能读懂。
+    </div>
+    <div class="use-case">
+      <span class="uc-label">💰 套利路径：</span>帮你客户的每一个Web项目都加上DESIGN.md，让AI辅助设计效率提升5倍——可以以此为卖点接UI/UX外包单，或做成标准化的"AI设计系统接入服务"。
+    </div>
+  </div>
+
+  <!-- OpenMontage -->
+  <div class="ai-item github-item">
+    <h3>OpenMontage：世界首个开源Agentic视频制作系统（连续两日登顶）</h3>
+    <div class="meta">GitHub Trending #11 · <span class="github-stats">⭐ 23,610</span> <span style="color:#e74c3c;font-weight:700">+1,754今日</span> · Python · calesthio</div>
+    <div class="desc">
+      <strong>核心黑科技：</strong>12条视频生产流水线、52个工具、500+ Agent技能——把你的AI编程助手直接变成完整视频工作室。不同于简单的"文生视频"，OpenMontage实现了<strong>全链路Agentic编排</strong>：脚本生成→分镜设计→配音合成→字幕特效→成品导出，12条流水线各司其职，Agent之间还可协作纠错。
+    </div>
+    <div class="insight">
+      <span class="in-label">🔬 解读：</span>这是视频制作领域的"Agent工厂"——不再是单一AI生成一段视频，而是多个AI Agent像电影团队一样分工协作。技术突破在于"Agent技能系统"的工程化：500+技能意味着你可以用自然语言指挥它"加一个希区柯克式变焦""把这段字幕改成漫威风格"。
+    </div>
+    <div class="use-case">
+      <span class="uc-label">💰 套利路径：</span>零成本短视频工厂——爬取热门话题 → OpenMontage生成视频 → 发布到抖音/B站/视频号。也可以做"企业宣传视频自动化服务"，客单价3000-10000元/条，成本几乎为零。
+    </div>
+  </div>
+
+  <!-- MinerU -->
+  <div class="ai-item">
+    <h3>MinerU：PDF/Office文档转LLM就绪Markdown，Agentic工作流必备</h3>
+    <div class="meta">GitHub Trending #7 · <span class="github-stats">⭐ 70,418</span> <span style="color:#e74c3c;font-weight:700">+960今日</span> · Python · opendatalab/MinerU</div>
+    <div class="desc">
+      <strong>核心黑科技：</strong>将PDF和Office文档等复杂文档转换为<strong>LLM就绪的markdown/JSON</strong>，用于Agentic工作流。精准识别表格、公式、图片、多栏布局——这是目前<strong>文档智能解析准确率最高的开源工具</strong>，没有之一。
+    </div>
+    <div class="insight">
+      <span class="in-label">🔬 解读：</span>企业有成千上万份PDF手册、合同、报告，但LLM不能直接读PDF（格式乱、表格丢失、公式变成乱码）。MinerU解决了这个"最后一公里"问题。今日+960⭐说明<strong>Agentic工作流对文档解析的需求正在爆发</strong>——没有结构化输入，Agent就是" garbage in garbage out"。
+    </div>
+    <div class="use-case">
+      <span class="uc-label">💰 套利路径：</span>帮律师事务所/会计师事务所/咨询公司做"文档AI化"服务——把他们的历史文档全部转换成AI可读取的格式，接入私有知识库。单价5-20万，毛利率80%+。
+    </div>
+  </div>
+
+  <!-- ai-berkshire -->
+  <div class="ai-item concept-item">
+    <h3>ai-berkshire：AI时代的伯克希尔——基于Claude Code的价值投资框架</h3>
+    <div class="meta">GitHub Trending #10 · <span class="github-stats">⭐ 3,112</span> <span style="color:#e74c3c;font-weight:700">+1,274今日</span> · Python · xbtlin/ai-berkshire</div>
+    <div class="desc">
+      <strong>核心黑科技：</strong>巴菲特·芒格·段永平·李录四大师方法论 + <strong>多Agent并行研究</strong>。让Claude Code同时启动多个研究Agent，分别分析一家公司的基本面、护城河、管理层、估值——最后汇总成巴菲特风格的投资备忘录。
+    </div>
+    <div class="insight">
+      <span class="in-label">🔬 解读：</span>这是"AI+价值投资"的第一次严肃尝试。以前量化投资都是看K线、量价、因子——ai-berkshire反其道而行之，用AI读年报、读研报、读新闻，做<strong>基本面分析的自动化</strong>。段永平+李录的方法论加入说明创始团队是认真研究过价值投资体系的，不是蹭热点。
+    </div>
+    <div class="use-case">
+      <span class="uc-label">💰 套利路径：</span>个人用于A股/美股研究（比手动读年报快100倍）——也可以做成付费Newsletter，每周发布AI生成的深度公司研究报告，订阅费199元/年。
+    </div>
+  </div>
+
+  <!-- Agent-Reach -->
+  <div class="ai-item github-item">
+    <h3>Agent-Reach：让你的AI Agent看到整个互联网（零API费用）</h3>
+    <div class="meta">GitHub Trending #17 · <span class="github-stats">⭐ 42,344</span> <span style="color:#e74c3c;font-weight:700">+1,194今日</span> · Python · JCodesMore/Agent-Reach</div>
+    <div class="desc">
+      <strong>核心黑科技：</strong>读取和搜索 Twitter、Reddit、YouTube、GitHub、Bilibili、小红书——<strong>一个CLI，零API费用</strong>。这是让本地AI Agent具备"实时联网能力"的最轻量方案，不需要申请任何API Key。
+    </div>
+    <div class="insight">
+      <span class="in-label">🔬 解读：</span>目前让AI Agent联网的主要方案是申请官方API（费用高+审核严），Agent-Reach用爬虫方案绕过API——虽然稳定性不如官方API，但<strong>零成本+即开即用</strong>对独立开发者和研究者来说是巨大优势。今日+1,194⭐说明"低成本Agent联网"需求极强。
+    </div>
+    <div class="use-case">
+      <span class="uc-label">💰 套利路径：</span>做一个"社交媒体情绪分析"工具——用Agent-Reach爬取某品牌在Twitter/小红书/豆瓣的实时讨论，生成情绪报告卖给市场部。也可以做竞品监测SaaS。
+    </div>
+  </div>
+
+</div><!-- /ai-card -->
+
+<!-- ===== AI PERSON OF THE WEEK ===== -->
+<div class="card ai-card" style="margin-bottom:20px;">
+  <div class="card-header">
+    <div class="card-icon icon-ai">👑</div>
+    <div class="card-title">本周AI大佬动态（截至6月26日）</div>
+  </div>
+
+  <div class="ai-item" style="border-left-color:var(--red);">
+    <h3>🔴 Google遭遇史诗级人才崩盘：4名核心研究员+Shazeer一周内集体出逃</h3>
+    <div class="desc">
+      <strong>事件：</strong>6月第三周，Google DeepMind一周内失去4名顶级AI研究员，同时<strong>Transformer论文合著者Noam Shazeer</strong>（Gemini联合负责人）宣布加入OpenAI。四人详情：<br>
+      ① <strong>John Jumper</strong>：2024年诺贝尔化学奖得主（AlphaFold），加入Anthropic（受英国竞业禁止法约束，可能2027年才能正式入职）<br>
+      ② <strong>Jonas Adler</strong>：AlphaFold核心贡献者+AI编程（正是Anthropic Claude Code目前胜出的赛道）<br>
+      ③ <strong>Alexander Pritzel</strong>：预训练（Pretraining）负责人，决定下一代Gemini能力上限<br>
+      ④ <strong>Arthur Conmy</strong>：Gemini 2.5贡献者，明确以"AI安全"为离职理由加入Anthropic<br><br>
+      <strong>市场反应：</strong>Alphabet两天内市值蒸发<strong>超过$2700亿</strong>。SignalFire 2025年分析显示：DeepMind工程师流向Anthropic的可能性是反方向的<strong>近11倍</strong>。
+    </div>
+    <div class="insight">
+      <span class="in-label">🔬 解读：</span>这不是5个人离职，而是<strong>AlphaFold团队整体迁移+Transformer架构发明者转投对手+预训练负责人集体出走</strong>的三重打击。Jumper的离职最具象征意义——他刚为Google赢得首个诺贝尔奖，转头就加入了竞争对手。核心原因是：Anthropic/OpenAI的<strong>Pre-IPO股权</strong>吸引力 + 计算资源分配内部政治 + AI安全定位的人才号召力。
+    </div>
+  </div>
+
+  <div class="ai-item" style="border-left-color:var(--ai-accent);">
+    <h3>🟢 OpenAI首款自研芯片Jalapeño曝光：9个月流片，大模型直接参与设计</h3>
+    <div class="desc">
+      <strong>事件：</strong>OpenAI与Broadcom联合发布首款自研LLM专用AI推理芯片<strong>Jalapeño</strong>（墨西哥辣椒，OpenAI芯片命名延续食材传统：Nvidia=英伟达=英伟达=黄仁勋的辣椒？）。<br><br>
+      <strong>技术细节：</strong>①工程样片已在目标频率+功耗下稳定运行机器学习负载（包括<strong>GPT-5.3-Codex-Spark模型</strong>）②专为大模型推理优化，非训练芯片 ③Broadcom CEO提到"<strong>50%成本节约</strong>" ④2026年底小规模原型部署，2027+年吉瓦级数据中心部署<br><br>
+      <strong>战略意义：</strong>OpenAI从"纯软件公司"进化为"软件+芯片"一体化公司，对标Google TPU、Amazon Trainium。不再完全依赖Nvidia H100/Blackwell。
+    </div>
+    <div class="insight">
+      <span class="in-label">🔬 解读：</span>Jalapeño不是要打败H100，而是<strong>让OpenAI在推理成本上拥有绝对控制权</strong>。目前OpenAI每次GPT-4o推理要付给Nvidia约$0.0012/千token，自研芯片能把成本压到约$0.0006——对每天数万亿token调用的OpenAI来说，一年能省<strong>数十亿美元</strong>。9个月流片速度也是史上最快（通常18-24个月）。
+    </div>
+  </div>
+
+  <div class="ai-item" style="border-left-color:var(--purple);">
+    <h3>🟣 Anthropic IPO进程实质性推进：估值$9650亿，预计10月上市</h3>
+    <div class="desc">
+      <strong>事件：</strong>Anthropic已向美国SEC<strong>秘密提交S-1表格草案</strong>，正式启动IPO筹备流程。最新投后估值<strong>$9650亿</strong>（2026年5月28日H轮融资后），超越OpenAI同期约$8520亿估值，成为全球最高估值AI初创公司。预计<strong>2026年10月</strong>挂牌上市，拟募资规模超<strong>$600亿</strong>。<br><br>
+      <strong>背景：</strong>Anthropic本周连续收获John Jumper、Jonas Adler、Alexander Pritzel、Arthur Conmy、Noam Shazeer（来自Google/OpenAI）五名顶级人才，IPO前"人才储备"信号极其强烈。
+    </div>
+    <div class="insight">
+      <span class="in-label">🔬 解读：</span>Anthropic IPO是继SpaceX（募资$750亿）之后<strong>全球第二大IPO</strong>。估值$9650亿已超过整个Nvidia在2023年的市值。核心逻辑：Claude Opus 4.8在SWE-Bench Pro上达到80.3%（史上首次破80%），Claude Tag将AI嵌入企业工作流，Anthropic的企业客户续约率>95%——这些基本面支撑了IPO估值。
+    </div>
+  </div>
+
+</div><!-- /ai-card -->
+
+<!-- ===== GITHUB TRENDING TOP5 ===== -->
+<div class="card ai-card">
+  <div class="card-header">
+    <div class="card-icon icon-github">📊</div>
+    <div class="card-title">GitHub Trending 今日Top 5（6月26日）</div>
+  </div>
+
+  <div class="ai-item github-item">
+    <h3>#1 google-labs/design.md — AI设计格式规范</h3>
+    <div class="meta"><span class="github-stats">⭐ 21,252</span> <span style="color:#e74c3c;font-weight:700">+2,407今日</span> · TypeScript</div>
+    <div class="desc">让编码Agent对设计系统有持久、结构化理解。今日增速最高。</div>
+  </div>
+
+  <div class="ai-item github-item">
+    <h3>#2 calesthio/OpenMontage — Agentic视频制作系统</h3>
+    <div class="meta"><span class="github-stats">⭐ 23,610</span> <span style="color:#e74c3c;font-weight:700">+1,754今日</span> · Python</div>
+    <div class="desc">12条流水线、52个工具、500+ Agent技能。连续两日登顶榜单。</div>
+  </div>
+
+  <div class="ai-item github-item">
+    <h3>#3 opendatalab/MinerU — 文档转LLM就绪格式</h3>
+    <div class="meta"><span class="github-stats">⭐ 70,418</span> <span style="color:#e74c3c;font-weight:700">+960今日</span> · Python</div>
+    <div class="desc">PDF/Office文档精准转Markdown/JSON，Agentic工作流必备。</div>
+  </div>
+
+  <div class="ai-item github-item">
+    <h3>#4 xbtlin/ai-berkshire — AI价值投资研究框架</h3>
+    <div class="meta"><span class="github-stats">⭐ 3,112</span> <span style="color:#e74c3c;font-weight:700">+1,274今日</span> · Python</div>
+    <div class="desc">巴菲特·芒格·段永平·李录四大师方法论 + 多Agent并行研究。</div>
+  </div>
+
+  <div class="ai-item github-item">
+    <h3>#5 garrytan/gstack — Garry Tan的Claude Code配置</h3>
+    <div class="meta"><span class="github-stats">⭐ 116,634</span> <span style="color:#e74c3c;font-weight:700">+950今日</span> · TypeScript</div>
+    <div class="desc">Y Combinator总裁Garry Tan的Claude Code配置：23个定制工具，充当CEO、设计师、工程经理、发布经理、文档工程师和QA。</div>
+  </div>
+</div>
+
+<!-- ===== PRODUCT HUNT ===== -->
+<div class="card ai-card">
+  <div class="card-header">
+    <div class="card-icon icon-trend">🚀</div>
+    <div class="card-title">Product Hunt 6月Top 10 AI产品</div>
+  </div>
+
+  <div class="ai-item money-item">
+    <h3>Fundraisly — AI融资助手（1,027,261票·6月持续领跑）</h3>
+    <div class="desc">自动化融资Deck生成+投资人匹配+尽职调查文档，面向创始人的AI融资工作台。</div>
+  </div>
+
+  <div class="ai-item money-item">
+    <h3>Upstream — 供应链AI（653,243票）</h3>
+    <div class="desc">用AI优化全球供应链，实时预测断供风险+自动寻找替代供应商。</div>
+  </div>
+
+  <div class="ai-item">
+    <h3>Bluerails Discovery — AI代码搜索（621,132票）</h3>
+    <div class="desc">面向大型代码库的AI语义搜索，理解代码意图而非仅匹配关键词。</div>
+  </div>
+
+  <div class="ai-item">
+    <h3>Tencent EdgeOne Makers — 腾讯边缘AI开发平台（562,168票）</h3>
+    <div class="desc">腾讯云边缘函数+AI推理，让AI应用在边缘节点运行，延迟<10ms。</div>
+  </div>
+
+  <div class="ai-item">
+    <h3>Framer 3.0 — 设计协作新范式（509,210票）</h3>
+    <div class="desc">在画布上使用Agent进行设计、写作、分析——Framer的"Agent on Canvas"是设计工具的范式转变。</div>
+  </div>
+</div>
+
+</div><!-- /col-ai -->
+
+</div><!-- /columns -->
+
+<!-- SUMMARY -->
+<div class="summary-section">
+  <h2>📊 AI情报总结</h2>
+  <p>
+    <strong>本周最重磅AI信号：</strong>Google DeepMind史诗级人才崩盘（Jumper+Adler+Pritzel+Conmy+Shazeer）是2026年AI行业<strong>最具标志性的权力转移事件</strong>——AlphaFold诺贝尔奖团队整体迁移至Anthropic，意味着<strong>AI安全定位+Pre-IPO股权+计算资源分配</strong>三重因素正在重塑顶尖AI人才的流向。<br><br>
+    <strong>技术趋势：</strong>Agentic视频制作（OpenMontage）、文档智能解析（MinerU）、MCP协议工具生态（aws/agent-toolkit-for-aws）、AI价值投资（ai-berkshire）是本周最值得跟踪的四大技术方向。<br><br>
+    <strong>套利窗口：</strong>OpenMontage视频自动化 + MinerU企业文档AI化 + Agent-Reach社交媒体数据服务 = 本周三个零成本/低成本的AI变现路径，均已被GitHub高星项目验证需求真实性。
+  </p>
+</div>
+
+</div><!-- /container -->
+
+<div class="footer">
+  📡 每日双专栏情报 · 2026-06-27 期 · 信源：央视新闻联播 + GitHub Trending + AI Tools Recap + Hunted.space + 36氪/量子位/新浪科技<br>
+  自动生成 · 仅限个人参考 · 信息截止6月26日19:00
+</div>
+
+</body>
+</html>
