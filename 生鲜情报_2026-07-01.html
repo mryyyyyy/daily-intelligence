@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔴 小红书生鲜电商每日作战情报 · 2026-07-01</title>
+<style>
+:root {
+  --bg: #0f0f0f;
+  --card: #1a1a1a;
+  --border: #2a2a2a;
+  --text: #e0e0e0;
+  --muted: #888;
+  --red: #ff4d4d;
+  --green: #4caf50;
+  --amber: #ff9800;
+  --blue: #64b5f6;
+  --purple: #ce93d8;
+  --accent: #ff6b35;
+  --gold: #ffd700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  line-height: 1.7;
+  padding: 0;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 24px 20px 60px; }
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #1a0a0a 0%, #0a0a1a 100%);
+  border: 1px solid #3a1a1a;
+  border-radius: 16px;
+  padding: 32px 28px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.header .emoji { font-size: 48px; }
+.header h1 { font-size: 22px; margin: 12px 0 8px; font-weight: 700; }
+.header .date { color: var(--muted); font-size: 14px; }
+.header .tagline { color: var(--accent); font-size: 13px; margin-top: 6px; }
+
+/* Status Bar */
+.status-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.status-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 12px;
+  text-align: center;
+}
+.status-item .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+.status-item .value { font-size: 20px; font-weight: 700; margin: 4px 0; }
+.status-item .sub { font-size: 11px; color: var(--muted); }
+.status-red .value { color: var(--red); }
+.status-amber .value { color: var(--amber); }
+.status-green .value { color: var(--green); }
+.status-blue .value { color: var(--blue); }
+
+/* Cards */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 18px;
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.card-header .icon { font-size: 28px; }
+.card-header h2 { font-size: 18px; font-weight: 700; }
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 8px;
+}
+.badge-red { background: rgba(255,77,77,0.15); color: var(--red); }
+.badge-amber { background: rgba(255,152,0,0.15); color: var(--amber); }
+.badge-green { background: rgba(76,175,80,0.15); color: var(--green); }
+.badge-blue { background: rgba(100,181,246,0.15); color: var(--blue); }
+.badge-purple { background: rgba(206,147,216,0.15); color: var(--purple); }
+
+/* Tables */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 13px;
+}
+.data-table th {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 2px solid var(--border);
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.data-table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(42,42,42,0.5);
+  vertical-align: top;
+}
+.data-table tr:last-child td { border-bottom: none; }
+.price-up { color: var(--red); }
+.price-down { color: var(--green); }
+.price-stable { color: var(--amber); }
+
+/* Timeline */
+.timeline { position: relative; padding-left: 20px; margin: 12px 0; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--red), var(--amber), var(--green));
+}
+.timeline-item {
+  position: relative;
+  padding: 8px 0 12px 16px;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 14px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+}
+.timeline-item.active::before { background: var(--red); box-shadow: 0 0 8px var(--red); }
+.timeline-item.soon::before { background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+.timeline-item .t-date { font-size: 11px; color: var(--muted); }
+.timeline-item .t-title { font-weight: 600; font-size: 14px; }
+.timeline-item .t-desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* Insights */
+.insight-box {
+  background: rgba(255,107,53,0.08);
+  border: 1px solid rgba(255,107,53,0.2);
+  border-radius: 10px;
+  padding: 16px;
+  margin: 14px 0;
+}
+.insight-box .insight-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.insight-box p { font-size: 13px; line-height: 1.6; }
+
+/* Action Items */
+.action-list { list-style: none; padding: 0; }
+.action-list li {
+  padding: 10px 14px;
+  margin: 6px 0;
+  border-radius: 8px;
+  font-size: 13px;
+  border-left: 3px solid transparent;
+}
+.action-p0 { background: rgba(255,77,77,0.08); border-left-color: var(--red); }
+.action-p1 { background: rgba(255,152,0,0.08); border-left-color: var(--amber); }
+.action-p2 { background: rgba(100,181,246,0.08); border-left-color: var(--blue); }
+.action-label-p0 { color: var(--red); font-weight: 700; margin-right: 6px; }
+.action-label-p1 { color: var(--amber); font-weight: 700; margin-right: 6px; }
+.action-label-p2 { color: var(--blue); font-weight: 700; margin-right: 6px; }
+
+/* 五维评分 */
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  margin: 10px 0;
+}
+.score-item {
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  padding: 10px 8px;
+  text-align: center;
+}
+.score-item .s-name { font-size: 10px; color: var(--muted); }
+.score-item .s-value { font-size: 18px; font-weight: 700; margin: 4px 0; }
+.score-item .s-bar {
+  height: 3px;
+  border-radius: 2px;
+  margin-top: 4px;
+}
+.s-fill { background: var(--accent); height: 100%; border-radius: 2px; }
+
+.source { font-size: 11px; color: var(--muted); margin-top: 4px; }
+.hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  color: var(--muted);
+  font-size: 11px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+  <div class="emoji">🔴🌶️🍄</div>
+  <h1>小红书生鲜电商每日作战情报</h1>
+  <div class="date">2026年7月1日 · 星期三 · 下半年第一天</div>
+  <div class="tagline">野生菌全品类爆发 × 东魁杨梅最后冲刺 × 白凤→湖景权力交接</div>
+</div>
+
+<!-- ===== STATUS BAR ===== -->
+<div class="status-bar">
+  <div class="status-item status-red">
+    <div class="label">🍒 东魁杨梅</div>
+    <div class="value">~4-5天</div>
+    <div class="sub">最后冲刺，产地15.5元/斤</div>
+  </div>
+  <div class="status-item status-amber">
+    <div class="label">🍑 白凤水蜜桃</div>
+    <div class="value">~3-5天</div>
+    <div class="sub">巅峰尾声，湖景7月中旬接棒</div>
+  </div>
+  <div class="status-item status-green">
+    <div class="label">🍄 云南松茸</div>
+    <div class="value">3000-4000</div>
+    <div class="sub">元/kg，↓70% vs 头水</div>
+  </div>
+  <div class="status-item status-green">
+    <div class="label">🍗 鸡枞菌</div>
+    <div class="value">500-1000</div>
+    <div class="sub">元/kg，价格腰斩中</div>
+  </div>
+  <div class="status-item status-blue">
+    <div class="label">🦀 六月黄</div>
+    <div class="value">🆕 新发现</div>
+    <div class="sub">大闸蟹早熟品种，6-7月</div>
+  </div>
+</div>
+
+<!-- ===== SECTION 1: 东魁杨梅 ===== -->
+<div class="card">
+  <div class="card-header">
+    <span class="icon">🍒</span>
+    <h2>东魁杨梅：全年最强"稀缺即将落幕"叙事</h2>
+    <span class="badge badge-red">🔴 最后4-5天</span>
+  </div>
+
+  <table class="data-table">
+    <tr>
+      <th>产区</th><th>产地批发价</th><th>零售终端</th><th>态势</th>
+    </tr>
+    <tr>
+      <td><strong>仙居东魁</strong></td>
+      <td><span class="price-up">15.50元/斤</span></td>
+      <td>35-68元/斤（精品礼盒）</td>
+      <td>高端渠道走量大，品质巅峰末端</td>
+    </tr>
+    <tr>
+      <td><strong>慈溪</strong></td>
+      <td>14元/斤</td>
+      <td>—</td>
+      <td>走货快，果园预售最后一批</td>
+    </tr>
+    <tr>
+      <td><strong>苏州东山</strong></td>
+      <td><span class="price-up">18元/斤</span></td>
+      <td>32.50元/斤（金鹰超市）</td>
+      <td>沪宁采购商蹲守地头🔥</td>
+    </tr>
+    <tr>
+      <td><strong>余姚荸荠种</strong></td>
+      <td>8.50元/斤</td>
+      <td>18-22元/斤</td>
+      <td>亲民走量，风味好</td>
+    </tr>
+    <tr>
+      <td><strong>云南石屏</strong></td>
+      <td>6.80元/斤</td>
+      <td>—</td>
+      <td>已近尾声，品相一般</td>
+    </tr>
+  </table>
+
+  <div class="insight-box">
+    <div class="insight-label">💡 核心洞察</div>
+    <p><strong>东魁品质巅峰还剩最多5天。</strong>6月25日百家号数据显示"东魁品种最多还能供应10天左右"——今天7月1日刚好满6天，剩余4-5天窗口期。精品果价格坚挺（仙居15.5、东山18元/斤），统货vs精品价差持续拉大，再次验证"精品赛道分化"铁律。<br>
+    <strong>苏州东山杨梅以18元/斤产地价超越仙居东魁成为价格之王</strong>——沪宁采购商蹲守地头抢货，山姆礼盒35元/斤，这是个值得深挖的差异化故事！</p>
+  </div>
+
+  <div class="source">📊 来源：百家号·杨梅行情 (2026.6.25)、什么值得买·仙居杨梅全解析 (2026.6.23)</div>
+</div>
+
+<!-- ===== SECTION 2: 阳山水蜜桃 ===== -->
+<div class="card">
+  <div class="card-header">
+    <span class="icon">🍑</span>
+    <h2>阳山水蜜桃：白凤尾声 → 湖景蜜露接棒倒计时</h2>
+    <span class="badge badge-amber">🟡 权力交接期</span>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item active">
+      <div class="t-date">6月底 - 7月上旬</div>
+      <div class="t-title">白凤（品质巅峰尾声）</div>
+      <div class="t-desc">果形大、乳白带红晕、香气浓、颜值天花板。还能吃到~3-5天</div>
+    </div>
+    <div class="timeline-item active">
+      <div class="t-date">7月上中旬</div>
+      <div class="t-title">新白凤 / 点花白凤</div>
+      <div class="t-desc">白凤系升级品种，品质持续高位</div>
+    </div>
+    <div class="timeline-item soon">
+      <div class="t-date">🎯 7月中旬（~10-15天后）</div>
+      <div class="t-title">湖景蜜露（中湖景）登场</div>
+      <div class="t-desc">果皮乳黄、果肉柔软细密、甜度最高、汁水丰盈——真正的"终极品种"</div>
+    </div>
+    <div class="timeline-item soon">
+      <div class="t-date">7月中旬</div>
+      <div class="t-title">阳山蜜露（大湖景）</div>
+      <div class="t-desc">更大果型、与中湖景同期、终极口感</div>
+    </div>
+    <div class="timeline-item">
+      <div class="t-date">8月上旬</div>
+      <div class="t-title">晚湖景收尾</div>
+      <div class="t-desc">果肉脆甜、耐贮运。阳山水蜜桃季闭幕</div>
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <div class="insight-label">💡 内容策略洞察</div>
+    <p><strong>白凤→湖景的权力交接是最佳内容窗口。</strong>白凤以"颜值天花板"打头阵（大果+乳白红晕=出片率极高），湖景以"甜度终极"收尾（柔软细密+汁水丰盈=口感巅峰）。<br>
+    现在发布"白凤最后一周"倒计时内容 → 7月中旬无缝衔接"湖景蜜露来了"预告 → 形成白凤+湖景双品种连续内容线。这是阳山水蜜桃季的"内容黄金走廊"。</p>
+  </div>
+
+  <div class="source">📊 来源：搜狐·阳山水蜜桃消费提示 (2026.6.6)、1688·阳山产地预售 (2026.5.15)</div>
+</div>
+
+<!-- ===== SECTION 3: 云南野生菌 ===== -->
+<div class="card">
+  <div class="card-header">
+    <span class="icon">🍄</span>
+    <h2>云南野生菌全品类：年度最大品类跃迁窗口</h2>
+    <span class="badge badge-green">🟢 旺季爆发</span>
+  </div>
+
+  <table class="data-table">
+    <tr>
+      <th>品种</th><th>当前价格</th><th>前期高点</th><th>降幅</th><th>趋势</th>
+    </tr>
+    <tr>
+      <td><strong>香格里拉松茸</strong></td>
+      <td>3000-4000元/kg（7-9cm）</td>
+      <td>10,000+元/kg</td>
+      <td><span class="price-down">↓~70%</span></td>
+      <td>继续下探中，7-8月预计跌至200-1000元/kg</td>
+    </tr>
+    <tr>
+      <td><strong>鸡枞菌（精品）</strong></td>
+      <td>~1000元/kg</td>
+      <td>—</td>
+      <td><span class="price-down">↓~50%</span></td>
+      <td>腰斩进行中，目标旺季恒定价500元/kg</td>
+    </tr>
+    <tr>
+      <td><strong>鸡枞菌（中等）</strong></td>
+      <td>几百元/kg</td>
+      <td>—</td>
+      <td><span class="price-down">腰斩</span></td>
+      <td>性价比窗口打开</td>
+    </tr>
+    <tr>
+      <td><strong>见手青（牛肝菌）</strong></td>
+      <td>160-300元/kg</td>
+      <td>500-600元/kg</td>
+      <td><span class="price-down">↓~60%</span></td>
+      <td>最好300元，便宜160元</td>
+    </tr>
+    <tr>
+      <td><strong>白葱牛肝菌</strong></td>
+      <td>100-200元/kg</td>
+      <td>300元/kg</td>
+      <td><span class="price-down">↓~50%</span></td>
+      <td>游客最爱品种</td>
+    </tr>
+    <tr>
+      <td><strong>谷熟菌/奶浆菌/鸡油菌</strong></td>
+      <td>~100元/kg</td>
+      <td>—</td>
+      <td><span class="price-down">大幅下降</span></td>
+      <td>小众品种，尝鲜友好</td>
+    </tr>
+  </table>
+
+  <div class="insight-box">
+    <div class="insight-label">🔥 年度最大叙事</div>
+    <p><strong>云南木水花市场单日交易量突破200吨！</strong>（去年同期仅100吨，翻倍！）旺季比去年早了半个月，鲜菌车辆从20-30辆暴增至70-80辆。松茸从万元跌至3000元/kg——这是全年最强的「精品普惠」叙事：<strong>"曾经1万元/kg的香格里拉松茸，现在只要3000元就能吃到"</strong>——从小红书内容角度，这是教科书级别的"高价值感+可及价格"组合。</p>
+  </div>
+
+  <div class="insight-box">
+    <div class="insight-label">🎯 战略意义</div>
+    <p>从水果买手→高端食材买手的品类跃迁，野生菌是最佳跳板。<br>
+    <strong>松茸+鸡枞+干巴菌</strong>三大高端菌种同时处于价格窗口——这是全年唯一一次可以同时覆盖三个高端品类的时机。价格还在继续下降，7月中旬将进入最佳性价比窗口。</p>
+  </div>
+
+  <div class="source">📊 来源：今日头条·都市条形码 (2026.6.27)、今日头条·松茸价格分析 (2026.6.15)</div>
+</div>
+
+<!-- ===== SECTION 4: 其他品类 ===== -->
+<div class="card">
+  <div class="card-header">
+    <span class="icon">📊</span>
+    <h2>其他精品品类追踪</h2>
+  </div>
+
+  <table class="data-table">
+    <tr>
+      <th>品类</th><th>状态</th><th>价格区间</th><th>关键信息</th>
+    </tr>
+    <tr>
+      <td><strong>桂味荔枝</strong></td>
+      <td><span class="badge badge-red">🔴 已收官</span></td>
+      <td>产地18-30元 → 已下市</td>
+      <td>6.29时仅剩1-3天，7月1日已基本结束。全年最贵荔枝季告终</td>
+    </tr>
+    <tr>
+      <td><strong>猫山王榴莲</strong></td>
+      <td><span class="badge badge-green">🟢 旺季</span></td>
+      <td>80-120元/个</td>
+      <td>价格稳定，持续旺季供应</td>
+    </tr>
+    <tr>
+      <td><strong>樟树港辣椒</strong></td>
+      <td><span class="badge badge-green">🟢 供应中</span></td>
+      <td>288元/斤</td>
+      <td>"辣椒界爱马仕"稳定供应</td>
+    </tr>
+    <tr>
+      <td><strong>阳澄湖六月黄</strong></td>
+      <td><span class="badge badge-blue">🔵 🆕 当季</span></td>
+      <td>待验证</td>
+      <td>大闸蟹早熟品种，6-7月上市，"鲜得掉眉毛"</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ===== SECTION 5: 小红书电商动态 ===== -->
+<div class="card">
+  <div class="card-header">
+    <span class="icon">📱</span>
+    <h2>小红书电商动态</h2>
+    <span class="badge badge-blue">平台风向</span>
+  </div>
+
+  <ul class="action-list">
+    <li class="action-p1">
+      <span class="action-label-p1">P1</span>
+      <strong>618复盘：</strong>各平台放弃GMV比拼，转向"内容+品牌心智"竞争。小红书市集66周年庆首次亮相——强调"好货"而非"低价内卷"，与精品生鲜定位高度契合
+    </li>
+    <li class="action-p1">
+      <span class="action-label-p1">P1</span>
+      <strong>小红书成为2026世界杯持权转播商：</strong>腾讯新闻5.30报道——暑期流量红利巨大，食品饮料/生鲜品类应提前布局世界杯相关内容（夜宵场景、聚会食材）
+    </li>
+    <li class="action-p2">
+      <span class="action-label-p2">P2</span>
+      <strong>投放趋势：</strong>小红书618白皮书强调"投前准备决定10倍ROI差距"——搜索场（攻略/清单/测评类内容）成为核心阵地，精品生鲜的科普测评内容天然匹配
+    </li>
+    <li class="action-p2">
+      <span class="action-label-p2">P2</span>
+      <strong>包邮政策：</strong>"服务商包邮全额补贴"利好生鲜商家，降低冷链物流成本压力
+    </li>
+  </ul>
+
+  <div class="source">📊 来源：腾讯新闻·新商业周报 (2026.5.30)、搜狐·辰木海川618白皮书 (2026.4.23)、WXRedian·乳品母婴大促分析 (2026)</div>
+</div>
+
+<!-- ===== SECTION 6: 新品类发现 ===== -->
+<div class="card">
+  <div class="card-header">
+    <span class="icon">🔍</span>
+    <h2>新品类发现：五维扫描</h2>
+    <span class="badge badge-purple">动态发现</span>
+  </div>
+
+  <div style="margin-bottom:16px;">
+    <h3 style="font-size:15px; margin-bottom:8px;">🦀 阳澄湖六月黄大闸蟹 <span class="badge badge-green">4/5 维度</span></h3>
+    <div class="score-grid">
+      <div class="score-item">
+        <div class="s-name">地标</div>
+        <div class="s-value">✅</div>
+        <div class="s-bar"><div class="s-fill" style="width:100%"></div></div>
+      </div>
+      <div class="score-item">
+        <div class="s-name">稀缺</div>
+        <div class="s-value">✅</div>
+        <div class="s-bar"><div class="s-fill" style="width:80%"></div></div>
+      </div>
+      <div class="score-item">
+        <div class="s-name">溢价</div>
+        <div class="s-value">✅</div>
+        <div class="s-bar"><div class="s-fill" style="width:90%"></div></div>
+      </div>
+      <div class="score-item">
+        <div class="s-name">颜值</div>
+        <div class="s-value">⚠️</div>
+        <div class="s-bar"><div class="s-fill" style="width:50%"></div></div>
+      </div>
+      <div class="score-item">
+        <div class="s-name">故事</div>
+        <div class="s-value">✅</div>
+        <div class="s-bar"><div class="s-fill" style="width:85%"></div></div>
+      </div>
+    </div>
+    <p style="font-size:13px; margin-top:8px;"><strong>"六月黄"是大闸蟹进入成熟期前的最后一次蜕壳阶段，以蟹黄鲜嫩流油、肉质细嫩著称，被誉为"鲜得掉眉毛"。</strong>阳澄湖GI认证加持，6-7月限定约30天，价格通常100-300元/斤。颜值弱项（不如成蟹威武），但"鲜嫩流油"的视觉+口感故事性极强。7月中旬后开始蜕壳成蟹，窗口期有限。</p>
+  </div>
+
+  <div style="margin-bottom:16px;">
+    <h3 style="font-size:15px; margin-bottom:8px;">🐟 长江刀鱼（清明后禁捕已过，关注养殖刀鱼） <span class="badge badge-amber">3/5 需验证</span></h3>
+    <p style="font-size:13px;">野生刀鱼受禁捕令限制，但养殖刀鱼（如镇江、崇明基地）仍有供应。溢价维度极高（历史天价数千元/斤），地标属性强。但合规性需仔细验证——养殖刀鱼需明确标注，且7月非传统刀鱼季。列为观察项。</p>
+  </div>
+
+  <div class="source">📊 来源：SIAL 2026 × WGSN 高端食材趋势报告·搜狐 (2026.5.10)</div>
+</div>
+
+<!-- ===== SECTION 7: 行动建议 ===== -->
+<div class="card">
+  <div class="card-header">
+    <span class="icon">⚡</span>
+    <h2>本周行动建议</h2>
+    <span class="badge badge-red">7月第1周</span>
+  </div>
+
+  <ul class="action-list">
+    <li class="action-p0">
+      <span class="action-label-p0">P0 🔥</span>
+      <strong>发布东魁杨梅"最后48小时"倒计时内容</strong>——「一年只吃20天的仙居东魁，还剩最后几天！今年再不吃等明年」。挂车山姆35元礼盒或仙居产地直发精品。标签：#东魁杨梅 #时令食材 #最后倒计时
+    </li>
+    <li class="action-p0">
+      <span class="action-label-p0">P0 🔥</span>
+      <strong>白凤水蜜桃"巅峰最后一周"</strong>——白凤以出片率极高著称（大果+乳白红晕），拍Live图展示"撕皮吃"或"吸管吸"的仪式感。同时埋钩子预告湖景蜜露7月中旬登场。标签：#阳山水蜜桃 #白凤 #湖景蜜露倒计时
+    </li>
+    <li class="action-p0">
+      <span class="action-label-p0">P0 🔥</span>
+      <strong>松茸「精品普惠」内容——年度最强叙事！</strong>「1万/kg → 3000元/kg！香格里拉松茸终于吃得起了」。用降价幅度+品质不变制造"捡漏感"，配合鸡枞菌做松茸×鸡枞CP搭配指南。标签：#香格里拉松茸 #野生菌季节 #精品食材
+    </li>
+    <li class="action-p1">
+      <span class="action-label-p1">P1</span>
+      <strong>野生菌全品类"云南人的过年"内容</strong>——木水花市场200吨日交易量、翻倍的鲜菌车辆、市民说"吃菌子对云南人来说就是过年"——这些真实场景极具感染力。见手青160-300元/kg的价格已是全年低位。标签：#云南野生菌 #见手青 #菌子季
+    </li>
+    <li class="action-p1">
+      <span class="action-label-p1">P1</span>
+      <strong>阳澄湖六月黄科普种草</strong>——"大闸蟹前传：六月黄才是资深吃货的秘密"。科普六月黄vs成蟹的区别，为什么老饕专门等这一口。提前布局7月中旬大闸蟹话题热度。标签：#六月黄 #阳澄湖大闸蟹 #时令食材
+    </li>
+    <li class="action-p2">
+      <span class="action-label-p2">P2</span>
+      <strong>世界杯预埋内容</strong>——小红书成为世界杯持权转播商，提前准备"看球必备高端零食/食材"内容，猫山王榴莲+野生菌零食+精品水果礼盒组合
+    </li>
+  </ul>
+</div>
+
+<!-- ===== SECTION 8: 下周预告 ===== -->
+<div class="card">
+  <div class="card-header">
+    <span class="icon">🔮</span>
+    <h2>下周预告（7月7-13日）</h2>
+    <span class="badge badge-blue">前瞻</span>
+  </div>
+
+  <table class="data-table">
+    <tr><th>事件</th><th>预计时间</th><th>行动</th></tr>
+    <tr>
+      <td>🏁 <strong>东魁杨梅全面收官</strong></td>
+      <td>7月3-5日</td>
+      <td>发布收官总结，引导转向水蜜桃/野生菌</td>
+    </tr>
+    <tr>
+      <td>🏁 <strong>白凤水蜜桃收尾</strong></td>
+      <td>7月5-8日</td>
+      <td>"白凤告别"内容，湖景预售预热</td>
+    </tr>
+    <tr>
+      <td>🎯 <strong>湖景蜜露首发</strong></td>
+      <td>7月10-15日</td>
+      <td>🔑 7月最重要上新！"甜度天花板来了"</td>
+    </tr>
+    <tr>
+      <td>📉 <strong>松茸继续降价</strong></td>
+      <td>7月中下旬</td>
+      <td>预计跌至200-1000元/kg，持续跟进价格</td>
+    </tr>
+    <tr>
+      <td>🦀 <strong>六月黄窗口关闭</strong></td>
+      <td>7月中下旬</td>
+      <td>最后机会，开始蜕壳成蟹</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<hr class="hr">
+<div class="footer">
+  <p>🔴 小红书生鲜电商每日作战情报 · 2026年7月1日</p>
+  <p style="margin-top:4px;">信息解读纪律：负面信息区分个案/系统 | 绝对词汇需数据支撑 | P0需≥2来源 | 风险标注归因 | 精品过滤</p>
+  <p style="margin-top:4px;">数据来源标注：百家号、今日头条、搜狐、什么值得买 | 品类池动态更新于 memory.md</p>
+  <p style="margin-top:8px; color:var(--accent);">🌶️ 食材选品实验室 · PM严谨方法论选食材</p>
+</div>
+
+</div>
+</body>
+</html>
