@@ -1,3 +1,531 @@
-{
-  "file_path": "C:/Users/Administrator/Desktop/日推/食研日推-2026-07-03.html"
-}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 2026-07-03</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f8f5f0; color: #3d2c22; font-size: 15px; line-height: 1.7; }
+
+  .hero {
+    background: linear-gradient(135deg, #4a2c1a 0%, #8c4b28 50%, #c65d24 100%);
+    border-bottom: 1px solid #d9c8b8;
+    padding: 32px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255,199,102,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%; left: -5%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(124,154,107,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #ffe8c9;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff8f0;
+    margin-bottom: 8px;
+  }
+  .hero .sub {
+    color: #f0d9c0;
+    font-size: 14px;
+  }
+  .hero .core-wind {
+    margin-top: 16px;
+    background: rgba(255,255,255,0.08);
+    border-left: 3px solid #e8b951;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    color: #fff3e0;
+    max-width: 800px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 900px) {
+    .container { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid #e8e0d6;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(61,44,34,0.04);
+  }
+  .card-header {
+    background: linear-gradient(135deg, #f3ece4 0%, #fff 100%);
+    padding: 16px 20px;
+    border-bottom: 1px solid #e8e0d6;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-header .icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .card-header h2 {
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .card-body {
+    padding: 20px;
+  }
+
+  .col-1 .card-header { background: linear-gradient(135deg, #faf0e8 0%, #fff 100%); }
+  .col-1 .icon { background: rgba(198,93,36,0.12); color: #c65d24; }
+  .col-1 .card-header h2 { color: #a84b1e; }
+
+  .col-2 .card-header { background: linear-gradient(135deg, #f3f7ef 0%, #fff 100%); }
+  .col-2 .icon { background: rgba(124,154,107,0.12); color: #7c9a6b; }
+  .col-2 .card-header h2 { color: #5a7a4a; }
+
+  .col-3 .card-header { background: linear-gradient(135deg, #fbf6e8 0%, #fff 100%); }
+  .col-3 .icon { background: rgba(232,185,81,0.15); color: #c49a2f; }
+  .col-3 .card-header h2 { color: #9a7a26; }
+
+  .col-4 .card-header { background: linear-gradient(135deg, #f7f0f5 0%, #fff 100%); }
+  .col-4 .icon { background: rgba(176,107,143,0.12); color: #b06b8f; }
+  .col-4 .card-header h2 { color: #8b4f6e; }
+
+  .col-5 .card-header { background: linear-gradient(135deg, #f0f6fa 0%, #fff 100%); }
+  .col-5 .icon { background: rgba(88,146,174,0.12); color: #5892ae; }
+  .col-5 .card-header h2 { color: #3f6f87; }
+
+  .col-6 .card-header { background: linear-gradient(135deg, #f5f2ee 0%, #fff 100%); }
+  .col-6 .icon { background: rgba(140,107,74,0.12); color: #8c6b4a; }
+  .col-6 .card-header h2 { color: #6b4f35; }
+
+  .news-item {
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f0e9e0;
+  }
+  .news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .news-item h3 {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #3d2c22;
+    margin-bottom: 8px;
+  }
+  .news-item p {
+    font-size: 13.5px;
+    color: #5c4a3d;
+    margin-bottom: 6px;
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    font-weight: 600;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .tag-red { background: rgba(198,93,36,0.10); color: #c65d24; }
+  .tag-green { background: rgba(124,154,107,0.12); color: #5a7a4a; }
+  .tag-yellow { background: rgba(232,185,81,0.15); color: #9a7a26; }
+  .tag-blue { background: rgba(88,146,174,0.10); color: #3f6f87; }
+
+  .why {
+    background: #fdfbf7;
+    border-left: 2px solid #c65d24;
+    padding: 8px 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: #6b4f35;
+  }
+  .why strong { color: #a84b1e; }
+
+  .trend-item {
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f0e9e0;
+  }
+  .trend-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .trend-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #3d2c22;
+    margin-bottom: 6px;
+  }
+  .trend-desc {
+    font-size: 13px;
+    color: #5c4a3d;
+    margin-bottom: 6px;
+  }
+
+  .season-row {
+    margin-bottom: 12px;
+    font-size: 13.5px;
+    color: #5c4a3d;
+  }
+  .season-row strong {
+    color: #3d2c22;
+    font-weight: 700;
+  }
+  .countdown-box {
+    background: #fdfbf7;
+    border: 1px solid #e8e0d6;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: #6b4f35;
+  }
+  .countdown-box strong { color: #a84b1e; }
+
+  .inspiration-item {
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f0e9e0;
+  }
+  .inspiration-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .inspiration-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #3d2c22;
+    margin-bottom: 6px;
+  }
+  .inspiration-desc {
+    font-size: 13px;
+    color: #5c4a3d;
+    margin-bottom: 6px;
+  }
+
+  .idea-card {
+    background: #fdfbf7;
+    border: 1px solid #e8e0d6;
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 14px;
+  }
+  .idea-card:last-child { margin-bottom: 0; }
+  .idea-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #a84b1e;
+    margin-bottom: 6px;
+  }
+  .idea-card p {
+    font-size: 13px;
+    color: #5c4a3d;
+    margin-bottom: 6px;
+  }
+  .idea-card p:last-child { margin-bottom: 0; }
+
+  .expo-item, .channel-item {
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f0e9e0;
+  }
+  .expo-item:last-child, .channel-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .expo-title, .channel-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #3d2c22;
+    margin-bottom: 4px;
+  }
+  .expo-item p, .channel-item p {
+    font-size: 13px;
+    color: #5c4a3d;
+    margin-bottom: 4px;
+  }
+
+  .source {
+    font-size: 12px;
+    color: #9a8b7a;
+    margin-top: 6px;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: #9a8b7a;
+    font-size: 12px;
+    border-top: 1px solid #e8e0d6;
+  }
+  .footer a { color: #c65d24; text-decoration: none; }
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">📅 2026年7月3日 星期五</div>
+    <h1>🍽️ 食研日推 · 每日食品消费品情报</h1>
+    <div class="sub">服务下厨房食品品牌产品经理 | 聚焦开品决策与品类升级</div>
+    <div class="core-wind">
+      🧭 核心风向：小暑倒计时4天，低GI零食成为山姆/盒马货架新主流，盒马“藿香清凉水”把中式养生水卷到配料表只剩“草本+水”——清爽、洁净、功能化是本周最明确的三个产品创新信号。
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- 左侧 -->
+<div class="col-1">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🔥</div>
+      <h2>板块一：今日行业要闻</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="news-item">
+        <h3>1. 婴幼儿辅食生产新规征求意见，致敏物质与原料管控全面升级</h3>
+        <p>《婴幼儿辅助食品生产许可审查细则（征求意见稿）》近日发布，要求主要原料供应商现场审核、入库全项目检验，禁止添加蜂蜜，畜禽原料须来自规模化养殖场，并首次明确致敏物质专区存放与共线清洁要求。</p>
+        <div class="why"><strong>与我何干：</strong>配料表真实性与原料溯源正向更细分人群延伸。若未来切入儿童食品、宝妈食材或致敏友好产品，这套合规标准可提前参考，避免后期返工。</div>
+        <div class="source">来源：央视新闻 / 中国食品新闻网 · 2026-07-02</div>
+      </div>
+
+      <div class="news-item">
+        <h3>2. 食用油等重点液态食品道路散装运输须持准运证，7月1日起正式施行</h3>
+        <p>新规覆盖植物油、调味品、酒类、食糖、淀粉糖五大类14小类，要求罐车喷涂“食品专用”标识、专车专用、禁止混装，并实行发货-承运-收货三方联单管理。截至目前全国已核发准运证1239张、容器证明6949张。</p>
+        <div class="why"><strong>与我何干：</strong>若涉及酱料、食用油、糖浆等食材原料运输，供应链合规成本将上升，但合规型供应商会成为品牌信任背书；可优先选择有准运证的合作方，把“持证运输”写进产品故事。</div>
+        <div class="source">来源：中国食品新闻网 / 国家市场监管总局 · 2026-07-01</div>
+      </div>
+
+      <div class="news-item">
+        <h3>3. 低GI零食攻陷会员店货架，山姆/盒马已上架14款主流产品</h3>
+        <p>低GI食品从“糖尿病专属”走向大众健康零食。目前山姆、盒马等渠道热销的低GI/慢糖类产品至少包括14款，核心供应商涵盖玛士撒拉（Magicastle）、盐津铺子、知味轩、ffit8、鑫香果、四川香香嘴、黄老五等。</p>
+        <div class="why"><strong>与我何干：</strong>低GI正在从功能概念变成渠道准入标签。下厨房做零食、烘焙、酱料时，可提前布局“低GI/慢升糖”卖点，并绑定具体供应商资源形成壁垒。</div>
+        <div class="source">来源：Foodaily / inewfood · 2026-07-02</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- 右侧 -->
+<div class="col-2">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🎯</div>
+      <h2>板块二：爆品雷达·趋势苗头</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="trend-item">
+        <div class="trend-title">低GI零食名单曝光：14款产品与供应链图谱 <span class="tag tag-red">🔴 已爆</span></div>
+        <div class="trend-desc">主流低GI/慢糖产品包括：玛士撒拉DGI全麦面包、盐津铺子低GI坚果棒、知味轩低GI每日坚果、ffit8燕麦蛋白谷物棒、鑫香果低GI黑巧、四川香香嘴低GI豆干、黄老五低GI花生酥等。产品形态从代餐棒向烘焙、坚果、巧克力、豆制品全品类扩张。</div>
+        <div class="why"><strong>机会判断：</strong>低GI产品矩阵正在会员店快速成型，但“好吃+低GI”仍稀缺。下厨房可从“清洁配料+真实食材甜味”切入，避开代糖口感陷阱。</div>
+      </div>
+
+      <div class="trend-item">
+        <div class="trend-title">盒马7月新品：藿香清凉水把配料表卷到“只剩两样” <span class="tag tag-red">🔴 已爆</span></div>
+        <div class="trend-desc">盒马7月推出“盒马藿香清凉水”，配料仅含如皋藿香和水，无其他添加。同期上架的还有红豆冰面包、酸梅味原切薯片、绿豆冰酪、提拉米苏风味分层酸奶等夏季限定，抖音端“盒马7月新品”话题持续升温。</div>
+        <div class="why"><strong>机会判断：</strong>“草本+水”的极简配方是中式养生水2.0的竞争终局。下厨房做夏季饮品/食材时，可尝试“单一产地草本+纯净水”的极简叙事，把产地和工艺透明化。</div>
+      </div>
+
+      <div class="trend-item">
+        <div class="trend-title">康普茶/发酵茶特调持续走红：发酵风味成为健康饮品新锚点 <span class="tag tag-yellow">🟡 起势</span></div>
+        <div class="trend-desc">霸王茶姬“橙柚康普”、奈雪“凤柚浮光/气泡乌龙”、星巴克“玫瑰黑加仑冰摇康普茶”相继上市。发酵茶与“低糖+益生菌”心智绑定，西安康普茶专门店“润无界”月复购率25%-30%。</div>
+        <div class="why"><strong>机会判断：</strong>发酵风味可迁移到即饮、佐餐或家用发酵场景。抖音上“可在家自制”的发酵食材包仍属空白，存在品类机会。</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- 左侧 -->
+<div class="col-3">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🌿</div>
+      <h2>板块三：时令风向·品类机会</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="season-row"><strong>📅 当前时令定位：</strong>小暑前4天（7月7日小暑），全年最密集的时令切换窗口。阳山水蜜桃白凤已收官，湖景蜜露进入倒计时；云南野生菌维持交易高峰；阳澄湖六月黄进入限定尾期。</div>
+
+      <div class="countdown-box">
+        <strong>⏰ 倒计时：</strong>小暑 <strong>4</strong> 天 · 大暑 <strong>20</strong> 天 · 立秋 <strong>35</strong> 天 · 中秋 <strong>84</strong> 天
+      </div>
+
+      <div class="season-row"><strong>🎯 即将热卖：</strong></div>
+      <div class="news-item">
+        <h3>阳山湖景蜜露水蜜桃</h3>
+        <p>预计7月10-15日登场，阳山水蜜桃的“甜度天花板”。新启用阳山水蜜桃市场+顺丰专项物流，破损率降至0.7%，全国295城直达。</p>
+      </div>
+      <div class="news-item">
+        <h3>云南野生菌全品类</h3>
+        <p>7月交易高峰期持续，日交易量达200吨。松茸价格从“头水”1万元/kg降至3000-4000元/kg，鸡枞菌精品约1000元/kg，见手青约300元/kg，白葱牛肝菌100-200元/kg，是“精品普惠”叙事的最佳窗口。</p>
+      </div>
+      <div class="news-item">
+        <h3>阳澄湖六月黄大闸蟹</h3>
+        <p>6-7月限定，蟹黄流油，窗口约30天。作为大闸蟹“前传”，可提前布局中秋大闸蟹话题热度。</p>
+      </div>
+
+      <div class="season-row"><strong>🚨 窗口提醒：</strong>东魁杨梅最后2-3天、桂味荔枝已收官、白凤水蜜桃已结束；湖景蜜露倒计时7-10天，错过需等明年。</div>
+
+      <div class="season-row"><strong>🏔️ 产地直发机会：</strong></div>
+      <div class="why"><strong>江苏无锡阳山</strong>·湖景蜜露（7/10-15登场）——新市场+专业冷链，适合做“产地首发”预售；<br><strong>云南楚雄/南华</strong>·野生菌（7月高峰）——价格下降放量，适合科普选品+高客单礼盒；<br><strong>江苏苏州阳澄湖</strong>·六月黄（6-7月尾期）——稀缺限定，适合短保预售和中秋前传内容。</div>
+
+    </div>
+  </div>
+</div>
+
+<!-- 右侧 -->
+<div class="col-4">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">💡</div>
+      <h2>板块四：跨界灵感·创新动作</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="inspiration-item">
+        <div class="inspiration-title">🍲 海底捞“霸道吃鱼季”：把情绪价值做成夏季新品</div>
+        <div class="inspiration-desc">海底捞7月推出青花椒霸道财鱼锅、霸道8秒财鱼片、霸道发财鱼糕，上线一周财鱼片销量超21万份、发财鱼糕超12万份。同时发起“在海底捞画鱼”社交打卡，把“生财有道”寓意消费拉满。</div>
+        <div class="why"><strong>迁移可能：</strong>食材+好运寓意+社交打卡是低成本的抖音内容公式。下厨房做“小暑/中秋限定”食材礼盒时，可复用“寓意命名+视觉打卡”逻辑。</div>
+      </div>
+
+      <div class="inspiration-item">
+        <div class="inspiration-title">🌿 盒马藿香清凉水：中式养生水进入“极简配料”竞争</div>
+        <div class="inspiration-desc">盒马藿香清凉水配料只有“如皋藿香+水”，无其他添加。相比市面上多种药食同源复配，盒马选择把单一食材的产地和工艺透明化，形成“越简单越难模仿”的壁垒。</div>
+        <div class="why"><strong>迁移可能：</strong>“单一产地+单一食材+零添加”是差异化高地。下厨房做夏季食材包时，可尝试“产地限定薄荷水/紫苏水/陈皮水”等极简SKU。</div>
+      </div>
+
+      <div class="inspiration-item">
+        <div class="inspiration-title">🌍 日本土用丑日鳗鱼节：7月26日限定消费节点</div>
+        <div class="inspiration-desc">日本7月26日为“土用丑日”，传统上吃鳗鱼补充元气。便利店和商超会提前2-3周布局蒲烧鳗鱼、鳗鱼饭团等限定产品。国内尚无同等心智的“夏日进补”节点。</div>
+        <div class="why"><strong>迁移可能：</strong>可借鉴“节气/民俗+高蛋白食材”的限定营销。例如小暑前后推出“菌菇高蛋白进补礼盒”或“鳗鱼/鳝鱼夏日滋补套餐”。</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- 左侧 -->
+<div class="col-5">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🧪</div>
+      <h2>板块五：脑暴时刻·融合创意</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="idea-card">
+        <div class="idea-name">🍫 创意一：「低GI零食选品盲盒」</div>
+        <p><strong>一句话描述：</strong>基于山姆/盒马已验证的14款低GI产品，推出“PM严选低GI零食盲盒”，每盒5-6款，附配料表解读卡和血糖友好指数说明。</p>
+        <p><strong>为什么是现在：</strong>低GI正在从功能概念变成渠道准入标签；但消费者不知道哪些产品真的低GI、为什么低GI。PM身份天然适合扮演“选品解释者”。</p>
+        <p><strong>差异化锚点：</strong>市面低GI产品各自为战，缺乏“组合+科普”的买手形态。我们用“真实测评+选品方法论”建立信任，而非单纯堆SKU。</p>
+        <p><strong>可行性初判：</strong>供应链难度低（可从现有供应商拿货），渠道适配小红书店铺/抖音达播；客单价可做到128-198元，覆盖冷链/物流成本。</p>
+      </div>
+
+      <div class="idea-card">
+        <div class="idea-name">🍃 创意二：「产地草本清凉水订阅盒」</div>
+        <p><strong>一句话描述：</strong>以盒马藿香清凉水为灵感，推出“如皋藿香水/云南紫苏水/新会陈皮水”等单一产地草本水月度订阅盒，每款配料只有“草本+水”。</p>
+        <p><strong>为什么是现在：</strong>中式养生水进入2.0品质竞争，产地公开和工艺透明成壁垒；夏季清凉水需求高频，订阅模式可提升复购。</p>
+        <p><strong>差异化锚点：</strong>市面养生水多为多草本复配，我们以“单一产地单一食材”建立稀缺感和产地信任，同时避免复杂配料带来的合规风险。</p>
+        <p><strong>可行性初判：</strong>供应链难度中等（需找到稳定草本产地和灌装产线），渠道适配小红书订阅+抖音达播；短保冷链，适合预售制。</p>
+      </div>
+
+      <div class="idea-card">
+        <div class="idea-name">🍄 创意三：「云南菌菇·高纤维轻食碗」</div>
+        <p><strong>一句话描述：</strong>以见手青/白葱牛肝菌为主角，搭配魔芋、燕麦、藜麦等高纤维基底，微波90秒即食的“夏季减脂版菌菇饭”。</p>
+        <p><strong>为什么是现在：</strong>云南野生菌7月价格下降放量，是全年最佳“精品普惠”叙事；Whole Foods“纤维聚焦”与康普茶健康趋势同频，夏季减脂场景需求强。</p>
+        <p><strong>差异化锚点：</strong>市面预制菌菇饭多为香菇杏鲍菇，鲜少使用见手青/牛肝菌；我们用云南产地鲜菌+急冻锁鲜，把“菌子季限定”做成稀缺卖点。</p>
+        <p><strong>可行性初判：</strong>供应链难度较高（野生菌安全加工、致敏/毒性风险），需与有资质的云南工厂合作；渠道适配抖音精品直播间，强调“产地+安全+时令”。</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- 右侧 -->
+<div class="col-6">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🏬</div>
+      <h2>板块六：展会速递·渠道上新</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="expo-item">
+        <div class="expo-title">🎪 2026高端食品及优质农产品（深圳）博览会 / 深圳渔博会 / 深圳茶博会</div>
+        <p><strong>时间地点：</strong>7月2日-5日 · 深圳会展中心（福田）<span class="tag tag-red">进行中</span></p>
+        <p><strong>看点：</strong>三展联动，1500+参展商、30+国家地区、20+专题论坛；英国、加拿大、韩国等多国优品，澄海狮头鹅、潮汕牛肉丸、喀什灰枣、察隅猕猴桃等南北风物齐聚。</p>
+        <div class="why"><strong>与我何干：</strong>粤港澳大湾区高端食品、地理标志食材、渔业供应链一站式对接，适合寻找产地直发合作和进口食材灵感。</div>
+      </div>
+
+      <div class="expo-item">
+        <div class="expo-title">🎪 2026深圳国际冷冻冷藏食品展</div>
+        <p><strong>时间地点：</strong>7月8日-10日 · 深圳国际会展中心（宝安）</p>
+        <p><strong>看点：</strong>聚焦冷冻面点、调理食品、预制菜、冷链物流，覆盖冻品产业链上下游。</p>
+        <div class="why"><strong>与我何干：</strong>若布局菌菇轻食碗、低GI冷链零食等短保产品，可在此对接冻品供应链和冷链物流资源。</div>
+      </div>
+
+      <div class="expo-item">
+        <div class="expo-title">🎪 中国（郑州）烘焙展览会</div>
+        <p><strong>时间地点：</strong>7月17日-20日 · 郑州国际会展中心</p>
+        <p><strong>看点：</strong>烘焙原料、设备、包装一站式展会，低GI烘焙、冰感烘焙、功能性烘焙是热点。</p>
+        <div class="why"><strong>与我何干：</strong>低GI/冰感烘焙是下半年重点赛道，可寻找原料供应商和代工资源。</div>
+      </div>
+
+      <div class="expo-item">
+        <div class="expo-title">🎪 中国（龙海）食品博览会</div>
+        <p><strong>时间地点：</strong>7月17日-19日 · 福建漳州龙海</p>
+        <p><strong>看点：</strong>休闲食品、烘焙糕点、预制菜产业集群集中展示，福建食品供应链资源丰富。</p>
+        <div class="why"><strong>与我何干：</strong>龙海是国内重要食品产业带，适合对接零食、烘焙、罐头类OEM工厂。</div>
+      </div>
+
+      <div class="channel-item">
+        <div class="channel-title">🛒 渠道上新</div>
+        <p><strong>盒马</strong>：7月新品——藿香清凉水（如皋藿香+水）、红豆冰面包、酸梅味原切薯片、绿豆冰酪、提拉米苏风味分层酸奶。</p>
+        <p><strong>海底捞</strong>：霸道吃鱼季——青花椒财鱼锅、8秒财鱼片、发财鱼糕，配合“画鱼”社交打卡。</p>
+        <p><strong>山姆</strong>：低GI/慢糖类产品上架提速，与盐津铺子、知味轩、ffit8等供应商合作。</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <p>⚠️ 以上内容由AI自动聚合公开信息生成，信息来源已标注，仅供参考，不构成投资建议或商业决策依据。</p>
+  <p>主要信源：中国食品新闻网、央视新闻、Foodaily、inewfood、FBIF/FoodTalks、前瞻产业研究院、盒马/海底捞官方信息</p>
+  <p style="margin-top:8px;">Generated by WorkBuddy 食研日推 · 2026-07-03 09:00 CST</p>
+</div>
+
+</body>
+</html>
