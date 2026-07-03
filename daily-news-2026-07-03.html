@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日双专栏情报卡片 - 2026-07-03</title>
+    <style>
+        :root {
+            --bg: #f5f7fa;
+            --card-bg: #ffffff;
+            --text: #1a1a2e;
+            --text-secondary: #4a5568;
+            --accent: #2563eb;
+            --accent-light: #dbeafe;
+            --accent-red: #dc2626;
+            --accent-red-light: #fee2e2;
+            --accent-green: #059669;
+            --accent-green-light: #d1fae5;
+            --accent-purple: #7c3aed;
+            --accent-purple-light: #ede9fe;
+            --accent-orange: #ea580c;
+            --accent-orange-light: #ffedd5;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+            color: white;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-lg);
+        }
+        header h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+        header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+        header .date {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 20px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        @media (max-width: 1100px) {
+            .columns { grid-template-columns: 1fr; }
+        }
+        .column-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .column-header {
+            padding: 25px;
+            color: white;
+            position: relative;
+        }
+        .column-header.news {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+        }
+        .column-header.ai {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        }
+        .column-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .column-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        .column-body {
+            padding: 25px;
+        }
+        .section {
+            margin-bottom: 28px;
+        }
+        .section:last-child {
+            margin-bottom: 0;
+        }
+        .section-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title.news-accent {
+            background: var(--accent-red-light);
+            color: var(--accent-red);
+        }
+        .section-title.ai-accent {
+            background: var(--accent-light);
+            color: var(--accent);
+        }
+        .section-title.green {
+            background: var(--accent-green-light);
+            color: var(--accent-green);
+        }
+        .section-title.purple {
+            background: var(--accent-purple-light);
+            color: var(--accent-purple);
+        }
+        .section-title.orange {
+            background: var(--accent-orange-light);
+            color: var(--accent-orange);
+        }
+        .core-wind {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 5px solid #f59e0b;
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #92400e;
+            margin-bottom: 25px;
+        }
+        .news-item {
+            background: #fafafa;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        .news-item h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-red-light);
+        }
+        .detail-block {
+            margin-bottom: 12px;
+        }
+        .detail-block:last-child {
+            margin-bottom: 0;
+        }
+        .detail-label {
+            font-weight: 700;
+            color: var(--text);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .detail-content {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            padding-left: 5px;
+        }
+        .detail-content p {
+            margin-bottom: 8px;
+        }
+        .detail-content p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight {
+            background: linear-gradient(120deg, #fef08a 0%, #fef08a 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 88%;
+            padding: 0 2px;
+            font-weight: 600;
+        }
+        .summary-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #bae6fd;
+            border-radius: 14px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .summary-box h3 {
+            color: #0369a1;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .summary-box ul {
+            padding-left: 18px;
+            color: var(--text-secondary);
+        }
+        .summary-box li {
+            margin-bottom: 8px;
+        }
+        .ai-card {
+            background: #fafafa;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 14px;
+        }
+        .ai-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .ai-card .metric {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
+        .ai-card .metric.green {
+            background: var(--accent-green-light);
+            color: var(--accent-green);
+        }
+        .ai-card .metric.purple {
+            background: var(--accent-purple-light);
+            color: var(--accent-purple);
+        }
+        .ai-card .metric.orange {
+            background: var(--accent-orange-light);
+            color: var(--accent-orange);
+        }
+        .ai-card .metric.red {
+            background: var(--accent-red-light);
+            color: var(--accent-red);
+        }
+        .github-grid {
+            display: grid;
+            gap: 10px;
+        }
+        .github-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+        .github-item .name {
+            font-weight: 700;
+            color: var(--text);
+        }
+        .github-item .desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+        .github-item .stars {
+            font-weight: 700;
+            color: var(--accent-orange);
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+        .tag {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 5px;
+        }
+        .tag.blue { background: var(--accent-light); color: var(--accent); }
+        .tag.green { background: var(--accent-green-light); color: var(--accent-green); }
+        .tag.purple { background: var(--accent-purple-light); color: var(--accent-purple); }
+        .tag.orange { background: var(--accent-orange-light); color: var(--accent-orange); }
+        .tag.red { background: var(--accent-red-light); color: var(--accent-red); }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        ul.detail-list {
+            padding-left: 18px;
+            color: var(--text-secondary);
+        }
+        ul.detail-list li {
+            margin-bottom: 6px;
+        }
+        .twitter-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+        .twitter-card .handle {
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+        .twitter-card .tweet-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        .source-note {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 8px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>每日双专栏情报卡片</h1>
+            <p class="subtitle">新闻联播风向标 × AI生产力情报</p>
+            <span class="date">2026-07-03</span>
+        </header>
+
+        <div class="columns">
+            <!-- 专栏一：新闻联播 -->
+            <div class="column-card">
+                <div class="column-header news">
+                    <h2>专栏一：新闻联播每日简报</h2>
+                    <p>风向标解读版 · 2026年7月2日 19:00档</p>
+                </div>
+                <div class="column-body">
+                    <div class="section">
+                        <div class="section-title news-accent">📌 一、核心风向</div>
+                        <div class="core-wind">
+                            7月2日新闻联播以"建党105周年政治定调"与"高质量发展"为主线，同步释放服务贸易升级、机电出口强劲、防汛防台风安全底线的多重复合信号，体现政治大年与经济运行、安全治理的统筹逻辑。
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title news-accent">📰 二、分项解读</div>
+
+                        <div class="news-item">
+                            <h3>1. 习近平建党105周年重要讲话引发热烈反响</h3>
+                            <div class="detail-block">
+                                <div class="detail-label">🔍 新闻联播说了什么</div>
+                                <div class="detail-content">
+                                    <p>央视网消息（新闻联播）：习近平总书记在庆祝中国共产党成立105周年大会上的重要讲话，在中央和国家机关、人民团体广大党员干部中引发热烈反响。</p>
+                                    <p>习近平总书记强调，<span class="highlight">105年不懈奋斗</span>从根本上改变了中国人民的前途命运，开辟了实现中华民族伟大复兴的正确道路，展示了马克思主义的强大生命力，深刻影响了世界历史进程，锻造了强大的中国共产党。</p>
+                                    <p>总书记用<span class="highlight">"六个始终"</span>揭示中国共产党为什么能的关键密码，并提出新时代新征程的<span class="highlight">"五个必须"</span>：必须坚持党的基本理论、基本路线、基本方略；必须紧紧依靠人民创造历史伟业；必须积极应对前进道路上的风险挑战；必须持续推动构建人类命运共同体；必须持之以恒推进全面从严治党。</p>
+                                </div>
+                            </div>
+                            <div class="detail-block">
+                                <div class="detail-label">🎯 风向标解读</div>
+                                <div class="detail-content">
+                                    105周年讲话将政治大年定调与现代化目标绑定，"六个始终"和"五个必须"是下一阶段政策执行的顶层框架。讲话排在当日头条并占最长篇幅，说明政策重心仍是<strong>稳定预期、凝聚共识、强化执行力</strong>，为下半年重要会议预热。
+                                </div>
+                            </div>
+                            <div class="detail-block">
+                                <div class="detail-label">🏭 行业影响</div>
+                                <div class="detail-content">
+                                    <span class="tag red">政治确定性</span>政策连续性强的板块（央企、金融、基础设施、国防）受益；<span class="tag blue">信心修复</span>有助于资本市场风险偏好稳定；<span class="tag green">人民导向</span>民生、消费、共同富裕相关领域将获得更多政策资源。
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="news-item">
+                            <h3>2. 《习近平谈治国理政》第五卷土耳其推介会在安卡拉举行</h3>
+                            <div class="detail-block">
+                                <div class="detail-label">🔍 新闻联播说了什么</div>
+                                <div class="detail-content">
+                                    <p>央视网消息（新闻联播）：《习近平谈治国理政》第五卷推介会<span class="highlight">7月1日在土耳其首都安卡拉</span>举行，由中国国务院新闻办公室、中国外文局、中国驻土耳其大使馆共同主办。</p>
+                                    <p>土耳其大国民议会副议长<span class="highlight">杰拉勒·阿丹</span>、土耳其文化和旅游部副部长<span class="highlight">格克汗·亚兹格</span>、土耳其知名汉学家<span class="highlight">吉来·菲丹</span>等中土两国嘉宾以及出版、智库、媒体等各界人士<span class="highlight">200余人</span>出席活动。</p>
+                                    <p>时值<span class="highlight">中土建交55周年</span>，两国以现代化为主题开展治国理政经验交流，加强共建"一带一路"倡议与"中间走廊"对接，推动经贸投资、人文交流和旅游合作。</p>
+                                </div>
+                            </div>
+                            <div class="detail-block">
+                                <div class="detail-label">🎯 风向标解读</div>
+                                <div class="detail-content">
+                                    在北约成员国土耳其高调举办治国理政推介会，是<span class="highlight">"制度自信+外交破圈"</span>的复合动作。选择安卡拉而非传统友好国家，意在向西方阵营释放"对话窗口仍开放"信号，同时为"一带一路"在中亚-中东节点拓展影响力。
+                                </div>
+                            </div>
+                            <div class="detail-block">
+                                <div class="detail-label">🏭 行业影响</div>
+                                <div class="detail-content">
+                                    <span class="tag blue">跨境文旅</span>土耳其、中亚航线及出境游服务商潜在受益；<span class="tag purple">出版传媒</span>外宣类出版机构、多语种内容输出平台机会增加；<span class="tag orange">基建出海</span>"中间走廊"与"一带一路"对接项目（铁路、能源、港口）相关央企值得关注。
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="news-item">
+                            <h3>3. 前5个月我国知识密集型服务出口增长12.2%</h3>
+                            <div class="detail-block">
+                                <div class="detail-label">🔍 新闻联播说了什么</div>
+                                <div class="detail-content">
+                                    <p>央视网消息（新闻联播）：商务部最新数据显示，今年<span class="highlight">前5个月，我国服务进出口总额30994.8亿元，同比增长6%</span>。</p>
+                                    <p>其中，<span class="highlight">知识密集型服务出口6677.5亿元，增长12.2%</span>。知识产权使用费出口增速达<span class="highlight">64.9%</span>，个人文化和娱乐服务出口增速达<span class="highlight">50.1%</span>。</p>
+                                    <p>在一系列扩大入境旅游消费政策推动下，<span class="highlight">旅行服务出口1885亿元，同比增长31.3%</span>，在前五大服务出口领域中增速最快。</p>
+                                </div>
+                            </div>
+                            <div class="detail-block">
+                                <div class="detail-label">🎯 风向标解读</div>
+                                <div class="detail-content">
+                                    服务贸易从"规模扩张"转向"结构升级"，知识产权使用费64.9%的增速说明中国技术输出能力在提升。旅行服务出口31.3%高增长，是"扩大入境旅游消费政策"的直接效果，预示着服务业开放政策进入兑现期。
+                                </div>
+                            </div>
+                            <div class="detail-block">
+                                <div class="detail-label">🏭 行业影响</div>
+                                <div class="detail-content">
+                                    <span class="tag green">知识产权服务</span>专利代理、技术许可、版权交易平台；<span class="tag orange">入境旅游</span>免签政策红利下的酒店、OTA、免税、景区；<span class="tag purple">数字文化</span>游戏、影视、短剧出海及IP运营；<span class="tag blue">服务贸易综试区</span>相关区域政策红利持续。
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="news-item">
+                            <h3>4. 机电产品出口增势良好，外贸发展质效双升</h3>
+                            <div class="detail-block">
+                                <div class="detail-label">🔍 新闻联播说了什么</div>
+                                <div class="detail-content">
+                                    <p>央视网消息（新闻联播）：今年以来，我国机电产品出口保持良好增长势头，<span class="highlight">机电产品出口额连续15个月刷新同期月度最高值</span>。</p>
+                                    <p><span class="highlight">人工智能产业链相关产品贡献了机电产品出口增量的五成以上</span>。集成电路出口额同比增速由去年3月的9.6%提高到今年5月的<span class="highlight">100.7%</span>；自动数据处理设备及其零部件出口额同比增速由1.9%提高到<span class="highlight">58.2%</span>。</p>
+                                    <p>今年前5个月，我国机电产品出口<span class="highlight">7.58万亿元</span>，占我国出口总值的比重达到<span class="highlight">63.6%</span>，同比提高3.6个百分点。电动矿卡、电动叉车、工业车辆出口额显著增长。</p>
+                                </div>
+                            </div>
+                            <div class="detail-block">
+                                <div class="detail-label">🎯 风向标解读</div>
+                                <div class="detail-content">
+                                    机电产品占出口总值63.6%，且连续15个月创新高，说明外贸韧性主要来自<strong>高技术制造业</strong>而非传统劳动密集型产品。AI产业链贡献超五成增量，集成电路出口增速从9.6%→100.7%，这是"新质生产力"外贸化的直接证据。
+                                </div>
+                            </div>
+                            <div class="detail-block">
+                                <div class="detail-label">🏭 行业影响</div>
+                                <div class="detail-content">
+                                    <span class="tag purple">半导体</span>集成电路设计与封测企业高景气；<span class="tag blue">AI硬件</span>服务器、光模块、自动数据处理设备；<span class="tag green">新能源装备</span>电动矿卡、叉车、工程机械电动化；<span class="tag orange">外贸综合</span>机电出口占主导的港口、物流、跨境电商B2B。
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="news-item">
+                            <h3>5. 各地采取有力措施做好防汛防台风工作</h3>
+                            <div class="detail-block">
+                                <div class="detail-label">🔍 新闻联播说了什么</div>
+                                <div class="detail-content">
+                                    <p>央视网消息（新闻联播）：当前，各地各部门采取有力措施做好防汛、防台风各项工作。</p>
+                                    <p><span class="highlight">安徽黄山</span>持续降雨，<span class="highlight">休宁县境内的国家重点水利工程——月潭水库</span>实施错峰预泄，精准计算洪峰到达时间与流量，科学实施错峰、削峰调度。</p>
+                                    <p><span class="highlight">重庆万州</span>多个雨量站达暴雨级别，当地立即启动应急响应，交通、城管等部门开展城区排涝疏通、道路保障。</p>
+                                    <p>据气象部门预报，南海热带低压将于7月2日发展为台风，受其影响，预计<span class="highlight">7月3日至5日，海南岛、广东、广西等地</span>将先后有大到暴雨，局部地区有大暴雨到特大暴雨。<span class="highlight">7月2日12时，国家防总针对海南、广西、广东启动防汛防台风四级应急响应</span>，并派出工作组赴海南一线协助指导。</p>
+                                    <p>广西海事局及下辖北海、钦州、防城港三个海事局已于7月1日下午同步启动防台风四级应急响应；<span class="highlight">琼州海峡客滚运输将于7月3日凌晨2时起全线停运</span>，预计停运将持续到4日夜间；截至7月2日中午，<span class="highlight">广东全省超3.69万艘渔船已在港避风</span>。</p>
+                                </div>
+                            </div>
+                            <div class="detail-block">
+                                <div class="detail-label">🎯 风向标解读</div>
+                                <div class="detail-content">
+                                    国家防总12时启动四级响应、派出工作组，琼州海峡停运、3.69万艘渔船回港，显示<span class="highlight">"预报预警—工程调度—应急动员"</span>全链条机制已常态化。重点在于数字孪生水利、气象精准预报、应急通信等能力支撑。
+                                </div>
+                            </div>
+                            <div class="detail-block">
+                                <div class="detail-label">🏭 行业影响</div>
+                                <div class="detail-content">
+                                    <span class="tag blue">水利基建</span>水库、堤防、泵站、海绵城市；<span class="tag green">应急产业</span>卫星通信、无人机巡检、应急物资；<span class="tag orange">农业保险</span>台风、暴雨导致的灾后修复与理赔需求；<span class="tag red">交通运输</span>琼州海峡停运影响短期物流，但港口应急能力强的企业更具韧性。
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="news-item">
+                            <h3>6. "七一勋章"获得者马善祥：矛盾化解践初心</h3>
+                            <div class="detail-block">
+                                <div class="detail-label">🔍 新闻联播说了什么</div>
+                                <div class="detail-content">
+                                    <p>央视网消息（新闻联播）："七一勋章"获得者、来自<span class="highlight">重庆市两江新区观音桥街道</span>的退休干部马善祥，30多年扎根基层调解一线，<span class="highlight">化解了2500多件群众矛盾</span>，总结形成"老马工作法""老马三十六策"，为基层治理提供可复制的"暖心样本"。</p>
+                                    <p>30多年来，他已经写了<span class="highlight">280多本工作笔记</span>。"老马工作室"在全国各地党政机关和各大高校开展宣讲<span class="highlight">8000多场次</span>。</p>
+                                    <p>通过"老马带小马"，重庆市已经建立<span class="highlight">3080个"小马工作站"</span>，成为当地加强和创新基层社会治理、坚持和发展新时代"枫桥经验"的新名片。</p>
+                                </div>
+                            </div>
+                            <div class="detail-block">
+                                <div class="detail-label">🎯 风向标解读</div>
+                                <div class="detail-content">
+                                    马善祥案例是"七一勋章"典型宣传的延续，核心信号是<span class="highlight">"基层治理现代化"</span>和新时代"枫桥经验"的制度化推广。3080个"小马工作站"的规模化复制，说明基层矛盾化解正从"个人经验"升级为"组织化能力"。
+                                </div>
+                            </div>
+                            <div class="detail-block">
+                                <div class="detail-label">🏭 行业影响</div>
+                                <div class="detail-content">
+                                    <span class="tag purple">社会治理</span>智慧社区、网格化管理平台、矛盾纠纷调解SaaS；<span class="tag blue">公共服务</span>基层政务数字化、群众诉求响应系统；<span class="tag green">培训咨询</span>基层治理方法论输出、党校/干部学院相关课程。
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="news-item">
+                            <h3>7. 国内联播快讯</h3>
+                            <div class="detail-block">
+                                <div class="detail-label">🔍 新闻联播说了什么</div>
+                                <div class="detail-content">
+                                    <ul class="detail-list">
+                                        <li><strong>2026年高校毕业生等青年就业服务攻坚行动</strong>启动</li>
+                                        <li><strong>市场监管总局</strong>开展食品抽检队伍扩容提质增效行动</li>
+                                        <li><strong>北京人工智能赋能科学研究实施方案</strong>启动</li>
+                                        <li><strong>中老铁路</strong>累计进出口货值突破<span class="highlight">900亿元</span></li>
+                                        <li><strong>中俄蒙"万里茶道"</strong>十条跨境精品旅游线路发布</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="detail-block">
+                                <div class="detail-label">🎯 风向标解读</div>
+                                <div class="detail-content">
+                                    国内快讯覆盖就业、食品安全、AI+科研、陆海新通道、跨境文旅五条线，体现"稳就业、强监管、促创新、扩开放"的组合拳。北京"AI赋能科研"实施方案与《习近平谈治国理政》推介会、机电出口数据形成"科技创新+制度开放+产业出口"的政策三角。
+                                </div>
+                            </div>
+                            <div class="detail-block">
+                                <div class="detail-label">🏭 行业影响</div>
+                                <div class="detail-content">
+                                    <span class="tag blue">就业服务</span>招聘平台、职业培训、人力资源SaaS；<span class="tag green">AI+科研</span>北京高校/科研院所的科研Agent、实验自动化；<span class="tag orange">跨境物流</span>中老铁路沿线仓储、跨境电商老挝/东南亚；<span class="tag purple">跨境文旅</span>中俄蒙边境游、茶文化主题线路。
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="news-item">
+                            <h3>8. 国际联播快讯</h3>
+                            <div class="detail-block">
+                                <div class="detail-label">🔍 新闻联播说了什么</div>
+                                <div class="detail-content">
+                                    <ul class="detail-list">
+                                        <li>俄称在<strong>日本部署美国导弹</strong>严重破坏亚太稳定</li>
+                                        <li>美国称不同意以现有形式续签<strong>美墨加协定</strong></li>
+                                        <li><strong>"北溪"爆炸案</strong>一乌克兰嫌疑人被德国起诉</li>
+                                        <li>欧盟法院驳回上诉，<strong>谷歌</strong>面临巨额罚单</li>
+                                        <li>美军一直升机在<strong>阿拉伯海</strong>紧急水上迫降</li>
+                                        <li>机构称6月单日全球海面平均温度破纪录</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="detail-block">
+                                <div class="detail-label">🎯 风向标解读</div>
+                                <div class="detail-content">
+                                    国际快讯凸显三重地缘张力：<strong>安全</strong>（亚太导弹部署、北溪案、中东军事摩擦）、<strong>经贸规则</strong>（美墨加协定重谈、欧盟反垄断）、<strong>气候</strong>（海面温度破纪录）。全球不确定性维持高位，能源安全、供应链韧性、气候适应仍是长期主题。
+                                </div>
+                            </div>
+                            <div class="detail-block">
+                                <div class="detail-label">🏭 行业影响</div>
+                                <div class="detail-content">
+                                    <span class="tag red">军工安全</span>亚太地区导弹防御、军工电子；<span class="tag orange">能源</span>北溪案持续影响欧洲能源格局，LNG、能源贸易套利机会；<span class="tag blue">出海合规</span>欧盟反垄断与数据合规（谷歌罚单预示）；<span class="tag green">气候科技</span>海洋监测、碳汇、极端天气预警。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title green">📊 三、总结风向标</div>
+                        <div class="summary-box">
+                            <h3>当日政策走向与投资主线</h3>
+                            <ul>
+                                <li><strong>政治主线</strong>：建党105周年定调稳定，"六个始终"和"五个必须"为下半年政策执行提供框架，央企、基建、金融等政策连续性板块受益。</li>
+                                <li><strong>经济主线</strong>：服务贸易结构升级（知识密集型+12.2%）与机电出口高景气（占出口63.6%）并行，"新质生产力"外贸化加速，半导体、AI硬件、新能源装备是高弹性方向。</li>
+                                <li><strong>安全主线</strong>：防汛防台风四级响应启动，水利、应急、气象、农业保险进入事件驱动窗口；全球海面温度破纪录强化气候科技长期叙事。</li>
+                                <li><strong>开放主线</strong>：土耳其推介会、中老铁路900亿元、中俄蒙"万里茶道"十条线路，跨境文旅、出版传媒、中亚-中东基建出海获得政策背书。</li>
+                                <li><strong>投资建议</strong>：短期关注防汛应急与台风概念股；中期布局高技术制造出口链（半导体、AI服务器、电动工程机械）；长期持有政策确定性强的央企红利与跨境物流/文旅标的。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 专栏二：AI生产力情报 -->
+            <div class="column-card">
+                <div class="column-header ai">
+                    <h2>专栏二：AI生产力情报</h2>
+                    <p>黑科技与套利指南 · 2026-07-03</p>
+                </div>
+                <div class="column-body">
+                    <div class="section">
+                        <div class="section-title ai-accent">🚀 AI 生产力黑洞：今日黑科技与套利指南</div>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 20px;">📅 日期：2026-07-03</p>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title ai-accent">🛠️ 顶级装备库更新</div>
+
+                        <div class="ai-card">
+                            <h4>🔥 Anthropic Claude Fable 5 戏剧性回归</h4>
+                            <span class="metric red">政府指令</span>
+                            <span class="metric">安全模型</span>
+                            <span class="metric purple">7月1日-7日免费</span>
+                            <p style="margin-top: 10px; color: var(--text-secondary); font-size: 0.95rem;">
+                                <strong>核心黑科技：</strong>6月9日发布的Fable 5/Mythos 5在6月12日因美国出口管制指令（亚马逊报告网络安全防护绕过问题）全球下线，7月1日恢复上线后新增<span class="highlight">分类器防护</span>和<span class="highlight">越狱严重性评分框架</span>。这是首次出现前沿模型因政府指令、云合作伙伴报告或安全防护失败而被全球关闭的先例。<br><br>
+                                <strong>实战价值：</strong>模型路线图正变成政策路线图。对于需要合规使用前沿模型的企业，必须建立<span class="highlight">"安全审查+多供应商备份"</span>的双保险机制。Pro/Max/Team/Enterprise用户7月1日-7日可免费体验（消耗现有周限额）。
+                            </p>
+                        </div>
+
+                        <div class="ai-card">
+                            <h4>⚡ NVIDIA Nemotron-Labs-TwoTower 双塔扩散模型</h4>
+                            <span class="metric green">98.7%质量</span>
+                            <span class="metric">2.42倍吞吐</span>
+                            <span class="metric purple">30B-A3B</span>
+                            <p style="margin-top: 10px; color: var(--text-secondary); font-size: 0.95rem;">
+                                <strong>核心黑科技：</strong>将上下文与去噪分离为两个塔的扩散语言模型，30B-A3B参数规模，支持掩码扩散、模拟自回归和标准自回归三种模式。<br><br>
+                                <strong>实战价值：</strong>在需要高质量、高吞吐文本生成场景（如广告文案批量生成、客服回复、代码注释）中，可用更小成本替代传统大模型。适合中小SaaS和跨境电商内容团队。
+                            </p>
+                        </div>
+
+                        <div class="ai-card">
+                            <h4>🐱 美团 LongCat-2.0 万亿参数国产大模型</h4>
+                            <span class="metric red">1.6万亿参数</span>
+                            <span class="metric green">5万张国产卡</span>
+                            <span class="metric purple">100万Token</span>
+                            <p style="margin-top: 10px; color: var(--text-secondary); font-size: 0.95rem;">
+                                <strong>核心黑科技：</strong>首个在<span class="highlight">国产计算集群</span>上完成全生命周期训练与推理的万亿参数大模型，平均激活参数48B（动态范围33B-56B），专为"Agentic Coding"任务设计。<br><br>
+                                <strong>实战价值：</strong>美团同步开源VitaBench 2.0、WBench、LARYBench、General 365等评测基准，以及LongCat-Video-Avatar 1.5、AIGC海报生成系统。对于国内企业，这意味着一条"国产算力+国产模型+国产Agent工具"的闭环可落地。
+                            </p>
+                        </div>
+
+                        <div class="ai-card">
+                            <h4>💰 AWS 10亿美元 Forward Deployed Engineering 团队</h4>
+                            <span class="metric red">$10亿</span>
+                            <span class="metric">嵌入式AI</span>
+                            <span class="metric purple">生产级Agent</span>
+                            <p style="margin-top: 10px; color: var(--text-secondary); font-size: 0.95rem;">
+                                <strong>核心黑科技：</strong>AWS将前沿团队直接嵌入客户组织，构建生产级代理AI系统。这不是卖API，而是<span class="highlight">"驻场交付+共创"</span>的企业级AI工程模式。<br><br>
+                                <strong>实战价值：</strong>大厂开始用咨询服务捆绑云算力。对于中小AI服务商，可学习其"行业Know-how+Agent交付"模式，切入金融、制造、医疗等重合规行业。
+                            </p>
+                        </div>
+
+                        <div class="ai-card">
+                            <h4>📈 GitHub Trending 今日风向标</h4>
+                            <div class="github-grid">
+                                <div class="github-item">
+                                    <div>
+                                        <div class="name">usestrix/strix</div>
+                                        <div class="desc">开源AI渗透测试工具</div>
+                                    </div>
+                                    <div class="stars">+2,137⭐</div>
+                                </div>
+                                <div class="github-item">
+                                    <div>
+                                        <div class="name">msitarzewski/agency-agents</div>
+                                        <div class="desc">完整AI agency解决方案</div>
+                                    </div>
+                                    <div class="stars">+3,032⭐</div>
+                                </div>
+                                <div class="github-item">
+                                    <div>
+                                        <div class="name">HKUDS/Vibe-Trading</div>
+                                        <div class="desc">个人交易Agent</div>
+                                    </div>
+                                    <div class="stars">+939⭐</div>
+                                </div>
+                                <div class="github-item">
+                                    <div>
+                                        <div class="name">JuliusBrussee/caveman</div>
+                                        <div class="desc">Claude Code省65% Token技能</div>
+                                    </div>
+                                    <div class="stars">+926⭐</div>
+                                </div>
+                                <div class="github-item">
+                                    <div>
+                                        <div class="name">obra/superpowers</div>
+                                        <div class="desc">Agentic Skills框架</div>
+                                    </div>
+                                    <div class="stars">+897⭐</div>
+                                </div>
+                                <div class="github-item">
+                                    <div>
+                                        <div class="name">browser-use/video-use</div>
+                                        <div class="desc">编程Agent自动剪视频</div>
+                                    </div>
+                                    <div class="stars">+554⭐</div>
+                                </div>
+                                <div class="github-item">
+                                    <div>
+                                        <div class="name">affaan-m/ECC</div>
+                                        <div class="desc">Agent性能优化系统</div>
+                                    </div>
+                                    <div class="stars">+486⭐</div>
+                                </div>
+                            </div>
+                            <p class="source-note">来源：GitHub Trending 2026-07-03</p>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title purple">🤖 Agent 战场情报</div>
+
+                        <div class="ai-card">
+                            <h4>🛡️ Cognition Devin Security Swarm</h4>
+                            <span class="metric green">72%召回率</span>
+                            <span class="metric">$90/次</span>
+                            <span class="metric purple">14种语言</span>
+                            <p style="margin-top: 10px; color: var(--text-secondary); font-size: 0.95rem;">
+                                <strong>动态：</strong>Cognition发布Devin for Security，使用<span class="highlight">Agentic MapReduce</span>架构扫描大型代码库漏洞、在沙盒验证可利用性、自动提交修复PR。在50个真实GHSA漏洞测试中召回率72%。<br><br>
+                                <strong>解读：</strong>Agent不再是单兵作战，而是"分片扫描→并行验证→聚合修复"的MapReduce流水线。确定性选择器+并行有界分片代理+规约器，让Agent能处理企业级代码库。<br><br>
+                                <strong>落地场景：</strong>配合小红书/生鲜项目，可用Devin Security Swarm扫描小程序、H5、后台系统的依赖漏洞，自动提PR修复，把安全成本从外包模式转为Agent模式。
+                            </p>
+                        </div>
+
+                        <div class="ai-card">
+                            <h4>🎙️ xAI Voice Agent Builder</h4>
+                            <span class="metric">$0.05/分钟</span>
+                            <span class="metric purple">80+声音</span>
+                            <span class="metric green">SIP转移</span>
+                            <p style="margin-top: 10px; color: var(--text-secondary); font-size: 0.95rem;">
+                                <strong>动态：</strong>xAI推出无代码Grok Voice产品，支持声音克隆、防护栏、通话回放、SIP转移。<br><br>
+                                <strong>解读：</strong>语音Agent进入"按需付费+快速部署"阶段，$0.05/分钟意味着中小商家也能负担客户回访、预约提醒、售后调研等场景。<br><br>
+                                <strong>落地场景：</strong>小红书生鲜店铺的私域运营，可用Voice Agent做老客户复购提醒、新品试吃邀约，把客服人力释放出来做高价值内容。
+                            </p>
+                        </div>
+
+                        <div class="ai-card">
+                            <h4>🧠 agency-agents / superpowers：AI agency方法论</h4>
+                            <span class="metric">+3,032⭐</span>
+                            <span class="metric purple">244k⭐总</span>
+                            <span class="metric green">Skills生态</span>
+                            <p style="margin-top: 10px; color: var(--text-secondary); font-size: 0.95rem;">
+                                <strong>动态：</strong>GitHub Trending上agency-agents和superpowers持续霸榜，分别代表"AI agency工具包"和"Agentic Skills开发方法论"。<br><br>
+                                <strong>解读：</strong>Skills正在成为AI时代的App Store。一个Skill = 一段可被Claude/Cursor/Codex调用的结构化能力，未来选模型不如选Skill生态。<br><br>
+                                <strong>落地场景：</strong>把小红书生鲜选品流程（五维选品、竞品扒数、价格监控）封装成Skill，接入任意Agent，实现"输入品类→输出选品报告"的一键化。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title orange">🖊 AI新玩法，新概念</div>
+
+                        <div class="ai-card">
+                            <h4>💼 美团"Agent Evaluation"重构31万行代码</h4>
+                            <span class="metric red">31万行</span>
+                            <span class="metric green">90% AI生成</span>
+                            <span class="metric purple">Pre-PR机制</span>
+                            <p style="margin-top: 10px; color: var(--text-secondary); font-size: 0.95rem;">
+                                <strong>动态：</strong>美团披露用AI重构31万行代码，其中90%由AI生成，核心策略是建立"技术债务梳理→规则制定→标准化重构SOP→Pre-PR机制"的Agent Evaluation闭环。<br><br>
+                                <strong>解读：</strong>AI coding从"辅助写代码"进入"项目级重构"阶段，关键不是模型能力，而是<strong>评估体系</strong>——让Agent先学会判断代码好坏，再动手改。<br><br>
+                                <strong>落地场景：</strong>小红书/生鲜项目如果有历史代码债，可用Agent Evaluation方法：先让AI扫描代码库、列出债务清单、制定重构规则、再分批执行，人类只做最终验收。
+                            </p>
+                        </div>
+
+                        <div class="ai-card">
+                            <h4>📊 AI-Berkshire：价值投资的Agent化</h4>
+                            <span class="metric">Claude+Codex</span>
+                            <span class="metric purple">多Agent对抗</span>
+                            <span class="metric green">Buffett/Munger</span>
+                            <p style="margin-top: 10px; color: var(--text-secondary); font-size: 0.95rem;">
+                                <strong>动态：</strong>GitHub Trending出现AI-Berkshire，融合Claude Code和Codex，结合巴菲特、芒格、段永平、李录的投资哲学，采用多智能体并行研究与对抗性分析。<br><br>
+                                <strong>解读：</strong>投资研究正在从"研报+Excel"转向"Agent模拟投资委员会"。多个Agent分别扮演价值投资者、风险审查员、反方辩手，输出更稳健的结论。<br><br>
+                                <strong>落地场景：</strong>生鲜选品供应链评估可以借鉴：让Agent分别扮演"成本分析师""品质审核员""市场趋势研究员""风险警告员"，对供应商进行综合评分。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title green">💰 AI 套利/变现线索</div>
+
+                        <div class="ai-card">
+                            <h4>🎙️ 复刻：NotebookLM 音频早报</h4>
+                            <span class="metric orange">视频号</span>
+                            <span class="metric purple">小红书</span>
+                            <span class="metric green">私域</span>
+                            <p style="margin-top: 10px; color: var(--text-secondary); font-size: 0.95rem;">
+                                <strong>热点：</strong>国外博主利用NotebookLM将枯燥法律/商业文档转为脱口秀电台在Spotify获利。<br><br>
+                                <strong>复刻建议：</strong>把每日新闻联播简报、AI情报报告、生鲜行情报告用TTS生成3-5分钟音频早报，发在视频号/小红书/小宇宙。对于生鲜买手账号，"晨起3分钟听懂今日食材行情"是强粘性场景，吸粉后挂车转化。
+                            </p>
+                        </div>
+
+                        <div class="ai-card">
+                            <h4>🎬 复刻：Video-Use 自动化视频剪辑</h4>
+                            <span class="metric blue">browser-use</span>
+                            <span class="metric purple">编程Agent</span>
+                            <span class="metric green">批量生产</span>
+                            <p style="margin-top: 10px; color: var(--text-secondary); font-size: 0.95rem;">
+                                <strong>热点：</strong>browser-use团队推出video-use，用编程Agent自动完成视频编辑。<br><br>
+                                <strong>复刻建议：</strong>小红书生鲜店铺每天有大量Live图/短视频素材，可用Video-Use类工具批量生成"今日到货→开箱→测评→挂车"的标准化短视频，把内容产能从日更1条提升到日更10条。
+                            </p>
+                        </div>
+
+                        <div class="ai-card">
+                            <h4>💵 套利：ZCode GLM Coding Lite $16/月</h4>
+                            <span class="metric">$16.2/月</span>
+                            <span class="metric purple">20+工具</span>
+                            <span class="metric green">轻量开发</span>
+                            <p style="margin-top: 10px; color: var(--text-secondary); font-size: 0.95rem;">
+                                <strong>热点：</strong>智谱ZCode推出GLM Coding Lite订阅，$16.2/月支持20+编程工具，深度集成ZCode生态。<br><br>
+                                <strong>复刻建议：</strong>对于接小型代码项目或维护个人网站/小程序，用GLM Coding Lite替代昂贵的Cursor/Claude Code订阅，成本可降50%以上。适合独立开发者、副业项目和轻量代码维护。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title purple">🔍 避坑/黑话词典</div>
+
+                        <div class="ai-card">
+                            <h4>词条：MCP (Model Context Protocol)</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                                <strong>一句话大白话：</strong>给所有AI统一插座。以后你的扣子、Claude、Cursor、Trae可以无缝调用同一个本地文件、数据库、浏览器或API，不用再纠结选哪个模型。<br><br>
+                                <strong>今日关联：</strong>Product Hunt Top 2的<span class="highlight">PieterPost MCP</span>，让AI Agent可以连接实体邮政邮件——MCP正在把"AI能接什么"的边界不断外扩。
+                            </p>
+                        </div>
+
+                        <div class="ai-card">
+                            <h4>词条：Agentic MapReduce</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                                <strong>一句话大白话：</strong>让AI先把大任务切成小任务，多个小AI并行干活，最后再把结果拼起来。就像公司把大项目拆成多个部门同时推进，最后开总结会。<br><br>
+                                <strong>今日关联：</strong>Cognition Devin Security Swarm用它来扫描大型代码库漏洞，72%召回率、$90/次的成本，正在把安全测试从"人月"变成"人天"。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title ai-accent">🐦 Twitter/X 大佬动态</div>
+                        <div class="twitter-card">
+                            <div class="handle">Alex Karp @Palantir CEO</div>
+                            <div class="tweet-text">称AI行业"effing insane"，批评高费用和数据提取。信号：企业AI采购正在从"买模型"转向"买结果"，纯API公司压力加大。</div>
+                        </div>
+                        <div class="twitter-card">
+                            <div class="handle">Ethan Mollick @Wharton</div>
+                            <div class="tweet-text">Fable体验更像"委托工作"而非逐步协作。AI从聊天机器人走向自主代理，产品经理需要重新设计人机协作流程。</div>
+                        </div>
+                        <div class="twitter-card">
+                            <div class="handle">François Chollet @Arc Prize</div>
+                            <div class="tweet-text">当前AI浪潮不会造成大规模失业，可能增加软件工程师需求。信号：AI不是替代，而是放大器，会写提示词和会审AI代码的人更值钱。</div>
+                        </div>
+                        <p class="source-note">来源：The Neuron / AI Toolly / 36氪 / 量子位 2026-07-02</p>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title orange">🚀 Product Hunt 今日新品</div>
+                        <div class="ai-card">
+                            <h4>🥇 Macro — Unifies your work into one app with shared memory</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                                把所有工作统一到一个App里，并且具备共享记忆。相当于给团队装了一个长期记忆层，历史上下文不再丢失。
+                            </p>
+                        </div>
+                        <div class="ai-card">
+                            <h4>🥈 PieterPost MCP — Connect your AI agent to postal mail</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                                让AI Agent连接实体邮政邮件。MCP生态开始向物理世界延伸，未来AI可以帮你收发信件、扫描归档、甚至起草回函。
+                            </p>
+                        </div>
+                        <div class="ai-card">
+                            <h4>🥉 Flowly — A personal AI agent that runs on your desktop and iPhone</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                                跨桌面和iPhone运行的个人AI Agent。代表了"设备端Agent"趋势，隐私更好、响应更快，适合处理个人日程、邮件和笔记。
+                            </p>
+                        </div>
+                        <p class="source-note">来源：Product Hunt / orangebot.ai 2026-07-02</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>每日双专栏情报卡片 · 自动生成于 2026-07-03 09:00</p>
+            <p>信源：cn.govopendata.com / 央视网 / GitHub Trending / Product Hunt / The Neuron / 36氪 / 量子位 / AI Toolly</p>
+            <p><a href="https://github.com/mryyyyyy/daily-intelligence" target="_blank">GitHub: mryyyyyy/daily-intelligence</a></p>
+        </div>
+    </div>
+</body>
+</html>
