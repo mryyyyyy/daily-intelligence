@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 2026-07-04</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #181410;
+    color: #f0e6d8;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #241813 0%, #3d2618 50%, #181410 100%);
+    border-bottom: 1px solid #4a3b2f;
+    padding: 32px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(245,166,35,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%; left: -5%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(232,93,4,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(245,166,35,0.12);
+    border: 1px solid rgba(245,166,35,0.3);
+    color: #f5a623;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff5eb;
+    margin-bottom: 8px;
+  }
+  .hero .sub {
+    color: #a89a8c;
+    font-size: 14px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 900px) {
+    .container { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: #221c16;
+    border: 1px solid #3a2f26;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .card-header {
+    background: linear-gradient(135deg, #2d231c 0%, #221c16 100%);
+    padding: 16px 20px;
+    border-bottom: 1px solid #3a2f26;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-header .icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .card-header h2 {
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .card-body { padding: 20px; }
+
+  .col-left .card-header { background: linear-gradient(135deg, #301c18 0%, #221c16 100%); }
+  .col-left .icon { background: rgba(232,93,4,0.15); color: #e85d04; }
+  .col-left .card-header h2 { color: #ff9a5a; }
+
+  .col-right .card-header { background: linear-gradient(135deg, #2d2418 0%, #221c16 100%); }
+  .col-right .icon { background: rgba(245,166,35,0.15); color: #f5a623; }
+  .col-right .card-header h2 { color: #ffc45c; }
+
+  .section-body { margin-bottom: 18px; }
+  .section-body:last-child { margin-bottom: 0; }
+  .section-title {
+    font-size: 14.5px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff5eb;
+  }
+  .section-title .emoji { font-size: 17px; }
+
+  .item {
+    background: #181410;
+    border: 1px solid #3a2f26;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .item-title {
+    font-weight: 700;
+    font-size: 14px;
+    color: #ff9a5a;
+    margin-bottom: 6px;
+  }
+  .item-desc {
+    font-size: 13px;
+    color: #d8c9bb;
+    margin-bottom: 6px;
+  }
+  .item-highlight {
+    background: rgba(245,166,35,0.08);
+    border-left: 2px solid #f5a623;
+    padding: 6px 10px;
+    border-radius: 0 6px 6px 0;
+    font-size: 12.5px;
+    color: #ffc45c;
+  }
+  .item-source {
+    font-size: 12px;
+    color: #8b7d6f;
+    margin-top: 6px;
+  }
+
+  .signal {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  .signal-green { background: rgba(63,185,80,0.12); color: #3fb950; }
+  .signal-yellow { background: rgba(245,166,35,0.12); color: #f5a623; }
+  .signal-red { background: rgba(208,0,0,0.12); color: #ff6b6b; }
+
+  .seasonal-box {
+    background: rgba(232,93,4,0.06);
+    border: 1px solid #4a3b2f;
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 14px;
+  }
+  .seasonal-line {
+    font-size: 13.5px;
+    color: #d8c9bb;
+    margin-bottom: 8px;
+    padding-left: 22px;
+    position: relative;
+  }
+  .seasonal-line:last-child { margin-bottom: 0; }
+  .seasonal-line::before {
+    content: attr(data-icon);
+    position: absolute;
+    left: 0;
+  }
+  .seasonal-line strong { color: #fff5eb; }
+
+  .idea-card {
+    background: linear-gradient(135deg, rgba(245,166,35,0.06), rgba(232,93,4,0.04));
+    border: 1px solid rgba(245,166,35,0.25);
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 10px;
+  }
+  .idea-name {
+    color: #ffc45c;
+    font-weight: 700;
+    font-size: 14.5px;
+    margin-bottom: 6px;
+  }
+  .idea-body {
+    color: #d8c9bb;
+    font-size: 13px;
+  }
+  .idea-tag {
+    display: inline-block;
+    background: rgba(245,166,35,0.1);
+    color: #f5a623;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    margin-right: 6px;
+    margin-top: 6px;
+  }
+
+  .channel-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #2d231c;
+  }
+  .channel-item:last-child { border-bottom: none; }
+  .channel-dot {
+    width: 8px; height: 8px;
+    background: #f5a623;
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+  .channel-content strong { color: #ffc45c; font-size: 13.5px; }
+  .channel-content div { color: #a89a8c; font-size: 12.5px; margin-top: 3px; }
+
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: #6b5f54;
+    font-size: 12px;
+    border-top: 1px solid #3a2f26;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">📅 2026年7月4日 星期六</div>
+    <h1>🍽️ 食研日推 · 每日食品行业情报</h1>
+    <div class="sub">服务下厨房食品品牌产品经理 | 配料表洁净·新鲜短保·产地直发</div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- 左栏：行业要闻 / 时令风向 / 脑暴时刻 -->
+<div class="col-left">
+
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🔥</div>
+      <h2>板块一：今日行业要闻</h2>
+    </div>
+    <div class="card-body">
+      <div class="item">
+        <div class="item-title">齐云山食品7月9日港交所上市，南酸枣龙头毛利率51.3%</div>
+        <div class="item-desc">6月30日至7月6日招股，拟发售2500万股H股，发售价5-8港元。2025财年毛利率高达51.3%，南酸枣食品这一小众品类首次获得资本市场集中背书。</div>
+        <div class="item-highlight">与我何干：小众地标果品（青梅/南酸枣/刺梨）的零食化、品牌化路径被验证，下厨房做“小众水果深加工”可参考其品类教育逻辑。</div>
+        <div class="item-source">来源：星食榜 / 艾德金融 / 10jqka</div>
+      </div>
+      <div class="item">
+        <div class="item-title">达能20亿澳元收购MADE集团，押注高蛋白市场</div>
+        <div class="item-desc">GLP-1减重药物全球放量，催生的蛋白补充需求暴涨。达能通过收购澳洲MADE集团加速高蛋白布局，功能性食品从“可选”变为“刚需”。</div>
+        <div class="item-highlight">与我何干：高蛋白即食、高蛋白食材、蛋白强化型食材包存在真实窗口，抖音达播可切“减脂增肌餐桌”场景。</div>
+        <div class="item-source">来源：星食榜 / 36氪</div>
+      </div>
+      <div class="item">
+        <div class="item-title">食用油等重点液态食品散装运输准运证7月1日正式施行</div>
+        <div class="item-desc">新规要求食用油、酱油、醋等重点液态食品道路散装运输须取得准运证，并落实“专车专用、专罐专储”，供应链合规门槛显著提高。</div>
+        <div class="item-highlight">与我何干：液态食品（油/奶/醋/酱油）供应链成本上升，产地直发+短保产品更需自有冷链和清洁包装背书，这是下厨房的核心优势。</div>
+        <div class="item-source">来源：央视新闻 / 食品伙伴网</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 24px;">
+    <div class="card-header">
+      <div class="icon">🌿</div>
+      <h2>板块三：时令风向·品类机会</h2>
+    </div>
+    <div class="card-body">
+      <div class="seasonal-box">
+        <div class="seasonal-line" data-icon="📅"><strong>当前时令：</strong>小暑前3天，夏至后第14天，全年最热“伏前窗口”开启。</div>
+        <div class="seasonal-line" data-icon="⏰"><strong>倒计时：</strong>距小暑（7/7）还有3天 · 距大暑（7/23）还有19天 · 距立秋（8/7）还有34天。</div>
+      </div>
+      <div class="section-body">
+        <div class="section-title"><span class="emoji">🎯</span>即将热卖</div>
+        <div class="item">
+          <div class="item-title">阳山湖景蜜露</div>
+          <div class="item-desc">7月10-15日集中登场，阳山水蜜桃终极品种，甜度天花板。白凤已收官，湖景是20天黄金窗口。</div>
+        </div>
+        <div class="item">
+          <div class="item-title">云南野生菌全品类</div>
+          <div class="item-desc">7月进入日均50车高峰，松茸价格从2万元/kg跌至300-400元/kg，见手青约300元/kg，白葱牛肝菌100-200元/kg。</div>
+        </div>
+        <div class="item">
+          <div class="item-title">三伏天消暑食材</div>
+          <div class="item-desc">绿豆、薏米、藿香、苦瓜、冬瓜等食养解暑食材将进入家庭餐桌高频期，配料干净的“夏日汤包”需求上升。</div>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="section-title"><span class="emoji">🚨</span>窗口提醒</div>
+        <div class="item">
+          <div class="item-desc"><strong>阳山白凤</strong>已进入尾声，再做内容/卖货需切换湖景蜜露。<strong>东魁杨梅、桂味荔枝</strong>已收官。<strong>阳澄湖六月黄</strong>进入6-7月限定尾期，再不上车等明年。</div>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="section-title"><span class="emoji">🏔️</span>产地直发机会</div>
+        <div class="item">
+          <div class="item-desc"><strong>江苏无锡阳山</strong>·湖景蜜露（7/10-15登场，20天窗口）<br><strong>云南楚雄/南华/香格里拉</strong>·野生菌（7月高峰，价格持续下探）<br><strong>江苏苏州阳澄湖</strong>·六月黄（尾期，可切“大闸蟹前传”内容）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 24px;">
+    <div class="card-header">
+      <div class="icon">🧪</div>
+      <h2>板块五：脑暴时刻·融合创意</h2>
+    </div>
+    <div class="card-body">
+      <div class="idea-card">
+        <div class="idea-name">「湖景蜜露·轻酵气泡蜜桃饮」</div>
+        <div class="idea-body">
+          <strong>一句话：</strong>用阳山湖景蜜露做基底，72小时轻发酵产生微气泡，0添加糖，做成夏日“水替”级发酵饮。<br><br>
+          <strong>为什么是现在：</strong>湖景蜜露7月10-15日登场+康普茶/发酵茶在茶饮端验证+中式养生水2.0需求爆发。<br><br>
+          <strong>差异化锚点：</strong>市面气泡饮多为香精+糖水，本品用真蜜桃+轻发酵，配料表只有“水、蜜桃、菌种”，切中“功效+水替”双重定位。<br><br>
+          <strong>可行性：</strong>需解决短保发酵工艺和冷链，产地直发+抖音达人种草是最佳组合，建议先做7天预售测款。
+        </div>
+        <div style="margin-top:8px;">
+          <span class="idea-tag">产地直发</span>
+          <span class="idea-tag">短保发酵</span>
+          <span class="idea-tag">0添加糖</span>
+        </div>
+      </div>
+      <div class="idea-card">
+        <div class="idea-name">「云南菌菇·高纤维轻食碗」</div>
+        <div class="idea-body">
+          <strong>一句话：</strong>把见手青、白葱牛肝菌等野生菌从“火锅配菜”升级为90秒即食的高纤维轻食主食碗。<br><br>
+          <strong>为什么是现在：</strong>野生菌7月价格腰斩放量+Whole Foods 2026“纤维狂热”趋势+GLP-1减脂人群主食替换需求。<br><br>
+          <strong>差异化锚点：</strong>现有野生菌多为干货、火锅料或餐厅现做，预包装轻食碗几乎空白；用菌菇鲜味替代高热量酱料，配料表干净。<br><br>
+          <strong>可行性：</strong>野生菌预处理、毒菌风险控制是关键，建议优先用白葱牛肝菌等安全易处理的品种，搭配魔芋/藜麦/糙米，做冷链短保。
+        </div>
+        <div style="margin-top:8px;">
+          <span class="idea-tag">野生菌</span>
+          <span class="idea-tag">高纤维</span>
+          <span class="idea-tag">90秒即食</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- 右栏：爆品雷达 / 跨界灵感 / 展会速递 -->
+<div class="col-right">
+
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🎯</div>
+      <h2>板块二：爆品雷达·趋势苗头</h2>
+    </div>
+    <div class="card-body">
+      <div class="item">
+        <div class="item-title">
+          <span class="signal signal-yellow">🟡 起势</span>
+          盒马「藿香清凉水」：0糖0脂的草本“水替”
+        </div>
+        <div class="item-desc">盒马推出夏日限定「藿香清凉水」，选用如皋藿香，配料仅“水+藿香”，0糖0脂肪，售价4.5元/瓶，切入解暑场景。</div>
+        <div class="item-highlight">机会判断：中式草本“水替”进入细分功效阶段，可迁移到“藿香/绿豆/薏米”等夏日食材包，做家庭版解暑方案。</div>
+        <div class="item-source">来源：Foodaily / 盒马</div>
+      </div>
+      <div class="item">
+        <div class="item-title">
+          <span class="signal signal-green">🟢 苗头</span>
+          康普茶/发酵茶特调：茶饮端验证的“发酵风味”
+        </div>
+        <div class="item-desc">霸王茶姬、奈雪、百分茶、星巴克、Peet's 密集上新康普茶特调，部分产品3小时售罄；上海/杭州/西安出现康普茶专门店。</div>
+        <div class="item-highlight">机会判断：发酵风味是茶饮先行指标，可迁移到“发酵汤底”“发酵调味汁”“轻酵气泡饮”，替代传统糖醋/酸辣味型。</div>
+        <div class="item-source">来源：36氪 / 咖门</div>
+      </div>
+      <div class="item">
+        <div class="item-title">
+          <span class="signal signal-red">🔴 已爆</span>
+          中式养生水2.0：市场规模较2022年跃升35倍
+        </div>
+        <div class="item-desc">前瞻产业研究院报告显示，中式养生水进入2.0品质竞争阶段，元气森林好自在份额超50%，27-36岁高潜人群占比更高。</div>
+        <div class="item-highlight">机会判断：养生水从饮料溢出到食材，红豆薏米、绿豆、红枣枸杞等食养食材家用化需求爆发，可做“食材+冲泡包”组合。</div>
+        <div class="item-source">来源：新华网 / 前瞻产业研究院</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 24px;">
+    <div class="card-header">
+      <div class="icon">💡</div>
+      <h2>板块四：跨界灵感·创新动作</h2>
+    </div>
+    <div class="card-body">
+      <div class="item">
+        <div class="item-title">海底捞「霸道财鱼季」：情绪价值+社交打卡</div>
+        <div class="item-desc">今夏海底捞推出“霸道财鱼季”，主打“鱼跃龙门、生财有道”吉祥寓意，财鱼片单周售出超20万份；高山青笋产自川西/香格里拉800米以上高海拔地区。</div>
+        <div class="item-highlight">迁移可能：将“高山时令鲜蔬+吉祥寓意”打包成家庭版食材盒，切中毕业季、求职季聚餐场景，强化情绪消费。</div>
+      </div>
+      <div class="item">
+        <div class="item-title">日本全家「7月冷面季」：按月地域主题</div>
+        <div class="item-desc">6月30日-7月6日上新「香味酱油炸鸡便当」「札幌纯连监制冷拌味噌面」「柚子胡椒鸡肉野菜和风汤」等，以冷面、柚子胡椒、和风汤锁定夏日。</div>
+        <div class="item-highlight">迁移可能：借鉴“按月地域主题”打法，把产地食材做成“云南菌菇月”“阳山蜜桃月”“阳澄湖蟹月”等主题盒，提升复购。</div>
+      </div>
+      <div class="item">
+        <div class="item-title">Whole Foods 2026八大趋势：纤维、牛脂、醋、即食升级</div>
+        <div class="item-desc">全食超市预测2026年纤维狂热（Focus on Fiber）、牛脂风潮（Tallow Takeover）、醋味当道（Very Vinegar）、甜而有度、即食升级等八大趋势。</div>
+        <div class="item-highlight">迁移可能：高纤维食材（菌菇/魔芋/燕麦）做主食化；牛脂/动物脂肪可用于高端烹饪食材或风味零食；醋味可开发低盐调味汁/腌渍食材。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 24px;">
+    <div class="card-header">
+      <div class="icon">🏬</div>
+      <h2>板块六：展会速递·渠道上新</h2>
+    </div>
+    <div class="card-body">
+      <div class="section-body">
+        <div class="section-title"><span class="emoji">🎪</span>展会预告</div>
+        <div class="channel-item">
+          <div class="channel-dot"></div>
+          <div class="channel-content">
+            <strong>深圳全球高端食品展+渔博会+茶博会</strong>
+            <div>7月2-5日，深圳会展中心（福田）｜看点：高端食材、水产、茶叶三展联动，华南下半年食品采购第一站。</div>
+          </div>
+        </div>
+        <div class="channel-item">
+          <div class="channel-dot"></div>
+          <div class="channel-content">
+            <strong>2026新食力大会</strong>
+            <div>7月13-15日，安徽淮南｜看点：减盐增鲜、药食同源调味料创新，与下厨房食材升级方向高度相关。</div>
+          </div>
+        </div>
+        <div class="channel-item">
+          <div class="channel-dot"></div>
+          <div class="channel-content">
+            <strong>2026第七届食品博览会（中食博）</strong>
+            <div>7月29-31日，郑州国际会展中心｜看点：下半年食品万亿市场风向标，聚焦供应链与渠道对接。</div>
+          </div>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="section-title"><span class="emoji">🛒</span>渠道上新</div>
+        <div class="channel-item">
+          <div class="channel-dot"></div>
+          <div class="channel-content">
+            <strong>盒马</strong>
+            <div>藿香清凉水（4.5元）、茉莉抹茶系列（布朗尼/拿破仑/酥山旋风杯）、杨梅冰面包、冰皮龙井慕斯。</div>
+          </div>
+        </div>
+        <div class="channel-item">
+          <div class="channel-dot"></div>
+          <div class="channel-content">
+            <strong>山姆</strong>
+            <div>抹茶牛乳绿豆沙冰糕、桂花酒酿绿豆糕、无花果核桃酸欧包、高蛋白鸡胸肉碱水包。</div>
+          </div>
+        </div>
+        <div class="channel-item">
+          <div class="channel-dot"></div>
+          <div class="channel-content">
+            <strong>Costco</strong>
+            <div>京东官方旗舰店5月22日上线，全国四大仓配送，满199元起送，主售Kirkland标品，暂不售生鲜。</div>
+          </div>
+        </div>
+        <div class="channel-item">
+          <div class="channel-dot"></div>
+          <div class="channel-content">
+            <strong>叮咚买菜</strong>
+            <div>KELLYONE「果然啵啵」果汁汽水入驻；新鲜方便菜1-5月销售额同比增长超70%，全年预计超85%。</div>
+          </div>
+        </div>
+        <div class="channel-item">
+          <div class="channel-dot"></div>
+          <div class="channel-content">
+            <strong>海底捞</strong>
+            <div>「霸道财鱼季」财鱼片单周售超20万份；高山青笋（川西/香格里拉）6-7月时令上新。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+<div class="footer">
+  <p>⚠️ 以上内容由AI自动聚合公开信息生成，仅供参考，不构成投资建议或产品决策依据。</p>
+  <p>信源：新华网、Foodaily、36氪、星食榜、盒马、山姆、叮咚买菜、海底捞、前瞻产业研究院、Whole Foods Market、日本全家等。</p>
+  <p style="margin-top:8px;">Generated by WorkBuddy 食研日推 · 2026-07-04 09:00 CST</p>
+</div>
+
+</body>
+</html>
