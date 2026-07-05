@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日推情报 2026-07-05</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0a; color: #e0e0e0; font-family: 'PingFang SC', 'Microsoft YaHei', -apple-system, sans-serif; line-height: 1.7; }
+  .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+  .header { text-align: center; padding: 30px 0 20px; border-bottom: 2px solid #ff4444; }
+  .header h1 { font-size: 28px; color: #fff; letter-spacing: 2px; }
+  .header .date { color: #ff6666; font-size: 16px; margin-top: 8px; }
+  .header .subtitle { color: #888; font-size: 13px; margin-top: 4px; }
+
+  /* Column Tabs */
+  .tab-bar { display: flex; gap: 0; margin: 20px 0 0; border-radius: 8px 8px 0 0; overflow: hidden; }
+  .tab-btn { flex: 1; padding: 14px 20px; background: #1a1a2e; color: #888; font-size: 15px; font-weight: 600; text-align: center; cursor: pointer; border: none; transition: all .3s; }
+  .tab-btn.active { background: #ff4444; color: #fff; }
+  .tab-btn:hover:not(.active) { background: #2a2a3e; color: #ccc; }
+
+  .tab-content { display: none; background: #111118; border-radius: 0 0 8px 8px; padding: 24px; }
+  .tab-content.active { display: block; }
+
+  /* Section Styles */
+  .section { margin-bottom: 28px; }
+  .section-title { font-size: 18px; font-weight: 700; color: #fff; padding-bottom: 10px; border-bottom: 1px solid #333; margin-bottom: 16px; }
+  .section-title.red { border-color: #ff4444; }
+  .section-title.blue { border-color: #4488ff; }
+  .section-title.green { border-color: #44cc88; }
+  .section-title.purple { border-color: #aa44ff; }
+  .section-title.gold { border-color: #ffaa00; }
+  .section-title.cyan { border-color: #00cccc; }
+
+  /* News Item */
+  .news-item { background: #1a1a22; border-radius: 8px; padding: 18px; margin-bottom: 16px; border-left: 3px solid #ff4444; }
+  .news-item.blue-border { border-left-color: #4488ff; }
+  .news-item.green-border { border-left-color: #44cc88; }
+  .news-item.purple-border { border-left-color: #aa44ff; }
+  .news-item.gold-border { border-left-color: #ffaa00; }
+  .news-item.cyan-border { border-left-color: #00cccc; }
+  .news-item h3 { font-size: 16px; color: #ff6666; margin-bottom: 10px; }
+  .news-item.blue-border h3 { color: #6699ff; }
+  .news-item.green-border h3 { color: #66ccaa; }
+  .news-item.purple-border h3 { color: #cc88ff; }
+  .news-item.gold-border h3 { color: #ffcc44; }
+  .news-item.cyan-border h3 { color: #44dddd; }
+  .news-item .desc { color: #ccc; font-size: 14px; margin-bottom: 8px; }
+  .news-item .analysis { color: #aaa; font-size: 13px; padding: 8px 12px; background: #0d0d15; border-radius: 4px; margin-bottom: 8px; }
+  .news-item .analysis strong { color: #ff8888; }
+  .news-item.blue-border .analysis strong { color: #88aaff; }
+  .news-item.green-border .analysis strong { color: #88ddbb; }
+  .news-item .impact { font-size: 13px; color: #88bb88; padding: 8px 12px; background: #0d120d; border-radius: 4px; }
+  .news-item .impact strong { color: #44ff44; }
+
+  /* Core Signal */
+  .core-signal { background: linear-gradient(135deg, #1a0a0a, #2a1a1a); border: 1px solid #ff4444; border-radius: 12px; padding: 20px; margin-bottom: 24px; text-align: center; }
+  .core-signal .label { color: #ff6666; font-size: 13px; letter-spacing: 4px; margin-bottom: 8px; }
+  .core-signal .text { color: #fff; font-size: 20px; font-weight: 700; }
+
+  /* AI Section */
+  .ai-tool { background: #1a1a22; border-radius: 8px; padding: 18px; margin-bottom: 16px; border-left: 3px solid #4488ff; }
+  .ai-tool h3 { font-size: 16px; color: #6699ff; margin-bottom: 10px; }
+  .ai-tool .tech { color: #88ddbb; font-size: 13px; padding: 8px 12px; background: #0d120d; border-radius: 4px; margin-bottom: 8px; }
+  .ai-tool .tech strong { color: #44ff88; }
+  .ai-tool .value { color: #ffcc44; font-size: 13px; padding: 8px 12px; background: #1a1a0d; border-radius: 4px; }
+  .ai-tool .value strong { color: #ffcc00; }
+
+  .ai-agent { background: #1a1a22; border-radius: 8px; padding: 18px; margin-bottom: 16px; border-left: 3px solid #aa44ff; }
+  .ai-agent h3 { font-size: 16px; color: #cc88ff; margin-bottom: 10px; }
+  .ai-agent .detail { color: #ccc; font-size: 14px; margin-bottom: 8px; }
+  .ai-agent .interpret { color: #aaa; font-size: 13px; padding: 8px 12px; background: #0d0d15; border-radius: 4px; margin-bottom: 8px; }
+  .ai-agent .interpret strong { color: #cc88ff; }
+  .ai-agent .scene { color: #88bb88; font-size: 13px; padding: 8px 12px; background: #0d120d; border-radius: 4px; }
+  .ai-agent .scene strong { color: #44ff44; }
+
+  .ai-concept { background: #1a1a22; border-radius: 8px; padding: 18px; margin-bottom: 16px; border-left: 3px solid #ffaa00; }
+  .ai-concept h3 { font-size: 16px; color: #ffcc44; margin-bottom: 10px; }
+  .ai-concept .detail { color: #ccc; font-size: 14px; margin-bottom: 8px; }
+  .ai-concept .interpret { color: #aaa; font-size: 13px; padding: 8px 12px; background: #0d0d15; border-radius: 4px; margin-bottom: 8px; }
+  .ai-concept .interpret strong { color: #ffaa00; }
+  .ai-concept .scene { color: #88bb88; font-size: 13px; padding: 8px 12px; background: #0d120d; border-radius: 4px; }
+  .ai-concept .scene strong { color: #44ff44; }
+
+  .ai-money { background: #1a1a22; border-radius: 8px; padding: 18px; margin-bottom: 16px; border-left: 3px solid #44cc88; }
+  .ai-money h3 { font-size: 16px; color: #66ccaa; margin-bottom: 10px; }
+  .ai-money .detail { color: #ccc; font-size: 14px; margin-bottom: 8px; }
+  .ai-money .action { color: #ffcc44; font-size: 13px; padding: 8px 12px; background: #1a1a0d; border-radius: 4px; }
+  .ai-money .action strong { color: #ffcc00; }
+
+  .ai-dict { background: #1a1a22; border-radius: 8px; padding: 18px; margin-bottom: 16px; border-left: 3px solid #00cccc; }
+  .ai-dict h3 { font-size: 16px; color: #44dddd; margin-bottom: 10px; }
+  .ai-dict .plain { color: #ccc; font-size: 14px; padding: 8px 12px; background: #0d1215; border-radius: 4px; }
+
+  /* Summary */
+  .summary-box { background: linear-gradient(135deg, #1a0a1a, #2a1a2a); border: 1px solid #ff4444; border-radius: 12px; padding: 20px; margin-top: 24px; }
+  .summary-box h3 { color: #ff6666; font-size: 17px; margin-bottom: 12px; }
+  .summary-box p { color: #ccc; font-size: 14px; line-height: 1.8; }
+  .summary-box .highlight { color: #ffcc44; font-weight: 600; }
+
+  /* GitHub Table */
+  .gh-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+  .gh-table th { background: #1a1a2e; color: #6699ff; font-size: 13px; padding: 8px 12px; text-align: left; border-bottom: 1px solid #333; }
+  .gh-table td { font-size: 13px; padding: 8px 12px; border-bottom: 1px solid #222; }
+  .gh-table tr:hover { background: #1a1a22; }
+  .gh-table .star { color: #ffcc44; }
+  .gh-table .lang { color: #888; }
+
+  /* PH Table */
+  .ph-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+  .ph-table th { background: #1a1a2e; color: #ffaa00; font-size: 13px; padding: 8px 12px; text-align: left; border-bottom: 1px solid #333; }
+  .ph-table td { font-size: 13px; padding: 8px 12px; border-bottom: 1px solid #222; }
+
+  /* Data highlights */
+  .data-tag { display: inline-block; background: #ff4444; color: #fff; font-size: 12px; padding: 2px 8px; border-radius: 4px; margin: 0 4px; font-weight: 600; }
+  .data-tag.blue { background: #4488ff; }
+  .data-tag.green { background: #44cc88; }
+  .data-tag.gold { background: #ffaa00; color: #000; }
+  .data-tag.purple { background: #aa44ff; }
+
+  /* Quick news */
+  .quick-news { background: #1a1a22; border-radius: 6px; padding: 12px 16px; margin-bottom: 10px; font-size: 13px; color: #ccc; border-left: 2px solid #888; }
+  .quick-news strong { color: #aaa; }
+
+  /* Footer */
+  .footer { text-align: center; padding: 20px 0; color: #555; font-size: 12px; border-top: 1px solid #222; margin-top: 30px; }
+
+  @media (max-width: 600px) {
+    .container { padding: 10px; }
+    .header h1 { font-size: 22px; }
+    .tab-btn { font-size: 13px; padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🔥 日推情报站</h1>
+    <div class="date">2026-07-05 · 周六（使用7月4日新闻联播数据）</div>
+    <div class="subtitle">双专栏卡片 · 新闻风向标 × AI生产力黑洞</div>
+  </div>
+
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('col1')">📢 专栏一：新闻联播风向标</button>
+    <button class="tab-btn" onclick="switchTab('col2')">🚀 专栏二：AI生产力黑洞</button>
+  </div>
+
+  <!-- Column 1: 新闻联播 -->
+  <div class="tab-content active" id="col1">
+
+    <div class="core-signal">
+      <div class="label">◆ 核心风向 ◆</div>
+      <div class="text">建党105周年精神定调"深化改革创新"——循环经济2030年目标8万亿产值+科创成果转化"最后一公里"打通+全球数字经济中国7/13入选</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title red">一、分项解读（按新闻重要性排序）</div>
+
+      <div class="news-item">
+        <h3>1. 习近平建党105周年讲话引发中管企业、金融企业热烈反响</h3>
+        <div class="desc">
+          习近平总书记在庆祝中国共产党成立105周年大会上的重要讲话具有重大政治意义、理论意义、实践意义，为各行各业奋进"十五五"、推进中国式现代化建设进一步指明了方向。讲话揭示中国共产党不断铸就辉煌的<strong>"六个始终"优秀特质</strong>，对全党提出<strong>"五个必须"的最新要求</strong>。中管企业、中管金融企业广大干部职工纷纷表示，要牢记总书记嘱托，立足自身职能定位，在推进中国式现代化建设新征程上拼搏实干。
+        </div>
+        <div class="analysis">
+          <strong>风向标解读：</strong>建党105周年讲话定调"十五五"开局政治方向——"六个始终"优秀特质+"五个必须"新要求=下半年所有政策都围绕"深化改革创新"展开。中管企业和金融企业的表态意味着国资改革和金融监管将继续深化，不是放松而是加码。
+        </div>
+        <div class="impact">
+          <strong>行业影响：</strong>国资国企改革加速→央企整合、混改提速；金融监管深化→银行、保险合规成本上升但风控能力增强；"十五五"产业方向明确→新质生产力、循环经济、数字经济获政策红利
+        </div>
+      </div>
+
+      <div class="news-item">
+        <h3>2. 习近平讲话引发港澳台人士热烈反响——凝聚中华民族伟大复兴磅礴力量</h3>
+        <div class="desc">
+          港澳台各界人士表示，习近平主席讲话振奋人心，凝聚起中华儿女为中华民族伟大复兴而奋斗的磅礴力量。
+        </div>
+        <div class="analysis">
+          <strong>风向标解读：</strong>港澳台板块被推到第二位=两岸融合仍是高层优先议程。结合此前王沪宁出席海峡论坛、两岸融合政策密集出台的背景，下半年两岸经贸合作、文化交流项目将持续加码。
+        </div>
+        <div class="impact">
+          <strong>行业影响：</strong>两岸经贸合作加速→福建自贸区、厦门金门合作区项目利好；港澳文旅、金融互联互通深化→粤港澳大湾区基础设施和跨境金融服务受益
+        </div>
+      </div>
+
+      <div class="news-item gold-border">
+        <h3>3. 我国加快建设循环经济高质量发展体系——2030年产值目标8万亿</h3>
+        <div class="desc">
+          国家发展改革委发布：未来五年推出一系列新举措建设循环经济高质量发展体系。<span class="data-tag gold">8万亿</span>到2030年资源循环利用产业产值达到<span class="data-tag gold">8万亿元</span>；大宗固体废弃物年综合利用量提升至<span class="data-tag gold">45亿吨</span>左右。首次提出培育壮大循环经济服务业。加快补齐新能源车动力电池、风电、光伏等"新三样"固体废弃物循环利用短板；推进海外优质再生原料进口利用；在生产端扩大再生材料应用规模；在生活端持续推进绿色消费。
+        </div>
+        <div class="analysis">
+          <strong>风向标解读：</strong>这是今天经济类新闻中最重磅的一条！8万亿产值目标+45亿吨综合利用量=循环经济从"配角"变成"主角"。首次提"培育壮大循环经济服务业"=原来循环经济只有制造业，现在要搞服务业态（再生资源交易平台、循环经济咨询、碳资产管理等）。"新三样"废弃物（动力电池、风电叶片、光伏板）循环利用补短板=新能源产业的下游回收环节成为新增长点。
+        </div>
+        <div class="impact">
+          <strong>行业影响：</strong>①动力电池回收→格林美、光华科技等受益；②风电光伏废弃物处理→新赛道蓝海，目前渗透率不到10%；③再生材料替代→钢铁、有色、塑料行业成本下降；④循环经济服务业→碳资产管理、ESG咨询、再生资源交易平台=新商业模式
+        </div>
+      </div>
+
+      <div class="news-item blue-border">
+        <h3>4. 【活力中国调研行】天津天开高教科创园：打通科研成果转化"最后一公里"</h3>
+        <div class="desc">
+          天津天开高教科创园：<span class="data-tag blue">1800+</span>家初创企业，"一企一画像"服务机制，30多名对口专业人才组成科创服务部为初创企业找市场。智清未来新材料从落户到规模化量产仅用<span class="data-tag blue">不到半年</span>。园区600多项高校科研成果正陆续走出实验室。具体成果：三维智能机械蛇2年落地热力管网、电力巡检；精度<span class="data-tag blue">0.2微米</span>视觉识别系统进入具身智能机器人实景测试；脑机接口听力评估设备在北京儿童医院投入临床应用。
+        </div>
+        <div class="analysis">
+          <strong>风向标解读：</strong>"活力中国调研行"连续多日出现在新闻联播=官方在系统性推介科创转化模式。天开园的核心创新是"服务专员找人找市场"而不是"给钱给政策"——这标志着中国科创政策从"资金驱动"转向"服务驱动"。0.2微米视觉识别进入具身智能机器人测试=人形机器人产业链正在加速。
+        </div>
+        <div class="impact">
+          <strong>行业影响：</strong>①科创园区运营→"服务驱动"模式可复制到全国；②具身智能→视觉识别+机械蛇+脑机接口三条线同时落地=人形机器人核心零部件国产化加速；③新材料→微纳米粉体量产=电子、化工、航空航天上游突破
+        </div>
+      </div>
+
+      <div class="news-item">
+        <h3>5. 《习近平谈治国理政》第五卷中斯读者会在斯里兰卡首都科伦坡举行</h3>
+        <div class="desc">
+          与会嘉宾认为，《习近平谈治国理政》第五卷是全面系统反映习近平新时代中国特色社会主义思想最新成果的权威著作，有助于国际社会进一步加深对中国之路、中国之治、中国之理的理解。嘉宾表示，中斯是现代化的同路人，对两国增进理解、汇聚共识、深化合作、携手构建中斯命运共同体具有重要意义。
+        </div>
+        <div class="analysis">
+          <strong>风向标解读：</strong>斯里兰卡是印度洋关键节点国家，中斯"命运共同体"定位=中国在南亚海上通道的战略布局。结合此前中柬"全天候命运共同体"、中孟"新时代命运共同体"等升级动作，周边外交正在系统升级。
+        </div>
+        <div class="impact">
+          <strong>行业影响：</strong>中斯基建合作→科伦坡港口城项目、汉班托塔港深化；南亚海上物流→斯里兰卡转口贸易枢纽地位提升
+        </div>
+      </div>
+
+      <div class="news-item green-border">
+        <h3>6. "七一勋章"获得者李连成：30年带领西辛庄村集体共富——人均年收入突破4.2万元</h3>
+        <div class="desc">
+          李连成30多年以"当干部就应该能吃亏"的朴素信念带领西辛庄村走出集体共富之路。关键数据：30多年前人均年收入<span class="data-tag">不到600元</span>→如今<span class="data-tag green">突破42000元</span>（增长70倍）；1983年搞蔬菜大棚挣下<span class="data-tag">17万元</span>；1994年集资开办再生纸厂，投产第二年盈利<span class="data-tag">200多万元</span>，后将估价200多万的纸厂以<span class="data-tag green">68万元</span>低价交给村集体；新引进<span class="data-tag green">75亩</span>无土栽培樱桃番茄，每棵产量<span class="data-tag green">80斤</span>，产品出口东南亚。
+        </div>
+        <div class="analysis">
+          <strong>风向标解读：</strong>李连成故事是"集体共富"的典型样本=呼应建党讲话中"初心使命"主题。核心数据亮点：人均600→42000元（70倍增长）=乡村振兴不是概念而是有具体数字支撑的成果。无土栽培樱桃番茄出口东南亚=农产品"出海"模式正在复制到更广范围。
+        </div>
+        <div class="impact">
+          <strong>行业影响：</strong>①乡村振兴→集体经济模式推广；②农产品出口→樱桃番茄/设施农业出海新通道；③无土栽培→设施农业技术国产化加速
+        </div>
+      </div>
+
+      <div class="news-item cyan-border">
+        <h3>7. 四部门延续实施失业保险稳岗扩岗政策举措</h3>
+        <div class="desc">
+          人力资源社会保障部、教育部、财政部、国家税务总局四部门联合印发《关于失业保险支持企业稳岗扩岗的通知》，延续实施稳岗返还政策、延续实施扩岗补助政策、优化技能提升补贴政策，支持企业稳定岗位，积极吸纳青年就业。
+        </div>
+        <div class="analysis">
+          <strong>风向标解读：</strong>"延续"=不是新政策而是续期，说明就业压力仍然较大。四部门联合=跨部门协调力度加大，青年就业是核心关切。稳岗返还+扩岗补助+技能提升补贴三件套=保存量+促增量+提质量三线并行。
+        </div>
+        <div class="impact">
+          <strong>行业影响：</strong>①人力资源服务→稳岗返还代办、技能培训平台需求增加；②青年就业→实习生/应届生招聘补贴利好中小企业；③技能提升→AI+数字技能培训赛道持续受益
+        </div>
+      </div>
+
+      <div class="news-item blue-border">
+        <h3>8. 《国际科技组织成立登记指引》出台——外籍会员占比不低于1/3</h3>
+        <div class="desc">
+          民政部、科技部、中国科协联合公布《国际科技组织成立登记指引》，推动构建开放、公平、公正、非歧视的国际科技发展环境。在华设立国际科技组织，<span class="data-tag blue">外籍会员占比不低于三分之一</span>，运行中应当坚持国际性、非营利性。
+        </div>
+        <div class="analysis">
+          <strong>风向标解读：</strong>这是科技外交的制度化突破！允许国际科技组织在华注册=中国从"被动参与国际组织"转向"主动设立和运营国际组织"。外籍会员≥1/3=确保国际性而非空壳。结合此前全球数字经济灯塔案例发布、中斯读者会等动作，中国在科技治理领域正在从"跟随者"变成"规则制定者"。
+        </div>
+        <div class="impact">
+          <strong>行业影响：</strong>①国际科技组织→AI、量子、生物等领域国际标准制定话语权提升；②科技外交→国际学术会议、联合实验室在华落地加速；③非营利性→科技公益、开源社区获得制度保障
+        </div>
+      </div>
+
+      <div class="news-item blue-border">
+        <h3>9. 全球数字经济首批灯塔案例在北京发布——13个案例中7个中国入选</h3>
+        <div class="desc">
+          国际电信联盟、国际贸易中心、全球数字经济城市联盟共同在北京发布首批<span class="data-tag blue">13个</span>全球数字经济灯塔案例，包括北京智能政务协同办公平台在内的<span class="data-tag blue">7个中国案例</span>入选，系统展示城市治理、公共服务等领域的数字化转型经验。
+        </div>
+        <div class="analysis">
+          <strong>风向标解读：</strong>7/13=中国占比超过一半！这意味着中国在数字经济实践层面已经领先全球。国际电信联盟（ITU）背书=不是自说自话而是国际权威认可。北京智能政务平台入选=政务数字化是核心方向。
+        </div>
+        <div class="impact">
+          <strong>行业影响：</strong>①数字政务→政务云、协同办公平台全国推广；②智慧城市→城市治理数字化标准输出；③数字经济咨询→灯塔案例咨询服务出海
+        </div>
+      </div>
+
+      <div class="news-item blue-border">
+        <h3>10. 西渝高铁石家梁隧道贯通——11908米，2028年通车</h3>
+        <div class="desc">
+          西安至重庆高速铁路控制性工程全长<span class="data-tag blue">11908米</span>的石家梁隧道顺利贯通。西渝高铁全线预计<span class="data-tag blue">2028年</span>建成通车，届时重庆到西安列车运行时间由最快<span class="data-tag">5个多小时</span>缩短至<span class="data-tag blue">约2小时</span>。
+        </div>
+        <div class="analysis">
+          <strong>风向标解读：</strong>西部高铁网持续加密=成渝双城经济圈+西安都市圈互联互通提速。5小时→2小时=时间压缩60%，物流和人员流动效率质变。
+        </div>
+        <div class="impact">
+          <strong>行业影响：</strong>①西部基建→高铁沿线土地价值重估；②成渝经济圈→与西安联动形成西部三角经济带；③旅游业→重庆-西安2小时直达=周末游新赛道
+        </div>
+      </div>
+
+      <div class="news-item purple-border">
+        <h3>11. 各地积极应对强降雨天气——台风"美莎克"+辽宁暴雨+北京大风冰雹</h3>
+        <div class="desc">
+          广东5个地市25个区县启动防风Ⅳ级应急响应，广湛高铁、深湛铁路部分列车停运；海南三亚雨势减弱，琼州海峡客滚船计划今晚9时恢复运行；台风"美莎克"移入北部湾，广西海事局防台风应急响应Ⅲ→Ⅱ级；北京个别区域<span class="data-tag purple">10级以上</span>大风和冰雹；上海中心城区1小时雨量<span class="data-tag purple">30-50毫米</span>；辽宁抚顺暴雨部分区域停水断电，已转移安置<span class="data-tag purple">3500多人</span>，电力供水恢复近<span class="data-tag purple">80%</span>；浑河沈阳段一度超警戒水位；国家防总针对辽宁、吉林启动防汛Ⅳ级应急响应。
+        </div>
+        <div class="analysis">
+          <strong>风向标解读：</strong>7月进入汛期高峰=台风+暴雨+冰雹多线并发。辽宁抚顺3500人转移+80%恢复=应急响应速度在提升。国家防总同时对6省启动应急响应=防汛资源正在全国统筹调配。
+        </div>
+        <div class="impact">
+          <strong>行业影响：</strong>①防汛设备→泵车、排水设备需求激增；②农业→辽宁粮食产区受损需关注；③保险→农险、财产险理赔量上升；④基建→海绵城市、排水系统升级加速
+        </div>
+      </div>
+
+      <div class="section-title" style="border-color:#888; margin-top:24px;">国内联播快讯</div>
+
+      <div class="quick-news"><strong>失业保险稳岗扩岗：</strong>四部门延续实施稳岗返还+扩岗补助+技能提升补贴，支持企业稳岗吸纳青年就业</div>
+      <div class="quick-news"><strong>国际科技组织登记指引：</strong>在华设立国际科技组织，外籍会员占比不低于1/3，坚持国际性+非营利性</div>
+      <div class="quick-news"><strong>西渝高铁石家梁隧道贯通：</strong>全长11908米，2028年通车，重庆到西安5小时→2小时</div>
+      <div class="quick-news"><strong>全球数字经济灯塔案例：</strong>13个案例7个中国入选，北京智能政务协同办公平台等</div>
+
+      <div class="section-title" style="border-color:#888;">国际联播快讯</div>
+
+      <div class="quick-news"><strong>俄称控制康斯坦丁诺夫卡：</strong>普京视察俄军指挥所宣布控制顿涅茨克重镇，乌方否认；乌军袭击圣彼得堡附近石油和军事设施，距离乌边境850公里喀琅施塔得，俄方击落72架无人机</div>
+      <div class="quick-news"><strong>伊朗哈梅内伊遗体告别仪式：</strong>7月3日德黑兰举行，2月28日美以空袭遇害，国葬持续至7月9日，预计参与人数1500万-2000万</div>
+      <div class="quick-news"><strong>美国用电超负荷：</strong>PJM联合电网启动联邦级预警，纽约皇后区9800户被限电，华盛顿和费城独立日游行取消</div>
+      <div class="quick-news"><strong>西班牙加泰罗尼亚林火：</strong>过火面积约2300公顷，近万人被疏散</div>
+
+    </div>
+
+    <div class="summary-box">
+      <h3>◆ 总结风向标 ◆</h3>
+      <p>
+        今日新闻联播的核心信号是<span class="highlight">"建党精神定调+循环经济8万亿+科创转化模式推广"</span>三线并行。建党105周年讲话定调"六个始终+五个必须"=下半年所有政策围绕"深化改革创新"；循环经济2030年8万亿目标+首次提出"循环经济服务业"=新能源下游回收和碳资管成为新赛道；天开园"服务驱动"模式=科创政策从资金驱动转向服务驱动。<br><br>
+        <span class="highlight">投资建议：</span>①循环经济→动力电池回收+风电光伏废弃物处理+碳资产管理三条线同时启动；②具身智能→视觉识别+机械蛇+脑机接口=人形机器人产业链加速；③数字经济→灯塔案例7/13中国入选=政务数字化和智慧城市出海；④防汛→7月汛期高峰=海绵城市和排水系统升级提速
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Column 2: AI生产力黑洞 -->
+  <div class="tab-content" id="col2">
+
+    <div class="core-signal" style="border-color:#4488ff; background:linear-gradient(135deg, #0a0a1a, #1a1a2a);">
+      <div class="label" style="color:#6699ff;">◆ 今日AI风向 ◆</div>
+      <div class="text" style="color:#fff;">Mistral Leanstral 1.5开源证明工程+阿里page-agent登榜+Strix渗透测试+1,904⭐暴增+Chrome DevTools MCP落地——Agent战场从"写代码"延伸到"证明数学定理+测试安全漏洞+操控浏览器"</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title blue">🛠️ 【顶级装备库更新】</div>
+
+      <div class="ai-tool">
+        <h3>Mistral Leanstral 1.5 —— AI证明工程师，miniF2F跑满，顺手挖出5个真实漏洞</h3>
+        <div class="desc" style="color:#ccc; font-size:14px; margin-bottom:8px;">
+          7月4日发布。119B总参数/6B活跃参数MoE架构，专为Lean 4证明助手打造。三阶段训练：中段训练+SFT+CISPO强化学习。<span class="data-tag blue">miniF2F达到饱和</span>（100%通过）；<span class="data-tag blue">PutnamBench 587/672</span>（奥赛级数学）；在57个开源仓库里<span class="data-tag gold">发现5个此前未知漏洞</span>。Apache-2.0开源，HuggingFace+免费API开放。
+        </div>
+        <div class="tech">
+          <strong>核心黑科技：</strong>不是"生成代码"而是"证明数学定理"——Leanstral像一个资深数学家+审计师：先写形式化证明（数学零错误），再拿这套能力去审计代码漏洞。6B活跃参数的MoE架构=推理成本极低，但数学能力达到奥赛级。CISPO强化学习=让模型"学会怎么找证明路径"，不是死记硬背。
+        </div>
+        <div class="value">
+          <strong>实战价值：</strong>①代码审计→5个真实漏洞被发现=安全审计新范式，成本比人工审计低90%；②数学证明→奥赛级解题能力=AI辅助科研论文验证；③智能合约审计→形式化验证+漏洞发现双杀=区块链安全赛道新工具。配合小红书项目：让Agent审核文案合规性（像审计代码一样审计文案）
+        </div>
+      </div>
+
+      <div class="ai-tool">
+        <h3>alibaba/page-agent —— 一行script标签，自然语言操控你的网页</h3>
+        <div class="desc" style="color:#ccc; font-size:14px; margin-bottom:8px;">
+          阿里巴巴开源。纯JavaScript in-page GUI Agent，不需要截图、不需要浏览器扩展、不需要后端服务、不需要Python。<span class="data-tag blue">23,087⭐</span> GitHub总星，今日<span class="data-tag blue">+742⭐</span>。核心原理：DOM文本化而非截图识别→零延迟操控。
+        </div>
+        <div class="tech">
+          <strong>核心黑科技：</strong>传统GUI Agent需要截图→OCR→判断→操作四步链路，page-agent直接把DOM变成文本让LLM读→一步到位。不需要部署浏览器集群=部署成本为零。一行script标签嵌入=任何网站5分钟集成AI操控能力。
+        </div>
+        <div class="value">
+          <strong>实战价值：</strong>①电商→自然语言操控商品上下架、价格调整=运营效率翻倍；②测试→自然语言写测试用例自动执行=QA自动化革命；③无障碍→语音操控网页=残障人士交互新方案。配合小红书项目：让用户用自然语言在小红书店铺页面操作（"帮我上架这款辣椒""改价格到128元"）
+        </div>
+      </div>
+
+      <div class="ai-tool">
+        <h3>JuliusBrussee/caveman —— "穴居人说话法"砍掉Claude Code 65%的Token消耗</h3>
+        <div class="desc" style="color:#ccc; font-size:14px; margin-bottom:8px;">
+          Claude Code Skill。核心理念：why use many token when few token do trick。用极简"原始人"式表达代替冗长自然语言指令。<span class="data-tag gold">83,944⭐</span> GitHub总星，今日<span class="data-tag gold">+1,089⭐</span>。
+        </div>
+        <div class="tech">
+          <strong>核心黑科技：</strong>不是压缩算法而是"表达范式革命"——把"请帮我创建一个具有以下特性的React组件：响应式布局、支持暗色模式、包含表单验证逻辑"压缩成"make react cmpnt responsive dark form validate"。Claude完全能理解=LLM的冗余容错能力被反向利用来省Token。
+        </div>
+        <div class="value">
+          <strong>实战价值：</strong>①成本→Token消耗降65%=API费用砍掉近三分之二；②速度→输入减少=响应更快；③团队→统一简洁指令风格=协作效率提升。适合所有重度使用Claude Code的开发者，尤其适合你的UE插件开发场景——HLSL代码本来就简洁，配合caveman风格双重压缩
+        </div>
+      </div>
+
+      <div class="ai-tool">
+        <h3>usestrix/strix —— 开源AI渗透测试工具，今日+1,904⭐暴增</h3>
+        <div class="desc" style="color:#ccc; font-size:14px; margin-bottom:8px;">
+          Python编写。AI驱动的自动发现并修复应用程序安全漏洞。<span class="data-tag gold">36,013⭐</span>总星，今日<span class="data-tag gold">+1,904⭐</span>（今日增速第一）。
+        </div>
+        <div class="tech">
+          <strong>核心黑科技：</strong>AI渗透测试=不是扫描器而是"攻击者视角"。自动模拟黑客攻击路径→发现漏洞→生成修复方案→验证修复有效性。闭环：发现→修复→验证三步自动化。
+        </div>
+        <div class="value">
+          <strong>实战价值：</strong>①开发者→上线前自动安全审计=零成本安全保障；②安全团队→AI辅助渗透测试=人力释放做更高价值工作；③SaaS→安全审计服务产品化=按次收费商业模式
+        </div>
+      </div>
+
+      <div class="ai-tool">
+        <h3>openai/codex-plugin-cc —— 从Claude Code里调用Codex，跨模型协作</h3>
+        <div class="desc" style="color:#ccc; font-size:14px; margin-bottom:8px;">
+          OpenAI出品。JavaScript。让Claude Code用户可以直接调用Codex来审查代码或委派任务。<span class="data-tag blue">24,382⭐</span>总星，今日<span class="data-tag blue">+718⭐</span>。
+        </div>
+        <div class="tech">
+          <strong>核心黑科技：</strong>跨模型协作范式——Claude Code负责规划+执行，Codex负责审查+验证。两个最强编程模型在同一工作流里互补=代码质量双重保障。不是替代而是"经理+审计"双角色。
+        </div>
+        <div class="value">
+          <strong>实战价值：</strong>①代码审查→Codex审查Claude写的代码=双重验证减少bug；②任务委派→复杂任务拆分给不同模型并行执行=效率翻倍；③成本优化→Claude规划+Codex执行=Token分配最优
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title purple">🤖 【Agent 战场情报】</div>
+
+      <div class="ai-agent">
+        <h3>Chrome DevTools MCP —— 编程Agent直接调用Chrome调试能力</h3>
+        <div class="detail">ChromeDevTools官方团队发布。TypeScript。<span class="data-tag purple">45,767⭐</span>总星。让AI编程Agent直接调用Chrome开发者工具的Network、Console、DOM等调试能力，用于网页开发、自动化测试及故障排查。</div>
+        <div class="interpret">
+          <strong>解读：</strong>这是MCP协议在浏览器领域的官方落地！以前Agent要调试网页得截图→OCR→猜问题，现在直接读Network请求、Console日志、DOM结构=诊断精度从"猜"升级到"精确定位"。Chrome官方出品=不是第三方hack而是标准协议。
+        </div>
+        <div class="scene">
+          <strong>落地场景：</strong>①网页开发→Agent自动调试前端bug=开发效率3倍提升；②自动化测试→Agent读Network请求验证API正确性；③故障排查→Agent远程诊断线上问题=运维自动化。配合小红书项目：Agent自动检查店铺页面加载速度、移动端适配、SEO问题
+        </div>
+      </div>
+
+      <div class="ai-agent">
+        <h3>美团LongCat-2.0万亿参数——五万卡国产算力完成全流程训练</h3>
+        <div class="detail">美团发布。<span class="data-tag purple">1.6万亿</span>参数（1.6T），五万卡国产算力集群完成预训练全流程，原生<span class="data-tag purple">1M上下文</span>（百万Token），专为Agentic Coding设计。同步开源LongCat-Video-Avatar 1.5数字人+General 365推理评测集（26款模型测试，Gemini 3 Pro 62.8%最高）+VitaBench 2.0长期动态用户建模评测。</div>
+        <div class="interpret">
+          <strong>解读：</strong>五万卡国产算力=从依赖英伟达到国产替代的里程碑。1.6T参数+1M上下文=代码Agent的"望远镜+显微镜"——既能理解百万行代码的全局架构，又能精确定位单个函数的bug。Agentic Coding定位=不是通用聊天而是专门的编程Agent。
+        </div>
+        <div class="scene">
+          <strong>落地场景：</strong>①大型项目→百万行代码仓库的全局理解和重构=以前不可能现在可行；②数字人→LongCat-Video-Avatar=直播/短视频虚拟主播新方案；③评测→General 365推理评测=大模型推理能力基准新标尺
+        </div>
+      </div>
+
+      <div class="ai-agent">
+        <h3>ogulcancelik/herdr —— 终端Agent多路复用器，一个入口管多个Agent</h3>
+        <div class="detail">Rust编写。<span class="data-tag purple">11,425⭐</span>总星，今日<span class="data-tag purple">+707⭐</span>。Agent multiplexer that lives in your terminal=终端中的Agent调度中心。</div>
+        <div class="interpret">
+          <strong>解读：</strong>Agent多路复用=像Kubernetes管容器一样管Agent。一个终端入口→同时调度多个AI Agent并行工作→结果汇总→避免Agent之间冲突。Rust编写=极低资源占用+高并发。
+        </div>
+        <div class="scene">
+          <strong>落地场景：</strong>①多Agent协同→前端Agent+后端Agent+测试Agent同时开工=一个人顶一个团队；②CI/CD→Agent多路复用器替代传统构建流水线；③监控→实时追踪多个Agent执行状态
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title gold">🖊️ 【AI新玩法，新概念】</div>
+
+      <div class="ai-concept">
+        <h3>Mistral CEO Arthur Mensch 提出"Proof Engineering"——AI从写代码到证明定理</h3>
+        <div class="detail">Leanstral 1.5发布同时，Mistral CEO Arthur Mensch提出"Proof Engineering"概念：AI不只生成代码，还能用形式化逻辑证明代码的正确性。Lean 4语言从"证明助手"变成"AI工程工具"。</div>
+        <div class="interpret">
+          <strong>解读：</strong>这是从"Software Engineering"到"Proof Engineering"的范式跃迁！以前：写代码→测试→发现bug→修复（事后验证）；现在：写证明→推导代码→零bug（事前保证）。Leanstral在miniF2F跑满=数学定理验证能力达到人类专家水平。发现5个真实漏洞=证明能力可以直接转化成安全审计能力。
+        </div>
+        <div class="scene">
+          <strong>落地场景：</strong>①智能合约→形式化验证杜绝漏洞=区块链安全刚需；②航空航天→代码零bug验证=生命安全场景必备；③AI Agent→"证明型Agent"替代"生成型Agent"=质量保证级跃升
+        </div>
+      </div>
+
+      <div class="ai-concept">
+        <h3>Anthropic Claude Sonnet 5（7月1日发布）——最强Agent执行力模型</h3>
+        <div class="detail">7月1日Anthropic发布。SWE-Bench Pro <span class="data-tag gold">63.2%</span>（逼近Opus 4.8的69.2%），价格比Opus 4.8便宜<span class="data-tag gold">60%</span>。核心定位："工作执行力最强"而非推理最强。具备制定计划、使用浏览器和终端等工具并自主运行的能力。同步上线Claude Science科研工作台。Product Hunt 7月排名第7。</div>
+        <div class="interpret">
+          <strong>解读：</strong>Sonnet 5的定位非常清晰——不是"最聪明"而是"最能干活"。价格便宜60%=企业级Agent部署成本大幅下降。"制定计划+自主运行"=从被动执行到主动规划，Agent能力从"工具"升级为"同事"。Claude Science=Anthropic正式进军科研AI赛道。
+        </div>
+        <div class="scene">
+          <strong>落地场景：</strong>①企业Agent→Sonnet 5低成本部署=AI同事规模化；②科研→Claude Science=论文写作+数据分析+实验设计一体化；③编程→Claude Code+Sonnet 5=最强执行力编程搭档
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title green">💰 【AI 套利/变现线索】</div>
+
+      <div class="ai-money">
+        <h3>热点1：形式化验证安全审计服务——Leanstral+Strix双杀组合</h3>
+        <div class="detail">Leanstral 1.5（形式化证明+漏洞发现）+ Strix（AI渗透测试+修复验证）=从"数学证明安全"到"实战攻击验证"的完整闭环。两条线互补：Leanstral做理论验证（代码逻辑零bug），Strix做实战验证（黑客攻击路径模拟）。</div>
+        <div class="action">
+          <strong>复刻建议：</strong>①定位"AI安全审计一体化服务"——先用Leanstral形式化验证代码逻辑正确性，再用Strix模拟攻击路径找实战漏洞；②目标客户：区块链项目（智能合约审计刚需）、金融科技公司（合规审计）、SaaS平台（上线前安全验证）；③定价模型：按代码量收费，基础审计5000-2万/次，深度审计+修复5-20万/次；④差异化：不是传统扫描器而是"数学证明+实战攻击"双重验证，结果可信度远超竞品
+        </div>
+      </div>
+
+      <div class="ai-money">
+        <h3>热点2：page-agent+小红书=AI运营助理零成本落地</h3>
+        <div class="detail">page-agent一行script标签嵌入网页=自然语言操控小红书店铺页面。上架/改价/回复评论/调整排序→一句话搞定。不需要浏览器集群=零部署成本。</div>
+        <div class="action">
+          <strong>复刻建议：</strong>①在小红书店铺管理页面嵌入page-agent；②训练Agent理解"帮我上架阳雀湖辣椒""改价格到128元""回复这个买家问物流"等运营指令；③扩展到自动选品→Agent读取竞品数据+市场趋势→推荐选品决策；④产品化→"AI运营助理SaaS"面向小微商家收费99-299元/月
+        </div>
+      </div>
+
+      <div class="ai-money">
+        <h3>热点3：caveman+Claude Code=Token成本砍65%→AI编程工作室利润率翻倍</h3>
+        <div class="detail">caveman让Claude Code的Token消耗降低65%=API费用从100元/天降到35元/天。对于重度AI编程用户（日调用10万+Token），月省2000+元。配合codex-plugin-cc跨模型协作=Claude规划+Codex审查=代码质量双保险。</div>
+        <div class="action">
+          <strong>复刻建议：</strong>①安装caveman skill到Claude Code→所有指令切换为"穴居人"风格；②配合codex-plugin-cc→Claude写代码+Codex审查=双重保障；③量化效果→记录Token消耗对比→向客户展示"成本降低65%+质量提升"→AI编程服务定价竞争力翻倍；④适合你的UE插件开发→HLSL代码本来就简洁+caveman风格=双重压缩极致效率
+        </div>
+      </div>
+
+      <div class="ai-money">
+        <h3>热点4：新闻联播简报→循环经济赛道AI内容变现</h3>
+        <div class="detail">今日新闻联播循环经济2030年8万亿目标=公众关注度飙升。AI自动抓取新闻联播→生成解读→制作科普内容→小红书/视频号分发=零成本内容工厂。</div>
+        <div class="action">
+          <strong>复刻建议：</strong>①用AI自动生成"循环经济8万亿意味着什么"科普图文→小红书发布；②制作"动力电池回收蓝海"短视频→抖音/视频号分发；③建立"政策风向→行业解读→投资机会"内容矩阵→持续吸引关注→私域转化
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title cyan">🔍 【避坑/黑话词典】</div>
+
+      <div class="ai-dict">
+        <h3>词条：Proof Engineering（证明工程）</h3>
+        <div class="plain">一句话大白话：AI不光帮你写代码，还能用数学证明你的代码没有bug——不是测试找bug而是数学保证零bug。就像建筑工程师用力学计算证明桥不会塌，而不是建好了再测。</div>
+      </div>
+
+      <div class="ai-dict">
+        <h3>词条：MoE（Mixture of Experts，专家混合架构）</h3>
+        <div class="plain">一句话大白话：119B参数的大脑但每次只激活6B=像一个有200个专家的咨询公司，每次只派3个最懂行的专家去干活。省电省钱还更专业。</div>
+      </div>
+
+      <div class="ai-dict">
+        <h3>词条：MCP（Model Context Protocol，模型上下文协议）</h3>
+        <div class="plain">一句话大白话：给所有AI统一插座。以后你的Claude可以直接插Chrome调试器、Unity编辑器、任何工具——不用再纠结选哪个。就像USB-C统一了充电口。</div>
+      </div>
+
+      <div class="ai-dict">
+        <h3>词条：Agentic Coding（智能体编程）</h3>
+        <div class="plain">一句话大白话：不是你写代码让AI帮忙补全，而是你描述需求让AI自己写+测试+调试+部署——你从"码农"变成"项目经理"，AI是你的整个开发团队。</div>
+      </div>
+
+      <div class="ai-dict">
+        <h3>词条：GUI Agent（图形界面智能体）</h3>
+        <div class="plain">一句话大白话：AI学会了"看屏幕+点按钮"——像人一样操作网页和App，而不是只能读代码。page-agent更狠：不用看屏幕，直接读网页骨架（DOM），比人还快。</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title blue">📊 GitHub Trending 今日 Top 15</div>
+      <table class="gh-table">
+        <tr><th>#</th><th>项目</th><th>描述</th><th>语言</th><th>今日⭐</th><th>总⭐</th></tr>
+        <tr><td>1</td><td>usestrix/strix</td><td>开源AI渗透测试工具</td><td class="lang">Python</td><td class="star">+1,904</td><td>36,013</td></tr>
+        <tr><td>2</td><td>mattpocock/skills</td><td>Claude技能集合（156K⭐巨物）</td><td class="lang">Shell</td><td class="star">+973</td><td>156,538</td></tr>
+        <tr><td>3</td><td>JuliusBrussee/caveman</td><td>Claude Code Token节省65%</td><td class="lang">JavaScript</td><td class="star">+1,089</td><td>83,944</td></tr>
+        <tr><td>4</td><td>Zackriya-Solutions/meetily</td><td>AI会议助手（Rust+本地处理）</td><td class="lang">Rust</td><td class="star">+718</td><td>15,235</td></tr>
+        <tr><td>5</td><td>openai/codex-plugin-cc</td><td>Claude Code里调用Codex</td><td class="lang">JavaScript</td><td class="star">+718</td><td>24,382</td></tr>
+        <tr><td>6</td><td>alibaba/page-agent</td><td>纯JS网页GUI Agent</td><td class="lang">TypeScript</td><td class="star">+742</td><td>23,087</td></tr>
+        <tr><td>7</td><td>ogulcancelik/herdr</td><td>终端Agent多路复用器</td><td class="lang">Rust</td><td class="star">+707</td><td>11,425</td></tr>
+        <tr><td>8</td><td>asgeirtj/system_prompts_leaks</td><td>AI系统提示词泄露合集</td><td class="lang">JavaScript</td><td class="star">+471</td><td>48,900</td></tr>
+        <tr><td>9</td><td>harvard-edge/cs249r_book</td><td>机器学习系统教材</td><td class="lang">Python</td><td class="star">+443</td><td>26,554</td></tr>
+        <tr><td>10</td><td>ChromeDevTools/chrome-devtools-mcp</td><td>Chrome DevTools MCP</td><td class="lang">TypeScript</td><td class="star">+304</td><td>45,767</td></tr>
+        <tr><td>11</td><td>agentskills/agentskills</td><td>Agent Skills规范与文档</td><td class="lang">Python</td><td class="star">+351</td><td>22,323</td></tr>
+        <tr><td>12</td><td>rommapp/romm</td><td>自托管ROM管理器</td><td class="lang">Python</td><td class="star">+398</td><td>10,194</td></tr>
+        <tr><td>13</td><td>alirezarezvani/claude-skills</td><td>337个Claude技能+插件</td><td class="lang">Python</td><td class="star">+136</td><td>20,142</td></tr>
+        <tr><td>14</td><td>CoplayDev/unity-mcp</td><td>Unity MCP桥梁（AI+UE）</td><td class="lang">C#</td><td class="star">+69</td><td>11,589</td></tr>
+        <tr><td>15</td><td>crynta/terax-ai</td><td>7MB终端AI开发工作区</td><td class="lang">TypeScript</td><td class="star">+62</td><td>8,046</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="section-title gold">🏆 Product Hunt 7月 Top 15（AI相关）</div>
+      <table class="ph-table">
+        <tr><th>#</th><th>产品</th><th>描述</th><th>AI相关</th></tr>
+        <tr><td>1</td><td>Context.dev</td><td>One API to scrape, enrich, and extract the internet</td><td>✅</td></tr>
+        <tr><td>2</td><td>Acti</td><td>Agentic keyboard for mobile commands and search</td><td>✅</td></tr>
+        <tr><td>3</td><td>Glaze by Raycast</td><td>Create your own Mac apps by chatting with AI</td><td>✅</td></tr>
+        <tr><td>4</td><td>Humalike</td><td>Give your AI agents the social intelligence they're missing</td><td>✅</td></tr>
+        <tr><td>5</td><td>Tabstack Browser Automation</td><td>Automate the web in your app or agent, no browser to host</td><td>✅</td></tr>
+        <tr><td>6</td><td>Claude Sonnet 5</td><td>AI that plans, acts, and gets work done</td><td>✅</td></tr>
+        <tr><td>7</td><td>Adam CAD Copilot</td><td>AI CAD inside Onshape and Fusion</td><td>✅</td></tr>
+        <tr><td>8</td><td>Modelence Mobile Builder</td><td>Build mobile apps by chatting with AI</td><td>✅</td></tr>
+        <tr><td>9</td><td>Sequence Agentic</td><td>Money movement for AI agents</td><td>✅</td></tr>
+        <tr><td>10</td><td>Tamamon</td><td>A desktop pet that grows as you code with Claude Code</td><td>✅</td></tr>
+        <tr><td>11</td><td>Gemini Omni Flash</td><td>High-quality video generation and conversational editing</td><td>✅</td></tr>
+        <tr><td>12</td><td>Claude Science</td><td>Your research partner for rigorous science</td><td>✅</td></tr>
+        <tr><td>13</td><td>OASIS 1 Ring</td><td>Whisper to write and touch to edit</td><td>✅</td></tr>
+        <tr><td>14</td><td>RunInfra</td><td>Describe the AI model you need and get an optimized AI</td><td>✅</td></tr>
+        <tr><td>15</td><td>N71</td><td>Give all your AI agents one shared context</td><td>✅</td></tr>
+      </table>
+    </div>
+
+    <div class="summary-box" style="border-color:#4488ff; background:linear-gradient(135deg, #0a0a1a, #1a1a2a);">
+      <h3 style="color:#6699ff;">◆ 今日AI战场总结 ◆</h3>
+      <p>
+        今日AI情报三大主线：<br>
+        <span class="highlight" style="color:#66ccaa;">①证明工程崛起</span>——Mistral Leanstral 1.5让AI从"生成代码"进化到"证明定理+发现漏洞"，Proof Engineering成为新范式；<br>
+        <span class="highlight" style="color:#6699ff;">②Agent战场扩展</span>——从"写代码"延伸到"操控浏览器（page-agent）+测试安全（strix）+调试网页（chrome-devtools-mcp）+管理多Agent（herdr）"，Agent不再只住在代码里而是住在整个数字世界；<br>
+        <span class="highlight" style="color:#ffcc44;">③成本革命加速</span>——caveman砍65%Token+Sonnet 5便宜60%+codex-plugin-cc跨模型协作=AI编程成本正在系统性下降。<br><br>
+        <span class="highlight" style="color:#ff6666;">本周套利窗口：</span>①Leanstral+Strix=AI安全审计服务（5-20万/单）②page-agent+小红书=AI运营助理SaaS（99-299元/月）③caveman+Claude Code=Token成本砍65%+编程利润翻倍④新闻联播循环经济8万亿→科普内容变现赛道
+      </p>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    日推情报站 · 自动化生成 · 数据来源：新闻联播文字稿 + GitHub Trending + Product Hunt + AIToolly + WebSearch<br>
+    生成时间：2026-07-05 08:50 · Powered by WorkBuddy AI
+  </div>
+</div>
+
+<script>
+function switchTab(tabId) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
