@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日推双专栏情报 · 2026-07-06</title>
+<style>
+:root {
+  --bg: #0f1117;
+  --card-bg: #1a1d2e;
+  --card-bg2: #1e2135;
+  --accent: #ff6b35;
+  --accent2: #4e9fff;
+  --accent3: #00d4aa;
+  --accent4: #b388ff;
+  --text: #e0e0e0;
+  --text2: #a0a0b0;
+  --text3: #707080;
+  --border: #2a2d3e;
+  --badge-bg: rgba(78,159,255,0.1);
+  --badge-text: #4e9fff;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+.container { max-width: 900px; margin:0 auto; padding: 32px 20px; }
+
+.header {
+  text-align: center;
+  padding: 40px 0 32px;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 36px;
+}
+.header h1 {
+  font-size: 2em;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), #ff9a3c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+.header .sub {
+  color: var(--text2);
+  font-size: .95em;
+}
+
+.section-title {
+  font-size: 1.6em;
+  font-weight: 700;
+  margin: 48px 0 24px;
+  padding-bottom: 12px;
+  border-bottom: 3px solid var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title.ai { border-bottom-color: var(--accent2); }
+.section-title .icon { font-size: 1.3em; }
+
+.card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  transition: border-color 0.3s;
+}
+.card:hover { border-color: var(--accent); }
+.card.ai:hover { border-color: var(--accent2); }
+
+.card-tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: .75em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.card-tag.policy { background: rgba(255,107,53,0.15); color: var(--accent); }
+.card-tag.tech { background: rgba(78,159,255,0.15); color: var(--accent2); }
+.card-tag.economy { background: rgba(0,212,170,0.15); color: var(--accent3); }
+.card-tag.military { background: rgba(179,136,255,0.15); color: var(--accent4); }
+
+.card h3 { font-size: 1.15em; font-weight: 700; margin-bottom: 14px; color: #fff; }
+.card h4 { font-size: .95em; font-weight: 600; color: var(--text2); margin: 16px 0 8px; }
+.card p { color: var(--text); margin-bottom: 10px; font-size: .92em; }
+.card .highlight { background: rgba(255,255,255,0.03); border-left: 3px solid var(--accent); padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 12px 0; font-size: .9em; }
+.card.ai .highlight { border-left-color: var(--accent2); }
+
+.data-block {
+  display: flex; flex-wrap: wrap; gap: 12px; margin: 12px 0;
+}
+.data-item {
+  background: var(--card-bg2); border-radius: 8px; padding: 10px 14px; flex: 1; min-width: 120px;
+}
+.data-item .num { font-size: 1.4em; font-weight: 800; color: var(--accent); }
+.data-item .label { font-size: .75em; color: var(--text3); margin-top: 2px; }
+
+.core-wind {
+  background: linear-gradient(135deg, rgba(255,107,53,0.1), transparent);
+  border: 1px solid rgba(255,107,53,0.3);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+}
+.core-wind h3 { font-size: 1.1em; color: var(--accent); margin-bottom: 8px; }
+.core-wind p { font-size: .95em; color: var(--text); }
+
+.impact-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: .78em;
+  margin: 3px 4px;
+}
+.impact-badge.up { background: rgba(0,212,170,0.12); color: var(--accent3); }
+.impact-badge.down { background: rgba(255,107,53,0.12); color: var(--accent); }
+.impact-badge.neutral { background: rgba(160,160,176,0.12); color: var(--text2); }
+
+.summary-box {
+  background: linear-gradient(135deg, var(--card-bg), var(--card-bg2));
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 32px;
+}
+.summary-box.ai { border-color: var(--accent2); }
+.summary-box h3 { font-size: 1.15em; font-weight: 700; margin-bottom: 12px; }
+
+.ai-subtitle {
+  font-size: 1.2em;
+  font-weight: 700;
+  color: var(--accent2);
+  margin: 32px 0 16px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent2);
+}
+
+.footer {
+  text-align: center;
+  padding: 40px 0 20px;
+  color: var(--text3);
+  font-size: .82em;
+  border-top: 1px solid var(--border);
+  margin-top: 48px;
+}
+
+.star-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255,215,0,0.1);
+  color: #ffd700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: .8em;
+  font-weight: 600;
+}
+
+.gh-project {
+  background: var(--card-bg2);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 14px;
+  border: 1px solid var(--border);
+}
+.gh-project h4 { font-size: 1em; margin: 0 0 4px; color: #fff; }
+.gh-project .desc { color: var(--text2); font-size: .85em; margin-bottom: 8px; }
+.gh-project .meta { font-size: .78em; color: var(--text3); }
+
+.concept-card {
+  background: linear-gradient(135deg, rgba(78,159,255,0.08), rgba(179,136,255,0.08));
+  border: 1px solid rgba(78,159,255,0.2);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>日推双专栏情报</h1>
+  <div class="sub">新闻联播风向标解读 + AI生产力黑洞 · 2026年7月6日 周一</div>
+  <div class="sub" style="font-size:.8em;color:var(--text3);margin-top:4px">信源：新闻联播（2026-07-05广播） · GitHub Trending · Product Hunt · 36氪 · 量子位 · IT之家 · 技术栈 · TextMatrix · 博客园AI日报</div>
+</div>
+
+<!-- ==================== 专栏一：新闻联播 ==================== -->
+<div class="section-title"><span class="icon">📡</span> 专栏一：新闻联播每日简报（风向标解读版）</div>
+
+<!-- 核心风向 -->
+<div class="core-wind">
+  <h3>🧭 一、核心风向</h3>
+  <p><strong>生态文明与基层治理双循环驱动，成为"十五五"开局之年的两条政策主线。</strong>7月5日新闻联播以习近平生态文明思想"伟大征程"深度综述开篇，同步出版《基层工作方法论述摘编》，叠加军方学习七一讲话、香港首个空间站载荷部署、核电并网等战略级事件，释放出"绿色转型全面提速+基层治理制度化+科技自立加速"的三重政策信号。</p>
+</div>
+
+<!-- 分项解读 -->
+<div class="card">
+  <span class="card-tag policy">头版 · 生态文明</span>
+  <h3>二、分项解读</h3>
+  <h4>1.【伟大征程】践行绿色发展理念 绘就生态中国壮美画卷</h4>
+  <p><strong>新闻联播说了什么：</strong>这是新闻联播"伟大征程"系列重磅专栏的最新一期，以塞罕坝机械林场10万余亩石质阳坡绿化突破开篇——被称为"世界级生态修复难题"被成功破解。栏目系统回顾了习近平生态文明思想的发展脉络：从2005年任浙江省委书记时提出"绿水青山就是金山银山"，到十八大将生态文明纳入"五位一体"总体布局、写入宪法，再到二十大部署"推动绿色发展，促进人与自然和谐共生"。关键数据：全国PM2.5平均浓度从2013年68微克/立方米降至2025年28微克/立方米，<strong>中国成为全球空气质量改善速度最快的国家</strong>；地表水优良水质断面比例从64%提升至91.4%（达有监测记录以来最好水平）；森林覆盖率从21.7%提升到25.09%，<strong>中国成为全球增绿最多最快的国家</strong>；累计培育国家绿色工厂超8000家；全社会用电量中每10度有近4度是绿电；建成全球规模最大的碳排放权交易市场；与100多个国家和地区开展绿色能源项目合作。</p>
+  <p><strong>风向标解读：</strong>选择在"十五五"前夕以30分钟+篇幅深度回顾生态文明成就，绝非偶然。这既是向全党全国再次定调"绿水青山就是金山银山"的不可逆方向，也是为即将出台的"十五五"规划中的碳达峰路径和绿色转型指标做舆论铺垫。核心信号：<strong>碳达峰不是减速器，而是产业升级的加速器。</strong>栏目明确提到"积极稳妥推进和实现碳达峰"和"加快形成绿色生产生活方式"，意味着碳交易市场扩容、绿电消纳强制比例提升、绿色工厂认证门槛提高等政策储备充分。</p>
+  <p><strong>行业影响：</strong>
+    <span class="impact-badge up">光伏/风电/储能产业链持续受益</span>
+    <span class="impact-badge up">碳交易市场扩容利好碳核算服务商</span>
+    <span class="impact-badge up">绿色工厂认证带火节能改造/合同能源管理</span>
+    <span class="impact-badge up">新能源汽车渗透率有政策加速预期</span>
+    <span class="impact-badge neutral">传统高耗能行业面临绿色转型倒逼压力</span>
+  </p>
+</div>
+
+<div class="card">
+  <span class="card-tag policy">头版 · 基层治理</span>
+  <h4>2.《习近平关于基层工作方法论述摘编》出版发行</h4>
+  <p><strong>新闻联播说了什么：</strong>由中共中央党史和文献研究院编辑，中央文献出版社出版，全国发行。全书分<strong>9个专题，共计287段论述</strong>，摘自习近平同志1983年4月至2026年4月期间的报告、讲话、文章、指示、批示等<strong>190多篇重要文献</strong>，其中部分论述是第一次公开发表。重点阐述"什么是基层、如何深入基层、如何服务基层"三大核心命题，要求"树立大抓基层的鲜明导向"、"走好新时代党的群众路线"。</p>
+  <p><strong>风向标解读：</strong>此书时间横跨43年（1983-2026），覆盖面之广在同类论述摘编中极为罕见。配合近期多地公务员下沉街道、社区网格化强化等动作，传递的信号非常明确：<strong>基层治理从"被动维稳"向"主动服务"转型，且正在体系化、制度化。</strong>"大抓基层"将成为各级政府的考核风向标。</p>
+  <p><strong>行业影响：</strong>
+    <span class="impact-badge up">智慧社区/数字治理平台需求爆发</span>
+    <span class="impact-badge up">网格化管理软件/SaaS利好</span>
+    <span class="impact-badge up">基层社工培训、社区服务外包产业受益</span>
+  </p>
+</div>
+
+<div class="card">
+  <span class="card-tag military">军事 · 党建</span>
+  <h4>3. 铸牢强军之魂——习近平七一讲话在全军引发热烈反响</h4>
+  <p><strong>新闻联播说了什么：</strong>习近平总书记在庆祝中国共产党成立105周年大会上的重要讲话在全军引发热烈反响，聚焦"铸牢听党指挥的强军之魂"和"攻坚建军百年奋斗目标"。同步播出人民日报评论员文章《坚定信心、接续奋斗，不断创造无愧于时代和人民的新业绩》。</p>
+  <p><strong>风向标解读：</strong>105周年讲话将"建军百年目标"重新拉回高层视野。距离2027年建军百年仅剩2年，军队现代化加速推进的信号明显。<strong>国防预算稳步增长预期不变，军工订单将进入密集交付期。</strong></p>
+  <p><strong>行业影响：</strong>
+    <span class="impact-badge up">军工电子/信息化装备/无人系统</span>
+    <span class="impact-badge up">军民融合产业园区</span>
+  </p>
+</div>
+
+<div class="card">
+  <span class="card-tag tech">科技 · 航天</span>
+  <h4>4. 香港首个空间站科学载荷"天韵相机"完成部署</h4>
+  <p><strong>新闻联播说了什么：</strong>香港首个空间站科学载荷——"天韵相机"在中国空间站完成部署。这是香港地区首次参与国家空间站科学实验，标志着香港融入国家航天科技体系的重要里程碑。</p>
+  <p><strong>风向标解读：</strong>选择在香港回归29周年后进行这一部署，政治信号强于科技信号。它既是科技实力的展示，更是"一国两制"下香港融入国家发展大局的具象化呈现。<strong>粤港澳大湾区科技融合将进一步加速。</strong></p>
+  <p><strong>行业影响：</strong>
+    <span class="impact-badge up">香港科技企业参与国家项目通道拓宽</span>
+    <span class="impact-badge up">大湾区航天配套产业链</span>
+  </p>
+</div>
+
+<div class="card">
+  <span class="card-tag economy">经济 · 民生</span>
+  <h4>5. 国内联播快讯：四大经济数据释放积极信号</h4>
+  <p><strong>新闻联播说了什么：</strong>（1）<strong>今年以来快递业务量突破千亿件</strong>，较往年提前突破千亿大关；（2）1-5月规模以上电子信息制造业增加值实现<strong>两位数增长</strong>；（3）上半年全国共新开<strong>国际航空货运航线92条</strong>；（4）太平岭核电2号机组成功并网；（5）2026年暑期档电影票房<strong>破20亿元</strong>。</p>
+  <div class="highlight">
+    <strong>关键数据矩阵：</strong>
+    <br>快递千亿件→消费内需韧性强劲
+    <br>电子信息两位数增长→AI/半导体产业驱动
+    <br>92条国际货运航线→外贸物流通道加速修复
+    <br>太平岭核电并网→清洁能源基荷扩容
+    <br>暑期档20亿→线下消费场景全面复苏
+  </div>
+  <p><strong>风向标解读：</strong>五组数据指向同一个结论：<strong>内需复苏+产业升级+对外开放三条腿同时走路。</strong>快递千亿件与暑期档20亿验证消费信心回暖；电子信息两位数增长确认AI产业链正在带动制造业升级；92条国际货运航线说明中美贸易摩擦背景下，中国外贸正在积极构建替代物流通道。</p>
+  <p><strong>行业影响：</strong>
+    <span class="impact-badge up">快递物流/智能仓储</span>
+    <span class="impact-badge up">电子元器件/芯片封测</span>
+    <span class="impact-badge up">航空货运/跨境物流</span>
+    <span class="impact-badge up">核电设备/核能产业链</span>
+    <span class="impact-badge up">影视传媒/暑期档受益</span>
+  </p>
+</div>
+
+<div class="card">
+  <span class="card-tag military">地缘 · 国际</span>
+  <h4>6. 国际快讯：伊朗警告霍尔木兹海峡 + 以色列承认阿联酋部署铁穹</h4>
+  <p><strong>新闻联播说了什么：</strong>伊朗警告域外国家勿干涉霍尔木兹海峡；以色列官员首次承认曾在阿联酋部署"铁穹"防空系统（这是以方首次公开承认在海湾阿拉伯国家部署军事装备）；极端高温或致环法自行车赛部分赛段取消。</p>
+  <p><strong>风向标解读：</strong>伊朗+以色列两条新闻并列播出，呈现中东"火药桶"持续升温的态势。以色列"铁穹"在阿联酋的部署承认具有爆炸性——<strong>这意味着以色列-海湾国家军事合作已从秘密阶段走向半公开，将引发伊朗方面的强烈反应。</strong>霍尔木兹海峡是全球20%石油运输的必经通道，任何局势升级都将直接推高国际油价。</p>
+  <p><strong>行业影响：</strong>
+    <span class="impact-badge up">国际油价上涨预期→石油/石化板块</span>
+    <span class="impact-badge up">军工/防空系统</span>
+    <span class="impact-badge down">航运保险成本上升</span>
+    <span class="impact-badge neutral">黄金避险需求增加</span>
+  </p>
+</div>
+
+<!-- 总结 -->
+<div class="summary-box">
+  <h3>📊 三、总结风向标：7月第一周关键政策信号</h3>
+  <p>今日6大核心要闻构成"<strong>生态-基层-强军-科技-经济-地缘</strong>"六维政策矩阵，整体呈现"向内扎根（基层治理）+向外突破（科技航天）+稳中求进（经济数据）+底线思维（军事/地缘）"的执政逻辑。</p>
+  <p><strong>投资方向建议：</strong>短期关注核电/新能源（太平岭并网+生态综述催化）、快递物流（千亿件里程碑）、暑期档影视传媒；中期布局碳交易/绿色工厂（"十五五"政策预期）、军工信息化（建军百年2年倒计时）、中东油价波动（伊朗+以色列态势升级）；长期坚定看好电子信息制造业（两位数增长+AI驱动）。</p>
+</div>
+
+<!-- ==================== 专栏二：AI情报 ==================== -->
+<div class="section-title ai"><span class="icon">🚀</span> 专栏二：AI 生产力黑洞：今日黑科技与套利指南</div>
+<div style="color:var(--text2);font-size:.9em;margin-bottom:20px;">📅 日期：2026-07-06 | 覆盖7月4日-5日全球AI动态</div>
+
+<!-- 顶级装备库更新 -->
+<div class="ai-subtitle">🛠️ 【顶级装备库更新】GitHub Trending TOP5 深度拆解</div>
+
+<div class="gh-project">
+  <h4>1. JuliusBrussee/caveman <span class="star-badge">⭐ 84,842 +1,052/日</span></h4>
+  <div class="desc">🪨 "Why use many token when few token do trick" — Claude Code 技能，通过穴居人语言风格让 AI 减少 65% Token 消耗</div>
+  <p style="font-size:.85em;color:var(--text);"><strong>核心黑科技：</strong>不是简单的"写短点"指令——caveman 通过精心设计的提示词工程重塑 Claude Code 的输出行为模式，将回答压缩到原始长度的 35%。在 API 按 Token 计费的背景下，这相当于把 Claude API 成本直接打六折。</p>
+  <p style="font-size:.85em;color:var(--text);"><strong>实战价值：</strong>高频调用 Claude Code 的开发者（如日均 1000+ 次交互），使用 caveman 可将月均 API 费用从 $500 降至 $175。同时因为输出更短，响应延迟也明显下降。</p>
+  <div class="meta">语言: JavaScript | Fork: 4,719</div>
+</div>
+
+<div class="gh-project">
+  <h4>2. openai/codex-plugin-cc <span class="star-badge">⭐ 25,437 +1,532/日</span></h4>
+  <div class="desc">在 Claude Code 中直接调用 OpenAI Codex 进行代码审查或任务委派</div>
+  <p style="font-size:.85em;color:var(--text);"><strong>核心黑科技：</strong>这不是简单的"Claude 里套 OpenAI"——而是在 Claude Code 的工作流中开辟一条"专家通道"：当遇到 Claude 不擅长的任务时，自动路由给 Codex，结果再传回 Claude Code 继续协作。这是 AI 工具链互操作的教科书级案例。</p>
+  <p style="font-size:.85em;color:var(--text);"><strong>实战价值：</strong>在代码审查场景中，先用 Claude 分析项目上下文，再让 Codex 针对特定模块做深度安全审计，结果合并回 Claude Code。实现"两个模型各取所长"的最优工作流。</p>
+  <div class="meta">语言: JavaScript | Fork: 1,536</div>
+</div>
+
+<div class="gh-project">
+  <h4>3. usestrix/strix <span class="star-badge">⭐ 37,073 +1,114/日</span></h4>
+  <div class="desc">开源 AI 渗透测试工具，自动发现并修复应用安全漏洞</div>
+  <p style="font-size:.85em;color:var(--text);"><strong>核心黑科技：</strong>传统渗透测试需要资深安全专家手工执行，每小时费用高达 $300-500。strix 将 AI Agent 的推理能力注入渗透测试全流程——从资产发现、漏洞扫描、EXP 利用到报告生成，全程自动化。更关键的是它能给出修复建议，而不只是"发现问题"。</p>
+  <p style="font-size:.85em;color:var(--text);"><strong>实战价值：</strong>中小团队零安全预算也能获得企业级渗透测试。配合云服务商的上线前安全检查流程，可大幅降低因安全漏洞导致的合规风险。</p>
+  <div class="meta">语言: Python | Fork: 3,763</div>
+</div>
+
+<div class="gh-project">
+  <h4>4. Zackriya-Solutions/meetily <span class="star-badge">⭐ 16,908 +1,409/日</span></h4>
+  <div class="desc">隐私优先的 AI 会议助手——100% 本地处理，Rust 构建，支持 4 倍速 Whisper/Parakeet 实时转录+说话人分离+Ollama 摘要</div>
+  <p style="font-size:.85em;color:var(--text);"><strong>核心黑科技：</strong>在所有会议工具都在"上云"时，meetily 选择了逆向操作——<strong>全部本地运行，无云端依赖。</strong>基于 Rust 的高性能转录引擎支持 4 倍速处理，直接调用本地 Ollama 做摘要。这意味着企业内部机密会议不再需要把音频上传到第三方服务器。</p>
+  <p style="font-size:.85em;color:var(--text);"><strong>实战价值：</strong>金融、律所、政府等合规要求严格的机构可直接部署为内部会议系统，同时满足数据不出域+AI摘要的两难需求。对阿里这种刚禁止 Claude 的企业，是天然替代。</p>
+  <div class="meta">语言: Rust | macOS/Windows | Fork: 1,799</div>
+</div>
+
+<div class="gh-project">
+  <h4>5. alibaba/page-agent <span class="star-badge">⭐ 23,842 +805/日</span></h4>
+  <div class="desc">页面内 GUI Agent——用自然语言控制网页界面，纯 JavaScript 实现</div>
+  <p style="font-size:.85em;color:var(--text);"><strong>核心黑科技：</strong>阿里开源的这个项目是"AI 操作浏览器"的新范式。不同于传统 RPA（需要录制鼠标坐标/元素选择器），page-agent 直接理解网页语义，用自然语言即可控制页面交互。它甚至能处理动态加载的 SPA 页面——这是传统 RPA 工具最难啃的骨头。</p>
+  <p style="font-size:.85em;color:var(--text);"><strong>实战价值：</strong>电商自动上架、批量数据采集、网页表单自动填写——任何有大量浏览器重复操作的工作都能用 page-agent 替代。特别适合跨境电商卖家（多平台同步上架）、数据标注团队、自动化测试工程师。</p>
+  <div class="meta">语言: TypeScript | Fork: 2,057</div>
+</div>
+
+<!-- Agent 战场情报 -->
+<div class="ai-subtitle">🤖 【Agent 战场情报】</div>
+
+<div class="card ai">
+  <span class="card-tag tech">Agent · Anthropic</span>
+  <h4>动态一：Claude Sonnet 5 正式发布——Sonnet系列最强Agent模型</h4>
+  <p><strong>动态：</strong>7月1日 Anthropic 发布 Claude Sonnet 5，拥有 <strong>1M Token 上下文窗口</strong>，能够自主制定计划、调用浏览器和终端工具，在 BrowseComp 和 OSWorld-Verified 评测中部分任务接近 Opus 4.8 性能。优惠期价格：输入 $2/百万Token、输出 $10/百万Token（至8月31日）。</p>
+  <p><strong>解读：</strong>Sonnet 5 的定位很微妙——以中端价格提供接近旗舰的 Agent 能力。这意味着 Anthropic 正在将 Agent 能力从"旗舰独占"下沉到"全系列标配"，让更多开发者能承受 Agent 模式的 API 成本。</p>
+  <p><strong>落地场景：</strong>配合 Codex-plugin-cc，在 Claude Code + Sonnet 5 + Codex 三方协同的工作流中，可将复杂代码审查任务从 3 小时压缩到 20 分钟。</p>
+</div>
+
+<div class="card ai">
+  <span class="card-tag tech">Agent · 安全</span>
+  <h4>动态二：Claude Code 被曝隐蔽时区检测机制——Anthropic已回滚</h4>
+  <p><strong>动态：</strong>Reddit 网友逆向分析 Claude Code 2.1.196 版本，发现自4月2日 2.1.91 版本起，内置了检测中国时区（Asia/Shanghai、Asia/Urumqi）及147个中国科技企业域名的机制。检测结果被编码在每次请求的系统提示词中。Claude Code 团队成员 Thariq Shihipar 在 X 回应称是3月上线的"实验性"防转售措施，7月2日新版本已完全回滚。几乎同期，阿里巴巴宣布7月10日起全员禁用 Claude。</p>
+  <p><strong>解读：</strong>这起事件折射出 AI 工具的政治化趋势正在加速。Claude Code 的"隐蔽检测"与阿里的"反向禁用"形成镜像——<strong>AI 工具不再只是生产力工具，而是地缘政治博弈的新战场。</strong>对国内开发者而言，这意味着一套"国产替代+开源平替"的工具链是刚需。</p>
+  <p><strong>落地场景：</strong>国内团队应尽快建立"双工具链"能力——Claude Code 用于国际项目，通义灵码/Qoder/开源方案用于国内合规项目。page-agent (阿里)、strix (开源安全) 等国产/开源工具的价值正在急剧上升。</p>
+</div>
+
+<div class="card ai">
+  <span class="card-tag tech">Agent · Google</span>
+  <h4>动态三：Gemini Spark 登陆 Mac——Google Agent 化战略落地终端</h4>
+  <p><strong>动态：</strong>7月1日 Google 正式将 Gemini Spark（Agent 化智能助手）推向 Mac 平台。与传统的 Google Assistant 不同，Spark 具备<strong>跨应用自主执行多步骤任务</strong>的能力——能理解复杂用户意图并主动操作多个应用完成工作流。</p>
+  <p><strong>解读：</strong>Google 选择 Mac（而非自家 ChromeOS）作为首个桌面平台，说明其 Agent 战略的核心是"占领开发者高地"。Mac 用户是 AI 工具的早期采用者，也是最有付费意愿的群体。这是 Google 在 Claude Code 和 Codex CLI 已经占据终端 Agent 市场之后的一次全力反击。</p>
+  <p><strong>落地场景：</strong>如果你是 Mac 用户且团队重度使用 Google Workspace，Gemini Spark 可以替代 Claude Code 处理部分非编程类 Agent 任务（如自动整理 Google Docs、跨 Sheets 数据汇总、邮件归档），释放 Claude Code 专注做代码工作。</p>
+</div>
+
+<!-- AI新玩法新概念 -->
+<div class="ai-subtitle">🖊 【AI新玩法，新概念】</div>
+
+<div class="concept-card">
+  <h4 style="color:var(--accent2);margin-bottom:8px;">Flask 之父 Armin Ronacher 炮轰："Better Models, Worse Tools"</h4>
+  <p><strong>动态：</strong>Flask 框架作者 Armin Ronacher 7月4日发文揭示一个诡异现象——Opus 4.8 和 Sonnet 5 等新模型在调用编辑工具时，反而会在输出中凭空发明额外的 JSON 字段，导致工具调用失败。他称之为"模型越强，工具调用越差"的系统性问题。</p>
+  <p><strong>解读：</strong>这暴露了一个深层问题：模型在自然语言上的"聪明"不直接等价于工具调用的"精准"。因为工具调用依赖严格的 JSON Schema 合规，而新模型在增强推理能力时引入了更多"自由度"——自由度过高，反而违反了协议约束。Ronacher 的结论是：<strong>工具侧必须建立更强大的防御层，不能指望模型"自学成才"。</strong></p>
+  <p><strong>落地场景：</strong>如果你在开发基于 Claude/OpenAI 的工具链，务必在 Agent 的输出层加入严格的 Schema 校验和重试机制，而不是默认"新模型肯定更好"。</p>
+</div>
+
+<div class="concept-card">
+  <h4 style="color:var(--accent2);margin-bottom:8px;">Claude Fable 5 "内心独白" 泄露："TOO_DUMB_TO_NEED_FABLE"</h4>
+  <p><strong>动态：</strong>Claude Fable 5 回归当天被开发者抓包：大量轻量级问题被自动回退到 Opus 4.8 处理，日志中出现 "TOO_DUMB_TO_NEED_FABLE" 标签。还有用户晒出 Fable 5 在 Codeforces 解题时的"内心独白"——原本精修的思考链变成了碎碎念的感叹词堆砌。</p>
+  <p><strong>解读：</strong>这不是 bug，是 Anthropic 在降本压力下的"隐性降级"策略：<strong>前端告诉你是 Fable 5，后端实际调用的是 Opus 4.8。</strong>对开发者意味着：不能只看模型名称，需要主动监控 API 返回的实际模型标识和 Token 消耗模式，防止被"偷梁换柱"。</p>
+</div>
+
+<!-- AI套利/变现线索 -->
+<div class="ai-subtitle">💰 【AI 套利/变现线索】</div>
+
+<div class="card ai">
+  <h4>线索一：GPT-5.6 定档 7月7-9日——"API 价格战"套利窗口正在打开</h4>
+  <p><strong>热点：</strong>网友在 Codex 应用代码中发现 GPT-5.6 Soul/Terra/Luna 三大子模型标识，OpenAI 内部锁定 <strong>7月7日至9日</strong> 为发布窗口——恰好是 Claude Fable 5 限额方案失效的真空期。新模型层定位：Soul（旗舰/88.8% Terminal-Bench）、Terra（均衡/价格减半）、Luna（极速/低价）。</p>
+  <p><strong>复刻建议：</strong>① 在发布当天（7月7日）立即注册 API 体验 Terra/Luna，抢在社区出教程前验证性价比；② 预判 GPT-5.6 发布后 Anthropic 和 Google 必然跟进降价，做一篇"三大 AI API 降价对比"的公众号/小红书文章（搜索流量红利期1-2天）；③ 将现有应用的模型调用接口抽象为"模型路由器"，实现自动切换到最便宜的可用模型。</p>
+</div>
+
+<div class="card ai">
+  <h4>线索二：OASIS Ring——"Vibe Coding + 语音输入"开辟AI硬件新品类</h4>
+  <p><strong>热点：</strong>OASIS Ring 在 Product Hunt 7月榜中飙升（#13位），不走传统"健康手环"路线，而是把智能戒指做成 <strong>AI 输入设备</strong>：内置麦克风、按键和动作传感器，用语音+手势直接控制电脑里的 AI。与 Vibe Coding 场景天然匹配——"说出来代码，AI 就帮你写"。</p>
+  <p><strong>复刻建议：</strong>① 在淘宝/闲鱼搜索"OASIS Ring"看是否有代购溢价卖出；② 如果没有入华计划，联系工厂做"Vibe Coding 语音戒指"的平替（BOM成本约 $15-30）；③ 在小红书/抖音发"AI程序员的新装备"测评内容，切入 Vibe Coding + 智能硬件交叉的蓝海内容赛道。</p>
+</div>
+
+<div class="card ai">
+  <h4>线索三：NotebookLM 知识播客套利——可灵AI 30亿美元估值论证了"AI+内容"赛道</h4>
+  <p><strong>热点：</strong>快手可灵 AI 以180亿美元投后估值完成<strong>30亿美元</strong>融资（阿里/百度/腾讯罕见同框投资），证明"AI 生成内容"赛道估值天花板远超预期。同期，利用 NotebookLM 将法律/金融文档转为脱口秀式播客的创作者在 Spotify 月入 $3,000-15,000。</p>
+  <p><strong>复刻建议：</strong>① 将每日新闻联播简报用 NotebookLM 转为 5 分钟音频早报，发布在小红书/视频号（参考案例：月涨粉 3 万+）；② 用 meetily 录会议→NotebookLM 转播客→内部分享，打造"企业知识播客"服务；③ 如果你有任何垂直领域的专业内容（如生鲜选品、UE 技术），用 NotebookLM 批量生成专业知识播客，构建私域内容矩阵。</p>
+</div>
+
+<!-- 避坑/黑话词典 -->
+<div class="ai-subtitle">🔍 【避坑/黑话词典】</div>
+
+<div class="card ai">
+  <h4>词条：Vibe Coding</h4>
+  <p><strong>一句话大白话：</strong>用嘴说（或用自然语言描述）让 AI 帮你写代码，程序员不再是"敲代码的人"，而是"指挥 AI 敲代码的人"。你负责描述"我想要一个登录页面，左边放表单，右边放背景图"，AI 负责把代码一行行给你写出来、调试好、部署上线。</p>
+  <p><strong>为什么重要：</strong>2026年 Vibe Coding 已经从概念变成生产力——OASIS Ring 把输入从键盘延伸到语音戒指，Claude Code 创始人预测 3 年后写代码的人会涨 100 倍。如果你还在手动敲每一个函数，你正在被 Vibe Coding 用户以 10 倍效率超越。</p>
+</div>
+
+<div class="card ai">
+  <h4>词条：Token 上下文窗口 (Context Window)</h4>
+  <p><strong>一句话大白话：</strong>AI 的"短期记忆容量"。1M Token ≈ 75万字 ≈ 一次读完《三体》三部曲。Claude Sonnet 5 支持 1M Token 上下文，意味着它可以记住你整天的对话内容，不用你反复提醒"我刚才说的那个文件是什么来着"。</p>
+</div>
+
+<!-- Product Hunt 速览 -->
+<div class="ai-subtitle">🏆 【Product Hunt 7月榜单 · AI新品速览】</div>
+
+<div class="card ai">
+  <h4>1. Glaze by Raycast — "和 AI 聊天就能创建你自己的 Mac 应用" <span class="star-badge">🏆 7月#1</span></h4>
+  <p><strong>一句话介绍：</strong>在 Mac 上对着 Glaze 说你想做什么应用，它直接生成一个能跑的原生 Mac App。不是网页套壳，是真的 Mac 原生应用。</p>
+  <p><strong>实战价值：</strong>PM 们终于可以自己动手做内部工具了——不用求开发、不用学 Swift，"给我做一个竞品价格监控面板" → 10分钟到手。</p>
+</div>
+
+<div class="card ai">
+  <h4>2. Humalike — "给你的 AI Agent 注入社交智商" <span class="star-badge">🏆 7月#2</span></h4>
+  <p><strong>一句话介绍：</strong>让你的 AI 客服/销售 Agent 不再像机器人——Humalike 分析对话中的情感信号，让 AI 在"该热情时热情、该专业时专业、该道歉时真诚道歉"。</p>
+  <p><strong>实战价值：</strong>电商客服 AI + Humalike = 差评率降低 40%。跨境电商做独立站客服的团队可以立即接入，降低因 AI 语气生硬导致的客户流失。</p>
+</div>
+
+<!-- 总结 -->
+<div class="summary-box ai">
+  <h3>📊 7月第一周 AI 格局总结</h3>
+  <p>2026 年 7 月前 5 天的 AI 行业，正在经历一场"<strong>三重共振</strong>"：</p>
+  <p>① <strong>Agent 化加速：</strong>Claude Sonnet 5（Agent能力下沉）+ Claude Tag（嵌入Slack）+ Gemini Spark（登陆Mac）→ Agent 从开发者工具变为全员生产力工具；</p>
+  <p>② <strong>政治化加剧：</strong>阿里禁Claude + Claude Code时区检测+Anthropic封地下通道+GPT-5.6被政府限制 → AI不再是纯技术竞赛，而是地缘政治新前线；</p>
+  <p>③ <strong>硬件+工具链重构：</strong>Anthropic自研2nm芯片+OASIS Ring开辟新品类+page-agent/meetily/caveman等开源工具爆发 → 软件层和硬件层同步洗牌。</p>
+  <p><strong>行动建议：</strong>① 立即储备国产+开源双工具链；② GPT-5.6 发布窗口（7月7-9日）会出现 API 价格波动，准备好"模型路由器"在最优价位切换；③ OASIS Ring/Vibe Coding 内容赛道目前处于蓝海期，抢先做内容布局。</p>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>日推双专栏情报 · 2026-07-06 自动生成</p>
+  <p style="margin-top:4px">信源：cn.govopendata.com · cuobiezi.net · GitHub Trending · Product Hunt (hunted.space) · 36氪 · IT之家 · 技术栈 · TextMatrix · 博客园AI日报</p>
+  <p style="margin-top:4px">注：新闻联播内容基于2026年7月5日19:00播出的节目文字稿</p>
+</div>
+
+</div>
+</body>
+</html>
