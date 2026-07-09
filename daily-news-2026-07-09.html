@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日双专栏情报 · 2026-07-09</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+  :root {
+    --bg-primary: #0a0e17;
+    --bg-card: #111827;
+    --bg-card-hover: #1a2332;
+    --bg-section: #0f1623;
+    --accent-red: #ef4444;
+    --accent-blue: #3b82f6;
+    --accent-green: #10b981;
+    --accent-purple: #8b5cf6;
+    --accent-orange: #f59e0b;
+    --accent-cyan: #06b6d4;
+    --accent-pink: #ec4899;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --border: #1e293b;
+    --gradient-red: linear-gradient(135deg, #ef4444, #dc2626);
+    --gradient-blue: linear-gradient(135deg, #3b82f6, #2563eb);
+    --gradient-green: linear-gradient(135deg, #10b981, #059669);
+    --gradient-purple: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    --gradient-orange: linear-gradient(135deg, #f59e0b, #d97706);
+    --gradient-cyan: linear-gradient(135deg, #06b6d4, #0891b2);
+    --gradient-pink: linear-gradient(135deg, #ec4899, #db2777);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 24px 16px; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 48px 20px 36px;
+    background: linear-gradient(180deg, rgba(59,130,246,0.08) 0%, transparent 100%);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+  .header-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    background: rgba(59,130,246,0.15);
+    color: var(--accent-blue);
+    border: 1px solid rgba(59,130,246,0.3);
+  }
+  .header h1 {
+    font-size: 32px;
+    font-weight: 900;
+    background: linear-gradient(90deg, #f1f5f9, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .header .date {
+    font-size: 16px;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+  .header .date span { color: var(--accent-cyan); font-weight: 500; }
+
+  /* Column layout */
+  .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 900px) { .columns { grid-template-columns: 1fr; } }
+
+  /* Column wrapper */
+  .column { min-width: 0; }
+  .column-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 0;
+  }
+  .column-header .icon { font-size: 28px; }
+  .column-header h2 { font-size: 18px; font-weight: 700; }
+  .column-header .subtitle { font-size: 12px; opacity: 0.7; font-weight: 400; }
+
+  .col-news .column-header { background: var(--gradient-red); }
+  .col-ai .column-header { background: var(--gradient-blue); }
+
+  /* Cards */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+  .card:hover { background: var(--bg-card-hover); }
+  .card-body { padding: 20px; }
+  .card-body h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.5;
+  }
+  .card-body h3 .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .tag-hot { background: rgba(239,68,68,0.2); color: #fca5a5; }
+  .tag-policy { background: rgba(245,158,11,0.2); color: #fcd34d; }
+  .tag-economy { background: rgba(16,185,129,0.2); color: #6ee7b7; }
+  .tag-diplomacy { background: rgba(139,92,246,0.2); color: #c4b5fd; }
+  .tag-disaster { background: rgba(6,182,212,0.2); color: #67e8f9; }
+  .tag-sport { background: rgba(236,72,153,0.2); color: #f9a8d4; }
+
+  .tag-github { background: rgba(139,92,246,0.2); color: #c4b5fd; }
+  .tag-twitter { background: rgba(59,130,246,0.2); color: #93c5fd; }
+  .tag-ph { background: rgba(245,158,11,0.2); color: #fcd34d; }
+  .tag-release { background: rgba(16,185,129,0.2); color: #6ee7b7; }
+  .tag-security { background: rgba(239,68,68,0.2); color: #fca5a5; }
+  .tag-cn { background: rgba(6,182,212,0.2); color: #67e8f9; }
+
+  .info-block {
+    margin-bottom: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: var(--bg-section);
+    border-left: 3px solid;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .info-block.broadcast { border-color: var(--accent-red); }
+  .info-block.analysis { border-color: var(--accent-orange); }
+  .info-block.impact { border-color: var(--accent-green); }
+  .info-block.tech { border-color: var(--accent-cyan); }
+  .info-block.value { border-color: var(--accent-purple); }
+  .info-block.scene { border-color: var(--accent-pink); }
+  .info-block.risk { border-color: var(--accent-red); }
+
+  .info-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .info-block.broadcast .info-label { color: var(--accent-red); }
+  .info-block.analysis .info-label { color: var(--accent-orange); }
+  .info-block.impact .info-label { color: var(--accent-green); }
+  .info-block.tech .info-label { color: var(--accent-cyan); }
+  .info-block.value .info-label { color: var(--accent-purple); }
+  .info-block.scene .info-label { color: var(--accent-pink); }
+  .info-block.risk .info-label { color: var(--accent-red); }
+
+  /* Section titles */
+  .section-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    padding: 14px 20px;
+    background: var(--bg-section);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title .emoji { font-size: 18px; }
+
+  /* Summary box */
+  .summary-box {
+    background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(139,92,246,0.1));
+    border: 1px solid rgba(59,130,246,0.3);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 8px;
+  }
+  .summary-box h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--accent-cyan);
+  }
+  .summary-box p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+  .summary-box strong { color: var(--text-primary); }
+
+  /* Core signal */
+  .core-signal {
+    background: linear-gradient(135deg, rgba(239,68,68,0.12), rgba(245,158,11,0.08));
+    border: 1px solid rgba(239,68,68,0.3);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .core-signal h3 { font-size: 14px; color: var(--accent-red); margin-bottom: 8px; font-weight: 700; }
+  .core-signal p { font-size: 16px; font-weight: 700; color: var(--text-primary); line-height: 1.6; }
+
+  /* Stat grid */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 8px;
+    margin: 10px 0;
+  }
+  .stat-item {
+    background: var(--bg-section);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+  }
+  .stat-item .num { font-size: 20px; font-weight: 900; color: var(--accent-cyan); }
+  .stat-item .label { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+  /* Highlight */
+  .highlight { color: var(--accent-cyan); font-weight: 700; }
+  .highlight-red { color: var(--accent-red); font-weight: 700; }
+  .highlight-green { color: var(--accent-green); font-weight: 700; }
+  .highlight-orange { color: var(--accent-orange); font-weight: 700; }
+  .highlight-purple { color: var(--accent-purple); font-weight: 700; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 32px 20px;
+    color: var(--text-muted);
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+    margin-top: 32px;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg-primary); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <div class="header-badge">DAILY INTELLIGENCE REPORT</div>
+  <h1>每日双专栏情报</h1>
+  <div class="date">2026年7月9日 · 星期四 · <span>第183天</span></div>
+</div>
+
+<!-- Two Columns -->
+<div class="columns">
+
+<!-- ============ 专栏一：新闻联播 ============ -->
+<div class="column col-news">
+  <div class="column-header">
+    <div class="icon">📺</div>
+    <div>
+      <h2>新闻联播每日简报</h2>
+      <div class="subtitle">风向标解读版 · 信源：2026年7月8日新闻联播</div>
+    </div>
+  </div>
+
+  <!-- 核心风向 -->
+  <div class="core-signal">
+    <h3>🔴 核心风向</h3>
+    <p>全国科技大会定调"十五五"科技攻坚——<br>从"参与者"到"引领者"，2035科技强国进入倒计时<br>同日：美伊互打升级 + 美恢复对伊石油制裁</p>
+  </div>
+
+  <!-- 新闻1 -->
+  <div class="card">
+    <div class="card-body">
+      <h3><span class="tag tag-hot">头条</span> 国家科学技术奖励大会+两院院士大会+科协十一大 习近平发表重要讲话</h3>
+      <div class="info-block broadcast">
+        <span class="info-label">📺 新闻联播说了什么</span>
+        7月8日上午10:30，<strong>国家科学技术奖励大会、中国科学院第22次院士大会、中国工程院第18次院士大会、中国科协第11次全国代表大会</strong>在人民大会堂隆重召开。习近平出席大会，为<strong>2025年度国家最高科学技术奖</strong>获得者<strong>陈立泉</strong>（中科院物理研究所院士）和<strong>贲德</strong>（中国电子科技集团第十四研究所院士）颁发奖章证书。<strong>2025年度国家科学技术奖共评选出258个项目和11名科技专家</strong>：国家最高科学技术奖2人、国家自然科学奖51项（一等奖3项）、国家技术发明奖58项（一等奖3项）、国家科学技术进步奖149项（特等奖3项、一等奖13项）、国际科学技术合作奖9名外国专家。李强主持，赵乐际、王沪宁、蔡奇、李希出席，丁薛祥宣读奖励决定，约4300人参加大会。
+      </div>
+      <div class="info-block analysis">
+        <span class="info-label">🔬 风向标解读</span>
+        习近平讲话核心信号：<strong>①"十五五"是科技强国建设的关键攻坚期</strong>——这是首次将"十五五"明确定位为科技攻坚窗口；<strong>②我国正从全球科技"参与者、贡献者"向"开拓者、引领者"加速转变</strong>——定位升级；<strong>③六大部署</strong>——增强体系化攻关能力、推动科创与产创深度融合、优化科教协同育人、提高投入效能、深化科技评价改革（"破四唯"）、加强科技伦理和安全治理。特别值得关注：<strong>"构建同科技创新相适应的科技金融体制"</strong>首次在国家科技大会层面提出，为科技金融赛道打开政策天花板。
+      </div>
+      <div class="info-block impact">
+        <span class="info-label">💰 行业影响</span>
+        <strong>直接受益</strong>：科技金融（VC/PE/银行科创贷）、国家技术转移体系、知识产权保护服务、AI+科学研究（AI for Science）<br>
+        <strong>间接利好</strong>：半导体设备/材料国产替代（"自主保障"）、量子计算/生物制造等未来产业、科研SaaS与实验室自动化<br>
+        <strong>关注标的</strong>：科技评价改革→科研服务赛道；"破四唯"→人才评价体系重构催生新服务
+      </div>
+    </div>
+  </div>
+
+  <!-- 新闻2 -->
+  <div class="card">
+    <div class="card-body">
+      <h3><span class="tag tag-policy">政策</span> 《习近平关于基层工作方法的重要论述学习读本》出版发行</h3>
+      <div class="info-block broadcast">
+        <span class="info-label">📺 新闻联播说了什么</span>
+        中央组织部组织编写，党建读物出版社出版。中央党的建设工作领导小组发出通知，要求各级党组织将《论述摘编》和《学习读本》作为<strong>树立和践行正确政绩观学习教育</strong>的重要学习内容，与深入学习贯彻习近平党建思想、庆祝建党105周年重要讲话结合起来。
+      </div>
+      <div class="info-block analysis">
+        <span class="info-label">🔬 风向标解读</span>
+        "正确政绩观"二次强化（此前已有4个指导组进驻地方）。此次上升到全党学习层面，意味着<strong>地方政府考核体系将加速从GDP导向转向民生/生态/创新导向</strong>。对基层治理数字化工具、党建信息化平台是增量需求。
+      </div>
+      <div class="info-block impact">
+        <span class="info-label">💰 行业影响</span>
+        党建信息化/政务SaaS、基层治理数字化平台、干部培训在线教育
+      </div>
+    </div>
+  </div>
+
+  <!-- 新闻3 -->
+  <div class="card">
+    <div class="card-body">
+      <h3><span class="tag tag-economy">经济</span> 上半年铁路货运量20.15亿吨 +1.8% 中欧班列开行11178列 +20%</h3>
+      <div class="info-block broadcast">
+        <span class="info-label">📺 新闻联播说了什么</span>
+        上半年国家铁路累计完成货物发送量<strong>20.15亿吨，同比增长1.8%</strong>。"客车化"快捷班列标杆示范列车最高时速<strong>120公里</strong>；多式联运全程物流量同比<strong>增长87.9%</strong>；95306平台吸引超<strong>20万辆汽车入驻</strong>；"门到门"物流总包运量<strong>11.94亿吨</strong>；中欧班列累计开行<strong>11178列，同比增长20%</strong>。
+      </div>
+      <div class="info-block analysis">
+        <span class="info-label">🔬 风向标解读</span>
+        铁路货运是宏观经济的"晴雨表"。多式联运+87.9%是最大亮点——<strong>全国统一大市场建设的物流基础设施正在加速成型</strong>。中欧班列+20%说明向西开放通道持续高景气，对冲海运风险（霍尔木兹海峡仍不稳定）。
+      </div>
+      <div class="info-block impact">
+        <span class="info-label">💰 行业影响</span>
+        铁路物流信息化（95306平台）、多式联运SaaS、跨境电商物流、中欧班列沿线供应链服务
+      </div>
+    </div>
+  </div>
+
+  <!-- 新闻4 -->
+  <div class="card">
+    <div class="card-body">
+      <h3><span class="tag tag-disaster">灾害</span> 桂鄂甘防汛救灾：广西37.5万人受灾转移13万人 财政部紧急拨付1亿元</h3>
+      <div class="info-block broadcast">
+        <span class="info-label">📺 新闻联播说了什么</span>
+        广西全区<strong>14个设区市63个县区受灾，受灾人口37.5万人，已紧急转移安置13万人</strong>；投入抢险救援人员8300多人；中央调拨防汛物资3.6万余件。湖北黄冈管网抢修基本完工，<strong>黄石1700户房屋受损</strong>；国家发改委紧急安排<strong>中央预算内投资5000万元</strong>支持湖北灾后修复。甘肃陇南宕昌县山体滑坡搜救基本结束；<strong>财政部、应急管理部紧急预拨5000万元</strong>支持湖北、甘肃应急抢险。
+      </div>
+      <div class="info-block analysis">
+        <span class="info-label">🔬 风向标解读</span>
+        台风"美莎克"+极端天气持续，<strong>2026年汛期灾害烈度高于常年</strong>。中央财政快速响应（48小时内1亿专项到位），预示后续水利基建、城市排涝、应急物资储备将获增量投入。
+      </div>
+      <div class="info-block impact">
+        <span class="info-label">💰 行业影响</span>
+        水利工程/城市排涝基建、应急物资制造、灾害预警SaaS/气象服务、农业保险理赔
+      </div>
+    </div>
+  </div>
+
+  <!-- 新闻5 -->
+  <div class="card">
+    <div class="card-body">
+      <h3><span class="tag tag-diplomacy">国际</span> 美伊再度互打：美军击中伊朗80+目标 伊朗打击85处美军设施 击落MQ-9无人机</h3>
+      <div class="info-block broadcast">
+        <span class="info-label">📺 新闻联播说了什么</span>
+        美军中央司令部称对伊朗实施新一轮打击，<strong>击中80多个目标</strong>（防空系统、指挥控制网络、海岸雷达站点、反舰导弹能力、超60艘革命卫队快艇）。伊朗革命卫队称作为回应，<strong>对巴林和科威特85处美军设施实施打击</strong>，并<strong>击落一架美军MQ-9"死神"无人机</strong>。特朗普称美伊谅解备忘录"已终结"。<strong>美国财政部撤销60天暂停制裁伊朗石油销售的临时措施</strong>，恢复全面制裁。伊朗议长卡利巴夫谴责美国"严重违约"。
+      </div>
+      <div class="info-block analysis">
+        <span class="info-label">🔬 风向标解读</span>
+        美伊从"有限冲突"升级为<strong>全面对抗</strong>——备忘录终结=外交窗口关闭，恢复石油制裁=能源供应链再震荡。伊朗打击目标从波斯湾扩大到巴林/科威特=海湾安全格局全面恶化。霍尔木兹海峡通航风险再度飙升。
+      </div>
+      <div class="info-block impact">
+        <span class="info-label">💰 行业影响</span>
+        <strong>利空</strong>：全球原油供应链、航运保险费率、中东投资<br>
+        <strong>利好</strong>：原油替代通道（中欧班列运量+20%印证趋势）、国内油气开采/储备、军工、黄金避险<br>
+        <strong>关键变量</strong>：伊朗是否封锁霍尔木兹海峡→全球15%石油运输受威胁
+      </div>
+    </div>
+  </div>
+
+  <!-- 新闻6 -->
+  <div class="card">
+    <div class="card-body">
+      <h3><span class="tag tag-sport">体育</span> 国际奥委会暂时恢复俄罗斯奥委会会员资格</h3>
+      <div class="info-block broadcast">
+        <span class="info-label">📺 新闻联播说了什么</span>
+        国际奥委会执委会7月7日宣布，<strong>暂时解除自2023年10月12日起对俄罗斯奥委会暂停会员资格的处罚</strong>。俄体育部长兼奥委会主席杰格佳廖夫称这是"持久的法律和外交努力的成果"，将推动各国际单项体育联合会恢复俄运动员参赛权利。
+      </div>
+      <div class="info-block analysis">
+        <span class="info-label">🔬 风向标解读</span>
+        地缘政治信号大于体育本身。<strong>俄罗斯运动员全面回归国际赛事</strong>，意味着西方对俄体育孤立策略出现松动，与美伊冲突升级形成微妙对照——大国博弈的多维性加剧。
+      </div>
+      <div class="info-block impact">
+        <span class="info-label">💰 行业影响</span>
+        国际体育赛事转播权价值重估、体育营销/赞助、俄罗斯相关体育经纪
+      </div>
+    </div>
+  </div>
+
+  <!-- 总结 -->
+  <div class="summary-box">
+    <h3>🎯 总结风向标</h3>
+    <p>
+      今日新闻联播<strong>核心定调=科技强国"关键攻坚期"</strong>——从最高科技奖颁奖到六大纲领部署，政策信号清晰指向：<strong>2026-2030年是科技自主可控的决战窗口</strong>。科技金融体制首次纳入国家科技大会部署，意味着科创融资通道将实质性拓宽。<br><br>
+      与此同时，<strong>美伊全面对抗</strong>构成最大外部风险——谅解备忘录终结+石油制裁恢复+互打升级，霍尔木兹海峡不确定性飙升，<strong>原油价格可能再度冲高</strong>，中欧班列等陆路通道的战略价值进一步凸显。<br><br>
+      <strong>投资主线</strong>：科技金融→AI for Science→半导体自主→中欧班列物流→原油替代链<br>
+      <strong>风险提示</strong>：美伊冲突外溢→全球风险偏好下降→高估值科技股承压
+    </p>
+  </div>
+</div>
+
+<!-- ============ 专栏二：AI生产力情报 ============ -->
+<div class="column col-ai">
+  <div class="column-header">
+    <div class="icon">🤖</div>
+    <div>
+      <h2>AI 生产力情报</h2>
+      <div class="subtitle">黑科技与套利指南 · 2026-07-09</div>
+    </div>
+  </div>
+
+  <!-- 🚀 顶级装备库更新 -->
+  <div class="section-title"><span class="emoji">🚀</span> 顶级装备库更新</div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3><span class="tag tag-release">重磅发布</span> GPT-5.6 "太阳系"系列（Sol/Terra/Luna）全球公开发布</h3>
+      <div class="info-block tech">
+        <span class="info-label">🧬 核心黑科技</span>
+        <strong>OpenAI首次启用太阳系命名体系</strong>，将代次编号（5.6）与产品层级名称（Sol/Terra/Luna）分离，各层级可独立迭代——这是模型产品化的新范式。<br><br>
+        <div class="stat-grid">
+          <div class="stat-item"><div class="num">91.9%</div><div class="label">Sol Ultra<br>Terminal-Bench 2.1</div></div>
+          <div class="stat-item"><div class="num">$5/$30</div><div class="label">Sol 旗舰价<br>M tokens</div></div>
+          <div class="stat-item"><div class="num">$2.5/$15</div><div class="label">Terra 均衡价<br>M tokens</div></div>
+          <div class="stat-item"><div class="num">$1/$6</div><div class="label">Luna 吞吐价<br>M tokens</div></div>
+        </div>
+        <strong>Sol Ultra 91.9%</strong>刷新Terminal-Bench 2.1纪录；基础版Sol 88.8%仍胜GPT-5.5（88.0%）和Fable 5（83.4%）；<strong>Luna 84.3%与Mythos 5持平但价格仅$1/$6</strong>=性价比怪兽。Cerebras加速<strong>750 tokens/秒</strong>已上线。美国政府要求分阶段发布，GA预计7月中至8月。
+      </div>
+      <div class="info-block value">
+        <span class="info-label">💎 实战价值</span>
+        ①<strong>Agent编程</strong>：Sol Ultra多子Agent协同，91.9% Terminal-Bench意味着复杂编码任务可靠度极高，适合代码接单/大型项目开发，一个人顶一个开发小组；②<strong>成本路由</strong>：Terra=GPT-5.5级质量但成本减半，Luna=84.3%但$1/$6，三模型路由策略可降低总API成本60-80%；③<strong>安全研究</strong>：ExploitBench与Mythos Preview竞争力相当但仅用1/3 token=安全审计成本降66%
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3><span class="tag tag-release">首发</span> Grok 4.5 — SpaceXAI×Cursor联合训练的首个编程Agent模型</h3>
+      <div class="info-block tech">
+        <span class="info-label">🧬 核心黑科技</span>
+        SpaceXAI与Cursor<strong>联合训练</strong>的首个AI编程模型，在<strong>数万个NVIDIA GB300 GPU</strong>上完成训练。强化学习覆盖<strong>数十万个任务</strong>，采用自动化+基于模型的评分。马斯克称"Opus级模型"——单任务Token消耗仅为同级领先模型的<strong>一半</strong>，输出速度<strong>80 TPS</strong>，单次步骤数少一半。定价<strong>$2/$6 per M tokens</strong>=不到同类可比模型一半。擅长大型代码库+跨仓库+多技能多工具长时间任务。Rust/C/C++挑战性任务高效表现。
+      </div>
+      <div class="info-block value">
+        <span class="info-label">💎 实战价值</span>
+        ①<strong>Cursor用户</strong>：Grok 4.5即刻可用+免费额度，Agent编程效率翻倍；②<strong>成本敏感团队</strong>：$2/$6定价=Sol的1/5成本，适合日常编码+批量任务；③<strong>全栈场景</strong>：Excel多工作表公式模型+PowerPoint原生形状图表+Word撰写=Office全栈AI能力，适合企服开发
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3><span class="tag tag-github">GitHub</span> agent-skills（addyosmani）— 生产级AI编程Agent技能库 +73,981⭐</h3>
+      <div class="info-block tech">
+        <span class="info-label">🧬 核心黑科技</span>
+        Google核心工程师Addy Osmani出品，<strong>生产级工程技能库</strong>——为AI编码Agent提供"职业级"技能定义和最佳实践。今日<strong>+1,322⭐</strong>，总星73,981。覆盖代码审查、架构设计、性能优化、安全审计等全链路工程技能，让Agent从"写代码"进化到"做工程"。
+      </div>
+      <div class="info-block value">
+        <span class="info-label">💎 实战价值</span>
+        适合所有AI编程Agent使用者——加载agent-skills后，你的Agent从"实习生"变成"资深工程师"。配合GPT-5.6 Sol Ultra或Claude Code使用，编码质量跃升一个维度
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3><span class="tag tag-github">GitHub</span> OfficeCLI（iOfficeAI）— AI Agent专用的Office套件命令行工具 +11,738⭐</h3>
+      <div class="info-block tech">
+        <span class="info-label">🧬 核心黑科技</span>
+        <strong>首个专为AI Agent设计的Office套件</strong>——让AI直接读取、编辑、自动化Word/Excel/PowerPoint文件。单一二进制、免费开源、无需安装Office。今日<strong>+1,712⭐</strong>，总星11,738。C#编写，跨平台。
+      </div>
+      <div class="info-block value">
+        <span class="info-label">💎 实战价值</span>
+        企服Agent必备：让AI Agent直接操作Office文档=自动化报告生成/数据整理/合同审阅。配合Grok 4.5的Office能力，可构建端到端"AI办公助手"
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3><span class="tag tag-github">GitHub</span> superpowers（obra）— Agentic Engineering技能框架 +249,793⭐</h3>
+      <div class="info-block tech">
+        <span class="info-label">🧬 核心黑科技</span>
+        GitHub历史上星标最高的Agent框架之一，<strong>249,793⭐</strong>，今日+1,170。Agentic Engineering方法论取代Vibe Coding，定义了"Agent工程"的标准流程和技能体系。
+      </div>
+      <div class="info-block value">
+        <span class="info-label">💎 实战价值</span>
+        所有AI编程工作流的基础框架——配合agent-skills形成"方法论+技能"双层架构
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3><span class="tag tag-github">GitHub</span> system_prompts_leaks（asgeirtj）— 主流AI系统提示词泄露合集 +54,149⭐</h3>
+      <div class="info-block tech">
+        <span class="info-label">🧬 核心黑科技</span>
+        收录<strong>Claude Fable 5/Opus 4.8/Claude Code/Design、ChatGPT 5.5 Thinking/GPT 5.5 Instant/Codex、Gemini 3.5 Flash/3.1 Pro/Antigravity、Grok、Cursor、Copilot、VS Code、Perplexity</strong>等全部主流AI系统提示词。今日+1,226⭐，总星54,149。
+      </div>
+      <div class="info-block value">
+        <span class="info-label">💎 实战价值</span>
+        逆向工程级参考——学习顶级AI产品的提示词设计逻辑，直接提升自己的Prompt Engineering水平。也用于理解各AI的能力边界和安全策略
+      </div>
+    </div>
+  </div>
+
+  <!-- 🤖 Agent战场情报 -->
+  <div class="section-title"><span class="emoji">🤖</span> Agent 战场情报</div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3><span class="tag tag-security">安全</span> 工信部发布Claude Code后门风险提示 阿里7月10日起全面禁用</h3>
+      <div class="info-block tech">
+        <span class="info-label">📡 动态</span>
+        工信部网络安全威胁和漏洞信息共享平台（NVDB）7月8日发布《关于Claude Code存在安全风险的情况提示》：<strong>Claude Code存在未经用户授权执行敏感操作、收集本地环境信息等安全隐患</strong>。受影响版本为<strong>2.1.91至最新版</strong>。内置监控机制可<strong>未经用户同意向远程服务器回传用户地域、身份标识等敏感信息</strong>。阿里巴巴此前已将Claude Code列入高风险软件名单，<strong>7月10日起全面禁止内部员工使用</strong>，推荐Qoder替代。
+      </div>
+      <div class="info-block analysis">
+        <span class="info-label">🔍 解读</span>
+        这不是普通的漏洞修复——<strong>这是AI编程工具供应链安全的标志性事件</strong>。工信部亲自下场=国家层面对AI工具的数据安全审查正式启动。阿里率先禁用=头部企业的安全红线已划定。<strong>核心问题：AI编程工具是否有权收集和回传用户代码/环境信息？</strong>这将催生AI工具安全审计新赛道。
+      </div>
+      <div class="info-block scene">
+        <span class="info-label">🎯 落地场景</span>
+        ①<strong>企业安全团队</strong>：立即盘点内部Claude Code使用情况，评估数据泄露风险；②<strong>国产替代</strong>：Qoder/通义灵码/Copilot国行版迎来替代窗口期；③<strong>安全审计服务</strong>：AI工具安全评估将成为企业采购的必选项，催生新商业模式
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3><span class="tag tag-github">GitHub</span> TencentDB-Agent-Memory — 腾讯云发布AI Agent本地长期记忆方案 +7,613⭐</h3>
+      <div class="info-block tech">
+        <span class="info-label">📡 动态</span>
+        腾讯云开源<strong>4层渐进式管线Agent记忆方案</strong>——零外部API依赖，全本地部署。今日+351⭐，总星7,613。TypeScript编写，解决了AI Agent"没有长期记忆"的核心痛点——Agent终于能"记住"之前做过什么。
+      </div>
+      <div class="info-block scene">
+        <span class="info-label">🎯 落地场景</span>
+        配合小红书项目：让选品Agent记住历史选品决策和用户偏好，不再每次从零开始。企业级Agent的"记忆力"问题终于有了生产级解法
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3><span class="tag tag-github">GitHub</span> CubeSandbox（TencentCloud）— AI Agent即时安全沙箱 +8,915⭐</h3>
+      <div class="info-block tech">
+        <span class="info-label">📡 动态</span>
+        腾讯云同日开源另一重磅项目：<strong>即时、并发、安全、轻量级AI Agent沙箱</strong>。Rust编写，今日+555⭐，总星8,915。让AI Agent在隔离环境中执行代码，不伤宿主系统。
+      </div>
+      <div class="info-block scene">
+        <span class="info-label">🎯 落地场景</span>
+        配合Claude Code安全事件看：未来AI编程工具的标配将是"沙箱执行"——代码先在CubeSandbox里跑，确认安全再落地。这可能是AI编程安全的"新基础设施"
+      </div>
+    </div>
+  </div>
+
+  <!-- 🖊 AI新玩法新概念 -->
+  <div class="section-title"><span class="emoji">🖊</span> AI新玩法，新概念</div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3><span class="tag tag-twitter">X动态</span> Sam Altman：GPT-5.6启用"太阳系命名法"——模型架构从版本号进化到产品矩阵</h3>
+      <div class="info-block tech">
+        <span class="info-label">📡 动态</span>
+        OpenAI CEO Sam Altman在X上确认GPT-5.6系列全球公开发布。新的命名体系——<strong>Sol（太阳/旗舰）、Terra（大地/均衡）、Luna（月亮/吞吐）</strong>——将代次编号与产品层级解耦，各层级可独立迭代，不再需要等"下一代"才能更新某个层级。
+      </div>
+      <div class="info-block analysis">
+        <span class="info-label">🔍 解读</span>
+        这不是简单的品牌重塑——<strong>这是AI模型从"技术产品"到"基础设施"的转型信号</strong>。就像AWS有m5/c5/p3不同实例类型，OpenAI也在构建"模型即服务"的产品矩阵。Sol/Terra/Luna三层路由=企业AI的"算力调度"时代到来。
+      </div>
+      <div class="info-block scene">
+        <span class="info-label">🎯 落地场景</span>
+        构建"智能路由层"：根据任务复杂度自动选择Sol/Terra/Luna。简单分类→Luna($1/$6)，日常编码→Terra($2.5/$15)，困难Agent→Sol($5/$30)。总成本可降低60-80%
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3><span class="tag tag-twitter">X动态</span> Elon Musk：Grok 4.5="Opus级模型" 速度翻倍价格减半</h3>
+      <div class="info-block tech">
+        <span class="info-label">📡 动态</span>
+        SpaceXAI上市后首款产品Grok 4.5发布。马斯克将其定位为"Opus级模型"——对标Claude Opus但<strong>速度翻倍+成本减半</strong>。与Cursor联合训练，这是SpaceXAI收购Cursor后首次产品协同。
+      </div>
+      <div class="info-block analysis">
+        <span class="info-label">🔍 解读</span>
+        SpaceXAI的策略清晰：<strong>不走OpenAI的"最强最贵"路线，走"够快够便宜"路线</strong>。Cursor的工程数据+SpaceXAI的算力=编程Agent的"性价比之王"。马斯克正在用汽车行业的"规模经济"思维重塑AI模型定价。
+      </div>
+      <div class="info-block scene">
+        <span class="info-label">🎯 落地场景</span>
+        Cursor用户：Grok 4.5今日起可用，免费额度期间尽情试。非欧盟用户注意：Grok 4.5欧盟暂未开放，7月中旬上线
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3><span class="tag tag-cn">国内</span> 阿里"禁用Claude Code倒计时48小时"：国产AI编程替代窗口开启</h3>
+      <div class="info-block tech">
+        <span class="info-label">📡 动态</span>
+        阿里7月3日宣布将Claude Code列入高风险名单，<strong>7月10日起全面禁用</strong>，推荐Qoder替代。工信部7月8日跟进发布风险提示。<strong>倒计时仅剩48小时</strong>。
+      </div>
+      <div class="info-block analysis">
+        <span class="info-label">🔍 解读</span>
+        <strong>这是中国AI工具"国产替代"的临界点</strong>。工信部亲自背书=所有央国企和政府机构将跟进禁用。Claude Code在国内的市场份额将被Qoder/通义灵码/Copilot国行版瓜分。
+      </div>
+      <div class="info-block scene">
+        <span class="info-label">🎯 落地场景</span>
+        如果你在国内企业工作：立即评估Claude Code替代方案。Qoder（阿里推荐）、通义灵码、Cursor+Grok 4.5是目前主流替代选择。安全审计=新商机
+      </div>
+    </div>
+  </div>
+
+  <!-- 💰 AI套利/变现线索 -->
+  <div class="section-title"><span class="emoji">💰</span> AI 套利/变现线索</div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3><span class="tag tag-hot">套利</span> 三大模型同日发布=AI编程"寒武纪大爆发"</h3>
+      <div class="info-block value">
+        <span class="info-label">🔥 热点</span>
+        7月9日，GPT-5.6 Sol/Terra/Luna + Grok 4.5 + 工信部Claude Code禁令三件大事同日爆发——AI编程工具格局一夜重写。
+      </div>
+      <div class="info-block scene">
+        <span class="info-label">📋 复刻建议</span>
+        <strong>路径一：智能路由SaaS</strong>——构建Sol/Terra/Luna+Grok 4.5的自动路由中间件，根据任务复杂度选模型，帮企业降本60-80%。月费制，企业刚需。<br><br>
+        <strong>路径二：Claude Code安全审计服务</strong>——工信部背书+阿里禁用=所有企业都要做AI工具安全评估。打包安全检测+替代方案推荐+迁移服务，5-20万/单。<br><br>
+        <strong>路径三：OfficeCLI+Grok 4.5=AI办公助手</strong>——让AI直接操作Word/Excel/PPT，企业报告自动化生成，月费SaaS。Grok 4.5的$2/$6定价让这个商业模式首次可行。<br><br>
+        <strong>路径四：CubeSandbox+TencentDB-Agent-Memory=安全Agent方案</strong>——沙箱执行+长期记忆，解决企业"不敢用AI Agent"的两大痛点（安全+遗忘），打包成企业级Agent安全解决方案。
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔍 避坑/黑话词典 -->
+  <div class="section-title"><span class="emoji">🔍</span> 避坑/黑话词典</div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3>词条：Sol / Terra / Luna 命名体系</h3>
+      <div class="info-block tech">
+        <span class="info-label">📖 一句话大白话</span>
+        <strong>OpenAI把模型分成"太阳/地球/月亮"三档</strong>——太阳最猛最贵管难活，地球够用不贵管日常，月亮最便宜管批量。就像飞机头等/商务/经济舱，你不会用头等舱运货。选对档位=省钱80%。
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3>词条：Agent Memory（Agent记忆）</h3>
+      <div class="info-block tech">
+        <span class="info-label">📖 一句话大白话</span>
+        <strong>让AI Agent不再"金鱼脑"</strong>——以前Agent每次对话都从零开始，现在有了4层记忆管线（工作记忆→短期记忆→长期记忆→元认知），能记住"上次你让我做什么"和"什么方法有效"。腾讯的方案零API依赖全本地跑，数据不出域。
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3>词条：AI沙箱（AI Sandbox）</h3>
+      <div class="info-block tech">
+        <span class="info-label">📖 一句话大白话</span>
+        <strong>给AI Agent一个"安全游乐场"</strong>——代码先在沙箱里跑，搞砸了也不影响你的电脑。就像让小孩在围栏里玩，碰不到危险东西。Claude Code后门事件后，沙箱变成AI编程的"安全带"——不系不让上路。
+      </div>
+    </div>
+  </div>
+
+  <!-- GitHub Trending Top 10 -->
+  <div class="section-title"><span class="emoji">📊</span> GitHub Trending 今日 Top 10</div>
+  <div class="card">
+    <div class="card-body" style="padding:12px;">
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead>
+          <tr style="border-bottom:1px solid var(--border);">
+            <th style="text-align:left;padding:8px;color:var(--text-muted);">#</th>
+            <th style="text-align:left;padding:8px;color:var(--text-muted);">项目</th>
+            <th style="text-align:right;padding:8px;color:var(--text-muted);">今日⭐</th>
+            <th style="text-align:right;padding:8px;color:var(--text-muted);">总⭐</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px;color:var(--accent-cyan);font-weight:700;">1</td>
+            <td style="padding:8px;"><strong>OfficeCLI</strong> <span style="color:var(--text-muted);">iOfficeAI · AI Agent的Office套件</span></td>
+            <td style="text-align:right;padding:8px;color:var(--accent-green);">+1,712</td>
+            <td style="text-align:right;padding:8px;">11.7K</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px;color:var(--accent-cyan);font-weight:700;">2</td>
+            <td style="padding:8px;"><strong>agent-skills</strong> <span style="color:var(--text-muted);">addyosmani · Agent技能库</span></td>
+            <td style="text-align:right;padding:8px;color:var(--accent-green);">+1,322</td>
+            <td style="text-align:right;padding:8px;">74.0K</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px;color:var(--accent-cyan);font-weight:700;">3</td>
+            <td style="padding:8px;"><strong>system_prompts_leaks</strong> <span style="color:var(--text-muted);">asgeirtj · AI提示词泄露</span></td>
+            <td style="text-align:right;padding:8px;color:var(--accent-green);">+1,226</td>
+            <td style="text-align:right;padding:8px;">54.1K</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px;color:var(--accent-cyan);font-weight:700;">4</td>
+            <td style="padding:8px;"><strong>superpowers</strong> <span style="color:var(--text-muted);">obra · Agent工程框架</span></td>
+            <td style="text-align:right;padding:8px;color:var(--accent-green);">+1,170</td>
+            <td style="text-align:right;padding:8px;">249.8K</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px;color:var(--accent-cyan);font-weight:700;">5</td>
+            <td style="padding:8px;"><strong>PhotoGIMP</strong> <span style="color:var(--text-muted);">Diolinux · GIMP Photoshop补丁</span></td>
+            <td style="text-align:right;padding:8px;color:var(--accent-green);">+916</td>
+            <td style="text-align:right;padding:8px;">15.0K</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px;color:var(--accent-cyan);font-weight:700;">6</td>
+            <td style="padding:8px;"><strong>claude-video</strong> <span style="color:var(--text-muted);">bradautomates · Claude看视频</span></td>
+            <td style="text-align:right;padding:8px;color:var(--accent-green);">+948</td>
+            <td style="text-align:right;padding:8px;">6.0K</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px;color:var(--accent-cyan);font-weight:700;">7</td>
+            <td style="padding:8px;"><strong>CubeSandbox</strong> <span style="color:var(--text-muted);">TencentCloud · AI Agent沙箱</span></td>
+            <td style="text-align:right;padding:8px;color:var(--accent-green);">+555</td>
+            <td style="text-align:right;padding:8px;">8.9K</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px;color:var(--accent-cyan);font-weight:700;">8</td>
+            <td style="padding:8px;"><strong>last30days-skill</strong> <span style="color:var(--text-muted);">mvanhorn · 30天研究技能</span></td>
+            <td style="text-align:right;padding:8px;color:var(--accent-green);">+373</td>
+            <td style="text-align:right;padding:8px;">50.7K</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px;color:var(--accent-cyan);font-weight:700;">9</td>
+            <td style="padding:8px;"><strong>zvec</strong> <span style="color:var(--text-muted);">alibaba · 轻量向量数据库</span></td>
+            <td style="text-align:right;padding:8px;color:var(--accent-green);">+370</td>
+            <td style="text-align:right;padding:8px;">14.4K</td>
+          </tr>
+          <tr>
+            <td style="padding:8px;color:var(--accent-cyan);font-weight:700;">10</td>
+            <td style="padding:8px;"><strong>autoremesher</strong> <span style="color:var(--text-muted);">huxingyi · 自动四边形重网格</span></td>
+            <td style="text-align:right;padding:8px;color:var(--accent-green);">+292</td>
+            <td style="text-align:right;padding:8px;">2.0K</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Product Hunt Top 10 -->
+  <div class="section-title"><span class="emoji">🏆</span> Product Hunt 7月 Top 10</div>
+  <div class="card">
+    <div class="card-body" style="padding:12px;">
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead>
+          <tr style="border-bottom:1px solid var(--border);">
+            <th style="text-align:left;padding:8px;color:var(--text-muted);">#</th>
+            <th style="text-align:left;padding:8px;color:var(--text-muted);">产品</th>
+            <th style="text-align:left;padding:8px;color:var(--text-muted);">一句话描述</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px;color:var(--accent-orange);font-weight:700;">1</td>
+            <td style="padding:8px;font-weight:700;">Acti</td>
+            <td style="padding:8px;color:var(--text-secondary);">移动端Agentic键盘，命令+搜索一体化</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px;color:var(--accent-orange);font-weight:700;">2</td>
+            <td style="padding:8px;font-weight:700;">Context.dev</td>
+            <td style="padding:8px;color:var(--text-secondary);">一个API抓取、丰富、提取互联网数据</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px;color:var(--accent-orange);font-weight:700;">3</td>
+            <td style="padding:8px;font-weight:700;">Glaze by Raycast</td>
+            <td style="padding:8px;color:var(--text-secondary);">聊天式创建Mac应用，AI原生开发</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px;color:var(--accent-orange);font-weight:700;">4</td>
+            <td style="padding:8px;font-weight:700;">Badge</td>
+            <td style="padding:8px;color:var(--text-secondary);">AI Agent收集同行评审生成工作证明</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px;color:var(--accent-orange);font-weight:700;">5</td>
+            <td style="padding:8px;font-weight:700;">Vida</td>
+            <td style="padding:8px;color:var(--text-secondary);">克隆自己，让AI在你开口前先干活</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px;color:var(--accent-orange);font-weight:700;">6</td>
+            <td style="padding:8px;font-weight:700;">WorkBuddy</td>
+            <td style="padding:8px;color:var(--text-secondary);">AI专家团队协作，更快产出精炼成果</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px;color:var(--accent-orange);font-weight:700;">7</td>
+            <td style="padding:8px;font-weight:700;">Claude Sonnet 5</td>
+            <td style="padding:8px;color:var(--text-secondary);">AI规划、行动、完成工作</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px;color:var(--accent-orange);font-weight:700;">8</td>
+            <td style="padding:8px;font-weight:700;">AnySearch</td>
+            <td style="padding:8px;color:var(--text-secondary);">Agent和开发者信赖的实时结构化搜索</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px;color:var(--accent-orange);font-weight:700;">9</td>
+            <td style="padding:8px;font-weight:700;">Humalike</td>
+            <td style="padding:8px;color:var(--text-secondary);">给AI Agent补上社交智能</td>
+          </tr>
+          <tr>
+            <td style="padding:8px;color:var(--accent-orange);font-weight:700;">10</td>
+            <td style="padding:8px;font-weight:700;">Fypro</td>
+            <td style="padding:8px;color:var(--text-secondary);">把TikTok粉丝转化为付费客户</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- end columns -->
+</div><!-- end container -->
+
+<div class="footer">
+  <p>每日双专栏情报 · 自动生成于 2026-07-09 08:50 CST</p>
+  <p style="margin-top:4px;">信源：新闻联播文字稿 · GitHub Trending · Product Hunt · 36氪 · 新智元 · 新浪科技 · 腾讯新闻 · WebSearch多源交叉验证</p>
+</div>
+
+</body>
+</html>
