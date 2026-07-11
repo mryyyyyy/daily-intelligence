@@ -1,544 +1,225 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>每日双专栏情报简报 | 2026-07-10</title>
-    <style>
-        :root {
-            --bg-primary: #f5f7fa;
-            --bg-card: #ffffff;
-            --text-primary: #1a1a2e;
-            --text-secondary: #4a4a68;
-            --accent-red: #e74c3c;
-            --accent-blue: #3498db;
-            --accent-purple: #9b59b6;
-            --accent-green: #27ae60;
-            --accent-orange: #f39c12;
-            --border: #e1e8ed;
-            --shadow: 0 4px 20px rgba(0,0,0,0.08);
-            --gradient-news: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-            --gradient-ai: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.7;
-            padding: 20px;
-        }
-        .container { max-width: 1200px; margin: 0 auto; }
-        .header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
-            color: white;
-            padding: 35px 40px;
-            border-radius: 16px;
-            margin-bottom: 30px;
-            box-shadow: var(--shadow);
-        }
-        .header h1 { font-size: 2.2rem; margin-bottom: 10px; }
-        .header .meta { font-size: 1rem; opacity: 0.85; display: flex; gap: 25px; flex-wrap: wrap; }
-        .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
-        .column { background: var(--bg-card); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; }
-        .column-header {
-            padding: 22px 25px;
-            color: white;
-            font-size: 1.25rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .column-header.news { background: var(--gradient-news); }
-        .column-header.ai { background: var(--gradient-ai); }
-        .column-header .icon { font-size: 1.5rem; }
-        .column-body { padding: 25px; }
-        .section { margin-bottom: 28px; }
-        .section:last-child { margin-bottom: 0; }
-        .section-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .news-item {
-            background: #fafbfc;
-            border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 16px;
-            border-left: 4px solid var(--accent-blue);
-        }
-        .news-item.important { border-left-color: var(--accent-red); background: #fff5f5; }
-        .news-item h3 { font-size: 1rem; color: var(--text-primary); margin-bottom: 12px; font-weight: 700; }
-        .news-item .detail { margin-bottom: 10px; font-size: 0.95rem; color: var(--text-secondary); }
-        .news-item .detail strong { color: var(--text-primary); }
-        .news-item .detail-label {
-            display: inline-block;
-            font-weight: 700;
-            color: white;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-right: 6px;
-        }
-        .label-said { background: var(--accent-blue); }
-        .label-read { background: var(--accent-purple); }
-        .label-impact { background: var(--accent-green); }
-        .core-signal {
-            background: linear-gradient(135deg, #fff9e6 0%, #fff5d6 100%);
-            border: 1px solid #f0d78c;
-            border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 22px;
-            font-size: 1.05rem;
-        }
-        .core-signal strong { color: #8a6d0b; }
-        .summary-box {
-            background: linear-gradient(135deg, #e8f6f3 0%, #d1f2eb 100%);
-            border-radius: 12px;
-            padding: 18px;
-            border: 1px solid #a9dfbf;
-        }
-        .summary-box h4 { color: #1e8449; margin-bottom: 10px; }
-        .ai-card {
-            background: #f8fafc;
-            border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 16px;
-            border: 1px solid var(--border);
-        }
-        .ai-card h3 {
-            font-size: 1rem;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .ai-card .item { margin-bottom: 10px; font-size: 0.95rem; }
-        .ai-card .item strong { color: var(--accent-blue); }
-        .tag {
-            display: inline-block;
-            background: #eef2f7;
-            color: var(--text-secondary);
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-right: 6px;
-            margin-bottom: 6px;
-        }
-        .tag.highlight { background: #fdebd0; color: #9a7b0a; }
-        .tag.github { background: #e8f5e9; color: #2e7d32; }
-        .tag.producthunt { background: #fff3e0; color: #e65100; }
-        .data-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-            margin-top: 12px;
-        }
-        .data-box {
-            background: white;
-            border-radius: 8px;
-            padding: 12px;
-            text-align: center;
-            border: 1px solid var(--border);
-        }
-        .data-box .number { font-size: 1.3rem; font-weight: 700; color: var(--accent-red); }
-        .data-box .label { font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px; }
-        .footer {
-            margin-top: 30px;
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            padding: 20px;
-        }
-        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        @media (max-width: 900px) {
-            .columns { grid-template-columns: 1fr; }
-            .two-col { grid-template-columns: 1fr; }
-        }
-        .emoji { font-size: 1.2rem; }
-        .quote {
-            border-left: 3px solid var(--accent-orange);
-            padding-left: 12px;
-            margin: 10px 0;
-            color: #6c5b3f;
-            font-style: italic;
-            background: #fffbf0;
-            padding: 10px 12px;
-            border-radius: 0 8px 8px 0;
-        }
-        .tool-list { margin-left: 18px; }
-        .tool-list li { margin-bottom: 8px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日双专栏情报 | 2026年7月10日</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    line-height: 1.75;
+    padding: 20px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+  .header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-radius: 16px;
+    margin-bottom: 24px;
+    border: 1px solid #334155;
+  }
+  .header h1 {
+    font-size: 28px;
+    background: linear-gradient(135deg, #fbbf24, #f97316);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .header .date {
+    color: #94a3b8;
+    margin-top: 8px;
+    font-size: 14px;
+  }
+  .section-title {
+    font-size: 22px;
+    padding: 16px 24px;
+    margin: 32px 0 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title.col1 { background: linear-gradient(135deg, #991b1b, #7f1d1d); border: 1px solid #dc2626; }
+  .section-title.col2 { background: linear-gradient(135deg, #1e3a5f, #1e40af); border: 1px solid #3b82f6; }
+  .section-title .icon { font-size: 26px; }
+  
+  .core-wind {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    color: #92400e;
+    padding: 20px 24px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    border-left: 4px solid #f59e0b;
+  }
+  .core-wind h3 { font-size: 16px; margin-bottom: 6px; color: #78350f; }
+  .core-wind p { font-size: 15px; }
+  
+  .news-card {
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    border: 1px solid #334155;
+    transition: border-color 0.2s;
+  }
+  .news-card:hover { border-color: #f59e0b; }
+  .news-card h3 {
+    font-size: 17px;
+    color: #fbbf24;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #334155;
+  }
+  .news-card .label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 6px;
+  }
+  .label-said { background: #065f46; color: #6ee7b7; }
+  .label-interpret { background: #7c2d12; color: #fdba74; }
+  .label-impact { background: #1e3a5f; color: #93c5fd; }
+  .news-card .content-block {
+    margin-bottom: 10px;
+    padding-left: 8px;
+    border-left: 2px solid #334155;
+  }
+  .news-card p { font-size: 14px; color: #cbd5e1; margin: 4px 0; }
+  
+  .ai-card {
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    border: 1px solid #334155;
+    border-left: 3px solid #3b82f6;
+  }
+  .ai-card h4 { color: #60a5fa; font-size: 15px; margin-bottom: 8px; }
+  .ai-card .tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-right: 4px;
+    background: #1e40af;
+    color: #93c5fd;
+  }
+  .ai-card p { font-size: 14px; margin: 4px 0; }
+  
+  .summary-box {
+    background: linear-gradient(135deg, #312e81, #1e1b4b);
+    border: 1px solid #6366f1;
+    color: #c7d2fe;
+    padding: 20px 24px;
+    border-radius: 12px;
+    margin-top: 16px;
+  }
+  .summary-box h3 { color: #a5b4fc; margin-bottom: 10px; }
+  .summary-box p { font-size: 14px; }
+  
+  .gh-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #1e293b;
+  }
+  .gh-item:last-child { border-bottom: none; }
+  .gh-item .name { color: #60a5fa; font-weight: 600; font-size: 14px; min-width: 200px; }
+  .gh-item .desc { color: #94a3b8; font-size: 13px; flex: 1; }
+  .gh-item .stars { color: #fbbf24; font-size: 13px; white-space: nowrap; }
+  
+  .highlight { color: #fbbf24; font-weight: 600; }
+  .red { color: #f87171; }
+  .green { color: #4ade80; }
+  
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: #475569;
+    font-size: 12px;
+    margin-top: 40px;
+    border-top: 1px solid #1e293b;
+  }
+
+  .emoji-bullet { margin-right: 6px; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>每日双专栏情报简报</h1>
-            <div class="meta">
-                <span>📅 2026年7月10日（星期五）</span>
-                <span>📺 新闻联播：2026年7月9日</span>
-                <span>🤖 AI情报：2026年7月10日</span>
-            </div>
-        </div>
+<div class="container">
 
-        <div class="columns">
-            <!-- 专栏一：新闻联播 -->
-            <div class="column">
-                <div class="column-header news">
-                    <span class="icon">📺</span>
-                    <span>专栏一：新闻联播每日简报（风向标解读版）</span>
-                </div>
-                <div class="column-body">
-                    <div class="core-signal">
-                        <strong>核心风向：</strong>政策进入"统筹发展与安全"双轮驱动模式，科技自立自强、双碳十五五攻坚、数据要素与医疗养老等民生基建成为当日核心信号；同时新能源汽车出口与高端制造数据持续超预期。
-                    </div>
+<!-- HEADER -->
+<div class="header">
+  <h1>📡 每日双专栏情报</h1>
+  <div class="date">2026年7月10日 · 星期五 · 第52期</div>
+</div>
 
-                    <div class="section">
-                        <div class="section-title"><span class="emoji">🔴</span> 一、核心政策/事件</div>
+<!-- ==================== 专栏一：新闻联播 ==================== -->
+<div class="section-title col1">
+  <span class="icon">📰</span>
+  <span>专栏一：新闻联播每日简报（风向标解读版）</span>
+</div>
 
-                        <div class="news-item important">
-                            <h3>1. 习近平对福建泉州晋江市一鞋厂火灾事故作出重要指示，李强作出批示</h3>
-                            <div class="detail">
-                                <span class="detail-label label-said">新闻联播说了什么</span>
-                                7月9日12时许，<strong>福建泉州晋江市</strong>一鞋厂发生火灾，造成重大人员伤亡。事故发生后，中共中央总书记、国家主席、中央军委主席习近平高度重视并作出重要指示：要全力做好人员搜救、善后安抚等工作，尽快查明事故原因并严肃追责。习近平强调，今年以来，国内发生多起重大生产安全事故，各地区各有关部门要深刻汲取教训，更好统筹发展和安全，时刻绷紧安全生产这根弦，深入排查整治各类风险隐患，抓实抓细安全生产措施落实，坚决防止重特大事故发生，切实维护人民群众生命财产安全。中共中央政治局常委、国务院总理李强作出批示：要全力组织搜救，做好善后处置，防范次生事故，同时尽快查明原因，依法严肃追责。国务院安委办要进一步指导督促各地树牢底线思维、极限思维，全面排查安全生产风险隐患。根据习近平重要指示和李强要求，应急管理部已派出工作组赶赴现场指导，福建省已组织力量全力做好伤员救治和现场处置等工作。
-                            </div>
-                            <div class="detail">
-                                <span class="detail-label label-read">风向标解读</span>
-                                这是今年以来最高层对安全生产事故的又一次直接批示，信号极其明确：安全生产已从行业监管上升为政治责任。"统筹发展和安全"、"底线思维、极限思维"等表述意味着下半年对危险化学品、纺织服装、劳动密集型制造业、仓储物流等重点领域的排查整治将全面升级，地方政府和企业的安全投入将成为硬约束。
-                            </div>
-                            <div class="detail">
-                                <span class="detail-label label-impact">行业影响</span>
-                                <strong>受益/受影响领域：</strong>工业消防设备、安全生产信息化（如风险监测预警平台）、应急管理服务、职业安全培训、保险科技；<strong>承压领域：</strong>劳动密集型轻工制造、消防安全不达标的中小企业、仓储物流园区。<strong>投资机会：</strong>具备智慧消防、AI视觉安监、双重预防机制SaaS能力的厂商将迎来订单窗口期。
-                            </div>
-                        </div>
+<div class="core-wind">
+  <h3>🧭 一、核心风向</h3>
+  <p>今日新闻联播释放三大信号：<span class="highlight">中非关系升级新时代中纳命运共同体</span>（对非零关税全面落地）、<span class="highlight">中国航天可回收火箭技术历史性突破</span>（全球首创网系回收）、<span class="highlight">夏粮产量首次站上3000亿斤</span>（粮食安全压舱石）。同时国常会密集部署数字中国+新兴支柱产业+全民健身，政策工具箱全面打开。</p>
+</div>
 
-                        <div class="news-item">
-                            <h3>2. 国务院印发《"十五五"碳达峰行动方案》</h3>
-                            <div class="detail">
-                                <span class="detail-label label-said">新闻联播说了什么</span>
-                                国务院日前印发《"十五五"碳达峰行动方案》（以下简称《行动方案》）。《行动方案》强调，发挥碳达峰碳中和战略牵引作用，更好统筹保障能源安全和经济社会发展，深入推进产业绿色化、低碳化，稳步实现煤炭和石油消费达峰，加快形成绿色生产生活方式，培育更多绿色经济增长点，厚植高质量发展绿色底色。《行动方案》部署了<strong>加快能源结构调整优化、推进产业绿色化低碳化、深化重点领域绿色低碳转型等5方面重点任务</strong>，安排了<strong>省间电力互济、煤炭消费清洁替代、重点行业节能降碳、低碳零碳供热制冷和绿色照明、零碳运输走廊建设、碳达峰碳中和基础能力提升</strong>等重点工程。
-                            </div>
-                            <div class="detail">
-                                <span class="detail-label label-read">风向标解读</span>
-                                "十五五"碳达峰行动方案是双碳战略进入第二个五年的纲领性文件，首次把"稳步实现煤炭和石油消费达峰"写入国务院文件，并把"省间电力互济""零碳运输走廊""算电碳协同"等新型基础设施作为重点工程。这标志着双碳政策从目标宣示进入项目落地和工程化实施阶段，与当日"央企场景万象"专项行动中公布的"算电碳协同"开放场景形成政策闭环。
-                            </div>
-                            <div class="detail">
-                                <span class="detail-label label-impact">行业影响</span>
-                                <strong>受益：</strong>特高压与智能电网、储能（尤其是长时储能）、新能源汽车及零碳物流、光伏风电、氢能、碳监测/碳管理软件、余热利用与节能服务；<strong>承压：</strong>煤炭、石油炼化、高耗能建材钢铁（若未达环保标准）。<strong>投资建议：</strong>关注"省间电力互济"和"零碳运输走廊"相关招标，以及具备碳足迹核算能力的企业。
-                            </div>
-                        </div>
+<h3 style="color:#fbbf24;margin-bottom:16px;">二、分项解读</h3>
 
-                        <div class="news-item">
-                            <h3>3. 丁薛祥在两院院士大会第二次全体会议上强调：以人工智能赋能科学研究</h3>
-                            <div class="detail">
-                                <span class="detail-label label-said">新闻联播说了什么</span>
-                                两院院士大会第二次全体会议7月9日下午在京举行。中共中央政治局常委、国务院副总理丁薛祥出席会议并讲话。丁薛祥强调，要以加强基础研究打牢科技强国建设根基，持续产出重大原创性、颠覆性科技成果；以新型举国体制保障高水平科技自立自强，坚持"四个面向"战略导向，打好关键核心技术攻坚战；以融合发展增强科技创新活力和动力，突出科技创新供给和产业需求牵引，一体推进教育科技人才发展；<strong>以人工智能赋能科学研究，引领科研范式变革，加速科学发现和技术突破</strong>。丁薛祥表示，党中央高度重视院士队伍建设，两院院士在人民群众心中享有崇高声誉，要进一步完善院士制度，提高院士遴选质量，服务和管理好院士，更好发挥院士作用。会上，丁薛祥等为陈嘉庚科学奖、陈嘉庚青年科学奖、光华工程科技奖获得者代表颁奖。
-                            </div>
-                            <div class="detail">
-                                <span class="detail-label label-read">风向标解读</span>
-                                "AI for Science"首次被副总理在院士大会这一最高规格科技会议上单点强调，与习近平总书记在国家科学技术奖励大会上的讲话形成上下呼应。这意味着AI不再只是消费互联网工具，而是被定位为科研基础设施和国家战略科技力量的核心变量。"新型举国体制+AI for Science"的组合将推动算力、科学数据、大模型与重大科学装置深度融合。
-                            </div>
-                            <div class="detail">
-                                <span class="detail-label label-impact">行业影响</span>
-                                <strong>受益：</strong>AI制药（如分子生成、临床试验设计）、AI材料科学、科学计算大模型、国产算力芯片、科研仪器与实验自动化、学术数据平台；<strong>落地场景：</strong>高校与科研院所的AI科研助手、央企研究院的"AI+仿真"平台。<strong>风险提示：</strong>科研AI商业化周期长，短期看订单和项目制收入更确定。
-                            </div>
-                        </div>
-                    </div>
+<!-- News 1 -->
+<div class="news-card">
+  <h3>1. 习近平同纳米比亚总统会谈：宣布构建新时代中纳命运共同体</h3>
+  <div class="content-block">
+    <span class="label label-said">新闻联播说了什么</span>
+    <p>7月10日下午，国家主席习近平在人民大会堂同纳米比亚总统恩代特瓦举行会谈。两国领导人共同宣布将<span class="highlight">双边关系定位提升为新时代中纳命运共同体</span>。习近平提出3点意见：一是坚定相互支持，深化理念融通；二是挖掘合作潜力，提升合作水平——明确提到<span class="highlight">中国已对53个非洲建交国全面实施零关税</span>，希望纳方用足零关税和升级后的输华产品"绿色通道"；三是坚持团结协作，捍卫多边主义。习近平特别提出中非矿业合作3条原则：互利共赢、友好协商、开拓进取。会谈后，两国元首见证签署经贸贸易、医疗卫生、教育和人力资源等领域多项合作文件，并发表联合声明。</p>
+  </div>
+  <div class="content-block">
+    <span class="label label-interpret">风向标解读</span>
+    <p>这是继中非合作论坛后，中国对非外交的又一次里程碑式升级。关键数据：<span class="highlight">对53个非洲建交国全面零关税</span>——这不仅是中国扩大高水平对外开放的"招牌动作"，更是实质性的经济外交工具。矿业合作3条原则直接回应了西方对中国在非"资源掠夺"的抹黑话术，用"互利共赢+市场化原则"重构叙事框架。</p>
+  </div>
+  <div class="content-block">
+    <span class="label label-impact">行业影响</span>
+    <p>受益领域：<span class="green">中非贸易物流/港口运营商</span>、<span class="green">非洲矿产开发/工程承包企业</span>（特别是铜、钴、锂等新能源矿产）、<span class="green">对非出口消费品/机械设备企业</span>（零关税降低非洲国家进口成本，扩大购买力）。关注在非有资源布局的央企及民企。</p>
+  </div>
+</div>
 
-                    <div class="section">
-                        <div class="section-title"><span class="emoji">📊</span> 二、经济与产业数据</div>
+<!-- News 2 -->
+<div class="news-card">
+  <h3>2. 习近平会见朝鲜内阁总理朴泰成：《中朝友好合作互助条约》65周年</h3>
+  <div class="content-block">
+    <span class="label label-said">新闻联播说了什么</span>
+    <p>7月10日下午，习近平在人民大会堂会见朝鲜劳动党中央政治局常委、内阁总理朴泰成。习近平指出，上个月对朝鲜进行国事访问，同金正恩总书记为巩固发展中朝传统友好作出战略指引。<span class="highlight">世代友好、命运与共、守望相助始终是中朝关系的鲜明特征</span>。《中朝友好合作互助条约》为巩固两国人民"用鲜血凝成的战斗友谊"奠定重要政治法律基础。习近平强调，中朝两国应当保持战略定力，增强战略自信。朴泰成表示，<span class="highlight">金正恩总书记要求将朝中关系发展为最强有力的战略关系</span>，朝方坚定支持中方在台湾等问题上捍卫核心利益。</p>
+  </div>
+  <div class="content-block">
+    <span class="label label-interpret">风向标解读</span>
+    <p>朝鲜内阁总理此次率团访华，紧随习近平上月访朝（首次出访即选朝鲜）之后。双方在《中朝友好合作互助条约》65周年节点上密集互动，释放的信号非常明确：<span class="highlight">在国际形势变乱交织背景下，中朝战略协作进入"加固模式"</span>。朴泰成"最强有力的战略关系"表述极为罕见，暗示两国可能在军事安全、经济合作层面有更深绑定。</p>
+  </div>
+  <div class="content-block">
+    <span class="label label-impact">行业影响</span>
+    <p>关注：<span class="green">东北亚地缘格局变化下的国防军工板块</span>、<span class="green">中朝边境贸易/物流（丹东等口岸城市）</span>、<span class="green">朝鲜矿产资源开发潜在机会</span>（一旦制裁松动，稀土、铁矿等将释放巨大价值）。</p>
+  </div>
+</div>
 
-                        <div class="news-item">
-                            <h3>4. 上半年新能源汽车产销量双超700万辆，出口同比翻倍</h3>
-                            <div class="detail">
-                                <span class="detail-label label-said">新闻联播说了什么</span>
-                                中国汽车工业协会7月9日公布的最新数据显示，今年1—6月份，我国新能源汽车市场产销量、出口量均呈现稳定增长态势。其中，新能源汽车产销量分别完成<strong>743.8万辆和744.6万辆</strong>，同比分别增长<strong>6.7%和7.3%</strong>。其中，6月份，新能源汽车新车销量达到汽车新车总销量的<strong>近60%</strong>。在出口方面，1—6月份，汽车出口<strong>509.6万辆</strong>，同比增长<strong>65.3%</strong>。其中，新能源汽车出口<strong>235.5万辆</strong>，同比增长<strong>120%</strong>。
-                            </div>
-                            <div class="detail">
-                                <span class="detail-label label-read">风向标解读</span>
-                                新能源汽车出口增速（+120%）远超国内销量增速（+7.3%），显示中国电动车已具备全球竞争力，正在从"以内销为主"转向"内外双循环"。6月新能源渗透率接近60%意味着燃油车市场加速萎缩，行业竞争焦点从"有没有"转向"全球化品牌与智能化体验"。
-                            </div>
-                            <div class="detail">
-                                <span class="detail-label label-impact">行业影响</span>
-                                <strong>受益：</strong>整车出口龙头、动力电池及材料（海外建厂）、充电桩/换电出海、汽车电子（智能座舱、自动驾驶）、滚装船运/汽车物流；<strong>承压：</strong>传统燃油车产业链、合资燃油车份额。<strong>投资机会：</strong>关注海外建厂进度快、已通过欧洲/东盟认证的主机厂及Tier1供应商。
-                            </div>
-                            <div class="data-grid">
-                                <div class="data-box"><div class="number">743.8万</div><div class="label">上半年产量</div></div>
-                                <div class="data-box"><div class="number">744.6万</div><div class="label">上半年销量</div></div>
-                                <div class="data-box"><div class="number">+120%</div><div class="label">新能源出口增速</div></div>
-                                <div class="data-box"><div class="number">~60%</div><div class="label">6月渗透率</div></div>
-                            </div>
-                        </div>
-
-                        <div class="news-item">
-                            <h3>5. 上半年物价运行总体平稳，PPI连续4个月同比上涨</h3>
-                            <div class="detail">
-                                <span class="detail-label label-said">新闻联播说了什么</span>
-                                国家统计局7月9日发布的数据显示，反映百姓衣、食、住、行等八大类商品的居民消费价格指数（CPI），上半年同比上涨<strong>1.0%</strong>。其中，我国持续做好重要民生商品保供稳价工作，食品价格小幅波动，稳中有降。6月份当月CPI同比上涨<strong>1.0%</strong>，物价运行总体平稳。从生产领域看，受国际原油价格上涨以及国内部分行业需求增加等因素影响，6月份，工业生产者出厂价格指数（PPI）同比上涨<strong>4.1%</strong>，连续4个月保持同比上涨。从上半年看，PPI同比上涨<strong>1.5%</strong>，其中，有色金属、石油化工、电气机械等行业价格涨幅较为明显。
-                            </div>
-                            <div class="detail">
-                                <span class="detail-label label-read">风向标解读</span>
-                                CPI持续低位（1.0%）显示居民端需求仍偏温和，而PPI连续4个月上涨且上游行业（有色、石化、电气机械）价格涨幅明显，说明企业端成本压力在传导。PPI-CPI剪刀差扩大对中下游制造业利润形成挤压，但也反映出上游资源品和高端制造的景气度。
-                            </div>
-                            <div class="detail">
-                                <span class="detail-label label-impact">行业影响</span>
-                                <strong>受益：</strong>有色金属（铜、铝）、石油化工、电气机械、高端装备制造；<strong>承压：</strong>家电、食品、轻工等下游消费品（成本上升但终端提价空间有限）。<strong>宏观判断：</strong>当前货币政策仍有空间，但通胀低迷意味着宽松节奏可能偏谨慎。
-                            </div>
-                            <div class="data-grid">
-                                <div class="data-box"><div class="number">+1.0%</div><div class="label">CPI上半年</div></div>
-                                <div class="data-box"><div class="number">+4.1%</div><div class="label">PPI 6月</div></div>
-                                <div class="data-box"><div class="number">+1.5%</div><div class="label">PPI上半年</div></div>
-                                <div class="data-box"><div class="number">4个月</div><div class="label">PPI连续上涨</div></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-title"><span class="emoji">📋</span> 三、国内联播快讯精选</div>
-
-                        <div class="news-item">
-                            <h3>6. 医疗数据、零售业、养老、基药、央企开放场景五箭齐发</h3>
-                            <div class="detail">
-                                <span class="detail-label label-said">新闻联播说了什么</span>
-                                当日联播快讯集中释放多项民生与产业改革信号：
-                                <br>• 国家数据局：我国将依托<strong>10个国家数据要素综合试验区</strong>，先行破解医疗领域数据安全合规高效流通利用难题，推动数字中国与健康中国建设深度融合发展。
-                                <br>• 商务部等9部门发布《关于加快零售业创新发展的意见》，围绕系统规划新布局、引领零售新供给、创造消费新需求等<strong>6大方向</strong>，出台<strong>20条具体举措</strong>。力争到<strong>2030年</strong>，基本形成布局合理、供给优质、业态多元、智慧便捷、竞争有序的现代零售体系。
-                                <br>• 民政部发布《城乡三级养老服务网络建设管理指引》，明确到<strong>2029年</strong>基本建成覆盖城乡的"县级—乡镇（街道）—村（社区）"三级养老服务网络，重点聚焦失能失智照护刚需。
-                                <br>• 国家卫生健康委等部门发布《国家基本药物目录（2026版）》，共收录药品<strong>794种</strong>，新增化学药品和生物制品<strong>68种</strong>、中成药<strong>48种</strong>、儿童适宜品种<strong>31种</strong>。
-                                <br>• 国务院国资委牵头组织开展中央企业"场景万象"专项行动在京启动，发布首批<strong>央企十大标志性场景</strong>，涉及<strong>人工智能、算电碳协同</strong>等，将央企自身场景转化为产业创新的共享平台。
-                            </div>
-                            <div class="detail">
-                                <span class="detail-label label-read">风向标解读</span>
-                                这五条快讯共同勾勒出"数据要素×民生+新消费+银发经济+创新药+央企AI开放场景"的政策组合。医疗数据要素试验区的扩容是数据要素市场化最落地的场景之一；零售业20条与养老三级网络是扩内需和应对老龄化的基建；基药目录扩容利好创新药和儿童药；央企十大标志性场景则把AI、算电碳协同等国家战略需求转化为可采购、可落地的真实场景。
-                            </div>
-                            <div class="detail">
-                                <span class="detail-label label-impact">行业影响</span>
-                                <strong>受益：</strong>医疗信息化与数据安全、智慧零售与即时零售、养老照护与康复器械、创新药/儿童药/基药相关企业、AI行业应用（尤其是央企供应链）、算电碳协同服务商。<strong>综合判断：</strong>政策端正在从"放水养鱼"转向"精准滴灌"，每个赛道都有明确的部委牵头和时间节点，适合按政策节奏布局。
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-title"><span class="emoji">🌍</span> 四、国际与外部环境</div>
-
-                        <div class="news-item">
-                            <h3>7. 国际货币基金组织上调中国经济增长预期至4.6%</h3>
-                            <div class="detail">
-                                <span class="detail-label label-said">新闻联播说了什么</span>
-                                国际货币基金组织（IMF）8日发布《世界经济展望报告》更新内容，小幅下调今年世界经济增长预期至<strong>3%</strong>，比4月预测值低0.1个百分点。该机构表示，此次下调反映了中东战事带来的冲击。国际货币基金组织同时将中国的经济增长预期<strong>上调0.2个百分点，至4.6%</strong>，指出中国经济表现超出预期，主要得益于高技术制造业增长和相关出口增加。
-                            </div>
-                            <div class="detail">
-                                <span class="detail-label label-read">风向标解读</span>
-                                IMF在下调全球经济的同时上调中国增速，说明中国高端制造和出口韧性是少数被国际机构认可的亮点。高技术制造业增长与出口增加是核心支撑，这与当日新闻联播反复强调的"科技自立自强"和新能源汽车出口数据相互印证。但中东战事导致全球增速下调，外需不确定性仍存。
-                            </div>
-                            <div class="detail">
-                                <span class="detail-label label-impact">行业影响</span>
-                                <strong>受益：</strong>高技术制造业出口链（新能源车、锂电池、光伏、电子元器件）、高端装备、跨境电商；<strong>风险：</strong>若中东局势恶化，油价和航运成本上升将侵蚀出口利润。<strong>资产配置：</strong>出口链中估值合理、海外产能布局完善的企业具有防御性。
-                            </div>
-                        </div>
-
-                        <div class="news-item">
-                            <h3>8. 美军连续两天对伊朗发动军事打击，中东局势紧张推升油价</h3>
-                            <div class="detail">
-                                <span class="detail-label label-said">新闻联播说了什么</span>
-                                据伊朗媒体报道，当地时间8日夜间到9日凌晨，伊朗锡里克、阿巴斯港、布什尔以及恰巴哈尔港等多地传出爆炸声。美国中央司令部8日称，美军当天对伊朗约<strong>90个军事目标</strong>实施打击，目的在于进一步削弱伊朗威胁霍尔木兹海峡航行的能力。这是美军以回应伊朗袭击霍尔木兹海峡商船为由，连续两天对伊朗发动军事打击。另据伊朗媒体7月9日报道，伊朗东北部的阿格泰凯铁路桥遭美军袭击，目前没有人员伤亡报告。伊朗伊斯兰革命卫队7月9日称，袭击了位于<strong>科威特和巴林的多个美军基地</strong>，并警告说，如果美军继续发动侵略，本地区的其他美军基地将遭到打击。受中东战事再度升级影响，国际原油期货价格8日显著上涨。
-                            </div>
-                            <div class="detail">
-                                <span class="detail-label label-read">风向标解读</span>
-                                霍尔木兹海峡是全球约20%石油运输的咽喉，美伊冲突升级直接推升能源和航运风险溢价。联合国秘书长古特雷斯已呼吁降级紧张局势。若冲突长期化，全球能源供应链和通胀预期将被重塑。
-                            </div>
-                            <div class="detail">
-                                <span class="detail-label label-impact">行业影响</span>
-                                <strong>受益：</strong>油运、军工、黄金、原油相关资产；<strong>承压：</strong>航空、化工、高度依赖中东原油的下游制造业。<strong>风险提示：</strong>油价若持续上涨，将强化中国PPI上行压力，同时制约货币政策宽松空间。
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="section">
-                        <div class="summary-box">
-                            <h4>🎯 总结风向标</h4>
-                            <p><strong>整体政策走向：</strong>当日新闻联播呈现出"安全底线+科技自强+绿色转型+民生基建+外向型高端制造"五位一体的政策图景。安全生产事故后高层密集批示，意味着工业安全与应急产业进入强监管周期；"十五五"碳达峰方案和丁薛祥院士大会讲话，标志着AI for Science和算电碳协同从概念进入国家工程；新能源汽车出口翻倍和IMF上调中国增速，则确认高技术制造业仍是当前经济最亮的增长极。</p>
-                            <p style="margin-top:10px"><strong>投资建议：</strong>短期关注<strong>工业安全/智慧消防、储能电网、AI for Science、汽车出口链</strong>；中期布局<strong>数据要素（医疗）、智慧零售、银发经济、创新药</strong>；警惕<strong>中东局势</strong>对油价和航运的扰动，以及PPI-CPI剪刀差对下游利润的挤压。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 专栏二：AI生产力情报 -->
-            <div class="column">
-                <div class="column-header ai">
-                    <span class="icon">🤖</span>
-                    <span>专栏二：AI生产力情报专栏</span>
-                </div>
-                <div class="column-body">
-                    <div class="core-signal" style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-color: #90caf9;">
-                        <strong>🚀 AI 生产力黑洞：</strong>今日是2026年AI模型发布最密集的日子之一——OpenAI GPT-5.6系列全球正式上线、SpaceXAI Grok 4.5同步公开， Agentic Coding与AI Agent工作流从"Demo"真正走向"可付费的生产工具"。
-                    </div>
-                    <p style="text-align:right; color:var(--text-secondary); font-size:0.9rem; margin-bottom:18px;">📅 日期：2026-07-10</p>
-
-                    <div class="section">
-                        <div class="section-title"><span class="emoji">🛠️</span> 顶级装备库更新</div>
-                        <div class="ai-card">
-                            <h3><span>⚡</span> OpenAI GPT-5.6 系列正式上线：Sol / Terra / Luna 三档齐发</h3>
-                            <div class="item"><strong>核心黑科技：</strong>OpenAI 7月10日发布公告，在 ChatGPT、Codex（编程Agent）及 API 中全面上线 GPT-5.6 系列。该系列首次采用<strong>天体命名分层体系</strong>：旗舰 <strong>Sol</strong>、均衡 <strong>Terra</strong>、轻量 <strong>Luna</strong>，三档可独立迭代。旗舰 Sol 引入<strong>Max 推理强度</strong>和借助子智能体加速复杂任务的<strong>Ultra 模式</strong>；在 Terminal-Bench 2.1 编程测试中，Sol 标准模式得分 <strong>88.8%</strong>（超过 Claude Mythos 5 的 88.0%），Ultra 模式达到 <strong>91.9%</strong>。完成同等任务相比竞品减少 <strong>54%</strong> 输出 Token、耗时缩短 <strong>57%</strong>。</div>
-                            <div class="item"><strong>实战价值：</strong>新定价 Sol 输入 $5/百万 Token、输出 $30/百万 Token（与 GPT-5.5 持平）；Terra 性能对标 GPT-5.5 但价格<strong>减半</strong>；Luna 输入 $1、输出 $6/百万 Token，适合批量轻量任务。ChatGPT Work 原生智能体可接收整体目标后自动拆解步骤，跨邮箱、日历、Slack、云盘、CRM 连续工作数小时；Codex 正式整合进统一 ChatGPT 桌面客户端，覆盖网页、移动端、Windows 与 macOS。旧版客户端更名 ChatGPT Classic 保留，项目与配置无缝迁移。桌面端还新增 Sites 网页搭建功能，可一键生成可视化报表、业务仪表盘与小型交互网站。</div>
-                            <div class="item"><strong>落地建议：</strong>适合程序员接单、复杂工作流自动化、多步骤研究、企业内部报表/网站生成。可用 Luna 处理批量文案/数据分析，Sol 处理架构设计和关键代码，Terra 作为日常主力。</div>
-                            <div>
-                                <span class="tag">GPT-5.6</span>
-                                <span class="tag">Sol</span>
-                                <span class="tag">Terra</span>
-                                <span class="tag">Luna</span>
-                                <span class="tag">ChatGPT Work</span>
-                                <span class="tag">Codex</span>
-                            </div>
-                        </div>
-
-                        <div class="ai-card">
-                            <h3><span>🚀</span> SpaceXAI Grok 4.5：与 Cursor 联合训练的"Opus 级"编程智能体</h3>
-                            <div class="item"><strong>核心黑科技：</strong>SpaceXAI（原 xAI）7月9日发布首个专门针对编程和智能体任务训练的模型 Grok 4.5，由 SpaceXAI 与 Cursor 联合完成训练。马斯克在社交平台称其为<strong>"Opus 级模型"</strong>。该模型在<strong>数万个 NVIDIA GB300 GPU</strong>上完成训练，通过去重、质量评分和领域聚焦筛选保证数据混合的高覆盖与高信号；强化学习阶段覆盖<strong>数十万个任务</strong>，重点围绕多步软件工程及其他技术工作。Grok 4.5 单个任务消耗的 Token 仅为同级领先模型的一半，每秒输出 Token 数达 <strong>80 TPS</strong>，单次任务步骤数少一半。</div>
-                            <div class="item"><strong>实战价值：</strong>定价为输入 <strong>$2/百万 Token</strong>、输出 <strong>$6/百万 Token</strong>，成本不到同类可比模型的一半。Grok 4.5 已在 SpaceXAI 控制台、Grok Build 以及 Cursor 中可用，所有使用限制已重置，可通过 x.ai/cli 免费开始。除代码生成外，在 Office 场景也具备细致能力：可在 Excel 中构建复杂模型、在 PowerPoint 中绘制复杂图表、在 Word 中撰写清晰文章，并能在 Rust、C/C++ 等挑战性任务中高效表现。值得注意的是，SpaceX 于6月16日以<strong>600亿美元</strong>收购 Cursor，Grok 4.5 是收购后首个重量级模型。</div>
-                            <div class="item"><strong>落地建议：</strong>适合大型代码库重构、跨仓库多技能长任务、Rust/C++ 高难度任务、以及需要兼顾性价比的编程外包。可与 GPT-5.6 形成互补：复杂推理用 Sol，日常高性价比编码用 Grok 4.5。</div>
-                            <div>
-                                <span class="tag">Grok 4.5</span>
-                                <span class="tag">Cursor</span>
-                                <span class="tag">SpaceXAI</span>
-                                <span class="tag">80 TPS</span>
-                                <span class="tag">$2/$6</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-title"><span class="emoji">🤖</span> Agent 战场情报</div>
-                        <div class="ai-card">
-                            <h3><span>🎯</span> ChatGPT Work 原生智能体：从"聊天"到"数小时连续工作"</h3>
-                            <div class="item"><strong>动态：</strong>OpenAI 同步上线 ChatGPT Work 原生智能体，区别于传统对话工具，可接收整体目标后自动拆解步骤，跨邮箱、日历、Slack、云盘、CRM 等多软件连续工作数小时，直接输出文档、报表、网页应用等完整成品。</div>
-                            <div class="item"><strong>解读：</strong>这标志着 AI Agent 从"单次问答"进入"长时自主任务执行"阶段。桌面端内置浏览器与 Computer Use 能力，可直接操作无开放 API 的本地软件，意味着 Agent 能覆盖企业 80% 以上的重复性办公流程。</div>
-                            <div class="item"><strong>落地场景：</strong>配合小红书生鲜项目，可让 Work Agent 每天自动读取电商后台数据、生成销售日报、从爆款笔记中提炼选题、并将结果写入飞书/Notion；人工只需审核和发布。</div>
-                        </div>
-
-                        <div class="ai-card">
-                            <h3><span>🧩</span> Claude Sonnet 5 与 Agent Skills 生态持续霸榜</h3>
-                            <div class="item"><strong>动态：</strong>Product Hunt 7月榜单中，Claude Sonnet 5 以"AI that plans, acts, and gets work done"定位持续上榜；GitHub Trending 上 addyosmani/agent-skills 单日再增 <strong>2,582⭐</strong>，总星数已达 <strong>75,840⭐</strong>。</div>
-                            <div class="item"><strong>解读：</strong>Agent Skills（把高频任务封装成可复用技能包）正在取代早期"单条 prompt"工程，成为 Agent 开发的新标准。这意味着未来的 AI 编程不再是和模型对话，而是组装、调优、治理一套技能库。</div>
-                            <div class="item"><strong>落地场景：</strong>为小红书店铺号建立一套"选题→文案→封面→发布"标准化 Agent Skills，让不同 Agent 分管不同环节，经理 Agent 负责质量审核，不合格直接打回重做。</div>
-                        </div>
-
-                        <div class="ai-card">
-                            <h3><span>🖥️</span> DesktopCommanderMCP：让 Claude 拥有终端控制权</h3>
-                            <div class="item"><strong>动态：</strong>GitHub 热门项目 wonderwhy-er/DesktopCommanderMCP 是一个 MCP 服务器，为 Claude 提供终端控制、文件系统搜索和 diff 文件编辑能力。</div>
-                            <div class="item"><strong>解读：</strong>MCP 协议正在快速扩展 AI 能调用的工具边界。当 Agent 能直接操作终端、文件和代码 diff 时，"AI 程序员"才真正具备完整工程能力，而不仅仅是写片段代码。</div>
-                            <div class="item"><strong>落地场景：</strong>在本地开发环境中，让 Claude 自动完成代码拉取、依赖安装、测试运行、日志分析和 bug 修复，实现真正的端到端开发闭环。</div>
-                        </div>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-title"><span class="emoji">🖊</span> AI 新玩法 / 新概念</div>
-                        <div class="ai-card">
-                            <h3><span>🌌</span> 新玩法：大模型"天体命名体系"与产品矩阵化</h3>
-                            <div class="item"><strong>动态：</strong>OpenAI 为 GPT-5.6 引入 Sol（旗舰）、Terra（均衡）、Luna（轻量）的天体命名分层，清晰区分代际与能力层级。</div>
-                            <div class="item"><strong>解读：</strong>这不仅是营销命名，更代表模型产品从"单一版本号"向"车型矩阵"演进。企业可以像选车一样，按任务价值和成本预算选择对应档位，实现模型经济学的精细化管理。</div>
-                            <div class="item"><strong>落地场景：</strong>在小红书生鲜运营中，高价值任务（如爆款文案、产品详情页）用 Sol，批量任务（如评论回复、数据整理）用 Luna，把 AI 成本压到最低同时保证效果。</div>
-                        </div>
-
-                        <div class="ai-card">
-                            <h3><span>👤</span> X 大佬动态：纳德拉、马斯克同日发声</h3>
-                            <div class="item"><strong>动态1（微软 CEO Satya Nadella / X）：</strong>在 OpenAI 发布 GPT-5.6 后，纳德拉在 X 平台宣布，微软已在 Copilot Chat、Cowork、M365 应用、GitHub 和 Foundry 中同步上线 GPT-5.6 系列模型。</div>
-                            <div class="item"><strong>动态2（Elon Musk / X）：</strong>马斯克在社交平台称 Grok 4.5 为<strong>"Opus 级模型"</strong>，并强调其与 Cursor 联合训练后在成本效率上的优势。</div>
-                            <div class="item"><strong>动态3（Andrej Karpathy / X 理念延续）：</strong>前 OpenAI 联创、Tesla AI 总监 Andrej Karpathy 持续在 X 推广 Agent Skills 与 Vibe Coding 范式，其思想已催生出 andrej-karpathy-skills、addyosmani/agent-skills 等数万星开源项目，成为 2026 年 Agent 开发的核心方法论之一。</div>
-                            <div class="item"><strong>解读：</strong>三位大佬同日行动，标志着"模型发布""企业集成""开发范式"三条主线交汇：OpenAI 负责模型突破，微软负责企业入口，Karpathy 负责开发者工作流重塑。</div>
-                        </div>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-title"><span class="emoji">💰</span> AI 套利 / 变现线索</div>
-                        <div class="ai-card">
-                            <h3><span>🔥</span> 热点：GPT-5.6 + Grok 4.5 双模型发布，催生"一人外包团队"</h3>
-                            <div class="item"><strong>热点：</strong>同日两大模型上线，让"一个人完成从前端网站到后端代码到营销文案"的全流程交付成为现实。海外已出现大量"Solo AI Agency"案例，用 GPT-5.6 Work 做项目调研、客户沟通、网站生成，用 Grok 4.5/Codex 写代码，交付效率提升 5-10 倍。</div>
-                            <div class="item"><strong>复刻建议：</strong>
-                                <ol class="tool-list">
-                                    <li><strong>定位垂直细分：</strong>选择本地中小商家（餐饮、教培、诊所、生鲜）做"AI 官网+小程序+内容代运营"打包服务。</li>
-                                    <li><strong>工具组合：</strong>用 ChatGPT Work 完成客户调研、需求拆解、文案和网站结构；用 Grok 4.5/Codex 生成代码；用 Midjourney/SD 生成图片；用 NotebookLM 或 TTS 生成音频版介绍。</li>
-                                    <li><strong>定价策略：</strong>基础版 3,000-5,000 元/站，维护费 500-1,000 元/月，重点卖"持续迭代"而非一次性交付。</li>
-                                    <li><strong>小红书生鲜变体：</strong>用 AI 自动把每日精品生鲜行情、产地科普、选品方法论生成图文/短视频脚本，再用 Work Agent 批量发布到店铺号，形成内容资产复利。</li>
-                                </ol>
-                            </div>
-                        </div>
-
-                        <div class="ai-card">
-                            <h3><span>🎙️</span> 线索：音频早报 + 多平台分发</h3>
-                            <div class="item"><strong>热点：</strong>国外博主利用 NotebookLM 将枯燥法律文档、财报、行业报告转为脱口秀电台在 Spotify 获利；国内类似模式已出现在小宇宙、喜马拉雅和微信听书。</div>
-                            <div class="item"><strong>复刻建议：</strong>把每日新闻联播简报、AI 情报、生鲜行情报告用 GPT-5.6 改写成口语化脚本，再用 TTS 工具生成音频，发布到视频号、小红书、播客、车载音频。对开车/通勤人群极有粘性，可导流至私域或付费社群。</div>
-                        </div>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-title"><span class="emoji">🔍</span> 避坑 / 黑话词典</div>
-                        <div class="ai-card">
-                            <h3><span>🔌</span> 词条：MCP（Model Context Protocol）</h3>
-                            <div class="quote">"一句话大白话：给所有 AI 统一插座的协议。以后你的扣子可以无缝调用 Trae 的本地能力、Cursor 的代码库、浏览器的页面信息，不用再纠结选哪个工具。"</div>
-                            <div class="item"><strong>为什么重要：</strong>MCP 让不同厂商的 AI 和工具能互相调用，打破生态孤岛。DesktopCommanderMCP、MentionDrop MCP、PieterPost MCP 等项目都是典型案例。</div>
-                            <div class="item"><strong>避坑：</strong>不是所有 MCP 服务器都安全，开放终端/文件系统权限给 AI 时，务必在隔离环境（如 Docker、沙盒）中运行，避免敏感数据泄露。</div>
-                        </div>
-
-                        <div class="ai-card">
-                            <h3><span>🧠</span> 词条：Ultra 模式 / Max 推理强度</h3>
-                            <div class="quote">"一句话大白话：让模型自动召唤多个小 Agent 一起干活，把复杂任务拆成并行子任务，类似一个项目经理同时派几个工程师分工解决。"</div>
-                            <div class="item"><strong>为什么重要：</strong>GPT-5.6 Sol 的 Ultra 模式就是这种思路，它能把 Terminal-Bench 成绩从 88.8% 推到 91.9%。未来顶级模型之间的差异，不再是参数多少，而是"会不会自己分解任务、调用工具、并行执行"。</div>
-                            <div class="item"><strong>避坑：</strong>Ultra 模式成本高、耗时长，简单任务用普通模式即可；另外要监控子 Agent 的循环调用，防止无限递归或账单爆炸。</div>
-                        </div>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-title"><span class="emoji">📈</span> GitHub Trending 与 Product Hunt 精选</div>
-                        <div class="ai-card">
-                            <h3><span>⭐</span> GitHub Trending 今日热门（AI 相关）</h3>
-                            <div class="item"><strong>1. MadsLorentzen/ai-job-search</strong> <span class="tag github">+3,728⭐/日</span><br>基于 Claude Code 的 AI 求职申请框架，可自动评估职位、定制简历、撰写求职信、准备面试。</div>
-                            <div class="item"><strong>2. addyosmani/agent-skills</strong> <span class="tag github">+2,582⭐/日</span><br>生产级 AI 编程 Agent 工程技能库，总星 75,840。</div>
-                            <div class="item"><strong>3. iOfficeAI/OfficeCLI</strong> <span class="tag github">+1,923⭐/日</span><br>首个专为 AI Agent 设计的 Office 套件，可读写 Word/Excel/PowerPoint，无需安装 Office。</div>
-                            <div class="item"><strong>4. VoltAgent/awesome-design-md</strong> <span class="tag github">+1,233⭐/日</span><br>DESIGN.md 文件集合，让 coding agent 根据品牌设计系统生成匹配 UI。</div>
-                            <div class="item"><strong>5. bradautomates/claude-video</strong> <span class="tag github">+727⭐/日</span><br>让 Claude 能观看任意视频：下载、抽帧、转录、交给 Claude 分析。</div>
-                            <div class="item"><strong>6. unclecode/crawl4ai</strong> <span class="tag github">195⭐/日</span><br>LLM 友好的开源网页爬虫与抓取工具，总星 71,803。</div>
-                            <div class="item"><strong>7. vxcontrol/pentagi</strong> <span class="tag github">543⭐/日</span><br>完全自主的 AI Agent 渗透测试系统。</div>
-                            <div class="item"><strong>8. asgeirtj/system_prompts_leaks</strong> <span class="tag github">+1,135⭐/日</span><br>提取 Anthropic、OpenAI、Google、xAI 等主流 AI 系统提示词。</div>
-                        </div>
-
-                        <div class="ai-card">
-                            <h3><span>🏆</span> Product Hunt 7月热门 AI 产品</h3>
-                            <div class="item"><strong>1. Acti</strong> <span class="tag producthunt">Agentic keyboard</span><br>面向移动端命令和搜索的 Agentic 键盘。</div>
-                            <div class="item"><strong>2. Context.dev</strong> <span class="tag producthunt">互联网数据 API</span><br>一个 API 完成网页抓取、数据增强和互联网信息提取。</div>
-                            <div class="item"><strong>3. Glaze by Raycast</strong> <span class="tag producthunt">AI 构建 Mac App</span><br>通过聊天让 AI 帮你创建自己的 Mac 应用。</div>
-                            <div class="item"><strong>4. Claude Sonnet 5</strong> <span class="tag producthunt">计划/执行/完成</span><br>Anthropic 定位"能计划、行动并完成工作"的 AI。</div>
-                            <div class="item"><strong>5. Humalike</strong> <span class="tag producthunt">Agent 社交智能</span><br>赋予 AI Agent 所缺失的社交智能。</div>
-                            <div class="item"><strong>6. Katalyst</strong> <span class="tag producthunt">Salesforce AI Agent</span><br>管理 Salesforce 销售管道的 AI Agent。</div>
-                            <div class="item"><strong>7. Vida</strong> <span class="tag producthunt">AI 克隆工作流</span><br>克隆你自己，让 AI 在你开口前就完成工作。</div>
-                        </div>
-                    </div>
-
-                    <div class="section">
-                        <div class="summary-box" style="background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%); border-color: #9fa8da;">
-                            <h4>🎯 AI 情报总结</h4>
-                            <p><strong>今日主线：</strong>OpenAI GPT-5.6 与 SpaceXAI Grok 4.5 同日亮剑，AI 编程与 Agent 工作流进入"可规模化商用"阶段。模型命名体系化、定价分层化、企业入口全面化是三大趋势。</p>
-                            <p style="margin-top:10px"><strong>套利机会：</strong>用 GPT-5.6 Work + Grok 4.5 打造"一人外包团队"服务本地商家；把情报简报/行业报告转成音频早报做私域流量；为小红书生鲜店铺建立标准化 Agent Skills 实现内容自动化。</p>
-                            <p style="margin-top:10px"><strong>需警惕：</strong>MCP 开放权限后的安全风险、Ultra 模式带来的成本失控、以及大模型能力差距缩小后单纯"调 prompt"的竞争力下降。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p>📡 信源：cn.govopendata.com / 央视网 / GitHub Trending / Product Hunt / aitoolsrecap.com / IT之家 / 快科技 / 新浪财经 / 腾讯新闻 / 量子位 / 36氪</p>
-            <p>🤖 生成时间：2026-07-10 08:50 CST | 由每日双专栏自动化情报机器人生成</p>
-        </div>
-    </div>
-</body>
-</html>
+<!-- News 3 -->
+<div class="news-card">
+  <h3>3. 李强主持召开国务院常务会议：六大议题密集部署</h3>
+  <div class="content-block">
+    <span class="label label-said">新闻联播说了什么</span>
+    <p>国务院总理李强7月10日主持召开国常会，部署六大任务：<br>
+    ① <span class="highlight">防汛抗洪救灾</span>——要求紧盯高风险区域、重点部位、脆弱人群，遇到险情果断组织人员转移，最大限度减少人员伤亡。<br>
+    ② <span class="highlight">数字中国建设</span>——系统推进，加快新一代通信网、算力网建设，加强前沿科技攻关，增强对新型安全风险的评估和防控能力。<br>
+    ③ <span class="highlight">现代流通体系建设</span>——补齐基础设施短板，大力发展多式联运，进一步降低流通成本。<br>
+    ④ <span class="highlight">新兴支柱产业培育</span>——全链条推动规模化发展，加强基础研究和关键软硬件攻关，加速技术迭代和生态完善，引导各地因地制宜错位发展。<br>
+    ⑤ <span class="highlight">自然资源保护利用</span>——强化主体功能区战略，依托都市圈、城市群打造高质量发展动力源。<br>
+    ⑥ <span class="highlight">审议通过《全民健身计划（2026—2030年）》</span>——多渠道增加场地设施，创新发展健康产业。</p>
+  </div>
+  <div class="content-block">
+    <span class="label label-interpret">风向标解读</span>
+    <p>这次国常会的议题组合非常有意思：防汛是底线思维（当前南方多省汛情严峻），数字中国和新兴支柱产业是进攻方向，流通体系是降本增效，健身计划是民生消费。<span class="highlight">"新兴支柱产业"首次以全链条培育的提法出现在
