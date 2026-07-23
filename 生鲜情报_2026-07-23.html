@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小红书生鲜电商每日作战情报 · 2026-07-23</title>
+<style>
+:root {
+  --bg: #0f0f0f;
+  --card-bg: #1a1a1a;
+  --card-hover: #222;
+  --text: #e0e0e0;
+  --text-secondary: #999;
+  --accent: #ff6b35;
+  --accent2: #ff4444;
+  --green: #4caf50;
+  --blue: #2196f3;
+  --gold: #ffd700;
+  --purple: #9c27b0;
+  --border: #2a2a2a;
+  --tag-bg: #252525;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  padding: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 40px 20px;
+  margin-bottom: 32px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d1a1a 50%, #1a1a2e 100%);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+.header .emoji { font-size: 48px; margin-bottom: 8px; }
+.header h1 { font-size: 22px; font-weight: 700; color: #fff; margin: 8px 0; }
+.header .date { font-size: 14px; color: var(--text-secondary); }
+.header .badge-row { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;
+}
+.badge-fire { background: #ff444422; color: #ff6b35; border: 1px solid #ff444433; }
+.badge-new { background: #4caf5022; color: #4caf50; border: 1px solid #4caf5033; }
+.badge-clock { background: #ffd70022; color: #ffd700; border: 1px solid #ffd70033; }
+.badge-hot { background: #e91e6322; color: #e91e63; border: 1px solid #e91e6333; }
+
+/* Countdown Bar */
+.countdown-bar {
+  display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+  padding: 16px 24px; margin-bottom: 28px;
+  background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border);
+}
+.countdown-item { text-align: center; }
+.countdown-item .num { font-size: 28px; font-weight: 800; color: var(--accent); }
+.countdown-item .label { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+
+/* Sections */
+.section { margin-bottom: 28px; }
+.section-title {
+  font-size: 17px; font-weight: 700; color: #fff;
+  padding: 10px 0; margin-bottom: 16px;
+  border-bottom: 2px solid var(--accent);
+  display: flex; align-items: center; gap: 8px;
+}
+.section-title .icon { font-size: 20px; }
+
+/* Cards */
+.card {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 12px; padding: 20px; margin-bottom: 14px;
+  transition: all 0.2s;
+}
+.card:hover { background: var(--card-hover); border-color: #333; }
+.card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.card-title { font-size: 16px; font-weight: 700; color: #fff; flex: 1; }
+.card-subtitle { font-size: 12px; color: var(--text-secondary); }
+.metric-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 12px 0; }
+.metric {
+  background: #252525; border-radius: 8px; padding: 10px 14px;
+  min-width: 100px; text-align: center;
+}
+.metric .val { font-size: 18px; font-weight: 700; color: var(--accent); }
+.metric .lbl { font-size: 10px; color: var(--text-secondary); margin-top: 2px; }
+.price-tag {
+  display: inline-block; background: var(--accent); color: #fff;
+  padding: 2px 10px; border-radius: 4px; font-size: 12px; font-weight: 700;
+  margin: 2px 4px 2px 0;
+}
+
+/* Tags */
+.tag-row { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0; }
+.tag {
+  font-size: 11px; padding: 3px 10px; border-radius: 14px; background: var(--tag-bg);
+  color: var(--text-secondary); border: 1px solid #333;
+}
+.tag.gi { color: #ffd700; border-color: #ffd70044; background: #ffd70011; }
+.tag.scarce { color: #ff6b35; border-color: #ff6b3544; background: #ff6b3511; }
+.tag.premium { color: #e91e63; border-color: #e91e6344; background: #e91e6311; }
+.tag.beauty { color: #9c27b0; border-color: #9c27b044; background: #9c27b011; }
+.tag.story { color: #4caf50; border-color: #4caf5044; background: #4caf5011; }
+
+/* Status dots */
+.status-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.dot-red { background: #ff4444; box-shadow: 0 0 6px #ff444488; }
+.dot-green { background: #4caf50; box-shadow: 0 0 6px #4caf5088; }
+.dot-yellow { background: #ffd700; box-shadow: 0 0 6px #ffd70088; }
+.dot-blue { background: #2196f3; box-shadow: 0 0 6px #2196f388; }
+
+/* Alert box */
+.alert {
+  padding: 14px 18px; border-radius: 10px; margin: 12px 0;
+  font-size: 13px; line-height: 1.6;
+}
+.alert-warn { background: #ff444411; border: 1px solid #ff444433; color: #ffab91; }
+.alert-info { background: #2196f311; border: 1px solid #2196f333; color: #90caf9; }
+.alert-success { background: #4caf5011; border: 1px solid #4caf5033; color: #a5d6a7; }
+
+/* Action items */
+.action-list { list-style: none; }
+.action-list li {
+  padding: 10px 14px; margin: 6px 0; background: #252525;
+  border-radius: 8px; border-left: 3px solid var(--accent);
+  font-size: 13px;
+}
+.action-list li .action-prio { font-weight: 700; margin-right: 6px; }
+.prio-p0 { color: #ff4444; }
+.prio-p1 { color: #ffd700; }
+.prio-p2 { color: #4caf50; }
+
+/* Table */
+.data-table {
+  width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px;
+}
+.data-table th {
+  background: #252525; padding: 10px 12px; text-align: left;
+  font-weight: 600; color: #aaa; border-bottom: 1px solid var(--border);
+}
+.data-table td {
+  padding: 10px 12px; border-bottom: 1px solid #1a1a1a;
+}
+.data-table tr:hover td { background: #252525; }
+.data-table .up { color: #ff6b35; }
+.data-table .down { color: #4caf50; }
+
+/* Divider */
+.divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+
+/* Source footer */
+.sources { margin-top: 32px; padding: 16px; background: #111; border-radius: 10px; font-size: 11px; color: #666; line-height: 1.8; }
+.sources a { color: #777; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  body { padding: 12px; }
+  .countdown-bar { gap: 12px; }
+  .metric-row { gap: 8px; }
+  .metric { min-width: 70px; padding: 8px 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+  <div class="emoji">🌶️🍑🍄</div>
+  <h1>小红书生鲜电商每日作战情报</h1>
+  <div class="date">2026年7月23日 · 星期四 · 大暑+1 · 中伏Day3</div>
+  <div class="badge-row">
+    <span class="badge badge-fire">🔥 阳山水蜜桃尾期冲刺</span>
+    <span class="badge badge-hot">🍄 野生菌丰产峰值</span>
+    <span class="badge badge-new">🆕 武义宣莲上市</span>
+    <span class="badge badge-clock">🌕 距中秋14天</span>
+  </div>
+</div>
+
+<!-- ===== COUNTDOWN ===== -->
+<div class="countdown-bar">
+  <div class="countdown-item">
+    <div class="num">13<span style="font-size:14px">天</span></div>
+    <div class="label">湖景蜜露最佳赏味期<br>（7/20-8/5仅剩）</div>
+  </div>
+  <div class="countdown-item">
+    <div class="num">14<span style="font-size:14px">天</span></div>
+    <div class="label">2026中秋8.6<br>礼盒采购窗口</div>
+  </div>
+  <div class="countdown-item">
+    <div class="num">27<span style="font-size:14px">天</span></div>
+    <div class="label">七夕8.19<br>精品礼物场景</div>
+  </div>
+  <div class="countdown-item">
+    <div class="num">🔥</div>
+    <div class="label">野生菌丰产峰值<br>7月中-8月黄金期</div>
+  </div>
+</div>
+
+<!-- ===== 当季精品风向标 ===== -->
+<div class="section">
+  <div class="section-title"><span class="icon">🧭</span>当季精品风向标</div>
+
+  <!-- 1. 阳山水蜜桃 -->
+  <div class="card">
+    <div class="card-header">
+      <span style="font-size:24px">🍑</span>
+      <div class="card-title">阳山水蜜桃 · 湖景蜜露</div>
+      <span class="badge badge-clock">⚠️ 尾期仅剩13天</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag gi">GI国家地理标志</span>
+      <span class="tag scarce">最佳赏味期仅20天</span>
+      <span class="tag premium">148-268元礼盒</span>
+      <span class="tag beauty">CCTV背书出片率极高</span>
+      <span class="tag story">百年栽培历史</span>
+    </div>
+    <div class="metric-row">
+      <div class="metric"><div class="val">148元</div><div class="lbl">中果8只(250g+)</div></div>
+      <div class="metric"><div class="val">158元</div><div class="lbl">大果6只(300g+)</div></div>
+      <div class="metric"><div class="val">218元</div><div class="lbl">特大果6只(350g+)</div></div>
+      <div class="metric"><div class="val">268元</div><div class="lbl">果王6只(400g+)</div></div>
+    </div>
+    <div class="status-row">
+      <span class="dot dot-red"></span><span style="font-size:13px">🔴 <strong>尾期倒计时</strong>：最佳赏味期7/20-8/5仅剩13天！今年大果性价比高于去年，果园每日采摘量有限</span>
+    </div>
+    <div class="status-row">
+      <span class="dot dot-green"></span><span style="font-size:12px;color:#999">替代方案：四川龙泉湖景蜜露118-128元（浓甜不输阳山，个头稍小但性价比高）</span>
+    </div>
+    <div style="margin-top:10px;font-size:12px;color:var(--text-secondary);">
+      📌 <strong>选题建议</strong>：「为什么今年阳山湖景蜜露只剩13天？PM拆解水蜜桃黄金窗口期」「阳山vs龙泉湖景蜜露盲测，148元 vs 118元差距在哪？」
+    </div>
+  </div>
+
+  <!-- 2. 云南野生菌 -->
+  <div class="card">
+    <div class="card-header">
+      <span style="font-size:24px">🍄</span>
+      <div class="card-title">云南野生菌全品类</div>
+      <span class="badge badge-fire">🔥 丰产峰值</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag scarce">纯野生不可人工种植</span>
+      <span class="tag premium">松茸2000-3000元/kg</span>
+      <span class="tag beauty">颜值出片之王</span>
+      <span class="tag story">云南深山采菌文化</span>
+    </div>
+    <div class="metric-row">
+      <div class="metric"><div class="val">2000-3000</div><div class="lbl">松茸 元/kg</div></div>
+      <div class="metric"><div class="val">300-2000</div><div class="lbl">干巴菌 元/kg</div></div>
+      <div class="metric"><div class="val">400-1000</div><div class="lbl">鸡枞 元/kg</div></div>
+      <div class="metric"><div class="val">200-600</div><div class="lbl">见手青 元/kg</div></div>
+    </div>
+    <div class="alert alert-success">
+      ✅ <strong>丰产利好</strong>：持续降雨使全省野生菌产量大增，木水花日交易量屡创新高。整体菌价比往年同期<strong>便宜约30%</strong>，干巴菌较6月初近乎腰斩，见手青暴跌超一半。7-8月丰产季价格有望继续走低。【来源：今日头条·云南市场报道 2026.7】
+    </div>
+    <div style="margin-top:8px;font-size:12px;color:var(--text-secondary);">
+      📌 <strong>选题建议</strong>：「今年云南菌子降价30%！PM告诉你哪些值得囤」「松茸vs鸡枞vs见手青，三种顶级菌子如何选？——选品PM横评指南」
+    </div>
+  </div>
+
+  <!-- 3. 猫山王榴莲 -->
+  <div class="card">
+    <div class="card-header">
+      <span style="font-size:24px">🫧</span>
+      <div class="card-title">猫山王榴莲</div>
+      <span class="badge badge-fire">🟢 旺季稳定</span>
+    </div>
+    <div class="metric-row">
+      <div class="metric"><div class="val">29-49</div><div class="lbl">猫山王 元/斤（批发）</div></div>
+      <div class="metric"><div class="val">21-31</div><div class="lbl">金枕 元/斤（批发）</div></div>
+      <div class="metric"><div class="val">48.50</div><div class="lbl">广州天河 最高价</div></div>
+    </div>
+    <div class="status-row">
+      <span class="dot dot-yellow"></span><span style="font-size:12px;color:var(--text-secondary);">广州荔湾金枕周涨6.22%（31.42元/斤），云南五华猫山王周跌8.78%（29.30元/斤）。高温天气刺激即食型消费。【来源：宇博数据库 2026.7.15】</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 新发现品类 ===== -->
+<div class="section">
+  <div class="section-title"><span class="icon">🔍</span>新发现品类 · 五维筛选</div>
+
+  <!-- 武义宣莲 -->
+  <div class="card">
+    <div class="card-header">
+      <span style="font-size:24px">🪷</span>
+      <div class="card-title">武义宣莲 🆕 2026新货上市</div>
+      <span class="badge badge-new">NEW</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag gi">GI国家地理标志</span>
+      <span class="tag scarce">仅限武义柳城核心产区</span>
+      <span class="tag premium">精品干货溢价</span>
+      <span class="tag beauty">圆润白嫩出片</span>
+      <span class="tag story">唐朝千年贡品传承</span>
+    </div>
+    <div class="metric-row">
+      <div class="metric"><div class="val">5/5</div><div class="lbl">五维全满</div></div>
+      <div class="metric"><div class="val">千年</div><div class="lbl">种植历史</div></div>
+      <div class="metric"><div class="val">炭火</div><div class="lbl">独特烘烤工艺</div></div>
+    </div>
+    <div class="status-row">
+      <span class="dot dot-green"></span><span style="font-size:13px"><strong>三大名莲之一</strong>（与湘莲、建莲并列），清嘉庆六年列为朝廷贡品。2026年新货7月初上市，梅雨季虽影响结籽率但果子更集中、颗粒更大、品质出众。炭火烘烤是核心风味灵魂，类似手工炭烘龙井。</span>
+    </div>
+    <div class="alert alert-info">
+      💡 <strong>选品价值</strong>：莲子免泡易煮（下锅20-30分钟即熟），三伏天银耳莲子羹场景完美。品类空白度极高——小红书竞品极少，是典型的「精品干货」蓝海。千年贡品故事+炭火工艺=天然内容资产。
+    </div>
+    <div style="font-size:11px;color:var(--text-secondary);">来源：都市快报橙柿互动 2026.7.8 · 网易</div>
+  </div>
+
+  <!-- 中卫硒砂瓜 -->
+  <div class="card">
+    <div class="card-header">
+      <span style="font-size:24px">🍉</span>
+      <div class="card-title">中卫硒砂瓜 · 香山天骄 🆕</div>
+      <span class="badge badge-new">2026新品种首推</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag gi">GI国家地理标志</span>
+      <span class="tag scarce">新品种首年限量</span>
+      <span class="tag premium">35.98亿品牌价值</span>
+      <span class="tag beauty">沙瓤爆汁视觉冲击</span>
+      <span class="tag story">戈壁石头缝里的金瓜瓜</span>
+    </div>
+    <div class="metric-row">
+      <div class="metric"><div class="val">35.98亿</div><div class="lbl">品牌价值</div></div>
+      <div class="metric"><div class="val">75万吨</div><div class="lbl">2026总产量</div></div>
+      <div class="metric"><div class="val">5-8kg</div><div class="lbl">香山天骄单果重</div></div>
+      <div class="metric"><div class="val">5500万</div><div class="lbl">防伪溯源标识</div></div>
+    </div>
+    <div class="status-row">
+      <span class="dot dot-green"></span><span style="font-size:13px"><strong>7月7日正式开园</strong>，四年选育新品种"香山天骄"首推市场——中小果型（5-8kg），更适配城市小家庭。富硒+18种氨基酸+多种维生素，BLOF生态栽培技术，维C与矿物质含量提升10%。</span>
+    </div>
+    <div class="alert alert-success">
+      ✅ <strong>一瓜一标</strong>：5500万枚"中"字防伪溯源标识，扫码可查种植户、管护记录、采收时间、农残检测全链条。全国20家直营门店+电商同步启动。27.14万亩种植面积，稳定供货能力。【来源：中新网 2026.7.8】
+    </div>
+    <div style="font-size:11px;color:var(--text-secondary);">来源：中新网 2026.7.8 · 新浪新闻</div>
+  </div>
+
+  <!-- 湖南白玉丝瓜（已关注，更新数据） -->
+  <div class="card">
+    <div class="card-header">
+      <span style="font-size:24px">🥒</span>
+      <div class="card-title">湖南白玉丝瓜 · 热度爆发</div>
+      <span class="badge badge-fire">🔥 供参考</span>
+    </div>
+    <div class="status-row">
+      <span class="dot dot-fire" style="background:#e91e63;box-shadow:0 0 6px #e91e6388;"></span><span style="font-size:13px">抖音话题<strong>7000万播放</strong>，盒马长沙6月销售环比增长<strong>120%</strong>、同比增长<strong>90%</strong>，白关镇核心产区日出货<strong>100万斤</strong>。5条售价158元，已覆盖北上广深30+城市。GI双认证。【来源：潇湘晨报 2026.7.4】</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 小红书竞品动态 ===== -->
+<div class="section">
+  <div class="section-title"><span class="icon">🎯</span>小红书竞品动态</div>
+
+  <div class="card">
+    <div class="card-header">
+      <span style="font-size:20px">📱</span>
+      <div class="card-title">平台趋势速递</div>
+    </div>
+
+    <table class="data-table">
+      <tr><th style="width:40%">趋势</th><th>数据</th><th>信号</th></tr>
+      <tr>
+        <td>阳光玫瑰葡萄礼盒搜索</td>
+        <td>月环比<span class="up">+217%</span></td>
+        <td>高端水果礼盒需求激增</td>
+      </tr>
+      <tr>
+        <td>小红书"葡萄夏季吃法"曝光</td>
+        <td>7月超<span class="up">1.2亿次</span></td>
+        <td>时令水果内容流量爆发</td>
+      </tr>
+      <tr>
+        <td>李子礼盒笔记</td>
+        <td>7月首周<span class="up">1247篇</span>（周均×2.3倍）</td>
+        <td>轻奢伴手礼新品类崛起</td>
+      </tr>
+      <tr>
+        <td>特冒头有机番茄</td>
+        <td>88元/4斤热销<span class="up">4万+</span></td>
+        <td>"种植日记"内容一周破万粉</td>
+      </tr>
+      <tr>
+        <td>湖南丝瓜抖音话题</td>
+        <td>播放量<span class="up">7000万+</span></td>
+        <td>产地食材出圈新范式</td>
+      </tr>
+      <tr>
+        <td>苹果/梨子/杂粮</td>
+        <td>利润率35-55%</td>
+        <td>百搭品类稳定基本盘</td>
+      </tr>
+    </table>
+
+    <div class="alert alert-info" style="margin-top:12px;">
+      💡 <strong>竞品内容范式更新</strong>：<br>
+      ① <strong>主理人IP模式</strong>（杨博士土鸡→单链接1500万）→ 专业身份锁人群<br>
+      ② <strong>价值变现</strong>（哈尼牧场→"5斤牛后腿肉出1斤"）→ 具象化数据说服<br>
+      ③ <strong>情感链接</strong>（特冒头→"看着作物长大"）→ 种植日记式内容驱动力<br>
+      ④ <strong>产地溯源+加工工艺</strong>（武义宣莲→炭火烘烤）→ 传统工艺=溢价理由<br>
+      【来源：网易·小红书赛道分析 2026.7.17】
+    </div>
+  </div>
+</div>
+
+<!-- ===== 趋势速递 ===== -->
+<div class="section">
+  <div class="section-title"><span class="icon">📡</span>趋势速递</div>
+
+  <div class="card">
+    <div style="display:flex;gap:12px;align-items:flex-start;">
+      <span style="font-size:20px;">🔴</span>
+      <div>
+        <strong style="color:#fff;">中秋礼盒采购窗口已开启（仅剩14天）</strong>
+        <p style="font-size:13px;color:var(--text-secondary);margin-top:4px;">75%商超已启动中秋水果礼盒招商，首批李子组合装（李子+葡萄+猕猴桃）7月10日交付测试，预计7月25日进入批量订货期。中秋8.6倒计时14天，是精品礼盒内容发布的黄金窗口。【来源：京东消费研究院 2026.7.12】</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div style="display:flex;gap:12px;align-items:flex-start;">
+      <span style="font-size:20px;">🟡</span>
+      <div>
+        <strong style="color:#fff;">三伏天"轻养"场景爆发</strong>
+        <p style="font-size:13px;color:var(--text-secondary);margin-top:4px;">时令水果+健康养生双重需求叠加：武义宣莲（银耳莲子羹） + 中卫硒砂瓜（富硒解暑） + 云南菌菇（菌汤养生）。关键词：高纤维、零蔗糖、药食同源。三农爆款公式：独立小包装 + 天然无添加 + 高颜值 + 便捷食用。【来源：今日头条·三农趋势分析 2026.7】</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div style="display:flex;gap:12px;align-items:flex-start;">
+      <span style="font-size:20px;">🟢</span>
+      <div>
+        <strong style="color:#fff;">云南菌菇礼盒：利润率55-70%（行业最高）</strong>
+        <p style="font-size:13px;color:var(--text-secondary);margin-top:4px;">AI生鲜电商运营指南将"云南菌菇礼盒"列为25个高利润爆款中利润率最高的品类（55-70%），远超水果类（40-55%）。配合野生菌丰产季价格走低，采购成本下降+终端溢价=利润窗口扩大。【来源：豆创汇·AI生鲜电商运营指南 2026.7】</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 行动建议 ===== -->
+<div class="section">
+  <div class="section-title"><span class="icon">⚡</span>今日行动项</div>
+
+  <ul class="action-list">
+    <li>
+      <span class="action-prio prio-p0">[P0]</span>
+      <strong>阳山水蜜桃尾期冲刺内容</strong>：13天倒计时是天然紧迫感（"再不买等明年"），适合"倒计时焦虑型"标题。配合湖景vs龙泉湖景横评内容（差异化定位）。
+    </li>
+    <li>
+      <span class="action-prio prio-p0">[P0]</span>
+      <strong>武义宣莲选品调研</strong>：三大名莲、千年贡品、炭火工艺——内容资产极度丰富。确认供应链可得性→准备三伏天"莲子的N种吃法"科普内容。
+    </li>
+    <li>
+      <span class="action-prio prio-p1">[P1]</span>
+      <strong>中秋礼盒内容前瞻</strong>：距中秋仅14天，提前布局"中秋水果礼盒怎么选"系列。锁定菌菇礼盒、宣莲礼盒、水蜜桃礼盒等精品组合。
+    </li>
+    <li>
+      <span class="action-prio prio-p1">[P1]</span>
+      <strong>云南野生菌"降价30%"话题</strong>：价格走低+品质巅峰="今年是吃菌子最好的一年"——强传播力选题，"为什么今年菌子便宜了？PM给你算账"。
+    </li>
+    <li>
+      <span class="action-prio prio-p2">[P2]</span>
+      <strong>中卫硒砂瓜·香山天骄新品关注</strong>：2026首推新品种，富硒+溯源+小家庭友好。7月持续追踪价格与小红书热度变化，评估8月上架时机。
+    </li>
+  </ul>
+</div>
+
+<!-- ===== 品类池更新 ===== -->
+<div class="section">
+  <div class="section-title"><span class="icon">📋</span>动态品类池（7月23日更新）</div>
+
+  <table class="data-table">
+    <tr>
+      <th>品类</th><th>状态</th><th>关键数据</th><th>五维评分</th>
+    </tr>
+    <tr>
+      <td>🍑 阳山水蜜桃·湖景蜜露</td>
+      <td><span class="badge badge-clock">尾期13天</span></td>
+      <td>148-268元礼盒，CCTV背书</td>
+      <td>⭐⭐⭐⭐⭐</td>
+    </tr>
+    <tr>
+      <td>🍄 云南野生菌全品类</td>
+      <td><span class="badge badge-fire">丰产峰值</span></td>
+      <td>菌价↓30%，松茸2000-3000元/kg</td>
+      <td>⭐⭐⭐⭐⭐</td>
+    </tr>
+    <tr>
+      <td>🪷 武义宣莲 🆕</td>
+      <td><span class="badge badge-new">2026新货</span></td>
+      <td>千年贡品，炭火工艺，三大名莲</td>
+      <td>⭐⭐⭐⭐⭐</td>
+    </tr>
+    <tr>
+      <td>🍉 中卫硒砂瓜·香山天骄 🆕</td>
+      <td><span class="badge badge-new">新品种</span></td>
+      <td>35.98亿品牌，5500万枚溯源</td>
+      <td>⭐⭐⭐⭐</td>
+    </tr>
+    <tr>
+      <td>🥒 湖南白玉丝瓜</td>
+      <td><span class="badge badge-hot">热度爆发</span></td>
+      <td>5条158元，抖音7000万播放</td>
+      <td>⭐⭐⭐⭐</td>
+    </tr>
+    <tr>
+      <td>🫧 猫山王榴莲</td>
+      <td><span class="badge badge-fire">旺季</span></td>
+      <td>29-49元/斤（批发价）</td>
+      <td>⭐⭐⭐⭐</td>
+    </tr>
+    <tr>
+      <td>🍇 阳光玫瑰葡萄</td>
+      <td><span class="badge badge-clock">预埋</span></td>
+      <td>礼盒搜索+217%，利润率40-55%</td>
+      <td>⭐⭐⭐</td>
+    </tr>
+  </table>
+</div>
+
+<hr class="divider">
+
+<!-- ===== 信息源 ===== -->
+<div class="sources">
+  <strong>📚 信息源</strong><br>
+  ① 一亩田·葡萄价格行情分析 2026.7.16<br>
+  ② 一亩田·李子价格行情分析 2026.7.16<br>
+  ③ 今日头条·云南野生菌市场报道 2026.7<br>
+  ④ 今日头条·木水花菌价回落报道 2026.7<br>
+  ⑤ 宇博数据库·全国榴莲报价 2026.7.15<br>
+  ⑥ 都市快报·武义宣莲上市报道 2026.7.8<br>
+  ⑦ 中新网·中卫硒砂瓜开园 2026.7.8<br>
+  ⑧ 潇湘晨报·湖南白玉丝瓜出圈 2026.7.4<br>
+  ⑨ 网易·小红书健康零食赛道分析 2026.7.17<br>
+  ⑩ 豆创汇·AI生鲜电商运营指南 2026.7<br>
+  ⑪ 京东消费研究院·暑期生鲜消费趋势 2026.7.12<br>
+  ⑫ 1688·水果礼盒采购趋势 2026.7.18<br>
+  <br>
+  <span style="color:#555;">⚠️ 信息解读纪律：本报告所有数据均标注来源，负面信息已区分[个别案例]与[系统性问题]，绝对值词汇均附百分比数据支撑。批发价格数据来自一亩田/宇博数据库，仅供供应链参考；终端零售价格数据来自推文/电商页面。精品品类使用"精品/高端/地理标志"关键词过滤。</span>
+</div>
+
+</body>
+</html>
