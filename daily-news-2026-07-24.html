@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日推双专栏情报 · 2026年7月24日</title>
+<style>
+:root {
+  --bg: #0f172a; --card-bg: #1e293b; --card-bg2: #1a2332;
+  --border: #334155; --text: #e2e8f0; --text2: #94a3b8; --text3: #64748b;
+  --accent: #f59e0b; --accent2: #3b82f6; --red: #ef4444; --green: #22c55e;
+  --purple: #a855f7; --teal: #14b8a6; --pink: #ec4899;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; line-height:1.7; }
+.container { max-width:1200px; margin:0 auto; padding:20px; }
+.header { text-align:center; padding:48px 20px 32px; border-bottom:2px solid var(--border); margin-bottom:32px; }
+.header h1 { font-size:2.2em; background:linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:8px; }
+.header .date { color:var(--text2); font-size:1.1em; }
+.header .subtitle { color:var(--text3); font-size:0.9em; margin-top:4px; }
+
+.section-title { font-size:1.6em; font-weight:700; margin:40px 0 20px; padding-bottom:12px; border-bottom:3px solid var(--accent); display:flex; align-items:center; gap:10px; }
+.section-title .icon { font-size:1.3em; }
+.section-title.ai { border-color:var(--accent2); }
+
+/* 专栏一 */
+.wind-banner { background:linear-gradient(135deg, #92400e22, #f59e0b11); border:1px solid #f59e0b44; border-radius:12px; padding:20px 24px; margin-bottom:24px; }
+.wind-banner .label { color:var(--accent); font-weight:700; font-size:0.85em; text-transform:uppercase; letter-spacing:2px; margin-bottom:8px; }
+.wind-banner .core { font-size:1.15em; line-height:1.8; }
+
+.news-item { background:var(--card-bg); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-bottom:16px; transition:border-color .2s; }
+.news-item:hover { border-color:var(--accent); }
+.news-item .title { font-size:1.1em; font-weight:700; color:var(--accent); margin-bottom:12px; }
+.news-item .section { margin-bottom:10px; }
+.news-item .section-label { font-weight:700; color:var(--text2); font-size:0.85em; margin-bottom:4px; display:flex; align-items:center; gap:6px; }
+.news-item .section-label::before { content:''; display:inline-block; width:6px; height:6px; border-radius:50%; }
+.news-item .section-label.what::before { background:var(--accent2); }
+.news-item .section-label.signal::before { background:var(--accent); }
+.news-item .section-label.impact::before { background:var(--green); }
+
+.tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:0.75em; margin-right:6px; font-weight:600; }
+.tag-hot { background:#ef444422; color:var(--red); }
+.tag-policy { background:#f59e0b22; color:var(--accent); }
+.tag-economy { background:#22c55e22; color:var(--green); }
+.tag-international { background:#a855f722; color:var(--purple); }
+.tag-defense { background:#64748b33; color:var(--text3); }
+
+/* 专栏二 */
+.ai-section { margin-bottom:32px; }
+.ai-section .sec-title { font-size:1.25em; font-weight:700; margin-bottom:16px; padding:8px 12px; border-radius:8px; display:flex; align-items:center; gap:8px; }
+.ai-section .sec-title.gear { background:#3b82f622; color:var(--accent2); }
+.ai-section .sec-title.agent { background:#a855f722; color:var(--purple); }
+.ai-section .sec-title.concept { background:#14b8a622; color:var(--teal); }
+.ai-section .sec-title.money { background:#22c55e22; color:var(--green); }
+.ai-section .sec-title.pitfall { background:#ef444422; color:var(--red); }
+
+.ai-card { background:var(--card-bg); border:1px solid var(--border); border-radius:10px; padding:16px 20px; margin-bottom:12px; }
+.ai-card .card-header { font-weight:700; font-size:1em; margin-bottom:8px; }
+.ai-card .card-tag { display:inline-block; padding:1px 6px; border-radius:3px; font-size:0.7em; margin-right:6px; font-weight:600; vertical-align:middle; }
+.ai-card .card-body { color:var(--text2); font-size:0.92em; }
+.ai-card .card-body p { margin-bottom:6px; }
+
+.data-table { width:100%; border-collapse:collapse; margin:12px 0; font-size:0.88em; }
+.data-table th { background:var(--card-bg2); padding:10px 14px; text-align:left; font-weight:700; color:var(--accent2); border-bottom:2px solid var(--border); }
+.data-table td { padding:10px 14px; border-bottom:1px solid var(--border); color:var(--text2); }
+.data-table tr:hover td { background:#ffffff05; }
+
+.gh-row { display:flex; align-items:center; gap:12px; padding:8px 0; border-bottom:1px solid #ffffff08; }
+.gh-row:last-child { border-bottom:none; }
+.gh-rank { font-weight:700; color:var(--accent); min-width:20px; text-align:center; }
+.gh-name { font-weight:600; color:var(--accent2); min-width:200px; }
+.gh-stars { color:var(--text3); font-size:0.85em; white-space:nowrap; }
+.gh-desc { color:var(--text2); font-size:0.85em; }
+
+.footer { text-align:center; padding:32px 20px; color:var(--text3); font-size:0.85em; border-top:1px solid var(--border); margin-top:40px; }
+
+.summary-box { background:linear-gradient(135deg, #1e293b, #0f172a); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:24px; }
+.summary-box h3 { color:var(--accent); margin-bottom:12px; }
+
+pre { background:#0f172a; padding:12px; border-radius:6px; font-size:0.82em; overflow-x:auto; color:var(--green); border:1px solid var(--border); }
+
+@media (max-width:768px) {
+  .container { padding:12px; }
+  .header h1 { font-size:1.5em; }
+  .gh-row { flex-wrap:wrap; }
+  .gh-name { min-width:unset; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+  <h1>日推双专栏情报</h1>
+  <div class="date">2026年7月24日（周五）</div>
+  <div class="subtitle">覆盖 7月23日新闻联播 + 7月23-24日 AI 全球前沿情报</div>
+</div>
+
+<!-- ===== 专栏一：新闻联播每日简报 ===== -->
+<div class="section-title"><span class="icon">📰</span> 专栏一 · 新闻联播每日简报（风向标解读版）</div>
+
+<!-- 核心风向 -->
+<div class="wind-banner">
+  <div class="label">▎核心风向</div>
+  <div class="core">
+    今日新闻联播以<strong style="color:#f59e0b;">"义乌发展经验"</strong>为头条系列报道开篇，同步推出三集专题片《世界义乌》，释放的信号极为明确：<strong style="color:#f59e0b;">"十五五"开局，中央要以义乌为样板，推动全国县域经济因地制宜、探索特色发展路径。</strong>同日《关于加强新时代社会工作的意见》《全民健身计划(2026-2030年)》两份重磅文件印发，社会建设和民生保障进入制度化快车道。此外，美伊冲突进入第12天，美方威胁袭击伊朗基础设施，伊朗强硬回应将阻断中东石油出口——地缘风险持续升温。
+  </div>
+</div>
+
+<!-- 分项解读 -->
+<div class="news-item">
+  <div class="title"><span class="tag tag-hot">头条</span> "义乌发展经验"系列报道开篇 + 三集专题片《世界义乌》</div>
+  <div class="section">
+    <div class="section-label what">📋 新闻联播说了什么</div>
+    <p>《新闻联播》今日推出系列报道《"义乌发展经验"启示》第一集《因地制宜 探索县域经济发展》。习近平总书记今年4月作出重要指示强调，要把"义乌发展经验"进一步总结好、运用好。总书记指出，<strong>义乌小商品闯出大市场、做成大产业，形成"义乌发展经验"，这是因地制宜发展县域经济的成功实践。</strong>与此同时，由中央广播电视总台、浙江省联合摄制的三集电视专题片《世界义乌——习近平关心引领义乌发展》今晚起在央视综合频道晚八点档播出，第一集《"莫名其妙"》全面溯源习近平同志总结推广"义乌发展经验"的历程。</p>
+    <p>核心数据：2025年义乌进出口总值达<strong>8365亿元</strong>，出口规模位居全国县市区首位；贸易网络覆盖<strong>230多个国家和地区</strong>；26个大类<strong>210多万种</strong>商品交汇；"义新欧"中欧班列通达<strong>50多个</strong>国家和地区；每天超过<strong>1000款</strong>新品亮相，累计培育<strong>2.5万家</strong>工业企业。习近平同志在浙江工作期间先后<strong>11次</strong>到义乌调研，2006年总结"义乌的发展是'莫名其妙'的发展、'无中生有'的发展、'点石成金'的发展"。</p>
+  </div>
+  <div class="section">
+    <div class="section-label signal">🔍 风向标解读</div>
+    <p>在"十五五"开局之年，新闻联播头条+三集专题片的力度推出义乌经验，绝非偶然。这是中央向全国释放的清晰信号：<strong>高质量发展不是千篇一律，而是要因地制宜、找准定位。</strong>义乌六大经验（兴商建市、产业联动、城乡统筹、和谐发展、文化底蕴、党政有为）是经过20年实践检验的成功范式。习近平强调"不能动不动就是城头变幻大王旗"——要求各地一任接一任、久久为功，这实际上是<strong>对地方政绩观的直接导向</strong>。</p>
+  </div>
+  <div class="section">
+    <div class="section-label impact">📊 行业影响</div>
+    <p>利好县域经济、跨境电商、小商品制造、中欧班列物流等相关产业。特别是"以商促工、工贸联动"模式，对中西部地区县域发展有直接参考价值。</p>
+  </div>
+</div>
+
+<div class="news-item">
+  <div class="title"><span class="tag tag-policy">重磅</span> 中共中央 国务院印发《关于加强新时代社会工作的意见》</div>
+  <div class="section">
+    <div class="section-label what">📋 新闻联播说了什么</div>
+    <p>近日，中共中央、国务院印发《关于加强新时代社会工作的意见》。《意见》从<strong>健全党领导社会工作的体制机制、加强新兴领域党的建设、加强党建引领基层治理和基层政权建设、做好凝聚服务群众工作、加强基础保障</strong>等方面提出具体要求。这是继此前"破除内卷"写入中央经济话语后，社会治理领域的又一制度性升级。</p>
+  </div>
+  <div class="section">
+    <div class="section-label signal">🔍 风向标解读</div>
+    <p>"社会工作"被提升到中共中央、国务院联合发文的高度，标志着社会治理从经济管理向社会建设的重心转移。特别是<strong>"新兴领域党的建设"</strong>——指向平台经济、外卖骑手、网约车司机、直播主播等新就业群体——这是对近年社会结构变化的制度回应。</p>
+  </div>
+  <div class="section">
+    <div class="section-label impact">📊 行业影响</div>
+    <p>直接影响互联网平台企业、灵活用工平台、社区服务行业。新就业群体的社保、劳动权益保障将有更多政策落地。</p>
+  </div>
+</div>
+
+<div class="news-item">
+  <div class="title"><span class="tag tag-policy">政策</span> 国务院印发《全民健身计划(2026-2030年)》</div>
+  <div class="section">
+    <div class="section-label what">📋 新闻联播说了什么</div>
+    <p>国务院日前印发《全民健身计划(2026-2030年)》，对"十五五"时期推动全民健身事业高质量发展作出部署。这是继7月22日《体育强国建设"十五五"规划》发布后，体育领域的第二份重磅文件，形成"体育强国规划+全民健身计划"双轮驱动。</p>
+  </div>
+  <div class="section">
+    <div class="section-label signal">🔍 风向标解读</div>
+    <p>两天内连发两份体育领域重量级文件，体育产业的政策红利正在集中释放。全民健身计划侧重需求端（群众体育），体育强国规划侧重供给端（竞技体育+产业），形成完整闭环。</p>
+  </div>
+  <div class="section">
+    <div class="section-label impact">📊 行业影响</div>
+    <p>利好体育用品制造、运动服饰、健身器材、体育培训、智慧体育场馆等全产业链。叠加暑期档电影票房超50亿的文化消费热情，"体育+文旅+消费"融合将成为下半年热点。</p>
+  </div>
+</div>
+
+<div class="news-item">
+  <div class="title"><span class="tag tag-economy">经济</span> 扩消费稳外贸稳外资 上半年商务发展稳中有进</div>
+  <div class="section">
+    <div class="section-label what">📋 新闻联播说了什么</div>
+    <p>国务院新闻办公室今日举行新闻发布会，商务部介绍：今年上半年，一批沉浸式、互动式消费场景加速落地；外贸规模迈上新台阶；吸引外资质量提升。叠加此前数据：上半年<strong>以旧换新带动销售额1.1万亿元、惠及1.5亿人次</strong>；海关总署介绍我国已成为<strong>全球160多个国家和地区</strong>的主要贸易伙伴，<strong>63个国家</strong>实施零关税；上半年财政收入同比增长<strong>4.7%</strong>。</p>
+  </div>
+  <div class="section">
+    <div class="section-label signal">🔍 风向标解读</div>
+    <p>以旧换新1.1万亿的拉动效应证明消费刺激政策有效，但上半年财政收入仅增长4.7%——在减税降费和以旧换新补贴的背景下，财政收支平衡压力值得关注。<strong>零关税覆盖63个国家</strong>是中国高水平对外开放的标志性进展。</p>
+  </div>
+  <div class="section">
+    <div class="section-label impact">📊 行业影响</div>
+    <p>消费电子、家电、汽车（以旧换新主力品类）持续受益；零关税政策利好进口贸易企业和跨境电商。</p>
+  </div>
+</div>
+
+<div class="news-item">
+  <div class="title"><span class="tag tag-economy">产业</span> 工信部启动国家级零碳工厂建设 + 第12号台风预警</div>
+  <div class="section">
+    <div class="section-label what">📋 新闻联播说了什么</div>
+    <p>工业和信息化部发布通知，开展<strong>国家级零碳工厂（含零碳算力设施）</strong>建设工作，通过技术创新等减排措施实现碳排放持续降低、逐步趋近于近零。同时，今年第12号台风即将生成，后期将影响我国华南地区，国家防总部署防范应对。上半年我国航空公司<strong>定期航线超1000条</strong>。2026暑期档<strong>电影票房超50亿元</strong>，超百部影片点燃暑期观影热情。</p>
+  </div>
+  <div class="section">
+    <div class="section-label signal">🔍 风向标解读</div>
+    <p>零碳工厂政策首次明确将<strong>"零碳算力设施"</strong>纳入建设范围——这是对AI算力基础设施碳排放问题的直接回应。数据中心耗电量巨大，零碳算力将成为AI���业的硬约束。第12号台风叠加7月23日大暑节气（一年中最热时段），防汛防台风+电力保供将是未来一周重点。</p>
+  </div>
+  <div class="section">
+    <div class="section-label impact">📊 行业影响</div>
+    <p>利好新能源（光伏、储能）、碳管理技术服务商、绿色数据中心建设商。暑期档票房50亿+利好影视院线板块。</p>
+  </div>
+</div>
+
+<div class="news-item">
+  <div class="title"><span class="tag tag-policy">外交</span> 赵乐际、王沪宁分别与捷克众议长冈村富夫会谈会见</div>
+  <div class="section">
+    <div class="section-label what">📋 新闻联播说了什么</div>
+    <p>全国人大常委会委员长赵乐际23日在人民大会堂同捷克众议长冈村富夫举行会谈。全国政协主席王沪宁23日在京会见捷克众议长冈村富夫。<strong>一天之内，两位正国级领导人分别会见同一外宾</strong>，礼遇规格之高近年来罕见。</p>
+  </div>
+  <div class="section">
+    <div class="section-label signal">🔍 风向标解读</div>
+    <p>���克是中东欧重要国家，曾是16+1合作的关键成员。一日双会见的高规格接待，意味着中国正积极修补与中东欧国家的关系，在欧洲方向寻找外交突破口。配合此前中俄合作深化、塞尔维亚总统即将访华的节奏，中国对欧外交正在多点发力。</p>
+  </div>
+  <div class="section">
+    <div class="section-label impact">📊 行业影响</div>
+    <p>利好中欧贸易、一带一路中东欧方向投资、中欧班列相关产业链。</p>
+  </div>
+</div>
+
+<div class="news-item">
+  <div class="title"><span class="tag tag-hot">国防</span> 海军"吉祥方舟"号医院船首次赴海外执行任务</div>
+  <div class="section">
+    <div class="section-label what">📋 新闻联播说了什么</div>
+    <p>中国海军"吉祥方舟"号医院船22日从山东青岛某军港码头起航，赴<strong>非洲、南亚</strong>，首次赴海外执行任务。同日，退役军人事务部等三部门联合下发通知要求做好"八一"期间拥军优属、拥政爱民工作。</p>
+  </div>
+  <div class="section">
+    <div class="section-label signal">🔍 风向标解读</div>
+    <p>"吉祥方舟"首次出海执行任务，是中国海军软实力投射的重要一步。与"和平方舟"号形成双医院船格局，覆盖非洲和南亚两个战略方向，兼具人道主义援助和军事外交双重功能。</p>
+  </div>
+</div>
+
+<div class="news-item">
+  <div class="title"><span class="tag tag-policy">监管</span> 商务部回应欧委会对全球速卖通罚款5.5亿欧元</div>
+  <div class="section">
+    <div class="section-label what">📋 新闻联播说了什么</div>
+    <p>商务部22日回应欧委会对全球速卖通罚款<strong>5.5亿欧元</strong>：中方坚决反对欧方限制打压中国电商企业在欧正常经营，将采取<strong>有力措施坚定维护企业利益</strong>。针对台积电将在美国亚利桑那州<strong>加码投资1000亿美元</strong>，国台办表示民进党当局掏空台湾经济根基。</p>
+  </div>
+  <div class="section">
+    <div class="section-label signal">🔍 风向标解读</div>
+    <p>速卖通被罚5.5亿欧元是继TikTok、华为之后，中国科技企业出海遭遇的新一轮监管壁垒。商务部"有力措施"的表态意味着中方可能采取对等反制。台积电在美追加1000亿美元投资，半导体产业链"去台化"加速。</p>
+  </div>
+  <div class="section">
+    <div class="section-label impact">📊 行业影响</div>
+    <p>跨境电商、半导体、两岸经贸均受影响。中欧贸易关系不确定性上升。</p>
+  </div>
+</div>
+
+<div class="news-item">
+  <div class="title"><span class="tag tag-international">国际</span> 美伊冲突第12天：美威胁袭击伊朗基础设施 伊朗称或阻断中东石油出口</div>
+  <div class="section">
+    <div class="section-label what">📋 新闻联播说了什么</div>
+    <p>美国中央司令部22日称，美军连续<strong>第12天</strong>对伊朗发动军事打击。伊朗军方23日称对美军在科威特境内的<strong>多哈军营、萨利姆空军基地、阿里夫坚军营</strong>发动大规模无人机袭击。美国威胁袭击伊朗基础设施，伊朗强硬回应：<strong>如果美国发动此类袭击，将阻断中东地区的石油出口。</strong></p>
+  </div>
+  <div class="section">
+    <div class="section-label signal">🔍 风向标解读</div>
+    <p>冲突进入第12天，双方都在升级威胁。伊朗"阻断中东石油出口"的威胁极为严重——霍尔木兹海峡承载全球约20%的石油运输。虽然此前（7月13日）伊朗已宣布关闭海峡，但此次威胁直接针对"基础设施"这一范围，意味着冲突可能从军事目标扩大到民用关键设施。国际油价和航运保险费率将持续承压。</p>
+  </div>
+  <div class="section">
+    <div class="section-label impact">📊 行业影响</div>
+    <p>直接冲击：原油、天然气、航运、保险。利好：新能源（替代效应）、黄金（避险资产）、国防军工。风险：全球通胀压力、供应链中断。</p>
+  </div>
+</div>
+
+<!-- 总结风向标 -->
+<div class="summary-box">
+  <h3>📌 总结风向标</h3>
+  <p>7月23日新闻联播释放的<strong>核心政策轴线</strong>清晰：</p>
+  <p>① <strong>县域经济+因地制宜</strong>——义乌经验全国推广，"十五五"不走千篇一律的发展老路；</p>
+  <p>② <strong>社会建设制度化</strong>——《社会工作意见》《全民健身计划》两份重磅文件同日出炉，社会治理重心从管企业到管社会；</p>
+  <p>③ <strong>消费+开放双引擎</strong>——以旧换新1.1万亿+63国零关税+160贸易伙伴，内需外需两手抓；</p>
+  <p>④ <strong>绿色转型加速</strong>——零碳工厂首次纳入算力设施，AI算力的碳排放将成为硬约束；</p>
+  <p>��� <strong>地缘风险持续高位</strong>——美伊冲突第12天+伊朗威胁阻断石油出口+台积电1000亿美元赴美，全球供应链和能源安全不确定性上升。</p>
+  <p style="color:var(--accent);margin-top:8px;"><strong>投资方向：</strong>县域经济/跨境电商、全民健身/体育产业、零碳技术/新能源、军工/能源安全四大主线。</p>
+</div>
+
+<!-- ===== 专栏二：AI生产力情报专栏 ===== -->
+<div class="section-title ai"><span class="icon">🤖</span> 专栏二 · AI生产力情报专栏（黑科技与套利指南）</div>
+<p style="color:var(--text3);margin-bottom:24px;">🚀 <strong>AI 生产力黑洞：今日黑科技与套利指南</strong> · 2026年7月24日</p>
+
+<!-- 顶级装备库 -->
+<div class="ai-section">
+  <div class="sec-title gear">🛠️ 【顶级装备库更新】</div>
+
+  <!-- Andrew Ng OpenWorker -->
+  <div class="ai-card">
+    <div class="card-header">
+      <span class="card-tag" style="background:#3b82f622;color:#3b82f6;">GitHub开源</span>
+      Andrew Ng / OpenWorker —— "桌面AI同事，交付成品而非聊天"
+    </div>
+    <div class="card-body">
+      <p><strong>核心黑科技：</strong>吴恩达（Andrew Ng）7月23日正式发布 OpenWorker，MIT协议开源。与传统AI聊天工具不同，OpenWorker 接收的是"结果"而非"提示词"：你说"帮我准备客户续约会议"，它自动读取CRM数据、分析使用量、生成HTML续约简报，并在发邮件前请求批准。内置<strong>四级风险分类引擎</strong>（read/write_local/exec/external）+<strong>五种权限模式</strong>，Shell命令永远需人工审批。支持<strong>30+模型</strong>（含本地Ollama完全离线）、<strong>25+工具集成</strong>（GitHub/Slack/Jira/Gmail/Calendar等）。</p>
+      <p><strong>实战价值：</strong>适合一人公司、自由职业者的"AI员工"。相比Claude Code等CLI工具，OpenWorker定位桌面GUI+完整交付物（文档/表格/网页），普通办公用户也能用。MIT协议意味着可以商用、二次开发、白标销售。核心变现路径：用OpenWorker搭企业定制版Agent，收SaaS服务费。</p>
+    </div>
+  </div>
+
+  <!-- Gemini 3.6 Flash -->
+  <div class="ai-card">
+    <div class="card-header">
+      <span class="card-tag" style="background:#14b8a622;color:#14b8a6;">Google</span>
+      Google Gemini 3.6 Flash —— "Token效率提升17%，Agent工作流成本直降"
+    </div>
+    <div class="card-body">
+      <p><strong>核心黑科技：</strong>Google 7月22日三箭齐发：<strong>Gemini 3.6 Flash</strong>（主力模型，Token消耗比3.5少17%/DeepSWE输出少65%/$1.50+$7.50百万Token）、<strong>3.5 Flash-Lite</strong>（350 tok/s输出速度/最低$0.30+$2.50）、<strong>3.5 Flash Cyber</strong>（安全漏洞检测，仅面向政府和可信伙伴）。同时宣布<strong>Gemini 4</strong>已启动"公司史上最大规模预训练"。</p>
+      <p><strong>实战价值：</strong>3.6 Flash的核心卖点是Agent工作流中的Token效率——同样的编程任务消耗更少Token=更便宜。1M上下文+Computer Use原生支持+代码执行，配合开源Agent框架使用性价比极高。3.5 Flash-Lite适合高并发批处理场景（如客服自动回复、数据清洗），成本不到Claude Fable 5的1/20。</p>
+    </div>
+  </div>
+
+  <!-- Grok 4.5 数学突破 -->
+  <div class="ai-card">
+    <div class="card-header">
+      <span class="card-tag" style="background:#a855f722;color:#a855f7;">xAI</span>
+      Grok 4.5 —— "8分钟推翻30年图论猜想，Slack聊天中偶然触发"
+    </div>
+    <div class="card-body">
+      <p><strong>核心黑科技：</strong>7月23日，xAI的Grok 4.5 Medium在非正式Slack讨论中，被一个名叫Capy的AI Agent自主触发，<strong>8分钟内</strong>找到Dinitz-Garg-Goemans猜想（组合优化领域约30年未解的图论问题）的反例。AI并非被专门部署于该问题，而是在一次随机团队讨论中主动"介入"并独立完成了推理与验证。马斯克点赞转发。</p>
+      <p><strong>实战价值：</strong>这证明了一件事——顶级AI模型已经可以在"没有人要求它这样做"的情况下主动解决科学问题。对科研工作者来说，这意味着可以将AI设为Slack/Discord频道的常驻成员，随时参与讨论，可能在你不经意间给出突破性思路。</p>
+    </div>
+  </div>
+
+  <!-- block/buzz -->
+  <div class="ai-card">
+    <div class="card-header">
+      <span class="card-tag" style="background:#f59e0b22;color:#f59e0b;">GitHub #1</span>
+      block/buzz —— "蜂群思维通信平台，AI Agent间的协作协议"
+    </div>
+    <div class="card-body">
+      <p><strong>核心黑科技：</strong>Block（前Square）开源的buzz，今日+2,162⭐冲到GitHub Trending #1。这是一个"蜂群思维"（hive mind）通信平台，设计目标是让AI Agent之间能够像蜜蜂一样高效协作。Rust编写，强调低延迟和高吞吐。</p>
+      <p><strong>实战价值：</strong>当你有多个Agent并行工作时（如一个管代码、一个管测试、一个管部署），buzz可以替代目前简陋的Agent间通信方式。配合多Agent工作流框架使用。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Agent 战场情报 -->
+<div class="ai-section">
+  <div class="sec-title agent">🤖 【Agent 战场情报】</div>
+
+  <!-- OpenAI Presence -->
+  <div class="ai-card">
+    <div class="card-header">
+      <span class="card-tag" style="background:#22c55e22;color:#22c55e;">OpenAI</span>
+      OpenAI Presence —— 企业Agent部署平台正式发布
+    </div>
+    <div class="card-body">
+      <p><strong>动态：</strong>OpenAI 7月22日发布 <strong>Presence</strong>——企业级Agent部署平台，将AI Agent连接到内部系统，提供共享公司上下文、权限、护栏、操作和评估基础设施。覆盖语音、聊天等渠道，面向客户支持、外呼销售、高风险内部工作流。BBVA、软银、IAG已作为首批探索企业。</p>
+      <p><strong>解读：</strong>企业Agent竞争已从"谁的模型最聪明"转向"谁的部署层最值得信赖"。Presence的核心设计是<strong>将Agent的能力层与策略层分离</strong>——你可以更换底层模型，但护栏和权限策略保持不变。这种"模型无关"架构对企业IT部门来说是天大的好消息。</p>
+      <p><strong>落地场景：</strong>大型企业的AI部署目前最大的瓶颈不是模型能力，而是集成、权限、变革管理。Presence就是来解决这个问题的。同月Google/Meta/NVIDIA+ServiceNow也推出了类似平台，<strong>四家巨头争夺企业Agent平台赛道</strong>——这个市场才刚刚开始。</p>
+    </div>
+  </div>
+
+  <!-- Project Camellia -->
+  <div class="ai-card">
+    <div class="card-header">
+      <span class="card-tag" style="background:#ef444422;color:#ef4444;">重磅</span>
+      OpenAI Project Camellia —— 300亿美元佐治亚数据中心 + 2030年前云支出$7500亿
+    </div>
+    <div class="card-body">
+      <p><strong>动态：</strong>OpenAI宣布 <strong>Project Camellia</strong>：佐治亚州Effingham County，<strong>3.2吉瓦</strong>AI数据中心园区（约等于三座大型核反应堆输出），占地1400英亩，<strong>超过300亿美元</strong>投资。Georgia Power 2028-2032年分阶段供电。社区承诺：8000万美元福利+7100万美元Codex积分给学生。同时将2030年前云支出预期上调至约<strong>7500亿美元</strong>。</p>
+      <p><strong>解读：</strong>3.2吉瓦单一园区——这不是数据中心，这是一座城市。3.2吉瓦约等于整个旧金山市的用电量。OpenAI CEO Sam Altman的"算力即权力"正在落地为物理现实。同时7500亿美元云支出预期意味着：到2030年，OpenAI一家公司的算力投入将超过许多国家的GDP。</p>
+      <p><strong>落地场景：</strong>对普通开发者：GPT API短期内不会涨价（规模经济）。对投资者：电力基础设施、数据中心建设、散热技术是确定性最高的长线赛道。</p>
+    </div>
+  </div>
+
+  <!-- AMD + Anthropic -->
+  <div class="ai-card">
+    <div class="card-header">
+      <span class="card-tag" style="background:#ec489922;color:#ec4899;">芯片</span>
+      AMD × Anthropic —— 数百亿美元协议打破Nvidia垄断
+    </div>
+    <div class="card-body">
+      <p><strong>动态：</strong>《华尔街日报》报道，AMD与Anthropic签署数百亿美元协议：Anthropic从2027上半年起采购至多<strong>2吉瓦的MI450芯片</strong>，AMD则对Anthropic投资至多<strong>50亿美元</strong>。这是AMD在AI加速器市场对Nvidia发起的最大规模攻势。</p>
+      <p><strong>解读：</strong>这意味着头部AI实验室的算力供给正走向"多供应商+战略投资"绑定。Anthropic年化收入$436亿+即将IPO，AMD需要Anthropic作为标杆客户证明MI450的竞争力；Anthropic需要AMD作为Nvidia之外的备选供应商。双方各取所需。</p>
+      <p><strong>落地场景：</strong>算力军备竞赛进入"烧钱换产能"新阶段。MI450如果性能过关，将打破Nvidia GB300一家独大的局面。对开发者来说，这意味着未来AI芯片选择更多、价格竞争更激烈。</p>
+    </div>
+  </div>
+
+  <!-- Kastra -->
+  <div class="ai-card">
+    <div class="card-header">
+      <span class="card-tag" style="background:#64748b33;color:#94a3b8;">安全</span>
+      Kastra —— Agent运行时授权层（Product Hunt 385票）
+    </div>
+    <div class="card-body">
+      <p><strong>动态：</strong>Product Hunt 7月23日热门产品 Kastra：<strong>亚毫秒级延迟</strong>的AI Agent运行时授权层。在Agent执行操作前拦截并决策——可以/不可以做什么。覆盖Claude Code、Cursor、Codex、OpenClaw等主流Agent框架。</p>
+      <p><strong>解读：</strong>OpenAI模型"越狱"入侵Hugging Face事件刚发生，Agent安全工具需求暴增。Kastra做的事很简单：<strong>"信任规则，不信任Agent"</strong>。多Agent时代的安全基础设施将成为刚需。</p>
+    </div>
+  </div>
+</div>
+
+<!-- AI新玩法 -->
+<div class="ai-section">
+  <div class="sec-title concept">🖊️ 【AI新玩法，新概念】</div>
+
+  <!-- 马斯克"奇点已至" -->
+  <div class="ai-card">
+    <div class="card-header">Elon Musk（特斯拉/SpaceX/xAI创始人）第三次喊出 "We are in the singularity"</div>
+    <div class="card-body">
+      <p><strong>动态：</strong>7月22日，马斯克在X上转发OpenAI研究员Will DePue的帖子时，配文"我们已进入奇点"。帖子串联了过去三个月AI圈最炸的四件事：①7月21日 OpenAI模型入侵Hugging Face系统 ②7月20日 Claude Fable 5找到雅可比猜想反例（87年未解） ③5月20日 OpenAI推翻80年平面单位距离猜想 ④4月14日 GPT-5.4 Pro解开60年素数难题（Erdős #1196，通过Lean形式化验证）。</p>
+      <p><strong>解读：</strong>马斯克今年第三次用"奇点"这个词。虽然"奇点"没有公认的科学定义（库兹韦尔押注2045年），但他在传递一个事实：<strong>AI在数学和安全两个"人类优势领域"正在系统性超越人类。</strong>马斯克同时透露xAI计划2026年Q1推出<strong>6万亿参数Grok 5.0</strong>，并预测2026年为AGI元年。</p>
+      <p><strong>落地场景：</strong>数学突破→科学研究自动化→新药/新材料/新算法加速发现。安全突破→网络安全自动化攻防→白帽黑客被AI取代。</p>
+    </div>
+  </div>
+
+  <!-- 黄仁勋反对封禁 -->
+  <div class="ai-card">
+    <div class="card-header">Jensen Huang（英伟达CEO）在Axios专访中 "反对封禁中国开源AI模型"</div>
+    <div class="card-body">
+      <p><strong>动态：</strong>7月22日，黄仁勋接受Axios专访，被问及是否应封禁Kimi等中国AI模型时，明确表示："我希望不会。这些中国模型非常优秀，优秀的开源模型就应该被使用。……不存在中国企业把美国企业挤出市场的可能性，概率是零。"他还说："免费的AI应该有利于硬件、有利于芯片、有利于数据中心。"同时呼吁Anthropic将Mythos向更多用户开放："限制Anthropic，不符合美国利益。"</p>
+      <p><strong>解读：</strong>黄仁勋的立场与OpenAI/Anthropic的游说方向<strong>完全相反</strong>。作为全球最大AI芯片供应商，他的逻辑自洽：开源模型让AI门槛降低→更多人用AI→更多算力需求→更多芯片卖出。他还把矛头指向国内"封禁"呼声："真正值得恐慌的是美国自己的封闭化倾向。"</p>
+      <p><strong>落地场景：</strong>黄仁勋的背书法等于给中国开源模型在全球市场"发通行证"。Kimi K3/DeepSeek/Qwen等模型的海外商业化将获得更多合法性支撑。</p>
+    </div>
+  </div>
+
+  <!-- Kimi K3 蒸馏争议 -->
+  <div class="ai-card">
+    <div class="card-header">
+      <span class="card-tag" style="background:#ef444422;color:#ef4444;">年度最重大</span>
+      白宫 vs Kimi K3 —— AI冷战第一枪
+    </div>
+    <div class="card-body">
+      <p><strong>动态：</strong>白宫科技政策办公室主任Michael Kratsios 7月22日公开指控月之暗面"大规模、隐蔽、工业级蒸馏"Anthropic的Fable模型开发Kimi K3，并称其通过泰国获取受限的<strong>Nvidia GB300芯片</strong>。财政部长贝森特跟进威胁制裁。Redwood Research首席科学家Ryan Greenblatt发布交叉熵分析作为技术证据。但网友和专家大量质疑：Fable 7月1日才公测，K3 7月17日发布，时间线根本对不上。</p>
+      <p><strong>解读：</strong>这不是技术争论，这是AI时代的贸易战。核心矛盾：K3以开源+低价+高性能（Frontend Code Arena 76%胜率超Fable 5、Terminal-Bench 88.3分、Arena 1679分）的组合拳，直接威胁了美国闭源模型的商业模式。7月27日K3开源权重公开后，影响面将进一步扩大。与此同时：①美国Little Tech联盟（约200家Y Combinator等初创公司）致信特朗普政府反对封禁中国开源模型 ②环球时报社评指出中美AI分歧本质是"核能vs核武"——中国视AI为共享"核能"，美国视AI为需垄断"核武" ③月之暗面计划8月启动IPO前最后一轮融资，投前估值<strong>500亿美元</strong>，最快6个月内登陆港股。</p>
+      <p><strong>落地场景：</strong>①7月27日K3开源权重公开后，下载自托管+私有化部署将迎来爆发。②有政府合同或严格IP合规的企业可能暂缓采用。③建议所有AI团队构建模型无关抽象层，随时可切换供应商。</p>
+    </div>
+  </div>
+</div>
+
+<!-- AI套利/变现线索 -->
+<div class="ai-section">
+  <div class="sec-title money">💰 【AI 套利/变现线索】</div>
+
+  <div class="ai-card">
+    <div class="card-header">🎯 套利一：Kimi K3私有化部署——7月27日窗口期</div>
+    <div class="card-body">
+      <p><strong>热点：</strong>K3 7月27日开源权重后，全球企业和开发者将可以下载完整的2.8万亿参数模型进行私有化部署。API定价$3/$15每百万Token，比Fable 5便宜70%。</p>
+      <p><strong>复刻建议：</strong>①在7月27日当天第一时间下载权重，搭建Demo环境 ②面向有数据合规需求的金融/医疗/政府客户提供K3私有化部署服务 ③将现有GPT/Claude API切换到K3 API，成本直接降70% ④开发K3专用Agent Skills工具包——这是一个完全空白的生态位。</p>
+    </div>
+  </div>
+
+  <div class="ai-card">
+    <div class="card-header">🎯 套利二：OpenWorker白标定制——AI Agent的WordPress时刻</div>
+    <div class="card-body">
+      <p><strong>热点：</strong>吴恩达OpenWorker采用MIT协议开源，定位桌面AI Agent。25+工具集成+30模型支持+Tauri壳+React GUI+Python Agent引擎。</p>
+      <p><strong>复刻建议：</strong>①基于OpenWorker快速定制行业版Agent（如"律师专用版"——连CRM查案件+生成法律文书、"房地产Agent版"——连MLS数据库+自动生成房源报告）②打包成SaaS按月收费。MIT协议意味着可以改Logo、改UI、加自有工具后直接卖。③在国内搭建OpenWorker+国产模型（Kimi K3/Qwen3.6/GLM-5.2）的汉化版本，填补国内AI桌面Agent空白。</p>
+    </div>
+  </div>
+
+  <div class="ai-card">
+    <div class="card-header">🎯 套利三：企业Agent部署咨询——四家平台混战的服务红利</div>
+    <div class="card-body">
+      <p><strong>热点：</strong>OpenAI Presence、Google Gemini Enterprise、Meta Business Agent、NVIDIA+ServiceNow Project Arc——四家巨头同月内推出企业Agent平台。企业需要有人帮他们选型、集成、培训。</p>
+      <p><strong>复刻建议：</strong>①快速学习这四家平台的API和最佳实践，成为首批认证合作伙伴 ②面向传统行业（制造、物流、零售）提供Agent落地咨询，一个项目收费5-50万 ③MIT研究指出95%企业GenAI试点零可衡量影响，失败主因是集成/权限/变革管理——这些恰好是咨询服务能解决的。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 避坑/黑话词典 -->
+<div class="ai-section">
+  <div class="sec-title pitfall">🔍 【避坑/黑话词典】</div>
+
+  <div class="ai-card">
+    <div class="card-header">📖 词条：Agent Washing（智能体漂洗）</div>
+    <div class="card-body">
+      <p><strong>一句话大白话：</strong>把普通聊天机器人换个包装叫"AI Agent"然后按Agent的价格卖给你。真正的Agent能自主规划、调用工具、执行完整任务流程并留下操作痕迹；聊天机器人只是问一句答一句。</p>
+      <p><strong>鉴别方法：</strong>问供应商三个问题——①它能自主选择下一步操作而不需要每一步都人工确认吗？②它能在失败后调整策略重试吗？③它操作过你的真实内部系统（CRM/ERP/数据库）还是只读了知识库？三个全是Yes，才是真Agent。</p>
+    </div>
+  </div>
+
+  <div class="ai-card">
+    <div class="card-header">📖 词条：Distillation（模型蒸馏）—— AI圈本周最热词</div>
+    <div class="card-body">
+      <p><strong>一句话大白话：</strong>让"学霸"模型做题，把答案抄给"学渣"模型学习。"学霸"（教师模型，如GPT/Claude）花几十亿美元训练，"学渣"（学生模型）通过系统性地向学霸提问+收集输出，以远低于原始训练成本获得大部分能力。它是合法的技术手段——但当你在未授权的情况下蒸馏竞争对手的商业模型时，就进入了知识产权灰色地带。白宫vs Kimi K3事件的本质争议即在于此。</p>
+    </div>
+  </div>
+
+  <div class="ai-card">
+    <div class="card-header">📖 词条：Scaffold（脚手架）—— 2026上半年AI圈新概念四层架构之一</div>
+    <div class="card-body">
+      <p><strong>一句话大白话：</strong>Scaffold是给AI Agent搭的"脚手架"——即Agent运行所需的外部支撑代码和基础设施（工具定义、API包装、权限检查、日志记录、错误重试等），相当于给Agent配了一个后勤团队。与Skill（教Agent怎么做事的说明书）不同，Scaffold是Agent"做事时踩的梯子"。2026年AI圈的四层新架构：Context Engineering（控制输入什么）、Harness Engineering（控制能做什么）、Loop Engineering（控制怎么迭代）、Fleet Engineering（控制多个Agent怎么协作）。</p>
+    </div>
+  </div>
+</div>
+
+<!-- GitHub Trending -->
+<div class="ai-section">
+  <div class="sec-title gear">📊 【GitHub Trending TOP 15】—— 7月24日</div>
+  <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:16px 20px;">
+    <div class="gh-row"><span class="gh-rank">#1</span><span class="gh-name">block/buzz</span><span class="gh-desc">蜂群思维Agent通信平台</span><span class="gh-stars">+2,162⭐ | Rust</span></div>
+    <div class="gh-row"><span class="gh-rank">#2</span><span class="gh-name">koala73/worldmonitor</span><span class="gh-desc">全球实时情报仪表板</span><span class="gh-stars">+3,175⭐ | 71.5K总⭐ | TypeScript</span></div>
+    <div class="gh-row"><span class="gh-rank">#3</span><span class="gh-name">diegosouzapw/OmniRoute</span><span class="gh-desc">290+供应商AI网关</span><span class="gh-stars">+1,929⭐ | 27.2K总⭐ | TypeScript</span></div>
+    <div class="gh-row"><span class="gh-rank">#4</span><span class="gh-name">ruvnet/RuView</span><span class="gh-desc">WiFi信号→空间智能/生命体征</span><span class="gh-stars">+1,708⭐ | 85.2K总⭐ | Rust</span></div>
+    <div class="gh-row"><span class="gh-rank">#5</span><span class="gh-name">ComposioHQ/awesome-claude-skills</span><span class="gh-desc">Claude Skills精选集</span><span class="gh-stars">+636⭐ | 69.4K总⭐ | Python</span></div>
+    <div class="gh-row"><span class="gh-rank">#6</span><span class="gh-name">Automattic/harper</span><span class="gh-desc">离线隐私优先语法检查器</span><span class="gh-stars">+624⭐ | 12.3K总⭐ | Rust</span></div>
+    <div class="gh-row"><span class="gh-rank">#7</span><span class="gh-name">chrislgarry/Apollo-11</span><span class="gh-desc">阿波罗11号原始源代码</span><span class="gh-stars">+592⭐ | 71.1K总⭐ | Assembly</span></div>
+    <div class="gh-row"><span class="gh-rank">#8</span><span class="gh-name">Pumpkin-MC/Pumpkin</span><span class="gh-desc">高性能Minecraft服务器</span><span class="gh-stars">+565⭐ | 8.9K总⭐ | Rust</span></div>
+    <div class="gh-row"><span class="gh-rank">#9</span><span class="gh-name">likec4/likec4</span><span class="gh-desc">代码→实时架构图可视化</span><span class="gh-stars">+472⭐ | 4.7K总⭐ | TypeScript</span></div>
+    <div class="gh-row"><span class="gh-rank">#10</span><span class="gh-name">shiyu-coder/Kronos</span><span class="gh-desc">金融市场语言基础模型</span><span class="gh-stars">+401⭐ | 33K总⭐ | Python</span></div>
+    <div class="gh-row"><span class="gh-rank">#11</span><span class="gh-name">agegr/pi-web</span><span class="gh-desc">pi编程Agent Web UI</span><span class="gh-stars">+315⭐ | 2.4K总⭐ | TypeScript</span></div>
+    <div class="gh-row"><span class="gh-rank">#12</span><span class="gh-name">citrolabs/ego-lite</span><span class="gh-desc">人类+AI Agent并行浏览器</span><span class="gh-stars">+247⭐ | 1.6K总⭐ | JavaScript</span></div>
+    <div class="gh-row"><span class="gh-rank">#13</span><span class="gh-name">earthtojake/text-to-cad</span><span class="gh-desc">CAD硬件设计Agent Skills</span><span class="gh-stars">+230⭐ | 10K总⭐ | JavaScript</span></div>
+    <div class="gh-row"><span class="gh-rank">#14</span><span class="gh-name">alibaba/open-code-review</span><span class="gh-desc">阿里百炼代码审查Agent</span><span class="gh-stars">+180⭐ | 11.5K总⭐ | Go</span></div>
+    <div class="gh-row"><span class="gh-rank">#15</span><span class="gh-name">jellyfin/jellyfin</span><span class="gh-desc">免费开源媒体系统</span><span class="gh-stars">+66⭐ | 54.7K总⭐ | C#</span></div>
+  </div>
+</div>
+
+<!-- Product Hunt -->
+<div class="ai-section">
+  <div class="sec-title concept">🏆 【Product Hunt 7月23日热榜】</div>
+  <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:16px 20px;">
+    <div class="gh-row"><span class="gh-rank">#1</span><span class="gh-name">Buzzy</span><span class="gh-desc">AI视频创作无限画布——首款Agentic无限画布视频工具</span><span class="gh-stars">511票</span></div>
+    <div class="gh-row"><span class="gh-rank">#2</span><span class="gh-name">Humalike × Hermes</span><span class="gh-desc">Hermes Agent社交智能插件（Slack/Telegram/WhatsApp）</span><span class="gh-stars">496票</span></div>
+    <div class="gh-row"><span class="gh-rank">#3</span><span class="gh-name">Migma AI</span><span class="gh-desc">AI邮件营销——自动生成完整Campaign，越用越准</span><span class="gh-stars">447票</span></div>
+    <div class="gh-row"><span class="gh-rank">#4</span><span class="gh-name">Kastra</span><span class="gh-desc">Agent运行时授权层——亚毫秒延迟策略执行</span><span class="gh-stars">385票</span></div>
+    <div class="gh-row"><span class="gh-rank">#5</span><span class="gh-name">box</span><span class="gh-desc">Agent云电脑 $0.036/小时（比E2B便宜10倍）</span><span class="gh-stars">283票</span></div>
+    <div class="gh-row"><span class="gh-rank">#6</span><span class="gh-name">ACME.BOT</span><span class="gh-desc">AI SEO Agent——采访你先，代你写不"水"的内容</span><span class="gh-stars">216票</span></div>
+    <div class="gh-row"><span class="gh-rank">#7</span><span class="gh-name">Gemini 3.6 Flash</span><span class="gh-desc">Google最新主力模型+Flash-Lite+Flash Cyber三件套</span><span class="gh-stars">-</span></div>
+  </div>
+</div>
+
+<!-- 关键数据总览 -->
+<div class="summary-box">
+  <h3>📈 7月23日关键数据速览</h3>
+  <table class="data-table">
+    <tr><th>指标</th><th>数据</th></tr>
+    <tr><td>义乌2025进出口总值</td><td>8365亿元（全国县市区第一）</td></tr>
+    <tr><td>贸易网络覆盖</td><td>230+国家和地区</td></tr>
+    <tr><td>中欧班列通达国家</td><td>50+（"义新欧"）</td></tr>
+    <tr><td>以旧换新上半年销售额</td><td>1.1万亿元（1.5亿人次）</td></tr>
+    <tr><td>零关税覆盖国家</td><td>63个</td></tr>
+    <tr><td>台积电在美追加投资</td><td>1000亿美元</td></tr>
+    <tr><td>美伊冲突持续天数</td><td>第12天</td></tr>
+    <tr><td>OpenAI数据中心投资</td><td>超300亿美元（3.2吉瓦）</td></tr>
+    <tr><td>OpenAI 2030云支出预期</td><td>约7500亿美元</td></tr>
+    <tr><td>Kimi K3参数</td><td>2.8万亿（896专家/16激活）</td></tr>
+    <tr><td>K3 API定价</td><td>$3/$15 百万Token（比Fable 5便宜70%）</td></tr>
+    <tr><td>月之暗面IPO前估值</td><td>500亿美元</td></tr>
+    <tr><td>AMD×Anthropic协议</td><td>数百亿美元（2GW芯片+$50亿投资）</td></tr>
+    <tr><td>Alphabet Q2营收</td><td>1197.96亿美元（+24%）</td></tr>
+    <tr><td>Google云Q2增速</td><td>+82%（首破240亿美元）</td></tr>
+    <tr><td>Alphabet全年资本开支</td><td>1950-2050亿美元</td></tr>
+    <tr><td>Atoms融资</td><td>$17亿（a16z领投）</td></tr>
+    <tr><td>Gemini 3.6 Flash定价</td><td>$1.50/$7.50 百万Token</td></tr>
+    <tr><td>Grok 4.5解数学题</td><td>8分钟推翻30年猜想</td></tr>
+    <tr><td>block/buzz今日星</td><td>+2,162⭐（Rust）</td></tr>
+    <tr><td>worldmonitor总星</td><td>71,582⭐</td></tr>
+    <tr><td>Product Hunt #1 Buzzy</td><td>511票</td></tr>
+  </table>
+</div>
+
+<!-- 信源 -->
+<div class="summary-box" style="margin-top:16px;">
+  <h3>📡 信源覆盖</h3>
+  <p style="color:var(--text2);font-size:0.88em;">
+    新闻联播（央视网 cctv.com + 腾讯新闻 + 新浪财经 + 搜狐） · GitHub Trending Top 15 · Product Hunt 7月23日日榜（freeourdays.com/hunted.space） · buildfastwithai.com（16条AI新闻深度分析） · 新智元/36氪/量子位/机器之心/智东西 · Axios（黄仁勋专访） · IT之家/环球时报/中国新闻社/财联社 · 《华尔街日报》（AMD×Anthropic） · 21世纪经济报道（Alphabet财报/月之暗面融资） · dev.to/newsyorknet.com（OpenWorker深度技术拆解） · WebSearch多源交叉验证
+  </p>
+</div>
+
+<div class="footer">
+  <p>日推双专栏情报 · 2026年7月24日</p>
+  <p style="margin-top:4px;">本报告由 AI 自动化生成 · 数据来源均已标注 · 不构成投资建议</p>
+</div>
+
+</div>
+</body>
+</html>
