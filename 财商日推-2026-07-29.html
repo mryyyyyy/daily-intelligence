@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>财商日推 · 2026-07-29</title>
+<style>
+  :root {
+    --bg: #11100e;
+    --card-bg: #1a1712;
+    --card-border: #2e2820;
+    --text: #d4c9b8;
+    --text-dim: #8a8070;
+    --gold: #c9a84c;
+    --gold-bright: #e6c864;
+    --gold-pale: #f5e6c8;
+    --red: #c9554a;
+    --green: #5a9e6f;
+    --blue: #5a8db8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Serif SC", serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    font-size: 15px;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(160deg, #1a160c 0%, #0f0e0a 40%, #14110c 70%, #1a150e 100%);
+    border-bottom: 1px solid #3a3020;
+    padding: 44px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%; right: -5%;
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 65%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -35%; left: -10%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(230,200,100,0.04) 0%, transparent 60%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--gold);
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--gold-pale);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  .hero .sub {
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 16px;
+    font-size: 12.5px;
+    color: var(--text-dim);
+  }
+  .hero-meta span {
+    background: rgba(255,255,255,0.04);
+    padding: 4px 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* ===== CONTAINER ===== */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  /* ===== TAKEAWAY BAR（今日一句） ===== */
+  .takeaway-bar {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(150,120,60,0.05));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 12px;
+    padding: 18px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .takeaway-bar .ta-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    line-height: 1;
+    margin-top: 2px;
+  }
+  .takeaway-bar .ta-label {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .takeaway-bar .ta-text {
+    font-size: 15px;
+    color: var(--gold-pale);
+    font-weight: 600;
+    line-height: 1.7;
+  }
+
+  /* ===== CARD BASE ===== */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .card-header {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--card-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-header .icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 19px;
+    flex-shrink: 0;
+  }
+  .card-header h2 { font-size: 18px; font-weight: 700; letter-spacing: 0.5px; }
+  .card-body { padding: 24px; }
+
+  /* ===== SECTION 1: 回到那一天 ===== */
+  .sec-back .card-header { background: linear-gradient(135deg, #1f1a0e 0%, #1a1712 100%); }
+  .sec-back .icon { background: rgba(201,168,76,0.13); color: var(--gold); }
+  .sec-back .card-header h2 { color: var(--gold-bright); }
+
+  .time-machine { margin-bottom: 0; }
+
+  /* 情境标题区 */
+  .tm-head {
+    margin-bottom: 18px;
+  }
+  .tm-head .tm-date {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--gold-bright);
+    letter-spacing: 1px;
+  }
+  .tm-head .tm-place {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+
+  /* 背景知识框（放在情境前） */
+  .tm-primer {
+    background: rgba(90,141,184,0.06);
+    border: 1px solid rgba(90,141,184,0.15);
+    border-left: 3px solid var(--blue);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+  .tm-primer strong { color: #8ab4d8; }
+
+  /* 情境画面 */
+  .tm-scene {
+    font-size: 14.5px;
+    color: var(--text);
+    line-height: 1.9;
+    padding: 16px 20px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 10px;
+    border-left: 3px solid var(--gold);
+    margin-bottom: 18px;
+  }
+  .tm-scene strong { color: var(--gold-pale); }
+
+  /* 暂停线 */
+  .tm-pause {
+    text-align: center;
+    padding: 16px;
+    margin: 20px 0;
+    font-size: 16px;
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 2px;
+    border-top: 1px dashed rgba(201,168,76,0.2);
+    border-bottom: 1px dashed rgba(201,168,76,0.2);
+    cursor: default;
+  }
+
+  /* 结局揭晓 */
+  .tm-reveal {
+    background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(30,20,10,0.4));
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 10px;
+    padding: 22px;
+    margin-bottom: 18px;
+  }
+  .tm-reveal .reveal-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  /* 时间线可视化 */
+  .tl-item {
+    display: flex;
+    gap: 14px;
+    padding: 8px 0;
+    position: relative;
+  }
+  .tl-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .tl-dot.rise { background: var(--green); }
+  .tl-dot.fall { background: var(--red); }
+  .tl-dot.neutral { background: var(--gold); }
+  .tl-body { flex: 1; }
+  .tl-body .tl-date {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 2px;
+  }
+  .tl-body .tl-text {
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.85;
+  }
+  .tl-body .tl-text .up { color: var(--green); font-weight: 600; }
+  .tl-body .tl-text .down { color: var(--red); font-weight: 600; }
+
+  /* 结果摘要 */
+  .tm-result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(201,168,76,0.12);
+  }
+  .tm-result-grid .r-item {
+    background: rgba(0,0,0,0.2);
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.7;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .tm-result-grid .r-icon { flex-shrink: 0; font-size: 16px; }
+
+  /* 核心课 */
+  .lesson-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(180,140,60,0.04));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 10px;
+    padding: 22px;
+  }
+  .lesson-box .lesson-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--gold-bright);
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+  }
+  .lesson-box .lesson-item {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.9;
+    padding: 8px 0;
+    display: flex;
+    gap: 10px;
+  }
+  .lesson-box .lesson-item .l-num {
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+    min-width: 24px;
+    font-size: 16px;
+  }
+  .lesson-box .lesson-item:last-child { padding-bottom: 0; }
+
+  /* ===== SECTION 2: 富爸爸一句话 ===== */
+  .sec-rich .card-header { background: linear-gradient(135deg, #1a1510 0%, #1a1712 100%); }
+  .sec-rich .icon { background: rgba(230,200,100,0.12); color: var(--gold-bright); }
+  .sec-rich .card-header h2 { color: var(--gold-pale); }
+
+  .quote-block {
+    background: linear-gradient(135deg, rgba(230,200,100,0.05), rgba(180,150,80,0.03));
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 12px;
+    padding: 22px 24px;
+    position: relative;
+  }
+  .quote-block .quote-mark {
+    font-size: 48px;
+    color: rgba(201,168,76,0.2);
+    line-height: 1;
+    position: absolute;
+    top: 12px;
+    left: 18px;
+    font-family: Georgia, serif;
+  }
+  .quote-block .quote-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold-pale);
+    line-height: 1.8;
+    padding-left: 36px;
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+  .quote-block .quote-from {
+    font-size: 13px;
+    color: var(--text-dim);
+    padding-left: 36px;
+    margin-bottom: 18px;
+  }
+  .quote-block .quote-think {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.85;
+    padding: 14px 18px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    border-left: 3px solid var(--gold);
+  }
+  .quote-block .quote-think strong { color: var(--gold-bright); }
+
+  /* ===== SECTION 3: 今日概念卡 ===== */
+  .sec-concept .card-header { background: linear-gradient(135deg, #161a18 0%, #1a1712 100%); }
+  .sec-concept .icon { background: rgba(90,158,111,0.12); color: var(--green); }
+  .sec-concept .card-header h2 { color: #7ecf8a; }
+
+  .concept-card {
+    background: linear-gradient(135deg, rgba(90,158,111,0.05), rgba(70,130,90,0.03));
+    border: 1px solid rgba(90,158,111,0.2);
+    border-radius: 12px;
+    padding: 22px 24px;
+  }
+  .concept-card .concept-term {
+    font-size: 22px;
+    font-weight: 800;
+    color: #7ecf8a;
+    margin-bottom: 8px;
+  }
+  .concept-card .concept-tagline {
+    font-size: 14px;
+    color: rgba(126,207,138,0.7);
+    font-style: italic;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(90,158,111,0.12);
+  }
+  .concept-card .concept-explain {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.9;
+    margin-bottom: 14px;
+  }
+  .concept-card .concept-example {
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.8;
+    border-left: 3px solid var(--green);
+    margin-bottom: 14px;
+  }
+  .concept-card .concept-example strong { color: #7ecf8a; }
+
+  /* 桥梁：和今天的联系 */
+  .concept-bridge {
+    background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(90,158,111,0.04));
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.8;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .concept-bridge .bridge-icon { flex-shrink: 0; font-size: 18px; margin-top: 1px; }
+  .concept-bridge strong { color: var(--gold-bright); }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    text-align: center;
+    padding: 28px 20px 20px;
+    color: var(--text-dim);
+    font-size: 12px;
+    border-top: 1px solid var(--card-border);
+    letter-spacing: 0.5px;
+    line-height: 2;
+  }
+  .footer .next-teaser {
+    display: inline-block;
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 20px;
+    padding: 8px 20px;
+    margin-top: 12px;
+    font-size: 12.5px;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HERO ==================== -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">2026年7月29日 星期三 · 第 1 期</div>
+    <h1>财商日推 · 思维健身房</h1>
+    <div class="sub">每天5分钟，用历史的眼睛训练未来的判断力。<br>不荐股、不谈玄学——只还原真实世界的金钱逻辑。</div>
+    <div class="hero-meta">
+      <span>⏱ 4分钟</span>
+      <span>🏷 本期关键词：期货</span>
+      <span>📖 在读《富爸爸穷爸爸》</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== BODY ==================== -->
+<div class="container">
+
+<!-- ===== 今日一句 ===== -->
+<div class="takeaway-bar">
+  <div class="ta-icon">💡</div>
+  <div>
+    <div class="ta-label">今日一句</div>
+    <div class="ta-text">你看对了方向，不等于你能赚到钱——<br>工具错了，一切都错。</div>
+  </div>
+</div>
+
+<!-- ===== 一、回到那一天 ===== -->
+<div class="card sec-back">
+  <div class="card-header">
+    <div class="icon">⏳</div>
+    <h2>一、回到那一天</h2>
+  </div>
+  <div class="card-body">
+    <div class="time-machine">
+
+      <!-- 标题 -->
+      <div class="tm-head">
+        <div class="tm-date">2020年4月20日</div>
+        <div class="tm-place">纽约商品交易所 · WTI原油期货5月合约</div>
+      </div>
+
+      <!-- 背景知识（先补课再看故事） -->
+      <div class="tm-primer">
+        <strong>📝 先花20秒补个背景：</strong>你平时去加油站加的汽油，叫<strong>"现货"</strong>。今天要讲的根本不是它——今天讲的是<strong>"期货"</strong>，一种纸面合约，买卖双方约定"未来某天以某个价格交割某批货"。绝大多数交易者从来没想过要真的去提货——他们只是赌价格涨跌。但那天，这个区别杀死了很多人。
+      </div>
+
+      <!-- 情境画面 -->
+      <div class="tm-scene">
+        WTI原油期货5月合约正在自由落体——<br>
+        18美元 → 10美元 → 5美元 → 1美元 → 0美元……<br><br>
+        <strong>然后跌到了 -37.63 美元/桶。</strong><br><br>
+        买一桶油，卖家倒贴你37美元。全世界交易员都傻了。评论区全是"？？？"。<br><br>
+        <strong>怎么回事？</strong><br>
+        · 新冠封城，飞机停了、工厂停了——油多得没人要<br>
+        · 全世界的储油罐都满了，俄克拉荷马州库欣的仓库一滴都装不下<br>
+        · 5月合约明天到期——持有合约的人要么卖掉，要么<strong>真的去提货</strong><br>
+        · 但提了也没地方放<br><br>
+        <strong>你看着屏幕，脑子里三个声音：</strong><br>
+        🅐 "白送还倒贴钱，不买是傻子！抄底！"<br>
+        🅑 "这东西我看不懂，不碰。"<br>
+        🅒 "还会跌，做空它！"
+      </div>
+
+      <!-- 暂停 -->
+      <div class="tm-pause">⏸ 停一下。你的答案是什么？再往下翻。</div>
+
+      <!-- 结局揭晓 -->
+      <div class="tm-reveal">
+        <div class="reveal-title">📜 结局揭晓 · 时间线</div>
+
+        <div class="tl-item">
+          <div class="tl-dot neutral"></div>
+          <div class="tl-body">
+            <div class="tl-date">4月20日 当天</div>
+            <div class="tl-text">大量散户通过理财App买入"原油"（实为USO基金），以为在抄底石油。当天USO净流入超<span class="up">5亿美元</span>。但USO ≠ 原油——它是一个会"移仓磨损"的ETF，后文会讲。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot rise"></div>
+          <div class="tl-body">
+            <div class="tl-date">4月21日</div>
+            <div class="tl-text">5月合约交割完毕，价格回到10美元上方。抄底6月合约的人<span class="up">确实赚了</span>——6月合约从20美元涨到了40美元。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot fall"></div>
+          <div class="tl-body">
+            <div class="tl-date">4月22日</div>
+            <div class="tl-text">某行"原油宝"爆雷。投资者<span class="down">不仅亏光本金，还倒欠银行数千万</span>。他们买的是一个挂钩原油的结构性产品——不是期货本身，银行在负油价时强制平仓，穿仓损失由投资者承担。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot rise"></div>
+          <div class="tl-body">
+            <div class="tl-date">2020年5月</div>
+            <div class="tl-text">买入USO的散户发现：<span class="down">油价涨了，但基金净值没涨。</span>因为USO每月要"移仓"（卖掉快到期的便宜合约、买入更贵的远月合约），产生了持续损耗（Contango）。方向对了，工具错了，照样亏钱。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot rise"></div>
+          <div class="tl-body">
+            <div class="tl-date">2022年3月</div>
+            <div class="tl-text">俄乌战争爆发，原油涨到<span class="up">130美元/桶</span>。如果你在负油价那天买了6月合约并且一直拿着，<span class="up">涨幅超过400%</span>。</div>
+          </div>
+        </div>
+
+        <!-- 结果摘要 -->
+        <div class="tm-result-grid">
+          <div class="r-item">
+            <span class="r-icon">✅</span>
+            <span>真正懂期货的人<span style="color:var(--green);font-weight:700;">赚了</span></span>
+          </div>
+          <div class="r-item">
+            <span class="r-icon">❌</span>
+            <span>分不清期货和现货的人<span style="color:var(--red);font-weight:700;">倒欠银行</span></span>
+          </div>
+          <div class="r-item">
+            <span class="r-icon">😵</span>
+            <span>买USO的人<span style="color:var(--red);font-weight:700;">看对方向也亏钱</span></span>
+          </div>
+          <div class="r-item">
+            <span class="r-icon">😌</span>
+            <span>完全不懂所以没碰的人<span style="color:var(--green);font-weight:700;">保住了本金</span></span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 核心课 -->
+      <div class="lesson-box">
+        <div class="lesson-title">🔍 这件事教会我们什么？</div>
+        <div class="lesson-item">
+          <span class="l-num">①</span>
+          <span><strong>不懂的东西，一分钱都别投。</strong>如果你不能在30秒内向一个12岁孩子解释清楚你买的是什么、怎么赚钱、最大风险是什么——别买。负油价那天亏最惨的，全都是"听说石油便宜了就买了"的人。</span>
+        </div>
+        <div class="lesson-item">
+          <span class="l-num">②</span>
+          <span><strong>工具决定结果。方向正确 ≠ 赚钱。</strong>你看对了石油会涨，但买了USO——方向对，工具错，一样亏。投资的三个要素：方向、工具、时机，缺一不可。绝大多数人只关心第一个。</span>
+        </div>
+        <div class="lesson-item">
+          <span class="l-num">③</span>
+          <span><strong>极端事件是最好的老师。</strong>负油价不会再发生第二次（交易所后来加了熔断机制）。但这不重要。重要的是它逼你问自己一个一辈子都有用的问题：<strong>当你买一个东西的时候，你到底买的是什么？</strong>——是石油本身？还是一个承诺？还是一层套一层的金融包装？这个区别，就是金融素养的起点。</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== 二、富爸爸一句话 ===== -->
+<div class="card sec-rich">
+  <div class="card-header">
+    <div class="icon">💬</div>
+    <h2>二、富爸爸一句话</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="quote-block">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">重要的不是你赚了多少钱，而是你能留住多少钱、能留住多久，以及能让钱为你工作几代人。</div>
+      <div class="quote-from">—— 罗伯特·清崎《富爸爸穷爸爸》</div>
+      <div class="quote-think">
+        <strong>和今天案例的联系：</strong><br>
+        那些在负油价日"抄底"的人，赚了吗？短期看有人确实赚了。但清崎问的是：<strong>你留住了多少？留了多久？</strong><br><br>
+        赚到钱只是一个动作。留住钱是一个系统。系统包括：你懂不懂你在买什么、你用什么工具、仓位多大、有没有止损、有没有因为这一次赚了就下一次加倍下注。<br><br>
+        没有系统的人，赚到的钱只是暂时寄存在他手里。
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 三、今日概念卡 ===== -->
+<div class="card sec-concept">
+  <div class="card-header">
+    <div class="icon">📖</div>
+    <h2>三、今日概念卡</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="concept-card">
+      <div class="concept-term">期货（Futures）</div>
+      <div class="concept-tagline">你买的不是一桶油，是一个"未来必须交割"的承诺。</div>
+
+      <div class="concept-explain">
+        <strong>一句话：</strong>期货是一份合同，约定在未来的某个日期、以今天定好的价格，买入或卖出某个东西（石油、黄金、大豆……甚至天气指数）。<br><br>
+        <strong>和股票的区别：</strong>股票 = 公司的一部分所有权，你可以永远持有。期货 = 有<strong>到期日</strong>。到期那天你必须二选一：①平仓（反向交易对冲掉），②实物交割（真的去提货）。负油价那天，就是因为到期日到了但没人要提货。<br><br>
+        <strong>本来不是给散户玩的：</strong>期货的初衷是套期保值——面包厂怕小麦涨价，提前锁定价格。后来投机者涌入，把它变成了一个巨大的赌场。
+      </div>
+
+      <div class="concept-example">
+        <strong>🌰 举个栗子：</strong><br>
+        你是面包师傅，怕小麦涨价。你和农民签约："明年7月，我用今天的价格2000元/吨，买你100吨小麦。"这就是一份小麦期货。<br><br>
+        如果明年小麦涨到3000元，你赚了——2000元买到了值3000元的小麦。<br>
+        如果跌到1500元，你亏了——2000元买了只值1500元的东西。<br><br>
+        <strong>关键是：</strong>散户从来不想要那100吨小麦，只在到期前卖给下一个想赌的人。但那天——所有人都在卖，没人买。如果你到期没卖掉——理论上你得去拉货。你家里放得下100吨小麦吗？
+      </div>
+
+      <!-- 桥梁 -->
+      <div class="concept-bridge">
+        <span class="bridge-icon">🔗</span>
+        <span><strong>和今天的联系：</strong>负油价那天，无数人"抄底石油"亏光了。他们不知道——自己买的根本不是石油，是期货合约。连期货是什么都不知道就冲进去了。这就是为什么富爸爸说：<strong>投资前先投资你的大脑</strong>。最贵的学费，是给"不用脑"交的。</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="footer">
+  <p>财商日推 · 第 1 期 | 2026年7月29日</p>
+  <p style="margin-top:6px;">不构成投资建议。不推荐任何产品。仅供财商思维训练。</p>
+  <div class="next-teaser">📅 明天剧透：一口井的故事——为什么穷爸爸说"房子是资产"，富爸爸说"房子是负债"？</div>
+</div>
+
+</div>
+
+</body>
+</html>
