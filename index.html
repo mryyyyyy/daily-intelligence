@@ -22,38 +22,58 @@
     background: var(--bg);
     color: var(--text);
     min-height: 100vh;
+    padding: 36px 20px 60px;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+
+  /* 顶部状态栏 */
+  .top-bar {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 40px 20px;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
   }
-  .header {
-    text-align: center;
-    margin-bottom: 36px;
-  }
-  .header .date {
+  .date-chip {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 6px 16px;
     font-size: 13px;
-    color: var(--muted);
-    letter-spacing: 3px;
+    color: var(--text);
+    letter-spacing: 1px;
   }
+  .weather-chip {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 13px;
+    color: var(--text);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .weather-chip .w-icon { font-size: 15px; }
+
+  /* 头部 */
+  .header { text-align: center; margin-bottom: 32px; }
   .header h1 {
-    font-size: 28px;
-    margin-top: 10px;
+    font-size: 30px;
     background: linear-gradient(135deg, #ff6b35, #4da6ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
   }
-  .header .hint {
-    font-size: 12px;
-    color: #555;
-    margin-top: 6px;
-  }
+  .header .hint { font-size: 12px; color: #555; margin-top: 6px; }
+
+  /* 主卡片网格 */
   .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 14px;
-    max-width: 680px;
-    width: 100%;
+    margin-bottom: 36px;
   }
   @media (max-width: 600px) {
     .grid { grid-template-columns: 1fr; }
@@ -62,7 +82,7 @@
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 14px;
-    padding: 22px 20px;
+    padding: 20px 18px;
     text-decoration: none;
     transition: border-color 0.2s, transform 0.15s;
     display: flex;
@@ -70,63 +90,148 @@
     gap: 14px;
     color: inherit;
   }
-  .card:hover {
-    border-color: #555;
-    transform: translateY(-2px);
-  }
+  .card:hover { border-color: #555; transform: translateY(-2px); }
   .card .icon {
     width: 40px; height: 40px;
     border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
   }
-  .card .info { flex: 1; }
-  .card h3 {
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-  .card p {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-  .card .time {
-    font-size: 11px;
-    color: #555;
-    margin-top: 6px;
+  .card .info { flex: 1; min-width: 0; }
+  .card h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .card p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .card .time { font-size: 11px; color: #555; margin-top: 6px; }
+  .card .new-badge {
+    display: inline-block;
+    background: var(--orange);
+    color: #000;
+    font-size: 9px;
+    font-weight: 800;
+    padding: 1px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+    letter-spacing: 1px;
   }
 
-  /* 新闻联播 */
+  /* 配色 */
   .card.news .icon { background: rgba(255,107,53,0.15); }
   .card.news h3 { color: var(--orange); }
   .card.news:hover { border-color: rgba(255,107,53,0.4); }
-
-  /* AI情报 */
   .card.ai .icon { background: rgba(77,166,255,0.15); }
   .card.ai h3 { color: var(--blue); }
   .card.ai:hover { border-color: rgba(77,166,255,0.4); }
-
-  /* 食研日推 */
   .card.food .icon { background: rgba(240,192,96,0.15); }
   .card.food h3 { color: #f0c060; }
   .card.food:hover { border-color: rgba(240,192,96,0.4); }
-
-  /* 财商日推 */
   .card.money .icon { background: rgba(201,168,76,0.15); }
   .card.money h3 { color: var(--gold); }
   .card.money:hover { border-color: rgba(201,168,76,0.4); }
-
-  /* 生鲜情报 */
   .card.fresh .icon { background: rgba(76,175,132,0.15); }
   .card.fresh h3 { color: var(--green); }
   .card.fresh:hover { border-color: rgba(76,175,132,0.4); }
 
+  /* 历史档案 */
+  .history {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .history-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .history-header h2 {
+    font-size: 15px;
+    color: var(--text);
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .history-header .refresh-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-size: 11px;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .history-header .refresh-btn:hover { color: var(--blue); }
+
+  .hist-col {
+    border-bottom: 1px solid var(--border);
+  }
+  .hist-col:last-child { border-bottom: none; }
+  .hist-col-toggle {
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+    color: inherit;
+    font: inherit;
+  }
+  .hist-col-toggle:hover { background: rgba(255,255,255,0.02); }
+  .hist-col-toggle .col-name { font-size: 14px; font-weight: 600; }
+  .hist-col-toggle .col-meta {
+    font-size: 11px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hist-col-toggle .arrow {
+    transition: transform 0.2s;
+    font-size: 10px;
+    color: var(--muted);
+  }
+  .hist-col.open .arrow { transform: rotate(90deg); }
+  .hist-col-body {
+    display: none;
+    padding: 0 20px 14px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .hist-col.open .hist-col-body { display: flex; }
+  .hist-link {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 12px;
+    color: var(--text);
+    text-decoration: none;
+    transition: border-color 0.15s;
+    font-family: monospace;
+  }
+  .hist-link:hover { border-color: var(--blue); color: var(--blue); }
+  .hist-link.today {
+    background: rgba(255,107,53,0.1);
+    border-color: rgba(255,107,53,0.3);
+    color: var(--orange);
+  }
+  .hist-loading { font-size: 12px; color: var(--muted); padding: 14px 20px; }
+
+  /* 配色 dot */
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%; display: inline-block;
+  }
+  .dot.news { background: var(--orange); }
+  .dot.ai { background: var(--blue); }
+  .dot.food { background: #f0c060; }
+  .dot.money { background: var(--gold); }
+  .dot.fresh { background: var(--green); }
+
   .footer {
-    margin-top: 36px;
+    margin-top: 32px;
     text-align: center;
     font-size: 12px;
     color: #555;
@@ -138,84 +243,277 @@
 </head>
 <body>
 
-<div class="header">
-  <div class="date" id="headerDate"></div>
-  <h1>日推情报中心</h1>
-  <div class="hint">点卡片直达今日份报告 · 每天 9:00 自动刷新</div>
-</div>
+<div class="wrap">
 
-<div class="grid">
-
-  <a class="card news" id="link-news" href="#">
-    <div class="icon">📺</div>
-    <div class="info">
-      <h3>新闻联播简报</h3>
-      <p>每日风向标解读</p>
-      <div class="time">9:00 更新</div>
+  <!-- 顶部状态栏：日期 + 天气 -->
+  <div class="top-bar">
+    <div class="date-chip" id="dateChip">2026-07-30</div>
+    <div class="weather-chip" id="weatherChip">
+      <span class="w-icon">☀️</span>
+      <span id="weatherText">加载天气中...</span>
     </div>
-  </a>
+  </div>
 
-  <a class="card ai" id="link-ai" href="#">
-    <div class="icon">🚀</div>
-    <div class="info">
-      <h3>AI 生产力情报</h3>
-      <p>黑科技 · Agent · 套利线索</p>
-      <div class="time">9:00 更新</div>
+  <!-- 头部 -->
+  <div class="header">
+    <h1>日推情报中心</h1>
+    <div class="hint">点卡片直达今日份报告 · 每天 9:00 自动刷新</div>
+  </div>
+
+  <!-- 今日卡片 -->
+  <div class="grid">
+
+    <a class="card news" id="link-news" href="#">
+      <div class="icon">📺</div>
+      <div class="info">
+        <h3>新闻联播简报</h3>
+        <p>每日风向标解读</p>
+        <div class="time">9:00 更新</div>
+      </div>
+    </a>
+
+    <a class="card ai" id="link-ai" href="#">
+      <div class="icon">🚀</div>
+      <div class="info">
+        <h3>AI 生产力情报 <span class="new-badge">NEW</span></h3>
+        <p>黑科技 · Agent · 套利线索</p>
+        <div class="time">9:00 更新</div>
+      </div>
+    </a>
+
+    <a class="card food" id="link-food" href="#">
+      <div class="icon">🍳</div>
+      <div class="info">
+        <h3>食研日推</h3>
+        <p>行业要闻 · 爆品雷达 · 跨界灵感</p>
+        <div class="time">9:00 更新</div>
+      </div>
+    </a>
+
+    <a class="card money" id="link-money" href="#">
+      <div class="icon">💰</div>
+      <div class="info">
+        <h3>财商日推 <span class="new-badge">NEW</span></h3>
+        <p>回到那一天 · 概念卡 · 今日行动</p>
+        <div class="time">9:15 更新</div>
+      </div>
+    </a>
+
+    <a class="card fresh" id="link-fresh" href="#">
+      <div class="icon">🌶️</div>
+      <div class="info">
+        <h3>生鲜作战情报</h3>
+        <p>精品风向标 · 行动建议 · 内容日历</p>
+        <div class="time">9:00 更新</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- 历史档案 -->
+  <div class="history">
+    <div class="history-header">
+      <h2>📚 历史档案</h2>
+      <button class="refresh-btn" id="refreshHistory">刷新</button>
     </div>
-  </a>
 
-  <a class="card food" id="link-food" href="#">
-    <div class="icon">🍳</div>
-    <div class="info">
-      <h3>食研日推</h3>
-      <p>行业要闻 · 爆品雷达 · 跨界灵感</p>
-      <div class="time">9:00 更新</div>
+    <div class="hist-col" data-key="news">
+      <button class="hist-col-toggle">
+        <span class="col-name"><span class="dot news"></span> 新闻联播 / AI</span>
+        <span class="col-meta"><span id="count-news">-</span>期 <span class="arrow">▶</span></span>
+      </button>
+      <div class="hist-col-body" id="body-news"></div>
     </div>
-  </a>
 
-  <a class="card money" id="link-money" href="#">
-    <div class="icon">💰</div>
-    <div class="info">
-      <h3>财商日推</h3>
-      <p>回到那一天 · 概念卡 · 今日行动</p>
-      <div class="time">9:15 更新</div>
+    <div class="hist-col" data-key="food">
+      <button class="hist-col-toggle">
+        <span class="col-name"><span class="dot food"></span> 食研日推</span>
+        <span class="col-meta"><span id="count-food">-</span>期 <span class="arrow">▶</span></span>
+      </button>
+      <div class="hist-col-body" id="body-food"></div>
     </div>
-  </a>
 
-  <a class="card fresh" id="link-fresh" href="#">
-    <div class="icon">🌶️</div>
-    <div class="info">
-      <h3>生鲜作战情报</h3>
-      <p>精品风向标 · 行动建议 · 内容日历</p>
-      <div class="time">9:00 更新</div>
+    <div class="hist-col" data-key="money">
+      <button class="hist-col-toggle">
+        <span class="col-name"><span class="dot money"></span> 财商日推</span>
+        <span class="col-meta"><span id="count-money">-</span>期 <span class="arrow">▶</span></span>
+      </button>
+      <div class="hist-col-body" id="body-money"></div>
     </div>
-  </a>
 
-</div>
+    <div class="hist-col" data-key="fresh">
+      <button class="hist-col-toggle">
+        <span class="col-name"><span class="dot fresh"></span> 生鲜情报</span>
+        <span class="col-meta"><span id="count-fresh">-</span>期 <span class="arrow">▶</span></span>
+      </button>
+      <div class="hist-col-body" id="body-fresh"></div>
+    </div>
 
-<div class="footer">
-  <p>每天 9:00 自动生成 · <a href="https://github.com/mryyyyyy/daily-intelligence">GitHub 仓库</a></p>
-  <p style="margin-top:4px;">收藏此页：<strong>mryyyyyy.github.io/daily-intelligence</strong></p>
+    <div id="histStatus" class="hist-loading">点击「刷新」加载历史...</div>
+  </div>
+
+  <div class="footer">
+    <p>每天 9:00 自动生成 · <a href="https://github.com/mryyyyyy/daily-intelligence">GitHub 仓库</a></p>
+    <p style="margin-top:4px;">收藏此页：<strong>mryyyyyy.github.io/daily-intelligence</strong></p>
+  </div>
+
 </div>
 
 <script>
-  // 自动生成今天的日期并填入所有链接
+  // ========== 日期与今日链接 ==========
   (function() {
     var now = new Date();
     var y = now.getFullYear();
     var m = String(now.getMonth() + 1).padStart(2, '0');
     var d = String(now.getDate()).padStart(2, '0');
     var ds = y + '-' + m + '-' + d;
-    var weekdays = ['日', '一', '二', '三', '四', '五', '六'];
+    var weekdays = ['日','一','二','三','四','五','六'];
     var wd = weekdays[now.getDay()];
 
-    document.getElementById('headerDate').textContent = ds + ' 星期' + wd;
+    document.getElementById('dateChip').textContent = ds + ' 星期' + wd;
     document.getElementById('link-news').href = 'daily-news-' + ds + '.html';
     document.getElementById('link-ai').href = 'daily-news-' + ds + '.html';
     document.getElementById('link-food').href = '食研日推-' + ds + '.html';
     document.getElementById('link-money').href = '财商日推-' + ds + '.html';
     document.getElementById('link-fresh').href = '生鲜情报_' + ds + '.html';
   })();
+
+  // ========== 天气（默认北京，Open-Meteo 免费无需 Key） ==========
+  (function() {
+    // 天气代码 -> emoji + 描述
+    var wmap = {
+      0: ['☀️', '晴'],
+      1: ['🌤️', '多云'],
+      2: ['⛅', '多云'],
+      3: ['☁️', '阴'],
+      45: ['🌫️', '雾'],
+      48: ['🌫️', '雾凇'],
+      51: ['🌦️', '小雨'],
+      53: ['🌦️', '小雨'],
+      55: ['🌧️', '中雨'],
+      61: ['🌧️', '小雨'],
+      63: ['🌧️', '中雨'],
+      65: ['⛈️', '大雨'],
+      71: ['🌨️', '小雪'],
+      73: ['🌨️', '中雪'],
+      75: ['❄️', '大雪'],
+      77: ['🌨️', '雪'],
+      80: ['🌦️', '阵雨'],
+      81: ['🌧️', '阵雨'],
+      82: ['⛈️', '雷阵雨'],
+      95: ['⛈️', '雷雨'],
+      96: ['⛈️', '雷雨冰雹'],
+      99: ['⛈️', '强雷雨']
+    };
+    // 默认北京坐标
+    var lat = 39.9042, lon = 116.4074, city = '北京';
+    fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon + '&current_weather=true')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        var w = data.current_weather;
+        var code = w.weathercode;
+        var info = wmap[code] || ['🌡️', '未知'];
+        var icon = info[0], desc = info[1];
+        document.getElementById('weatherText').textContent = city + ' ' + Math.round(w.temperature) + '°C ' + desc;
+        document.querySelector('#weatherChip .w-icon').textContent = icon;
+      })
+      .catch(function() {
+        document.getElementById('weatherText').textContent = city + ' 天气加载失败';
+      });
+  })();
+
+  // ========== 历史档案 ==========
+  var HIST_KEY = 'dailyHist_v1';
+  var TTL = 1000 * 60 * 60 * 6; // 缓存6小时
+
+  // 文件名 -> 栏目
+  function classify(name) {
+    if (/^daily-news-\d{4}-\d{2}-\d{2}\.html$/.test(name)) return 'news';
+    if (/^食研日推-\d{4}-\d{2}-\d{2}\.html$/.test(name)) return 'food';
+    if (/^财商日推-\d{4}-\d{2}-\d{2}\.html$/.test(name)) return 'money';
+    if (/^生鲜情报_\d{4}-\d{2}-\d{2}\.html$/.test(name)) return 'fresh';
+    return null;
+  }
+  // 提取日期
+  function extractDate(name) {
+    var m = name.match(/(\d{4}-\d{2}-\d{2})/);
+    return m ? m[1] : null;
+  }
+
+  function renderHistory(groups, today) {
+    var keys = ['news', 'food', 'money', 'fresh'];
+    keys.forEach(function(key) {
+      var list = (groups[key] || []).slice().sort().reverse(); // 倒序，最新在前
+      document.getElementById('count-' + key).textContent = list.length;
+      var body = document.getElementById('body-' + key);
+      if (list.length === 0) {
+        body.innerHTML = '<span style="color:#555;font-size:12px;">暂无历史</span>';
+        return;
+      }
+      body.innerHTML = list.map(function(d) {
+        var prefix = {news: 'daily-news-', food: '食研日推-', money: '财商日推-', fresh: '生鲜情报_'}[key];
+        var isToday = d === today;
+        return '<a class="hist-link' + (isToday ? ' today' : '') + '" href="' + prefix + d + '.html">' + d + '</a>';
+      }).join('');
+    });
+    document.getElementById('histStatus').textContent = '✅ 已加载历史档案';
+  }
+
+  function loadHistory(force) {
+    // 检查缓存
+    if (!force) {
+      try {
+        var cached = JSON.parse(localStorage.getItem(HIST_KEY) || 'null');
+        if (cached && Date.now() - cached.t < TTL) {
+          renderHistory(cached.g, cached.today);
+          return;
+        }
+      } catch(e) {}
+    }
+
+    document.getElementById('histStatus').textContent = '加载中...';
+
+    // 用 GitHub Trees API（一次性拿到所有文件路径）
+    fetch('https://api.github.com/repos/mryyyyyy/daily-intelligence/git/trees/master?recursive=1')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        var groups = {news: [], food: [], money: [], fresh: []};
+        var today = new Date();
+        var tds = today.getFullYear() + '-' + String(today.getMonth()+1).padStart(2,'0') + '-' + String(today.getDate()).padStart(2,'0');
+
+        (data.tree || []).forEach(function(item) {
+          var p = item.path;
+          var base = p.split('/').pop();
+          var key = classify(base);
+          if (!key) return;
+          var d = extractDate(base);
+          if (d) groups[key].push(d);
+        });
+
+        try {
+          localStorage.setItem(HIST_KEY, JSON.stringify({t: Date.now(), g: groups, today: tds}));
+        } catch(e) {}
+        renderHistory(groups, tds);
+      })
+      .catch(function(err) {
+        document.getElementById('histStatus').textContent = '❌ 加载失败，请点「刷新」重试';
+      });
+  }
+
+  // 默认加载（用缓存）
+  loadHistory(false);
+
+  // 刷新按钮
+  document.getElementById('refreshHistory').addEventListener('click', function() {
+    loadHistory(true);
+  });
+
+  // 折叠交互
+  document.querySelectorAll('.hist-col-toggle').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      btn.parentElement.classList.toggle('open');
+    });
+  });
 </script>
 
 </body>
