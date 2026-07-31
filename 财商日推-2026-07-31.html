@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>财商日推 · 2026-07-31</title>
+<style>
+  :root {
+    --bg: #11100e;
+    --card-bg: #1a1712;
+    --card-border: #2e2820;
+    --text: #d4c9b8;
+    --text-dim: #8a8070;
+    --gold: #c9a84c;
+    --gold-bright: #e6c864;
+    --gold-pale: #f5e6c8;
+    --red: #c9554a;
+    --red-soft: #d97766;
+    --green: #5a9e6f;
+    --green-soft: #7ec08a;
+    --blue: #5a8db8;
+    --purple: #9b7ec4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Serif SC", serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    font-size: 15px;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(160deg, #1a160c 0%, #0f0e0a 40%, #14110c 70%, #1a150e 100%);
+    border-bottom: 1px solid #3a3020;
+    padding: 32px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before { content: ''; position: absolute; top: -20%; right: -5%; width: 520px; height: 520px; background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 65%); border-radius: 50%; }
+  .hero::after { content: ''; position: absolute; bottom: -35%; left: -10%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(230,200,100,0.04) 0%, transparent 60%); border-radius: 50%; }
+  .hero-inner { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--gold);
+    padding: 4px 14px; border-radius: 18px;
+    font-size: 12.5px; font-weight: 600; letter-spacing: 1px; margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-size: 28px; font-weight: 800;
+    color: var(--gold-pale); letter-spacing: 1px; margin-bottom: 4px;
+  }
+  .hero .sub { color: var(--text-dim); font-size: 13.5px; line-height: 1.7; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; font-size: 12px; color: var(--text-dim); }
+  .hero-meta span { background: rgba(255,255,255,0.04); padding: 3px 10px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 24px 20px; display: flex; flex-direction: column; gap: 16px; }
+
+  .takeaway-bar {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(150,120,60,0.05));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 12px; padding: 14px 20px;
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .takeaway-bar .ta-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+  .takeaway-bar .ta-label { font-size: 11px; color: var(--gold); letter-spacing: 2px; font-weight: 700; margin-bottom: 3px; }
+  .takeaway-bar .ta-text { font-size: 14px; color: var(--gold-pale); font-weight: 600; line-height: 1.7; }
+
+  .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; overflow: hidden; }
+  .card-header { padding: 14px 20px; border-bottom: 1px solid var(--card-border); display: flex; align-items: center; gap: 10px; }
+  .card-header .icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+  .card-header h2 { font-size: 16px; font-weight: 700; letter-spacing: 0.5px; }
+  .card-body { padding: 20px; }
+
+  /* ===== 回到那一天 ===== */
+  .sec-back .card-header { background: linear-gradient(135deg, #1f1a0e 0%, #1a1712 100%); }
+  .sec-back .icon { background: rgba(201,168,76,0.13); color: var(--gold); }
+  .sec-back .card-header h2 { color: var(--gold-bright); }
+
+  .scene-narrative {
+    background: linear-gradient(170deg, rgba(201,168,76,0.06), rgba(60,40,20,0.03));
+    border: 1px solid rgba(201,168,76,0.2);
+    border-left: 4px solid var(--gold);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 18px;
+  }
+  .scene-narrative .sn-title {
+    font-size: 14px; font-weight: 800; color: var(--gold-bright);
+    margin-bottom: 10px; letter-spacing: 1px;
+  }
+  .scene-narrative .sn-body {
+    font-size: 13.5px; color: var(--text); line-height: 1.95;
+  }
+  .scene-narrative .sn-body p { margin-bottom: 10px; }
+  .scene-narrative .sn-body strong { color: var(--gold-pale); }
+
+  .snapshot-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 720px) { .snapshot-head { grid-template-columns: 1fr; } }
+  .snapshot-item {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(201,168,76,0.18);
+    border-radius: 10px; padding: 12px 14px;
+  }
+  .snapshot-item .s-label {
+    font-size: 11px; color: var(--text-dim); letter-spacing: 1px; margin-bottom: 4px;
+  }
+  .snapshot-item .s-val {
+    font-size: 19px; font-weight: 800; color: var(--gold-bright);
+  }
+  .snapshot-item .s-val.red { color: var(--red-soft); }
+  .snapshot-item .s-note {
+    font-size: 11.5px; color: var(--text-dim); margin-top: 6px; line-height: 1.55;
+  }
+
+  .news-stream-title {
+    font-size: 12.5px; font-weight: 700; color: var(--red-soft);
+    letter-spacing: 1.5px; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .news-stream-title::before {
+    content: ''; width: 8px; height: 8px;
+    background: var(--red-soft); border-radius: 50%;
+    animation: blink 1.4s infinite;
+  }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .news-item {
+    background: rgba(0,0,0,0.25);
+    border-left: 3px solid var(--red-soft);
+    border-radius: 6px; padding: 11px 14px;
+    margin-bottom: 8px; font-size: 13px; line-height: 1.7; color: var(--text);
+  }
+  .news-item .n-source {
+    display: inline-block;
+    background: rgba(217,119,102,0.15); color: var(--red-soft);
+    padding: 1px 8px; border-radius: 4px;
+    font-size: 10.5px; font-weight: 700; margin-right: 8px; letter-spacing: 0.5px;
+  }
+  .news-item strong { color: var(--gold-pale); }
+  .news-item .n-anno {
+    display: block; margin-top: 6px; font-size: 11.5px;
+    color: var(--text-dim); font-style: italic; padding-left: 4px;
+  }
+  .news-item .n-anno::before { content: '💡 '; }
+
+  .dashboard {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 10px; overflow: hidden; margin: 14px 0;
+  }
+  .dash-title {
+    background: rgba(201,168,76,0.08);
+    padding: 9px 16px; font-size: 12px;
+    color: var(--gold); font-weight: 700; letter-spacing: 1.5px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .dash-row {
+    display: flex; padding: 10px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    align-items: flex-start; gap: 12px;
+  }
+  .dash-row:last-child { border-bottom: none; }
+  .dash-row .dr-label {
+    color: var(--text-dim); font-size: 12px; width: 30%; flex-shrink: 0;
+  }
+  .dash-row .dr-val {
+    color: var(--text); font-weight: 600;
+    font-family: monospace; font-size: 13px; width: 35%; flex-shrink: 0;
+  }
+  .dash-row .dr-val.gold { color: var(--gold-bright); }
+  .dash-row .dr-val.up { color: var(--red-soft); }
+  .dash-row .dr-val.down { color: var(--green-soft); }
+  .dash-row .dr-note {
+    color: var(--text-dim); font-size: 11.5px; line-height: 1.55; flex: 1; font-style: italic;
+  }
+  .dash-row .dr-note::before { content: '↳ '; color: var(--gold); font-style: normal; }
+
+  .voices-title {
+    font-size: 13px; font-weight: 700; color: var(--gold-bright);
+    margin: 14px 0 10px; letter-spacing: 1px;
+  }
+  .voices-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 14px;
+  }
+  @media (max-width: 720px) { .voices-grid { grid-template-columns: 1fr; } }
+  .voice-card { background: rgba(0,0,0,0.2); border-radius: 8px; padding: 12px 14px; border-top: 3px solid; }
+  .voice-card.bull { border-top-color: var(--green-soft); }
+  .voice-card.bear { border-top-color: var(--red-soft); }
+  .voice-card.neutral { border-top-color: var(--blue); }
+  .voice-card .vc-head {
+    font-size: 11px; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px;
+  }
+  .voice-card.bull .vc-head { color: var(--green-soft); }
+  .voice-card.bear .vc-head { color: var(--red-soft); }
+  .voice-card.neutral .vc-head { color: var(--blue); }
+  .voice-card .vc-intro {
+    font-size: 11px; color: var(--text-dim); margin-bottom: 10px;
+    padding-bottom: 8px; border-bottom: 1px dashed rgba(255,255,255,0.05); line-height: 1.5;
+  }
+  .voice-card .vc-quote {
+    font-size: 12.5px; color: var(--text); line-height: 1.65; margin-bottom: 6px; font-style: italic;
+  }
+  .voice-card .vc-from {
+    font-size: 11px; color: var(--text-dim); text-align: right; margin-bottom: 8px;
+  }
+  .voice-card .vc-from strong { color: var(--gold); }
+
+  .decision-block {
+    background: linear-gradient(135deg, rgba(155,126,196,0.08), rgba(120,90,170,0.04));
+    border: 1px solid rgba(155,126,196,0.25);
+    border-radius: 10px; padding: 16px 20px; margin: 14px 0;
+  }
+  .decision-block .d-title {
+    font-size: 13px; font-weight: 700; color: #b8a0e0;
+    margin-bottom: 10px; letter-spacing: 1px; text-align: center;
+  }
+  .decision-block ol { padding-left: 22px; font-size: 13.5px; color: var(--text); line-height: 1.95; }
+  .decision-block ol li { margin-bottom: 3px; }
+
+  .pause-line {
+    text-align: center; padding: 12px; margin: 12px 0;
+    font-size: 14px; color: var(--gold); font-weight: 700;
+    letter-spacing: 2px;
+    border-top: 1px dashed rgba(201,168,76,0.2);
+    border-bottom: 1px dashed rgba(201,168,76,0.2);
+  }
+
+  .result-timeline {
+    background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(30,20,10,0.4));
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 10px; padding: 18px; margin: 14px 0;
+  }
+  .result-timeline .rt-title {
+    font-size: 14px; font-weight: 800; color: var(--gold);
+    margin-bottom: 14px; letter-spacing: 1px;
+  }
+  .rt-item { display: flex; gap: 12px; padding: 6px 0; align-items: flex-start; }
+  .rt-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+  .rt-dot.fall { background: var(--red-soft); }
+  .rt-dot.rise { background: var(--green-soft); }
+  .rt-dot.flat { background: var(--gold); }
+  .rt-body .rt-date { font-size: 12.5px; font-weight: 700; color: var(--gold); margin-bottom: 1px; }
+  .rt-body .rt-text { font-size: 13px; color: var(--text); line-height: 1.7; }
+  .rt-body .rt-text .up { color: var(--green-soft); font-weight: 700; }
+  .rt-body .rt-text .down { color: var(--red-soft); font-weight: 700; }
+
+  /* 四种人结果 */
+  .four-results {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px;
+    padding-top: 14px; border-top: 1px solid rgba(201,168,76,0.12);
+  }
+  @media (max-width: 720px) { .four-results { grid-template-columns: 1fr; } }
+  .fr-item {
+    background: rgba(0,0,0,0.2); padding: 12px 14px; border-radius: 8px;
+    font-size: 12.5px; line-height: 1.7; display: flex; align-items: flex-start; gap: 8px;
+  }
+  .fr-item .fr-icon { flex-shrink: 0; font-size: 16px; }
+
+  .rethink {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(180,140,60,0.04));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 10px; padding: 18px; margin-top: 14px;
+  }
+  .rethink .r-title {
+    font-size: 14px; font-weight: 800; color: var(--gold-bright);
+    margin-bottom: 12px; letter-spacing: 0.5px;
+  }
+  .rethink .r-item {
+    font-size: 13.5px; color: var(--text); line-height: 1.85;
+    padding: 6px 0; display: flex; gap: 10px;
+  }
+  .rethink .r-item .r-num { color: var(--gold); font-weight: 700; flex-shrink: 0; min-width: 22px; }
+  .rethink .r-item strong { color: var(--gold-pale); }
+
+  .boomerang {
+    background: linear-gradient(135deg, rgba(90,141,184,0.06), rgba(70,110,150,0.03));
+    border: 1px solid rgba(90,141,184,0.2);
+    border-radius: 8px; padding: 14px 18px; margin-top: 14px;
+    font-size: 13px; color: var(--text); line-height: 1.85;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .boomerang .b-icon { flex-shrink: 0; font-size: 18px; margin-top: 1px; }
+  .boomerang strong { color: #8ab4d8; }
+
+  /* ===== 概念速览 ===== */
+  .sec-concept .card-header { background: linear-gradient(135deg, #161a18 0%, #1a1712 100%); }
+  .sec-concept .icon { background: rgba(90,158,111,0.12); color: var(--green); }
+  .sec-concept .card-header h2 { color: #7ecf8a; }
+  .concept-card {
+    background: linear-gradient(135deg, rgba(90,158,111,0.05), rgba(70,130,90,0.03));
+    border: 1px solid rgba(90,158,111,0.2);
+    border-radius: 12px; padding: 18px 20px;
+  }
+  .concept-card .cc-intro {
+    font-size: 13px; color: var(--text-dim); margin-bottom: 14px; line-height: 1.7;
+  }
+  .concept-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 720px) { .concept-list { grid-template-columns: 1fr; } }
+  .concept-row {
+    background: rgba(0,0,0,0.25);
+    border-left: 3px solid var(--green-soft);
+    border-radius: 6px; padding: 11px 14px;
+  }
+  .concept-row .cr-term {
+    font-size: 13.5px; font-weight: 700; color: #7ecf8a; margin-bottom: 3px;
+  }
+  .concept-row .cr-def {
+    font-size: 12.5px; color: var(--text-dim); line-height: 1.6;
+  }
+  .concept-row .cr-def strong { color: var(--gold-bright); font-weight: 600; }
+
+  /* ===== 富爸爸 ===== */
+  .sec-rich .card-header { background: linear-gradient(135deg, #1a1510 0%, #1a1712 100%); }
+  .sec-rich .icon { background: rgba(230,200,100,0.12); color: var(--gold-bright); }
+  .sec-rich .card-header h2 { color: var(--gold-pale); }
+  .quote-block {
+    background: linear-gradient(135deg, rgba(230,200,100,0.05), rgba(180,150,80,0.03));
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 12px; padding: 18px 20px;
+  }
+  .quote-text {
+    font-size: 17px; font-weight: 700; color: var(--gold-pale);
+    line-height: 1.8; padding-left: 30px; margin-bottom: 10px;
+    font-style: italic; position: relative;
+  }
+  .quote-text::before {
+    content: '"'; font-size: 38px;
+    color: rgba(201,168,76,0.2); position: absolute;
+    left: 0; top: -8px; font-family: Georgia, serif;
+  }
+  .quote-from { font-size: 13px; color: var(--text-dim); padding-left: 30px; margin-bottom: 14px; }
+  .quote-think {
+    font-size: 13.5px; color: var(--text); line-height: 1.85;
+    padding: 12px 16px; background: rgba(0,0,0,0.2);
+    border-radius: 8px; border-left: 3px solid var(--gold);
+  }
+  .quote-think strong { color: var(--gold-bright); }
+
+  /* ===== 今日行动 ===== */
+  .sec-action .card-header { background: linear-gradient(135deg, #151b20 0%, #1a1712 100%); }
+  .sec-action .icon { background: rgba(90,141,184,0.12); color: var(--blue); }
+  .sec-action .card-header h2 { color: #8ab4d8; }
+  .action-card {
+    background: linear-gradient(135deg, rgba(90,141,184,0.06), rgba(60,110,150,0.03));
+    border: 1px solid rgba(90,141,184,0.2);
+    border-radius: 12px; padding: 18px 20px;
+  }
+  .action-steps {
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px; padding: 14px 16px;
+    font-size: 13px; color: var(--text); line-height: 1.95;
+    border-left: 3px solid var(--blue); margin-bottom: 14px;
+  }
+  .action-steps strong { color: #8ab4d8; }
+  .action-observe { font-size: 13.5px; color: var(--text); line-height: 1.85; margin-bottom: 12px; }
+  .action-think {
+    background: linear-gradient(135deg, rgba(155,126,196,0.06), rgba(120,90,170,0.03));
+    border: 1px solid rgba(155,126,196,0.2);
+    border-radius: 8px; padding: 12px 16px;
+    font-size: 13px; color: var(--text); line-height: 1.8;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .action-think .think-icon { flex-shrink: 0; font-size: 18px; margin-top: 1px; }
+  .action-think strong { color: #b8a0e0; }
+
+  .footer {
+    text-align: center; padding: 24px 20px 18px;
+    color: var(--text-dim); font-size: 12px;
+    border-top: 1px solid var(--card-border);
+    letter-spacing: 0.5px; line-height: 2;
+  }
+  .footer .next-teaser {
+    display: inline-block;
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 20px; padding: 8px 20px; margin-top: 12px;
+    font-size: 12.5px; color: var(--gold);
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">2026年7月31日 星期五 · 第 3 期</div>
+    <h1>财商日推 · 思维健身房</h1>
+    <div class="sub">每天5-10分钟，用真实的市场环境训练你的财商判断力。<br>不荐股、不谈玄学——只还原真实世界的金钱逻辑。</div>
+    <div class="hero-meta">
+      <span>⏱ 8分钟</span>
+      <span>📅 回到1997年7月</span>
+      <span>🏷 股票到底是什么？</span>
+      <span>📖 在读《富爸爸穷爸爸》</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- 今日一句 -->
+<div class="takeaway-bar">
+  <div class="ta-icon">💡</div>
+  <div>
+    <div class="ta-label">今日一句</div>
+    <div class="ta-text">买股票，买的是一个"你相信这门生意十年后还在"的判断——<br>不是一串会涨会跌的数字。</div>
+  </div>
+</div>
+
+<!-- ===== 一、回到那一天 ===== -->
+<div class="card sec-back">
+  <div class="card-header">
+    <div class="icon">⏳</div>
+    <h2>一、回到那一天</h2>
+  </div>
+  <div class="card-body">
+
+    <!-- 情境叙事 -->
+    <div class="scene-narrative">
+      <div class="sn-title">🎬 先把场景装进脑子里</div>
+      <div class="sn-body">
+        <p><strong>如果你回到1997年7月。</strong>你不是穿越去买比特币——你穿越到加利福尼亚州库比蒂诺，站在一栋灰色办公楼前。门牌上写着：Apple Computer Inc.</p>
+        <p><strong>第一，苹果是谁。</strong>1976年，两个史蒂夫（乔布斯和沃兹尼亚克）在车库里造了第一台苹果电脑。1984年推出Macintosh——那个著名的超级碗广告里，一个女运动员把锤子砸向老大哥屏幕。苹果是"反叛者"的代名词。但那是13年前的故事了。</p>
+        <p><strong>第二，过去12年发生了什么。</strong>1985年乔布斯被自己请来的CEO——约翰·斯卡利赶出公司。之后12年，苹果换了三任CEO，推出了几十款产品（Newton掌上电脑、QuickTake相机、各种型号的Mac），但没有一个大卖。1996年苹果亏损10.4亿美元。公司账上现金只够维持90天。股东每天都在赔钱。苹果从"创新先驱"变成了"濒死恐龙"。</p>
+        <p><strong>第三，1997年7月发生了什么。</strong>三个字：<strong>乔布斯回来了。</strong>1996年12月苹果以4.29亿美元收购了乔布斯创立的NeXT公司。1997年7月，董事会赶走了时任CEO吉尔·阿梅里奥，乔布斯被任命为"临时CEO"——办公室门上贴着"iCEO"（interim CEO）的纸条。</p>
+        <p><strong>现在你站在1997年7月。</strong>苹果股价（拆股调整后）每股约<strong>0.16美元</strong>。市值仅约20亿美元——不到今天腾讯的千分之一。全世界都觉得这家公司马上就要死了。</p>
+        <p><strong>这是你今天要回答的问题：</strong>如果你有一笔钱——你会买苹果股票吗？</p>
+      </div>
+    </div>
+
+    <!-- 时间快照 -->
+    <div class="snapshot-head">
+      <div class="snapshot-item">
+        <div class="s-label">当时股价（拆股调整后）</div>
+        <div class="s-val">$0.16</div>
+        <div class="s-note">1997年7月约0.16美元（已按5次拆股调整）。12年前Macintosh发布时约0.10美元。基本没涨。</div>
+      </div>
+      <div class="snapshot-item">
+        <div class="s-label">市值</div>
+        <div class="s-val red">≈20亿美元</div>
+        <div class="s-note">作为对比：当时微软市值约1600亿美元，是苹果的80倍。Dell市值约80亿美元。</div>
+      </div>
+      <div class="snapshot-item">
+        <div class="s-label">1996年亏损</div>
+        <div class="s-val red">−10.4亿美元</div>
+        <div class="s-note">一年亏掉公司市值的50%。账上现金只够撑90天。华尔街说它要破产了。</div>
+      </div>
+    </div>
+
+    <!-- 新闻流 -->
+    <div class="news-stream-title">📰 1997年夏的新闻流</div>
+
+    <div class="news-item">
+      <span class="n-source">华尔街日报 1997.7</span><strong>《苹果CEO阿梅里奥被解职，乔布斯被任命为临时CEO》</strong>
+      <span class="n-anno">这是12年后乔布斯第一次重返苹果。但他只是"临时"CEO——连他自己都不确定能待多久。他的名片上印的是"iCEO"。</span>
+    </div>
+
+    <div class="news-item">
+      <span class="n-source">Dell创始人 1997.10</span><strong>迈克尔·戴尔在公开场合说："如果我是苹果CEO，我会把公司关了，把钱还给股东。"</strong>
+      <span class="n-anno">这句话在当时不是嘲讽——是很多华尔街分析师的真实想法。苹果产品线350多个，没有一个能赚钱。它看起来就像下一个Commodore（1980年代的电脑巨头，1994年破产）。</span>
+    </div>
+
+    <div class="news-item">
+      <span class="n-source">Macworld 1997.8</span><strong>乔布斯宣布微软投资苹果1.5亿美元——全场嘘声一片。</strong>
+      <span class="n-anno">微软投资死对头，条件是苹果把IE设为Mac默认浏览器。乔布斯对台下说："我们必须放下'苹果赢，微软就必须输'的想法。"这是耻辱——但也是最后一根救命稻草。</span>
+    </div>
+
+    <div class="news-item">
+      <span class="n-source">乔布斯 1997.6</span><strong>乔布斯在回归前悄悄卖掉了150万股苹果股票——套现了1.5亿美元。</strong>
+      <span class="n-anno">他先卖了股票，市场恐慌，股价跌到12年最低。然后董事会更绝望，主动请他回来。这是他一生中最冷血也最精明的操作——他自己也没把握苹果能活。</span>
+    </div>
+
+    <div class="news-item">
+      <span class="n-source">公司内部 1997</span><strong>乔布斯回归后第一件事：砍掉350个产品中的340个。</strong>
+      <span class="n-anno">"我们要专注。"他只留了4个产品线：消费级台式、消费级笔记本、专业级台式、专业级笔记本。所有人觉得他疯了——但后来的历史证明这是他最正确的决定。</span>
+    </div>
+
+    <div class="news-item">
+      <span class="n-source">商业周刊 1997</span><strong>《苹果完了吗？》封面故事。同一期的标题包括：《硅谷最危险的人：拉里·埃里森》。</strong>
+      <span class="n-anno">当时所有主流媒体都在给苹果写讣告。没有人——真的没有一个人——预测到它后来会成为全球市值最高的公司。</span>
+    </div>
+
+    <!-- 数据仪表板 -->
+    <div class="dashboard">
+      <div class="dash-title">📊 数据仪表板 · 1997年中期</div>
+      <div class="dash-row">
+        <div class="dr-label">股价（拆股调整后）</div>
+        <div class="dr-val gold">$0.16</div>
+        <div class="dr-note">几乎一文不值。买一股苹果股票甚至不够买一杯咖啡。</div>
+      </div>
+      <div class="dash-row">
+        <div class="dr-label">市值</div>
+        <div class="dr-val up">≈20亿美元</div>
+        <div class="dr-note">只有微软的1/80。Dell的1/4。一家"正在死"的公司。</div>
+      </div>
+      <div class="dash-row">
+        <div class="dr-label">年收入</div>
+        <div class="dr-val up">71亿美元</div>
+        <div class="dr-note">1996年营收71亿，但亏损10.4亿。卖得多亏得多。产品线太散。</div>
+      </div>
+      <div class="dash-row">
+        <div class="dr-label">现金储备</div>
+        <div class="dr-val up">≈12亿美元</div>
+        <div class="dr-note">但有17亿短期债务。净现金是负的。<strong>90天见底</strong>。</div>
+      </div>
+      <div class="dash-row">
+        <div class="dr-label">员工数</div>
+        <div class="dr-val">约10,000人</div>
+        <div class="dr-note">1996年已裁员2700人。乔布斯还会裁掉更多人。办公室空了大半。</div>
+      </div>
+      <div class="dash-row">
+        <div class="dr-label">产品线数量</div>
+        <div class="dr-val up">350+</div>
+        <div class="dr-note">打印机、相机、掌上电脑、显示器、各种Mac型号。多数不赚钱。<strong>乔布斯砍到只剩4个。</strong></div>
+      </div>
+      <div class="dash-row">
+        <div class="dr-label">当日关键词</div>
+        <div class="dr-val">破产 / 乔布斯回归 / 微软救命</div>
+        <div class="dr-note">没有人觉得苹果能活到2000年。<strong>但这恰恰是最好的买入时机。</strong></div>
+      </div>
+    </div>
+
+    <!-- 各派观点 -->
+    <div class="voices-title">🎙 三种声音在打架——1997年的苹果值不值得买？</div>
+    <div class="voices-grid">
+
+      <div class="voice-card bull">
+        <div class="vc-head">🟢 看多派（极少数）</div>
+        <div class="vc-intro">这群人相信乔布斯的"专注"策略。苹果品牌还在，用户忠诚度极高——只是产品太散。</div>
+        <div class="vc-quote">"乔布斯不需要再造一个Macintosh。他只需要把垃圾清理干净。"</div>
+        <div class="vc-from">— 某早期投资者</div>
+        <div class="vc-quote">"苹果用户是整个科技行业最忠诚的一群人。他们还在等一台好机器。"</div>
+        <div class="vc-from">— 某Mac开发者</div>
+        <div class="vc-quote">"微软投了1.5亿。比尔·盖茨不投慈善项目。"</div>
+        <div class="vc-from">— 某华尔街分析师</div>
+      </div>
+
+      <div class="voice-card bear">
+        <div class="vc-head">🔴 看空派（压倒多数）</div>
+        <div class="vc-intro">这群人认为PC战争已经结束了。Windows赢了，Mac输了。苹果最好的结局是被收购。</div>
+        <div class="vc-quote">"我会关了公司，把钱还给股东。"</div>
+        <div class="vc-from">— 迈克尔·戴尔 · <strong>Dell创始人</strong></div>
+        <div class="vc-quote">"苹果的市场份额不到3%。这是不可逆的衰退。"</div>
+        <div class="vc-from">— 华尔街分析师（1997年）</div>
+        <div class="vc-quote">"就算乔布斯回来也救不了——商业模式已经死了。"</div>
+        <div class="vc-from">— 某科技行业评论员</div>
+      </div>
+
+      <div class="voice-card neutral">
+        <div class="vc-head">🔵 观望派</div>
+        <div class="vc-intro">这群人觉得乔布斯确实厉害，但没人知道他能做什么。先看一年再说。</div>
+        <div class="vc-quote">"乔布斯是一个天才——但他的天才在卖电脑上，不是在救公司上。"</div>
+        <div class="vc-from">— 硅谷观察者</div>
+        <div class="vc-quote">"苹果要么被收购，要么等明年看看乔布斯有什么产品。"</div>
+        <div class="vc-from">— 某基金分析师</div>
+      </div>
+
+    </div>
+
+    <!-- 决策挑战 -->
+    <div class="decision-block">
+      <div class="d-title">⏸ 你的决策挑战</div>
+      <ol>
+        <li>你现在有<strong>30万人民币</strong>，1997年你会用它买苹果股票吗？</li>
+        <li>如果买，你愿意拿<strong>多久</strong>？1个月？1年？10年？</li>
+        <li><strong>你买苹果股票的理由是什么？</strong>"乔布斯回来了"够不够？</li>
+        <li>如果你不买——<strong>1998年乔布斯发布iMac后股价涨了3倍</strong>，你会追吗？</li>
+      </ol>
+    </div>
+
+    <div class="pause-line">⏸ 停一下。在心里给自己一个答案，再往下翻。</div>
+
+    <!-- 真实结果 -->
+    <div class="result-timeline">
+      <div class="rt-title">📜 真实结果 · 时间线（如果你在1997年7月买了30万人民币的苹果股票）</div>
+
+      <div class="rt-item">
+        <div class="rt-dot fall"></div>
+        <div class="rt-body">
+          <div class="rt-date">1997年12月 · 最低 $0.12</div>
+          <div class="rt-text">买完之后继续跌25%。市场根本没有因为乔布斯回归就反转。<strong>你刚买完就浮亏7.5万。</strong></div>
+        </div>
+      </div>
+
+      <div class="rt-item">
+        <div class="rt-dot rise"></div>
+        <div class="rt-body">
+          <div class="rt-date">1998年 · iMac发布 · 从$0.12涨至$0.37</div>
+          <div class="rt-text">乔布斯砍掉340个产品后，推出半透明彩色一体机iMac。大卖80万台。<span class="up">年涨208%。</span>你的30万变成了92万。</div>
+        </div>
+      </div>
+
+      <div class="rt-item">
+        <div class="rt-dot rise"></div>
+        <div class="rt-body">
+          <div class="rt-date">1999年 · 互联网泡沫 · 涨至$0.92</div>
+          <div class="rt-text">科技股狂热。<span class="up">年涨149%。</span>你的30万变成了229万。但你开始觉得"这么涨不对"。</div>
+        </div>
+      </div>
+
+      <div class="rt-item">
+        <div class="rt-dot fall"></div>
+        <div class="rt-body">
+          <div class="rt-date">2000年 · 互联网泡沫破裂 · 跌至$0.27</div>
+          <div class="rt-text"><span class="down">年跌71%。</span>你的229万跌到67万。还在赚，但从峰值的92万→67万，<strong>账面损失了162万。</strong>这时候你会不会卖？</div>
+        </div>
+      </div>
+
+      <div class="rt-item">
+        <div class="rt-dot flat"></div>
+        <div class="rt-body">
+          <div class="rt-date">2001-2003年 · 底部横盘 · $0.22-$0.38</div>
+          <div class="rt-text">三年几乎不涨。<strong>你能扛三年不动吗？</strong>ipod发布是2001年，但销量直到2004年才起飞。这三年最考验人。</div>
+        </div>
+      </div>
+
+      <div class="rt-item">
+        <div class="rt-dot rise"></div>
+        <div class="rt-body">
+          <div class="rt-date">2007年 · iPhone发布 · 涨至$7.07</div>
+          <div class="rt-text"><span class="up">10年44倍。</span>你的30万变成1320万。那场Macworld发布会改变了世界——也改变了你的银行账户。</div>
+        </div>
+      </div>
+
+      <div class="rt-item">
+        <div class="rt-dot rise"></div>
+        <div class="rt-body">
+          <div class="rt-date">2011年8月 · 乔布斯去世 · $13.74</div>
+          <div class="rt-text">乔布斯辞职后6周去世。<span class="up">14年86倍。</span>你的30万变成2580万。所有人担心苹果再也没有创新了。</div>
+        </div>
+      </div>
+
+      <div class="rt-item">
+        <div class="rt-dot rise"></div>
+        <div class="rt-body">
+          <div class="rt-date">2026年7月 · 当前 · $294-$334</div>
+          <div class="rt-text"><span class="up">29年约186,000%。</span><strong>30万 → 约5.6亿人民币。</strong>苹果市值约4万亿美元，全球第一。当时嘲笑苹果的Dell，今天市值不到苹果的1/100。</div>
+        </div>
+      </div>
+
+      <!-- 四种人结果 -->
+      <div class="four-results">
+        <div class="fr-item">
+          <span class="fr-icon">🤑</span>
+          <span><strong>1997年买入，持有至今：</strong><span style="color:var(--green-soft);font-weight:700;">30万→5.6亿。</span>29年。几乎没有任何操作。只是买了，然后忘了。</span>
+        </div>
+        <div class="fr-item">
+          <span class="fr-icon">😭</span>
+          <span><strong>2000年泡沫顶点买入：</strong><span style="color:var(--red-soft);font-weight:700;">跌71%后等了5年才回本。</span>即使买的是对的股票——买贵了也要熬5年。</span>
+        </div>
+        <div class="fr-item">
+          <span class="fr-icon">😤</span>
+          <span><strong>2000年大跌时割肉的人：</strong><span style="color:var(--red-soft);font-weight:700;">永久性亏损。</span>2003年苹果从低点涨了1000倍——但他们再也没回来。</span>
+        </div>
+        <div class="fr-item">
+          <span class="fr-icon">🤯</span>
+          <span><strong>听Dell"关公司"建议没买的人：</strong>他们省下了30万——<span style="color:var(--red-soft);font-weight:700;">但也错过了5.6亿。</span>不是做错了什么，是"什么都没做"。</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 复盘 -->
+    <div class="rethink">
+      <div class="r-title">💡 这件事教会我们什么？（三条核心课）</div>
+      <div class="r-item">
+        <span class="r-num">①</span>
+        <span><strong>股票的本质：你买的是一份生意，不是一串数字。</strong>1997年苹果$0.16一股——你花$1.6买10股，等于你拥有10/4,210,000,000的苹果公司。iMac每卖一台，你分到的利润可能是0.0000001美分。但这种"微型所有权"的价值，在29年后涨了186,000%。<strong>股票不是彩票——是你对一家公司的信任投票。如果你不信任这家公司，一分钱都别投。</strong></span>
+      </div>
+      <div class="r-item">
+        <span class="r-num">②</span>
+        <span><strong>方向对了，时机错了，你可能扛不住。</strong>1997年买苹果方向绝对对——但你得扛过2000年跌71%、扛过2001-2003年三年横盘。<strong>大部分人不是方向错了，是心态崩了。</strong>29年的复利需要29年的耐心。复利的魔法从不停工——但大多数人打开了烤箱门。</span>
+      </div>
+      <div class="r-item">
+        <span class="r-num">③</span>
+        <span><strong>逆向思维：当所有人都说"完了"的时候——你至少应该问"为什么"。</strong>1997年所有人都在给苹果写讣告。但没人在问：它有什么别人没有的东西？答：一群世界上最忠诚的用户 + 一个对产品有偏执狂热的创始人 + 一个没人看得懂的未来（数字音乐、智能手机）。<strong>投资的超额收益，永远来自你看到了别人没看到的东西。</strong>如果所有人都觉得好——价格已经反映了一切。</span>
+      </div>
+    </div>
+
+    <!-- 回旋镖 -->
+    <div class="boomerang">
+      <span class="b-icon">🔙</span>
+      <span><strong>回旋镖 · 2026年的对照实验：</strong>今天也有"看起来要完"的好生意。沪深300 PE约11倍（过去7年最低区间），恒生科技跌回2016年水平，一批中国公司的估值处于历史最低。<br><br>
+      不是所有的"便宜"都是苹果——大多数"便宜"是真要完。区分的标准只有一个：<strong>这门生意10年后还在不在？它有没有别人无法复制的东西？</strong><br><br>
+      苹果1997年有"用户忠诚度"和"乔布斯"。你的标的有什么？如果你回答不了这个问题——再便宜也别买。如果你能回答——1997年的苹果就是你的模板。</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 二、本期出现的概念速览 ===== -->
+<div class="card sec-concept">
+  <div class="card-header">
+    <div class="icon">📖</div>
+    <h2>二、本期出现的概念速览</h2>
+  </div>
+  <div class="card-body">
+    <div class="concept-card">
+      <div class="cc-intro">下面是今天案例里出现的所有新词，每个用一句话解释。<strong>先混个脸熟，不急着一口气全懂。</strong>以后遇到再回头看。</div>
+      <div class="concept-list">
+
+        <div class="concept-row">
+          <div class="cr-term">股票（Stock）</div>
+          <div class="cr-def"><strong>定义：</strong>公司所有权的一份凭证。买了1股苹果 = 你拥有苹果公司的1/N。它本身不能吃不能用——<strong>但它代表你对这家公司未来利润的一份索取权。</strong></div>
+        </div>
+
+        <div class="concept-row">
+          <div class="cr-term">市值（Market Cap）</div>
+          <div class="cr-def"><strong>计算：</strong>股价 × 总股数。<strong>含义：</strong>市场认为这家公司值多少钱。1997年苹果市值20亿美元（"快死了"），2026年4万亿美元（全球第一）。<strong>市值是市场对"你信不信它"的投票。</strong></div>
+        </div>
+
+        <div class="concept-row">
+          <div class="cr-term">拆股（Stock Split）</div>
+          <div class="cr-def"><strong>概念：</strong>把1股拆成多股，股价等比例降低。<strong>苹果拆过5次</strong>（1987、2000、2005、2014、2020），最近一次是2020年1拆4。<strong>如果你有一张100元的钞票，换成10张10元——总数没变。拆股就是这个意思。</strong></div>
+        </div>
+
+        <div class="concept-row">
+          <div class="cr-term">破产（Bankruptcy）</div>
+          <div class="cr-def"><strong>概念：</strong>公司资不抵债，法院介入清算。1997年苹果账上现金只够90天——濒临破产。<strong>区别："快破产" ≠ "一定会破产"。</strong>微软投了1.5亿救它。但大多数濒临破产的公司确实死了。</div>
+        </div>
+
+        <div class="concept-row">
+          <div class="cr-term">商业模式（Business Model）</div>
+          <div class="cr-def"><strong>概念：</strong>公司怎么赚钱、为什么能持续赚钱。<strong>苹果的模式：</strong>卖硬件赚钱（Mac/iPod/iPhone）+ 锁住生态（App Store 30%抽成）+ 品牌溢价（就是比别家贵还卖得好）。理解商业模式，你才知道"困难"是暂时的还是永久的。</div>
+        </div>
+
+        <div class="concept-row">
+          <div class="cr-term">逆向投资</div>
+          <div class="cr-def"><strong>概念：</strong>在所有人恐慌时买入，所有人贪婪时卖出。<strong>1997年苹果是教科书级的逆向投资。</strong>但"逆向"的风险：你要比别人更懂这门生意——否则你不是逆向，是逆天。</div>
+        </div>
+
+        <div class="concept-row">
+          <div class="cr-term">股东/董事会</div>
+          <div class="cr-def"><strong>概念：</strong><strong>股东</strong> = 持有股票的人（你买了1股也是股东）。<strong>董事会</strong> = 股东选出来的决策层，可以炒掉CEO。1997年苹果董事会炒了阿梅里奥、请回乔布斯——这就是"股东在行使权力"。</div>
+        </div>
+
+        <div class="concept-row">
+          <div class="cr-term">IPO与上市</div>
+          <div class="cr-def"><strong>概念：</strong>公司第一次向公众（就是你）发行股票叫<strong>IPO</strong>（首次公开募股）。苹果1980年上市。上市之后，任何人都可以在交易所买卖它的股票。<strong>上市 = 从前只有创始人能当老板，现在你也可以。</strong></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 三、富爸爸一句话 ===== -->
+<div class="card sec-rich">
+  <div class="card-header">
+    <div class="icon">💬</div>
+    <h2>三、富爸爸一句话</h2>
+  </div>
+  <div class="card-body">
+    <div class="quote-block">
+      <div class="quote-text">穷人和中产阶级为钱工作，富人让钱为他们工作。</div>
+      <div class="quote-from">—— 罗伯特·清崎《富爸爸穷爸爸》</div>
+      <div class="quote-think">
+        <strong>和今天案例的联系：</strong><br>
+        1997年买了苹果股票的人，在这29年里<strong>一秒钟都没为这笔钱工作过。</strong>他们只是在1997年做了一个决定——"我信任乔布斯和这家公司"——然后这笔钱自己长了1860倍。<br><br>
+        那1997年没买的人呢？他们也在工作——每天8小时，周末加班，升职加薪。29年过去了，<strong>他们用时间换了工资，买了苹果股票的人用判断换了自由。</strong><br><br>
+        这就是富爸爸整本书的核心：<strong>资产就是"不需要你亲自到场就能帮你赚钱"的东西。</strong>你的工资不是资产——你一旦不上班，它就停了。你的苹果股票是资产——你在睡觉，iMac在卖，利润在归你。你什么也没做。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 四、今日行动 ===== -->
+<div class="card sec-action">
+  <div class="card-header">
+    <div class="icon">🔧</div>
+    <h2>四、今日行动</h2>
+  </div>
+  <div class="card-body">
+    <div class="action-card">
+      <div class="action-steps">
+        <strong>📱 打开同花顺App</strong><br>
+        → 在搜索栏输入 <strong>"510300"</strong>（沪深300ETF，也叫"华泰柏瑞沪深300ETF"）<br>
+        → 点进页面 → 找到 <strong>"F10"</strong> 或 <strong>"资料"</strong> → 点 <strong>"基金概况"</strong><br>
+        → 找到 <strong>"跟踪指数"</strong> 这一栏 → 你会看到它跟踪的是 <strong>"沪深300指数"</strong><br>
+        → 记下当前 <strong>基金净值</strong>（就是每股的价格，大约在4-5元之间）<br>
+        → 回到K线图，拉到 <strong>"3年"</strong> 或 <strong>"5年"</strong> 时间范围
+      </div>
+      <div class="action-observe">
+        <strong>你看到了什么？</strong><br>
+        沪深300ETF跟踪的是中国A股最大的300家公司（茅台、宁德时代、招商银行、比亚迪……全在里面）。<strong>买1股ETF（大约4-5元）= 你同时持有这300家公司的一小份。</strong><br><br>
+        对比两组数据：<br>
+        · <strong>余额宝</strong>：7日年化收益率 <strong>0.835%</strong>（天弘余额宝基金，数据来源：天弘基金官网，2026年7月29日）<br>
+        · <strong>沪深300</strong>：当前PE <strong>约11倍</strong>，股权风险溢价超过<strong>5%</strong>（处于历史中位数以上，数据来源：中信建投策略报告 2026年7月28日）<br><br>
+        <strong>这两个数字的含义完全不同：</strong><br>
+        · 余额宝0.835% = 放1万元，一年利息83.5元。旱涝保收，但跑不赢通胀（CPI约0.9-1.3%）。<br>
+        · 沪深300 PE 11倍 = 如果这300家公司盈利不变，11年后"赚回来"。但也可能盈利下滑、股价腰斩——<strong>这不是"保本"的。</strong><br><br>
+        <strong>这就是"资产 vs 现金"的日常版本：</strong>余额宝是现金（几乎零风险、几乎零收益），沪深300ETF是资产（可能涨可能跌、但长期来看可能跑赢通胀）。
+      </div>
+      <div class="action-think">
+        <span class="think-icon">🤔</span>
+        <span><strong>今天的思考题：</strong><br>
+        假设你每月有1000元闲钱。你会选择：<br>
+        🅐 全部放余额宝（稳、低收益）<br>
+        🅑 全部买沪深300ETF（可能跌、可能涨）<br>
+        🅒 500放余额宝 + 500买ETF（分散）<br><br>
+        <strong>没有标准答案。</strong>但有一个问题帮你做决定：<strong>这1000元，你3年内需要用吗？</strong><br>
+        如果需要——选🅐或🅒。<br>
+        如果10年内都用不到——🅑值得认真考虑。<br><br>
+        这和1997年买苹果是同一个逻辑：<strong>你能不能给这笔钱足够长的时间？</strong>复利不会亏待耐心的人。</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>财商日推 · 第 3 期 | 2026年7月31日</p>
+  <p style="margin-top:6px;">⚠️ 不构成投资建议。不推荐任何产品。仅供财商思维训练。</p>
+  <p style="margin-top:4px;color:#555;">📖 本周在读：罗伯特·清崎《富爸爸穷爸爸》</p>
+  <p style="margin-top:8px;font-size:11px;color:#666;">数据来源：Apple Inc. 年报、NASDAQ历史数据、TradingView/Benzinga AAPL历史回报分析、天弘基金官网（余额宝7日年化）、中信建投策略报告（沪深300 PE）、华尔街见闻（A股行情 2026.7.31）</p>
+  <div class="next-teaser">📅 明天：2008年9月15日——雷曼倒闭那一夜，"大到不能倒"为什么是个谎言？</div>
+</div>
+
+</div>
+
+</body>
+</html>
