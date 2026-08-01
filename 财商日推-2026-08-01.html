@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>财商日推 · 2026-08-01</title>
+<style>
+  :root {
+    --bg: #11100e;
+    --card-bg: #1a1712;
+    --card-border: #2e2820;
+    --text: #d4c9b8;
+    --text-dim: #8a8070;
+    --gold: #c9a84c;
+    --gold-bright: #e6c864;
+    --gold-pale: #f5e6c8;
+    --red: #c9554a;
+    --green: #5a9e6f;
+    --blue: #5a8db8;
+    --purple: #9b7ec4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Serif SC", serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    font-size: 15px;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(160deg, #1a160c 0%, #0f0e0a 40%, #14110c 70%, #1a150e 100%);
+    border-bottom: 1px solid #3a3020;
+    padding: 44px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%; right: -5%;
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 65%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -35%; left: -10%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(230,200,100,0.04) 0%, transparent 60%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--gold);
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--gold-pale);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  .hero .sub {
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 16px;
+    font-size: 12.5px;
+    color: var(--text-dim);
+  }
+  .hero-meta span {
+    background: rgba(255,255,255,0.04);
+    padding: 4px 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* ===== CONTAINER ===== */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  /* ===== TAKEAWAY BAR（今日一句） ===== */
+  .takeaway-bar {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(150,120,60,0.05));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 12px;
+    padding: 18px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .takeaway-bar .ta-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    line-height: 1;
+    margin-top: 2px;
+  }
+  .takeaway-bar .ta-label {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .takeaway-bar .ta-text {
+    font-size: 15px;
+    color: var(--gold-pale);
+    font-weight: 600;
+    line-height: 1.7;
+  }
+
+  /* ===== CARD BASE ===== */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .card-header {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--card-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-header .icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 19px;
+    flex-shrink: 0;
+  }
+  .card-header h2 { font-size: 18px; font-weight: 700; letter-spacing: 0.5px; }
+  .card-body { padding: 24px; }
+
+  /* ===== SECTION 1: 回到那一天 ===== */
+  .sec-back .card-header { background: linear-gradient(135deg, #1f1a0e 0%, #1a1712 100%); }
+  .sec-back .icon { background: rgba(201,168,76,0.13); color: var(--gold); }
+  .sec-back .card-header h2 { color: var(--gold-bright); }
+
+  .time-machine { margin-bottom: 0; }
+
+  /* 情境标题区 */
+  .tm-head {
+    margin-bottom: 18px;
+  }
+  .tm-head .tm-date {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--gold-bright);
+    letter-spacing: 1px;
+  }
+  .tm-head .tm-place {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+
+  /* 数据快照 */
+  .tm-snapshot {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .tm-snapshot .snap-item {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 12px 14px;
+    text-align: center;
+  }
+  .snap-item .snap-val {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--gold-bright);
+    margin-bottom: 4px;
+  }
+  .snap-item .snap-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+  }
+
+  /* 背景知识框 */
+  .tm-primer {
+    background: rgba(90,141,184,0.06);
+    border: 1px solid rgba(90,141,184,0.15);
+    border-left: 3px solid var(--blue);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+  .tm-primer strong { color: #8ab4d8; }
+
+  /* 情境画面 */
+  .tm-scene {
+    font-size: 14.5px;
+    color: var(--text);
+    line-height: 1.9;
+    padding: 16px 20px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 10px;
+    border-left: 3px solid var(--gold);
+    margin-bottom: 18px;
+  }
+  .tm-scene strong { color: var(--gold-pale); }
+
+  /* 新闻流 */
+  .tm-news {
+    margin-bottom: 18px;
+  }
+  .tm-news .news-title-bar {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .tm-news .news-item {
+    font-size: 13px;
+    color: var(--text-dim);
+    padding: 4px 0 4px 16px;
+    border-left: 2px solid rgba(255,255,255,0.06);
+    margin-bottom: 4px;
+    line-height: 1.7;
+  }
+  .tm-news .news-item .news-src {
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* 各派观点 */
+  .tm-views {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .tm-views .view-col {
+    background: rgba(0,0,0,0.25);
+    border-radius: 8px;
+    padding: 14px;
+    border-top: 3px solid transparent;
+  }
+  .tm-views .view-col.bull { border-top-color: var(--green); }
+  .tm-views .view-col.bear { border-top-color: var(--red); }
+  .tm-views .view-col.neutral { border-top-color: var(--gold); }
+  .tm-views .view-col .view-label {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .tm-views .view-col .view-label .v-emoji { font-size: 16px; }
+  .tm-views .view-col .view-quote {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .tm-views .view-col .view-quote:last-child { border-bottom: none; padding-bottom: 0; }
+  .tm-views .view-col .view-quote .v-name {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* 暂停线 */
+  .tm-pause {
+    text-align: center;
+    padding: 16px;
+    margin: 20px 0;
+    font-size: 16px;
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 2px;
+    border-top: 1px dashed rgba(201,168,76,0.2);
+    border-bottom: 1px dashed rgba(201,168,76,0.2);
+    cursor: default;
+  }
+
+  /* 结局揭晓 */
+  .tm-reveal {
+    background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(30,20,10,0.4));
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 10px;
+    padding: 22px;
+    margin-bottom: 18px;
+  }
+  .tm-reveal .reveal-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  /* 时间线可视化 */
+  .tl-item {
+    display: flex;
+    gap: 14px;
+    padding: 8px 0;
+    position: relative;
+  }
+  .tl-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .tl-dot.rise { background: var(--green); }
+  .tl-dot.fall { background: var(--red); }
+  .tl-dot.neutral { background: var(--gold); }
+  .tl-body { flex: 1; }
+  .tl-body .tl-date {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 2px;
+  }
+  .tl-body .tl-text {
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.85;
+  }
+  .tl-body .tl-text .up { color: var(--green); font-weight: 600; }
+  .tl-body .tl-text .down { color: var(--red); font-weight: 600; }
+
+  /* 四种人结果 */
+  .tm-result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(201,168,76,0.12);
+  }
+  .tm-result-grid .r-item {
+    background: rgba(0,0,0,0.2);
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.7;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .tm-result-grid .r-icon { flex-shrink: 0; font-size: 16px; }
+
+  /* 核心课 */
+  .lesson-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(180,140,60,0.04));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 10px;
+    padding: 22px;
+  }
+  .lesson-box .lesson-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--gold-bright);
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+  }
+  .lesson-box .lesson-item {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.9;
+    padding: 8px 0;
+    display: flex;
+    gap: 10px;
+  }
+  .lesson-box .lesson-item .l-num {
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+    min-width: 24px;
+    font-size: 16px;
+  }
+  .lesson-box .lesson-item:last-child { padding-bottom: 0; }
+
+  /* 回旋镖 */
+  .boomerang {
+    background: linear-gradient(135deg, rgba(155,126,196,0.06), rgba(120,90,160,0.03));
+    border: 1px solid rgba(155,126,196,0.15);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-top: 16px;
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.8;
+    border-left: 3px solid var(--purple);
+  }
+  .boomerang .b-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--purple);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+  .boomerang strong { color: #b8a0d8; }
+
+  /* ===== SECTION 2: 概念速览 ===== */
+  .sec-concept .card-header { background: linear-gradient(135deg, #161a18 0%, #1a1712 100%); }
+  .sec-concept .icon { background: rgba(90,158,111,0.12); color: var(--green); }
+  .sec-concept .card-header h2 { color: #7ecf8a; }
+
+  .concept-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .concept-grid .cg-item {
+    background: rgba(90,158,111,0.04);
+    border: 1px solid rgba(90,158,111,0.12);
+    border-radius: 10px;
+    padding: 14px 16px;
+    transition: border-color 0.2s;
+  }
+  .concept-grid .cg-term {
+    font-size: 15px;
+    font-weight: 700;
+    color: #7ecf8a;
+    margin-bottom: 6px;
+  }
+  .concept-grid .cg-def {
+    font-size: 12.5px;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  /* ===== SECTION 3: 富爸爸一句话 ===== */
+  .sec-rich .card-header { background: linear-gradient(135deg, #1a1510 0%, #1a1712 100%); }
+  .sec-rich .icon { background: rgba(230,200,100,0.12); color: var(--gold-bright); }
+  .sec-rich .card-header h2 { color: var(--gold-pale); }
+
+  .quote-block {
+    background: linear-gradient(135deg, rgba(230,200,100,0.05), rgba(180,150,80,0.03));
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 12px;
+    padding: 22px 24px;
+    position: relative;
+  }
+  .quote-block .quote-mark {
+    font-size: 48px;
+    color: rgba(201,168,76,0.2);
+    line-height: 1;
+    position: absolute;
+    top: 12px;
+    left: 18px;
+    font-family: Georgia, serif;
+  }
+  .quote-block .quote-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold-pale);
+    line-height: 1.8;
+    padding-left: 36px;
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+  .quote-block .quote-from {
+    font-size: 13px;
+    color: var(--text-dim);
+    padding-left: 36px;
+    margin-bottom: 18px;
+  }
+  .quote-block .quote-think {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.85;
+    padding: 14px 18px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    border-left: 3px solid var(--gold);
+  }
+  .quote-block .quote-think strong { color: var(--gold-bright); }
+
+  /* ===== SECTION 4: 今日行动 ===== */
+  .sec-action .card-header { background: linear-gradient(135deg, #151a1e 0%, #1a1712 100%); }
+  .sec-action .icon { background: rgba(90,141,184,0.12); color: var(--blue); }
+  .sec-action .card-header h2 { color: #8ab4d8; }
+
+  .action-card {
+    background: linear-gradient(135deg, rgba(90,141,184,0.06), rgba(70,110,150,0.03));
+    border: 1px solid rgba(90,141,184,0.18);
+    border-radius: 12px;
+    padding: 22px 24px;
+  }
+  .action-card .ac-title {
+    font-size: 17px;
+    font-weight: 800;
+    color: #8ab4d8;
+    margin-bottom: 14px;
+  }
+  .action-card .ac-steps {
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+    border-left: 3px solid var(--blue);
+  }
+  .action-card .ac-steps .ac-step {
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 2;
+    padding: 2px 0;
+  }
+  .action-card .ac-steps .ac-step .ac-btn {
+    display: inline-block;
+    background: rgba(90,141,184,0.15);
+    color: #8ab4d8;
+    padding: 0 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 12.5px;
+  }
+  .action-card .ac-see {
+    background: rgba(90,141,184,0.06);
+    border: 1px solid rgba(90,141,184,0.12);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+    line-height: 1.8;
+    color: var(--text);
+  }
+  .action-card .ac-see strong { color: #8ab4d8; }
+  .action-card .ac-think {
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.8;
+    border-left: 3px solid var(--blue);
+  }
+  .action-card .ac-think strong { color: #8ab4d8; }
+
+  /* ===== 本周学习路径 (紫色，仅周一) ===== */
+  .sec-week .card-header { background: linear-gradient(135deg, #1a161e 0%, #1a1712 100%); }
+  .sec-week .icon { background: rgba(155,126,196,0.12); color: var(--purple); }
+  .sec-week .card-header h2 { color: #b8a0d8; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    text-align: center;
+    padding: 28px 20px 20px;
+    color: var(--text-dim);
+    font-size: 12px;
+    border-top: 1px solid var(--card-border);
+    letter-spacing: 0.5px;
+    line-height: 2;
+  }
+  .footer .next-teaser {
+    display: inline-block;
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 20px;
+    padding: 8px 20px;
+    margin-top: 12px;
+    font-size: 12.5px;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+  }
+
+  /* 数据来源标注 */
+  .source-tag {
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+    margin-top: 2px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HERO ==================== -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">2026年8月1日 周六 · 第 4 期</div>
+    <h1>财商日推 · 思维健身房</h1>
+    <div class="sub">每天5分钟，用历史的眼睛训练未来的判断力。<br>不荐股、不谈玄学——只还原真实世界的金钱逻辑。</div>
+    <div class="hero-meta">
+      <span>⏱ 8分钟</span>
+      <span>🏷 本期关键词：系统性风险 · 杠杆</span>
+      <span>📖 在读《富爸爸穷爸爸》</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== BODY ==================== -->
+<div class="container">
+
+<!-- ===== 今日一句 ===== -->
+<div class="takeaway-bar">
+  <div class="ta-icon">💡</div>
+  <div>
+    <div class="ta-label">今日一句</div>
+    <div class="ta-text">"大而不倒"是个神话。<br>158年的公司，一个周末就可以消失。</div>
+  </div>
+</div>
+
+<!-- ===== 一、回到那一天 ===== -->
+<div class="card sec-back">
+  <div class="card-header">
+    <div class="icon">⏳</div>
+    <h2>一、回到那一天</h2>
+  </div>
+  <div class="card-body">
+    <div class="time-machine">
+
+      <!-- 情境标题 -->
+      <div class="tm-head">
+        <div class="tm-date">2008年9月15日</div>
+        <div class="tm-place">纽约曼哈顿第七大道745号 · 雷曼兄弟总部31楼</div>
+      </div>
+
+      <!-- 数据快照 -->
+      <div class="tm-snapshot">
+        <div class="snap-item">
+          <div class="snap-val">$0.21</div>
+          <div class="snap-label">雷曼股价（上周五$3.65）</div>
+        </div>
+        <div class="snap-item">
+          <div class="snap-val">$639B</div>
+          <div class="snap-label">雷曼总资产</div>
+        </div>
+        <div class="snap-item">
+          <div class="snap-val">31x</div>
+          <div class="snap-label">杠杆倍数（总资产/权益）</div>
+        </div>
+      </div>
+
+      <!-- 背景知识 -->
+      <div class="tm-primer">
+        <strong>📝 先花20秒补个背景：</strong>雷曼兄弟不是一家普通公司。它成立于1850年，比爱迪生发明电灯还早29年。它经历过美国内战、1929年大萧条、两次世界大战、1987年股灾——都活下来了，华尔街人称"不死鸟"。到2008年，它是美国第四大投资银行，全球25000名员工。它最赚钱的业务是<strong>把次贷打包成债券卖给别人</strong>。什么叫次贷？就是借给信用差、收入低的人买房的钱。这些贷款被打包、切片、评级，变成看起来像AAA的金融产品。雷曼在这一行做到了天下第一——2007年它承销的抵押贷款证券比任何一家公司都多，手里攥着850亿美元的次贷相关资产，是其股东权益的4倍。
+      </div>
+
+      <!-- 新闻流 -->
+      <div class="tm-news">
+        <div class="news-title-bar">📰 那个周末的新闻流（9月12日-14日）</div>
+        <div class="news-item">"韩国产业银行终止收购雷曼兄弟股权谈判" <span class="news-src">—— 路透社 9月10日</span></div>
+        <div class="news-item">"雷曼兄弟第三季度预亏39亿美元，启动大规模高层重组" <span class="news-src">—— 中国证券报 9月11日</span></div>
+        <div class="news-item">"穆迪警告：若无法找到战略伙伴，将下调雷曼信用评级" <span class="news-src">—— 华尔街日报 9月11日</span></div>
+        <div class="news-item">"保尔森反对用纳税人资金救助雷曼兄弟" <span class="news-src">—— CNBC 9月13日</span></div>
+        <div class="news-item">"美国银行、巴克莱银行相继放弃收购雷曼" <span class="news-src">—— 金融时报 9月14日</span></div>
+        <div class="news-item">"美联储紧急召集华尔街巨头商议自救方案，79小时倒计时" <span class="news-src">—— 纽约时报 9月13日</span></div>
+        <div class="news-item">"雷曼现金仅剩10亿美元，周一若无救援将申请破产" <span class="news-src">—— 彭博社 9月14日</span></div>
+      </div>
+
+      <!-- 各派观点 -->
+      <div class="tm-views">
+        <div class="view-col bull">
+          <div class="view-label"><span class="v-emoji">🟢</span> 看多派</div>
+          <div class="view-quote">"雷曼兄弟受挫但未倒下，准备恢复获利！流动性及资本状况仍然稳健。"<span class="v-name">—— 摩根士丹利研究报告，2008年6月（3个月后雷曼破产）</span></div>
+          <div class="view-quote">"我已经准备好再次看涨市场了！房地产市场将开始显示出触底的重要迹象。"<span class="v-name">—— 某华尔街投资顾问，2008年8月底</span></div>
+          <div class="view-quote">"随着原油价格走低，消费者终于得到喘息空间，经济将收复失地并开始复苏。"<span class="v-name">—— 某大宗商品策略师，2008年9月初 [来源：中国经济网]</span></div>
+        </div>
+        <div class="view-col bear">
+          <div class="view-label"><span class="v-emoji">🔴</span> 看空派</div>
+          <div class="view-quote">"雷曼兄弟的倒闭将引发一场全球'风险重估'，美股很可能跌去30%。"<span class="v-name">—— 谢国忠，独立经济学家，《每日经济新闻》2008年9月17日</span></div>
+          <div class="view-quote">"美林1美元的CDO最终只收回0.05美元。雷曼的CDO清算价格只会更低。"<span class="v-name">—— 谢国忠，同上</span></div>
+          <div class="view-quote">"雷曼的抵押贷款资产组合规模庞大，杠杆率极高，市场信心已经崩溃。"<span class="v-name">—— 穆迪评级声明，2008年9月11日</span></div>
+        </div>
+        <div class="view-col neutral">
+          <div class="view-label"><span class="v-emoji">🟡</span> 观望/逆向</div>
+          <div class="view-quote">"坏消息是投资者的好朋友。它帮你创造机会，让你打折买一份未来。"<span class="v-name">—— 沃伦·巴菲特，一个月后发表于《纽约时报》</span></div>
+          <div class="view-quote">"如果你等到知更鸟的到来，你将错过整个春天。"<span class="v-name">—— 巴菲特，同上，《买入美国，正当时》</span></div>
+          <div class="view-quote">"雷曼规模虽大，但真正的问题是市场已是惊弓之鸟，恐慌会自我实现。"<span class="v-name">—— 多位交易员口述 [来源：新浪财经 复盘文章]</span></div>
+        </div>
+      </div>
+
+      <!-- 情境画面 -->
+      <div class="tm-scene">
+        你坐在电脑前，看着雷曼的股价。<br>
+        上周五收盘价 <strong>$3.65</strong>——从2007年最高点 <strong>$86.18</strong> 已经跌去了95.8%。<br>
+        现在凌晨1:45，一条新闻弹出来：<strong>雷曼兄弟申请破产保护。</strong><br><br>
+        你的第一反应是什么？<br><br>
+        🅐 "158年的公司说倒就倒？赶紧把手上的银行股全卖了！"<br>
+        🅑 "4万亿美元市值蒸发开始……A股也会被拖下水，清仓。"<br>
+        🅒 "巴菲特说'别人恐慌时贪婪'——现在就是'别人恐慌'的时刻。"<br>
+        🅓 "这东西离我太远了，跟我有什么关系？"
+      </div>
+
+      <!-- 暂停 -->
+      <div class="tm-pause">⏸ 停一下。你的答案是什么？再往下翻。</div>
+
+      <!-- 结局揭晓 -->
+      <div class="tm-reveal">
+        <div class="reveal-title">📜 结局揭晓 · 时间线</div>
+
+        <div class="tl-item">
+          <div class="tl-dot fall"></div>
+          <div class="tl-body">
+            <div class="tl-date">9月15日 周一</div>
+            <div class="tl-text">雷曼申请破产。道指暴跌<span class="down">504点（-4.42%）</span>，为9·11以来最大���日跌幅。雷曼股价从$3.65跌到$0.21，<span class="down">单日跌93%</span>，周二停牌。来源：Investopedia, Britannica</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot fall"></div>
+          <div class="tl-body">
+            <div class="tl-date">9月16日 周二</div>
+            <div class="tl-text">A股开盘暴跌，上证综指<span class="down">跌4.47%</span>。同日美国政府宣布<span class="up">850亿美元</span>救助AIG（它"太大不能倒"��。来源：中国证券报、同花顺</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot fall"></div>
+          <div class="tl-body">
+            <div class="tl-date">9月17日 周三</div>
+            <div class="tl-text">历史性事件：货币市场基金Reserve Primary Fund"跌破净值"（跌破1美元），投资者恐慌性赎回。全球商业票据市场冻结——连通用电气都借不到短期资金。来源：Federal Reserve historical records</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot fall"></div>
+          <div class="tl-body">
+            <div class="tl-date">9月29日 周一</div>
+            <div class="tl-text">美国国会否决TARP救助法案。道指暴跌<span class="down">778点（-7.0%）</span>，创当时历史最大单日点数跌幅。来源：NYSE historical data</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot fall"></div>
+          <div class="tl-body">
+            <div class="tl-date">10月28日</div>
+            <div class="tl-text">上证综指触底<span class="down">1664点</span>。从2007年10月6124点算起，<span class="down">跌了72.8%</span>。全球"熊王"称号花落A股。同日中国央行两个月内第五次降息。来源：同花顺、央行公告</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot rise"></div>
+          <div class="tl-body">
+            <div class="tl-date">2009年9月15日（一年后）</div>
+            <div class="tl-text">A股1435只可比股票中，<span class="up">98.7%回到雷曼时刻之上</span>。沪深300指数<span class="up">涨幅58.5%</span>。偏股混合型基金指数<span class="up">涨幅45.7%</span>。来源：券商中国、Choice金融终端</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot rise"></div>
+          <div class="tl-body">
+            <div class="tl-date">2018年9月15日（十年后）</div>
+            <div class="tl-text">A股1435只股票中，<span class="up">56.7%涨幅超1倍</span>，<span class="up">23%涨幅超3倍</span>，<span class="up">45只涨幅超10倍</span>（含茅台、恒生电子、中国软件等）。来源：券商中国统计</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot neutral"></div>
+          <div class="tl-body">
+            <div class="tl-date">2022年9月28日</div>
+            <div class="tl-text">雷曼兄弟破产清算<strong>最终完成</strong>，历时14年。债权人共收回<span class="up">1150亿美元</span>。雷曼CEO富尔德后来创办了一家私人财富管理公司。来源：Britannica</div>
+          </div>
+        </div>
+
+        <!-- 四种人结果 -->
+        <div class="tm-result-grid">
+          <div class="r-item">
+            <span class="r-icon">😱</span>
+            <span><strong>恐慌卖出的人：</strong>在1664点清仓。锁定了<span style="color:var(--red);font-weight:700;">-72.8%</span>的永久亏损。一年后看涨回来，但手里已经没有筹码。</span>
+          </div>
+          <div class="r-item">
+            <span class="r-icon">💀</span>
+            <span><strong>持有雷曼股票的人：</strong><span style="color:var(--red);font-weight:700;">血本无归</span>。包括雷曼25000名员工——他们的退休金账户里大量持有公司股票。</span>
+          </div>
+          <div class="r-item">
+            <span class="r-icon">🚀</span>
+            <span><strong>逆向买入的人：</strong>在恐慌中买入优质资产。<span style="color:var(--green);font-weight:700;">一年后大概率翻倍</span>，十年后23%概率涨3倍以上。巴菲特2008年10月宣布个人账户满仓股票。</span>
+          </div>
+          <div class="r-item">
+            <span class="r-icon">😌</span>
+            <span><strong>什么都没做的人：</strong>保住了工作（如果没被裁员），但也没买任何便宜货。18年后回头看，<strong>最大的损失不是亏钱，是"在场外"。</strong></span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 核心课 -->
+      <div class="lesson-box">
+        <div class="lesson-title">🔍 这件事教会我们什么？</div>
+        <div class="lesson-item">
+          <span class="l-num">①</span>
+          <span><strong>"大而不倒"是个神话。</strong>158年历史、6390亿资产、25000员工——一个周末就没了。决定公司生死的是现金流和杠杆，不是品牌和年资。雷曼31倍杠杆意味着资产跌3%，股东权益就清零。所以富爸爸说：<strong>控制你的杠杆，否则杠杆控制你。</strong></span>
+        </div>
+        <div class="lesson-item">
+          <span class="l-num">②</span>
+          <span><strong>恐慌是真的，但"恐慌过后"也是真的。</strong>雷曼时刻当天卖出A股的人，锁定了亏损。一年后，98.7%的股票涨回来了。不是"抄底"有多高明，而是<br><strong>市场恐慌时，资产价格会跌到远低于它本来的价值</strong>——只要你买的是真实的资产（不是雷曼自己），只要你扛得住短期波动。</span>
+        </div>
+        <div class="lesson-item">
+          <span class="l-num">③</span>
+          <span><strong>系统性风险不是一个公司的风险，是"一个倒，全部倒"的连锁反应。</strong>雷曼倒了→AIG要倒→货币基金跌破净值→商业票据市场冻结→通用电气借不到钱发工资→实体经济停摆。这就是"系统性"的含义：<strong>当所有人都在同一条船上，一个人的窟窿就是所有人的窟窿。</strong>理解了这个，你就能理解为什么2008年以后全球央行都在拼命"去杠杆"。</span>
+        </div>
+      </div>
+
+      <!-- 回旋镖 -->
+      <div class="boomerang">
+        <div class="b-label">🔙 回旋镖：如果今天是2026年，你能识别"系统性风险"吗？</div>
+        <strong>2023年3月硅谷银行倒闭</strong>——48小时被挤兑420亿美元，是美国史上第二大银行倒闭案。但这次美联储在48小时内出手兜底，没有让它变成"第二个雷曼"。<strong>2008年教会监管者的事，2023年救了你。</strong><br><br>
+        但问题是：<strong>下一个"没有被救"的雷曼会是谁？</strong>当所有人都在说"这次不一样"的时候，系统性风险的种子就已经埋下了。
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== 二、本期概念速览 ===== -->
+<div class="card sec-concept">
+  <div class="card-header">
+    <div class="icon">📖</div>
+    <h2>二、本期出现的概念速览</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="concept-grid">
+      <div class="cg-item">
+        <div class="cg-term">系统性风险</div>
+        <div class="cg-def">一个机构的倒台引发整个金融系统连锁崩溃的风险。雷曼就是导火索。</div>
+      </div>
+      <div class="cg-item">
+        <div class="cg-term">杠杆（Leverage）</div>
+        <div class="cg-def">借钱投资。雷曼31倍杠杆：1块钱本金借30块。涨3%赚一倍，跌3%清零。</div>
+      </div>
+      <div class="cg-item">
+        <div class="cg-term">次贷（Subprime）</div>
+        <div class="cg-def">借给信用差、收入低的人的房贷。打包成债券卖给全球投资者，最终引爆危机。</div>
+      </div>
+      <div class="cg-item">
+        <div class="cg-term">破产保护（Ch.11）</div>
+        <div class="cg-def">企业申请破产后仍可继续运营，由法院监督重组。雷曼申请的是美国史上最大Chapter 11。</div>
+      </div>
+      <div class="cg-item">
+        <div class="cg-term">债务抵押债券（CDO）</div>
+        <div class="cg-def">把房贷打包、切片、评级的金融衍生品。雷曼手里850亿，最终清算价值远低于面值。</div>
+      </div>
+      <div class="cg-item">
+        <div class="cg-term">逆向投资</div>
+        <div class="cg-def">别人恐慌时买入。2008年10月巴菲特发表《买入美国，正当时》，个人账户满仓。</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 三、富爸爸一句话 ===== -->
+<div class="card sec-rich">
+  <div class="card-header">
+    <div class="icon">💬</div>
+    <h2>三、富爸爸一句话</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="quote-block">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">失败者逃避失败，成功者从失败中学习。</div>
+      <div class="quote-from">—— 罗伯特·清崎《富爸爸穷爸爸》</div>
+      <div class="quote-think">
+        <strong>和今天案例的联系：</strong><br>
+        雷曼兄弟的158年历史里充满了失败——但它每次都活过来了，所以才叫"不死鸟"。直到2008年那一次，它没有。<br><br>
+        但雷曼的失败，成了全世界投资者、监管者、央行行长的教科书。2008年之后诞生了《多德-弗兰克法案》、巴塞尔协议III，全球银行的杠杆率被严格限制。硅谷银行2023年倒闭时，监管在48小时内出手——这是雷曼用6390亿美元买来的教训。<br><br>
+        清崎这句话的深意在于：<strong>亏钱不可怕，亏了还不知道为什么亏，才是真的亏。</strong>2008年恐慌中卖出A股的人，如果十年后都没搞懂"当时为什么跌"，那这堂课的学费就白交了。
+        <br><br>
+        <strong>一句话总结：雷曼用158年建了一座大厦，用一个周末把它推倒。但你如果读懂了它的故事，就相当于免费上了全世界最贵的金融课。</strong>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 四、今日行动 ===== -->
+<div class="card sec-action">
+  <div class="card-header">
+    <div class="icon">🔧</div>
+    <h2>四、今日行动</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="action-card">
+      <div class="ac-title">🖥 打开同花顺，看一眼"整个中国股市的体检单"</div>
+
+      <div class="ac-steps">
+        <div class="ac-step">1. 打开<span class="ac-btn">同花顺</span>App</div>
+        <div class="ac-step">2. 顶部搜索框输入 <span class="ac-btn">沪深300</span> 或代码 <span class="ac-btn">000300</span></div>
+        <div class="ac-step">3. 点进去 → 看详情页 → 找到<span class="ac-btn">市盈率（PE）</span></div>
+        <div class="ac-step">4. 再往下翻 → 找到<span class="ac-btn">股息率</span></div>
+        <div class="ac-step">5. 切到<span class="ac-btn">K线图</span> → 选"年K" → 看过去10年的走势</div>
+      </div>
+
+      <div class="ac-see">
+        <strong>你看到了什么？（2026年8月1日实时数据）</strong><br>
+        · 沪深300当前点位：<strong>4,588.2</strong>（今年以来 -1.78%）<br>
+        · 市盈率（PE）：<strong>14.38倍</strong>（处于历史 66% 分位——意味着比历史上66%的时间贵）<br>
+        · 股息率：约 <strong>2.76%</strong><br>
+        · 十年期国债收益率：<strong>1.75%</strong><br>
+        · 对比一下：沪深300股息率（2.76%）已经明显高于国债收益率（1.75%）——这在历史上不常见。<br>
+        <span class="source-tag">数据来源：东方财富 2026年8月1日、理杏仁、中证指数公司</span>
+      </div>
+
+      <div class="ac-think">
+        <strong>💭 思考题（没有标准答案）：</strong><br>
+        沪深300 PE 14.38倍，比历史上66%的时间贵。但它的股息率（2.76%）已经超过了10年国债（1.75%）。<br><br>
+        如果2026年发生"下一个雷曼时刻"，你会做什么？<br>
+        <strong>前提：你手里有10万现金，没有负债，有一份稳定工作。</strong><br>
+        ① 全仓买入沪深300 ETF（当前PE 14.38），赌它长期会涨<br>
+        ② 买国债（1.75%年化），打死不碰股票<br>
+        ③ 一半买指数、一半留现金，跌了再加仓<br>
+        ④ 什么都不做<br><br>
+        <em>提示：2008年雷曼时刻，沪深300 PE跌到了13倍左右。现在PE 14.38——如果发生类似的危机，可能会跌到多少？</em>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="footer">
+  <p>财商日推 · 第 4 期 | 2026年8月1日</p>
+  <p style="margin-top:6px;"><strong>⚠ 免责声明：</strong>不构成投资建议。不推荐任何具体标的。历史表现不代表未来收益。本文仅供财商思维训练，任何投资决策请独立判断。</p>
+  <div class="next-teaser">📅 下周剧透：1997年亚洲金融风暴——索罗斯如何做空泰铢？兼论"空头"到底是怎么回事。</div>
+</div>
+
+</div>
+
+</body>
+</html>
