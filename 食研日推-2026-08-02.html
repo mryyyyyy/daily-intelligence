@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 2026-08-02</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #1a1410;
+    color: #e8ddd0;
+    font-size: 15px;
+    line-height: 1.78;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #2d1f14 0%, #3d2a1a 40%, #2a1a0f 100%);
+    border-bottom: 2px solid #8b5e3c;
+    padding: 36px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -30%; right: -5%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(230,149,66,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -20%; left: -5%;
+    width: 350px; height: 350px;
+    background: radial-gradient(circle, rgba(212,119,56,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(230,149,66,0.15);
+    border: 1px solid rgba(230,149,66,0.3);
+    color: #e69542;
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #f5ead8;
+    margin-bottom: 8px;
+  }
+  .hero .sub {
+    color: #b8a08a;
+    font-size: 14px;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 28px 20px;
+  }
+
+  /* 板块卡片 */
+  .section {
+    background: #231b14;
+    border: 1px solid #3d2e20;
+    border-radius: 14px;
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .section-header {
+    background: linear-gradient(135deg, #2d2217 0%, #231b14 100%);
+    padding: 18px 24px;
+    border-bottom: 1px solid #3d2e20;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-header .icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .section-body {
+    padding: 24px;
+  }
+
+  /* 一、行业要闻 */
+  .sec-news .section-header { border-left: 4px solid #e8713c; }
+  .sec-news .icon { background: rgba(232,113,60,0.15); color: #e8713c; }
+  .sec-news .section-header h2 { color: #f08a5c; }
+
+  /* 二、爆品雷达 */
+  .sec-trend .section-header { border-left: 4px solid #e69542; }
+  .sec-trend .icon { background: rgba(230,149,66,0.15); color: #e69542; }
+  .sec-trend .section-header h2 { color: #e8a85c; }
+
+  /* 三、时令风向 */
+  .sec-season .section-header { border-left: 4px solid #5ba358; }
+  .sec-season .icon { background: rgba(91,163,88,0.15); color: #5ba358; }
+  .sec-season .section-header h2 { color: #6dbd6a; }
+
+  /* 四、跨界灵感 */
+  .sec-cross .section-header { border-left: 4px solid #c0985a; }
+  .sec-cross .icon { background: rgba(192,152,90,0.15); color: #c0985a; }
+  .sec-cross .section-header h2 { color: #d4ae6a; }
+
+  /* 五、脑暴时刻 */
+  .sec-idea .section-header { border-left: 4px solid #b8736a; }
+  .sec-idea .icon { background: rgba(184,115,106,0.15); color: #b8736a; }
+  .sec-idea .section-header h2 { color: #cc8a80; }
+
+  /* 六、展会+新品 */
+  .sec-expo .section-header { border-left: 4px solid #d4883c; }
+  .sec-expo .icon { background: rgba(212,136,60,0.15); color: #d4883c; }
+  .sec-expo .section-header h2 { color: #e09950; }
+
+  /* 条目样式 */
+  .item {
+    margin-bottom: 22px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #2d2217;
+  }
+  .item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .item-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #f5ead8;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .item-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px; height: 24px;
+    background: rgba(230,149,66,0.12);
+    color: #e69542;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .item-body {
+    color: #c8b8a0;
+    font-size: 14px;
+    margin-bottom: 8px;
+    line-height: 1.8;
+  }
+  .item-body strong {
+    color: #f0e0c8;
+    font-weight: 600;
+  }
+
+  /* 与我何干 / 信号强度 / 迁移可能 等标签 */
+  .tag-relevance {
+    background: rgba(232,113,60,0.1);
+    border-left: 3px solid #e8713c;
+    padding: 8px 14px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13.5px;
+    color: #f0a878;
+    margin-top: 6px;
+  }
+  .tag-signal {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 8px;
+  }
+  .sig-green { background: rgba(91,163,88,0.15); color: #6dbd6a; }
+  .sig-yellow { background: rgba(230,149,66,0.15); color: #e69542; }
+  .sig-red { background: rgba(232,113,60,0.15); color: #e8713c; }
+  .tag-opp {
+    background: rgba(91,163,88,0.08);
+    border-left: 3px solid #5ba358;
+    padding: 8px 14px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13.5px;
+    color: #90c88a;
+    margin-top: 6px;
+  }
+  .tag-migrate {
+    background: rgba(192,152,90,0.1);
+    border-left: 3px solid #c0985a;
+    padding: 8px 14px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13.5px;
+    color: #d4ae6a;
+    margin-top: 6px;
+  }
+
+  /* 新品雷达样式 */
+  .new-product {
+    background: linear-gradient(135deg, rgba(212,136,60,0.07), rgba(212,136,60,0.02));
+    border: 1px solid rgba(212,136,60,0.2);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .new-product .np-head {
+    font-size: 15px;
+    font-weight: 700;
+    color: #e09950;
+    margin-bottom: 6px;
+  }
+  .new-product .np-meta {
+    font-size: 12.5px;
+    color: #9a8470;
+    margin-bottom: 10px;
+  }
+  .new-product .np-body {
+    font-size: 13.5px;
+    color: #c8b8a0;
+    line-height: 1.8;
+  }
+  .new-product .np-insight {
+    background: rgba(212,136,60,0.08);
+    border-left: 2px solid #d4883c;
+    padding: 6px 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: #e0b878;
+    margin-top: 10px;
+  }
+
+  /* 脑暴创意卡片 */
+  .idea-card {
+    background: linear-gradient(135deg, rgba(184,115,106,0.08), rgba(184,115,106,0.02));
+    border: 1px solid rgba(184,115,106,0.2);
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 16px;
+  }
+  .idea-card .idea-name {
+    font-size: 17px;
+    font-weight: 800;
+    color: #cc8a80;
+    margin-bottom: 6px;
+  }
+  .idea-card .idea-desc {
+    font-size: 14px;
+    color: #c8b8a0;
+    margin-bottom: 6px;
+  }
+  .idea-card .idea-detail {
+    font-size: 13px;
+    color: #9a8470;
+    line-height: 1.7;
+    margin-top: 8px;
+  }
+  .idea-card .idea-detail strong {
+    color: #c0a080;
+  }
+
+  /* 时令表 */
+  .season-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 12px;
+  }
+  @media (max-width: 700px) { .season-grid { grid-template-columns: 1fr; } }
+  .season-tag {
+    background: rgba(91,163,88,0.08);
+    border: 1px solid rgba(91,163,88,0.18);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .season-tag .st-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #6dbd6a;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .season-tag .st-value {
+    font-size: 14px;
+    color: #c8b8a0;
+  }
+
+  .expo-item {
+    background: rgba(212,136,60,0.05);
+    border: 1px solid rgba(212,136,60,0.12);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    font-size: 13.5px;
+    color: #c8b8a0;
+    line-height: 1.7;
+  }
+  .expo-item strong { color: #e09950; }
+
+  /* 分隔 */
+  .divider {
+    border: none;
+    border-top: 1px solid #3d2e20;
+    margin: 20px 0;
+  }
+
+  .section-label {
+    display: inline-block;
+    background: rgba(212,136,60,0.12);
+    color: #d4883c;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .highlight-box {
+    background: linear-gradient(135deg, rgba(230,149,66,0.07), rgba(230,149,66,0.02));
+    border: 1px solid rgba(230,149,66,0.2);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+  .highlight-box .hl-title {
+    color: #e69542;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .highlight-box .hl-text {
+    color: #c8b8a0;
+    font-size: 13.5px;
+    line-height: 1.8;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 28px;
+    color: #6a5a48;
+    font-size: 12px;
+    border-top: 1px solid #3d2e20;
+    margin-top: 8px;
+  }
+
+  .emoji-bullet { font-size: 16px; margin-right: 4px; }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">2026年8月2日 星期日</div>
+    <h1>食研日推 · 每日行业情报</h1>
+    <div class="sub">大暑第11天 / 距立秋仅5天 / 距中秋约65天 · 下厨房食品品牌产品经理专属</div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ===== 一、今日行业要闻 ===== -->
+<div class="section sec-news">
+  <div class="section-header">
+    <div class="icon">1</div>
+    <h2>今日行业要闻</h2>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-title"><span class="item-num">1</span>「奶油第一股」海融科技1.3亿收购盒马烘焙供应链</div>
+      <div class="item-body">
+        海融科技8月1日公告，以<strong>1.3亿元收购糖盒食品55%股权</strong>。糖盒食品是盒马烘焙背后的供应链公司（盒马持股糖兜科技80%），2025年营收2.09亿、净利润1839万。作为交割条件，海融与盒马签了长期战略协议：<strong>盒马每年保底采购不低于2.1亿元</strong>，合作至2030年底。
+      </div>
+      <div class="tag-relevance">
+        <strong>与我何干：</strong>盒马将烘焙供应链"交出去"换取保底采购的模式值得关注——这意味着盒马正在从"自建工厂"转向"锁定产能"。对下厨房而言，<strong>盒马释放的烘焙品类空间</strong>（尤其是短保、洁净配料方向）正是可切入的缝隙。同时，海融作为"奶油第一股"控股烘焙供应链，说明上游原料企业正在向下游整合，<strong>未来洁净配料原料的稳定供应会更有保障</strong>。
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-title"><span class="item-num">2</span>调味品生产许可审查细则征求意见中，8月21日截止</div>
+      <div class="item-body">
+        市场监管总局起草的《调味品生产许可审查细则（征求意见稿）》正在公开征求意见。核心变化：<strong>新增香辛料调味品、坚果与籽类泥酱、调味糖浆、料酒、水产调味品、复合调味料等7个许可类别</strong>，实现调味品全品类覆盖。对生产场所、设备设施、人员管理、管理制度等提出统一要求，系统强化全过程食品安全风险防控。
+      </div>
+      <div class="tag-relevance">
+        <strong>与我何干：</strong>复合调味料首次被纳入独立许可类别，意味着<strong>合规门槛将显著提高</strong>——生产许可审查更严、小厂出清加速。对下厨房有两个直接影响：①如果计划做自有调味品线（如火锅底料、拌面料包），<strong>现在就要按新规标准设计供应链</strong>；②小厂出清后，OEM供应端可选范围收窄，<strong>提前锁定合规工厂产能是当务之急</strong>。意见反馈截止8.21，值得关注终版细则。
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-title"><span class="item-num">3</span>雀巢咖啡1+2生椰拿铁上市，樊振东代言</div>
+      <div class="item-body">
+        雀巢咖啡8月1日在北京发布<strong>1+2生椰拿铁</strong>新品，签下乒乓球奥运冠军樊振东代言。采用100%进口咖啡豆、深烘冷凝锁香工艺，椰香与咖香融合。京东将独家发售"更好喝椰"礼盒。
+      </div>
+      <div class="tag-relevance">
+        <strong>与我何干：</strong>雀巢推生椰拿铁是速溶咖啡赛道的"防守型创新"——生椰拿铁在现制茶饮/咖啡领域已红海，但在<strong>速溶/即饮</strong>场景仍有空白。对下厨房的启发：<strong>已验证的口味概念迁移到不同消费场景（如从现制→家庭即食），可能是更安全的开品路径</strong>。
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 二、爆品雷达 ===== -->
+<div class="section sec-trend">
+  <div class="section-header">
+    <div class="icon">2</div>
+    <h2>爆品雷达 · 趋势苗头</h2>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-title"><span class="item-num">1</span>茶饮"微醺风"全面爆发 —— 半年啤酒花糖浆出货200吨</div>
+      <div class="item-body">
+        2026年夏天，喜茶（科罗娜联名"微醺黄皮桃"）、瑞幸（绯色月光/可可维也纳）、霸王茶姬（啤酒风味摇摇沙）、古茗（鲜柚生啤3.0%vol）、益禾堂（黄油啤酒系列）等十多个茶饮品牌<strong>集体推出啤酒风味/含酒精饮品</strong>。茶饮原料供应商壹糖天下数据显示，<strong>茶饮专用啤酒花糖浆上半年累计出货突破200吨</strong>，而2025年还只是小范围打样测试阶段。
+        <span class="tag-signal sig-red">已爆</span>
+      </div>
+      <div class="tag-opp">
+        <strong>机会判断：</strong>啤酒风味已经从"尝鲜概念"变成"供应链验证的成熟方向"。世界杯催化了这一波爆发。对下厨房而言，<strong>啤酒风味的零食/即食场景</strong>（如啤酒风味卤味、微醺零食、0酒精派对食品）是尚未被充分开发的品类机会。尤其配料表洁净的"0酒精啤酒风味小吃"，完美契合品牌DNA。
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-title"><span class="item-num">2</span>古茗"马上有米"出圈 —— 米乳+大米冰淇淋=茶咖新范式</div>
+      <div class="item-body">
+        古茗7月推出的有米系列（马上有米拿铁、全冰有米美式、咸乳酪泰有米），用<strong>泰国茉莉香米磨成米乳做咖啡基底，顶部放一整颗大米冰淇淋，9.9元/杯</strong>。社交平台刷屏，"液体大米布丁""超级无敌爆炸好喝"等好评如潮。这标志着茶饮品牌从"奶茶"向"茶咖"转型的加速——古茗目标将咖啡营收占比翻倍至20-25%。
+        <span class="tag-signal sig-yellow">起势</span>
+      </div>
+      <div class="tag-opp">
+        <strong>机会判断：</strong>"米"元素的爆发值得高度关注——从古茗的大米咖啡到Costco的米麵包、米蛋糕，"米"正在成为新一代差异化原料。<strong>米乳/米浆作为基底的概念可迁移到即食甜品、早餐谷物、植物基饮品等品类</strong>。尤其对下厨房而言，"米"天然契合"食材本味"的品牌哲学。
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-title"><span class="item-num">3</span>HPP果汁赛道再扩容 —— 古茗推胡萝卜果蔬汁，纯甄推每日益瓶</div>
+      <div class="item-body">
+        古茗跨界推出<strong>胡萝卜果蔬汁饮料（HPP冷压工艺）</strong>，布局健康饮品。与此同时，蒙牛纯甄推出「每日益瓶BUFF系列」主打精细化健康需求，元气森林上新白桦苏打水切入"白桦树汁"新赛道。
+        <span class="tag-signal sig-yellow">起势</span>
+      </div>
+      <div class="tag-opp">
+        <strong>机会判断：</strong>HPP冷压技术正在从果蔬汁向更多品类渗透。古茗作为茶饮品牌跨界做HPP果蔬汁，说明<strong>HPP技术已不是壁垒，差异化在于原料组合和场景设计</strong>。下厨房可关注HPP在"食材+"场景的应用——如HPP草本汤料、HPP药食同源饮品。
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 三、时令风向 ===== -->
+<div class="section sec-season">
+  <div class="section-header">
+    <div class="icon">3</div>
+    <h2>时令风向 · 品类机会</h2>
+  </div>
+  <div class="section-body">
+
+    <div class="highlight-box">
+      <div class="hl-title">当前时令定位</div>
+      <div class="hl-text">
+        大暑第11天（7.22-8.6），距<strong>立秋（8月7日）仅剩5天</strong>，距<strong>中秋（10月6日）约65天</strong>。处于"夏秋之交"——白天仍热但早晚有凉意，是"贴秋膘预备期"+"中秋礼盒开品窗口"双线并行的关键节点。
+      </div>
+    </div>
+
+    <div class="season-grid">
+      <div class="season-tag">
+        <div class="st-label">即将热卖</div>
+        <div class="st-value"><strong>秋季润燥汤料/甜品</strong>——立秋后"润燥"需求爆发，莲藕、银耳、百合、梨等食材进入消费高峰</div>
+      </div>
+      <div class="season-tag">
+        <div class="st-label">即将热卖</div>
+        <div class="st-value"><strong>中秋礼盒食材</strong>——月饼、坚果、干货、高端水果礼盒。中秋65天倒计时，<strong>开品决策窗口仅剩2-3周</strong></div>
+      </div>
+      <div class="season-tag">
+        <div class="st-label">窗口提醒</div>
+        <div class="st-value"><strong>水蜜桃/晚熟荔枝即将收尾</strong>——无锡阳山湖景蜜露仅剩约7天供应期，抓紧最后窗口</div>
+      </div>
+      <div class="season-tag">
+        <div class="st-label">窗口提醒</div>
+        <div class="st-value"><strong>阳光玫瑰葡萄/翠冠梨正值黄金期</strong>——8月糖度巅峰，中秋礼盒化的需求即将爆发</div>
+      </div>
+      <div class="season-tag">
+        <div class="st-label">产地机会</div>
+        <div class="st-value"><strong>嫩莲藕</strong>——8月初上市，脆嫩多汁、清甜爽口，适合凉拌/清炒/即食甜品。湖北/江苏产区</div>
+      </div>
+      <div class="season-tag">
+        <div class="st-label">产地机会</div>
+        <div class="st-value"><strong>婺城果莲</strong>——金芙蓉3号品种，已打入山姆/胖东来/叮咚，100g售价19.9元。产地直发高端莲子潜力巨大</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 四、跨界灵感 ===== -->
+<div class="section sec-cross">
+  <div class="section-header">
+    <div class="icon">4</div>
+    <h2>跨界灵感 · 创新动作</h2>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-title"><span class="item-num">1</span>Costco抹茶三连发：抹茶柚子芝士蛋糕 + 抹茶卡仕达可颂 + 抹茶生椰奶酪玉米片</div>
+      <div class="item-body">
+        Costco近期集中推出三款抹茶烘焙新品：<strong>科克兰抹茶柚子芝士蛋糕</strong>（抹茶慕斯+橘柚果酱，茶香+果香+芝士三重奏）、<strong>科克兰抹茶卡仕达可颂</strong>（进口黄油开酥+抹茶卡仕达内馅）、<strong>食验室抹茶生椰奶酪玉米片</strong>（贵州高山抹茶）。抹茶成为2026年烘焙/零食赛道的核心主题色。
+      </div>
+      <div class="tag-migrate">
+        <strong>迁移可能：</strong>抹茶+在地食材（如果酱/奶酪/坚果）的配方逻辑，可迁移到下厨房的<strong>即食甜品线</strong>。"贵州高山抹茶"作为国产精品原料的定位，比日本抹茶更有"中国食材"叙事价值。<strong>抹茶+柚子/桂花/茉莉等中式风味</strong>的组合，差异化远大于纯日式抹茶产品。
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-title"><span class="item-num">2</span>日清"冷泡杯面"颠覆60年热汤传统 —— 冷水5分钟即食</div>
+      <div class="item-body">
+        日清食品推出<strong>全球首款"禁止用热水"的杯面</strong>，加入5-10℃冷水静置5分钟即可食用，采用专利"冷水复原技术"。两种口味：香辣泡菜风味和鸡盐柠檬风味，每杯285日元（约14元人民币）。夏季消暑场景精准切入，露营/旅行/应急储备皆宜。
+      </div>
+      <div class="tag-migrate">
+        <strong>迁移可能：</strong>"冷水即食"技术对下厨房的启发——<strong>能否做出冷水即食的"凉泡汤料"或"冷泡粥"？</strong>（如冷水冲泡几分钟就能吃的莲藕银耳羹、绿豆百合汤）。这是我们擅长的食材品类+新技术的跨界结合，且<strong>夏季冷食场景与我们的洁净配料定位天然匹配</strong>。
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-title"><span class="item-num">3</span>华莱士推7款果咖+下午茶套餐，最低5.9元</div>
+      <div class="item-body">
+        华莱士"WA咖啡"系列上新7款风味果咖（柚柚油柑、清甜蜜瓜、爆C香橙、冰镇西瓜等），单价7.9元起，咖啡月卡用户低至5.9元。同步推出"饮品+小食"下午茶套餐（8.9元/9.9元），填充下午2-5点非高峰时段。小红书打卡笔记刷屏。
+      </div>
+      <div class="tag-migrate">
+        <strong>迁移可能：</strong>华莱士用<strong>"极致性价比+场景填充"</strong>策略切咖啡赛道，证明了一个逻辑：<strong>用已有供应链和门店网络做品类延伸，边际成本极低</strong>。对下厨房的启发：如果自有渠道/社群已有稳定用户基础，<strong>可以从"食材"延伸至"即食下午茶"场景</strong>——不一定是咖啡，但可以是"洁净版零食+饮品"组合。
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 五、脑暴时刻 ===== -->
+<div class="section sec-idea">
+  <div class="section-header">
+    <div class="icon">5</div>
+    <h2>脑暴时刻 · 融合创意</h2>
+  </div>
+  <div class="section-body">
+
+    <div class="idea-card">
+      <div class="idea-name">「立秋第一碗」嫩藕银耳桂花即食甜汤</div>
+      <div class="idea-desc">冷水/热水双模式即食甜汤（杯装），选8月初上市嫩莲藕+古田银耳+桂花，立秋节气限定</div>
+      <div class="idea-detail">
+        <strong>为什么是现在：</strong>立秋（8.7）5天后到来，"贴秋膘"话题即将引爆，但现代消费者要的是<strong>"轻贴秋膘"</strong>——不是大油大肉，而是温润滋补。嫩藕正当季，桂花是秋季标志性风味。<br>
+        <strong>差异化锚点：</strong>对标日清"冷泡杯面"的冷水即食逻辑，但做成<strong>甜汤/羹品类</strong>——冷水冲泡也能出胶质感的银耳羹+清脆嫩藕丁，抖音上没有同类产品。<br>
+        <strong>可行性初判：</strong>供应链难度中等（冻干/烘干嫩藕+即溶银耳粉技术成熟），渠道适配度高（杯装方便达播展示，立秋节气天然流量）。
+      </div>
+    </div>
+
+    <div class="idea-card">
+      <div class="idea-name">「微醺小食盒」0酒精啤酒风味卤味拼盘</div>
+      <div class="idea-desc">用啤酒花提取物+天然香料调味的洁净版卤味零食，搭配世界杯场景，0酒精但保留麦芽醇香</div>
+      <div class="idea-detail">
+        <strong>为什么是现在：</strong>茶饮"微醺风"半年啤酒花糖浆出货200吨，证明啤酒风味是全行业验证的爆款方向。世界杯（7-8月）期间，看球零食场景天然需要"啤酒味但不用真喝酒"的产品。古茗"鲜柚生啤"做到3.0%vol都爆，说明消费者对"啤酒味"的接受度极高。<br>
+        <strong>差异化锚点：</strong>市面上卤味全是麻辣/五香/甜辣——没有一款是<strong>啤酒风味的</strong>。用啤酒花提取物（非酒精）+ 天然香料实现麦芽香和微苦的层次，配料表依然干净。不抢紫燕百味鸡的麻辣赛道，切的是"看球时想吃点有酒味但不想喝酒"的独家场景。<br>
+        <strong>可行性初判：</strong>啤酒花提取物国内市场有成熟供应商（茶饮上游已验证），核心是将提取物融入卤味工艺的配比调试，供应链难度中低。抖音达播展示性极强——"不用喝酒的啤酒味卤味"自然引发好奇。
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 六、展会速递·每周新品雷达 ===== -->
+<div class="section sec-expo">
+  <div class="section-header">
+    <div class="icon">6</div>
+    <h2>展会速递 · 每周新品雷达</h2>
+  </div>
+  <div class="section-body">
+
+    <div class="section-label">每周新品速递</div>
+
+    <!-- 新品1 -->
+    <div class="new-product">
+      <div class="np-head">瑞幸「全冰节」全冰去水系列</div>
+      <div class="np-meta">上市时间：7月27日 | 价格带：约15-19元/杯</div>
+      <div class="np-body">
+        <strong>产品力拆解：</strong>将用户自创的"全冰去水"隐藏喝法正式产品化——全冰奶酪美式、全冰黑巧美式、小黄油美式、抹茶丝绒拿铁四款。核心卖点：<strong>高硬度优质冰块缓慢融化4小时，口感更浓郁有层次</strong>。小红书"全冰去水"话题浏览量1376万，全冰系列已累计卖出6000万杯。<br>
+        <strong>场景：</strong>夏季高温消暑 + 追求浓郁口感的咖啡爱好者
+      </div>
+      <div class="np-insight">
+        <strong>启发：</strong>瑞幸将"用户自创喝法→官方产品化"的模式值得学习——<strong>我们能否从下厨房社区中挖掘用户的隐藏吃法/用法，将其产品化为正式SKU？</strong>这比闭门造车式的开品成功率更高，因为需求已经被用户行为验证过了。
+      </div>
+    </div>
+
+    <!-- 新品2 -->
+    <div class="new-product">
+      <div class="np-head">古茗 胡萝卜果蔬汁饮料（HPP冷压）</div>
+      <div class="np-meta">上市时间：7月底 | 价格带：约12-16元</div>
+      <div class="np-body">
+        <strong>产品力拆解：</strong>茶饮品牌古茗首次跨界HPP果蔬汁赛道，推出<strong>胡萝卜果蔬汁饮料</strong>，采用HPP冷压工艺保留营养和风味。古茗全国1.2万+门店的渠道优势是其最大杀手锏——<strong>比传统HPP品牌（如维果清）多了一个"你出门就能买到"的便利性</strong>。<br>
+        <strong>场景：</strong>健康早餐搭配、下午茶替代、运动后补给
+      </div>
+      <div class="np-insight">
+        <strong>启发：</strong>茶饮品牌跨界HPP果蔬汁，说明"HPP=健康"的消费者认知已经建立。对下厨房：<strong>HPP不应只做果汁，可以考虑HPP+汤料/HPP+草本饮品</strong>，用HPP工艺做我们擅长的食材品类，而不是去和茶饮品牌卷水果资源。
+      </div>
+    </div>
+
+    <!-- 新品3 -->
+    <div class="new-product">
+      <div class="np-head">元气森林 白桦苏打水</div>
+      <div class="np-meta">上市时间：7月底-8月初 | 价格带：约5-8元/瓶</div>
+      <div class="np-body">
+        <strong>产品力拆解：</strong>元气森林切入"白桦树汁"新赛道，推出<strong>白桦苏打水</strong>。白桦树汁是近年从北欧/东欧传入的天然植物水概念，主打"天然电解质+抗氧化"，此前主要在跨境电商和高端超市出现。元气森林的入局意味着<strong>白桦树汁从"进口保健品"降维到"大众饮品"</strong>。<br>
+        <strong>场景：</strong>日常补水、运动后电解质补充、健康生活方式
+      </div>
+      <div class="np-insight">
+        <strong>启发：</strong>元气森林的品类扩张逻辑值得抄作业：<strong>找到一个在高端渠道已验证的"新原料概念"→用大厂供应链和渠道将其"大众化"</strong>。对下厨房：我们熟悉的产地特色食材（如鸡头米、果莲、宣莲等）——能否走"大众化"路线，做成即饮/即食产品而非仅卖原料？
+      </div>
+    </div>
+
+    <!-- 新品4 -->
+    <div class="new-product">
+      <div class="np-head">山姆 Member's Mark 白松露鸡腿鸡汤面</div>
+      <div class="np-meta">上市时间：8月新品 | 价格带：约40-60元/盒</div>
+      <div class="np-body">
+        <strong>产品力拆解：</strong>山姆自有品牌Member's Mark推出<strong>白松露鸡腿鸡汤面</strong>，主打"速食中的高端食材"概念。区别于常规方便面的核心差异点：①白松露这一"名贵食材"的加入大大提升价值感；②整只鸡腿而非碎鸡肉；③分装设计便于食用。<br>
+        <strong>场景：</strong>家庭快速正餐、商务简餐、露营美食
+      </div>
+      <div class="np-insight">
+        <strong>启发：</strong>山姆的选品逻辑：<strong>用"高端食材+速食形态"制造价格带真空</strong>——比普通方便面贵但比餐厅便宜，比方便面有面子。下厨房可以参考：<strong>用我们的产地直采优势（如宣莲、鸡头米、樟树港辣椒等），做"高端食材+方便形态"的速食/半成品</strong>，价值感远超普通速食。
+      </div>
+    </div>
+
+    <!-- 新品5 -->
+    <div class="new-product">
+      <div class="np-head">不二家 秋季限定地瓜&栗子系列甜点</div>
+      <div class="np-meta">上市时间：8月4日（日本全国） | 价格带：约200-500日元</div>
+      <div class="np-body">
+        <strong>产品力拆解：</strong>日本不二家抢先迎接秋季，推出"Look""乡村老奶奶""Home Pie Mini"三大经典系列的<strong>地瓜与栗子口味限定版</strong>。采用茨城县"红天使"地瓜与日本栗子制成。在8月初就抢先上市秋季限定，<strong>比真正的秋季早了1-2个月</strong>。<br>
+        <strong>场景：</strong>秋日限定仪式感、伴手礼、季节性零食
+      </div>
+      <div class="np-insight">
+        <strong>启发：</strong>不二家"秋季限定8月就上市"的节奏值得学习——<strong>季节限定产品的上市应该比季节提前2-4周，抢占"期待感"红利</strong>。对下厨房的启示：中秋礼盒不要等到9月才开始推，<strong>8月中旬就应该启动种草</strong>。且"地瓜+栗子=秋季限定"这个搭配在日本高度成熟，国内尚缺少系统性应用。
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section-label">近期展会预告</div>
+
+    <div class="expo-item">
+      <strong>第30届越南国际食品展 Vietfood & Propack</strong><br>
+      时间：8月6日-8日 | 地点：胡志明市<br>
+      <strong>看点：</strong>东南亚食品饮料贸易窗口，越南咖啡/椰子/热带水果供应链值得关注<br>
+      <strong>与我何干：</strong>越南椰子水/椰浆供应链成熟，如有椰子相关产品线可关注原料渠道
+    </div>
+
+    <div class="expo-item">
+      <strong>第19届郑州冷冻冷藏食品博览会</strong><br>
+      时间：8月8日-10日 | 地点：郑州国际会展中心<br>
+      <strong>看点：</strong>冷冻食品全产业链，预制菜/速冻食品/冷链物流<br>
+      <strong>与我何干：</strong>如有冷冻半成品/即食产品线规划，是了解供应链的窗口
+    </div>
+
+    <div class="expo-item">
+      <strong>第36届香港国际美食博览暨香港国际茶展</strong><br>
+      时间：8月13日-15日 | 地点：香港会议展览中心<br>
+      <strong>看点：</strong>全球美食+茶饮大展，中秋礼盒/高端食材的重要选品场<br>
+      <strong>与我何干：</strong>中秋礼盒开品窗口！香港展是高端食品风向标，值得关注礼盒化食材和新口味趋势
+    </div>
+
+    <div class="expo-item">
+      <strong>SIAL西雅国际食品展（深圳）</strong><br>
+      时间：8月31日-9月2日 | 地点：深圳会展中心（福田）<br>
+      <strong>看点：</strong>43国1500+展商，14大主题专区，华南最大食饮交易展<br>
+      <strong>与我何干：</strong>下厨房如计划拓展华南市场或寻找新供应商，这是下半年最重要的展会之一。中秋后的产品线规划可在此展完成选品
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>以上内容由食研日推AI情报系统自动生成，信息来源于公开渠道，仅供参考</p>
+  <p>信源：新浪财经 / FBIF / Foodaily / 餐饮老板内参 / 红餐网 / 快消品网 / Mashed / Costco / SIAL 等</p>
+  <p style="margin-top:8px;">Generated by WorkBuddy 食研日推 · 2026-08-02 09:00 CST</p>
+</div>
+
+</body>
+</html>
