@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>财商日推 · 2026-08-04</title>
+<style>
+  :root {
+    --bg: #11100e;
+    --card-bg: #1a1712;
+    --card-border: #2e2820;
+    --text: #d4c9b8;
+    --text-dim: #8a8070;
+    --gold: #c9a84c;
+    --gold-bright: #e6c864;
+    --gold-pale: #f5e6c8;
+    --red: #c9554a;
+    --green: #5a9e6f;
+    --green-bright: #7ecf8a;
+    --blue: #5a8db8;
+    --blue-bright: #8ab4d8;
+    --purple: #8b7ec8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Serif SC", serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    font-size: 15px;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(160deg, #1a160c 0%, #0f0e0a 40%, #14110c 70%, #1a150e 100%);
+    border-bottom: 1px solid #3a3020;
+    padding: 44px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%; right: -5%;
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 65%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -35%; left: -10%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(230,200,100,0.04) 0%, transparent 60%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--gold);
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--gold-pale);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  .hero .sub {
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 16px;
+    font-size: 12.5px;
+    color: var(--text-dim);
+  }
+  .hero-meta span {
+    background: rgba(255,255,255,0.04);
+    padding: 4px 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* ===== CONTAINER ===== */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  /* ===== TAKEAWAY BAR ===== */
+  .takeaway-bar {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(150,120,60,0.05));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 12px;
+    padding: 18px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .takeaway-bar .ta-icon { font-size: 28px; flex-shrink: 0; line-height: 1; margin-top: 2px; }
+  .takeaway-bar .ta-label {
+    font-size: 11px; color: var(--gold); letter-spacing: 2px; font-weight: 700; margin-bottom: 4px;
+  }
+  .takeaway-bar .ta-text {
+    font-size: 15px; color: var(--gold-pale); font-weight: 600; line-height: 1.7;
+  }
+
+  /* ===== CARD BASE ===== */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .card-header {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--card-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-header .icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 19px;
+    flex-shrink: 0;
+  }
+  .card-header h2 { font-size: 18px; font-weight: 700; letter-spacing: 0.5px; }
+  .card-body { padding: 24px; }
+
+  /* ===== SECTION 1: 回到那一天 (Gold) ===== */
+  .sec-back .card-header { background: linear-gradient(135deg, #1f1a0e 0%, #1a1712 100%); }
+  .sec-back .icon { background: rgba(201,168,76,0.13); color: var(--gold); }
+  .sec-back .card-header h2 { color: var(--gold-bright); }
+
+  .tm-head { margin-bottom: 18px; }
+  .tm-head .tm-date {
+    font-size: 24px; font-weight: 800; color: var(--gold-bright); letter-spacing: 1px;
+  }
+  .tm-head .tm-place { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+
+  /* 三列数据卡片 */
+  .tm-snapshot {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .tm-snap-item {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+  }
+  .tm-snap-item .snap-val {
+    font-size: 22px; font-weight: 800; color: var(--gold-bright);
+  }
+  .tm-snap-item .snap-label {
+    font-size: 12px; color: var(--text-dim); margin-top: 4px;
+  }
+
+  /* 背景知识框 */
+  .tm-primer {
+    background: rgba(90,141,184,0.06);
+    border: 1px solid rgba(90,141,184,0.15);
+    border-left: 3px solid var(--blue);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+  .tm-primer strong { color: var(--blue-bright); }
+
+  /* 情境画面 */
+  .tm-scene {
+    font-size: 14.5px;
+    color: var(--text);
+    line-height: 1.9;
+    padding: 16px 20px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 10px;
+    border-left: 3px solid var(--gold);
+    margin-bottom: 18px;
+  }
+  .tm-scene strong { color: var(--gold-pale); }
+
+  /* 暂停线 */
+  .tm-pause {
+    text-align: center;
+    padding: 16px;
+    margin: 20px 0;
+    font-size: 16px;
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 2px;
+    border-top: 1px dashed rgba(201,168,76,0.2);
+    border-bottom: 1px dashed rgba(201,168,76,0.2);
+    cursor: default;
+  }
+
+  /* 结局揭晓 */
+  .tm-reveal {
+    background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(30,20,10,0.4));
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 10px;
+    padding: 22px;
+    margin-bottom: 18px;
+  }
+  .tm-reveal .reveal-title {
+    font-size: 15px; font-weight: 800; color: var(--gold); letter-spacing: 1px; margin-bottom: 16px;
+  }
+
+  /* 时间线 */
+  .tl-item {
+    display: flex; gap: 14px; padding: 8px 0; position: relative;
+  }
+  .tl-dot {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 6px;
+  }
+  .tl-dot.rise { background: var(--green); }
+  .tl-dot.fall { background: var(--red); }
+  .tl-dot.neutral { background: var(--gold); }
+  .tl-body { flex: 1; }
+  .tl-body .tl-date { font-size: 13px; font-weight: 700; color: var(--gold); margin-bottom: 2px; }
+  .tl-body .tl-text { font-size: 13.5px; color: var(--text); line-height: 1.85; }
+  .tl-body .tl-text .up { color: var(--green); font-weight: 600; }
+  .tl-body .tl-text .down { color: var(--red); font-weight: 600; }
+
+  /* 四种人结果 */
+  .tm-result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(201,168,76,0.12);
+  }
+  .tm-result-grid .r-item {
+    background: rgba(0,0,0,0.2);
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.7;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .tm-result-grid .r-icon { flex-shrink: 0; font-size: 16px; }
+
+  /* 核心课 */
+  .lesson-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(180,140,60,0.04));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 10px;
+    padding: 22px;
+  }
+  .lesson-box .lesson-title {
+    font-size: 15px; font-weight: 800; color: var(--gold-bright); margin-bottom: 16px; letter-spacing: 0.5px;
+  }
+  .lesson-box .lesson-item {
+    font-size: 14px; color: var(--text); line-height: 1.9; padding: 8px 0; display: flex; gap: 10px;
+  }
+  .lesson-box .lesson-item .l-num {
+    color: var(--gold); font-weight: 700; flex-shrink: 0; min-width: 24px; font-size: 16px;
+  }
+  .lesson-box .lesson-item:last-child { padding-bottom: 0; }
+
+  /* 回旋镖 */
+  .boomerang {
+    background: rgba(90,141,184,0.06);
+    border: 1px solid rgba(90,141,184,0.18);
+    border-left: 3px solid var(--blue);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.85;
+    margin-top: 16px;
+  }
+  .boomerang strong { color: var(--blue-bright); }
+
+  /* ===== SECTION 2: 概念速览 (Green) ===== */
+  .sec-concept .card-header { background: linear-gradient(135deg, #161a18 0%, #1a1712 100%); }
+  .sec-concept .icon { background: rgba(90,158,111,0.12); color: var(--green); }
+  .sec-concept .card-header h2 { color: var(--green-bright); }
+
+  .concept-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .concept-item {
+    background: linear-gradient(135deg, rgba(90,158,111,0.04), rgba(70,130,90,0.02));
+    border: 1px solid rgba(90,158,111,0.12);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .concept-item .c-term {
+    font-size: 14.5px; font-weight: 700; color: var(--green-bright); margin-bottom: 4px;
+  }
+  .concept-item .c-def {
+    font-size: 12.5px; color: var(--text-dim); line-height: 1.7;
+  }
+
+  /* ===== SECTION 3: 富爸爸一句话 (Gold) ===== */
+  .sec-rich .card-header { background: linear-gradient(135deg, #1a1510 0%, #1a1712 100%); }
+  .sec-rich .icon { background: rgba(230,200,100,0.12); color: var(--gold-bright); }
+  .sec-rich .card-header h2 { color: var(--gold-pale); }
+
+  .quote-block {
+    background: linear-gradient(135deg, rgba(230,200,100,0.05), rgba(180,150,80,0.03));
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 12px;
+    padding: 22px 24px;
+    position: relative;
+  }
+  .quote-block .quote-mark {
+    font-size: 48px; color: rgba(201,168,76,0.2); line-height: 1;
+    position: absolute; top: 12px; left: 18px; font-family: Georgia, serif;
+  }
+  .quote-block .quote-text {
+    font-size: 18px; font-weight: 700; color: var(--gold-pale); line-height: 1.8;
+    padding-left: 36px; margin-bottom: 14px; font-style: italic;
+  }
+  .quote-block .quote-from {
+    font-size: 13px; color: var(--text-dim); padding-left: 36px; margin-bottom: 18px;
+  }
+  .quote-block .quote-think {
+    font-size: 14px; color: var(--text); line-height: 1.85;
+    padding: 14px 18px; background: rgba(0,0,0,0.2); border-radius: 8px; border-left: 3px solid var(--gold);
+  }
+  .quote-block .quote-think strong { color: var(--gold-bright); }
+
+  /* ===== SECTION 4: 今日行动 (Blue) ===== */
+  .sec-action .card-header { background: linear-gradient(135deg, #15181c 0%, #1a1712 100%); }
+  .sec-action .icon { background: rgba(90,141,184,0.12); color: var(--blue-bright); }
+  .sec-action .card-header h2 { color: var(--blue-bright); }
+
+  .action-steps {
+    margin-bottom: 16px;
+  }
+  .action-step {
+    display: flex; gap: 12px; padding: 8px 0; align-items: flex-start;
+  }
+  .action-step .step-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(90,141,184,0.15);
+    color: var(--blue-bright);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; flex-shrink: 0;
+  }
+  .action-step .step-text { font-size: 14px; color: var(--text); line-height: 1.8; flex: 1; }
+
+  .action-observe {
+    background: rgba(90,141,184,0.06);
+    border: 1px solid rgba(90,141,184,0.15);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px; color: var(--text); line-height: 1.85;
+  }
+  .action-observe strong { color: var(--blue-bright); }
+
+  .action-think {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(90,141,184,0.2);
+    border-radius: 10px;
+    padding: 16px 18px;
+    font-size: 14px; color: var(--text); line-height: 1.85;
+    border-left: 3px solid var(--blue-bright);
+  }
+  .action-think strong { color: var(--blue-bright); }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    text-align: center;
+    padding: 28px 20px 20px;
+    color: var(--text-dim);
+    font-size: 12px;
+    border-top: 1px solid var(--card-border);
+    letter-spacing: 0.5px;
+    line-height: 2;
+  }
+  .footer .next-teaser {
+    display: inline-block;
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 20px;
+    padding: 8px 20px;
+    margin-top: 12px;
+    font-size: 12.5px;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== DATA SOURCE TAG ===== */
+  .src-tag {
+    font-size: 11px;
+    color: var(--text-dim);
+    opacity: 0.6;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    .tm-snapshot { grid-template-columns: 1fr; }
+    .tm-result-grid { grid-template-columns: 1fr; }
+    .concept-grid { grid-template-columns: 1fr; }
+    .hero { padding: 28px 20px; }
+    .hero h1 { font-size: 24px; }
+    .container { padding: 20px 12px; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HERO ==================== -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">2026年8月4日 星期二 · 第 7 期</div>
+    <h1>财商日推 · 思维健身房</h1>
+    <div class="sub">每天5分钟，用历史的眼睛训练未来的判断力。<br>不荐股、不谈玄学——只还原真实世界的金钱逻辑。</div>
+    <div class="hero-meta">
+      <span>⏱ 6分钟</span>
+      <span>🏷 本期关键词：通货膨胀 · 法币 · 金本位</span>
+      <span>📖 在读《富爸爸穷爸爸》</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== BODY ==================== -->
+<div class="container">
+
+<!-- ===== 今日一句 ===== -->
+<div class="takeaway-bar">
+  <div class="ta-icon">💡</div>
+  <div>
+    <div class="ta-label">今日一句</div>
+    <div class="ta-text">如果你在1971年把1万美元塞进床垫——<br>55年后，它只能买当年1300块钱的东西。</div>
+  </div>
+</div>
+
+<!-- ===== 一、回到那一天 ===== -->
+<div class="card sec-back">
+  <div class="card-header">
+    <div class="icon">⏳</div>
+    <h2>一、回到那一天</h2>
+  </div>
+  <div class="card-body">
+
+    <!-- 标题 -->
+    <div class="tm-head">
+      <div class="tm-date">1971年8月15日，星期日</div>
+      <div class="tm-place">美国华盛顿 · 白宫椭圆形办公室 → 全球电视机前</div>
+    </div>
+
+    <!-- 三列数据快照 -->
+    <div class="tm-snapshot">
+      <div class="tm-snap-item">
+        <div class="snap-val">$35</div>
+        <div class="snap-label">黄金官价/盎司<br><span class="src-tag">1944-1971年不变</span></div>
+      </div>
+      <div class="tm-snap-item">
+        <div class="snap-val">$110亿</div>
+        <div class="snap-label">美国黄金储备<br><span class="src-tag">vs $520亿海外美元负债</span></div>
+      </div>
+      <div class="tm-snap-item">
+        <div class="snap-val">5.8%</div>
+        <div class="snap-label">美国CPI通胀率（1970）<br><span class="src-tag">来源：BLS CPI-U</span></div>
+      </div>
+    </div>
+
+    <!-- 背景知识 -->
+    <div class="tm-primer">
+      <strong>📝 先花20秒补个背景：</strong>从1944年到今天之前，全世界用的钱有一个"锚"——<strong>黄金</strong>。美国承诺：任何外国政府拿着35美元，就能换走1盎司黄金。美元 = 黄金，黄金 = 美元。这不是市场交易，是<strong>法律承诺</strong>。但1971年的美国，黄金只剩110亿美元，海外流通的美元却高达520亿。这意味着——每1盎司黄金的承诺背后，压着4.7倍的欠条。戴高乐派军舰去纽约运黄金，西德央行一次换走上百吨。<strong>这个"锚"撑不住了。</strong>
+    </div>
+
+    <!-- 情境画面 -->
+    <div class="tm-scene">
+      晚上9点，全美三大电视网中断正常节目。<br>
+      美国总统尼克松出现在屏幕上。<br><br>
+      <strong>"我命令财政部长，暂时中止美元兑换黄金和其他储备资产。"</strong><br><br>
+      ——"暂时"。这个词后来持续了55年，至今未恢复。<br><br>
+      电视机前的观众并不清楚这句话意味着什么。但第二天，全球外汇市场停摆。东京市场美元暴跌，西德马克、日元暴涨。黄金从35美元冲向43美元。<br><br>
+      法国《世界报》第二天头版标题：<strong>"美国撕毁了它对世界的承诺。"</strong><br><br>
+      <strong>你眼前的画面：</strong><br>
+      · 伦敦金市关闭两周，没人知道金价应该是多少<br>
+      · 芝加哥商品交易所紧急推出黄金期货——因为"价格"这个概念本身刚被发明出来<br>
+      · 美国同时冻结全国工资和物价90天——在和平时期，自由市场经济做这种事，前所未有<br>
+      · 戴高乐在1967年就预言了这一刻，他已经派人把法国的美元换成了金条运回巴黎<br><br>
+      <strong>你自己坐在1971年8月14日，手里有10,000美元。</strong><br>
+      明天尼克松就要讲话了，但你现在还不知道。你的选择是：<br>
+      A. 存银行定期（年利率5%）<br>
+      B. 换成黄金（$35/盎司 → 约285盎司）<br>
+      C. 买美国国债<br>
+      D. 买一栋房子（当时美国房价中位数约$25,000）
+    </div>
+
+    <!-- 暂停 -->
+    <div class="tm-pause">⏸ 停一下。选好了吗？往下翻看结果。</div>
+
+    <!-- 结局揭晓 -->
+    <div class="tm-reveal">
+      <div class="reveal-title">📜 结局揭晓 · 时间线</div>
+
+      <div class="tl-item">
+        <div class="tl-dot neutral"></div>
+        <div class="tl-body">
+          <div class="tl-date">1971年8月15日 当天</div>
+          <div class="tl-text">尼克松宣布三大措施：关闭黄金窗口、冻结工资物价90天、对所有进口商品加征10%附加税。全球市场休克。美元指数暴跌，黄金从官价$35跳至市场价$43。</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot neutral"></div>
+        <div class="tl-body">
+          <div class="tl-date">1971年12月</div>
+          <div class="tl-text">G10签署《史密森协议》，黄金官价从$35调至<span class="up">$38/盎司</span>。美元贬值7.89%。尼克松称这是"世界历史上最伟大的货币协议"——6个月后协议作废。</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot rise"></div>
+        <div class="tl-body">
+          <div class="tl-date">1973年2月</div>
+          <div class="tl-text">美元再贬10%，黄金官价调至<span class="up">$42.22</span>。3月，西欧日本宣布汇率自由浮动。布雷顿森林体系<strong>正式死亡</strong>。黄金冲破<span class="up">$100/盎司</span>。</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot rise"></div>
+        <div class="tl-body">
+          <div class="tl-date">1974-1979年</div>
+          <div class="tl-text">第一次石油危机爆发（1973年10月），油价从$3涨到$12。美国CPI在1974年达到<span class="down">11.04%</span>，1979年<span class="down">11.35%</span>。黄金一路从$200涨到$500+。美国国债从1970年4000亿美元增长到1979年接近1万亿。</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot rise"></div>
+        <div class="tl-body">
+          <div class="tl-date">1980年1月21日</div>
+          <div class="tl-text">苏联入侵阿富汗 + 伊朗人质危机 + 两位数通胀。黄金触及<span class="up">$852/盎司</span>。<strong>从$35到$852，不到9年，涨24倍。</strong>来源：LBMA伦敦金市数据。</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot rise"></div>
+        <div class="tl-body">
+          <div class="tl-date">2026年1月</div>
+          <div class="tl-text">黄金创历史新高<span class="up">$5,603/盎司</span>。<strong>从$35到$5,603，55年涨160倍。</strong>年化收益率约9.6%。同期美元购买力下降87.7%——$1在1971年能买的东西，2026年需要$8.14才能买到。来源：BLS CPI-U / saving.org。</div>
+        </div>
+      </div>
+
+      <!-- 四种人结果 -->
+      <div class="tm-result-grid">
+        <div class="r-item">
+          <span class="r-icon">🥇</span>
+          <span><strong style="color:var(--gold-bright);">换成黄金的人：</strong>$10,000买285盎司。到2026年1月价值约<span style="color:var(--green);font-weight:700;">$160万</span>（按ATH$5,603）。即使按当前$4,100算，也值<span style="color:var(--green);font-weight:700;">$117万</span>。</span>
+        </div>
+        <div class="r-item">
+          <span class="r-icon">🥈</span>
+          <span><strong style="color:var(--gold-bright);">买房的人：</strong>$10,000首付不够全款，假设用杠杆。1971年美国房价中位数$25,000，2026年约$420,000——涨17倍。如果付了40%首付+贷款，杠杆后回报更高。但房子要交房产税、维修费。</span>
+        </div>
+        <div class="r-item">
+          <span class="r-icon">😐</span>
+          <span><strong style="color:var(--gold-bright);">买国债/定存的人：</strong>55年复利约5%算，$10,000 → 约$146,000。名义上赚了14倍，但<strong style="color:var(--red);">实际购买力只涨了约75%</strong>——因为55年物价涨了8倍多。来源：FRED长期国债收益率数据。</span>
+        </div>
+        <div class="r-item">
+          <span class="r-icon">😢</span>
+          <span><strong style="color:var(--gold-bright);">塞床垫的人：</strong>$10,000还是$10,000——<strong style="color:var(--red);">但购买力只剩$1,230</strong>。55年什么都没做，钱自己蒸发了87.7%。这不是被盗了。这叫通货膨胀。</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 核心课 -->
+    <div class="lesson-box">
+      <div class="lesson-title">🔍 这件事教会我们什么？</div>
+      <div class="lesson-item">
+        <span class="l-num">①</span>
+        <span><strong>货币不是"钱"，是"借条"。</strong>35美元能换1盎司黄金，是因为美国政府承诺。承诺撕毁后，同样的35美元连0.01盎司都买不到。关键不在于"美元"本身——在于<strong>发行美元的人是否守信</strong>。1971年8月15日，世界上最强大的国家告诉全世界：我的承诺可以撤回。</span>
+      </div>
+      <div class="lesson-item">
+        <span class="l-num">②</span>
+        <span><strong>通货膨胀不是意外，是系统设计。</strong>法币体系下，央行有天然动力多印钱——打仗要印、救市要印、选举前要印。1971年美国通胀率4.38%，看似不高。但55年复利下来，购买力蒸发了87.7%。通胀像白蚁——单看一口不痛，但它不停地在咬你的钱。</span>
+      </div>
+      <div class="lesson-item">
+        <span class="l-num">③</span>
+        <span><strong>"存钱"不等于"保住钱"。</strong>1971年存$10,000在银行，名义上会变成$146,000，听起来赚了。但1971年一杯咖啡$0.25，2026年一杯咖啡$5——物价涨了20倍，你的钱只涨了14倍。<strong>你实际上亏了。</strong>关键不是"有多少钱"，是"能买多少东西"。</span>
+      </div>
+    </div>
+
+    <!-- 回旋镖 -->
+    <div class="boomerang">
+      <strong>🔙 回旋镖：如果今天是"1971年"？</strong><br>
+      2026年8月4日，COMEX黄金期货报$4,110.90/盎司，余额宝七日年化0.837%（来源：天天基金网/新浪财经）。美国国债突破40万亿美元。各国央行连续第3年以创纪录速度购买黄金（2024年全球央行购金1,136吨，来源：世界黄金协会）。<br><br>
+      历史会不会重复不重要。重要的是问自己：<strong>如果明天早上醒来，人民币对黄金的"承诺"变了，你的钱放在哪里？</strong>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 二、本期概念速览 ===== -->
+<div class="card sec-concept">
+  <div class="card-header">
+    <div class="icon">📖</div>
+    <h2>二、本期出现的概念速览</h2>
+  </div>
+  <div class="card-body">
+    <div class="concept-grid">
+      <div class="concept-item">
+        <div class="c-term">💰 通货膨胀（Inflation）</div>
+        <div class="c-def">物价持续上涨，货币购买力持续下降。不是"东西变贵了"，是"钱变不值钱了"。1971年的$1今天只能买当年13美分的东西。</div>
+      </div>
+      <div class="concept-item">
+        <div class="c-term">🏦 法币（Fiat Money）</div>
+        <div class="c-def">靠政府信用支撑、不挂钩任何实物的货币。今天的美元、人民币、欧元全是法币。它的价值取决于你相信发行者不会乱印。</div>
+      </div>
+      <div class="concept-item">
+        <div class="c-term">🥇 金本位（Gold Standard）</div>
+        <div class="c-def">货币与黄金按固定比例挂钩的制度。1944-1971年，$35 = 1盎司黄金。1971年后全世界进入纯法币时代，黄金变成"商品"而不再是"钱"。</div>
+      </div>
+      <div class="concept-item">
+        <div class="c-term">⚖️ 特里芬悖论（Triffin Dilemma）</div>
+        <div class="c-def">耶鲁教授特里芬1960年指出：美元是国际储备货币→美国必须输出美元（逆差）→但逆差会动摇美元信用→两个要求互相矛盾。这是布雷顿森林体系的"出厂缺陷"。</div>
+      </div>
+      <div class="concept-item">
+        <div class="c-term">🛒 购买力（Purchasing Power）</div>
+        <div class="c-def">你的钱实际上能买多少东西。$10,000在1971年可以买一辆新车，2026年只能买一辆二手本田。看钱不能看数字，要看它换了什么。</div>
+      </div>
+      <div class="concept-item">
+        <div class="c-term">🛡️ 避险资产（Safe Haven）</div>
+        <div class="c-def">在货币贬值、战争、危机时人们抢购的资产，典型代表是黄金。它不产生现金流，但也不会因为政府印钱而稀释——地球上总共只有约20万吨黄金。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 三、富爸爸一句话 ===== -->
+<div class="card sec-rich">
+  <div class="card-header">
+    <div class="icon">💬</div>
+    <h2>三、富爸爸一句话</h2>
+  </div>
+  <div class="card-body">
+    <div class="quote-block">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">学校教你怎么为钱工作，但从没教你怎么让钱为你工作。</div>
+      <div class="quote-from">—— 罗伯特·清崎《富爸爸穷爸爸》</div>
+      <div class="quote-think">
+        <strong>和今天案例的联系：</strong><br>
+        1971年选择"存银行"的人，就是在"为钱工作"的思维——把钱交给银行，让它吃利息。但55年后结果呢？购买力被通胀吃掉75%。<br><br>
+        选择"买黄金"的人，让钱做了完全不同的事——钱变成了黄金，黄金自己涨了160倍。<strong>这不是"运气好"，这是"让钱站在通胀对面"。</strong><br><br>
+        富爸爸说的不是不存钱。他说的是：<strong>存钱只是第一步，让钱为你工作是第二步。绝大多数人停在了第一步。</strong><br><br>
+        <strong>一句话总结：</strong>存钱保命，投资保值，让钱站在通胀对面才能保住购买力。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 四、今日行动 ===== -->
+<div class="card sec-action">
+  <div class="card-header">
+    <div class="icon">🔧</div>
+    <h2>四、今日行动（30秒 · 零风险）</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="action-steps">
+      <div class="action-step">
+        <div class="step-num">1</div>
+        <div class="step-text">打开<strong>支付宝</strong> → 底部点「理财」→ 顶部点「余额宝」→ 看「七日年化」那个数字</div>
+      </div>
+      <div class="action-step">
+        <div class="step-num">2</div>
+        <div class="step-text">回到「理财」首页 → 顶部搜索框输入「黄金」→ 点「黄金」→ 看实时金价（元/克）</div>
+      </div>
+      <div class="action-step">
+        <div class="step-num">3</div>
+        <div class="step-text">打开<strong>手机计算器</strong>，算一道题：10,000 ÷ 金价 = 能买多少克黄金。</div>
+      </div>
+    </div>
+
+    <div class="action-observe">
+      <strong>你看到了什么？</strong><br>
+      余额宝七日年化 ≈ <strong>0.837%</strong>（来源：天天基金网，2026年8月3日数据，每万份收益0.2268元）。一万块钱放一年，收益约83.7元。<br>
+      实时金价参考 ≈ <strong>4,110美元/盎司</strong>（COMEX，2026年8月4日），折合人民币约¥960/克（按汇率6.79计算）[待核实]。<br>
+      10,000元 ÷ ¥960/克 ≈ <strong>10.4克黄金</strong>。<br><br>
+      <strong>两个数字并排看：</strong>余额宝一年给你83.7元。但10.4克黄金在1971年只值约$11.7——而今天值10,000元。你的10,000元现金，如果不变成任何资产，它的购买力在持续缩水。
+    </div>
+
+    <div class="action-think">
+      <strong>🤔 思考题（不用回答任何人，问自己）：</strong><br>
+      你现在存在余额宝/银行卡里的钱，一年后能买到的东西会变多还是变少？<br>
+      如果变少——你打算让钱去做什么？
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="footer">
+  <p>财商日推 · 第 7 期 | 2026年8月4日 星期二</p>
+  <p style="margin-top:6px;">⚠️ 不构成投资建议。不推荐任何产品。黄金价格会涨也会跌。本文仅供财商思维训练，不构成任何买卖依据。</p>
+  <p style="margin-top:4px;font-size:11px;">数据来源：BLS CPI-U、LBMA伦敦金市、World Gold Council、FRED、中国建设银行贵金属频道、天天基金网、saving.org。</p>
+  <div class="next-teaser">📅 明天剧透：市盈率——为什么有的公司"看起来便宜"，有的公司"看起来贵"？学会这个指标，你就不会再被股价数字骗了。</div>
+</div>
+
+</div>
+
+</body>
+</html>
