@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 2026-08-04</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #1a1612; color: #e8e0d5; font-size: 15px; line-height: 1.72; }
+
+  .hero {
+    background: linear-gradient(135deg, #1e1810 0%, #261d12 40%, #1a1612 100%);
+    border-bottom: 1px solid #3d3224;
+    padding: 32px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%; right: -10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(230,149,60,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%; left: -5%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(168,123,67,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(230,149,60,0.12);
+    border: 1px solid rgba(230,149,60,0.25);
+    color: #e6953c;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #f5ebe0;
+    margin-bottom: 8px;
+  }
+  .hero .sub { color: #a89880; font-size: 14px; }
+
+  .timeline-bar {
+    background: linear-gradient(135deg, rgba(230,149,60,0.06), rgba(168,123,67,0.04));
+    border: 1px solid #3d3224;
+    border-radius: 10px;
+    padding: 14px 20px;
+    margin: 20px auto;
+    max-width: 1160px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 13.5px;
+  }
+  .tl-item {
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(230,149,60,0.08);
+    border-radius: 6px; padding: 5px 12px;
+    color: #d4b896;
+  }
+  .tl-item strong { color: #e6953c; }
+  .tl-warn { color: #e0554a; font-weight: 700; }
+
+  .container { max-width: 1160px; margin: 0 auto; padding: 24px 20px; }
+
+  .section {
+    background: #1e1a15;
+    border: 1px solid #3d3224;
+    border-radius: 12px;
+    margin-bottom: 22px;
+    overflow: hidden;
+  }
+  .section-header {
+    padding: 16px 22px;
+    border-bottom: 1px solid #3d3224;
+    display: flex; align-items: center; gap: 10px;
+    background: linear-gradient(135deg, #231c14 0%, #1e1a15 100%);
+  }
+  .section-header .icon { font-size: 20px; flex-shrink: 0; }
+  .section-header h2 { font-size: 17px; font-weight: 700; color: #e6953c; }
+  .section-body { padding: 20px 22px; }
+
+  .item {
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #2a2218;
+  }
+  .item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+  .item-title {
+    font-size: 15px; font-weight: 700; color: #f0e6d8;
+    margin-bottom: 6px;
+    display: flex; align-items: baseline; gap: 8px;
+  }
+  .item-title .tag {
+    font-size: 11.5px; font-weight: 700; padding: 2px 8px;
+    border-radius: 4px; white-space: nowrap; flex-shrink: 0;
+  }
+  .tag-hot { background: rgba(224,85,74,0.15); color: #e0554a; }
+  .tag-new { background: rgba(63,185,80,0.12); color: #3fb950; }
+  .tag-watch { background: rgba(210,160,34,0.12); color: #d2a022; }
+  .tag-info { background: rgba(230,149,60,0.12); color: #e6953c; }
+
+  .item-desc { color: #c4b8a6; font-size: 13.5px; margin-bottom: 5px; }
+  .item-relate {
+    background: rgba(230,149,60,0.06);
+    border-left: 3px solid #e6953c;
+    padding: 8px 12px; border-radius: 0 6px 6px 0;
+    font-size: 13px; color: #d4b896; margin-top: 6px;
+  }
+  .item-relate strong { color: #e6953c; }
+
+  .signal-row {
+    display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px;
+  }
+  .signal-badge {
+    padding: 3px 10px; border-radius: 4px; font-size: 12px; font-weight: 600;
+  }
+  .signal-green { background: rgba(63,185,80,0.1); color: #3fb950; }
+  .signal-yellow { background: rgba(210,160,34,0.1); color: #d2a022; }
+  .signal-red { background: rgba(224,85,74,0.1); color: #e0554a; }
+
+  .product-card {
+    background: #171310;
+    border: 1px solid #2a2218;
+    border-radius: 8px; padding: 14px 16px; margin-bottom: 12px;
+  }
+  .product-card .p-name {
+    font-weight: 700; font-size: 14.5px; color: #e6953c; margin-bottom: 4px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .product-card .p-meta { color: #a89880; font-size: 12.5px; margin-bottom: 8px; }
+  .product-card .p-detail { color: #c4b8a6; font-size: 13.5px; margin-bottom: 4px; }
+  .product-card .p-detail strong { color: #e8e0d5; }
+  .product-card .p-inspire {
+    background: rgba(230,149,60,0.06);
+    border-left: 2px solid #e6953c;
+    padding: 6px 10px; border-radius: 0 6px 6px 0;
+    font-size: 13px; color: #d4b896; margin-top: 8px;
+  }
+
+  .idea-card {
+    background: linear-gradient(135deg, rgba(168,123,67,0.06), rgba(230,149,60,0.04));
+    border: 1px solid rgba(230,149,60,0.18);
+    border-radius: 10px; padding: 16px; margin-bottom: 14px;
+  }
+  .idea-card h4 { color: #e6953c; font-size: 15px; margin-bottom: 8px; }
+  .idea-card .idea-line { color: #c4b8a6; font-size: 13.5px; margin-bottom: 4px; }
+  .idea-card .idea-line strong { color: #e8e0d5; }
+
+  .seasonal-box {
+    background: rgba(230,149,60,0.04);
+    border: 1px solid #3d3224;
+    border-radius: 10px; padding: 16px; margin-bottom: 12px;
+  }
+  .seasonal-box .s-row {
+    display: flex; align-items: baseline; gap: 8px;
+    margin-bottom: 8px; font-size: 14px;
+  }
+  .seasonal-box .s-row .s-emoji { font-size: 17px; flex-shrink: 0; }
+  .seasonal-box .s-row .s-text { color: #c4b8a6; }
+  .seasonal-box .s-row .s-text strong { color: #f0e6d8; }
+
+  .countdown {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(224,85,74,0.1); border: 1px solid rgba(224,85,74,0.2);
+    border-radius: 6px; padding: 6px 14px;
+    color: #e0554a; font-weight: 700; font-size: 14px;
+    margin: 8px 0;
+  }
+
+  .footer {
+    text-align: center; padding: 24px; color: #6b5f4f;
+    font-size: 12px; border-top: 1px solid #3d3224; margin-top: 10px;
+  }
+  .footer a { color: #e6953c; text-decoration: none; }
+
+  .divider {
+    border: none; border-top: 1px dashed #3d3224; margin: 14px 0;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">📅 2026年8月4日 星期二</div>
+    <h1>🍽️ 食研日推 · 每日行业情报</h1>
+    <div class="sub">专注食品消费品行业 | 服务下厨房食品品牌产品经理 | 拒绝水文，只给弹药</div>
+  </div>
+</div>
+
+<div class="timeline-bar">
+  <div class="tl-item">🌡️ 大暑第13天</div>
+  <div class="tl-item"><strong>⏰ 距立秋（8.7）仅剩 <span class="tl-warn">3天</span></strong></div>
+  <div class="tl-item">🌕 距中秋（9.25）52天</div>
+  <div class="tl-item">🍂 立秋→处暑：清补润燥窗口</div>
+</div>
+
+<div class="container">
+
+<!-- ========== 一、今日行业要闻 ========== -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">🔥</span>
+    <h2>一、今日行业要闻</h2>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-title">
+        <span class="tag tag-hot">供应链</span>
+        海融科技1.3亿收购盒马烘焙工厂55%股权
+      </div>
+      <div class="item-desc">
+        7月31日，"奶油第一股"海融科技公告收购盒马核心烘焙工厂糖盒食品55%股权，盒马承诺至2030年底每年保底采购2.1亿元。糖盒食品2025年营收2.09亿，净利润1839万。这意味着盒马将烘焙供应链从自营重资产转向"输出标准+保底采购"的轻资产模式。
+      </div>
+      <div class="item-relate">
+        <strong>与我何干：</strong>盒马烘焙供应链"外挂化"释放一个信号——零售渠道越来越倾向于"制定标准"而非"自己生产"。这对有烘焙品类的食品品牌是机会窗口：谁能满足渠道的"洁净配料+短保+稳定交付"标准，谁就有机会成为下一个糖盒。下厨房如果切入烘焙半成品/冷冻面团赛道，这个模式值得研究。
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">
+        <span class="tag tag-new">配料表</span>
+        贵州印发食品添加剂综合治理措施，倡导"非必要不添加"
+      </div>
+      <div class="item-desc">
+        8月2日，贵州省市场监管局印发《深入推进食品添加剂滥用问题综合治理工作措施》，明确提出建立常态化自查机制、推行"减量减品种"行动、倡导企业"非必要不添加"原则，推动天然物质替代人工合成添加剂。重点聚焦防腐剂、着色剂、甜味剂。
+      </div>
+      <div class="item-relate">
+        <strong>与我何干：</strong>从"零添加禁止标注"到地方政府推"非必要不添加"，配料表洁净化已从营销概念升级为监管方向。这对下厨房"配料表洁净"的品牌DNA是利好——政策顺风车来了。提前在配方端做天然替代（如用酵母抽提物替代味精、植物提取物替代合成色素），就是先发优势。
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">
+        <span class="tag tag-info">IP联名</span>
+        大白兔×蜡笔小新联名推出常温布丁，双国货龙头合体
+      </div>
+      <div class="item-desc">
+        国民奶糖大白兔与果冻龙头蜡笔小新跨界合作，推出大白兔牛奶常温布丁，采用三重乳源配方还原经典奶香，常温长保工艺，适配办公、户外、校园等多场景。果冻布丁市场规模已超250亿，含乳布丁仍在增量阶段。
+      </div>
+      <div class="item-relate">
+        <strong>与我何干：</strong>国民IP×制造龙头的联名模式可复制性极强。对于下厨房来说，"下厨房×地方特色食材"的组合逻辑类似——以"下厨房"品牌心智为IP、地方地标食材为产品底座，联合产地工厂推出联名产品，既省去自建产线成本，又获得双重品牌信任背书。
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========== 二、爆品雷达 ========== -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">🎯</span>
+    <h2>二、爆品雷达 · 趋势苗头</h2>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-title">
+        茶饮"微醺风"全面爆发，啤酒花糖浆半年出货200吨
+        <div class="signal-row"><span class="signal-badge signal-red">🔴 已爆</span></div>
+      </div>
+      <div class="item-desc">
+        从瑞幸（5月"绯色月光""可可维也纳"）到霸王茶姬（6月"凤梨摇摇沙"）到喜茶科罗娜联名（7月"微醺黄皮桃"售罄）到古茗即将推出"鲜柚生啤"（3.0%酒精度），超10个头部品牌在3个月内密集入局。壹糖天下披露啤酒花糖浆上半年出货200吨，2025年还停留在打样阶段。
+      </div>
+      <div class="item-relate">
+        <strong>机会判断：</strong>信号极强，但茶饮端的"伪微醺"（无酒精啤酒风味）同质化严重。真正的机会在<b>食品端——"微醺调味"迁移到卤味/零食/酱料</b>。比如啤酒花风味的卤料包、0酒精啤味蘸酱、精酿啤酒风味的牛肉干。这是目前几乎空白的品类交汇地带。
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">
+        叮咚V5公开55项配料严控名单，"配料透明"成为即时零售新战场
+        <div class="signal-row"><span class="signal-badge signal-yellow">🟡 起势</span></div>
+      </div>
+      <div class="item-desc">
+        7月28日叮咚买菜自有品牌V5全面升级，首次公开包含植脂末、代可可脂、阿斯巴甜、脱氢乙酸钠等55项配料严控名单。叮咚自有品牌渗透率已达68.5%，V5覆盖200+SKU，今年GMV目标增长50%。这标志着配料表透明化从品牌"差异化"变成了渠道"准入门槛"。
+      </div>
+      <div class="item-relate">
+        <strong>机会判断：</strong>值得高度重视。叮咚的55项"黑名单"会逐渐成为行业隐性标准。对下厨房来说，<b>现在就要对照这55项排查现有/计划产品配方</b>——如果产品配料表能通过叮咚V5级审查，就等于拿到了一张"高品质通行证"，在所有渠道都有背书价值。
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">
+        "返璞归真"家常菜在小红书爆发：鸡蛋蒜、燕麦球、立秋三宝
+        <div class="signal-row"><span class="signal-badge signal-yellow">🟡 起势</span></div>
+      </div>
+      <div class="item-desc">
+        2026年夏天，鸡蛋蒜话题抖音播放量破12亿，自制燕麦球笔记470万+条，"立秋三宝"（山药炒青椒、西芹百合、清炒莲藕）全网刷屏。共同特征：极简食材（3-5样）、不依赖预制调味料、强调"妈妈的味道"和"厨房主权"。
+      </div>
+      <div class="item-relate">
+        <strong>机会判断：</strong>这波"去预制化"情绪背后是消费者对"返璞归真"的向往，但反过来说明了一个机会——<b>消费者不是不想便捷，而是不想被"工业化味道"绑架</b>。如果能做"极简配料+真食材本味"的快手半成品（如莲藕排骨汤料包，只有藕+骨头+姜，其余什么都不加），刚好切中这种既要便捷又要本味的矛盾需求。
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========== 三、时令风向 ========== -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">🌿</span>
+    <h2>三、时令风向 · 品类机会</h2>
+  </div>
+  <div class="section-body">
+
+    <div class="seasonal-box">
+      <div class="s-row"><span class="s-emoji">📅</span><span class="s-text"><strong>当前时令定位：</strong>大暑尾声 × 立秋前3天。暑热未退但秋燥已潜伏，是"清补润燥"的黄金窗口——既不能大补（天还热），也不能继续贪凉（秋凉将至）。</span></div>
+      <div class="countdown">⏰ 距离立秋（8月7日）仅剩 3 天</div>
+    </div>
+
+    <div class="seasonal-box">
+      <div class="s-row"><span class="s-emoji">🎯</span><span class="s-text"><strong>即将热卖品类：</strong></span></div>
+      <div class="s-row" style="padding-left:24px;"><span class="s-text">🥣 <strong>润燥甜汤/糖水</strong> — 立秋是"贴秋膘"的节气起点，但现代人更接受"清补"（银耳、百合、莲子、梨、菱角），即食润燥甜汤在立秋后一周会迎搜索高峰。</span></div>
+      <div class="s-row" style="padding-left:24px;"><span class="s-text">🦀 <strong>梭子蟹/秋鲈鱼</strong> — 8月东海开渔，梭子蟹进入最佳食用期，"秋天第一只蟹"是社交货币型话题。海鲜类预制菜/半成品（如蟹粉拌面、清蒸鲈鱼料包）进入窗口。</span></div>
+      <div class="s-row" style="padding-left:24px;"><span class="s-text">🥮 <strong>中秋礼盒</strong> — 距离中秋52天，商超75%已启动招商。月饼/坚果/干货礼盒进入备货冲刺期。</span></div>
+    </div>
+
+    <div class="seasonal-box">
+      <div class="s-row"><span class="s-emoji">🚨</span><span class="s-text"><strong>窗口提醒：</strong></span></div>
+      <div class="s-row" style="padding-left:24px;"><span class="s-text">🔴 <strong>水蜜桃</strong> — 阳山湖景蜜露已进入最后3-5天尾期，错过等明年。</span></div>
+      <div class="s-row" style="padding-left:24px;"><span class="s-text">🟡 <strong>阳光玫瑰葡萄</strong> — 8月中下旬大量上市，产地价已从7月的25-35元/斤开始回落，中秋礼盒窗口已开。</span></div>
+      <div class="s-row" style="padding-left:24px;"><span class="s-text">🟢 <strong>云南野生菌</strong> — 松茸/鸡枞/牛肝菌仍处高峰期（至8月底），今年整体菌价较往年下降30%。</span></div>
+    </div>
+
+    <div class="seasonal-box">
+      <div class="s-row"><span class="s-emoji">🏔️</span><span class="s-text"><strong>产地直发机会：</strong></span></div>
+      <div class="s-row" style="padding-left:24px;"><span class="s-text">🌰 <strong>苏州鸡头米（芡实）</strong> — 8月中旬头茬上市，江南"水八仙"之首，手工剥壳成本高但溢价空间大（鲜剥120-180元/斤），适合高端时令食材直发。</span></div>
+      <div class="s-row" style="padding-left:24px;"><span class="s-text">🥜 <strong>鲜核桃</strong> — 8月新鲜上市（不同于干核桃），口感脆嫩奶香，小红书"鲜核桃怎么吃"搜索量月增200%，产地直发损耗率比水蜜桃低很多。</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========== 四、跨界灵感 ========== -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">💡</span>
+    <h2>四、跨界灵感 · 创新动作</h2>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-title">
+        <span class="tag tag-watch">海外零售</span>
+        Costco「两次烘焙」肉桂可颂爆红，Reddit用户打出"10/10"
+      </div>
+      <div class="item-desc">
+        Costco 8月全新推出Twice-Baked Cinnamon Filled Croissants（两次烘焙肉桂夹心可颂），6个装约$10。黄油可颂面团填充肉桂焦糖内馅，表面撒肉桂糖和酥粒，Reddit/Instagram一致好评。同步上新的还有Cookie Crunch Sundae（$3）和Mini Muffins Sprinkles（$8/20袋）。
+      </div>
+      <div class="item-relate">
+        <strong>迁移可能：</strong>"两次烘焙"的工艺概念可以迁移到中式点心——比如<b>两次烘焙桂花酥饼</b>（初烤定型+复烤上色增香）、<b>两次烘焙焦糖坚果脆</b>。核心逻辑是：第一次烘焙锁住内部湿润，第二次赋予脆壳和焦香，比单次烘焙层次感强2倍以上。
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">
+        <span class="tag tag-hot">茶饮</span>
+        沪上阿姨"秋一杯"血橙系列三连发，血橙×咖啡/果茶/轻乳茶全品类覆盖
+      </div>
+      <div class="item-desc">
+        8月5日沪上阿姨全国上新3款血橙新品（爆汁血橙西柚、爆汁血橙西柚冰奶、超C血橙美式），甄选意大利塔罗科血橙，一杯三重柑橙风味（血橙+脐橙+沃柑）。"秋一杯"活动8月3-11日，151份黄金+300万个周边+29500份免单。同时茶饮"微醺风"继续发酵，古茗即将推出"鲜柚生啤"（酒精度3.0%+，含日本香柚）。
+      </div>
+      <div class="item-relate">
+        <strong>迁移可能：</strong>①"一果三用"的产品矩阵打法值得借鉴——同一个血橙原料，横跨果茶/轻乳茶/咖啡三条线，最大化原料复用。食品端可以<b>一个核心食材做三种形态（如桂花：桂花蜜酱+桂花干料包+桂花风味蘸酱）</b>；②"秋一杯"作为立秋节点营销大IP，食品品牌也可以做"立秋第一口X"的话题营销。
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">
+        <span class="tag tag-info">便利店</span>
+        罗森×果子熟了联名甜品三连发，栀子杏+芭乐+茉莉风味矩阵
+      </div>
+      <div class="item-desc">
+        7月28日-8月10日，罗森与果子熟了联名推出栀子杏冰皮月亮蛋糕（6.2元）、芭乐乳酪面包（6.9元）、芭乐茉莉提拉米苏（12.5元）。三种热带/花香风味覆盖甜品烘焙线。此前罗森的饼干杯咖啡（全渠道3万杯限量）持续至8月2日，可食用包装概念引发热议。
+      </div>
+      <div class="item-relate">
+        <strong>迁移可能：</strong>便利店联名甜品的"花香型水果"方向（栀子+杏、芭乐+茉莉）说明<b>花香×果香复合风味</b>是2026夏季甜品主流。食品端可以考虑：桂花桃子酱、茉莉青提干、玫瑰荔枝冻干——花香提升"精致感"，果香保证"好吃"，组合溢价空间20-40%。
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========== 五、脑暴时刻 ========== -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">🧪</span>
+    <h2>五、脑暴时刻 · 融合创意</h2>
+  </div>
+  <div class="section-body">
+
+    <div class="idea-card">
+      <h4>🧊 创意一：「立秋第一碗」鲜莲子菱角银耳即食甜汤</h4>
+      <div class="idea-line"><strong>一句话描述：</strong>以当季鲜莲子+嫩菱角+古田银耳为核心食材的即食冷藏甜汤，开盖即食，配料表只有5样：水、鲜莲子、菱角、银耳、冰糖。</div>
+      <div class="idea-line"><strong>为什么是现在：</strong>①立秋仅剩3天，"顺时而食"话题进入年度高点；②鲜莲子和嫩菱角都是8月限定食材，赏味期极短（菱角2周、鲜莲子3周），时令稀缺性天然具溢价；③小红书"立秋吃什么"搜索环比暴涨380%。</div>
+      <div class="idea-line"><strong>差异化锚点：</strong>对比叮咚/盒马现有的银耳羹（普遍使用干莲子、无菱角、红枣味为主），这款以"鲜"打"干"——鲜莲子脆甜、嫩菱角粉糯、银耳胶质感足，每口都有季节感。对标日本便利店季节限定甜品的做法，做"只有这3周能买到的味道"。</div>
+      <div class="idea-line"><strong>可行性初判：</strong>鲜莲子去芯和菱角去壳是供应链难点（目前依赖手工），建议先用安徽/湖北产区测试小批量，HPP冷杀菌+冷藏短保（7-10天），客单价39-49元/300g×2碗，走抖音达播+叮咚精品区。</div>
+    </div>
+
+    <div class="idea-card">
+      <h4>🍺 创意二：「微醺小食盒」0酒精啤酒风味卤味拼盘</h4>
+      <div class="idea-line"><strong>一句话描述：</strong>以啤酒花+麦芽为风味基底的卤味拼盘（鸭舌/毛豆/藕片/鹌鹑蛋），0酒精但保留精酿啤酒的麦香和微苦回甘，配料表不含酒精和人工香精。</div>
+      <div class="idea-line"><strong>为什么是现在：</strong>①茶饮"微醺风"已验证消费者对啤酒风味的接受度——啤酒花糖浆200吨出货就是证明；②世界杯余温+夏夜宵夜场景天然适配"有酒感无酒劲"的小食；③目前啤酒风味在卤味/零食领域几乎空白（只有啤酒鸭这种菜，没有啤酒风味的休闲卤味）。</div>
+      <div class="idea-line"><strong>差异化锚点：</strong>对比传统卤味（以辣/五香为主），啤酒风味卤味是一种全新的味型——麦芽的焦香替代部分糖的甜腻，啤酒花的微苦替代部分辣的刺激，整体"咸香回甘带微苦"，口感更成人化、更精致，女性消费者占比高（独饮场景72%是女性）。</div>
+      <div class="idea-line"><strong>可行性初判：</strong>核心原料是啤酒花提取物和麦芽浓缩液（壹糖天下等供应商已有成熟产品），卤制工艺不需大改（啤酒花在卤制后期加入保留风味），保质期可控（真空包装90天）。建议先以"世界杯后·夏夜限定"概念测款，抖音达播+小红书种草，客单价29-39元/200g。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========== 六、展会速递·每周新品雷达 ========== -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">🏬</span>
+    <h2>六、展会速递 · 每周新品雷达</h2>
+  </div>
+  <div class="section-body">
+
+    <div class="item-title" style="margin-bottom:12px;">
+      🆕 <span style="color:#e6953c;">每周新品速递（5款 · 8.4更新）</span>
+    </div>
+
+    <div class="product-card">
+      <div class="p-name">🆕 沪上阿姨 血橙系列（爆汁血橙西柚 / 血橙西柚冰奶 / 超C血橙美式）</div>
+      <div class="p-meta">⏰ 8月5日全国上市 | 💰 15-19元</div>
+      <div class="p-detail">
+        <strong>产品力拆解：</strong>甄选意大利塔罗科血橙，搭配脐橙汁+沃柑汁实现"一杯三重柑橙风味"。果茶款（爆汁血橙西柚）走真果+茉莉冻冻+西柚粒的清爽咀嚼路线；轻乳茶款加茉莉茶冻丝滑弹嫩；咖啡款（HK10门店限定）100%阿拉比卡+新鲜柠檬角，果酸与焦糖坚果香交织。<br>
+        <strong>核心差异化：</strong>不是常规的"橙子味饮料"，而是用三个柑橘品种做出前中后调层次——血橙的莓果尾韵是关键记忆点，喝过一次能记住。
+      </div>
+      <div class="p-inspire">
+        <strong>启发：</strong>"一果三形态"（果茶/轻乳茶/咖啡）的材料复用效率极高，食品端可以借鉴——比如一款精品桂花酱，可以衍生为"桂花蜜烤坚果""桂花风味蘸酱""桂花拿铁浓缩液"三条产品线，同一核心原料最大化SKU价值。
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="p-name">🆕 Costco Twice-Baked Cinnamon Filled Croissants（两次烘焙肉桂夹心可颂）</div>
+      <div class="p-meta">⏰ 8月初上市 | 💰 $10/6个（约¥72）</div>
+      <div class="p-detail">
+        <strong>产品力拆解：</strong>黄油可颂面团+焦糖肉桂内馅+表面肉桂糖酥粒。"两次烘焙"是关键工艺——第一次烤至定型锁住内馅水分，第二次高温快烤赋予外层酥脆焦香。Reddit用户评价"10/10 no notes"，Instagram称"HEAVENLY"。<br>
+        <strong>核心差异化：</strong>区别于普通肉桂卷的一次烘焙，"两次烘焙"让外表酥脆度和内部湿润度形成更强烈的口感对比，类似"焦糖布蕾"的脆壳+柔嫩逻辑应用在烘焙上。
+      </div>
+      <div class="p-inspire">
+        <strong>启发：</strong>Costco的烘焙上新逻辑是"经典产品+一个工艺升级点"（如可颂→两次烘焙可颂）。中式点心也可以这样——桂花糕→两次烘焙桂花酥糕，蛋黄酥→焦糖脆壳蛋黄酥。工艺微升级就能创造全新的口感记忆和定价空间（溢价30-50%）。
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="p-name">🆕 罗森 × 果子熟了 联名甜品系列（栀子杏冰皮月亮蛋糕 / 芭乐乳酪面包 / 芭乐茉莉提拉米苏）</div>
+      <div class="p-meta">⏰ 7月28日-8月10日 | 💰 6.2-12.5元</div>
+      <div class="p-detail">
+        <strong>产品力拆解：</strong>三款产品覆盖便利店甜品三大形态（冰皮蛋糕+乳酪面包+提拉米苏），风味方向统一走"花香×果香"路线。栀子杏——栀子花的清雅+杏子的酸甜；芭乐茉莉——芭乐的热带甜+茉莉的幽香，是2026年最代表性的花香果味复合创新。<br>
+        <strong>核心差异化：</strong>联名逻辑不同于以往"IP贴牌"——果子熟了本身就是茶饮品牌，它的风味研发能力反哺到甜品上，让便利店甜品有了"茶饮级"的风味设计。
+      </div>
+      <div class="p-inspire">
+        <strong>启发：</strong>①茶饮品牌→甜品/食品的"风味输出"模式已验证。下厨房如果有自己的风味研发能力，可以作为"风味方案提供商"跟渠道/工厂合作联名款。②栀子花、芭乐花、茉莉花这些"花香型水果"组合，在小红书搜索量高但产品供给极低——是蓝海风味方向。
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="p-name">🆕 大白兔 × 蜡笔小新 牛奶常温布丁</div>
+      <div class="p-meta">⏰ 8月初上市 | 💰 大众定价（估5-8元/个）</div>
+      <div class="p-detail">
+        <strong>产品力拆解：</strong>三重乳源配方还原大白兔经典奶香，常温长保工艺替代传统冷藏布丁，适配办公/户外/校园等多场景。蜡笔小新提供全国商超+零食量贩店+便利店+线上全渠道铺货能力。<br>
+        <strong>核心差异化：</strong>常温长保解决了布丁品类最大的痛点（冷链依赖），让这个品类从"精品超市冷藏柜专属"变成"任何零售终端都能卖"。而大白兔的品牌情怀让它在货架上自带流量。
+      </div>
+      <div class="p-inspire">
+        <strong>启发：</strong>这是一个"品牌IP+制造能力+常温工艺"三方价值最大化的样本。下厨房如果要做即食甜汤/糖水品类，最大的障碍也是冷链。如果能在特定产品上实现常温长保（如银耳羹罐头化、桂花酱常温装），就能从"生鲜渠道专属"拓展到"全域零售"。
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="p-name">🆕 雀巢咖啡 1+2 生椰拿铁</div>
+      <div class="p-meta">⏰ 8月1日上市 | 💰 约1.5-2元/条</div>
+      <div class="p-detail">
+        <strong>产品力拆解：</strong>雀巢1+2系列近十年来首次推出全新风味。100%进口咖啡豆+深烘冷凝锁香工艺+"清甜椰香+浓醇咖香"融合。官宣樊振东为代言人，"更好喝椰"礼盒京东独家发售。<br>
+        <strong>核心差异化：</strong>速溶咖啡的"生椰化"——将现制茶饮店最爆的口味（生椰拿铁）下沉到袋装速溶，用1.5元/杯的价格吃到18元/杯的味道，降维打击。这是"现制茶饮验证→速溶产品化"的经典路径。
+      </div>
+      <div class="p-inspire">
+        <strong>启发：</strong>现制饮品/餐饮端验证成功的口味→家庭端的"速溶化/即食化"是确定性极高的开品路径。比如茶饮端大火的"黄皮"、"油柑"、"啤酒风味"，都可以做成果酱/浓缩液/冲泡粉的家庭版。雀巢生椰拿铁给了一个时间参考：生椰拿铁在现制端火了3年后才被速溶化——这就是"跟随已验证口味+做家庭版便利化"的时间差机会。
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="item-title" style="margin-bottom:10px;">
+      🎪 <span style="color:#e6953c;">8月展会预告</span>
+    </div>
+
+    <div class="item">
+      <div class="item-desc">🎪 <strong>上海燕博会/酵素展</strong> 8.6-8 | 上海新国际博览中心 | <strong>看点：</strong>药食同源+滋补品专区，燕窝/酵素/功能食品产业链 | <strong>与我何干：</strong>药食同源品类正在从"药房"走向"超市货架"，展会上可能出现新的药食同源原料供应商</div>
+    </div>
+    <div class="item">
+      <div class="item-desc">🎪 <strong>越南胡志明食品展 Vietfood</strong> 8.6-8 | 胡志明 | <strong>看点：</strong>东南亚食品原料/水果加工/水产 | <strong>与我何干：</strong>越南榴莲/椰子/百香果加工供应链，适合寻找热带水果进口或OEM</div>
+    </div>
+    <div class="item">
+      <div class="item-desc">🎪 <strong>郑州冷冻食品展</strong> 8.8-10 | 郑州国际会展中心 | <strong>看点：</strong>冷冻冷藏食品/预制菜/速冻米面 | <strong>与我何干：</strong>冷冻半成品供应链集中展示，如果想做冷冻甜汤/面点/预制菜，是供应商筛选的好机会</div>
+    </div>
+    <div class="item">
+      <div class="item-desc">🎪 <strong>杭州全食展</strong> 8.13-15 | 杭州大会展中心 | <strong>看点：</strong>8万㎡/1200+展商，全球高端食品/进口零食/网红爆品 | <strong>与我何干：</strong>全年最重要的零食/休闲食品展会之一，适合寻找高端零食选品灵感和供应链</div>
+    </div>
+    <div class="item">
+      <div class="item-desc">🎪 <strong>香港美食商贸博览 Food Expo PRO</strong> 8.13-17 | 香港会议展览中心 | <strong>看点：</strong>1890+展商/7.5万观众，亚洲最大美食展之一 | <strong>与我何干：</strong>国际化选品窗口，东南亚/日韩/欧洲食品集中展示</div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <p>⚠️ 以上内容由AI自动聚合生成，信息来源于公开渠道，仅供产品经理参考，不构成投资或开品决策建议</p>
+  <p>信源：Foodaily / 餐饮老板内参 / FBIF / 蝉妈妈 / Costco / 蓝鲸新闻 / TastingTable / Reddit / 各品牌官方渠道 等</p>
+  <p style="margin-top:8px;">Generated by WorkBuddy 食研日推 · 2026-08-04 09:00 CST · 下厨房食品品牌 · 产品经理专属情报</p>
+</div>
+
+</body>
+</html>
