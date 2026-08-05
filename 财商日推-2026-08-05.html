@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>财商日推 · 2026-08-05</title>
+<style>
+  :root {
+    --bg: #11100e;
+    --card-bg: #1a1712;
+    --card-border: #2e2820;
+    --text: #d4c9b8;
+    --text-dim: #8a8070;
+    --gold: #c9a84c;
+    --gold-bright: #e6c864;
+    --gold-pale: #f5e6c8;
+    --red: #c9554a;
+    --green: #5a9e6f;
+    --blue: #5a8db8;
+    --purple: #9b7ec4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Serif SC", serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    font-size: 15px;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(160deg, #1a160c 0%, #0f0e0a 40%, #14110c 70%, #1a150e 100%);
+    border-bottom: 1px solid #3a3020;
+    padding: 44px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%; right: -5%;
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 65%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -35%; left: -10%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(230,200,100,0.04) 0%, transparent 60%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--gold);
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--gold-pale);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  .hero .sub {
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 16px;
+    font-size: 12.5px;
+    color: var(--text-dim);
+  }
+  .hero-meta span {
+    background: rgba(255,255,255,0.04);
+    padding: 4px 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* ===== CONTAINER ===== */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  /* ===== TAKEAWAY BAR（今日一句） ===== */
+  .takeaway-bar {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(150,120,60,0.05));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 12px;
+    padding: 18px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .takeaway-bar .ta-icon { font-size: 28px; flex-shrink: 0; line-height: 1; margin-top: 2px; }
+  .takeaway-bar .ta-label { font-size: 11px; color: var(--gold); letter-spacing: 2px; font-weight: 700; margin-bottom: 4px; }
+  .takeaway-bar .ta-text { font-size: 15px; color: var(--gold-pale); font-weight: 600; line-height: 1.7; }
+
+  /* ===== CARD BASE ===== */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .card-header {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--card-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-header .icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 19px; flex-shrink: 0;
+  }
+  .card-header h2 { font-size: 18px; font-weight: 700; letter-spacing: 0.5px; }
+  .card-body { padding: 24px; }
+
+  /* ===== SECTION 1: 回到那一天 ===== */
+  .sec-back .card-header { background: linear-gradient(135deg, #1f1a0e 0%, #1a1712 100%); }
+  .sec-back .icon { background: rgba(201,168,76,0.13); color: var(--gold); }
+  .sec-back .card-header h2 { color: var(--gold-bright); }
+
+  .time-machine { margin-bottom: 0; }
+
+  .tm-head { margin-bottom: 18px; }
+  .tm-head .tm-date { font-size: 24px; font-weight: 800; color: var(--gold-bright); letter-spacing: 1px; }
+  .tm-head .tm-place { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+
+  /* 背景知识框 */
+  .tm-primer {
+    background: rgba(90,141,184,0.06);
+    border: 1px solid rgba(90,141,184,0.15);
+    border-left: 3px solid var(--blue);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+  .tm-primer strong { color: #8ab4d8; }
+
+  /* 数据快照 */
+  .data-snapshot {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .data-snapshot .ds-item {
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
+    padding: 14px 12px;
+    text-align: center;
+    border: 1px solid rgba(201,168,76,0.12);
+  }
+  .data-snapshot .ds-label { font-size: 11px; color: var(--text-dim); margin-bottom: 6px; letter-spacing: 1px; }
+  .data-snapshot .ds-value { font-size: 22px; font-weight: 800; color: var(--gold-bright); }
+  .data-snapshot .ds-sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+
+  /* 情境画面 */
+  .tm-scene {
+    font-size: 14.5px;
+    color: var(--text);
+    line-height: 1.9;
+    padding: 16px 20px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 10px;
+    border-left: 3px solid var(--gold);
+    margin-bottom: 18px;
+  }
+  .tm-scene strong { color: var(--gold-pale); }
+
+  /* 三方观点 */
+  .view-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .view-card {
+    background: rgba(0,0,0,0.25);
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+  .view-card .vc-head {
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .view-card.bull { border-top: 2px solid var(--green); }
+  .view-card.bull .vc-head { color: var(--green); }
+  .view-card.bear { border-top: 2px solid var(--red); }
+  .view-card.bear .vc-head { color: var(--red); }
+  .view-card.neutral { border-top: 2px solid var(--gold); }
+  .view-card.neutral .vc-head { color: var(--gold); }
+
+  /* 暂停线 */
+  .tm-pause {
+    text-align: center;
+    padding: 16px;
+    margin: 20px 0;
+    font-size: 16px;
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 2px;
+    border-top: 1px dashed rgba(201,168,76,0.2);
+    border-bottom: 1px dashed rgba(201,168,76,0.2);
+  }
+
+  /* 结局揭晓 */
+  .tm-reveal {
+    background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(30,20,10,0.4));
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 10px;
+    padding: 22px;
+    margin-bottom: 18px;
+  }
+  .tm-reveal .reveal-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  .tl-item {
+    display: flex;
+    gap: 14px;
+    padding: 8px 0;
+    position: relative;
+  }
+  .tl-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%; flex-shrink: 0; margin-top: 6px;
+  }
+  .tl-dot.rise { background: var(--green); }
+  .tl-dot.fall { background: var(--red); }
+  .tl-dot.neutral { background: var(--gold); }
+  .tl-body { flex: 1; }
+  .tl-body .tl-date { font-size: 13px; font-weight: 700; color: var(--gold); margin-bottom: 2px; }
+  .tl-body .tl-text { font-size: 13.5px; color: var(--text); line-height: 1.85; }
+  .tl-body .tl-text .up { color: var(--green); font-weight: 600; }
+  .tl-body .tl-text .down { color: var(--red); font-weight: 600; }
+
+  /* 结果摘要 2x2 */
+  .tm-result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(201,168,76,0.12);
+  }
+  .tm-result-grid .r-item {
+    background: rgba(0,0,0,0.2);
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.7;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .tm-result-grid .r-icon { flex-shrink: 0; font-size: 16px; }
+
+  /* 核心课 */
+  .lesson-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(180,140,60,0.04));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 10px;
+    padding: 22px;
+  }
+  .lesson-box .lesson-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--gold-bright);
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+  }
+  .lesson-box .lesson-item {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.9;
+    padding: 8px 0;
+    display: flex;
+    gap: 10px;
+  }
+  .lesson-box .lesson-item .l-num {
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+    min-width: 24px;
+    font-size: 16px;
+  }
+
+  /* 回旋镖 */
+  .boomerang {
+    background: rgba(90,141,184,0.06);
+    border: 1px solid rgba(90,141,184,0.2);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-top: 18px;
+    font-size: 13.5px;
+    line-height: 1.9;
+    color: var(--text);
+  }
+  .boomerang .boom-title {
+    color: #8ab4d8;
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+  .boomerang strong { color: #8ab4d8; }
+
+  /* ===== SECTION 2: 概念速览 ===== */
+  .sec-concept .card-header { background: linear-gradient(135deg, #161a18 0%, #1a1712 100%); }
+  .sec-concept .icon { background: rgba(90,158,111,0.12); color: var(--green); }
+  .sec-concept .card-header h2 { color: #7ecf8a; }
+
+  .concept-card {
+    background: linear-gradient(135deg, rgba(90,158,111,0.05), rgba(70,130,90,0.03));
+    border: 1px solid rgba(90,158,111,0.2);
+    border-radius: 12px;
+    padding: 22px 24px;
+  }
+  .concept-card .concept-term { font-size: 22px; font-weight: 800; color: #7ecf8a; margin-bottom: 8px; }
+  .concept-card .concept-tagline { font-size: 14px; color: rgba(126,207,138,0.7); font-style: italic; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(90,158,111,0.12); }
+  .concept-card .concept-explain { font-size: 14px; color: var(--text); line-height: 1.9; margin-bottom: 14px; }
+  .concept-card .concept-example {
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.8;
+    border-left: 3px solid var(--green);
+    margin-bottom: 14px;
+  }
+  .concept-card .concept-example strong { color: #7ecf8a; }
+  .concept-bridge {
+    background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(90,158,111,0.04));
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.8;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .concept-bridge .bridge-icon { flex-shrink: 0; font-size: 18px; margin-top: 1px; }
+  .concept-bridge strong { color: var(--gold-bright); }
+
+  /* 概念网格（速览用） */
+  .concept-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .concept-chip {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(90,158,111,0.15);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .concept-chip .cc-name { font-weight: 700; color: #7ecf8a; font-size: 14px; margin-bottom: 4px; }
+  .concept-chip .cc-desc { font-size: 12.5px; color: var(--text-dim); line-height: 1.7; }
+
+  /* ===== SECTION 3: 富爸爸一句话 ===== */
+  .sec-rich .card-header { background: linear-gradient(135deg, #1a1510 0%, #1a1712 100%); }
+  .sec-rich .icon { background: rgba(230,200,100,0.12); color: var(--gold-bright); }
+  .sec-rich .card-header h2 { color: var(--gold-pale); }
+
+  .quote-block {
+    background: linear-gradient(135deg, rgba(230,200,100,0.05), rgba(180,150,80,0.03));
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 12px;
+    padding: 22px 24px;
+    position: relative;
+  }
+  .quote-block .quote-mark {
+    font-size: 48px;
+    color: rgba(201,168,76,0.2);
+    line-height: 1;
+    position: absolute;
+    top: 12px; left: 18px;
+    font-family: Georgia, serif;
+  }
+  .quote-block .quote-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold-pale);
+    line-height: 1.8;
+    padding-left: 36px;
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+  .quote-block .quote-from {
+    font-size: 13px;
+    color: var(--text-dim);
+    padding-left: 36px;
+    margin-bottom: 18px;
+  }
+  .quote-block .quote-think {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.85;
+    padding: 14px 18px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    border-left: 3px solid var(--gold);
+  }
+  .quote-block .quote-think strong { color: var(--gold-bright); }
+
+  /* ===== SECTION 4: 今日行动 ===== */
+  .sec-action .card-header { background: linear-gradient(135deg, #14181d 0%, #1a1712 100%); }
+  .sec-action .icon { background: rgba(90,141,184,0.12); color: var(--blue); }
+  .sec-action .card-header h2 { color: #8ab4d8; }
+
+  .action-steps {
+    background: rgba(0,0,0,0.25);
+    border-left: 3px solid var(--blue);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 14px;
+    font-size: 14px;
+    line-height: 2;
+  }
+  .action-steps .step-num {
+    display: inline-block;
+    background: rgba(90,141,184,0.15);
+    color: #8ab4d8;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 22px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 8px;
+  }
+  .action-observe {
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 13.5px;
+    line-height: 1.8;
+    margin-bottom: 14px;
+    border: 1px solid rgba(90,141,184,0.15);
+  }
+  .action-observe strong { color: #8ab4d8; }
+  .action-think {
+    background: linear-gradient(135deg, rgba(90,141,184,0.08), rgba(60,100,140,0.04));
+    border: 1px solid rgba(90,141,184,0.2);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .action-think strong { color: #8ab4d8; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    text-align: center;
+    padding: 28px 20px 20px;
+    color: var(--text-dim);
+    font-size: 12px;
+    border-top: 1px solid var(--card-border);
+    letter-spacing: 0.5px;
+    line-height: 2;
+  }
+  .footer .next-teaser {
+    display: inline-block;
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 20px;
+    padding: 8px 20px;
+    margin-top: 12px;
+    font-size: 12.5px;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 600px) {
+    .view-grid, .data-snapshot { grid-template-columns: 1fr; }
+    .tm-result-grid, .concept-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HERO ==================== -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">2026年8月5日 星期三 · 第 8 期</div>
+    <h1>财商日推 · 思维健身房</h1>
+    <div class="sub">每天5分钟，用历史的眼睛训练未来的判断力。<br>不荐股、不谈玄学——只还原真实世界的金钱逻辑。</div>
+    <div class="hero-meta">
+      <span>⏱ 5分钟</span>
+      <span>🏷 本期关键词：市盈率</span>
+      <span>📖 在读《富爸爸穷爸爸》</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== BODY ==================== -->
+<div class="container">
+
+<!-- ===== 今日一句 ===== -->
+<div class="takeaway-bar">
+  <div class="ta-icon">💡</div>
+  <div>
+    <div class="ta-label">今日一句</div>
+    <div class="ta-text">好公司 ≠ 好投资。<br>关键不在于公司好不好，而在于你付了多少钱。</div>
+  </div>
+</div>
+
+<!-- ===== 一、回到那一天 ===== -->
+<div class="card sec-back">
+  <div class="card-header">
+    <div class="icon">⏳</div>
+    <h2>一、回到那一天</h2>
+  </div>
+  <div class="card-body">
+    <div class="time-machine">
+
+      <!-- 标题 -->
+      <div class="tm-head">
+        <div class="tm-date">1999年12月 · 亚马逊</div>
+        <div class="tm-place">纳斯达克 · Amazon.com (AMZN) · 互联网泡沫巅峰</div>
+      </div>
+
+      <!-- 数据快照 -->
+      <div class="data-snapshot">
+        <div class="ds-item">
+          <div class="ds-label">亚马逊股价</div>
+          <div class="ds-value">$107</div>
+          <div class="ds-sub">市值 $360亿</div>
+        </div>
+        <div class="ds-item">
+          <div class="ds-label">纳斯达克指数</div>
+          <div class="ds-value">4,069</div>
+          <div class="ds-sub">PE 约 200倍</div>
+        </div>
+        <div class="ds-item">
+          <div class="ds-label">亚马逊盈利</div>
+          <div class="ds-value" style="color:var(--red)">-$7.2亿</div>
+          <div class="ds-sub">从没赚过一分钱</div>
+        </div>
+      </div>
+
+      <!-- 背景知识（先补课再看故事） -->
+      <div class="tm-primer">
+        <strong>📝 先花20秒补个背景：市盈率（PE）</strong><br>
+        市盈率 = 股价 ÷ 每股盈利。PE=20 意味着按目前的盈利水平，20年能"回本"。<br>
+        但这是建立在公司有盈利的前提下。如果公司在亏钱——PE就不存在。<br>
+        <strong>1999年的亚马逊，是一家零利润、年亏7.2亿美元的网上书店。它的"PE"是无穷大。</strong>但股价还在涨，为什么？因为投资者根本不看PE——他们在看"未来的利润"。
+      </div>
+
+      <!-- 情境画面 -->
+      <div class="tm-scene">
+        <strong>画面切到1999年12月。</strong><br><br>
+        亚马逊，一家卖了5年书的电商公司，刚把业务扩张到音乐、电子产品和玩具。营收 $16.4 亿，亏损 $7.2 亿，上市两年半从来没赚过钱。<br><br>
+        但华尔街爱它。股价从1997年IPO的拆分调整价 $1.96，涨到了 <strong>$107</strong>——两年半涨了 <strong>5,400%</strong>。<br><br>
+        分析师不用PE估值了——因为PE不存在。他们发明了新公式：<strong>"远期现金流折现"</strong>——假设亚马逊未来十年的收入每年增长50%，把这些"未来的钱"折现到今天。摩根士丹利估计，如果亚马逊成为下一个沃尔玛，它的合理价值可达 <strong>790亿美元</strong>。<br><br>
+        一个名叫亨利·布洛杰特（Henry Blodget）的年轻分析师更大胆，在1998年12月预测亚马逊将涨到$400。所有人都觉得他疯了。<strong>几周之内，目标价就被突破了。</strong><br><br>
+        <strong>你盯着屏幕，脑子里三个声音：</strong><br>
+        🅐 "这就是未来的沃尔玛，现在不上车就晚了！"<br>
+        🅑 "一个亏7亿的公司值360亿？疯了。"<br>
+        🅒 "我知道它贵，但互联网不一样——新经济不看PE。"
+      </div>
+
+      <!-- 三方观点 -->
+      <div class="view-grid">
+        <div class="view-card bull">
+          <div class="vc-head">🟢 看多派</div>
+          <div>"亚马逊是这个时代的沃尔玛，但情况更好——无店铺模式天然具有成本优势。"<br>—— 摩根士丹利分析师 Scott Devitt<br><br>
+          "互联网不是泡沫，是新经济范式的开端。"<br>—— 高盛分析师 Abby Joseph Cohen<br><br>
+          "亚马逊有$10亿现金，能撑到盈利的那一天。"<br>—— 比尔·米勒，美盛价值基金（1999年9月逆势重仓）</div>
+        </div>
+        <div class="view-card bear">
+          <div class="vc-head">🔴 看空派</div>
+          <div>"亚马逊的资金只够烧10个月。'"Burning Up'"<br>—— 《巴伦周刊》2000年春封面文章<br><br>
+          "一家从未盈利的公司，市销率22倍——这是历史上最荒唐的估值。"<br>—— 做空机构观点 [来源：雪球/1999年市场评论]<br><br>
+          "亚马逊就是下一个Pets.com，别被故事骗了。"<br>—— 华尔街主流分析师（泡沫破裂后）</div>
+        </div>
+        <div class="view-card neutral">
+          <div class="vc-head">🟡 观望派</div>
+          <div>"电商是趋势，但亚马逊的估值已经透支了未来十年的增长。"<br>—— 《估值：衡量和管理企业价值》第3版，Copeland<br><br>
+          "四种情景加权估值=230亿美元，而现在市值400亿——至少贵了 74%。"<br>—— 麦肯锡情景分析模型<br><br>
+          "我们不否认它的模式，但在这个价格我们不买。"<br>—— 多位机构投资者 [来源：复盘文章综合]</div>
+        </div>
+      </div>
+
+      <!-- 暂停 -->
+      <div class="tm-pause">⏸ 停一下。你觉得亚马逊值360亿美元吗？再往下翻。</div>
+
+      <!-- 结局揭晓 -->
+      <div class="tm-reveal">
+        <div class="reveal-title">📜 结局揭晓 · 时间线</div>
+
+        <div class="tl-item">
+          <div class="tl-dot neutral"></div>
+          <div class="tl-body">
+            <div class="tl-date">1999年12月 → 2000年3月10日</div>
+            <div class="tl-text">纳斯达克指数触及 <span class="up">5,132点</span> 历史顶峰。亚马逊股价最后一次测试$113。然后——泡沫破裂。纳斯达克在接下来30个月暴跌 <span class="down">78%</span>，市值蒸发超5万亿美元。数百家.com公司灰飞烟灭：Pets.com、Webvan、eToys……</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot fall"></div>
+          <div class="tl-body">
+            <div class="tl-date">2001年9月</div>
+            <div class="tl-text">亚马逊股价触及 <span class="down">$5.51</span>，从$107的巅峰暴跌 <span class="down">94.9%</span>。市值从$360亿缩水至$22亿。如果你在高点投入$10,000，此时账户剩$600。《巴伦周刊》的"烧钱论"几乎应验。<br><br>
+            但贝索斯做了一件所有人都没注意到的事：他在1999年1月（泡沫破裂前）让CFO Joy Covey完成了 <strong>$12.5亿可转债融资</strong>——这笔钱成了亚马逊活下去的氧气瓶。到2000年底，亚马逊手握$10亿现金。而竞争对手没钱了。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot rise"></div>
+          <div class="tl-body">
+            <div class="tl-date">2002年Q4</div>
+            <div class="tl-text">亚马逊实现 <span class="up">首个季度盈利</span>——$500万净利润，营收$10亿。市场终于看到了"电商能赚钱"的证据。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot rise"></div>
+          <div class="tl-body">
+            <div class="tl-date">2003年</div>
+            <div class="tl-text">首个全年盈利。随后：<span class="up">2005年 Prime会员上线</span>、<span class="up">2006年 AWS云服务上线</span>——后者最终贡献了亚马逊一半以上的运营利润。商业模式彻底转型。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot rise"></div>
+          <div class="tl-body">
+            <div class="tl-date">2009年</div>
+            <div class="tl-text">亚马逊股价 <span class="up">终于回到1999年高点</span>。等了整整 <strong>10年</strong>。营收$245亿（是1999年的15倍），净利润$9.02亿。PE约66倍。</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot rise"></div>
+          <div class="tl-body">
+            <div class="tl-date">2026年8月4日（昨天）</div>
+            <div class="tl-text">亚马逊收盘价 <span class="up">$277.42</span>，市值约 <span class="up">$2.92万亿</span>，PE TTM <span class="up">22.3倍</span>。从1999年高点$107算起，26年涨幅约 <span class="up">160倍</span>（拆分调整后）。从2001年底部$5.51算起，25年涨幅约 <span class="up">4,900倍</span>。<br>[来源：MarketWatch, Longbridge, 雪球复盘数据]</div>
+          </div>
+        </div>
+
+        <!-- 结果摘要 2×2 -->
+        <div class="tm-result-grid">
+          <div class="r-item">
+            <span class="r-icon" style="color:var(--red)">❌</span>
+            <span>1999年高点买入、2001年绝望割肉的人：<span style="color:var(--red);font-weight:700;">亏95%</span>，$10,000变$500</span>
+          </div>
+          <div class="r-item">
+            <span class="r-icon" style="color:var(--gold)">😐</span>
+            <span>1999年买入、咬牙拿到2009年的人：<span style="color:var(--gold);font-weight:700;">10年回本</span>，零收益</span>
+          </div>
+          <div class="r-item">
+            <span class="r-icon" style="color:var(--green)">✅</span>
+            <span>2001年底部$6买入的人：持有至今<span style="color:var(--green);font-weight:700;">涨4,900倍</span>，$10,000变$4,900万</span>
+          </div>
+          <div class="r-item">
+            <span class="r-icon" style="color:var(--green)">🏆</span>
+            <span>比尔·米勒：1999年$88重仓，越跌越买，成本压到$30——<span style="color:var(--green);font-weight:700;">传奇业绩</span></span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 核心课 -->
+      <div class="lesson-box">
+        <div class="lesson-title">🔍 这件事教会我们什么？</div>
+        <div class="lesson-item">
+          <span class="l-num">①</span>
+          <span><strong>PE是估值的起点，不是终点。</strong>一家亏钱的公司没有PE——但这不意味着它没有价值，也不意味着它一定有价值。1999年的亚马逊和Pets.com都没有PE，一家成了$3万亿帝国，一家灰飞烟灭。区别在于：<strong>它有没有真正的护城河和现金流储备？</strong></span>
+        </div>
+        <div class="lesson-item">
+          <span class="l-num">②</span>
+          <span><strong>好公司 + 坏价格 = 坏投资。</strong>亚马逊毫无疑问是一家伟大的公司。但如果你在1999年高点$107买入，你要等10年才能回本。10年！这10年里你看着账户缩水95%，每天都在怀疑自己的判断。PE告诉你的是——<strong>你为每一块钱利润付了多少代价。</strong>亚马逊今天PE 22倍，已经是一台赚钱机器了。但在1999年，PE不存在——你买的是一个关于未来的故事。</span>
+        </div>
+        <div class="lesson-item">
+          <span class="l-num">③</span>
+          <span><strong>极端时刻，现金就是氧气。</strong>亚马逊之所以活过泡沫破裂，不是因为它的模式有多完美——是因为贝索斯在泡沫最高点之前就融到了$12.5亿。当所有竞争对手在2001年断粮时，亚马逊有$10亿现金。这个决策与PE无关、与技术无关、与趋势无关——<strong>它只和一件事有关：生存。</strong></span>
+        </div>
+      </div>
+
+      <!-- 回旋镖 -->
+      <div class="boomerang">
+        <div class="boom-title">🔙 回旋镖：今天你在什么位置？</div>
+        2026年8月5日，<strong>沪深300 PE TTM = 14.24倍</strong>，历史分位79%（偏高估）。上证指数3,822点，上证PE 16.3倍。十年国债收益率1.71%。<br><br>
+        1999年纳斯达克PE <strong>200倍</strong>。今天沪深300 PE <strong>14倍</strong>。<br><br>
+        200倍 vs 14倍——这不是同一个量级。但当大家都在讨论"指数估值偏高"的时候，你要问自己：<strong>偏高是相对于什么？</strong>相对于历史？还是相对于未来的盈利增长？如果你的答案和1999年亚马逊的分析师一样"我相信未来一定会好"——请你回到上面再看一遍那三个核心课。<br><br>
+        [沪深300数据来源：雪球/国泰基金每日解盘 2026.08.04；国债数据来源：万得/中银证券周报]
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== 二、本期出现的概念速览 ===== -->
+<div class="card sec-concept">
+  <div class="card-header">
+    <div class="icon">📖</div>
+    <h2>二、本期出现的概念速览</h2>
+  </div>
+  <div class="card-body">
+    <div class="concept-grid">
+      <div class="concept-chip">
+        <div class="cc-name">市盈率（P/E Ratio）</div>
+        <div class="cc-desc">股价 ÷ 每股盈利。PE=20意味着按当前盈利20年回本。亏损公司没有PE。</div>
+      </div>
+      <div class="concept-chip">
+        <div class="cc-name">市销率（P/S Ratio）</div>
+        <div class="cc-desc">市值 ÷ 营收。亏损公司无法用PE时，分析师改用PS——亚马逊巅峰时PS高达22倍。</div>
+      </div>
+      <div class="concept-chip">
+        <div class="cc-name">远期现金流折现（DCF）</div>
+        <div class="cc-desc">把公司未来N年的预计现金流"折现"到今天。1999年亚马逊就是用这个估值的——关键假设随时可崩。</div>
+      </div>
+      <div class="concept-chip">
+        <div class="cc-name">泡沫（Bubble）</div>
+        <div class="cc-desc">资产价格远超其内在价值。2000年纳斯达克PE 200倍，正常区间15-25倍——溢价8-13倍。</div>
+      </div>
+      <div class="concept-chip">
+        <div class="cc-name">可转债（Convertible Bond）</div>
+        <div class="cc-desc">既能当债券收利息、也能转成股票的融资工具。亚马逊1999年靠它融到$12.5亿救命钱。</div>
+      </div>
+      <div class="concept-chip">
+        <div class="cc-name">最大回撤（Max Drawdown）</div>
+        <div class="cc-desc">投资从最高点到最低点的最大亏损幅度。亚马逊峰值回撤94.9%——$10,000变$510。</div>
+      </div>
+    </div>
+
+    <!-- 重点详解：市盈率 -->
+    <div class="concept-card" style="margin-top:18px;">
+      <div class="concept-term">市盈率（P/E Ratio）</div>
+      <div class="concept-tagline">不是"便宜还是贵"，而是"你为每一块钱利润付了多少代价"。</div>
+
+      <div class="concept-explain">
+        <strong>公式：</strong>PE = 股价 ÷ 每股盈利（EPS）<br><br>
+        <strong>PE=10：</strong>按当前盈利，10年回本。通常被认为是"便宜"。<br>
+        <strong>PE=20：</strong>按当前盈利，20年回本。这是美国股市的长期平均水平。<br>
+        <strong>PE=200：</strong>按当前盈利，200年回本。只有两种情况——要么是泡沫，要么盈利即将爆炸式增长。<br>
+        <strong>PE不存在：</strong>公司亏钱。这时候PE没有意义。你需要用别的工具——PS、DCF、看现金储备和烧钱速度。
+      </div>
+
+      <div class="concept-example">
+        <strong>🌰 举个栗子：</strong><br>
+        楼下有两家面馆。<br><br>
+        老王家面馆：每年赚10万，老板开价100万卖给你。PE=10。<br>
+        老李家面馆：每年赚10万，老板开价200万卖给你。PE=20。<br><br>
+        哪个划算？直觉上老王便宜。<br><br>
+        但如果老李的店在市中心、客流量是老王的3倍、明年要开分店——你可能愿意付200万。<br><br>
+        <strong>PE不是绝对数字，它是"市场愿意为未来增长付多少钱"的温度计。</strong>1999年的亚马逊，市场付了$360亿买一个"未来的沃尔玛"。26年后，它确实成了沃尔玛+云计算的合体——市值$3万亿。但当年付$107的人还是等了10年才解套。
+      </div>
+
+      <div class="concept-bridge">
+        <span class="bridge-icon">🔗</span>
+        <span><strong>和今天的联系：</strong>我们每天看沪深300 PE、上证PE，那些数字告诉你"现在贵不贵"。但1999年亚马逊的故事告诉你——PE只是入场券。真正的问题永远是：<strong>这家公司3年后、5年后、10年后能赚多少钱？你为这个未来付出了多少？</strong></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 三、富爸爸一句话 ===== -->
+<div class="card sec-rich">
+  <div class="card-header">
+    <div class="icon">💬</div>
+    <h2>三、富爸爸一句话</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="quote-block">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">投资的秘诀不在于你赚了多少，而在于你承受了多少风险。</div>
+      <div class="quote-from">—— 罗伯特·清崎《富爸爸穷爸爸》</div>
+      <div class="quote-think">
+        <strong>和今天案例的联系：</strong><br>
+        1999年买亚马逊的人，后来确实有人赚了——26年160倍。但前提是什么？你要承受94.9%的账面亏损、10年的解套等待、无数个"我是不是错了"的夜晚。<br><br>
+        赚多少是结果，风险是过程。大多数人只看结果——"哇，亚马逊涨了160倍！"但没人告诉你中间那个从$107到$5.51的深渊。清崎这句话就是在说：<strong>在你看到的那条收益曲线上，每一个点背后都有一个真实的、可能让你睡不着觉的风险。</strong><br><br>
+        比尔·米勒为什么能拿到这个收益？不是因为他比别人聪明——而是因为他在所有人都在逃离的时候，研究了亚马逊的资产负债表，确认了$10亿现金足够活下去。他把"风险"变成了"确定性"。这才是投资的秘诀。
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 四、今日行动 ===== -->
+<div class="card sec-action">
+  <div class="card-header">
+    <div class="icon">🔧</div>
+    <h2>四、今日行动（30秒）</h2>
+  </div>
+  <div class="card-body">
+
+    <div style="font-size:13px;color:var(--text-dim);margin-bottom:14px;">🎯 目标：亲手看一眼"市盈率"，感受数字的实感</div>
+
+    <div class="action-steps">
+      <span class="step-num">1</span> 打开<strong>同花顺</strong>App<br>
+      <span class="step-num">2</span> 顶部搜索框输入 <strong>"沪深300"</strong> → 点击搜索结果中的"沪深300"指数<br>
+      <span class="step-num">3</span> 在指数详情页找到 <strong>"市盈率TTM"</strong>（通常在"估值分析"或"行情数据"区域）<br>
+      <span class="step-num">4</span> 记下这个数字。
+    </div>
+
+    <div class="action-observe">
+      <strong>你看到了什么？</strong><br>
+      截至2026年8月4日收盘：沪深300 PE TTM = <strong>14.21倍</strong>，PB = 1.45倍。历史分位约79%（即当前PE比历史上79%的时间更贵）。<br>
+      同期余额宝七日年化收益率 = <strong>0.836%</strong>，十年期国债收益率 = <strong>1.71%</strong>。<br>
+      [数据来源：国泰基金每日解盘 2026.08.04；天弘余额宝货币 000198 净值公告 2026.08.02；万得]
+    </div>
+
+    <div class="action-think">
+      <strong>🤔 思考题：</strong><br>
+      沪深300 PE=14倍。余额宝年化=0.836%。<br><br>
+      如果赚1块钱利润需要付14块钱，那意味着按当前盈利水平，年化收益率约 <strong>7.1%</strong>（1÷14）。是余额宝的8.5倍。<br><br>
+      但问题来了：<strong>今天的盈利能持续吗？14倍的PE算贵还是便宜？</strong><br><br>
+      不急着回答。把这两个数字记下来：PE=14，余额宝=0.836%。明天、下周、下个月再回来看——看它们变了多少。这就是训练判断力的开始。
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="footer">
+  <p>财商日推 · 第 8 期 | 2026年8月5日 星期三</p>
+  <p style="margin-top:6px;">⚠️ 免责声明：本内容仅供财商思维训练，不构成任何投资建议。不推荐任何具体股票、基金或其他金融产品。所有历史案例均为已发生事件的事后复盘，不预示未来结果。投资有风险，入市须谨慎。</p>
+  <div class="next-teaser">📅 明天剧透：股息率——股票除了涨价，还能怎么给你赚钱？</div>
+</div>
+
+</div>
+
+</body>
+</html>
