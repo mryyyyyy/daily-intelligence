@@ -516,6 +516,194 @@
     .view-grid, .data-snapshot { grid-template-columns: 1fr; }
     .tm-result-grid, .concept-grid { grid-template-columns: 1fr; }
   }
+
+  /* ===== 术语词典（点击名词展开） ===== */
+  .term {
+    color: var(--gold-bright);
+    border-bottom: 1px dashed rgba(201,168,76,0.5);
+    cursor: help;
+    position: relative;
+    transition: all 0.15s;
+    padding: 0 2px;
+  }
+  .term:hover { color: var(--gold-pale); border-bottom-color: var(--gold-bright); }
+
+  /* ===== 浮动工具栏 ===== */
+  .floating-bar {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 9999;
+  }
+  .fb-btn {
+    background: linear-gradient(135deg, rgba(201,168,76,0.95), rgba(160,130,50,0.95));
+    color: #1a150e;
+    border: 1px solid rgba(230,200,100,0.4);
+    border-radius: 24px;
+    padding: 12px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    white-space: nowrap;
+  }
+  .fb-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
+  .fb-btn:active { transform: translateY(0); }
+  .fb-btn.secondary {
+    background: rgba(26,23,18,0.95);
+    color: var(--gold);
+    border-color: rgba(201,168,76,0.3);
+  }
+
+  /* ===== Toast 提示 ===== */
+  .toast {
+    position: fixed;
+    bottom: 100px;
+    right: 24px;
+    background: rgba(90,158,111,0.95);
+    color: #fff;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 10000;
+    max-width: 320px;
+    line-height: 1.6;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  /* ===== 设置弹窗 ===== */
+  .settings-modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+    backdrop-filter: blur(4px);
+  }
+  .settings-modal.show { display: flex; }
+  .settings-box {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 28px;
+    max-width: 480px;
+    width: 90%;
+    color: var(--text);
+  }
+  .settings-box h3 { color: var(--gold-bright); margin-bottom: 16px; font-size: 17px; }
+  .settings-box label { display: block; margin-bottom: 6px; font-size: 12px; color: var(--text-dim); }
+  .settings-box input {
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--text);
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 14px;
+    font-family: inherit;
+  }
+  .settings-box input:focus { outline: none; border-color: var(--gold); }
+  .settings-box .sm-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 8px; }
+  .settings-box .sm-actions button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(201,168,76,0.3);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .settings-box .sm-actions .primary { background: var(--gold); color: #1a150e; border-color: var(--gold); font-weight: 700; }
+  .settings-box .sm-hint { font-size: 11px; color: var(--text-dim); margin-top: 4px; line-height: 1.6; }
+
+  /* ===== 术语弹窗 ===== */
+  .term-modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10002;
+    backdrop-filter: blur(4px);
+  }
+  .term-modal.show { display: flex; }
+  .term-box {
+    background: linear-gradient(135deg, rgba(30,25,18,0.98), rgba(20,18,12,0.98));
+    border: 1px solid var(--gold);
+    border-radius: 14px;
+    padding: 24px 28px;
+    max-width: 480px;
+    width: 90%;
+    color: var(--text);
+    position: relative;
+  }
+  .term-box .tb-title {
+    color: var(--gold-bright);
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .term-box .tb-def { font-size: 14px; line-height: 1.9; margin-bottom: 14px; }
+  .term-box .tb-example {
+    background: rgba(0,0,0,0.3);
+    padding: 12px 16px;
+    border-radius: 8px;
+    border-left: 3px solid var(--gold);
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .term-box .tb-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .term-box .tb-actions button {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(201,168,76,0.3);
+    background: transparent;
+    color: var(--gold);
+    cursor: pointer;
+    font-size: 12.5px;
+    transition: all 0.15s;
+  }
+  .term-box .tb-actions button:hover { background: rgba(201,168,76,0.1); }
+  .term-box .tb-close {
+    position: absolute;
+    top: 12px; right: 12px;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.05);
+    color: var(--text-dim);
+    cursor: pointer;
+    font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .term-box .tb-close:hover { background: rgba(255,255,255,0.1); color: var(--text); }
+
+  /* 浮动按钮在窄屏调整 */
+  @media (max-width: 600px) {
+    .floating-bar { right: 12px; bottom: 12px; }
+    .fb-btn { padding: 10px 14px; font-size: 12px; }
+  }
 </style>
 </head>
 <body>
@@ -582,10 +770,10 @@
 
       <!-- 背景知识（先补课再看故事） -->
       <div class="tm-primer">
-        <strong>📝 先花20秒补个背景：市盈率（PE）</strong><br>
-        市盈率 = 股价 ÷ 每股盈利。PE=20 意味着按目前的盈利水平，20年能"回本"。<br>
-        但这是建立在公司有盈利的前提下。如果公司在亏钱——PE就不存在。<br>
-        <strong>1999年的亚马逊，是一家零利润、年亏7.2亿美元的网上书店。它的"PE"是无穷大。</strong>但股价还在涨，为什么？因为投资者根本不看PE——他们在看"未来的利润"。
+        <strong>📝 先花20秒补个背景：<span class="term" data-term="市盈率">市盈率（PE）</span></strong><br>
+        <span class="term" data-term="市盈率">市盈率</span> = 股价 ÷ 每股盈利。PE=20 意味着按目前的盈利水平，20年能"回本"。<br>
+        但这是建立在公司有盈利的前提下。如果公司在亏钱——<span class="term" data-term="市盈率">PE</span>就不存在。<br>
+        <strong>1999年的亚马逊，是一家零利润、年亏7.2亿美元的网上书店。它的"<span class="term" data-term="市盈率">PE</span>"是无穷大。</strong>但股价还在涨，为什么？因为投资者根本不看<span class="term" data-term="市盈率">PE</span>——他们在看"未来的利润"。
       </div>
 
       <!-- 情境画面 -->
@@ -593,12 +781,12 @@
         <strong>画面切到1999年12月。</strong><br><br>
         亚马逊，一家卖了5年书的电商公司，刚把业务扩张到音乐、电子产品和玩具。营收 $16.4 亿，亏损 $7.2 亿，上市两年半从来没赚过钱。<br><br>
         但华尔街爱它。股价从1997年IPO的拆分调整价 $1.96，涨到了 <strong>$107</strong>——两年半涨了 <strong>5,400%</strong>。<br><br>
-        分析师不用PE估值了——因为PE不存在。他们发明了新公式：<strong>"远期现金流折现"</strong>——假设亚马逊未来十年的收入每年增长50%，把这些"未来的钱"折现到今天。摩根士丹利估计，如果亚马逊成为下一个沃尔玛，它的合理价值可达 <strong>790亿美元</strong>。<br><br>
+        分析师不用<span class="term" data-term="市盈率">PE</span>估值了——因为<span class="term" data-term="市盈率">PE</span>不存在。他们发明了新公式：<strong>"<span class="term" data-term="远期现金流折现">远期现金流折现</span>"</strong>——假设亚马逊未来十年的收入每年增长50%，把这些"未来的钱"折现到今天。摩根士丹利估计，如果亚马逊成为下一个沃尔玛，它的合理价值可达 <strong>790亿美元</strong>。<br><br>
         一个名叫亨利·布洛杰特（Henry Blodget）的年轻分析师更大胆，在1998年12月预测亚马逊将涨到$400。所有人都觉得他疯了。<strong>几周之内，目标价就被突破了。</strong><br><br>
         <strong>你盯着屏幕，脑子里三个声音：</strong><br>
         🅐 "这就是未来的沃尔玛，现在不上车就晚了！"<br>
         🅑 "一个亏7亿的公司值360亿？疯了。"<br>
-        🅒 "我知道它贵，但互联网不一样——新经济不看PE。"
+        🅒 "我知道它贵，但互联网不一样——新经济不看<span class="term" data-term="市盈率">PE</span>。"
       </div>
 
       <!-- 三方观点 -->
@@ -606,14 +794,14 @@
         <div class="view-card bull">
           <div class="vc-head">🟢 看多派</div>
           <div>"亚马逊是这个时代的沃尔玛，但情况更好——无店铺模式天然具有成本优势。"<br>—— 摩根士丹利分析师 Scott Devitt<br><br>
-          "互联网不是泡沫，是新经济范式的开端。"<br>—— 高盛分析师 Abby Joseph Cohen<br><br>
+          "互联网不是<span class="term" data-term="泡沫">泡沫</span>，是新经济范式的开端。"<br>—— 高盛分析师 Abby Joseph Cohen<br><br>
           "亚马逊有$10亿现金，能撑到盈利的那一天。"<br>—— 比尔·米勒，美盛价值基金（1999年9月逆势重仓）</div>
         </div>
         <div class="view-card bear">
           <div class="vc-head">🔴 看空派</div>
           <div>"亚马逊的资金只够烧10个月。'"Burning Up'"<br>—— 《巴伦周刊》2000年春封面文章<br><br>
-          "一家从未盈利的公司，市销率22倍——这是历史上最荒唐的估值。"<br>—— 做空机构观点 [来源：雪球/1999年市场评论]<br><br>
-          "亚马逊就是下一个Pets.com，别被故事骗了。"<br>—— 华尔街主流分析师（泡沫破裂后）</div>
+          "一家从未盈利的公司，<span class="term" data-term="市销率">市销率</span>22倍——这是历史上最荒唐的估值。"<br>—— 做空机构观点 [来源：雪球/1999年市场评论]<br><br>
+          "亚马逊就是下一个Pets.com，别被故事骗了。"<br>—— 华尔街主流分析师（<span class="term" data-term="泡沫">泡沫</span>破裂后）</div>
         </div>
         <div class="view-card neutral">
           <div class="vc-head">🟡 观望派</div>
@@ -634,7 +822,7 @@
           <div class="tl-dot neutral"></div>
           <div class="tl-body">
             <div class="tl-date">1999年12月 → 2000年3月10日</div>
-            <div class="tl-text">纳斯达克指数触及 <span class="up">5,132点</span> 历史顶峰。亚马逊股价最后一次测试$113。然后——泡沫破裂。纳斯达克在接下来30个月暴跌 <span class="down">78%</span>，市值蒸发超5万亿美元。数百家.com公司灰飞烟灭：Pets.com、Webvan、eToys……</div>
+            <div class="tl-text"><span class="term" data-term="纳斯达克">纳斯达克</span>指数触及 <span class="up">5,132点</span> 历史顶峰。亚马逊股价最后一次测试$113。然后——<span class="term" data-term="泡沫">泡沫</span>破裂。<span class="term" data-term="纳斯达克">纳斯达克</span>在接下来30个月暴跌 <span class="down">78%</span>，市值蒸发超5万亿美元。数百家.com公司灰飞烟灭：Pets.com、Webvan、eToys……</div>
           </div>
         </div>
         <div class="tl-item">
@@ -642,7 +830,7 @@
           <div class="tl-body">
             <div class="tl-date">2001年9月</div>
             <div class="tl-text">亚马逊股价触及 <span class="down">$5.51</span>，从$107的巅峰暴跌 <span class="down">94.9%</span>。市值从$360亿缩水至$22亿。如果你在高点投入$10,000，此时账户剩$600。《巴伦周刊》的"烧钱论"几乎应验。<br><br>
-            但贝索斯做了一件所有人都没注意到的事：他在1999年1月（泡沫破裂前）让CFO Joy Covey完成了 <strong>$12.5亿可转债融资</strong>——这笔钱成了亚马逊活下去的氧气瓶。到2000年底，亚马逊手握$10亿现金。而竞争对手没钱了。</div>
+            但贝索斯做了一件所有人都没注意到的事：他在1999年1月（泡沫破裂前）让CFO Joy Covey完成了 <strong>$12.5亿<span class="term" data-term="可转债">可转债</span>融资</strong>——这笔钱成了亚马逊活下去的氧气瓶。到2000年底，亚马逊手握$10亿<span class="term" data-term="现金流">现金</span>。而竞争对手没钱了。</div>
           </div>
         </div>
         <div class="tl-item">
@@ -670,7 +858,7 @@
           <div class="tl-dot rise"></div>
           <div class="tl-body">
             <div class="tl-date">2026年8月4日（昨天）</div>
-            <div class="tl-text">亚马逊收盘价 <span class="up">$277.42</span>，市值约 <span class="up">$2.92万亿</span>，PE TTM <span class="up">22.3倍</span>。从1999年高点$107算起，26年涨幅约 <span class="up">160倍</span>（拆分调整后）。从2001年底部$5.51算起，25年涨幅约 <span class="up">4,900倍</span>。<br>[来源：MarketWatch, Longbridge, 雪球复盘数据]</div>
+            <div class="tl-text">亚马逊收盘价 <span class="up">$277.42</span>，市值约 <span class="up">$2.92万亿</span>，<span class="term" data-term="市盈率TTM">PE TTM</span> <span class="up">22.3倍</span>。从1999年高点$107算起，26年涨幅约 <span class="up">160倍</span>（拆分调整后）。从2001年底部$5.51算起，25年涨幅约 <span class="up">4,900倍</span>。<br>[来源：MarketWatch, Longbridge, 雪球复盘数据]</div>
           </div>
         </div>
 
@@ -701,23 +889,23 @@
         <div class="lesson-title">🔍 这件事教会我们什么？</div>
         <div class="lesson-item">
           <span class="l-num">①</span>
-          <span><strong>PE是估值的起点，不是终点。</strong>一家亏钱的公司没有PE——但这不意味着它没有价值，也不意味着它一定有价值。1999年的亚马逊和Pets.com都没有PE，一家成了$3万亿帝国，一家灰飞烟灭。区别在于：<strong>它有没有真正的护城河和现金流储备？</strong></span>
+          <span><strong>PE是估值的起点，不是终点。</strong>一家亏钱的公司没有PE——但这不意味着它没有价值，也不意味着它一定有价值。1999年的亚马逊和Pets.com都没有PE，一家成了$3万亿帝国，一家灰飞烟灭。区别在于：<strong>它有没有真正的<span class="term" data-term="护城河">护城河</span>和<span class="term" data-term="现金流">现金流</span>储备？</strong></span>
         </div>
         <div class="lesson-item">
           <span class="l-num">②</span>
-          <span><strong>好公司 + 坏价格 = 坏投资。</strong>亚马逊毫无疑问是一家伟大的公司。但如果你在1999年高点$107买入，你要等10年才能回本。10年！这10年里你看着账户缩水95%，每天都在怀疑自己的判断。PE告诉你的是——<strong>你为每一块钱利润付了多少代价。</strong>亚马逊今天PE 22倍，已经是一台赚钱机器了。但在1999年，PE不存在——你买的是一个关于未来的故事。</span>
+          <span><strong>好公司 + 坏价格 = 坏投资。</strong>亚马逊毫无疑问是一家伟大的公司。但如果你在1999年高点$107买入，你要等10年才能回本。10年！这10年里你看着账户缩水95%，每天都在怀疑自己的判断。PE告诉你的是——<strong>你为每一块钱利润付了多少代价。</strong>亚马逊今天PE 22倍，已经是一台赚钱机器了。但在1999年，PE不存在——你买的是一个关于未来的故事。（这个<span class="term" data-term="最大回撤">回撤</span>幅度，今天有个术语专门衡量，叫"<span class="term" data-term="最大回撤">最大回撤</span>"。）</span>
         </div>
         <div class="lesson-item">
           <span class="l-num">③</span>
-          <span><strong>极端时刻，现金就是氧气。</strong>亚马逊之所以活过泡沫破裂，不是因为它的模式有多完美——是因为贝索斯在泡沫最高点之前就融到了$12.5亿。当所有竞争对手在2001年断粮时，亚马逊有$10亿现金。这个决策与PE无关、与技术无关、与趋势无关——<strong>它只和一件事有关：生存。</strong></span>
+          <span><strong>极端时刻，<span class="term" data-term="现金流">现金</span>就是氧气。</strong>亚马逊之所以活过泡沫破裂，不是因为它的模式有多完美——是因为贝索斯在泡沫最高点之前就融到了$12.5亿。当所有竞争对手在2001年断粮时，亚马逊有$10亿<span class="term" data-term="现金流">现金</span>。这个决策与PE无关、与技术无关、与趋势无关——<strong>它只和一件事有关：生存。</strong></span>
         </div>
       </div>
 
       <!-- 回旋镖 -->
       <div class="boomerang">
         <div class="boom-title">🔙 回旋镖：今天你在什么位置？</div>
-        2026年8月5日，<strong>沪深300 PE TTM = 14.24倍</strong>，历史分位79%（偏高估）。上证指数3,822点，上证PE 16.3倍。十年国债收益率1.71%。<br><br>
-        1999年纳斯达克PE <strong>200倍</strong>。今天沪深300 PE <strong>14倍</strong>。<br><br>
+        2026年8月5日，<strong>沪深300 <span class="term" data-term="市盈率">PE</span> TTM = 14.24倍</strong>，历史分位79%（偏高估）。上证指数3,822点，上证PE 16.3倍。十年国债收益率1.71%。<br><br>
+        1999年<span class="term" data-term="纳斯达克">纳斯达克</span><span class="term" data-term="市盈率">PE</span> <strong>200倍</strong>。今天沪深300 <span class="term" data-term="市盈率">PE</span> <strong>14倍</strong>。<br><br>
         200倍 vs 14倍——这不是同一个量级。但当大家都在讨论"指数估值偏高"的时候，你要问自己：<strong>偏高是相对于什么？</strong>相对于历史？还是相对于未来的盈利增长？如果你的答案和1999年亚马逊的分析师一样"我相信未来一定会好"——请你回到上面再看一遍那三个核心课。<br><br>
         [沪深300数据来源：雪球/国泰基金每日解盘 2026.08.04；国债数据来源：万得/中银证券周报]
       </div>
@@ -828,13 +1016,13 @@
     <div class="action-steps">
       <span class="step-num">1</span> 打开<strong>同花顺</strong>App<br>
       <span class="step-num">2</span> 顶部搜索框输入 <strong>"沪深300"</strong> → 点击搜索结果中的"沪深300"指数<br>
-      <span class="step-num">3</span> 在指数详情页找到 <strong>"市盈率TTM"</strong>（通常在"估值分析"或"行情数据"区域）<br>
+      <span class="step-num">3</span> 在指数详情页找到 <strong>"<span class="term" data-term="市盈率TTM">市盈率TTM</span>"</strong>（通常在"估值分析"或"行情数据"区域）<br>
       <span class="step-num">4</span> 记下这个数字。
     </div>
 
     <div class="action-observe">
       <strong>你看到了什么？</strong><br>
-      截至2026年8月4日收盘：沪深300 PE TTM = <strong>14.21倍</strong>，PB = 1.45倍。历史分位约79%（即当前PE比历史上79%的时间更贵）。<br>
+      截至2026年8月4日收盘：沪深300 <span class="term" data-term="市盈率TTM">PE TTM</span> = <strong>14.21倍</strong>，PB = 1.45倍。历史分位约79%（即当前<span class="term" data-term="市盈率">PE</span>比历史上79%的时间更贵）。<br>
       同期余额宝七日年化收益率 = <strong>0.836%</strong>，十年期国债收益率 = <strong>1.71%</strong>。<br>
       [数据来源：国泰基金每日解盘 2026.08.04；天弘余额宝货币 000198 净值公告 2026.08.02；万得]
     </div>
@@ -854,10 +1042,279 @@
 <div class="footer">
   <p>财商日推 · 第 8 期 | 2026年8月5日 星期三</p>
   <p style="margin-top:6px;">⚠️ 免责声明：本内容仅供财商思维训练，不构成任何投资建议。不推荐任何具体股票、基金或其他金融产品。所有历史案例均为已发生事件的事后复盘，不预示未来结果。投资有风险，入市须谨慎。</p>
-  <div class="next-teaser">📅 明天剧透：股息率——股票除了涨价，还能怎么给你赚钱？</div>
+  <div class="next-teaser">📅 明天剧透：<span class="term" data-term="股息率">股息率</span>——股票除了涨价，还能怎么给你赚钱？</div>
 </div>
 
 </div>
+
+<!-- ===== 浮动工具栏 ===== -->
+<div class="floating-bar">
+  <button class="fb-btn secondary" id="btn-settings" title="设置 WorkBuddy URL">⚙️</button>
+  <button class="fb-btn secondary" id="btn-copy-discuss">📋 复制到 WorkBuddy</button>
+  <button class="fb-btn" id="btn-open-wb">💬 打开 WorkBuddy</button>
+</div>
+
+<!-- ===== Toast ===== -->
+<div class="toast" id="toast"></div>
+
+<!-- ===== 设置弹窗 ===== -->
+<div class="settings-modal" id="settings-modal">
+  <div class="settings-box">
+    <h3>⚙️ 设置</h3>
+    <label>WorkBuddy 入口 URL</label>
+    <input type="url" id="wb-url" placeholder="https://workbuddy.tencent.com 或本地应用 URL" />
+    <div class="sm-hint">支持 WorkBuddy 网页版、本地应用协议（如 workbuddy://）、腾讯元宝、ChatGPT 任何 AI 入口。</div>
+    <div class="sm-actions">
+      <button id="btn-cancel-settings">取消</button>
+      <button class="primary" id="btn-save-settings">保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 术语弹窗 ===== -->
+<div class="term-modal" id="term-modal">
+  <div class="term-box">
+    <button class="tb-close" id="tb-close">✕</button>
+    <div class="tb-title" id="tb-title"></div>
+    <div class="tb-def" id="tb-def"></div>
+    <div class="tb-example" id="tb-example"></div>
+    <div class="tb-actions">
+      <button id="tb-discuss">💬 复制到 WorkBuddy 讨论</button>
+      <button id="tb-close2">关闭</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ================== 术语词典 ================== */
+const TERM_DICT = {
+  '市盈率': {
+    def: 'PE = 股价 ÷ 每股盈利（EPS）。PE=20 意味着按当前盈利水平，20年能"回本"。通常 PE=10-15 算便宜，20-25 正常，30+ 偏贵。',
+    example: '🌰 比如：一家公司每年赚 1 块，股价 20 块，PE=20；股价 100 块，PE=100——同样赚 1 块，你付了 5 倍的价格。'
+  },
+  'PE': { redirect: '市盈率' },
+  'P/E': { redirect: '市盈率' },
+  '市销率': {
+    def: 'P/S = 市值 ÷ 营业收入。当公司还在亏钱、PE 不存在时，分析师改用这个——看看"为每一块钱营收付了多少钱"。',
+    example: '🌰 比如：亚马逊 1999 年 PS 高达 22 倍（年亏 7.2 亿）。一般零售公司 PS 在 0.5-2 倍之间。'
+  },
+  'DCF': { redirect: '远期现金流折现' },
+  '远期现金流折现': {
+    def: 'DCF 估值法：把公司未来 N 年的预计现金流"折现"到今天。关键假设是增长率和折现率——假设变了，估值天差地别。',
+    example: '🌰 1999 年亚马逊分析师假设"未来 10 年收入每年涨 50%"，得出 790 亿美元估值。但只要增长率假设砍到 30%，估值就腰斩。'
+  },
+  '可转债': {
+    def: 'Convertible Bond。一种"既能当债券收利息，也能按约定价转成股票"的融资工具。对公司来说利率比普通债低，对投资者来说有"上不封顶"的潜力。',
+    example: '🌰 亚马逊 1999 年初发了 $12.5 亿可转债——泡沫破裂后债主不能马上逼债，而股价涨了他们还能转股。这笔钱救了它的命。'
+  },
+  '最大回撤': {
+    def: 'Max Drawdown。一个投资组合从最高点到最低点的最大亏损幅度。是衡量"最坏情况下你会亏多少"的核心指标。',
+    example: '🌰 亚马逊 1999-2001 年最大回撤 94.9%——$10,000 变 $510。如果你心理上扛不住 30% 回撤，就不该碰这种股票。'
+  },
+  '泡沫': {
+    def: 'Bubble。资产价格远超其内在价值，靠"未来还会涨"的预期维持。一旦预期反转，价格雪崩。',
+    example: '🌰 2000 年纳斯达克 PE 200 倍（正常区间 15-25），靠"互联网改变世界"的信仰维持。后来信仰崩塌，跌 78%。'
+  },
+  '市盈率TTM': {
+    def: 'TTM = Trailing Twelve Months，过去 12 个月滚动。PE TTM = 当前股价 ÷ 过去 12 个月每股盈利。比"静态 PE"（用去年年报）更实时。',
+    example: '🌰 比如：今天是 8 月，去年年报是 12 月发布的，之间差了 8 个月——TTM 会把 Q1+Q2 数据合起来算。'
+  },
+  '纳指': { redirect: '纳斯达克' },
+  '纳斯达克': {
+    def: 'Nasdaq。美国第二大股票交易所，聚集了大量科技公司。1995-2000 年互联网泡沫就是以纳斯达克为震中的。',
+    example: '🌰 2000 年 3 月 10 日纳斯达克触及 5,132 点顶峰，到 2002 年 10 月跌到 1,119 点——跌幅 78%。'
+  },
+  '可转债融资': { redirect: '可转债' },
+  '拆股调整': {
+    def: '股票拆分后调整历史价格。比如亚马逊 1 股拆成 10 股，历史股价就要 ÷10 才能和今天可比。这是为什么 1999 年的 $107 在表格里变成 $5.3。',
+    example: '🌰 苹果 2020 年 4 拆 1，$400 变 $100；调整后 1980 年的 $0.39 看起来还是 $0.39，只是单位变了。'
+  },
+  '护城河': {
+    def: 'Moat。公司的"竞争优势壁垒"——让别人抢不走你生意的因素（品牌、网络效应、规模、成本）。巴菲特最爱用的概念。',
+    example: '🌰 亚马逊的护城河：Prime 会员（用户粘性）+ AWS（云市场龙头）+ 物流网络（自营履约）。'
+  },
+  '现金流': {
+    def: 'Cash Flow。一家公司"实际收到和付出的钱"。和"利润"不同——利润可以是会计做出来的，现金流必须是真金白银。',
+    example: '🌰 一家公司账上赚了 100 万，但客户欠款 200 万没付——它利润为正，现金流为负。这叫"纸面富贵"。'
+  },
+  '股息率': {
+    def: 'Dividend Yield = 每股分红 ÷ 股价。反映"光靠分红，你每年能拿多少回报"。',
+    example: '🌰 银行股股息率 5-6%，消费股 2-3%，科技股很多 0%（不分红）。下周我们会专门讲。'
+  }
+};
+
+/* ================== 工具函数 ================== */
+function showToast(msg, duration = 2800) {
+  const t = document.getElementById('toast');
+  t.innerHTML = msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), duration);
+}
+
+function getWorkBuddyUrl() {
+  return localStorage.getItem('wb_url') || 'https://workbuddy.tencent.com';
+}
+
+function openWorkBuddy() {
+  const url = getWorkBuddyUrl();
+  window.open(url, '_blank');
+}
+
+function getSelectionContext() {
+  const sel = window.getSelection();
+  const selectedText = sel.toString().trim();
+
+  // 找到最近的 section/card
+  let section = null;
+  let node = sel.anchorNode;
+  while (node && node !== document.body) {
+    if (node.nodeType === 1 && (node.classList.contains('card') || node.classList.contains('sec-back') || node.classList.contains('time-machine'))) {
+      section = node;
+      break;
+    }
+    node = node.parentElement;
+  }
+
+  // 找标题
+  let title = '财商日推 2026-08-05';
+  if (section) {
+    const h = section.querySelector('h2, .tm-date, .concept-term');
+    if (h) title = h.textContent.trim();
+  } else {
+    const h2 = document.querySelector('.hero h1');
+    if (h2) title = h2.textContent.trim();
+  }
+
+  let payload;
+  if (selectedText && selectedText.length > 0) {
+    payload = `【来自《${title}》】\n原文片段："${selectedText}"\n\n我想讨论：`;
+  } else {
+    // 没有选区，复制当前可见的 section 第一段
+    let para = '';
+    if (section) {
+      const p = section.querySelector('.tm-scene, .concept-explain, .quote-think, .action-think');
+      if (p) para = p.textContent.trim().substring(0, 200);
+    }
+    payload = `【来自《${title}》】\n${para}\n\n我想讨论：`;
+  }
+  return payload;
+}
+
+async function copyToClipboard(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch (e) {
+    // 降级方案
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); document.body.removeChild(ta); return true; }
+    catch (err) { document.body.removeChild(ta); return false; }
+  }
+}
+
+/* ================== 术语弹窗 ================== */
+function openTermModal(termKey) {
+  let entry = TERM_DICT[termKey];
+  if (!entry) return;
+  if (entry.redirect) entry = TERM_DICT[entry.redirect];
+  if (!entry) return;
+
+  document.getElementById('tb-title').innerHTML = '📖 ' + (entry.redirect || termKey);
+  document.getElementById('tb-def').innerHTML = entry.def;
+  document.getElementById('tb-example').innerHTML = entry.example || '';
+  document.getElementById('term-modal').classList.add('show');
+
+  // 绑定讨论按钮
+  document.getElementById('tb-discuss').onclick = async () => {
+    const text = `【来自《财商日推 · 市盈率专题》】\n名词：${termKey}\n解释：${entry.def}\n\n我想进一步讨论：`;
+    const ok = await copyToClipboard(text);
+    document.getElementById('term-modal').classList.remove('show');
+    if (ok) {
+      showToast('✓ 已复制到剪贴板<br><span style="font-size:11px;opacity:0.8;">打开 WorkBuddy 直接 Ctrl+V 粘贴</span>');
+      setTimeout(openWorkBuddy, 600);
+    } else {
+      showToast('复制失败，请手动选中');
+    }
+  };
+}
+
+function closeTermModal() {
+  document.getElementById('term-modal').classList.remove('show');
+}
+
+/* ================== 初始化事件 ================== */
+// 1. 给所有 .term 加 click
+document.querySelectorAll('.term').forEach(el => {
+  el.addEventListener('click', e => {
+    e.preventDefault();
+    e.stopPropagation();
+    openTermModal(el.dataset.term);
+  });
+});
+
+// 2. 复制按钮
+document.getElementById('btn-copy-discuss').addEventListener('click', async () => {
+  const text = getSelectionContext();
+  const ok = await copyToClipboard(text);
+  if (ok) {
+    showToast('✓ 已复制到剪贴板<br><span style="font-size:11px;opacity:0.8;">打开 WorkBuddy 直接 Ctrl+V 粘贴</span>');
+  } else {
+    showToast('复制失败，请检查浏览器权限');
+  }
+});
+
+// 3. 打开 WorkBuddy
+document.getElementById('btn-open-wb').addEventListener('click', () => {
+  openWorkBuddy();
+  showToast('已打开 WorkBuddy<br><span style="font-size:11px;opacity:0.8;">Ctrl+V 粘贴刚才复制的内容</span>');
+});
+
+// 4. 设置
+document.getElementById('btn-settings').addEventListener('click', () => {
+  document.getElementById('wb-url').value = getWorkBuddyUrl();
+  document.getElementById('settings-modal').classList.add('show');
+});
+document.getElementById('btn-cancel-settings').addEventListener('click', () => {
+  document.getElementById('settings-modal').classList.remove('show');
+});
+document.getElementById('btn-save-settings').addEventListener('click', () => {
+  const url = document.getElementById('wb-url').value.trim();
+  if (url) {
+    localStorage.setItem('wb_url', url);
+    showToast('✓ 已保存 WorkBuddy URL');
+  }
+  document.getElementById('settings-modal').classList.remove('show');
+});
+
+// 5. 术语弹窗关闭
+document.getElementById('tb-close').addEventListener('click', closeTermModal);
+document.getElementById('tb-close2').addEventListener('click', closeTermModal);
+document.getElementById('term-modal').addEventListener('click', e => {
+  if (e.target.id === 'term-modal') closeTermModal();
+});
+document.getElementById('settings-modal').addEventListener('click', e => {
+  if (e.target.id === 'settings-modal') document.getElementById('settings-modal').classList.remove('show');
+});
+
+// 6. 键盘快捷键：Cmd/Ctrl+Shift+D 触发复制
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key === 'D') {
+    e.preventDefault();
+    document.getElementById('btn-copy-discuss').click();
+  }
+  // ESC 关闭弹窗
+  if (e.key === 'Escape') {
+    closeTermModal();
+    document.getElementById('settings-modal').classList.remove('show');
+  }
+});
+
+console.log('💡 财商日推 v2.0 已加载：点击名词查看解释，右下角按钮一键复制到 WorkBuddy。快捷键：Ctrl+Shift+D');
+</script>
 
 </body>
 </html>
