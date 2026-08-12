@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日双专栏AI情报推送 - 2026年8月12日</title>
+<style>
+:root {
+  --bg: #0f0f14;
+  --card-bg: #1a1a24;
+  --card-border: #2a2a3a;
+  --text: #e1e1e6;
+  --text-secondary: #9999aa;
+  --accent-red: #e8454d;
+  --accent-blue: #4a90d9;
+  --accent-green: #3cb371;
+  --accent-orange: #f0a040;
+  --accent-purple: #a78bfa;
+  --accent-teal: #2dd4bf;
+  --tag-bg: rgba(232,69,77,0.1);
+  --tag-text: #e8454d;
+  --highlight: #ffd700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  padding: 20px;
+}
+.header {
+  text-align: center;
+  padding: 40px 20px 30px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border-radius: 16px;
+  margin-bottom: 30px;
+  border: 1px solid var(--card-border);
+}
+.header h1 {
+  font-size: 2em;
+  background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+.header .date {
+  color: var(--text-secondary);
+  font-size: 0.95em;
+}
+.header .tagline {
+  color: var(--accent-teal);
+  font-size: 0.85em;
+  margin-top: 6px;
+}
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+@media (max-width: 900px) {
+  .columns { grid-template-columns: 1fr; }
+}
+.column-title {
+  font-size: 1.3em;
+  font-weight: 700;
+  padding: 14px 20px;
+  border-radius: 12px 12px 0 0;
+  margin-bottom: 0;
+}
+.col1 .column-title {
+  background: linear-gradient(135deg, #c0392b, #e74c3c);
+  color: #fff;
+}
+.col2 .column-title {
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+  color: #fff;
+}
+.column {
+  background: var(--card-bg);
+  border-radius: 14px;
+  border: 1px solid var(--card-border);
+  overflow: hidden;
+}
+.column-body {
+  padding: 20px;
+}
+.section {
+  margin-bottom: 24px;
+}
+.section-title {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: var(--accent-orange);
+  border-left: 3px solid var(--accent-orange);
+  padding-left: 10px;
+  margin-bottom: 14px;
+}
+.news-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+.news-item:hover {
+  border-color: rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.05);
+}
+.news-item .topic {
+  font-size: 1.05em;
+  font-weight: 700;
+  color: var(--accent-red);
+  margin-bottom: 8px;
+}
+.news-item .label {
+  display: inline-block;
+  font-size: 0.75em;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-right: 6px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+}
+.news-item .content {
+  color: var(--text-secondary);
+  font-size: 0.9em;
+  line-height: 1.7;
+  margin: 6px 0;
+}
+.news-item .impact {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: rgba(60,179,113,0.08);
+  border-left: 3px solid var(--accent-green);
+  border-radius: 0 6px 6px 0;
+  font-size: 0.85em;
+  color: var(--accent-green);
+}
+.summary-box {
+  background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,215,0,0.02));
+  border: 1px solid rgba(255,215,0,0.2);
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 10px;
+}
+.summary-box .title {
+  color: var(--highlight);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.summary-box .text {
+  color: var(--text-secondary);
+  font-size: 0.9em;
+}
+/* AI Column Styles */
+.ai-section-title {
+  font-size: 1.05em;
+  font-weight: 700;
+  color: var(--accent-teal);
+  border-bottom: 1px solid rgba(45,212,191,0.2);
+  padding-bottom: 6px;
+  margin-bottom: 14px;
+  margin-top: 20px;
+}
+.ai-section-title:first-child { margin-top: 0; }
+.ai-item {
+  background: rgba(45,212,191,0.03);
+  border: 1px solid rgba(45,212,191,0.08);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+.ai-item .ai-topic {
+  font-size: 1em;
+  font-weight: 700;
+  color: var(--accent-teal);
+  margin-bottom: 6px;
+}
+.ai-item .ai-sub {
+  font-size: 0.85em;
+  color: var(--accent-purple);
+  font-weight: 600;
+  margin: 8px 0 4px;
+}
+.ai-item .ai-desc {
+  font-size: 0.88em;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.ai-tag {
+  display: inline-block;
+  font-size: 0.7em;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 3px;
+  margin-right: 4px;
+  background: rgba(167,139,250,0.15);
+  color: var(--accent-purple);
+}
+.ai-tag.hot {
+  background: rgba(232,69,77,0.15);
+  color: var(--accent-red);
+}
+.ai-tag.new {
+  background: rgba(60,179,113,0.15);
+  color: var(--accent-green);
+}
+.money-item {
+  background: linear-gradient(135deg, rgba(240,160,64,0.08), rgba(240,160,64,0.02));
+  border: 1px solid rgba(240,160,64,0.15);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+.money-item .ai-topic { color: var(--accent-orange); }
+.glossary-item {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.glossary-item:last-child { border-bottom: none; }
+.glossary-item .term {
+  color: var(--accent-blue);
+  font-weight: 700;
+  font-size: 0.9em;
+}
+.glossary-item .explain {
+  color: var(--text-secondary);
+  font-size: 0.85em;
+  margin-top: 2px;
+}
+.github-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.github-item:last-child { border-bottom: none; }
+.github-item .rank {
+  font-size: 0.85em;
+  font-weight: 700;
+  color: var(--accent-orange);
+  min-width: 24px;
+}
+.github-item .gh-info { flex: 1; }
+.github-item .gh-name {
+  color: var(--accent-blue);
+  font-weight: 600;
+  font-size: 0.9em;
+}
+.github-item .gh-desc {
+  color: var(--text-secondary);
+  font-size: 0.82em;
+  margin-top: 2px;
+}
+.github-item .gh-stars {
+  font-size: 0.78em;
+  color: var(--accent-orange);
+  white-space: nowrap;
+}
+.footer {
+  text-align: center;
+  padding: 30px;
+  color: var(--text-secondary);
+  font-size: 0.8em;
+  margin-top: 20px;
+  border-top: 1px solid var(--card-border);
+}
+.core-wind {
+  background: linear-gradient(135deg, rgba(255,107,107,0.1), rgba(255,107,107,0.02));
+  border: 1px solid rgba(255,107,107,0.2);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 20px;
+  font-size: 1.05em;
+  font-weight: 600;
+  color: var(--accent-red);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>每日双专栏 · AI情报推送</h1>
+  <div class="date">2026年8月12日 星期三</div>
+  <div class="tagline">新闻联播风向标 × AI生产力黑洞</div>
+</div>
+
+<div class="columns">
+
+  <!-- ==================== 专栏一：新闻联播 ==================== -->
+  <div class="column col1">
+    <div class="column-title">专栏一 · 新闻联播每日简报（8月11日）</div>
+    <div class="column-body">
+
+      <!-- 核心风向 -->
+      <div class="core-wind">
+        「十五五」民生安全网密集织就 + 极端天气应急响应全面升级：从社保"第六险"长护险全国推行到12省份防汛应急响应，从央行改革发展规划到生态保护规划出台，政策全面聚焦"兜底"与"安全"双主线
+      </div>
+
+      <!-- 一、核心风向 -->
+      <div class="section">
+        <div class="section-title">一、核心风向</div>
+        <p style="color:var(--text-secondary);font-size:0.9em;">
+          8月11日新闻联播23条要闻呈现「民生兜底 + 极端天气应对 + 十五五规划密集落地」三大主线。习近平就哥伦比亚234人死亡强震致慰问电；文献纪录片《江泽民》开播；社保安全网从"补缺型"迈向"普惠型"——基本养老保险参保10.76亿人、长护险全国推行覆盖3500万失能老人；台风"白海豚"虽停编但华北12日起迎特大暴雨；央行"十五五"规划剑指金融强国；生态保护十五五规划正式出台。
+        </p>
+      </div>
+
+      <!-- 二、分项解读 -->
+      <div class="section">
+        <div class="section-title">二、分项解读</div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">头条</span>习近平就哥伦比亚强震致慰问电</div>
+          <div class="content">
+            哥伦比亚8月10日发生强烈地震，截至当地时间11日死亡人数已升至<strong>234人</strong>。习近平向哥伦比亚总统德拉埃斯普列亚致慰问电。哥伦比亚市政联合会通报了最新伤亡数据。
+          </div>
+          <div class="impact">外交信号：中国领导人在重大国际灾害中第一时间表态，展现负责任大国形象。对拉美外交关系有积极影响。</div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">民生</span>织就更密更暖的社会保障安全网</div>
+          <div class="content">
+            新闻联播头条深度报道我国社保体系最新进展：截至2025年底，全国基本养老参保<strong>10.76亿人</strong>、基本医疗参保<strong>13.31亿人</strong>，基本养老保险参保率从"十三五"末91%提高到<strong>95%以上</strong>。今年7月1日起，新就业形态人员职业伤害保障试点在<strong>全国31个省份和新疆生产建设兵团</strong>全面推开。中办、国办印发《关于加快建立长期护理保险制度的意见》，"十五五"期间长护险将覆盖<strong>3500万失能老人</strong>。首部社会救助专门法律将低保边缘家庭、刚性支出困难家庭纳入法定救助。
+          </div>
+          <div class="impact">"社保第六险"长护险全国推行是最大增量信号——保险、医疗、养老地产、护理服务产业链将迎来政策红利期。灵活就业人群（快递、外卖、网约车等）保障补齐利好平台经济合规化。</div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">历史</span>文献纪录片《江泽民》今晚开始播出</div>
+          <div class="content">
+            8月11日起，文献纪录片《江泽民》在央视开播。该片以珍贵历史影像系统呈现江泽民同志生平与贡献。
+          </div>
+          <div class="impact">重大历史叙事的官方定调，具有政治教育与社会共识凝聚意义。</div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">农业</span>各地抢抓农时做好田间管理</div>
+          <div class="content">
+            多地围绕粮食生产和农业稳产，抢抓农时开展田间管理，保障秋季农业生产。重点覆盖华北、东北粮食主产区。
+          </div>
+          <div class="impact">秋粮生产是全年粮食安全的压舱石，农业板块（种业、化肥、农机）进入政策关注密集期。</div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">生态</span>"十五五"时期生态质量将稳步改善</div>
+          <div class="content">
+            《生态保护"十五五"规划》正式出台。到<strong>2030年</strong>，生态空间格局持续优化，生态质量稳步改善。中央经济工作会议部署的"六张网"中水网建设列首位，南水北调效益持续发挥。
+          </div>
+          <div class="impact">环保、水利、生态修复产业链受益。"六张网"（水网、新型电网、算力网、通信网、地下管网、物流网）是新基建核心投资方向。</div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">能源</span>我国加快打造现代煤炭产业体系</div>
+          <div class="content">
+            "十五五"时期将进一步优化煤炭开发布局，持续推进煤炭供应保障基地建设，完善煤炭跨区调运格局。
+          </div>
+          <div class="impact">煤炭依然是能源安全压舱石。关注煤炭智能化开采、清洁利用、煤化工产业链。</div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">金融</span>央行"十五五"改革发展规划印发</div>
+          <div class="content">
+            《中国人民银行"十五五"改革发展规划》以加快建设<strong>金融强国</strong>为目标，完善中央银行制度，服务经济高质量发展。
+          </div>
+          <div class="impact">金融强国战略下的制度性建设——数字货币、跨境支付、金融监管科技等领域将持续受益。</div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">防汛</span>台风"白海豚"停编，华北暴雨预警升级</div>
+          <div class="content">
+            中央气象台11日17时对台风"白海豚"停止编号。国家防总针对<strong>北京、天津、山西</strong>启动防汛四级应急响应。水利部维持对<strong>浙江洪水防御三级</strong>、对<strong>12省份四级</strong>应急响应。中央气象台发布<strong>暴雨橙色预警</strong>：河南中部和西部沿山部分地区有<strong>特大暴雨</strong>。水利部和中国气象局联合发布<strong>红色山洪灾害气象预警</strong>（河南中部局地）。22省份保险业已接报案<strong>67万件</strong>，已赔付<strong>76亿元</strong>，赔付进度57%。
+          </div>
+          <div class="impact">极端天气频次和强度升级已成新常态——利好水利基建、海绵城市、气象服务、巨灾保险产业链。保险赔付76亿元反映灾害经济损失规模巨大。</div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">经济</span>上半年互联网业务收入超万亿</div>
+          <div class="content">
+            上半年规模以上互联网企业完成互联网业务收入<strong>超万亿元</strong>，反映数字经济增长韧性。
+          </div>
+          <div class="impact">数字经济仍是经济核心增量来源，利好云计算、AI应用、电商等细分赛道。</div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">文化</span>古文字工程揭开上古历史面纱 & 郭兰英逝世</div>
+          <div class="content">
+            "古文字与中华文明传承发展工程"进入第一期收官阶段。另，"人民艺术家"国家荣誉称号获得者、著名歌剧表演艺术家<strong>郭兰英</strong>8月11日在广州逝世，享年<strong>97岁</strong>。2026年度电影总票房突破<strong>245亿元</strong>。
+          </div>
+          <div class="impact">文化遗产保护上升为国家工程，文博数字化、考古科技有政策支撑。</div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">国际</span>中国裁军大使驳斥美国 + 胡塞打击沙特船只</div>
+          <div class="content">
+            中国裁军事务大使李驰江在日内瓦裁谈会严正驳斥美国"弹道导弹发射通报"涉华共同发言，强调<strong>中国至今仅进行三次洲际导弹试射，是五核国中最少</strong>。美国是全世界洲际导弹试射次数最多、最频繁的国家。胡塞武装11日在曼德海峡打击一艘运输沙特军事装备的船只。伊朗总统称与最高领袖会谈约<strong>7小时</strong>，最高领袖"健康状况很好"。
+          </div>
+          <div class="impact">地缘博弈加剧：中美在裁军问题上的交锋升级；中东局势（胡塞/伊朗/沙特）持续影响全球航运和能源价格。</div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">科技</span>我国发现首个独立锗酸盐矿物——乌斯河锗矿</div>
+          <div class="content">
+            由我国研究团队在<strong>四川</strong>发现的新矿物——乌斯河锗矿，正式获得国际矿物学协会批准。<strong>这是我国发现的首个独立锗酸盐矿物</strong>。锗是半导体、红外光学、光纤通信的关键战略矿产。
+          </div>
+          <div class="impact">战略矿产资源自主可控——锗矿发现对半导体产业链国产化、国防红外技术有战略价值。</div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">军事</span>中国海军红河舰与印尼海军通航演练</div>
+          <div class="content">
+            8月中旬，中国海军<strong>红河舰</strong>将与印度尼西亚海军"莱"号护卫舰位<strong>台岛以东海域</strong>举行通航演练。
+          </div>
+          <div class="impact">在台岛以东海域演练具有明确的战略宣示意义，同时加深中国-东盟海上安全合作。</div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">法治</span>龙翔案宣判死缓 + 公安部发布10起典型案例</div>
+          <div class="content">
+            南京市人大常委会原主任<strong>龙翔</strong>因受贿、贪污、滥用职权、内幕交易，被<strong>荆州中院一审判处死缓</strong>。公安部发布打击侵犯公民个人信息犯罪<strong>10起典型案例</strong>。海关上半年查扣侵权嫌疑货物<strong>1.3万批次、3609万件</strong>。市场监管总局撤销<strong>764张</strong>CCC认证证书。
+          </div>
+          <div class="impact">反腐高压持续、数据安全执法常态化、知识产权保护加码——利好网络安全、数据合规、知识产权服务行业。</div>
+        </div>
+
+      </div>
+
+      <!-- 三、总结风向标 -->
+      <div class="summary-box">
+        <div class="title">三、总结风向标</div>
+        <div class="text">
+          8月11日新闻联播释放三大核心信号：<strong>①"十五五"民生安全网全面升级</strong>——长护险全国推行、灵活就业保障全覆盖、社会救助法律化，保险+养老+医疗产业链进入确定性政策红利期；<strong>②极端天气成为新常态</strong>——从台风"白海豚"到华北特大暴雨预警，水利基建、海绵城市、巨灾保险是确定性投资方向；<strong>③安全与自主可控持续强化</strong>——首个独立锗矿发现（战略矿产）、互联网收入超万亿（数字经济韧性）、红河舰台岛以东演练（军事宣示），产业链安全仍是主线。
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== 专栏二：AI情报 ==================== -->
+  <div class="column col2">
+    <div class="column-title">专栏二 · AI生产力情报专栏</div>
+    <div class="column-body">
+
+      <div style="text-align:center;color:var(--accent-teal);font-weight:700;font-size:1.15em;margin-bottom:16px;">
+        🚀 AI 生产力黑洞：今日黑科技与套利指南<br>
+        <span style="font-size:0.8em;color:var(--text-secondary);">2026-08-12</span>
+      </div>
+
+      <!-- 🛠️ 顶级装备库 -->
+      <div class="ai-section-title">🛠️ 【顶级装备库更新】</div>
+
+      <div class="ai-item">
+        <div class="ai-topic"><span class="ai-tag hot">🔥爆款</span>Meta Muse Glimmer — 30B开源本地Agent模型</div>
+        <div class="ai-sub">核心黑科技</div>
+        <div class="ai-desc">
+          Meta超级智能实验室开源30B参数多模态模型，<strong>Apache 2.0可商用</strong>。4-bit量化压缩至<strong>20GB以下</strong>，可在RTX 5090或M4 Max MacBook上本地运行。DFlash投机解码技术提升推理吞吐量。27.9B文本解码器+1.9B ViT视觉编码器，128K上下文。发布当天Ollama/LM Studio/llama.cpp全部day-0支持。扎克伯格同步发布万字檄文《未来属于每个人》，暗讽OpenAI/Anthropic将AI集中化。
+        </div>
+        <div class="ai-sub">实战价值</div>
+        <div class="ai-desc">
+          完全离线的个人超级智能——飞机高铁无网可用、本地代码隐私不泄露。适合本地Agent自动化（日程管理、文件整理、代码助手），MacBook就能跑。Apache 2.0商用免费=中小团队可无门槛部署。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic"><span class="ai-tag new">🆕新品</span>NVIDIA Nemotron 3.5 Lightning — 30B MoE开源Agent模型</div>
+        <div class="ai-sub">核心黑科技</div>
+        <div class="ai-desc">
+          英伟达发布30B混合专家(MoE)模型，实际激活参数仅<strong>约3B</strong>，输出速度最高可达同规模模型的<strong>4倍</strong>。单块GPU可运行，专为持续运行Agent和高频专业任务优化。同时英伟达正研发<strong>万亿参数开源模型Nemotron 4</strong>。
+        </div>
+        <div class="ai-sub">实战价值</div>
+        <div class="ai-desc">
+          轻量级Agent推理首选——激活参数仅3B意味着极低延迟。与Muse Glimmer形成"免费本地Agent模型双雄"竞争格局，开发者有更多选择。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic"><span class="ai-tag new">🆕新品</span>Grok Bot — 马斯克的"数字同事"进入早期测试</div>
+        <div class="ai-sub">核心黑科技</div>
+        <div class="ai-desc">
+          SpaceXAI推出Grok Bot，定位为<strong>能替用户完成实际工作的AI队友</strong>——登录用户工具、跨应用操作、返回完成结果。不是聊天机器人，是"数字同事"。即日起SuperGrok Heavy/Cursor Ultra/Cursor Teams Premium订阅用户可在桌面端和iOS使用。
+        </div>
+        <div class="ai-sub">实战价值</div>
+        <div class="ai-desc">
+          AI从"对话"走向"代操作"的关键一步——自动填表、跨系统数据搬运、批量文件处理等重复性工作可全部委托。但账户授权和误操作撤回机制仍需验证。
+        </div>
+      </div>
+
+      <!-- 🤖 Agent 战场 -->
+      <div class="ai-section-title">🤖 【Agent 战场情报】</div>
+
+      <div class="ai-item">
+        <div class="ai-topic"><span class="ai-tag hot">🔥</span>GitHub Trending TOP 5 深度解析</div>
+        <div class="ai-desc">
+          <div class="github-item"><div class="rank">#1</div><div class="gh-info"><div class="gh-name">PrimeIntellect-ai/prime-agent</div><div class="gh-desc">自改进RLM Agent，面向编码工作流和长周期自主任务</div></div><div class="gh-stars">⭐14,070</div></div>
+          <div class="github-item"><div class="rank">#2</div><div class="gh-info"><div class="gh-name">msitarzewski/agency-agents</div><div class="gh-desc">完整AI Agent生态——从前端到Reddit运营，每个Agent是专精专家</div></div><div class="gh-stars">⭐143,157</div></div>
+          <div class="github-item"><div class="rank">#3</div><div class="gh-info"><div class="gh-name">semantica-agi/semantica</div><div class="gh-desc">图原生基础设施，为可问责AI系统提供上下文</div></div><div class="gh-stars">⭐4,847</div></div>
+          <div class="github-item"><div class="rank">#4</div><div class="gh-info"><div class="gh-name">stablyai/orca</div><div class="gh-desc">并行Agent舰队ADE——用自己的订阅跑任何编码Agent，支持桌面/移动/VPS</div></div><div class="gh-stars">⭐42,741</div></div>
+          <div class="github-item"><div class="rank">#5</div><div class="gh-info"><div class="gh-name">HKUDS/DeepTutor</div><div class="gh-desc">终身个性化AI导师系统</div></div><div class="gh-stars">⭐34,683</div></div>
+          <div style="margin-top:6px;font-size:0.8em;color:var(--text-secondary);">更多：#6 paperclipai/paperclip ★77K(Agent管理) | #7 addyosmani/agent-skills ★86K(Agent技能库) | #8 anthropics/skills ★168K(官方Agent Skills) | #9 calesthio/OpenMontage ★47K(开源视频制作Agent 700+技能文件) | #10 vitali87/code-graph-rag ★3.8K(代码知识图谱RAG)</div>
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">英伟达等120家组织提议建AI Agent事故追踪机制（SAFE）</div>
+        <div class="ai-sub">解读</div>
+        <div class="ai-desc">
+          英伟达、思科、CrowdStrike等<strong>超120家组织</strong>组成的开放安全AI联盟(OSAA)制定"共享AI发现交换机制"(SAFE)，要求报告Agent未经授权访问第三方系统、泄露机密信息等事件。<strong>4个工作日内</strong>提交初步保密报告，<strong>30天内</strong>发布初步事实报告。此前OpenAI等公司已披露多起Agent失控事件。
+        </div>
+        <div class="ai-sub">落地场景</div>
+        <div class="ai-desc">
+          Agent安全管理从"野生"走向"规范"——如果你在开发或使用Agent产品，现在就要开始设计审计日志、操作留痕和权限控制。SAFE框架可作为合规参考。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">智源发布AREX自主研究智能体 — 双循环递归框架</div>
+        <div class="ai-sub">解读</div>
+        <div class="ai-desc">
+          北京智源人工智能研究院发布AREX，首创<strong>"研究→验证→再研究"双循环递归框架</strong>，AI可在长程任务中持续自我修正。模型权重开源，支持资讯追踪、论文筛选、播客摘要。
+        </div>
+        <div class="ai-sub">落地场景</div>
+        <div class="ai-desc">
+          配合日推情报项目——用AREX自动追踪每日AI资讯、筛选论文、生成摘要播客，降低信息采集人力成本。学术研究方向可自动完成文献综述初稿。
+        </div>
+      </div>
+
+      <!-- 🖊 AI新玩法 -->
+      <div class="ai-section-title">🖊 【AI新玩法，新概念】</div>
+
+      <div class="ai-item">
+        <div class="ai-topic">扎克伯格万字檄文《未来属于每个人》——"个人超级智能"概念</div>
+        <div class="ai-sub">解读</div>
+        <div class="ai-desc">
+          Meta CEO在Muse Glimmer发布同日发表长文，提出<strong>"个人超级智能"(Personal Superintelligence)</strong>——AI的未来不应集中在少数公司，而应让每个人在自己的设备上拥有超级智能。公开反对OpenAI/Anthropic的"末日论"叙事，支持开源和模型蒸馏。
+        </div>
+        <div class="ai-sub">落地场景</div>
+        <div class="ai-desc">
+          如果"个人超级智能"成为现实——每个人将拥有完全离线的AI助手处理敏感数据（如财务、法律文件、个人日记），无需上传云端。这是对SaaS订阅模式的颠覆性挑战。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">Roku推24/7 AI生成内容频道引发抵制 — AI内容伦理争议</div>
+        <div class="ai-sub">解读</div>
+        <div class="ai-desc">
+          美国流媒体设备巨头Roku上线<strong>24小时不间断AI生成内容频道</strong>（含AI广告），社交媒体一片嘲讽。"社会正迅速变成大卫·柯南伯格的电影""根本没人想要这东西"。SAG-AFTRA主席呼吁好莱坞大咖在AI问题上"谨言慎行"。
+        </div>
+        <div class="ai-sub">落地场景</div>
+        <div class="ai-desc">
+          反向信号——纯AI内容在消费者端遭遇强烈抵触，说明"AI辅助创作"> "AI替代创作"。内容创作者的护城河在于"人格化+真实感"，不是生产效率。
+        </div>
+      </div>
+
+      <!-- 💰 AI套利 -->
+      <div class="ai-section-title">💰 【AI 套利/变现线索】</div>
+
+      <div class="money-item">
+        <div class="ai-topic"><span class="ai-tag hot">🔥</span>CME推出全球首个GPU算力期货 — 10月5日上线</div>
+        <div class="ai-desc">
+          芝商所(CME)与Silicon Data联合宣布，计划<strong>2026年10月5日</strong>推出H100和B200 GPU租赁指数期货合约（待监管审批）。每份合约对应单卡GPU一个月租赁算力。CME高管称："算力已成为AI时代的货币"。CoreWeave二季度营收<strong>25.75亿美元(+112%)</strong>，长期订单储备<strong>1040亿美元</strong>。Anthropic三个月内签约<strong>超600亿美元</strong>算力采购。
+        </div>
+        <div class="ai-sub">复刻建议</div>
+        <div class="ai-desc">
+          算力金融化=新资产类别诞生。关注：①提前研究Silicon Data指数编制方法 ②做AI算力价格趋势分析内容（小红书/公众号稀缺话题）③关注中国算力期货/衍生品跟进机会
+        </div>
+      </div>
+
+      <div class="money-item">
+        <div class="ai-topic">DeepSeek招募IDC团队 → AI公司"变重"趋势</div>
+        <div class="ai-desc">
+          DeepSeek官网新增IDC数据中心团队，岗位覆盖<strong>北京、杭州、乌兰察布</strong>，面向电气、暖通、土木、环境等专业。招聘语："每一代人都会遇到属于自己的基础设施革命"。同时开设"DeepSeek Harness团队"公众号——内部对标Anthropic Claude Code。字节跳动在宁夏<strong>中卫</strong>成立子公司（注册2.2亿+2.4亿），经营范围含"非居住房地产租赁"。
+        </div>
+        <div class="ai-sub">复刻建议</div>
+        <div class="ai-desc">
+          AI基础设施投资从GPU延伸到土地/电力/制冷——关注数据中心REITs、液冷方案、绿色电力。乌兰察布/中卫等算力枢纽城市土地和电力资源值得研究。
+        </div>
+      </div>
+
+      <div class="money-item">
+        <div class="ai-topic">AI Token价格战持续 + 免费Agent模型爆发 = 套利窗口</div>
+        <div class="ai-desc">
+          Gemini月活<strong>突破10亿</strong>（Pichai称"历来增长最快产品"），ChatGPT也突破10亿——消费级AI首次同时出现两个十亿级产品。Muse Glimmer完全免费商用，Nemotron 3.5 Lightning开源。Gartner预估2026年<strong>AI推理支出首次超越模型训练</strong>。
+        </div>
+        <div class="ai-sub">复刻建议</div>
+        <div class="ai-desc">
+          推理成本下降+本地模型免费=AI应用创业门槛历史最低。用Muse Glimmer或Nemotron做本地化垂直应用（如法律文书审查、医疗报告生成），边际成本趋近于零。变现模式从"省API钱"转向"卖解决方案"。
+        </div>
+      </div>
+
+      <!-- 🔍 避坑/黑话词典 -->
+      <div class="ai-section-title">🔍 【避坑/黑话词典】</div>
+
+      <div class="glossary-item">
+        <div class="term">SAFE (Shared AI Findings Exchange)</div>
+        <div class="explain">"AI事故共享机制"——由英伟达等120家组织联合制定，规定Agent失控后4天内必须上报、30天内发初步报告。相当于AI行业的"事故黑匣子"标准。</div>
+      </div>
+      <div class="glossary-item">
+        <div class="term">GPU Compute Futures（GPU算力期货）</div>
+        <div class="explain">芝商所把GPU租赁价格做成期货合约。以后你可以像炒石油一样炒H100/B200算力价格。算力正式成为大宗商品。</div>
+      </div>
+      <div class="glossary-item">
+        <div class="term">Personal Superintelligence（个人超级智能）</div>
+        <div class="explain">扎克伯格提出的概念——超级AI不应该锁在OpenAI/Anthropic的服务器里，而应该在你自己的笔记本电脑上离线运行。</div>
+      </div>
+      <div class="glossary-item">
+        <div class="term">Grok Bot（数字同事）</div>
+        <div class="explain">马斯克的xAI产品——不是聊天机器人，是能登录你的工具、替你操作、完成任务的"AI同事"。从"Chat"到"Act"的范式跨越。</div>
+      </div>
+      <div class="glossary-item">
+        <div class="term">AREX（自主研究智能体）</div>
+        <div class="explain">智源研究院发布的"AI研究员"——先研究、再自我验证、发现不足再研究。本质是让AI学会"反复改论文"而不是"一次写完"。已开源。</div>
+      </div>
+
+      <!-- 🔥 Twitter/X AI大佬动态 -->
+      <div class="ai-section-title">🔥 【Twitter/X AI大佬动态】（8月11-12日）</div>
+
+      <div class="ai-item">
+        <div class="ai-topic">OpenAI COO Brad Lightcap宣布离职创业</div>
+        <div class="ai-desc">
+          OpenAI核心高管Brad Lightcap（2018年加入，曾任首席运营官）8月11日在X平台宣布离职，称"过去几个月一直在思考下一个方向，这个世界有几件重要的事情需要妥善解决"。Sam Altman回复"期待未来合作"。热度：浏览8.3M / 点赞17.8K。这是继Ilya Sutskever后OpenAI又一位核心高管出走。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">Alexander Panfilov声称发现API推理Token提取漏洞</div>
+        <div class="ai-desc">
+          安全研究员Alexander Panfilov声称可通过多家前沿AI公司的API提取隐藏推理过程，且提取到的推理Token数与计费Token数一一对应。浏览1.6M/点赞8.8K。但未披露漏洞原理和受影响厂商，尚未有独立复现验证。如果属实，意味"思维链"可能被逆向工程。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">Google CEO Sundar Pichai：Gemini月活突破10亿</div>
+        <div class="ai-desc">
+          Alphabet CEO在X平台宣布Gemini月活突破10亿大关——"历来增长最快的产品，第14款用户达10亿的产品"。与ChatGPT成为消费级AI首次"双十亿"产品。同时OpenAI也宣布ChatGPT月活超10亿。
+        </div>
+      </div>
+
+      <!-- Product Hunt -->
+      <div class="ai-section-title">🚀 【Product Hunt 8月11日精选】</div>
+
+      <div class="ai-item">
+        <div class="ai-topic">Top 1: BetterClaw — 60秒部署AI Agent，永久免费</div>
+        <div class="ai-desc">82票。一键部署AI Agent，零成本入门。面向个人开发者的Agent部署平台。</div>
+      </div>
+      <div class="ai-item">
+        <div class="ai-topic">Top 2: Tines 3B — Agent/App/自动化安全环境</div>
+        <div class="ai-desc">41票。为企业Agent和自动化工作流提供安全运行环境。</div>
+      </div>
+      <div class="ai-item">
+        <div class="ai-topic">Top 3: Bullet — 比Claude Code和Codex快30-60%</div>
+        <div class="ai-desc">33票。AI编码工具速度新标杆，直接对标Claude Code和Codex。</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>每日双专栏AI情报推送 · 2026-08-12</p>
+  <p>信源覆盖：央视网/财联社/CCTV/新华社 | GitHub Trending | Product Hunt | Twitter/X | 36氪/新智元/爱范儿/界面新闻 | 陆家嘴财经早餐</p>
+  <p>本文由AI自动生成，仅供信息参考，不构成投资建议</p>
+</div>
+
+</body>
+</html>
