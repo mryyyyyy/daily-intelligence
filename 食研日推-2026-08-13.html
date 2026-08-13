@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 2026-08-13</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #faf4ea;
+    color: #4a3b2a;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* ===== Hero ===== */
+  .hero {
+    background: linear-gradient(135deg, #f7e6cf 0%, #f3d9b5 55%, #faf4ea 100%);
+    border-bottom: 1px solid #ecdcc0;
+    padding: 36px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -60%; right: -8%;
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(224,123,57,0.10) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -40%; left: -6%;
+    width: 440px; height: 440px;
+    background: radial-gradient(circle, rgba(106,155,74,0.10) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(192,86,58,0.10);
+    border: 1px solid rgba(192,86,58,0.28);
+    color: #b85a35;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #7a4a1f;
+    margin-bottom: 8px;
+  }
+  .hero .sub { color: #9a8267; font-size: 14px; }
+
+  /* ===== 单列卡片布局 ===== */
+  .container { max-width: 860px; margin: 0 auto; padding: 24px 20px 8px; }
+
+  .card {
+    background: #fffdf8;
+    border: 1px solid #f0e2cb;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 22px;
+    box-shadow: 0 2px 10px rgba(122,74,31,0.04);
+  }
+  .card-header {
+    padding: 16px 22px;
+    border-bottom: 1px solid #f0e2cb;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .card-header .icon {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .card-header h2 { font-size: 18px; font-weight: 800; }
+  .card-header .tag {
+    margin-left: auto;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .card-body { padding: 20px 22px; }
+
+  /* 板块主题色 */
+  .sec-news .card-header { background: linear-gradient(135deg, #fbe9e3, #fffdf8); }
+  .sec-news .icon { background: rgba(217,100,74,0.14); }
+  .sec-news .card-header h2 { color: #c0533a; }
+
+  .sec-radar .card-header { background: linear-gradient(135deg, #fdeeda, #fffdf8); }
+  .sec-radar .icon { background: rgba(232,137,47,0.16); }
+  .sec-radar .card-header h2 { color: #d4781f; }
+
+  .sec-season .card-header { background: linear-gradient(135deg, #eef4e2, #fffdf8); }
+  .sec-season .icon { background: rgba(122,155,67,0.16); }
+  .sec-season .card-header h2 { color: #6a8a35; }
+
+  .sec-cross .card-header { background: linear-gradient(135deg, #f4e8da, #fffdf8); }
+  .sec-cross .icon { background: rgba(176,122,63,0.15); }
+  .sec-cross .card-header h2 { color: #9a6a32; }
+
+  .sec-brain .card-header { background: linear-gradient(135deg, #fbf1dd, #fffdf8); }
+  .sec-brain .icon { background: rgba(217,164,65,0.16); }
+  .sec-brain .card-header h2 { color: #b8892e; }
+
+  .sec-new .card-header { background: linear-gradient(135deg, #f9e6de, #fffdf8); }
+  .sec-new .icon { background: rgba(192,86,58,0.14); }
+  .sec-new .card-header h2 { color: #a8482f; }
+
+  /* 通用元素 */
+  .lead {
+    background: #fff7ec;
+    border-left: 3px solid #e07b39;
+    padding: 12px 16px;
+    border-radius: 0 10px 10px 0;
+    margin-bottom: 18px;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #8a5a20;
+  }
+
+  .item { margin-bottom: 20px; padding-bottom: 18px; border-bottom: 1px dashed #efe4d2; }
+  .item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .item h3 { font-size: 15.5px; font-weight: 800; color: #5a4630; margin-bottom: 8px; line-height: 1.5; }
+  .item p { font-size: 14px; color: #6b5a44; margin-top: 5px; }
+
+  .label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 2px 9px;
+    border-radius: 5px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .lbl-mine { background: rgba(192,86,58,0.12); color: #b85a35; }
+  .lbl-signal { background: rgba(232,137,47,0.14); color: #d4781f; }
+  .lbl-why { background: rgba(122,155,67,0.14); color: #6a8a35; }
+  .lbl-go { background: rgba(176,122,63,0.14); color: #9a6a32; }
+
+  .signal { font-weight: 800; }
+  .signal.s-green { color: #5d8a2e; }
+  .signal.s-yellow { color: #c98a1a; }
+  .signal.s-red { color: #c04a3a; }
+
+  .mind { font-weight: 800; color: #b85a35; }
+
+  /* 新品卡 */
+  .new-item {
+    background: #fffaf2;
+    border: 1px solid #f2e3c9;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .new-item:last-child { margin-bottom: 0; }
+  .new-item .brand {
+    font-weight: 800; font-size: 15px; color: #a8482f;
+    display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px;
+    margin-bottom: 6px;
+  }
+  .new-item .brand .time {
+    font-size: 12px; font-weight: 600; color: #9a8267; margin-left: auto;
+  }
+  .new-item .price {
+    display: inline-block;
+    background: rgba(232,137,47,0.14);
+    color: #c9741c;
+    font-size: 12px; font-weight: 700;
+    padding: 1px 8px; border-radius: 5px;
+    margin-bottom: 6px;
+  }
+  .new-item .breakdown { font-size: 13.5px; color: #6b5a44; }
+  .new-item .inspire {
+    margin-top: 7px;
+    font-size: 13px;
+    color: #8a5a20;
+    background: #fff3df;
+    border-left: 3px solid #d9a441;
+    padding: 6px 10px;
+    border-radius: 0 6px 6px 0;
+  }
+
+  /* 创意卡 */
+  .idea-card {
+    background: linear-gradient(135deg, #fbf3e4, #fffaf2);
+    border: 1px solid #f0ddb6;
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .idea-card:last-child { margin-bottom: 0; }
+  .idea-card h4 { font-size: 15.5px; font-weight: 800; color: #8a5a20; margin-bottom: 8px; }
+  .idea-card .line { font-size: 13.5px; color: #6b5a44; margin-bottom: 5px; }
+  .idea-card .line b { color: #5a4630; }
+
+  /* 展会 */
+  .expo-item { margin-bottom: 12px; }
+  .expo-item h4 { font-size: 14.5px; font-weight: 800; color: #5a4630; }
+  .expo-item p { font-size: 13.5px; color: #6b5a44; margin-top: 3px; }
+
+  .footer {
+    text-align: center;
+    padding: 22px;
+    color: #b3a288;
+    font-size: 12px;
+    border-top: 1px solid #ecdcc0;
+    margin-top: 8px;
+  }
+  .footer a { color: #d4781f; text-decoration: none; }
+
+  .divider {
+    text-align: center;
+    color: #d9c39e;
+    font-size: 13px;
+    letter-spacing: 3px;
+    margin: 4px 0 18px;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">📅 2026年8月13日 星期四 · 立秋第6天</div>
+    <h1>🍲 食研日推 · 每日行业情报</h1>
+    <div class="sub">服务下厨房食品品牌产品经理 | 只给开品弹药，拒绝水文 | 自动生成仅供参考</div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ==================== 一、今日行业要闻 ==================== -->
+<div class="card sec-news">
+  <div class="card-header">
+    <div class="icon">🔥</div>
+    <h2>一、今日行业要闻</h2>
+    <span class="tag" style="background:rgba(217,100,74,0.10);color:#c0533a;">2-3条</span>
+  </div>
+  <div class="card-body">
+
+    <div class="item">
+      <h3>市场监管总局发布《食用植物油中乙基麦芽酚测定》补充检验方法</h3>
+      <p>8月7日，市监总局发布 BJS202604 检验方法，精准检测食用油中非法添加的「乙基麦芽酚」——不法商家用它掩盖劣质油、翻新油的哈喇异味，伪造芝麻油/花生油的高端香气。这是继 NFC 果汁造假、配料表信任危机之后，监管部门对「高端油脂以次充好」的又一记重拳。</p>
+      <p><span class="label lbl-mine">与我何干</span><span class="mind">食用油/调味油是下厨房的核心食材品类。</span>高端油品的「配料表洁净 + 产地可溯源 + 检测报告可见」将从加分项变成信任硬门槛。我们做芝麻油、山茶油、花生油等时，把「一物一码检测报告」做进包装，就是最直接的差异化信任资产。</p>
+    </div>
+
+    <div class="item">
+      <h3>贵州印发食品添加剂滥用综合治理措施，倡导「非必要不添加」</h3>
+      <p>贵州省市场监管局 8 月印发措施，全链条整治食品添加剂滥用，明确「减量减品种」导向，倡导以天然替代人工合成，联动推进减盐减油减糖。这是继调味品生产许可新规、28 项国标 8 月集中实施后，添加剂监管从「查违规」向「鼓励做减法」的又一次升级。</p>
+      <p><span class="label lbl-mine">与我何干</span><span class="mind">「配料表洁净」正是国家政策顺风方向。</span>我们做食材升级的底层逻辑（天然、少添加、真材实料）在政策端持续获得背书。可主动在内容营销里放大「配料表只有 XX 种」的显性表达，踩中监管与消费者双重红利。</p>
+    </div>
+
+    <div class="item">
+      <h3>费大厨品牌焕新：从「全国小炒肉大王」改为「精选黑猪肉 · 专业大厨炒」</h3>
+      <p>8 月 10 日，费大厨宣布响应新规，全国门店门头焕新为「精选黑猪肉 · 专业大厨炒」，8 月底完成。品牌传播焦点从「排名称号」回归「食材品质 + 大厨现炒」，明确把「黑猪肉」作为辣椒炒肉的核心食材卖点打出来。</p>
+      <p><span class="label lbl-mine">与我何干</span><span class="mind">这是辣椒炒肉品类的一次「食材规格显性化」。</span>费大厨用「黑猪肉」替代模糊的「大王」称号，说明头部品牌正在把食材等级（黑猪/土猪）做成可感知的卖点。我们做「辣椒炒肉专用椒 + 黑猪/土猪肉」组合时，可直接复用这套「食材命名即卖点」的逻辑。</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== 二、爆品雷达 ==================== -->
+<div class="card sec-radar">
+  <div class="card-header">
+    <div class="icon">🎯</div>
+    <h2>二、爆品雷达 · 趋势苗头</h2>
+    <span class="tag" style="background:rgba(232,137,47,0.12);color:#d4781f;">2-3个</span>
+  </div>
+  <div class="card-body">
+
+    <div class="item">
+      <h3>苹果茶饮全面爆发：「最无聊水果」逆袭成全年常驻款</h3>
+      <p>古茗苹果大红袍（首款苹果茶特调）、瑞幸迪士尼「毒苹果」系列、霸王茶姬青沫苹果莲雾……苹果 8 月密集上新，HPP 苹果汁成核心原料，咖门饮力实验室 7 月报告显示苹果上新 21 次、首次冲进水果使用频次 Top5。百分茶王林苹果大红袍销量稳居前三、复购亮眼。</p>
+      <p><span class="label lbl-signal">信号强度</span><span class="signal s-red">🔴 已爆</span></p>
+      <p><span class="label lbl-go">机会判断</span>苹果是大众认知度最强的水果，一旦被茶饮验证成「长销款」，就会带动苹果原料（HPP 苹果汁、鲜切苹果、王林/红富士品种）的零售需求。机会点不在「苹果」本身，而在<span class="mind">「特定品种苹果 + 洁净加工」的原料升级</span>——如王林苹果汁、不套袋苹果脆片，做品种直发。</p>
+    </div>
+
+    <div class="item">
+      <h3>贵州蘸水菜出圈：清水煮菜 + 灵魂蘸水，减脂党新宠</h3>
+      <p>抖音/小红书「贵州蘸水菜」话题播放量突破 5 亿次，核心是「清水煮菜配一碟灵魂蘸水」的极简吃法，糊辣椒、木姜子、折耳根构成灵魂，精准击中三伏天没胃口 + 减脂轻负担的双重需求，杭州门店客流翻倍、外卖单品月销破 3000 单。</p>
+      <p><span class="label lbl-signal">信号强度</span><span class="signal s-yellow">🟡 起势</span></p>
+      <p><span class="label lbl-go">机会判断</span>「蘸水」是一个被严重低估的品类——<span class="mind">它把「吃菜」这件难事变成「一蘸就行」的零门槛仪式</span>。糊辣椒/木姜子/折耳根蘸水料包，配料表天然洁净、场景清晰（减脂、一人食、涮菜），是「地域风味 + 轻负担」的绝佳切入点，竞品尚未跑出强势品牌。</p>
+    </div>
+
+    <div class="item">
+      <h3>韩国「微消费」小份食品热卖：杯装汤销量激增 167%</h3>
+      <p>受通胀 + 独居增多影响，韩国兴起小份食品潮：GS25 冷藏杯装米饭销量同比 +33.8%、即食杯装汤激增 167.4%，切片西瓜销量暴增超 1000%，迷你蛋糕 +24.5%（整块蛋糕仅 +1%）。</p>
+      <p><span class="label lbl-signal">信号强度</span><span class="signal s-green">🟢 苗头</span></p>
+      <p><span class="label lbl-go">机会判断</span>「小份化/一人食/尝鲜装」是降门槛破冰的确定性打法。<span class="mind">高客单价食材（如精品菌菇、海鲜干货）用「小份尝鲜装」降低首次购买心理门槛</span>，同时拉高复购频次，值得在规格设计上优先考虑。</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== 三、时令风向 ==================== -->
+<div class="card sec-season">
+  <div class="card-header">
+    <div class="icon">🌿</div>
+    <h2>三、时令风向 · 品类机会</h2>
+    <span class="tag" style="background:rgba(122,155,67,0.12);color:#6a8a35;">提前预判</span>
+  </div>
+  <div class="card-body">
+
+    <div class="lead">📅 当前：立秋后第 6 天，贴秋膘热度持续 + 中秋预热启动，「夏→秋转换」是全年最强消费行为切换窗口</div>
+
+    <div class="item">
+      <p><span class="label lbl-why">⏰ 倒计时</span>距七夕（8/19）还有 <b>6 天</b> · 距处暑（8/23）还有 <b>10 天</b> · 距中秋（9/25）还有 <b>43 天</b></p>
+    </div>
+
+    <div class="item">
+      <h3>🎯 即将热卖</h3>
+      <p><b>① 阳光玫瑰葡萄</b> — 8 月进入集中上市期（江浙沪、云南产区），糖度 22+、精品礼盒 4 倍价差空间，是中秋水果礼盒的「确定性担当」。</p>
+      <p><b>② 红心猕猴桃</b> — 成都新津「阳光果」裸果提早 2 周上市、首发东南亚（地头价 5 元/斤），9 月陕西产季接力，是中秋礼盒「最大预期差」品类——高频消费 + 低竞争 + 高溢价。</p>
+      <p><b>③ 大闸蟹</b> — 六月黄早熟蟹已上市试水（20 元/只），8 月中旬后正宗大闸蟹陆续入市，中秋 43 天倒计时，礼卡通兑（598-5688 元）是高端生鲜礼盒的终极模式。</p>
+    </div>
+
+    <div class="item">
+      <h3>🚨 窗口提醒</h3>
+      <p><b>水蜜桃/黄桃尾期</b> — 奉贤黄桃 8 月底收尾，湖景蜜露已过最佳赏味期，别再压货。</p>
+      <p><b>六月黄螃蟹</b> — 早熟童子蟹蟹黄不足、肉质松散、高温损耗大，只适合尝鲜不适合当主力，跟风需谨慎。</p>
+    </div>
+
+    <div class="item">
+      <h3>🏔️ 产地机会</h3>
+      <p><b>成都新津红心猕猴桃「阳光果」</b> — 全程不套袋、甜度风味 VC 含量高于套袋果，早熟 2 周 + 出口级品质，是产地直发做「品种差异化」的现成故事（「不套袋的阳光果」本身就是卖点）。</p>
+      <p><b>阳光玫瑰精品串</b> — 云南/江浙沪 8 月集中上市，产地直发 + 精品礼盒 + 全程冷链，踩中秋礼盒窗口。</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== 四、跨界灵感 ==================== -->
+<div class="card sec-cross">
+  <div class="card-header">
+    <div class="icon">💡</div>
+    <h2>四、跨界灵感 · 创新动作</h2>
+    <span class="tag" style="background:rgba(176,122,63,0.12);color:#9a6a32;">2-3个</span>
+  </div>
+  <div class="card-body">
+
+    <div class="item">
+      <h3>太二「鲜活爆改」：全菜单透明化 + 时令食材店门口陈列</h3>
+      <p>太二把口号从「酸菜比鱼好吃」改成「够鲜活，才太二」，推出「鲜料川菜」店型，白玉丝瓜、螺丝椒、菜心等时令食材直接摆在店门口让消费者「眼见为实」，还上新全鲜牛肉焖饭儿童餐。</p>
+      <p><span class="label lbl-mine">迁移可能</span><span class="mind">食材溯源可视化是我们的天然主场。</span>做产地直发时，把「产地照片 + 采摘时间 + 检测报告」做成随包卡片/二维码，复刻「把新鲜摆在消费者面前」的信任打法。</p>
+    </div>
+
+    <div class="item">
+      <h3>日本 7-Eleven「名店监修咖喱节」+ 全家「45% 加量不加价」</h3>
+      <p>日本 7-11 推出名店监修的日式/汤/南印度咖喱系列，全家庆祝 45 周年祭出「价格不变、分量 +45%」两阶段企划（炸鸡、便当、冰品）。</p>
+      <p><span class="label lbl-mine">迁移可能</span><span class="mind">「名厨/名店监修」背书 + 「加量不加价」赠量装</span>是两个可直接复用的话术。下厨房天然有厨师 KOL 资源，可做「名厨监修」系列；高客单价食材用「加量不加价」的赠量装降低尝鲜门槛。</p>
+    </div>
+
+    <div class="item">
+      <h3>韩国小份食品 + 7-11 焙茶欧蕾霜淇淋</h3>
+      <p>韩国杯装米饭/杯装汤小份热卖；台湾 7-11 联名日本日东红茶推「焙茶欧蕾霜淇淋」，焙茶（烘焙茶）成为继抹茶之后茶风味新锚点。</p>
+      <p><span class="label lbl-mine">迁移可能</span><span class="mind">小份规格 + 焙茶风味</span>：高客单食材做小份尝鲜装；焙茶/烘焙茶风味可从茶饮、甜品向即食、烘焙半成品迁移，是一个尚属蓝海的风味方向。</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== 五、脑暴时刻 ==================== -->
+<div class="card sec-brain">
+  <div class="card-header">
+    <div class="icon">🧪</div>
+    <h2>五、脑暴时刻 · 融合创意</h2>
+    <span class="tag" style="background:rgba(217,164,65,0.12);color:#b8892e;">1-2个</span>
+  </div>
+  <div class="card-body">
+
+    <div class="idea-card">
+      <h4>①「一蘸入魂」贵州灵魂蘸水（洁净版）</h4>
+      <div class="line"><b>一句话描述：</b>把贵州蘸水菜的「灵魂」做成一罐洁净配料的蘸水料包——糊辣椒 + 木姜子 + 折耳根三味，清水煮菜一蘸即食。</div>
+      <div class="line"><b>为什么是现在：</b>蘸水菜话题播放 5 亿次正在起势，减脂 + 一人食 + 三伏天没胃口三重场景叠加，且处暑前后仍是轻负担饮食窗口。</div>
+      <div class="line"><b>差异化锚点：</b>市面蘸水多为重油重盐的火锅蘸料；我们主打「配料表只有辣椒、木姜子、折耳根、盐」，零添加，配减脂场景，抖音上尚无强势洁净蘸水品牌。</div>
+      <div class="line"><b>可行性初判：</b>供应链成熟（贵州产地直采木姜子/糊辣椒），短保小罐装适配达播，可捆绑「清水涮菜」的内容脚本快速起量。</div>
+    </div>
+
+    <div class="idea-card">
+      <h4>②「秋日阳光礼」阳光玫瑰产地直发中秋礼盒</h4>
+      <div class="line"><b>一句话描述：</b>云南/江浙沪产地直发的阳光玫瑰精品串礼盒，踩中秋 43 天倒计时窗口，主打「产地直发 + 果径分级 + 冷链到家」。</div>
+      <div class="line"><b>为什么是现在：</b>阳光玫瑰 8 月集中上市、糖度 22+，中秋水果礼盒是确定性需求，精品礼盒存在 4 倍价差空间。</div>
+      <div class="line"><b>差异化锚点：</b>竞品多卖「便宜散果」；我们做「按果径/糖度分级 + 产地溯源 + 破损包赔」，用 PM 的选品标准做「帮用户挑对的那串」。</div>
+      <div class="line"><b>可行性初判：</b>冷链物流成熟（单均 30 元起步），阳光玫瑰供应链充足，难点在分级品控与售后，需产地驻点验货。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== 六、展会速递 + 每周新品雷达 ==================== -->
+<div class="card sec-new">
+  <div class="card-header">
+    <div class="icon">🏬</div>
+    <h2>六、展会速递 · 每周新品雷达</h2>
+    <span class="tag" style="background:rgba(192,86,58,0.12);color:#a8482f;">核心板块</span>
+  </div>
+  <div class="card-body">
+
+    <div class="lead">🆕 每周新品速递 —— 具体到「哪个品牌上了什么、卖多少钱、怎么卖、配料怎么写」</div>
+
+    <div class="new-item">
+      <div class="brand">🆕 茉莉奶白 首款瓶装轻乳茶 <span class="time">上市：8月4日</span></div>
+      <div class="price">79.9 元 / 箱（320ml×12瓶 ≈ 6.6元/瓶）· 山姆独家</div>
+      <div class="breakdown"><b>产品力拆解：</b>把同名现制轻乳茶做成瓶装 RTD——广西横州双瓣茉莉 + 云南高山茶做茶底，生牛乳含量 ≥38%，加丹麦进口芝士粉（再制干酪）。核心是把「现制茶饮」的原料规格原封不动搬进瓶装。</div>
+      <div class="inspire">💡 <b>启发：</b>茶饮品牌「现制→瓶装」零售化是确定性趋势。可关注其茶底食材（横州茉莉、云南高山茶）的产地直发机会，或做「茉莉/茶叶风味」的即食、烘焙半成品迁移。</div>
+    </div>
+
+    <div class="new-item">
+      <div class="brand">🆕 Peet's 太妃榛果高纤燕麦拿铁 <span class="time">上市：8月</span></div>
+      <div class="price">99.9 元 / 箱（250ml×12瓶）· 山姆</div>
+      <div class="breakdown"><b>产品力拆解：</b>门店同款阿拉比卡豆 + 真实榛子酱，低糖 + 燕麦基底（乳糖不耐可饮），每瓶 ≥7.5g 膳食纤维、0 胆固醇、0 反式脂肪酸。即饮咖啡「风味化（太妃榛果）+ 功能化（高纤）」双叠加。</div>
+      <div class="inspire">💡 <b>启发：</b>「每瓶含 Xg 膳食纤维」的量化功能宣称是值得学习的表达方式。我们做健康食材时，可把「每袋含 Xg 膳食纤维/蛋白质」做成显性卖点，比空喊「健康」有力得多。</div>
+    </div>
+
+    <div class="new-item">
+      <div class="brand">🆕 盒马 日日鲜快手菜（全国上线） <span class="time">6月底起</span></div>
+      <div class="price">3.9 - 12.9 元 / 份 · 14 款 SKU</div>
+      <div class="breakdown"><b>产品力拆解：</b>主打「35 元、15 分钟一桌家常菜」，只卖一天，食材全程可追溯（扫码看生产时间 + 检测报告）。上架一个月销售环比 +100%，带动快手菜整体 +60%。</div>
+      <div class="inspire">💡 <b>启发：</b>「新鲜短保 + 可追溯 + 快手菜」是「新鲜短保」定位的极致范本。我们做产地直发净菜/快手菜时，可对标其「只卖一天 + 扫码溯源」的信任设计，把新鲜做成人无我有的硬指标。</div>
+    </div>
+
+    <div class="new-item">
+      <div class="brand">🆕 费大厨 精选黑猪肉 · 专业大厨炒 <span class="time">8月10日启动·8月底完成</span></div>
+      <div class="price">品牌焕新（非单品）</div>
+      <div class="breakdown"><b>产品力拆解：</b>响应社会组织评比新规，从「全国小炒肉大王」焕新为「精选黑猪肉 · 专业大厨炒」，把辣椒炒肉的核心食材「黑猪肉」直接写进门头，传播焦点回归食材品质 + 大厨现炒。</div>
+      <div class="inspire">💡 <b>启发：</b>黑猪肉是辣椒炒肉的食材升级方向。我们做「辣椒炒肉专用椒」时，可联合黑猪/土猪供应链做「食材组合包」，复用「食材命名即卖点」的逻辑，甚至可谈 B 端供应合作。</div>
+    </div>
+
+    <div class="new-item">
+      <div class="brand">🆕 太二 鲜活战略（鲜料川菜店型） <span class="time">8月</span></div>
+      <div class="price">全菜单透明化 + 五大鲜活矩阵</div>
+      <div class="breakdown"><b>产品力拆解：</b>口号改为「够鲜活，才太二」，突出三大单品（酸菜鱼 + 爆炒当日鲜牛肉 + 黄姜爆炒鲜土鸡），白玉丝瓜、螺丝椒、菜心等时令食材摆店门口现场陈列，上新全鲜牛肉焖饭儿童餐。</div>
+      <div class="inspire">💡 <b>启发：</b>餐饮端的「鲜活 + 溯源」信任重建，正在把螺丝椒、白玉丝瓜、洪湖粉藕等时令食材推成显性卖点。这些食材的产地直发（螺丝椒、粉藕）是现成的机会窗口。</div>
+    </div>
+
+    <div class="divider">— 展会预告 —</div>
+
+    <div class="expo-item">
+      <h4>🎪 杭州全食展（今天开幕）</h4>
+      <p>8月13-15日 · 杭州大会展中心 | <b>看点</b>：8 万㎡、1200+ 展商、1.5 万款 2026 秋季新品，设「低 GI 控糖 + 功能食品」专区。 | <b>与我何干</b>：秋季新品风向标，低 GI 控糖是「配料表洁净」的相邻赛道，值得盯。</p>
+    </div>
+    <div class="expo-item">
+      <h4>🎪 香港美食博览（今天开幕）</h4>
+      <p>8月13-17日 · 香港会议展览中心 | <b>看点</b>：日清等品牌参展，限量福袋「大型痛袋」营销。 | <b>与我何干</b>：观察港台/海外品牌新品形态与营销玩法。</p>
+    </div>
+    <div class="expo-item">
+      <h4>🎪 上海调味品 + 餐饮食材展</h4>
+      <p>8月26-28日 · 上海 | <b>看点</b>：调味品是风味趋势风向标。 | <b>与我何干</b>：蘸水/酱料/复合调味料选品的直接观察窗口，距今天 13 天。</p>
+    </div>
+    <div class="expo-item">
+      <h4>🎪 SIAL 国际食品展（广州）</h4>
+      <p>9月3-5日 · 广州 | <b>看点</b>：进口食品 + 全球趋势。 | <b>与我何干</b>：中秋前最后一个大型选品窗口，距今天 21 天。</p>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <p>⚠️ 以上内容由 AI 自动聚合生成，信息来源于公开渠道（市场监管总局、咖门、Foodaily、食品板、新食业等），仅供参考，不构成决策建议</p>
+  <p>信源：市场监管总局官网 / 咖门饮力实验室 / Foodaily每日食品 / 食品板 / 新食业 / 四川农村日报 等</p>
+  <p style="margin-top:8px;">Generated by WorkBuddy 食研日推 · 2026-08-13 09:00 CST</p>
+</div>
+
+</body>
+</html>
