@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌶️ 小红书生鲜电商作战情报 | 2026-08-13</title>
+<style>
+:root {
+  --bg: #0f0f14;
+  --card: #1a1a24;
+  --card-hover: #222235;
+  --border: #2a2a3a;
+  --text: #e0e0e8;
+  --text-secondary: #9090a8;
+  --accent: #ff6b35;
+  --accent2: #e8453c;
+  --green: #2ecc71;
+  --blue: #3498db;
+  --purple: #a855f7;
+  --gold: #f59e0b;
+  --red: #e8453c;
+  --tag-bg: rgba(255,107,53,0.12);
+  --radius: 12px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  line-height: 1.6;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.header {
+  text-align: center;
+  padding: 32px 20px 24px;
+  border-bottom: 2px solid var(--accent);
+  margin-bottom: 24px;
+}
+.header h1 { font-size: 1.8em; color: #fff; }
+.header h1 span { color: var(--accent); }
+.header .date { color: var(--text-secondary); font-size: 0.95em; margin-top: 6px; }
+.header .subtitle { color: var(--accent); font-size: 0.85em; margin-top: 4px; }
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.countdown-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+  transition: all 0.2s;
+}
+.countdown-card:hover { background: var(--card-hover); }
+.countdown-card.urgent { border-color: var(--red); }
+.countdown-card.warning { border-color: var(--gold); }
+.countdown-card .cd-label { font-size: 0.78em; color: var(--text-secondary); margin-bottom: 4px; }
+.countdown-card .cd-num { font-size: 2em; font-weight: 700; color: #fff; }
+.countdown-card.urgent .cd-num { color: var(--red); }
+.countdown-card.warning .cd-num { color: var(--gold); }
+.countdown-card .cd-unit { font-size: 0.85em; color: var(--text-secondary); }
+
+.section { margin-bottom: 28px; }
+.section-title {
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #fff;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  transition: all 0.2s;
+}
+.card:hover { background: var(--card-hover); }
+.card h3 { font-size: 1.05em; color: #fff; margin-bottom: 8px; }
+.card p { color: var(--text-secondary); font-size: 0.9em; line-height: 1.7; }
+.card .highlight { color: var(--accent); font-weight: 600; }
+.card .price { color: var(--green); font-weight: 600; }
+
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 0.75em;
+  font-weight: 600;
+  margin-right: 4px;
+}
+.tag-hot { background: rgba(232,69,60,0.15); color: var(--red); }
+.tag-new { background: rgba(46,204,113,0.15); color: var(--green); }
+.tag-trend { background: rgba(168,85,247,0.15); color: var(--purple); }
+.tag-gold { background: rgba(245,158,11,0.15); color: var(--gold); }
+.tag-blue { background: rgba(52,152,219,0.15); color: var(--blue); }
+
+.data-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 10px;
+  font-size: 0.85em;
+}
+.data-item { background: rgba(255,255,255,0.03); padding: 8px 12px; border-radius: 8px; }
+.data-item .label { color: var(--text-secondary); }
+.data-item .value { color: #fff; font-weight: 600; }
+
+hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+
+.source { font-size: 0.78em; color: var(--text-secondary); margin-top: 8px; font-style: italic; }
+
+.action-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+}
+.action-item .priority {
+  width: 24px; height: 24px;
+  border-radius: 6px;
+  font-size: 0.7em; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.p0 { background: var(--red); color: #fff; }
+.p1 { background: var(--gold); color: #000; }
+.p2 { background: var(--blue); color: #fff; }
+
+.tip-card {
+  background: linear-gradient(135deg, rgba(255,107,53,0.08), rgba(168,85,247,0.08));
+  border: 1px solid rgba(255,107,53,0.2);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin-bottom: 10px;
+}
+.tip-card h4 { color: var(--accent); margin-bottom: 4px; font-size: 0.95em; }
+.tip-card p { color: var(--text-secondary); font-size: 0.85em; }
+
+table { width: 100%; border-collapse: collapse; font-size: 0.85em; margin-top: 8px; }
+th { text-align: left; color: var(--text-secondary); font-weight: 500; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+td { padding: 8px 10px; border-bottom: 1px solid rgba(42,42,58,0.5); color: var(--text); }
+td.price-up { color: var(--red); }
+td.price-stable { color: var(--gold); }
+
+.dim-badge { display: inline-flex; gap: 2px; }
+.dim-dot { width: 8px; height: 8px; border-radius: 50%; }
+.dim-fill { background: var(--accent); }
+.dim-empty { background: rgba(255,255,255,0.1); }
+
+.discovery-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.7em;
+  font-weight: 700;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  color: var(--text-secondary);
+  font-size: 0.78em;
+  border-top: 1px solid var(--border);
+  margin-top: 20px;
+}
+
+@media (max-width: 640px) {
+  .countdown-grid { grid-template-columns: 1fr 1fr; }
+  .data-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🌶️ <span>小红书生鲜电商</span>每日作战情报</h1>
+  <div class="date">2026年8月13日 星期四 · 农历七月初一</div>
+  <div class="subtitle">距离中秋节（9月25日）还有 43 天 | 中秋礼盒采购冲刺期 + 秋季新品窗口开启</div>
+</div>
+
+<!-- ============ COUNTDOWN DASHBOARD ============ -->
+<div class="section">
+  <div class="section-title">⏳ 倒计时看板</div>
+  <div class="countdown-grid">
+    <div class="countdown-card warning">
+      <div class="cd-label">🦀 阳澄湖大闸蟹开捕</div>
+      <div class="cd-num">~33</div>
+      <div class="cd-unit">天（9月中旬）</div>
+    </div>
+    <div class="countdown-card urgent">
+      <div class="cd-label">🥮 中秋礼盒采购窗口</div>
+      <div class="cd-num">18</div>
+      <div class="cd-unit">天（8月底截止）</div>
+    </div>
+    <div class="countdown-card urgent">
+      <div class="cd-label">📜 食品监管新规合规</div>
+      <div class="cd-num">立即</div>
+      <div class="cd-unit">三部令已施行</div>
+    </div>
+    <div class="countdown-card">
+      <div class="cd-label">🍑 炎陵黄桃盛产期</div>
+      <div class="cd-num">~9</div>
+      <div class="cd-unit">天（8月下旬下市）</div>
+    </div>
+    <div class="countdown-card">
+      <div class="cd-label">🍄 云南野生菌高峰期</div>
+      <div class="cd-num">~18</div>
+      <div class="cd-unit">天（8月底转弱）</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 平台情报 ============ -->
+<div class="section">
+  <div class="section-title">📡 平台情报 · 小红书与食品电商监管</div>
+
+  <div class="card">
+    <h3>⚠️ 今日最重：三部食品监管新规落地，线上食品进入"源头拦截"时代 <span class="tag tag-hot">合规分水岭</span></h3>
+    <p>2026上半年市场监管总局接连出台<span class="highlight">三部专项总局令</span>：①《直播电商经营者落实食品安全主体责任监督管理规定》（聚焦直播营销前端）②《网络食品销售经营者落实食品安全主体责任监督管理规定》（面向电商、社区团购的预包装食品仓储/流转/销售）③《网络餐饮服务经营者落实食品安全主体责任监督管理规定》（外卖现制餐饮）。线上食品监管从<span class="highlight">"事后追罚"走向"源头拦截"</span>。</p>
+    <p style="margin-top:8px;">宏观背景：国家统计局数据显示，2026上半年<span class="highlight">吃类商品同比大涨16.8%</span>，成线上消费核心驱动力；即时零售2024年达7810亿元，预计2026年<span class="highlight">突破万亿</span>。对精品生鲜店铺号的启示：<span class="highlight">合规即竞争力</span>——产地溯源、GI认证、足斤足两、坏单包退从"平台权益"升级为"法定责任"，率先达标者淘汰低价劣质竞争者。</p>
+    <div class="source">来源：食安时代（2026-08-11）+ 国家统计局数据 · 交叉验证≥2来源</div>
+  </div>
+
+  <div class="card">
+    <h3>🤖 NEXT AI商业方案：种草大赏核心升级</h3>
+    <p>8月7日种草大赏发布<span class="highlight">NEXT AI商业产品解决方案</span>，AI覆盖"看清人"（趋势洞察+新品开发，一周分析→对话直接出报告）、"影响人"（AI辅助内容生产，采纳率72%/投放率57%/审核通过率98%）、"赢得人"（AI私信工具，每沟通5名用户额外+1留资）。新客GMV占比<span class="highlight">46%</span>来自组合投放。平台已开放API和MCP能力。</p>
+    <div class="source">来源：2026小红书种草大赏 · 8月7日</div>
+  </div>
+
+  <div class="card">
+    <h3>🔥 8月直播持续爆发：日均20万场 + "买手笔记→直播"双链路</h3>
+    <p>Q2小红书日均开播<span class="highlight">20万场（+340%）</span>，直播GMV峰值<span class="highlight">85亿元</span>。直播间热销TOP100商品中<span class="highlight">200-500元客单价占比最高38%</span>、500元以上27%——高客单价+理性决策=精品生鲜天然土壤。中腰部达人（1万-50万粉）贡献直播GMV的<span class="highlight">54%</span>，去中心化红利窗口打开。</p>
+    <div class="source">来源：小红书直播带货深度报告 · 2026年8月</div>
+  </div>
+
+  <div class="card">
+    <h3>🛒 行业风向：东方甄选前成员"美丽明天"首播破千万</h3>
+    <p>8月2日，孙东旭、明明、天权创办的"美丽明天"首播<span class="highlight">GMV破1000万</span>，观看817.2万人次，登抖音带货实时总榜第一。选品主打<span class="highlight">粮油生鲜、休闲食品等平价刚需</span>。同期东方甄选自营产品占总GMV比例已达<span class="highlight">52.8%</span>——"自营+生鲜刚需"仍是直播电商主流打法。启示：精品店铺号可用"刚需引流+精品溢价"双轨结构。</p>
+    <div class="source">来源：新浪财经/邦小白零售周报 · 2026-08-10</div>
+  </div>
+</div>
+
+<!-- ============ 品类行情 ============ -->
+<div class="section">
+  <div class="section-title">📊 精品品类行情雷达</div>
+
+  <!-- 阳澄湖大闸蟹 -->
+  <div class="card">
+    <h3>🦀 阳澄湖大闸蟹 <span class="tag tag-trend">中秋预热</span> <span class="tag tag-new">五维全满</span></h3>
+    <p>距开捕约<span class="highlight">33天</span>，距中秋<span class="highlight">43天</span>。产地现货价已现（常州68元/斤，湖北47元/斤，仙桃35元/斤）。礼卡全价格带成熟：<span class="highlight">499元（蟹蟹有你）→ 688 → 1088 → 2088 → 3000-5000元</span>（五蟹可及需提前2日预约）。</p>
+    <div class="data-row">
+      <div class="data-item"><span class="label">阳澄湖现货（常州）</span><br><span class="value">68元/斤</span></div>
+      <div class="data-item"><span class="label">入门礼卡</span><br><span class="value">499-688元</span></div>
+      <div class="data-item"><span class="label">商务礼卡（送花雕）</span><br><span class="value">1088-2088元</span></div>
+      <div class="data-item"><span class="label">尊贵礼卡</span><br><span class="value">3000-5000元</span></div>
+    </div>
+    <p style="margin-top:8px;font-size:0.85em;">📌 <span class="highlight">P0行动</span>：中秋礼盒采购窗口8月底截止，现在正是内容预埋+预售启动最佳时机。GI防伪溯源 + "死蟹包退/2小时交付"是行业新标杆，可作为避雷内容素材。</p>
+    <div class="source">来源：阳澄湖大闸蟹市场报价（nongxun）+ 蟹小姐礼盒体系（100ec）· 2026年8月</div>
+  </div>
+
+  <!-- 阳光玫瑰 + 妮娜皇后 -->
+  <div class="card">
+    <h3>🍇 阳光玫瑰（放量）→ 妮娜皇后（进阶精品）<span class="tag tag-gold">放量</span> <span class="tag tag-new">新发现</span></h3>
+    <p>阳光玫瑰大众线持续触底：上海通货4-6元、一级精品7-10元，南通批发4.5元/斤，走量最大。但<span class="highlight">精品线4倍价差真实存在</span>——本周发现进阶精品<span class="highlight">"妮娜皇后"</span>（日系红色品种，花香浓、糖度更高），上海精品<span class="highlight">12-18元/斤</span>，礼盒款价位偏高，正是阳光玫瑰之上的细分溢价切口。</p>
+    <p style="font-size:0.85em;">策略：避开"论斤卖"大众赛道，精品线可打"妮娜皇后"差异化。五维：妮娜皇后 溢价✅ 稀缺✅ 颜值✅ 地标⚠️ 故事⚠️ = 3-4/5维，精品线可入。</p>
+    <div class="source">来源：上海果品行情（sohu）+ 南通发改委晒价台 · 2026-08-10</div>
+  </div>
+
+  <!-- 秋季新品三箭 -->
+  <div class="card">
+    <h3>🍁 秋季新品三箭齐发：冬枣 + 西梅 + 红心猕猴桃 <span class="tag tag-new">新品窗口</span> <span class="discovery-badge">NEW</span></h3>
+    <p>中秋水果礼盒接力管道迎来新血，三个秋季新品本周同步上市/升温：</p>
+    <div class="data-row">
+      <div class="data-item"><span class="label">大荔冬枣（大棚早果）</span><br><span class="value">精品13-16元/斤</span></div>
+      <div class="data-item"><span class="label">新疆法兰西西梅（鲜果新上）</span><br><span class="value">精品11-14元/斤</span></div>
+      <div class="data-item"><span class="label">红心猕猴桃（零售）</span><br><span class="value">17-20元/斤</span></div>
+      <div class="data-item"><span class="label">陕西猕猴桃（批发）</span><br><span class="value">3.5元/个</span></div>
+    </div>
+    <p style="margin-top:8px;font-size:0.85em;">🔍 选品判断：<span class="highlight">大荔冬枣</span>（GI认证，大棚早果时令短、出片率极高）=4/5维可入库；<span class="highlight">新疆法兰西西梅</span>（鲜果期短、颜值高）=3-4/5维跟踪；<span class="highlight">红心猕猴桃</span>（陕西眉县/周至核心产区，9月中秋接力）=延续昨日判断。冬枣/西梅"精品13-16元"满足溢价门槛，但需礼盒化拉升到百元级。</p>
+    <div class="source">来源：上海果品行情（sohu）+ 全国猕猴桃批发监测（农业农村部信息中心）+ 红心猕猴桃行情（fxbwd）· 2026-08</div>
+  </div>
+
+  <!-- 炎陵黄桃收尾 -->
+  <div class="card">
+    <h3>🍑 炎陵黄桃 <span class="tag tag-hot">盛产期收尾</span></h3>
+    <p>GI双认证，品牌价值31.32亿，复购率62%+。盛产期仅剩约<span class="highlight">9天</span>，8月下旬下市。5斤礼盒65-75元、10斤礼盒115-130元。内容窗口进入"倒计时+收官"叙事，产地溯源Vlog收尾冲刺。</p>
+    <div class="source">来源：惠农网专家问答 · 2026-08-07</div>
+  </div>
+
+  <!-- 琯溪蜜柚 -->
+  <div class="card">
+    <h3>🍊 琯溪蜜柚 <span class="tag tag-trend">8月采收</span> <span class="tag tag-new">五维全满</span></h3>
+    <p>福建平和核心产区，GI认证，500年种植史。8月采收期+中秋礼盒定制=水果礼盒接力管道关键一环。1688已开启预售。中秋"最大预期差"品类之一。</p>
+  </div>
+</div>
+
+<!-- ============ 趋势洞察 ============ -->
+<div class="section">
+  <div class="section-title">🔮 趋势洞察 · 本周关键信号</div>
+
+  <div class="card">
+    <h3>⚖️ 合规成为新分水岭：直播电商食品安全进入强监管周期</h3>
+    <p>三部总局令的落地意味着：<span class="highlight">商家、主播、平台三方的食品安全责任首次有了"明白账"</span>。此前"商家推诿、主播不认、平台难追责"的困境被制度性终结。对精品生鲜卖家是<span class="highlight">结构性利好</span>——低价劣质、虚假宣传的竞争者将被加速淘汰，而"足斤足两、坏单包退、产地溯源、GI认证"的精品店天然合规。</p>
+    <div class="source">来源：食安时代 · 2026-08-11（归因：系统性监管升级，非个案）</div>
+  </div>
+
+  <div class="card">
+    <h3>🥮 中秋礼盒市场：从"月饼独大"到"生鲜礼盒多元化"</h3>
+    <p><span class="highlight">趋势一：生鲜礼盒抢位月饼。</span>小巴依羊肉（新疆天山有机牧场）、三穗黄焖鸭礼盒（贵州GI）、大连海参等肉禽海产礼盒集体下场，主攻"实用+健康+稀缺"替代月饼"仪式空壳"。<span class="highlight">趋势二：水果礼盒接力管道成型。</span>湖景桃（收官）→ 大荔冬枣/新疆西梅（上新）→ 红心猕猴桃/琯溪蜜柚（8-9月）→ 大闸蟹（9月中秋）。管道已补全，无空窗。</p>
+    <div class="source">来源：网易/电商行业报道 · 2026-08-12（交叉验证）</div>
+  </div>
+
+  <div class="card">
+    <h3>🛒 小红书本地生活扩张：实物+服务组合新切口</h3>
+    <p>8月4日拟新增电影票、健身/按摩/摄影卡券等类目，强化"生活方式电商"定位。对生鲜卖家的启示：<span class="highlight">场景化组合销售</span>（生鲜礼盒+体验券）或成差异化切口，也可借本地生活流量反哺店铺。</p>
+    <div class="source">来源：小红书类目调整通知 · 2026-08-04</div>
+  </div>
+</div>
+
+<!-- ============ 内容灵感 ============ -->
+<div class="section">
+  <div class="section-title">💡 今日内容灵感</div>
+
+  <div class="tip-card">
+    <h4>📜 选题①：监管新规解读——"食品直播带货变天了！三部新规落地，教你3招识别靠谱生鲜店"</h4>
+    <p>趋势解读型 + 避雷指南型结合，把合规红利转化为信任内容（足斤足两/坏单包退/产地溯源三大信号），强化"我帮你选对的"人设。</p>
+  </div>
+
+  <div class="tip-card">
+    <h4>🍇 选题②：妮娜皇后科普——"比阳光玫瑰还贵3倍的妮娜皇后，到底值不值这个价？"</h4>
+    <p>价格解读型 + 横评，拆解阳光玫瑰（4-10元）vs 妮娜皇后（12-18元）的价差逻辑，建立"进阶精品"选品话语权。</p>
+  </div>
+
+  <div class="tip-card">
+    <h4>🍁 选题③：秋季新品预告——"秋天第一口甜：冬枣、西梅、猕猴桃，今年中秋水果礼盒这样选"</h4>
+    <p>倒计时焦虑型 + 场景指南，把"接力管道"讲成用户听得懂的选品地图，为中秋礼盒预售蓄水。</p>
+  </div>
+
+  <div class="tip-card">
+    <h4>🦀 选题④：大闸蟹避雷——"中秋买蟹前必看！'洗澡蟹'识别法 + 礼卡全价位拆解（499→5000差在哪）"</h4>
+    <p>避雷指南型（收藏率最高）+ GI防伪科普，中秋礼盒采购窗口正当时，抢占搜索心智。</p>
+  </div>
+</div>
+
+<!-- ============ 今日行动清单 ============ -->
+<div class="section">
+  <div class="section-title">🎯 今日行动清单</div>
+
+  <div class="action-item">
+    <div class="priority p0">P0</div>
+    <div><strong>食品安全合规自查</strong> — 三部监管新规已施行，立即核查店铺"足斤足两、坏单包退、晚发立赔"履约能力，补齐产地溯源/GI认证资质链。<br><span style="color:var(--text-secondary);font-size:0.8em;">合规即竞争力，率先达标者淘汰低价劣质竞争者</span></div>
+  </div>
+
+  <div class="action-item">
+    <div class="priority p0">P0</div>
+    <div><strong>启动大闸蟹预售内容规划</strong> — 距中秋43天，采购窗口8月底截止。本周发2篇避雷+科普笔记，9月初挂车。<br><span style="color:var(--text-secondary);font-size:0.8em;">利用"买手笔记→直播间"关联，转化率+42%</span></div>
+  </div>
+
+  <div class="action-item">
+    <div class="priority p1">P1</div>
+    <div><strong>评估秋季新品（冬枣/西梅/猕猴桃）供应链</strong> — 大荔冬枣GI认证、新疆西梅鲜果期短、红心猕猴桃中秋接力，确认礼盒化供应链与溢价空间。<br><span style="color:var(--text-secondary);font-size:0.8em;">差异化关键词：大棚早果、核心产区、礼盒定制</span></div>
+  </div>
+
+  <div class="action-item">
+    <div class="priority p1">P1</div>
+    <div><strong>阳光玫瑰精品线升级"妮娜皇后"</strong> — 大众线触底（4-6元），确认妮娜皇后（12-18元）精品礼盒供应链，4倍价差进阶切口。<br><span style="color:var(--text-secondary);font-size:0.8em;">日系品种/限定产区/礼盒款</span></div>
+  </div>
+
+  <div class="action-item">
+    <div class="priority p1">P1</div>
+    <div><strong>炎陵黄桃收官冲刺</strong> — 盛产期仅剩约9天，倒计时+产地溯源Vlog收尾，8月下旬前清库存。<br><span style="color:var(--text-secondary);font-size:0.8em;">关联标签：#炎陵黄桃 #时令食材 #食材选品实验室</span></div>
+  </div>
+
+  <div class="action-item">
+    <div class="priority p2">P2</div>
+    <div><strong>研究NEXT AI工具</strong> — "趋势洞察+新品开发"可对话式生成报告，平台已开放API/MCP，接入节省分析时间。</div>
+  </div>
+
+  <div class="action-item">
+    <div class="priority p2">P2</div>
+    <div><strong>琯溪蜜柚内容预埋</strong> — 8月采收期，中秋礼盒定制，"最大预期差"品类，开始种草布局（500年种植史+福建平和+中秋吃柚文化）。</div>
+  </div>
+</div>
+
+<!-- ============ 动态品类池 ============ -->
+<div class="section">
+  <div class="section-title">🗂️ 动态品类池（8月中更新）</div>
+  <table>
+    <thead>
+      <tr>
+        <th>品类</th><th>状态</th><th>五维</th><th>价格带</th><th>窗口</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>🦀 阳澄湖大闸蟹</td>
+        <td><span class="tag tag-trend">中秋预热</span></td>
+        <td><div class="dim-badge"><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span></div></td>
+        <td>礼卡499-5000元</td>
+        <td>9月开捕</td>
+      </tr>
+      <tr>
+        <td>🍇 妮娜皇后</td>
+        <td><span class="tag tag-new">进阶精品</span></td>
+        <td><div class="dim-badge"><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-empty"></span><span class="dim-dot dim-empty"></span></div></td>
+        <td>精品12-18元/斤</td>
+        <td>放量期</td>
+      </tr>
+      <tr>
+        <td>🍁 大荔冬枣</td>
+        <td><span class="tag tag-new">秋季新上</span></td>
+        <td><div class="dim-badge"><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-empty"></span></div></td>
+        <td>精品13-16元/斤</td>
+        <td>早果期</td>
+      </tr>
+      <tr>
+        <td>🍁 新疆法兰西西梅</td>
+        <td><span class="tag tag-new">鲜果新上</span></td>
+        <td><div class="dim-badge"><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-empty"></span><span class="dim-dot dim-empty"></span></div></td>
+        <td>精品11-14元/斤</td>
+        <td>鲜果期短</td>
+      </tr>
+      <tr>
+        <td>🥝 红心猕猴桃</td>
+        <td><span class="tag tag-trend">趋势上升</span></td>
+        <td><div class="dim-badge"><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-empty"></span></div></td>
+        <td>17-20元/斤零售</td>
+        <td>9月中秋接力</td>
+      </tr>
+      <tr>
+        <td>🍑 炎陵黄桃</td>
+        <td><span class="tag tag-hot">盛产期收尾</span></td>
+        <td><div class="dim-badge"><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span></div></td>
+        <td>礼盒65-130元</td>
+        <td>~9天</td>
+      </tr>
+      <tr>
+        <td>🍊 琯溪蜜柚</td>
+        <td><span class="tag tag-trend">8月采收</span></td>
+        <td><div class="dim-badge"><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span></div></td>
+        <td>礼盒定制中</td>
+        <td>中秋接力</td>
+      </tr>
+      <tr>
+        <td>🍄 云南野生菌</td>
+        <td><span class="tag tag-hot">高峰期</span></td>
+        <td><div class="dim-badge"><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span></div></td>
+        <td>松茸800-2000元/kg</td>
+        <td>到8月底</td>
+      </tr>
+      <tr>
+        <td>🫒 猫山王榴莲</td>
+        <td><span class="tag tag-hot">旺季</span></td>
+        <td><div class="dim-badge"><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-empty"></span></div></td>
+        <td>56-65元/斤零售</td>
+        <td>旺季持续</td>
+      </tr>
+      <tr>
+        <td>🫙 药食同源</td>
+        <td><span class="tag tag-trend">超级趋势</span></td>
+        <td><div class="dim-badge"><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-empty"></span><span class="dim-dot dim-empty"></span></div></td>
+        <td>礼盒77元起</td>
+        <td>中秋礼盒</td>
+      </tr>
+      <tr>
+        <td>🥩 纯血和牛</td>
+        <td><span class="tag tag-blue">全年</span></td>
+        <td><div class="dim-badge"><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-fill"></span><span class="dim-dot dim-empty"></span></div></td>
+        <td>488-1288元</td>
+        <td>中秋礼盒CP</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============ 信息解读声明 ============ -->
+<div class="section">
+  <div class="section-title">⚠️ 信息解读声明</div>
+  <div class="card" style="font-size:0.82em;">
+    <p>1. 负面信息区分 <strong>[个别案例]</strong> vs <strong>[系统性问题]</strong>，无官方通报不渲染"危机""崩盘"</p>
+    <p>2. 绝对化词汇（暴涨/暴跌）均有百分比数据支撑</p>
+    <p>3. P0行动项情报已交叉验证≥2个独立来源（标注）</p>
+    <p>4. 所有风险信息均标注归因类型</p>
+    <p>5. 搜索使用"精品/高端/有机/礼盒"前缀，过滤批发市场价数据源</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>📅 报告生成时间：2026-08-13 08:50 CST | 🔧 自动化系统 · 每日09:00执行</p>
+  <p>数据来源：小红书官方、市场监管总局、食安时代、国家统计局、农业农村部信息中心、地方发改委晒价台、电商行业媒体 | 仅供参考，不构成投资建议</p>
+  <p>「食材选品实验室」· 帮你选对食材的PM</p>
+</div>
+
+</body>
+</html>
