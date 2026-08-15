@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 · 2026-08-15</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #faf5ee; color: #3a2e22; font-size: 15px; line-height: 1.75; }
+
+  /* Hero 区域 - 暖橙食品主题 */
+  .hero {
+    background: linear-gradient(135deg, #7a3d1c 0%, #b05c2a 45%, #e08a3e 100%);
+    border-bottom: 1px solid #d9b48a;
+    padding: 36px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(255,220,160,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%; left: -5%;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(255,190,120,0.16) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #fff6e8;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #fffaf2;
+    margin-bottom: 8px;
+  }
+  .hero .sub { color: #ffe6c9; font-size: 14px; }
+  .hero .countdown {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .hero .countdown span {
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.28);
+    color: #fff8ec;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+
+  /* 单栏布局 */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  /* 卡片通用 */
+  .card {
+    background: #fffdf9;
+    border: 1px solid #ecdcc6;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(160,110,60,0.06);
+  }
+  .card-header {
+    padding: 16px 22px;
+    border-bottom: 1px solid #f0e2cf;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .card-header .icon {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .card-header h2 { font-size: 17px; font-weight: 800; }
+  .card-body { padding: 20px 22px; }
+
+  /* 板块主题色 */
+  .sec-news .card-header { background: linear-gradient(135deg, #fdf1e4 0%, #fffdf9 100%); }
+  .sec-news .icon { background: #fbe4cd; }
+  .sec-news .card-header h2 { color: #c2482a; }
+
+  .sec-radar .card-header { background: linear-gradient(135deg, #fdf6e8 0%, #fffdf9 100%); }
+  .sec-radar .icon { background: #fae6c0; }
+  .sec-radar .card-header h2 { color: #b97a1e; }
+
+  .sec-season .card-header { background: linear-gradient(135deg, #eef5e6 0%, #fffdf9 100%); }
+  .sec-season .icon { background: #dceccd; }
+  .sec-season .card-header h2 { color: #5d7d2f; }
+
+  .sec-cross .card-header { background: linear-gradient(135deg, #f3eefb 0%, #fffdf9 100%); }
+  .sec-cross .icon { background: #e6dbf5; }
+  .sec-cross .card-header h2 { color: #7a4fb0; }
+
+  .sec-idea .card-header { background: linear-gradient(135deg, #fdeef0 0%, #fffdf9 100%); }
+  .sec-idea .icon { background: #f8d8de; }
+  .sec-idea .card-header h2 { color: #c2455c; }
+
+  .sec-expo .card-header { background: linear-gradient(135deg, #e9f2f8 0%, #fffdf9 100%); }
+  .sec-expo .icon { background: #d3e6f2; }
+  .sec-expo .card-header h2 { color: #2f6f9e; }
+
+  /* 信息条目 */
+  .item {
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px dashed #f0e2cf;
+  }
+  .item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .item .title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #3a2e22;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .item .desc { color: #5c4a36; font-size: 14px; margin-bottom: 6px; }
+  .item .desc strong { color: #3a2e22; }
+
+  /* 标签 */
+  .tag {
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .tag-relevance { background: #fbeee2; color: #b05c2a; border: 1px solid #efd3b4; }
+  .tag-sig-green { background: #e7f3dd; color: #4d7a20; border: 1px solid #c8e0b4; }
+  .tag-sig-yellow { background: #fdf1d4; color: #a97a12; border: 1px solid #f0dba0; }
+  .tag-sig-red { background: #fbe4e1; color: #b63b2a; border: 1px solid #f2c5bd; }
+
+  /* 与我何干 */
+  .relevance {
+    background: #fdf3e7;
+    border-left: 3px solid #e08a3e;
+    padding: 8px 14px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13.5px;
+    color: #7a4a1e;
+    margin-top: 4px;
+  }
+  .relevance strong { color: #b05c2a; }
+
+  /* 时令行 */
+  .season-line { font-size: 14px; color: #4a3a28; margin-bottom: 8px; }
+  .season-line strong { color: #5d7d2f; }
+
+  /* 新品速递卡片 */
+  .product {
+    background: #fbf7f0;
+    border: 1px solid #eeddca;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+  .product:last-child { margin-bottom: 0; }
+  .product .p-title {
+    font-weight: 800;
+    font-size: 15px;
+    color: #b05c2a;
+    margin-bottom: 4px;
+  }
+  .product .p-meta { font-size: 13px; color: #8a6a4a; margin-bottom: 8px; }
+  .product .p-meta b { color: #6a4a2a; }
+  .product .p-block { font-size: 13.5px; color: #4a3a28; margin-bottom: 5px; }
+  .product .p-block strong { color: #3a2e22; }
+  .product .p-insight {
+    background: #fff4e2;
+    border-left: 3px solid #e0a040;
+    padding: 7px 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: #7a4a1e;
+    margin-top: 6px;
+  }
+
+  /* 创意卡片 */
+  .idea-card {
+    background: linear-gradient(135deg, #fdf0f1 0%, #fffaf7 100%);
+    border: 1px solid #f0d5da;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .idea-card:last-child { margin-bottom: 0; }
+  .idea-card .idea-name {
+    font-size: 16px;
+    font-weight: 800;
+    color: #c2455c;
+    margin-bottom: 6px;
+  }
+  .idea-card .idea-line { font-size: 13.5px; color: #4a3a28; margin-bottom: 5px; }
+  .idea-card .idea-line strong { color: #c2455c; }
+
+  .footer {
+    text-align: center;
+    padding: 26px;
+    color: #a08a72;
+    font-size: 12px;
+    border-top: 1px solid #ecdcc6;
+  }
+  @media (max-width: 600px) {
+    .hero { padding: 26px 20px; }
+    .container { padding: 16px 12px; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">🍲 2026年8月15日 星期六</div>
+    <h1>食研日推 · 每日行业情报</h1>
+    <div class="sub">下厨房食品品牌 · 开品弹药库 | 只给决策弹药，拒绝水文</div>
+    <div class="countdown">
+      <span>🌿 立秋第8天</span>
+      <span>⏰ 距处暑8天（8/23）</span>
+      <span>💕 距七夕4天（8/19）</span>
+      <span>🥮 距中秋41天（9/25）</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- 板块一：今日行业要闻 -->
+<div class="card sec-news">
+  <div class="card-header">
+    <div class="icon">🔥</div>
+    <h2>一、今日行业要闻</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="item">
+      <div class="title">麒麟控股92亿收购加拿大保健品龙头健美生</div>
+      <div class="desc">日本麒麟以18.98亿加元（约92.13亿元）全资收购加拿大保健品龙头<strong>Jamieson（健美生）</strong>，10月后完成交割。这是麒麟继澳洲成立健康科学子公司后，向"全球健康问题解决方案企业"迈出的关键一步。</div>
+      <div class="relevance"><strong>与我何干：</strong>全球食品巨头正把"药食同源+膳食补充"当成确定性增长极。我们开品时，保健品级的功能叙事（如健美生的"临床背书"打法）可以下沉到日常食材——用可感知的功能成分讲故事，而不是空喊"养生"。</div>
+    </div>
+
+    <div class="item">
+      <div class="title">费列罗收购美国健康早餐品牌Purely Elizabeth</div>
+      <div class="desc">8月14日，费列罗宣布收购美国"better-for-you"谷物早餐品牌<strong>Purely Elizabeth</strong>（主打格兰诺拉麦片、燕麦、谷物，近两年销售额翻倍）。这是费列罗继收购WK Kellogg后，再次加码美国早餐桌。</div>
+      <div class="relevance"><strong>与我何干：</strong>"早餐谷物+优质坚果种子+高蛋白"的洁净配方，正被国际巨头当作核心资产买入。我们的早餐场景（燕麦、杂粮、坚果）有明确的"洁净版"升级对标——配料表干净+好吃是国际共识，不是自嗨。</div>
+    </div>
+
+    <div class="item">
+      <div class="title">现代牧业完成收购中国圣牧，445亿奶源资产整合落定</div>
+      <div class="desc">8月11日，现代牧业完成对中国圣牧的强制要约收购，蒙牛体系两大奶源平台合并，奶牛存栏破61万头，有机奶、A2β-酪蛋白奶等特色奶占比将从8%提升至20%以上。</div>
+      <div class="relevance"><strong>与我何干：</strong>高端特色奶源（有机、A2）正在向头部集中。如果我们做乳制品相关品类（酸奶、奶制品甜品），A2/有机奶源的溢价故事会越来越难独家讲——反而要警惕上游集中带来的成本谈判弱势。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 板块二：爆品雷达 -->
+<div class="card sec-radar">
+  <div class="card-header">
+    <div class="icon">🎯</div>
+    <h2>二、爆品雷达 · 趋势苗头</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="item">
+      <div class="title">奶皮子糖葫芦爆火 <span class="tag tag-sig-yellow">🟡起势</span></div>
+      <div class="desc">继"黄油年糕"后，<strong>奶皮子糖葫芦</strong>成新爆款——传统糖葫芦叠加奶皮子，40-60元/串被叫"糖葫芦界爱马仕"，抖音播放破亿、小红书笔记十几万篇，薛记炒货、乐乐茶已跟进。奶皮子原料一周内从10元/张涨到20元/张，供应紧张。</div>
+      <div class="relevance"><strong>机会判断：</strong>奶皮子已成继芋泥、肉松后的新"网红元素"。它是乳制品深加工的洁净食材（鲜奶煮沸凝结，无添加），与我们"食材升级"DNA高度契合——但别做糖葫芦（烂大街），做<strong>奶皮子酸奶碗/奶皮子甜品料包</strong>的洁净版，产地直发有先发优势。</div>
+    </div>
+
+    <div class="item">
+      <div class="title">蛋清蛋白饮冒头 <span class="tag tag-sig-green">🟢苗头</span></div>
+      <div class="desc">欧福8月12日推<strong>蛋清蛋白饮</strong>，鸡蛋清占比85%、每瓶20.5g蛋白质、0糖0脂0胆固醇，主打乳糖不耐人群。伊利、蒙牛也在加码蛋白赛道，蛋白消费正从健身增肌向大众日常营养扩展。</div>
+      <div class="relevance"><strong>机会判断：</strong>蛋白来源正从"乳清蛋白"向"蛋清蛋白"分化——蛋清是天然洁净蛋白，没有乳糖不耐的痛点，也没有植物蛋白的口感争议。这是一个<strong>"洁净高蛋白"新原料方向</strong>，可关注蛋清蛋白粉/蛋清蛋白零食的原料端机会。</div>
+    </div>
+
+    <div class="item">
+      <div class="title">低GI食品千亿赛道进入洗牌期 <span class="tag tag-sig-red">🔴已爆</span></div>
+      <div class="desc">低GI国标加速推进，2024年中国低GI健康食品市场已达1762亿元。盒马、山姆、叮咚、胖东来集体押注：山姆玛士撒拉低GI五黑坚果脆年销破亿，叮咚低GI商品4-10月GMV 1.7亿（同比+87%），盒马低GI非遗牛皮豆干稳居类目好评榜首。</div>
+      <div class="relevance"><strong>机会判断：</strong>低GI已从风口变刚需，但主流玩家集中在零食、主食。真正空白是<strong>"低GI+洁净配料+时令食材"</strong>的交集——比如低GI的秋月梨、低GI的鲜莲子甜汤，用天然低升糖食材做，而不是靠代糖堆。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 板块三：时令风向 -->
+<div class="card sec-season">
+  <div class="card-header">
+    <div class="icon">🌿</div>
+    <h2>三、时令风向 · 品类机会</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="season-line">📅 <strong>当前时令定位：</strong>立秋第8天，处暑将至，全国水果市场开启"换季模式"——夏果收尾，石榴、秋月梨、蜜柚、早熟柑橘集中抢鲜上市，中秋礼盒采购窗口已全面打开。</div>
+    <div class="season-line">🎯 <strong>即将热卖品类：</strong>①秋月梨——新沂、达州8月1日开园，收购价4.4元/斤，比山东莱阳提前20天抢占市场，正值最佳尝鲜期；②突尼斯软籽石榴——中秋前上市，礼盒溢价空间大；③中秋月饼/大闸蟹礼券——稻香村8月10日已开炉，低GI、药食同源月饼成新卖点。</div>
+    <div class="season-line">🚨 <strong>窗口提醒：</strong>阳光玫瑰葡萄仍在放量但产地价已触底（精品礼盒有4倍价差空间）；水蜜桃（湖景蜜露）已完全下市，别再恋战。</div>
+    <div class="season-line">🏔️ <strong>产地直发机会：</strong>①秋月梨——山东莱阳/新沂/达州，8月上市，糖度12+、果肉无渣，产地直发礼盒可复制阳光玫瑰路径；②仙桃黄鳝——湖北仙桃（全国每4条黄鳝1条出自仙桃，品牌价值306.51亿），8月15日走进成都推介会，火锅鳝片/即食鳝串深加工已成型。</div>
+
+  </div>
+</div>
+
+<!-- 板块四：跨界灵感 -->
+<div class="card sec-cross">
+  <div class="card-header">
+    <div class="icon">💡</div>
+    <h2>四、跨界灵感 · 创新动作</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="item">
+      <div class="title">太二"鲜活战略"全菜单透明化</div>
+      <div class="desc">太二爆改菜单：活鱼"分批现杀"、时令食材（白玉丝瓜、螺丝椒）店门口陈列，新增"鲜料川菜"店型，把"鲜活"从口号变成可验证的体验，堂食营业额、客单价均上升。</div>
+      <div class="relevance"><strong>迁移可能：</strong>把"鲜活溯源可视化"从餐饮搬进食材电商——秋月梨/时令蔬菜上，用"采摘时间+产地+检测报告"三件套打信任，比单纯说"新鲜"强一个量级。</div>
+    </div>
+
+    <div class="item">
+      <div class="title">西贝"天边羊多"鲜羊料理首店</div>
+      <div class="desc">西贝孵化鲜羊新品牌：内蒙古四子王旗黑珍珠羊到店现切、按两称重、明档溯源（"鲜羊到店时间04:30"印在玻璃上）、5元羊肉串、黑松露牛肝菌鲜羊肉酥盒等年轻化菜品。</div>
+      <div class="relevance"><strong>迁移可能：</strong>"鲜羊"品类正独立化，贴秋膘+中秋是双窗口。我们可以做<strong>鲜羊清炖药食同源料包</strong>（冷鲜羊肉+料包组合），把西贝验证的"鲜羊+透明供应链"逻辑下沉到家庭厨房。</div>
+    </div>
+
+    <div class="item">
+      <div class="title">日本"罪恶碳酸"与"甜辣Swicy"双趋势</div>
+      <div class="desc">三得利"罪恶碳酸NOPE"高糖饮料50天狂卖5500万瓶（刷新日本令和年代新品纪录）；三养火鸡面"甜辣（Swicy）大杯装"8月18日全家日本首发，主打甜辣平衡、金平糖颗粒口感。</div>
+      <div class="relevance"><strong>迁移可能：</strong>两个反向信号：①"放纵型"高糖高刺激产品是年轻人的真实需求（嘴上控糖、身体下单）；②"甜辣平衡"成新口味公式。我们的零食/即食可以押"甜辣"这个新味型，而非继续内卷传统辣度。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 板块五：脑暴时刻 -->
+<div class="card sec-idea">
+  <div class="card-header">
+    <div class="icon">🧪</div>
+    <h2>五、脑暴时刻 · 融合创意</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="idea-card">
+      <div class="idea-name">「秋梨桂花一口鲜」秋月梨桂花银耳即食甜汤</div>
+      <div class="idea-line"><strong>一句话：</strong>HPP冷压锁鲜的秋月梨+鲜桂花+银耳即食甜汤，配料表只有"梨、桂花、银耳、水"，低GI天然食材。</div>
+      <div class="idea-line"><strong>为什么是现在：</strong>秋月梨正值最佳尝鲜期（8-9月），桂花是今年最强秋季风味锚点，低GI+药食同源是中秋前最确定的需求。</div>
+      <div class="idea-line"><strong>差异化锚点：</strong>现有银耳羹多用冰糖+代糖，配料表不干净；我们主打"用秋月梨天然甜味替代糖"，低GI可讲，洁净可查。</div>
+      <div class="idea-line"><strong>可行性初判：</strong>秋月梨产地直发+HPP代工成熟，供应链难度中，抖音达播适配度高（时令+养生双标签）。</div>
+    </div>
+
+    <div class="idea-card">
+      <div class="idea-name">「奶皮子酸奶碗」洁净版奶皮子甜品料包</div>
+      <div class="idea-line"><strong>一句话：</strong>内蒙古奶皮子+希腊酸奶+坚果碎的即食酸奶碗料包，奶皮子产地直发，配料表全天然。</div>
+      <div class="idea-line"><strong>为什么是现在：</strong>奶皮子糖葫芦爆火验证了"奶皮子"的网红属性，但糖葫芦已烂大街；奶皮子原料涨价说明供给稀缺，产地直发有先发窗口。</div>
+      <div class="idea-line"><strong>差异化锚点：</strong>不做糖葫芦（同质化），做"奶皮子+酸奶"的健康组合，把网红元素从甜品迁移到高蛋白轻食场景。</div>
+      <div class="idea-line"><strong>可行性初判：</strong>奶皮子供应紧张是最大风险，需锁定内蒙古产地；酸奶碗形态冷链成本可控，适配小红书种草。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 板块六：展会速递·每周新品雷达 -->
+<div class="card sec-expo">
+  <div class="card-header">
+    <div class="icon">🏬</div>
+    <h2>六、展会速递 · 每周新品雷达</h2>
+  </div>
+  <div class="card-body">
+
+    <div style="font-size:14px;font-weight:700;color:#2f6f9e;margin-bottom:14px;">🆕 每周新品速递（本周核心 · 指名道姓）</div>
+
+    <div class="product">
+      <div class="p-title">🆕 霸王茶姬「薄荷球球」</div>
+      <div class="p-meta">上市时间：<b>8月12日</b> | 价格带：<b>26元/中杯</b></div>
+      <div class="p-block"><strong>产品力拆解：</strong>糯米香绿茶/茉莉雪芽双茶底，加一整颗薄巧奶油球+芝士轻乳，巧克力刨花+芝士云顶，新鲜薄荷叶点缀。卖点是"薄荷清凉感×巧克力甜腻感"的反差层次，走的是秋季"清冽"味型。</div>
+      <div class="p-insight"><strong>启发：</strong>薄荷+甜腻食材的"解腻反差"味型可迁移——我们的甜品/零食可以做"薄荷×奶味"的清新解腻版，正好卡处暑后"暑气未消又想吃点甜的"过渡期。</div>
+    </div>
+
+    <div class="product">
+      <div class="p-title">🆕 欧福「蛋清蛋白饮」</div>
+      <div class="p-meta">上市时间：<b>8月12日</b> | 价格带：<b>26元/瓶</b></div>
+      <div class="p-block"><strong>产品力拆解：</strong>鸡蛋清占比85%、含18种氨基酸（8种必需+3种BCAA）、每瓶20.5g蛋白质，0糖0脂0胆固醇，入口无明显蛋清味。切乳糖不耐、健身增肌、早餐加餐场景。</div>
+      <div class="p-insight"><strong>启发：</strong>蛋清是"洁净+高蛋白"的天然原料，比乳清更干净、比植物蛋白口感好。我们可关注蛋清蛋白在烘焙/甜品中的增蛋白应用，做"高蛋白洁净零食"。</div>
+    </div>
+
+    <div class="product">
+      <div class="p-title">🆕 六必居「乳酸菌酸菜」</div>
+      <div class="p-meta">上市时间：<b>近日</b> | 价格带：<b>14.9元/袋</b></div>
+      <div class="p-block"><strong>产品力拆解：</strong>北纬42°凌海产区东北酸菜王品种，植物乳植杆菌发酵（添加量≥5×10⁸ CFU/100g），靠益生菌快速产酸抑制有害菌，不靠高盐防腐。老字号把"传统酸菜"做了健康化升级。</div>
+      <div class="p-insight"><strong>启发：</strong>发酵食品的"益生菌+低盐"升级是清晰方向。我们做发酵类食材（酸菜、泡菜、酸豆角）可以用"益生菌发酵+低盐"讲洁净故事，直接对标传统高盐版本。</div>
+    </div>
+
+    <div class="product">
+      <div class="p-title">🆕 叮咚V5「三花三草一叶老广式低糖凉茶」</div>
+      <div class="p-meta">上市时间：<b>近日</b> | 价格带：<b>3.8元/瓶</b></div>
+      <div class="p-block"><strong>产品力拆解：</strong>金银花、菊花、鸡蛋花（三花）+仙草、夏枯草、甘草（三草）+布渣叶（一叶）足料熬煮，低糖配方。延续叮咚V5"55项配料严控清单"的地道草本战略。</div>
+      <div class="p-insight"><strong>启发：</strong>中式养生水价格带正被即时零售打到3-5元，走的是"真实草本+低糖+即饮"路线。我们做草本类产品要守住"真实足料熬煮"的差异化，别做香精勾兑版。</div>
+    </div>
+
+    <div class="product">
+      <div class="p-title">🆕 王老吉「王者英雄能量电解质饮料」</div>
+      <div class="p-meta">上市时间：<b>8月10日</b> | 价格带：<b>126.5元/15瓶（约8.4元/瓶）</b></div>
+      <div class="p-block"><strong>产品力拆解：</strong>能量来自咖啡豆、人参、蓝莓汁等天然植物原料，而非人工牛磺酸；0牛磺酸0香精0防腐剂0色素0脂肪，获A+++级清洁标签认证，低糖，切户外运动、高强度工作场景。</div>
+      <div class="p-insight"><strong>启发：</strong>"天然植物供能"替代"人工牛磺酸"是功能饮料的洁净化方向。我们做功能化食材时，"天然成分替代人工添加剂"就是最强卖点，A+++清洁标签认证值得关注。</div>
+    </div>
+
+    <div style="margin-top:20px;padding-top:16px;border-top:1px dashed #f0e2cf;">
+      <div style="font-size:14px;font-weight:700;color:#2f6f9e;margin-bottom:10px;">🎪 展会预告</div>
+      <div class="item">
+        <div class="title">上海国际调味品及食品配料展 + 上海国际餐饮食材展</div>
+        <div class="desc">8月26-28日 | 上海 | 第15/17届同期举办，调味品+食材供应链风向标。</div>
+        <div class="relevance"><strong>与我何干：</strong>调味品健康化（低盐、药食同源、清洁标签）是本次核心看点，提前锁定发酵类、本草类调味料供应商。</div>
+      </div>
+      <div class="item">
+        <div class="title">SIAL西雅国际食品展（广州）</div>
+        <div class="desc">9月3-5日 | 广州保利世贸博览馆 | 1500+展商、10万+新品、50国品牌，设SIAL创新大赛+茶饮调配师大赛。</div>
+        <div class="relevance"><strong>与我何干：</strong>下半年最重要B2B食品展，Match Me智能供需系统可对接沃尔玛、山姆、盒马等采购集群，是找OEM/ODM和看趋势的主场。</div>
+      </div>
+      <div class="item">
+        <div class="title">中食展（广州）暨广州国际食品食材展</div>
+        <div class="desc">9月10-12日 | 广州广交会展馆B区 | 同期办广州国际牛肉节、低GI食品展、西点烘焙展。</div>
+        <div class="relevance"><strong>与我何干：</strong>低GI食品展是直接看点，牛肉节可对接中秋牛肉礼盒供应链。</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>⚠️ 以上内容由 AI 自动聚合生成，信息来源于公开渠道（Foodaily每日食品、食业周报、红餐网、SIAL官方等），仅供参考，不构成投资与开品决策建议。</p>
+  <p style="margin-top:8px;">Generated by WorkBuddy 食研日推 · 2026-08-15 09:00 CST</p>
+</div>
+
+</body>
+</html>
