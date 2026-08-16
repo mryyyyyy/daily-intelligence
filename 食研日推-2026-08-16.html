@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 · 2026-08-16</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #faf5ee; color: #3a2e22; font-size: 15px; line-height: 1.75; }
+
+  /* Hero 区域 - 暖橙食品主题 */
+  .hero {
+    background: linear-gradient(135deg, #7a3d1c 0%, #b05c2a 45%, #e08a3e 100%);
+    border-bottom: 1px solid #d9b48a;
+    padding: 36px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(255,220,160,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%; left: -5%;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(255,190,120,0.16) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #fff6e8;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #fffaf2;
+    margin-bottom: 8px;
+  }
+  .hero .sub { color: #ffe6c9; font-size: 14px; }
+  .hero .countdown {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .hero .countdown span {
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.28);
+    color: #fff8ec;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+
+  /* 单栏布局 */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  /* 卡片通用 */
+  .card {
+    background: #fffdf9;
+    border: 1px solid #ecdcc6;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(160,110,60,0.06);
+  }
+  .card-header {
+    padding: 16px 22px;
+    border-bottom: 1px solid #f0e2cf;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .card-header .icon {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .card-header h2 { font-size: 17px; font-weight: 800; }
+  .card-body { padding: 20px 22px; }
+
+  /* 板块主题色 */
+  .sec-news .card-header { background: linear-gradient(135deg, #fdf1e4 0%, #fffdf9 100%); }
+  .sec-news .icon { background: #fbe4cd; }
+  .sec-news .card-header h2 { color: #c2482a; }
+
+  .sec-radar .card-header { background: linear-gradient(135deg, #fdf6e8 0%, #fffdf9 100%); }
+  .sec-radar .icon { background: #fae6c0; }
+  .sec-radar .card-header h2 { color: #b97a1e; }
+
+  .sec-season .card-header { background: linear-gradient(135deg, #eef5e6 0%, #fffdf9 100%); }
+  .sec-season .icon { background: #dceccd; }
+  .sec-season .card-header h2 { color: #5d7d2f; }
+
+  .sec-cross .card-header { background: linear-gradient(135deg, #f3eefb 0%, #fffdf9 100%); }
+  .sec-cross .icon { background: #e6dbf5; }
+  .sec-cross .card-header h2 { color: #7a4fb0; }
+
+  .sec-idea .card-header { background: linear-gradient(135deg, #fdeef0 0%, #fffdf9 100%); }
+  .sec-idea .icon { background: #f8d8de; }
+  .sec-idea .card-header h2 { color: #c2455c; }
+
+  .sec-expo .card-header { background: linear-gradient(135deg, #e9f2f8 0%, #fffdf9 100%); }
+  .sec-expo .icon { background: #d3e6f2; }
+  .sec-expo .card-header h2 { color: #2f6f9e; }
+
+  /* 信息条目 */
+  .item {
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px dashed #f0e2cf;
+  }
+  .item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .item .title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #3a2e22;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .item .desc { color: #5c4a36; font-size: 14px; margin-bottom: 6px; }
+  .item .desc strong { color: #3a2e22; }
+
+  /* 标签 */
+  .tag {
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .tag-relevance { background: #fbeee2; color: #b05c2a; border: 1px solid #efd3b4; }
+  .tag-sig-green { background: #e7f3dd; color: #4d7a20; border: 1px solid #c8e0b4; }
+  .tag-sig-yellow { background: #fdf1d4; color: #a97a12; border: 1px solid #f0dba0; }
+  .tag-sig-red { background: #fbe4e1; color: #b63b2a; border: 1px solid #f2c5bd; }
+
+  /* 与我何干 */
+  .relevance {
+    background: #fdf3e7;
+    border-left: 3px solid #e08a3e;
+    padding: 8px 14px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13.5px;
+    color: #7a4a1e;
+    margin-top: 4px;
+  }
+  .relevance strong { color: #b05c2a; }
+
+  /* 时令行 */
+  .season-line { font-size: 14px; color: #4a3a28; margin-bottom: 8px; }
+  .season-line strong { color: #5d7d2f; }
+
+  /* 新品速递卡片 */
+  .product {
+    background: #fbf7f0;
+    border: 1px solid #eeddca;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+  .product:last-child { margin-bottom: 0; }
+  .product .p-title {
+    font-weight: 800;
+    font-size: 15px;
+    color: #b05c2a;
+    margin-bottom: 4px;
+  }
+  .product .p-meta { font-size: 13px; color: #8a6a4a; margin-bottom: 8px; }
+  .product .p-meta b { color: #6a4a2a; }
+  .product .p-block { font-size: 13.5px; color: #4a3a28; margin-bottom: 5px; }
+  .product .p-block strong { color: #3a2e22; }
+  .product .p-insight {
+    background: #fff4e2;
+    border-left: 3px solid #e0a040;
+    padding: 7px 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: #7a4a1e;
+    margin-top: 6px;
+  }
+
+  /* 创意卡片 */
+  .idea-card {
+    background: linear-gradient(135deg, #fdf0f1 0%, #fffaf7 100%);
+    border: 1px solid #f0d5da;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .idea-card:last-child { margin-bottom: 0; }
+  .idea-card .idea-name {
+    font-size: 16px;
+    font-weight: 800;
+    color: #c2455c;
+    margin-bottom: 6px;
+  }
+  .idea-card .idea-line { font-size: 13.5px; color: #4a3a28; margin-bottom: 5px; }
+  .idea-card .idea-line strong { color: #c2455c; }
+
+  .footer {
+    text-align: center;
+    padding: 26px;
+    color: #a08a72;
+    font-size: 12px;
+    border-top: 1px solid #ecdcc6;
+  }
+  @media (max-width: 600px) {
+    .hero { padding: 26px 20px; }
+    .container { padding: 16px 12px; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">🍲 2026年8月16日 星期日</div>
+    <h1>食研日推 · 每日行业情报</h1>
+    <div class="sub">下厨房食品品牌 · 开品弹药库 | 只给决策弹药，拒绝水文</div>
+    <div class="countdown">
+      <span>🌿 立秋第10天</span>
+      <span>⏰ 距处暑7天（8/23）</span>
+      <span>💕 距七夕3天（8/19）</span>
+      <span>🥮 距中秋40天（9/25）</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- 板块一：今日行业要闻 -->
+<div class="card sec-news">
+  <div class="card-header">
+    <div class="icon">🔥</div>
+    <h2>一、今日行业要闻</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="item">
+      <div class="title">京东七鲜咖啡首家24小时无人咖啡店今日开业</div>
+      <div class="desc">8月16日，京东集团旗下现制饮品品牌<strong>七鲜咖啡</strong>首家24小时智能化无人咖啡店在北京银河SOHO开业。咖啡研磨、萃取、出杯全流程由机器人完成，支持甜度/咖啡浓度/果汁浓度<strong>1%-100%精细DIY</strong>，后续将上线AI个性化推荐，根据身体情况建议当日咖啡因摄入量。</div>
+      <div class="relevance"><strong>与我何干：</strong>零售渠道的"无人化+个性化"已经从概念落到实体门店。背后逻辑是"标准化出品+数据驱动的千人千味"，这正是食品开品未来的核心能力——用AI把"个人健康需求"翻译成"可定制产品"，我们做食材升级要提前押注"个性化营养定制"这个方向。</div>
+    </div>
+
+    <div class="item">
+      <div class="title">食品巨头上半年成绩单出炉：康师傅405亿、卡夫亨氏447亿、三得利+12%</div>
+      <div class="desc">康师傅2026年上半年营收<strong>405亿元</strong>、卡夫亨氏Q2销售额<strong>447亿元</strong>、三得利上半年销售收入<strong>同比增长12%</strong>。共同信号：饮料业务（尤其即饮茶、功能饮料）是增长引擎，方便面/调味品稳中有升。</div>
+      <div class="relevance"><strong>与我何干：</strong>巨头财报反复验证同一件事——<strong>即饮茶、功能饮料、健康零食是确定性增长极</strong>。我们开品不必正面撞饮料红海，但可以承接"巨头验证过的风味/功能"，下沉到食材/即食场景做差异化，比如把爆款茶饮风味做成洁净版食材。</div>
+    </div>
+
+    <div class="item">
+      <div class="title">惠发食品939万收购久恒惠通49%股权，食材供应链全资化</div>
+      <div class="desc">8月13日，惠发食品（603536）公告拟以939.59万元收购控股子公司久恒惠通剩余49%股权，实现全资控股，目标是"不断开拓食材供应链渠道，推动业务布局优化"。</div>
+      <div class="relevance"><strong>与我何干：</strong>预制菜/食材企业正在向上游供应链"全资化"收权——这说明<strong>掌控食材供应链话语权</strong>是行业共识。我们做产地直发，更要重视锁定上游产地/加工资源，别只做"搬运工"。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 板块二：爆品雷达 -->
+<div class="card sec-radar">
+  <div class="card-header">
+    <div class="icon">🎯</div>
+    <h2>二、爆品雷达 · 趋势苗头</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="item">
+      <div class="title">橘子/泰橘"意外走红"，大众水果品种化成新打法 <span class="tag tag-sig-yellow">🟡起势</span></div>
+      <div class="desc">继苹果之后，橘子刷屏茶饮圈。奈雪8月12日推"落日橘子海"登顶咖啡系列TOP1、拉动咖啡营收环比+40%；茉莉奶白"针王橘子"系列立秋当天首日卖出<strong>60.7万杯</strong>。关键变量是<strong>泰橘</strong>——它把橘子的供给周期从"11月-次年2月"拉长到全年，橘子开始"品种化"（广西青柑+泰橘+济州蜜橘复配）。</div>
+      <div class="relevance"><strong>机会判断：</strong>这是"苹果之后又一大众水果被重新定义"的信号，<strong>大众水果+品种化命名+多产区复配</strong>是可复制的打法。我们做精品生鲜，可以直接押"泰橘/青柑"这个新品种——它有产地直发故事（广西青柑、泰国泰橘）、有茶饮热度背书，比普通橘子溢价空间大得多。</div>
+    </div>
+
+    <div class="item">
+      <div class="title">新疆农科院耐储甜瓜爆火抖音，"科研育种+产地直发"跑通 <span class="tag tag-sig-yellow">🟡起势</span></div>
+      <div class="desc">新疆农科院培育的<strong>纳斯密、黄梦脆、玉露明珠</strong>三个甜瓜品种在抖音爆火：纳斯密冲爆款榜前三、黄梦脆8月上新即冲新品榜第15。核心卖点是<strong>耐储运</strong>（纳斯密/黄梦脆可存45天、玉露明珠90天），129-139元/箱（2枚），由港股鲁大师与新疆农科院合资公司运营。</div>
+      <div class="relevance"><strong>机会判断：</strong>"耐储运品种"解决了生鲜电商最大的售后痛点——损耗。这是<strong>"科研品种+精品溢价+产地直发"的完整样板</strong>，129元/箱的精品甜瓜在抖音跑通，证明高客单精品瓜果有真实需求。我们选品要优先找"耐储运+有品种故事"的产地食材。</div>
+    </div>
+
+    <div class="item">
+      <div class="title">蛋基酸奶冒头，非乳"蛋白"再添新形态 <span class="tag tag-sig-green">🟢苗头</span></div>
+      <div class="desc">美国Costco上架<strong>Oolie蛋基酸奶</strong>（egg-based yogurt），香草/青柠/莓果三味，被评价为"非乳酸奶里口感最好的"。这与此前欧福"蛋清蛋白饮"形成呼应——蛋白源正在从乳清/植物向<strong>蛋基</strong>分化。</div>
+      <div class="relevance"><strong>机会判断：</strong>蛋基是"高蛋白+无乳糖+洁净"的天然原料，国内几乎空白。我们做高蛋白零食/甜品，可以关注蛋清蛋白在烘焙、甜品、即食碗中的增蛋白应用，讲"蛋清蛋白+洁净配料"的差异化故事。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 板块三：时令风向 -->
+<div class="card sec-season">
+  <div class="card-header">
+    <div class="icon">🌿</div>
+    <h2>三、时令风向 · 品类机会</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="season-line">📅 <strong>当前时令定位：</strong>立秋第10天、处暑将至，全国水果市场开启"换季模式"——夏果（西瓜/蜜桃）收尾，石榴、蜜柚、秋月梨、早熟柑橘、冬枣等秋果集中抢鲜上市，进入"尝鲜溢价期"（6-7元/斤起，精品果超10元/斤）。</div>
+    <div class="season-line">🎯 <strong>即将热卖品类：</strong>①橘子/泰橘——茶饮端已爆（茉莉奶白60.7万杯），产地端广西青柑/泰橘正当时，中秋前有礼盒化空间；②石榴/蜜柚——中秋经典果品，突尼斯软籽石榴+琯溪蜜柚双线可铺；③秋月梨——山东莱阳9月1-5日最佳采收窗口（糖度14.2-15%），四川达州/江苏新沂已抢先上市（收购价4.4元/斤）。</div>
+    <div class="season-line">🚨 <strong>窗口提醒：</strong>①七夕（8/19）仅剩3天，水果礼盒/甜品的"告白/送礼"场景要最后冲刺；②夏果（西瓜、晚熟桃）已进入尾期，别恋战；③秋果当前是"尝鲜溢价"阶段，8月底昼夜温差拉大后糖度更高，产地直发建议卡准9月初最佳赏味期再放量。</div>
+    <div class="season-line">🏔️ <strong>产地直发机会：</strong>①新疆耐储甜瓜（纳斯密/黄梦脆/玉露明珠）——新疆沙湾/库尔勒/和田产区，耐储45-90天，129元/箱精品溢价已跑通；②秋月梨——山东莱阳（9月初最佳）/四川达州/江苏新沂（已开园），糖度12+无渣，礼盒可复制阳光玫瑰路径；③广西青柑+泰橘——橘子"品种化"风口，产地直发有故事可讲。</div>
+
+  </div>
+</div>
+
+<!-- 板块四：跨界灵感 -->
+<div class="card sec-cross">
+  <div class="card-header">
+    <div class="icon">💡</div>
+    <h2>四、跨界灵感 · 创新动作</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="item">
+      <div class="title">日本便利店秋季限定打法：毛豆奶昔瑞士卷、焙茶欧蕾霜淇淋、咖喱节</div>
+      <div class="desc">罗森8月18日办"当地美食节·东北"，推毛豆奶昔风味瑞士卷、炸鸡君×卡乐比河童虾条大蒜酱油味；7-11台湾8月19日联名日东红茶推"焙茶欧蕾"霜淇淋，双茶品牌用酪梨/荔枝/桑葚入茶；日本7-11办"咖喱节"。</div>
+      <div class="relevance"><strong>迁移可能：</strong>日本秋季限定是"<strong>地域食材（毛豆/焙茶/咖喱）× 名店监制 × 季节限定</strong>"的组合拳。我们可以把"地域食材+限定叙事"迁移到食材礼盒——用"XX产地限定+大师监制"的标签讲稀缺故事，而不是只说"新鲜"。</div>
+    </div>
+
+    <div class="item">
+      <div class="title">全家用厄瓜多尔玫瑰做七夕，便利店做"情绪价值"</div>
+      <div class="desc">全家8月16日起开卖进口厄瓜多尔玫瑰（189元/束，比花店350-500元便宜一半），搭配金莎巧克力+20元换购"会说话"恋爱钥匙圈，把七夕从"卖货"做成"情绪场景"。</div>
+      <div class="relevance"><strong>迁移可能：</strong>生鲜/食材也能做"情绪价值"——七夕的"甜"、中秋的"团圆"、处暑的"告别夏天"，都可以成为礼盒的情感钩子。我们做时令礼盒，除了产品力，要给一个"送谁、为什么此刻送"的情绪理由。</div>
+    </div>
+
+    <div class="item">
+      <div class="title">京东七鲜AI咖啡"1%-100%个性化"，食品进入"参数化定制"</div>
+      <div class="desc">七鲜咖啡支持咖啡浓度/甜度/果汁浓度1%-100%精细调节，还能为饮品自主命名生成卡片分享，AI后续按个人健康数据建议咖啡因摄入。</div>
+      <div class="relevance"><strong>迁移可能：</strong>"参数化定制"从咖啡延伸到食材——比如坚果/杂粮/代餐的"按需配比定制"、按体脂/血糖目标配比的食材包。这要求我们产品设计上预留"可定制颗粒度"，是差异化卖点，也是数据资产。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 板块五：脑暴时刻 -->
+<div class="card sec-idea">
+  <div class="card-header">
+    <div class="icon">🧪</div>
+    <h2>五、脑暴时刻 · 融合创意</h2>
+  </div>
+  <div class="card-body">
+
+    <div class="idea-card">
+      <div class="idea-name">「一口青柑」泰橘/青柑洁净版产地直发礼盒</div>
+      <div class="idea-line"><strong>一句话：</strong>广西青柑+泰橘产地直发的当季鲜果礼盒，主打"茶饮同款品种+可溯源产地+中秋前鲜果送礼"。</div>
+      <div class="idea-line"><strong>为什么是现在：</strong>橘子/泰橘正被茶饮端引爆（茉莉奶白60.7万杯），品种化叙事成熟；中秋前鲜果礼盒采购窗口已开，泰橘/青柑产地直发有先发窗口。</div>
+      <div class="idea-line"><strong>差异化锚点：</strong>抖音现有橘子多为"普通柑橘低价跑量"，我们主打"茶饮同款品种（青柑/泰橘）+多产区复配+精品礼盒"，用"你喝的奶茶就是这个橘子"做认知钩子，规避同质化价格战。</div>
+      <div class="idea-line"><strong>可行性初判：</strong>广西青柑/泰橘供应链成熟，耐储运优于普通柑橘；中秋前1个月窗口，抖音达播适配度高（时令+茶饮热点双标签），供应链难度低。</div>
+    </div>
+
+    <div class="idea-card">
+      <div class="idea-name">「一口爆汁」耐储精品甜瓜礼盒（新疆农科院同源）</div>
+      <div class="idea-line"><strong>一句话：</strong>借鉴"纳斯密/黄梦脆"模式，做"耐储运品种+科研背书+精品溢价"的甜瓜/时令瓜果礼盒，129-139元/箱。</div>
+      <div class="idea-line"><strong>为什么是现在：</strong>新疆耐储甜瓜已验证高客单精品瓜果的抖音需求，处暑后是瓜果换季窗口，中秋礼盒可承接。</div>
+      <div class="idea-line"><strong>差异化锚点：</strong>现有精品瓜果多靠"产地直发"故事，我们叠加"品种名+科研机构背书+耐储运承诺"，把"售后损耗"这个生鲜最大痛点变成"耐储45-90天"的卖点，这是竞品没有的信任背书。</div>
+      <div class="idea-line"><strong>可行性初判：</strong>需锁定新疆产区+耐储品种货源，供应链难度中；耐储特性让达播售后可控，是高客单精品生鲜的优质切入。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 板块六：展会速递·每周新品雷达 -->
+<div class="card sec-expo">
+  <div class="card-header">
+    <div class="icon">🏬</div>
+    <h2>六、展会速递 · 每周新品雷达</h2>
+  </div>
+  <div class="card-body">
+
+    <div style="font-size:14px;font-weight:700;color:#2f6f9e;margin-bottom:14px;">🆕 每周新品速递（本周核心 · 指名道姓）</div>
+
+    <div class="product">
+      <div class="p-title">🆕 茉莉奶白「针王橘子」系列</div>
+      <div class="p-meta">上市时间：<b>立秋当日（8月7日）</b> | 价格带：<b>约15-19元/杯</b></div>
+      <div class="p-block"><strong>产品力拆解：</strong>采用广西青柑+泰橘+济州岛蜜橘三产区复配，酸甜层次丰富、辨识度强，被称为"秋日氛围感天花板"，<strong>首日卖出60.7万杯</strong>。卖点是"大众水果橘子+多产区品种复配"，把普通橘子做成高级感。</div>
+      <div class="p-insight"><strong>启发：</strong>"多产区复配+品种化命名"是橘子走红的核心。我们选品时，别再卖"橘子"，要卖"泰橘/青柑/XX品种"——把产地和品种做成溢价锚点，直接对标茶饮端已验证的热度。</div>
+    </div>
+
+    <div class="product">
+      <div class="p-title">🆕 奈雪「落日橘子海」</div>
+      <div class="p-meta">上市时间：<b>8月12日</b> | 价格带：<b>约20-26元/杯</b></div>
+      <div class="p-block"><strong>产品力拆解：</strong>泰橘+鲜奶+咸芝酪+阿拉比卡金奖豆四层复合结构，橘色分层营造晚霞氛围，打开即闻橘子果香，<strong>上线即登顶咖啡系列销量TOP1，拉动咖啡营收环比+40%</strong>。卖点是"氛围感颜值+咸甜复合口感"。</div>
+      <div class="p-insight"><strong>启发：</strong>"氛围感出片+咸甜复合"是茶饮拉新的双引擎。我们的甜品/即食可以做"橘/柚×咸芝士"的复合味型，同时把产品做成"随手拍出片"的视觉款，吃透小红书的颜值传播。</div>
+    </div>
+
+    <div class="product">
+      <div class="p-title">🆕 瑞幸「经典泰奶 + 泰奶鸳鸯拿铁」</div>
+      <div class="p-meta">上市时间：<b>8月17日（明日全国上市）</b> | 价格带：<b>约9.9-21元/杯</b></div>
+      <div class="p-block"><strong>产品力拆解：</strong>泰国奶茶风味全国化，含超大杯，搭配"泰奶鸳鸯拿铁"（泰奶+咖啡），延续瑞幸"把区域/异国风味饮品全国铺开"的打法，接棒刚下市的苹果系列。</div>
+      <div class="p-insight"><strong>启发：</strong>泰奶是继泰橘之后又一"东南亚风味"被头部品牌全国化的信号。我们可关注"东南亚风味食材"（香茅、斑斓、泰奶、泰橘）的国内精品化机会，这是还没有强势竞品的空白带。</div>
+    </div>
+
+    <div class="product">
+      <div class="p-title">🆕 新疆农科院「黄梦脆」耐储甜瓜</div>
+      <div class="p-meta">上市时间：<b>8月上市</b> | 价格带：<b>129元/箱（2枚）</b></div>
+      <div class="p-block"><strong>产品力拆解：</strong>新疆农科院培育的耐储运甜瓜品种，8℃-16℃下可存放45天，主打精品消费市场，8月上新即冲抖音新品榜第15。卖点是"科研育种+耐储运（低售后损耗）+精品溢价"。</div>
+      <div class="p-insight"><strong>启发：</strong>这是"科研品种+产地直发+耐储承诺"的完整样板。我们做生鲜最痛的售后损耗，可以靠"选耐储运品种"从源头解决——把"耐储45天"本身变成卖点，比空喊"新鲜"更有信任感。</div>
+    </div>
+
+    <div class="product">
+      <div class="p-title">🆕 三诺×Keep「铁三角」运动补给</div>
+      <div class="p-meta">上市时间：<b>8月中旬</b> | 价格带：<b>未明确（运动补给定位）</b></div>
+      <div class="p-block"><strong>产品力拆解：</strong>三诺集团携手Keep切入运动补给赛道，推出"铁三角"系列，延续"食品×运动平台"的跨界合作模式。卖点是"运动场景的专业功能背书+Keep用户流量"。</div>
+      <div class="p-insight"><strong>启发：</strong>"食品品牌×运动/健康平台"跨界是功能食品的获客捷径。我们做功能化食材（高蛋白、电解质、低GI），可以找健身/健康类KOL或平台联名背书，用场景信任降低教育成本。</div>
+    </div>
+
+    <div style="margin-top:20px;padding-top:16px;border-top:1px dashed #f0e2cf;">
+      <div style="font-size:14px;font-weight:700;color:#2f6f9e;margin-bottom:10px;">🎪 展会预告</div>
+      <div class="item">
+        <div class="title">上海国际调味品及食品配料展 + 上海国际餐饮食材展</div>
+        <div class="desc">8月26-28日 | 上海 | 第15/17届同期举办，调味品+食材供应链风向标（10天后）。</div>
+        <div class="relevance"><strong>与我何干：</strong>调味品健康化（低盐、药食同源、清洁标签）是核心看点，提前锁定发酵类、本草类调味料供应商，为中秋/秋冬开品储备。</div>
+      </div>
+      <div class="item">
+        <div class="title">SIAL西雅国际食品展（广州）</div>
+        <div class="desc">9月3-5日 | 广州保利世贸博览馆 | 1500+展商、10万+新品、50国品牌，设SIAL创新大赛。</div>
+        <div class="relevance"><strong>与我何干：</strong>下半年最重要B2B食品展，可对接沃尔玛、山姆、盒马等采购集群，是找OEM/ODM、看橘子/泰橘等新品类趋势的主场。</div>
+      </div>
+      <div class="item">
+        <div class="title">中食展（广州）暨广州国际食品食材展</div>
+        <div class="desc">9月10-12日 | 广州广交会展馆B区 | 同期办广州国际牛肉节、低GI食品展、西点烘焙展。</div>
+        <div class="relevance"><strong>与我何干：</strong>低GI食品展是直接看点，牛肉节可对接中秋牛肉礼盒供应链。</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>⚠️ 以上内容由 AI 自动聚合生成，信息来源于公开渠道（Foodaily每日食品、36氪咖门、红餐网、SIAL官方、市场监管总局等），仅供参考，不构成投资与开品决策建议。</p>
+  <p style="margin-top:8px;">Generated by WorkBuddy 食研日推 · 2026-08-16 09:00 CST</p>
+</div>
+
+</body>
+</html>
