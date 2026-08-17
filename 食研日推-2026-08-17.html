@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 · 每日行业情报 2026-08-17</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #faf3e8;
+    color: #4a3a2a;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* Hero 区 */
+  .hero {
+    background: linear-gradient(135deg, #f6e3c8 0%, #eec9a3 45%, #d98a4b 100%);
+    border-bottom: 1px solid #e5c9a2;
+    padding: 34px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40%; left: -5%;
+    width: 440px; height: 440px;
+    background: radial-gradient(circle, rgba(160,80,30,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(120,60,20,0.16);
+    border: 1px solid rgba(120,60,20,0.28);
+    color: #7a4a1d;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #5a3316;
+    margin-bottom: 8px;
+  }
+  .hero .sub {
+    color: #7a5226;
+    font-size: 14px;
+  }
+  .hero .countdown {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .hero .countdown .cd-item {
+    background: rgba(255,255,255,0.55);
+    border: 1px solid rgba(120,60,20,0.2);
+    color: #6b431a;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  /* 卡片通用 */
+  .card {
+    background: #fffdf8;
+    border: 1px solid #f0e2cc;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(160,100,40,0.05);
+  }
+  .card-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #f0e2cc;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-header .icon {
+    width: 34px; height: 34px;
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .card-header h2 {
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .card-header .tag {
+    margin-left: auto;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+  .card-body { padding: 20px; }
+
+  /* 板块配色（暖色系） */
+  .sec-news .card-header { background: linear-gradient(135deg, #fdece0 0%, #fbe0cc 100%); }
+  .sec-news .icon { background: #c0563b; color: #fff; }
+  .sec-news .card-header h2 { color: #9c3d22; }
+  .sec-news .tag { background: #f3d4c0; color: #9c3d22; }
+
+  .sec-radar .card-header { background: linear-gradient(135deg, #fdf3d8 0%, #fbe8b8 100%); }
+  .sec-radar .icon { background: #d99a1f; color: #fff; }
+  .sec-radar .card-header h2 { color: #a87208; }
+  .sec-radar .tag { background: #f3e0ae; color: #a87208; }
+
+  .sec-season .card-header { background: linear-gradient(135deg, #edf3dc 0%, #dfecc2 100%); }
+  .sec-season .icon { background: #7a9a3e; color: #fff; }
+  .sec-season .card-header h2 { color: #5c7a25; }
+  .sec-season .tag { background: #dfe8c4; color: #5c7a25; }
+
+  .sec-cross .card-header { background: linear-gradient(135deg, #fde8d8 0%, #fbd8bd 100%); }
+  .sec-cross .icon { background: #e0783a; color: #fff; }
+  .sec-cross .card-header h2 { color: #b55a20; }
+  .sec-cross .tag { background: #f5d3b0; color: #b55a20; }
+
+  .sec-brain .card-header { background: linear-gradient(135deg, #f6e2da 0%, #efcfc2 100%); }
+  .sec-brain .icon { background: #a34a28; color: #fff; }
+  .sec-brain .card-header h2 { color: #8a3a1c; }
+  .sec-brain .tag { background: #ecc8b6; color: #8a3a1c; }
+
+  .sec-new .card-header { background: linear-gradient(135deg, #f1e4d0 0%, #e6d2b4 100%); }
+  .sec-new .icon { background: #8a5a2b; color: #fff; }
+  .sec-new .card-header h2 { color: #6e451c; }
+  .sec-new .tag { background: #e3cba6; color: #6e451c; }
+
+  /* 条目样式 */
+  .item {
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px dashed #f0e2cc;
+  }
+  .item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .item h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #4a3a2a;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  .item p { color: #6b5a45; font-size: 13.5px; margin-top: 4px; }
+  .item p strong { color: #4a3a2a; font-weight: 600; }
+
+  /* 与我何干 / 机会判断 高亮条 */
+  .relate {
+    background: #fdf1e3;
+    border-left: 3px solid #d98a4b;
+    padding: 8px 12px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    color: #7a5226;
+    margin-top: 8px;
+  }
+  .relate strong { color: #b55a20; }
+
+  /* 信号强度标签 */
+  .sig {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    font-weight: 700;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .sig-green { background: #e4efc8; color: #5c7a25; }
+  .sig-yellow { background: #f6e6b8; color: #a87208; }
+  .sig-red { background: #f6d6c8; color: #b5402a; }
+
+  /* 时令字段 */
+  .season-line {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .season-line .k {
+    flex-shrink: 0;
+    font-weight: 700;
+    color: #5c7a25;
+    font-size: 13.5px;
+    width: 88px;
+  }
+  .season-line .v { color: #6b5a45; font-size: 13.5px; flex: 1; }
+
+  /* 新品速递卡片 */
+  .np-card {
+    background: #fffdf8;
+    border: 1px solid #e6d2b4;
+    border-left: 3px solid #8a5a2b;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .np-card .np-head {
+    font-weight: 700;
+    font-size: 14.5px;
+    color: #5a3316;
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  .np-card .np-meta {
+    font-size: 12px;
+    color: #a07a4a;
+    margin-bottom: 8px;
+  }
+  .np-card .np-body { font-size: 13px; color: #6b5a45; }
+  .np-card .np-body p { margin-top: 4px; }
+  .np-card .np-body strong { color: #6e451c; }
+  .np-inspire {
+    background: #fbf4e6;
+    border-left: 3px solid #d99a1f;
+    padding: 8px 12px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    color: #7a5226;
+    margin-top: 8px;
+  }
+  .np-inspire strong { color: #a87208; }
+
+  /* 脑暴创意卡片 */
+  .idea-card {
+    background: linear-gradient(135deg, #fbf0e8 0%, #f7e3d6 100%);
+    border: 1px solid #ecc8b6;
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .idea-card h3 { color: #8a3a1c; font-size: 16px; margin-bottom: 6px; }
+  .idea-card .idea-line { font-size: 13.5px; color: #6b5a45; margin-top: 6px; }
+  .idea-card .idea-line strong { color: #8a3a1c; }
+
+  .expo {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 8px 0;
+    border-bottom: 1px dashed #f0e2cc;
+    font-size: 13.5px;
+  }
+  .expo:last-child { border-bottom: none; }
+  .expo .e-name { font-weight: 700; color: #6e451c; flex-shrink: 0; }
+  .expo .e-body { color: #6b5a45; }
+
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: #b09a7c;
+    font-size: 12px;
+    border-top: 1px solid #f0e2cc;
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero 区域 -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">📅 2026年8月17日 星期一 · 立秋后第10天</div>
+    <h1>🍲 食研日推 · 每日行业情报</h1>
+    <div class="sub">服务下厨房食品品牌 PM | 只给开品弹药，拒绝水文 | 自动生成，仅供参考</div>
+    <div class="countdown">
+      <span class="cd-item">⏰ 七夕 倒计时 2 天（8/19）</span>
+      <span class="cd-item">⏰ 处暑 倒计时 6 天（8/23）</span>
+      <span class="cd-item">⏰ 中秋 倒计时 39 天（9/25）</span>
+    </div>
+  </div>
+</div>
+
+<!-- 主体 -->
+<div class="container">
+
+  <!-- ==================== 板块一：今日行业要闻 ==================== -->
+  <div class="card sec-news">
+    <div class="card-header">
+      <div class="icon">🔥</div>
+      <h2>一、今日行业要闻</h2>
+      <span class="tag">3 条</span>
+    </div>
+    <div class="card-body">
+
+      <div class="item">
+        <h3>1. 费列罗收购美国健康早餐品牌 Purely Elizabeth（8/15 公告）</h3>
+        <p>费列罗继 2025 年收购 WK Kellogg 后，再拿下美国 better-for-you 早餐品牌 <strong>Purely Elizabeth</strong>。该品牌主打格兰诺拉、燕麦、谷物碗，过去两年销售额翻倍，近期正切入高增长蛋白赛道。</p>
+        <div class="relate"><strong>与我何干：</strong>全球巨头持续加码"更好的早餐 + 清洁标签谷物"——燕麦/坚果/籽仁类是洁净配料的天然主场，验证"早餐场景的清洁升级"是确定性方向，我们做早餐即食可对标这套打法。</div>
+      </div>
+
+      <div class="item">
+        <h3>2. 麒麟控股 92 亿元收购加拿大保健品龙头健美生（Jamieson）</h3>
+        <p>麒麟将投入 <strong>18.98 亿加元（约 92 亿元）</strong>完全收购加拿大膳食补充剂龙头健美生，布局健康科学业务，预计 10 月后完成交割，健美生在华等 50 多国开展业务。</p>
+        <div class="relate"><strong>与我何干：</strong>麒麟用"发酵生物技术 + 血浆乳酸菌原料 + 健美生产品力"做药食同源全球化——药食同源/功能性食材的资本价值被持续推高，是 2026 下半年确定性最强的品类信号。</div>
+      </div>
+
+      <div class="item">
+        <h3>3. 月饼季提前开炉，健康化从"加分项"变"必选项"</h3>
+        <p>苏州稻香村 8/10 开炉，五大系列 50 余款礼盒、超 100 种口味，<strong>低GI / 低糖 / 药食同源</strong>三大健康线成主力；杏花楼 51 款礼盒、12 款新口味；功德林推无糖月饼 + 米月饼。京东"低糖月饼"搜索量同比大幅攀升。</p>
+        <div class="relate"><strong>与我何干：</strong>中秋倒计时 39 天，月饼季是全年最确定的健康化验证场——低GI、清洁标签、药食同源已从营销话术变成产品标配，我们做节令礼盒可直接抄这份"健康化作业"。</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== 板块二：爆品雷达·趋势苗头 ==================== -->
+  <div class="card sec-radar">
+    <div class="card-header">
+      <div class="icon">🎯</div>
+      <h2>二、爆品雷达 · 趋势苗头</h2>
+      <span class="tag">3 个</span>
+    </div>
+    <div class="card-body">
+
+      <div class="item">
+        <h3>猪油渣"黄金渣"狂潮 <span class="sig sig-yellow">🟡 起势</span></h3>
+        <p>猪油渣从炒菜提香的边角料，变成连锁品牌货架上的"黄金松板薄脆"，一斤卖到 138 元、溢价 700%，全国超 320 家标准化门店、76% 开在商场 B1 层，小红书爆款笔记破百万、抖音探店日均播放超 500 万。</p>
+        <div class="relate"><strong>机会判断：</strong>这是"餐饮零食化"的方法论样本——把家常味/怀旧味做成高溢价即食。我们不碰高脂猪油渣，但可迁移它的路径到更干净品类（低温慢烤/风干肉类脆片的洁净替代）。</div>
+      </div>
+
+      <div class="item">
+        <h3>扬州"带泥鲜花生"秋日第一口 <span class="sig sig-green">🟢 苗头</span></h3>
+        <p>扬州邗江区带泥鲜花生上市即爆，7 元/斤，话题 #扬州带泥花生# 单日阅读 380 万，中老年 + 亲子家庭为主力，低脂高蛋白、富含不饱和脂肪酸，契合健康轻食。</p>
+        <div class="relate"><strong>机会判断：</strong>典型"时令 + 产地直发 + 情绪价值（秋日第一口）"单品，供应链门槛低（现挖现发），非常适合产地直发——需解决 48 小时保鲜，可用带壳鲜花生 + 冰袋冷链。</div>
+      </div>
+
+      <div class="item">
+        <h3>"甜辣（Swicy）"全球趋势 <span class="sig sig-green">🟢 苗头</span></h3>
+        <p>三养火鸡面"甜辣大杯装"8/18 日本全家首发（16500 家门店），焦糖甜味 × 火鸡面酱辣 + 金平糖创新口感；Swicy（Sweet + Spicy）是 2026 全球饮食趋势关键词，甜辣 = "辣而不劝退"的中间态。</p>
+        <div class="relate"><strong>机会判断：</strong>甜辣适配度极高、不内卷辣度——我们的辣椒炒肉专用椒/辣椒线可顺势推"甜辣"风味延伸（甜辣酱、甜辣脆片），做增量人群而非纯辣度竞争。</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== 板块三：时令风向·品类机会 ==================== -->
+  <div class="card sec-season">
+    <div class="card-header">
+      <div class="icon">🌿</div>
+      <h2>三、时令风向 · 品类机会</h2>
+      <span class="tag">贴秋膘启动期</span>
+    </div>
+    <div class="card-body">
+
+      <div class="season-line"><span class="k">📅 当前</span><span class="v">立秋后第 10 天，处暑（8/23）将至，早晚转凉、贴秋膘启动期，中秋备货窗口已打开。</span></div>
+      <div class="season-line"><span class="k">⏰ 倒计时</span><span class="v">七夕 2 天（8/19）· 处暑 6 天（8/23）· 中秋 39 天（9/25）</span></div>
+
+      <div class="season-line"><span class="k">🎯 即将热卖</span><span class="v">
+        <strong>猕猴桃（红心为主）</strong> — 8 月集中上市，成都新津"不套袋阳光果"提早两周上市出口东南亚，陕西翠香 8 月尝鲜，盒马礼盒占比持续上升，是中秋礼盒"最大预期差"品类。<br>
+        <strong>软籽石榴</strong> — 四川会理突尼斯软籽石榴 8 月抢先上市，籽可嚼、出汁率高，中秋前后礼盒主力。<br>
+        <strong>大闸蟹 / 蟹卡</strong> — 盒马蟹卡 8 月已上线、销售同比 +50%，今年丰年产量显著提升，中秋前母蟹 3 两以上大规格批量上市。
+      </span></div>
+
+      <div class="season-line"><span class="k">🚨 窗口提醒</span><span class="v">
+        <strong>炎陵黄桃 / 阳山湖景蜜露</strong> — 已进入尾期，有库存需加速清；<strong>云南野生菌</strong> — 8 月中下旬仍旺但已过峰值，松茸价格回落。<br>
+        <strong>鲜肉月饼（江浙沪限定）</strong> — 上海南京路"鲜肉月饼大战"已开打（寿喜烧牛肉 / 泡菜芝士五花肉 / 酸菜猪肚 / 藤椒鸡脆笋），现烤短保、窗口高度集中，中秋前 1 个月是黄金期。
+      </span></div>
+
+      <div class="season-line"><span class="k">🏔️ 产地机会</span><span class="v">
+        成都新津红心猕猴桃（不套袋"阳光果"，甜度风味维C更高，已出口东南亚）· 四川会理突尼斯软籽石榴（8 月抢先上市，软籽高颜值出片率高）· 扬州带泥鲜花生（秋日第一口，现挖现发）。
+      </span></div>
+
+    </div>
+  </div>
+
+  <!-- ==================== 板块四：跨界灵感·创新动作 ==================== -->
+  <div class="card sec-cross">
+    <div class="card-header">
+      <div class="icon">💡</div>
+      <h2>四、跨界灵感 · 创新动作</h2>
+      <span class="tag">3 个</span>
+    </div>
+    <div class="card-body">
+
+      <div class="item">
+        <h3>1. HPP 技术从果汁跨入零食</h3>
+        <p>山姆 Starburst 星爆"100% 真 HPP 果汁软糖"（8/13），超高压冷杀菌技术首次应用于软糖，保留真实果汁风味、不加防腐剂。</p>
+        <div class="relate"><strong>迁移可能：</strong>HPP = 超高压冷杀菌，能做"不加防腐剂 + 保留风味"的即食食材——HPP 即食肉制品/海胆/果汁已成熟，可关注 HPP 处理的新鲜短保即食单品（HPP 冷榨水果脆、HPP 即食海鲜）。</div>
+      </div>
+
+      <div class="item">
+        <h3>2. 太二"鲜料川菜"五大鲜活矩阵</h3>
+        <p>太二爆改门店，从单一酸菜鱼扩展为活鱼 / 鲜牛肉 / 鲜鸡肉 / 活虾 / 鲜猪肉"五大鲜活"，门口陈列时令食材，率先实现正餐全菜单透明化。</p>
+        <div class="relate"><strong>迁移可能：</strong>"鲜活 / 溯源可视化"是信任电商核心——我们做产地直发时，把"活鱼现杀 / 鲜肉现切 / 食材溯源"叙事搬到内容端，卖"新鲜"而非"便宜"。</div>
+      </div>
+
+      <div class="item">
+        <h3>3. 日本罗森"当地美食节"8 区域限定</h3>
+        <p>8/18 起全国罗森按北海道、关东、关西等 8 大区域，推"当地知名店铺监制"炸鸡君 + 高级卷蛋糕，如龟田柿之种味、七宝麻辣汤味炸鸡君。</p>
+        <div class="relate"><strong>迁移可能：</strong>"地标食材 × 当地名店监制"双背书模式——我们的地标食材（阳雀湖辣椒等）可找当地老字号 / 名厨"监制"背书，把产地故事具象成可信任的 IP。</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== 板块五：脑暴时刻·融合创意 ==================== -->
+  <div class="card sec-brain">
+    <div class="card-header">
+      <div class="icon">🧪</div>
+      <h2>五、脑暴时刻 · 融合创意</h2>
+      <span class="tag">2 个</span>
+    </div>
+    <div class="card-body">
+
+      <div class="idea-card">
+        <h3>🍠 创意一：「秋日第一口」鲜花生产地直发盲盒</h3>
+        <div class="idea-line"><strong>一句话描述：</strong>带泥现挖鲜花生 + 盐水煮食法卡，48 小时冷链直达，"秋日第一口烟火味"情绪包。</div>
+        <div class="idea-line"><strong>为什么是现在：</strong>立秋贴秋膘 + 扬州带泥花生 380 万阅读验证情绪需求，中秋前"尝鲜 + 送礼"双场景叠加。</div>
+        <div class="idea-line"><strong>差异化锚点：</strong>市面鲜花生多为散装批发，无人做"带泥 + 溯源 + 煮食教程 + 情绪包装"的精品化；对比抖音烂大街的卤味花生，我们是"食材本味 + 产地现挖"。</div>
+        <div class="idea-line"><strong>可行性初判：</strong>供应链门槛低（现挖现发 + 冰袋冷链），但需严控 48 小时保鲜；适配抖音达播"现挖实拍"内容。</div>
+      </div>
+
+      <div class="idea-card">
+        <h3>🌶️ 创意二：「甜辣脆椒」辣椒炒肉专用椒的零食化延伸</h3>
+        <div class="idea-line"><strong>一句话描述：</strong>用阳雀湖 / 春华软皮椒做"甜辣"风味低温慢烤脆椒片，配料表仅辣椒 + 海盐 + 糖，切入 Swicy 甜辣全球趋势。</div>
+        <div class="idea-line"><strong>为什么是现在：</strong>三养火鸡面甜辣大杯装 8/18 日本首发验证 Swicy 趋势，甜辣是"辣而不劝退"的增量人群。</div>
+        <div class="idea-line"><strong>差异化锚点：</strong>现有辣椒脆片多为重油重辣，我们做"甜辣平衡 + 洁净配料 + 地标辣椒背书"，差异化明显。</div>
+        <div class="idea-line"><strong>可行性初判：</strong>供应链中等（需低温慢烤 / 冻干工艺），甜辣口味容易在抖音起量。</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== 板块六：展会速递·每周新品雷达 ==================== -->
+  <div class="card sec-new">
+    <div class="card-header">
+      <div class="icon">🏬</div>
+      <h2>六、展会速递 · 每周新品雷达</h2>
+      <span class="tag">🆕 核心板块</span>
+    </div>
+    <div class="card-body">
+
+      <div style="font-size:12.5px;color:#a07a4a;margin-bottom:14px;">🆕 每周新品速递（5 款，指名道姓 + 产品力拆解 + 启发）</div>
+
+      <div class="np-card">
+        <div class="np-head">🆕 山姆 Starburst 星爆「HPP 果汁软糖」</div>
+        <div class="np-meta">上市时间：8/13 · 价格带：进口中高端</div>
+        <div class="np-body">
+          <p><strong>产品力拆解：</strong>100% 真 HPP 果汁，百香果 / 蓝莓 / 草莓 / 白桃多口味，超高压冷杀菌保留真实果汁风味、不加防腐剂。</p>
+          <p><strong>启发：</strong>HPP 技术从果汁跨入零食，验证"冷杀菌 + 真果汁"可复制——我们的即食水果 / 果脆可用 HPP 做"不加糖不加防腐剂"卖点。</p>
+        </div>
+      </div>
+
+      <div class="np-card">
+        <div class="np-head">🆕 山姆 茉莉奶白「轻乳茶饮料」</div>
+        <div class="np-meta">上市时间：8/6 上架 · 价格带：320ml×12 瓶 / 79.9 元（约 6.7 元/瓶）</div>
+        <div class="np-body">
+          <p><strong>产品力拆解：</strong>广西横州双瓣茉莉 + 云南高山茶底 + 生牛乳 + 丹麦进口芝士粉，茉莉花香浓郁、奶香醇厚。</p>
+          <p><strong>启发：</strong>新茶饮品牌"降维"进会员店做 RTD 即饮——我们做茶饮风味即饮 / 冲调，可学"地标茶底 + 真实生牛乳"的清洁配方。</p>
+        </div>
+      </div>
+
+      <div class="np-card">
+        <div class="np-head">🆕 奥乐齐 卡乐福「鲜打抹茶」</div>
+        <div class="np-meta">上市时间：8/12 · 价格带：4.5 元/瓶</div>
+        <div class="np-body">
+          <p><strong>产品力拆解：</strong>杭州千目级径山抹茶粉，无糖配方，"拧一拧、摇一摇"瓶盖分离锁鲜结构，现摇现喝。</p>
+          <p><strong>启发：</strong>"瓶盖分离锁鲜 + 现摇现做"互动包装是低成本差异化，可迁移到即饮 / 冲调类产品，制造"参与感"传播点。</p>
+        </div>
+      </div>
+
+      <div class="np-card">
+        <div class="np-head">🆕 盒马 × 奈雪的茶「生青芒冰茶」</div>
+        <div class="np-meta">上市时间：8/11 · 价格带：6.9 元/瓶</div>
+        <div class="np-body">
+          <p><strong>产品力拆解：</strong>生青芒 + 野青梅 + 酸木瓜 + 绿皮甘蔗 + 茉莉花茶原叶萃取，酸而不冲，切"小众热带水果"赛道。</p>
+          <p><strong>启发：</strong>盒马"品牌联名 + 地域小众水果"策略持续复制——我们可推"地域小众水果 + 茶底"的清洁配方饮品，青芒 / 酸木瓜这类"酸"是差异化口味蓝海。</p>
+        </div>
+      </div>
+
+      <div class="np-card">
+        <div class="np-head">🆕 欧福「蛋清蛋白饮」</div>
+        <div class="np-meta">上市时间：8/12 · 价格带：26 元/瓶</div>
+        <div class="np-body">
+          <p><strong>产品力拆解：</strong>鸡蛋清占比 85%、每瓶 20.5g 蛋白、18 种氨基酸 + 8 种必需氨基酸 + 3 种 BCAA，0 糖 0 脂 0 胆固醇，适配乳糖不耐受人群。</p>
+          <p><strong>启发：</strong>蛋白从"健身专属"走向"日常营养"，蛋清是"动物蛋白替代乳清"的新方向——我们做高蛋白即食可用蛋清 / 蛋制品做差异化，精准切乳糖不耐受 + 洁净配料人群。</p>
+        </div>
+      </div>
+
+      <div style="font-size:12.5px;color:#a07a4a;margin:18px 0 10px;">🎪 展会关注</div>
+
+      <div class="expo">
+        <span class="e-name">SIAL 西雅国际食品展（广州）</span>
+        <span class="e-body">9/3–5 · 广州保利世贸博览馆 | 全球 50 国 1500+ 品牌，中秋/国庆/年货节前最后大展，抢爆款拼供应链关键期。</span>
+      </div>
+      <div class="expo">
+        <span class="e-name">良之隆·亚洲新零售食材电商节（杭州）</span>
+        <span class="e-body">8/25–27 | 食材供应链方向，产地资源对接窗口。</span>
+      </div>
+      <div class="expo">
+        <span class="e-name">上海国际调味品及食品配料展 + 餐饮食材展</span>
+        <span class="e-body">8/26 | 风味趋势与配料风向标，值得关注调味品创新。</span>
+      </div>
+      <div class="expo">
+        <span class="e-name">中国冰淇淋及冷冻食品产业博览会（天津）</span>
+        <span class="e-body">9/16 | 冷饮 / 冷冻食品品类集中上新。</span>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>⚠️ 以上内容由 AI 自动聚合生成，信息来源于公开渠道，仅供参考，不构成投资建议</p>
+  <p>信源：Foodaily每日食品 / 蝉妈妈 / 红餐网 / Foodinc / PR TIMES / 各地市场监管及媒体公开报道</p>
+  <p style="margin-top:8px;">Generated by WorkBuddy 食研日推 · 2026-08-17 09:00 CST</p>
+</div>
+
+</body>
+</html>
