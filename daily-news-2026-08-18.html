@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日双专栏AI情报推送 - 2026年8月18日</title>
+<style>
+:root {
+  --bg: #0f0f14;
+  --card-bg: #1a1a24;
+  --card-border: #2a2a3a;
+  --text: #e1e1e6;
+  --text-secondary: #9999aa;
+  --accent-red: #e8454d;
+  --accent-blue: #4a90d9;
+  --accent-green: #3cb371;
+  --accent-orange: #f0a040;
+  --accent-purple: #a78bfa;
+  --accent-teal: #2dd4bf;
+  --tag-bg: rgba(232,69,77,0.1);
+  --tag-text: #e8454d;
+  --highlight: #ffd700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  padding: 20px;
+}
+.header {
+  text-align: center;
+  padding: 40px 20px 30px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border-radius: 16px;
+  margin-bottom: 30px;
+  border: 1px solid var(--card-border);
+}
+.header h1 {
+  font-size: 2em;
+  background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+.header .date { color: var(--text-secondary); font-size: 0.95em; }
+.header .tagline { color: var(--accent-teal); font-size: 0.85em; margin-top: 6px; }
+.columns { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 900px) { .columns { grid-template-columns: 1fr; } }
+.column-title { font-size: 1.3em; font-weight: 700; padding: 14px 20px; border-radius: 12px 12px 0 0; margin-bottom: 0; }
+.col1 .column-title { background: linear-gradient(135deg, #c0392b, #e74c3c); color: #fff; }
+.col2 .column-title { background: linear-gradient(135deg, #2c3e50, #3498db); color: #fff; }
+.column { background: var(--card-bg); border-radius: 14px; border: 1px solid var(--card-border); overflow: hidden; }
+.column-body { padding: 20px; }
+.section { margin-bottom: 24px; }
+.section-title {
+  font-size: 1.1em; font-weight: 700; color: var(--accent-orange);
+  border-left: 3px solid var(--accent-orange); padding-left: 10px; margin-bottom: 14px;
+}
+.news-item {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px; padding: 16px; margin-bottom: 14px;
+}
+.news-item:hover { border-color: rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); }
+.news-item .topic { font-size: 1.05em; font-weight: 700; color: var(--accent-red); margin-bottom: 8px; }
+.news-item .label {
+  display: inline-block; font-size: 0.75em; font-weight: 600; padding: 2px 8px;
+  border-radius: 4px; margin-right: 6px; background: var(--tag-bg); color: var(--tag-text);
+}
+.news-item .content { color: var(--text-secondary); font-size: 0.9em; line-height: 1.7; margin: 6px 0; }
+.news-item .impact {
+  margin-top: 8px; padding: 8px 12px; background: rgba(60,179,113,0.08);
+  border-left: 3px solid var(--accent-green); border-radius: 0 6px 6px 0;
+  font-size: 0.85em; color: var(--accent-green);
+}
+.summary-box {
+  background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,215,0,0.02));
+  border: 1px solid rgba(255,215,0,0.2); border-radius: 10px; padding: 16px; margin-top: 10px;
+}
+.summary-box .title { color: var(--highlight); font-weight: 700; margin-bottom: 8px; }
+.summary-box .text { color: var(--text-secondary); font-size: 0.9em; }
+.ai-section-title {
+  font-size: 1.05em; font-weight: 700; color: var(--accent-teal);
+  border-bottom: 1px solid rgba(45,212,191,0.2); padding-bottom: 6px;
+  margin-bottom: 14px; margin-top: 20px;
+}
+.ai-section-title:first-child { margin-top: 0; }
+.ai-item {
+  background: rgba(45,212,191,0.03); border: 1px solid rgba(45,212,191,0.08);
+  border-radius: 10px; padding: 14px; margin-bottom: 12px;
+}
+.ai-item .ai-topic { font-size: 1em; font-weight: 700; color: var(--accent-teal); margin-bottom: 6px; }
+.ai-item .ai-sub { font-size: 0.85em; color: var(--accent-purple); font-weight: 600; margin: 8px 0 4px; }
+.ai-item .ai-desc { font-size: 0.88em; color: var(--text-secondary); line-height: 1.7; }
+.ai-tag {
+  display: inline-block; font-size: 0.7em; font-weight: 700; padding: 2px 7px;
+  border-radius: 3px; margin-right: 4px; background: rgba(167,139,250,0.15); color: var(--accent-purple);
+}
+.ai-tag.hot { background: rgba(232,69,77,0.15); color: var(--accent-red); }
+.ai-tag.new { background: rgba(60,179,113,0.15); color: var(--accent-green); }
+.money-item {
+  background: linear-gradient(135deg, rgba(240,160,64,0.08), rgba(240,160,64,0.02));
+  border: 1px solid rgba(240,160,64,0.15); border-radius: 10px; padding: 14px; margin-bottom: 12px;
+}
+.money-item .ai-topic { color: var(--accent-orange); }
+.money-item .ai-desc { color: var(--text-secondary); font-size: 0.88em; line-height: 1.7; }
+.money-item .ai-sub { font-size: 0.85em; color: var(--accent-purple); font-weight: 600; margin: 8px 0 4px; }
+.glossary-item { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.glossary-item:last-child { border-bottom: none; }
+.glossary-item .term { color: var(--accent-blue); font-weight: 700; font-size: 0.9em; }
+.glossary-item .explain { color: var(--text-secondary); font-size: 0.85em; margin-top: 2px; }
+.github-item {
+  display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.github-item:last-child { border-bottom: none; }
+.github-item .rank { font-size: 0.85em; font-weight: 700; color: var(--accent-orange); min-width: 24px; }
+.github-item .gh-info { flex: 1; }
+.github-item .gh-name { color: var(--accent-blue); font-weight: 600; font-size: 0.9em; }
+.github-item .gh-desc { color: var(--text-secondary); font-size: 0.82em; margin-top: 2px; }
+.github-item .gh-stars { font-size: 0.78em; color: var(--accent-orange); white-space: nowrap; }
+.footer {
+  text-align: center; padding: 30px; color: var(--text-secondary); font-size: 0.8em;
+  margin-top: 20px; border-top: 1px solid var(--card-border);
+}
+.core-wind {
+  background: linear-gradient(135deg, rgba(255,107,107,0.1), rgba(255,107,107,0.02));
+  border: 1px solid rgba(255,107,107,0.2); border-radius: 10px; padding: 14px;
+  margin-bottom: 20px; font-size: 1.05em; font-weight: 600; color: var(--accent-red); text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>每日双专栏 · AI情报推送</h1>
+  <div class="date">2026年8月18日 星期二</div>
+  <div class="tagline">新闻联播风向标 × AI生产力黑洞</div>
+</div>
+
+<div class="columns">
+
+  <!-- ==================== 专栏一：新闻联播 ==================== -->
+  <div class="column col1">
+    <div class="column-title">专栏一 · 新闻联播每日简报（8月17日）</div>
+    <div class="column-body">
+
+      <!-- 核心风向 -->
+      <div class="core-wind">
+        江泽民同志诞辰100周年纪念大会在人民大会堂隆重举行（习近平发表重要讲话）+ 国务院第十二次全体会议定调"努力完成全年目标、实现十五五良好开局" + 1-7月经济数据揭晓（新动能对规上工业增长贡献率50.9%、首次扛起"半壁江山"）——8月17日联播是一期"领袖纪念周顶点 + 经济年中定盘 + 科技自立自强"的三重编排
+      </div>
+
+      <!-- 一、核心风向 -->
+      <div class="section">
+        <div class="section-title">一、核心风向</div>
+        <p style="color:var(--text-secondary);font-size:0.9em;">
+          8月17日新闻联播共10条，是一期<strong>"政治仪式顶点 + 经济年中定盘 + 国际震荡"</strong>的编排。三大结构：<strong>①政治主线</strong>——纪念江泽民同志诞辰100周年大会17日上午在人民大会堂隆重举行，习近平发表重要讲话强调"深切缅怀丰功伟绩、深入学习崇高风范、激励全党全国各族人民把中国特色社会主义事业不断推向前进"；李强主持，赵乐际、王沪宁、蔡奇、丁薛祥、李希、韩正出席，为本周纪念叙事顶点。<strong>②经济主线</strong>——国务院第十二次全体会议深入学习总书记关于当前经济形势的重要讲话，要求"扎实做好各项工作、努力完成全年经济社会发展目标任务、实现'十五五'良好开局"；国新办发布会公布1-7月国民经济"总体平稳、向新向优"，新动能贡献率首超50%，人工智能、高技术制造、外贸三驾马车成亮点。<strong>③外交与科技</strong>——约旦国王阿卜杜拉二世8月18-24日访华、习近平就印尼地震致慰问电；嫦娥六号月壤研究为月球正反面差异提供新证据。国际面则聚焦伊朗"赢得对美以战争"表态、俄乌无人机攻防升级（俄单日击落1478架创纪录）。
+        </p>
+      </div>
+
+      <!-- 二、分项解读 -->
+      <div class="section">
+        <div class="section-title">二、分项解读</div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">头条</span>纪念江泽民同志诞辰100周年大会在京隆重举行 习近平发表重要讲话</div>
+          <div class="content">
+            中共中央、全国人大常委会、国务院、全国政协、中央军委<strong>17日上午在人民大会堂</strong>隆重举行大会，纪念伟大的马克思主义者，伟大的无产阶级革命家、政治家、军事家、外交家，中国特色社会主义伟大事业的杰出领导者<strong>江泽民同志诞辰100周年</strong>。中共中央总书记、国家主席、中央军委主席<strong>习近平发表重要讲话</strong>强调，深切缅怀江泽民同志的丰功伟绩，深入学习江泽民同志的崇高风范，激励全党全国各族人民把中国特色社会主义事业不断推向前进。国务院总理<strong>李强主持</strong>大会，<strong>赵乐际、王沪宁、蔡奇、丁薛祥、李希、韩正</strong>出席。
+          </div>
+          <div class="impact">这是本周（8/12讣告→8/16纪录片收官→8/17大会→8/18朱镕基遗体火化）纪念叙事的顶点事件，总书记亲临并发表讲话为最高规格。讲话预计系统评价江泽民同志历史贡献（浦东开发、加入世贸、"三个代表"重要思想等），并引申对当下改革的继往开来表述。政治层面释放"继往开来、团结奋斗"信号，为"十五五"开局凝聚共识，短期无直接行业映射，但构成全周政策叙事基调。</div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">经济</span>李强主持召开国务院第十二次全体会议</div>
+          <div class="content">
+            国务院总理<strong>李强8月17日主持召开国务院第十二次全体会议</strong>，深入学习贯彻习近平总书记关于当前经济形势和经济工作的重要讲话精神，强调要切实把思想和行动统一到党中央对形势的科学判断和决策部署上来，扎实做好各项工作，<strong>努力完成全年经济社会发展目标任务，实现"十五五"良好开局</strong>。
+          </div>
+          <div class="impact">全会规格高、指向明确，核心信号是"稳增长+开新局"双目标。结合同日1-7月数据中投资端（固定资产投资-6.7%、房地产开发投资-19.2%）仍承压的现实，政策定调"努力完成全年目标"意味着下半年逆周期调节仍将加码，基建、设备更新、消费以旧换新等存量政策大概率延续并加力。对市场而言，稳增长预期升温利好基建链、地产链修复及顺周期板块。</div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">经济</span>1-7月份国民经济总体平稳、发展向新向优</div>
+          <div class="content">
+            国新办17日举行发布会，国家统计局新闻发言人、总经济师<strong>付凌晖</strong>介绍7月份国民经济运行情况。核心数据：①<strong>工业</strong>——1-7月规上工业增加值同比增长<strong>5.3%</strong>（7月+4.5%）；装备制造业<strong>+9.7%</strong>、高技术制造业<strong>+13.8%</strong>；3D打印设备、锂离子电池、工业机器人产量分别增长<strong>52.3%、40.2%、28.5%</strong>。②<strong>消费</strong>——社会消费品零售总额<strong>287744亿元、+1.2%</strong>（7月+0.6%），服务零售额+5.0%、明显快于商品零售额+1.1%；通讯器材类+15.1%、化妆品类+6.3%。③<strong>投资</strong>——固定资产投资（不含农户）<strong>260328亿元、-6.7%</strong>；房地产开发投资<strong>-19.2%</strong>；但高技术产业投资<strong>+5.0%</strong>、知识产权产品投资+9.1%。④<strong>外贸</strong>——货物进出口总额<strong>301264亿元、+17.3%</strong>（出口174400亿+14.0%、进口126864亿+22.0%），7月单月+19.2%。⑤<strong>就业物价</strong>——城镇调查失业率5.2%；CPI+0.9%（核心CPI+1.1%）。<strong>关键增量</strong>：前7个月新动能对规上工业增长贡献率<strong>50.9%</strong>（较上半年提高3个百分点），首次扛起"半壁江山"；7月高技术产业增加值+16.9%、数智产品制造业+17.3%。
+          </div>
+          <div class="impact">这是"十五五"开局之年的关键经济晴雨表，结构分化明显：<strong>生产端强、需求端弱、投资端弱、外贸端超强</strong>。最核心的信号是"新动能贡献率首破50%"——人工智能（电子元器件+24.7%、光纤+21.1%、3D打印+65.7%、智能手环翻倍）、绿色转型（锂电+58.8%、水轮机组+79.4%）成为增长唯一强引擎。投资端地产-19.2%仍是最大拖累项。对投资的启示：①AI算力、机器人、储能、3D打印等新质生产力赛道获数据实锤，确定性最强；②地产链仍在筑底，需等政策加码；③外贸+17.3%超预期，出口链（机电产品占出口63.8%）仍是重要支撑。</div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">外交</span>应习近平邀请 约旦国王将对中国进行国事访问</div>
+          <div class="content">
+            应国家主席习近平邀请，约旦哈希姆王国国王<strong>阿卜杜拉二世</strong>将于<strong>8月18日至24日</strong>对中国进行国事访问。这是近期中东外交密集动作的延续。
+          </div>
+          <div class="impact">约旦国王访华正值中东局势复杂期（伊朗对美以战争表态、加沙和平计划受阻），释放中国在中东斡旋、能源合作、经贸联动的积极信号。约旦是"一带一路"重要节点，访华或推动基建、能源、港口等合作项目落地，利好中东出海工程及能源合作概念。</div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">时政</span>习近平就印尼强烈地震向印尼总统致慰问电</div>
+          <div class="content">
+            8月17日，国家主席习近平就印度尼西亚发生<strong>强烈地震</strong>向印尼总统<strong>普拉博沃</strong>致慰问电。此前一日（8月16日）俄乌冲突升级、国际局势震荡背景下，中国展现负责任大国担当。
+          </div>
+          <div class="impact">体现中国在周边外交中的灾害人道主义立场，强化中国-东盟命运共同体叙事。印尼是东盟最大经济体、镍矿等关键资源出口国，中印尼关系稳定对新能源（镍资源）供应链具有战略意义。</div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">时政</span>江泽民生平和思想研讨会在京举行 蔡奇出席开幕式并讲话</div>
+          <div class="content">
+            江泽民生平和思想研讨会<strong>17日至19日在京举行</strong>。中共中央政治局常委、中央书记处书记<strong>蔡奇出席开幕式并讲话</strong>，系统阐述江泽民同志的历史地位与理论贡献，深化对"三个代表"重要思想的理论研究。
+          </div>
+          <div class="impact">与纪念大会构成"仪式+理论"双轨，延续本周纪念周叙事。理论研讨会规格高（政治局常委出席），释放全党统一思想、凝聚共识的信号，为"十五五"开局提供意识形态支撑。</div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">科技</span>嫦娥六号月壤研究为月球正反面差异提供新证据</div>
+          <div class="content">
+            中国地质科学院地质研究所研究团队对<strong>嫦娥六号月壤样品</strong>的研究取得新进展，为破解月球正反面存在巨大差异的谜题提供了新证据。研究团队以月壤样品中的<strong>长石质撞击熔岩</strong>为研究对象，利用我国自主研发的<strong>首台离子探针系统</strong>开展综合研究，捕捉到月球演化史上的关键线索——月球正反面之所以截然不同，线索就隐藏在形成<strong>"南极-艾特肯盆地"</strong>的那次远古大撞击中。研究表明这次大撞击在月球岩浆洋固结后，继续深刻改造月壳和上月幔，彻底改变了月背局部的物质组成。
+          </div>
+          <div class="impact">这是继7月嫦娥六号月背稀有气体研究登上《自然·地球科学》后的又一基础科学突破，体现我国深空探测与自主科研仪器（首台离子探针）能力。该发现补充传统月球岩浆洋模型，推动月球乃至太阳系早期演化理论更新。对产业而言，深空探测带动高端科学仪器、样品分析设备国产化，利好航天科技与高端制造自主可控链条。</div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">快讯</span>国内联播快讯</div>
+          <div class="content">
+            ①<strong>7月份一线城市商品住宅销售价格环比总体上涨</strong>；②<strong>八部门联合发文保障农业灌溉用水安全</strong>；③<strong>我国确定首批基层病种，患者住院实行"同病同付"</strong>（DRG/DIP支付改革向基层延伸）；④<strong>嫦娥六号月壤研究</strong>（如上）；⑤电视剧《藏锋》今晚总台央视综合频道开播。
+          </div>
+          <div class="impact">三点值得注意：①一线城市房价环比上涨是楼市筑底的积极信号，与政策"止跌回稳"目标一致；②"同病同付"将医保支付方式改革下沉基层，利好医疗信息化、DRG/DIP系统服务商；③农业灌溉用水八部门联合发文，对应粮食安全与水利基建，与北方防洪排涝短板补齐形成呼应。</div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">国际</span>伊朗称美以未实现任何目标 / 俄称一天击落超1400架无人机</div>
+          <div class="content">
+            <strong>伊朗</strong>：伊朗伊斯兰议会议长<strong>卡利巴夫16日</strong>表示，美国和以色列在对伊朗发动的非正义战争中未能实现任何目标，伊朗在军事和政治上都赢得了这场战争；美媒称美海湾盟友对美沮丧情绪持续上升。<strong>俄乌</strong>：俄罗斯国防部16日称，俄军过去24小时击落<strong>1478架</strong>乌克兰军队固定翼无人机（俄媒称单日新高）；乌克兰国防部称乌军对俄大型电商平台野莓公司在莫斯科州的物流枢纽发动大规模无人机袭击。<strong>其他快讯</strong>：美总统要求大幅缩减美韩军演规模；八国外长谴责以色列拒绝接受加沙和平计划；刚果（金）埃博拉死亡病例数升至新高；希腊首都附近岛屿燃起林火；飓风在美夏威夷引发洪灾、大范围断电。
+          </div>
+          <div class="impact">地缘博弈延续"无人机战争"新形态——单日1478架击落记录显示无人机攻防已进入"饱和攻击 vs 防空拦截"的消耗战阶段，反无人机、防空、电子战装备需求刚性上升。中东伊朗表态与八国外长谴责以色列并存，地区局势持续紧张，原油、黄金等避险资产及军工板块获得情绪支撑。</div>
+        </div>
+      </div>
+
+      <!-- 三、总结风向标 -->
+      <div class="section">
+        <div class="section-title">三、总结风向标</div>
+        <div class="summary-box">
+          <div class="title">整体政策走向与投资建议</div>
+          <div class="text">
+            8月17日联播的三大主线清晰指向：<strong>政治层面</strong>完成纪念周顶点，全党统一思想为"十五五"开局凝聚共识；<strong>经济层面</strong>国务院全会+1-7月数据双管齐下，明确"努力完成全年目标"的政策底线，而"新动能贡献率50.9%"的数据为<strong>人工智能、高技术制造、绿色转型</strong>三大新质生产力赛道提供了最强数据实锤；<strong>外交层面</strong>约旦国王访华、中东斡旋延续。<br><br>
+            <strong>投资风向标</strong>：①<strong>新质生产力主线确定性最强</strong>——AI算力/电子元器件（+24.7%）、机器人（+28.5%）、储能/锂电（+58.8%）、3D打印（+65.7%）数据全线高增，是"十五五"最明确的政策+产业双主线；②<strong>稳增长加码预期升温</strong>——地产投资-19.2%、固投-6.7%倒逼下半年基建、设备更新、消费政策加力，顺周期与基建链存在估值修复机会；③<strong>出口链韧性超预期</strong>——外贸+17.3%、机电产品占63.8%，高端制造出口仍是重要支撑；④<strong>风险提示</strong>——地产链仍在筑底、PMI 49.2%位于荣枯线下方、外部地缘（中东、俄乌）扰动持续，需警惕海外波动传导。
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== 专栏二：AI情报 ==================== -->
+  <div class="column col2">
+    <div class="column-title">专栏二 · AI生产力情报</div>
+    <div class="column-body">
+      <div class="ai-section-title">🚀 AI 生产力黑洞：今日黑科技与套利指南 · 2026-08-18</div>
+
+      <!-- 装备库 -->
+      <div class="ai-section-title">🛠️ 【顶级装备库更新】</div>
+
+      <div class="ai-item">
+        <div class="ai-topic"><span class="ai-tag hot">GitHub#1</span>MoneyPrinterTurbo · "一键AI短视频生成"深度拆解</div>
+        <div class="ai-desc"><strong>项目</strong>：harry0703/MoneyPrinterTurbo（Python，105,969★，今日+1,189）。</div>
+        <div class="ai-sub">核心黑科技</div>
+        <div class="ai-desc">利用 AI 大模型和自动化工作流，根据主题或关键词<strong>一键生成高清短视频</strong>——从文案生成、配音、字幕到画面合成全自动流水线，把"选题→成片"压缩成一条命令。</div>
+        <div class="ai-sub">实战价值</div>
+        <div class="ai-desc">适合做视频号/小红书/抖音矩阵号的内容批量生产。对生鲜电商店铺号而言，可把"时令科普选品"选题库批量转成竖屏短视频，一个人顶一个小型内容团队，降低内容冷启动成本。</div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic"><span class="ai-tag hot">GitHub#2</span>Strix · "AI渗透测试引擎"深度拆解</div>
+        <div class="ai-desc"><strong>项目</strong>：usestrix/strix（Python，54,135★，今日+598）。</div>
+        <div class="ai-sub">核心黑科技</div>
+        <div class="ai-desc">开源 AI 渗透测试工具，能<strong>自动发现并修复应用漏洞</strong>——不是静态扫描器，而是像安全研究员一样自主探测攻击面、复现漏洞、给出修复建议的 Agent 化安全工具。</div>
+        <div class="ai-sub">实战价值</div>
+        <div class="ai-desc">适合有自建网站/小程序的创业者做安全自查。配合"AI代码审计"需求，可把安全测试成本从数万元/次降到近乎为零，是独立开发者与小微团队的刚需装备。</div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic"><span class="ai-tag new">新模型</span>Qwen3.8-27B · 阿里开源"27B塞进Max级编码力"</div>
+        <div class="ai-desc"><strong>项目</strong>：阿里巴巴千问团队 8月14日深夜开源 Qwen3.8-27B（Apache 2.0）。</div>
+        <div class="ai-sub">核心黑科技</div>
+        <div class="ai-desc"><strong>27.8B参数稠密、原生多模态</strong>（图像+视频输入）、<strong>262K原生上下文</strong>（YaRN可扩至1M），并新增 <strong>reasoning_effort</strong> 控制——让开发者按任务拨动"思考深度"。量化后可跑消费级GPU（17GB本地）。</div>
+        <div class="ai-sub">实战价值</div>
+        <div class="ai-desc">编码基准全面跃升：Terminal-Bench 2.1 达 73.0、SWE-bench Pro 61.7、QwenSWEBench 79.0。适合本地部署做代码代理、长文档分析，17GB即可本地跑意味着"个人也能私有化一个接近旗舰级的编码Agent"，对重视数据私密的业务场景尤其有价值。</div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic"><span class="ai-tag hot">GitHub</span>ai-memory · "给Agent装长期记忆"深度拆解</div>
+        <div class="ai-desc"><strong>项目</strong>：akitaonrails/ai-memory（Rust，2,028★，今日+207）。</div>
+        <div class="ai-sub">核心黑科技</div>
+        <div class="ai-desc">面向编码 CLI 的<strong>长期记忆解决方案</strong>，支持在不同 Agent 厂商之间<strong>交接（handoff）</strong>——让 Claude Code、Codex、Cursor 等不同工具共享同一份项目记忆，而不是各自失忆。</div>
+        <div class="ai-sub">实战价值</div>
+        <div class="ai-desc">解决多工具协作时"换一个AI就忘了上下文"的痛点。对同时用多个AI编程工具的用户，等于给所有Agent装了一个共享大脑，跨会话、跨厂商延续项目认知，是Agent时代的基础设施型装备。</div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic"><span class="ai-tag">GitHub</span>llmfit · "一条命令找出你硬件能跑的模型"</div>
+        <div class="ai-desc"><strong>项目</strong>：AlexsJones/llmfit（Rust，32,245★，今日+198）。</div>
+        <div class="ai-sub">核心黑科技</div>
+        <div class="ai-desc">聚合<strong>数百个模型与提供商</strong>，一条命令算出什么模型能在你的硬件上跑、显存占用多少。</div>
+        <div class="ai-sub">实战价值</div>
+        <div class="ai-desc">本地部署大模型前先查"能不能跑、够不够快"，避免下载几十GB后才发现跑不动。对想私有化部署 Qwen/DeepSeek 等开源模型的用户，是降低试错成本的第一道筛选器。</div>
+      </div>
+
+      <!-- Agent 战场 -->
+      <div class="ai-section-title">🤖 【Agent 战场情报】</div>
+
+      <div class="ai-item">
+        <div class="ai-topic"><span class="ai-tag new">PH#1</span>HarnessRouter Community Edition 引入"统一Agent插座"</div>
+        <div class="ai-sub">解读</div>
+        <div class="ai-desc">Product Hunt 今日榜首（325票）。开源统一的 <strong>Agent harness 接口</strong>，把 Codex、Claude Code、Hermes 等多个 Agent 运行时通过<strong>一个API接入你的产品</strong>，切换 harness 无需重构后端。会话、流式、文件、产物、取消、故障恢复全托管，Gateway+Runner+Console 打包进一个 Docker 容器。</div>
+        <div class="ai-sub">落地场景</div>
+        <div class="ai-desc">"Agent不再是乱跑，而是可以统一调度"。如果你在做多Agent编排的产品，可把底层模型/harness抽象成可插拔层——配合小红书项目，让经理Agent审核图片质量、不合格直接打回重做，而不必绑定某一家AI运行时。</div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic"><span class="ai-tag">动态</span>千问办公开源 MyContext —— 为Agent打造上下文基础设施</div>
+        <div class="ai-sub">解读</div>
+        <div class="ai-desc">阿里千问办公开源 <strong>MyContext</strong>，定位"Agent 的上下文基础设施"。在长上下文、多Agent协作成为主流的当下，上下文管理正从"提示词技巧"升级为独立的基础设施层。</div>
+        <div class="ai-sub">落地场景</div>
+        <div class="ai-desc">配合长周期项目（如持续跟踪某品类竞品动态），可让Agent跨天、跨任务稳定持有项目上下文，避免每次重新喂背景，直接提升自动化情报流水线的稳定性。</div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic"><span class="ai-tag">动态</span>腾讯 Marvis 上线企查查 MCP</div>
+        <div class="ai-sub">解读</div>
+        <div class="ai-desc">腾讯 Marvis 接入企查查 MCP，意味着 Agent 可<strong>直接调用企业工商、司法、经营等数据</strong>做决策，MCP 生态从"工具连接"走向"数据连接"。</div>
+        <div class="ai-sub">落地场景</div>
+        <div class="ai-desc">做供应链选品时，可让 Agent 自动核查供应商资质、股权、风险，把"人工背调"变成"Agent秒级尽调"，对生鲜/消费品买手是直接的效率工具。</div>
+      </div>
+
+      <!-- 新玩法新概念 -->
+      <div class="ai-section-title">🖊 【AI新玩法，新概念】</div>
+
+      <div class="ai-item">
+        <div class="ai-topic">OpenAI CEO Sam Altman 提出"6个月AI完美理解用户情境"</div>
+        <div class="ai-sub">解读</div>
+        <div class="ai-desc">在 2026 Internapalooza 活动上，Altman 表示未来6个月内 AI 将<strong>读懂你的屏幕、录制每场会议和每通电话</strong>，"完美理解用户使用情境"。用户可划定AI的访问范围，AI"像有帮助的同事一样提出新想法、指出你可能犯的错误"，距离真正"极其有用"只差1代模型。</div>
+        <div class="ai-sub">落地场景</div>
+        <div class="ai-desc">这是"AI从工具到同事"的叙事升级。对用户而言，可预演的场景是：让AI盯着你的选品数据看板、记录每场供应商会议、自动生成谈判要点与跟进清单——把碎片化信息交给AI消化，人只做判断。</div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">Anthropic CEO Dario Amodei 提出"5-10年AI治愈多数疾病 + FINRA式AI监管"</div>
+        <div class="ai-sub">解读</div>
+        <div class="ai-desc">IPO 估值被推到2万亿美元之际，几乎不碰社交媒体的 Amodei 罕见发长文：①支持 Demis Hassabis 提出的<strong>类似 FINRA（美国金融业监管局）的AI监管机构</strong>；②激进判断<strong>未来5-10年AI将治愈多数人类疾病</strong>；③认为"真能治好癌症，公众才会信任AI"。</div>
+        <div class="ai-sub">落地场景</div>
+        <div class="ai-desc">两大信号：一是头部公司主动拥抱"行业自律式监管"，为IPO造势；二是Anthropic正全速加码<strong>生物医学AI</strong>。对关注AI+医疗、AI+生物医药赛道的用户，这是重要的产业风向——"AI制药/医疗"或成下一个融资风口。</div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">斯坦福研究 + Receipts 工具：AI检测器误判61.3%人类论文</div>
+        <div class="ai-sub">解读</div>
+        <div class="ai-desc">斯坦福研究显示 <strong>AI 检测器把 61.3% 的人类 TOEFL 论文误判为 AI 生成</strong>。开发者据此做出 <strong>Receipts</strong> 工具，记录写作过程中的键盘输入、思考停顿等 <strong>25种信号</strong>并生成写作回放视频，帮学生自证清白（免费、数据存本地）。</div>
+        <div class="ai-sub">落地场景</div>
+        <div class="ai-desc">揭示"AI检测不可靠"这一行业级bug，反向催生"创作留痕"新品类。对内容创作者是警示：AI检测≠AI抄袭，但若被平台误判，可用"过程录屏"自证，是内容合规的新护城河。</div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">arXiv 论文：用于推理的强化学习实际只改变1-3% token</div>
+        <div class="ai-sub">解读</div>
+        <div class="ai-desc">一篇 arXiv 论文称，用于推理的 RL 实际只改变了模型 <strong>1-3% 的 token</strong>，研究团队用约千分之一算力复现了同等收益，质疑高成本推理训练的必要性。</div>
+        <div class="ai-sub">落地场景</div>
+        <div class="ai-desc">如果成立，意味着"推理模型"的训练成本可能被大幅压缩，间接推动推理模型降价。对用户是利好：不必盲目追逐旗舰推理模型，中端模型+好prompt可能已够用。</div>
+      </div>
+
+      <!-- 套利变现 -->
+      <div class="ai-section-title">💰 【AI 套利/变现线索】</div>
+
+      <div class="money-item">
+        <div class="ai-topic">Stripe 7亿美元收购 OpenRouter —— AI计费轨道成新金矿</div>
+        <div class="ai-desc"><strong>热点</strong>：Stripe 以超 <strong>7亿美元</strong> 收购 AI 网关 OpenRouter（其5月估值仅13亿美元，3个月5倍溢价）。OpenRouter 连接 <strong>400+模型、800万开发者</strong>、过去一年处理约 <strong>1.5万亿 token</strong>。</div>
+        <div class="ai-sub">复刻建议</div>
+        <div class="ai-desc">本质是"谁卡住模型计费/计量点，谁就收过路费"。对个人/小团队的启示：AI 套利的重心正从"做模型"转向"做模型的周边"——模型网关、用量计量、成本优化、多模型路由都是可切入的缝隙市场。</div>
+      </div>
+
+      <div class="money-item">
+        <div class="ai-topic">DeepSeek 离峰半价 + 峰谷定价套利</div>
+        <div class="ai-desc"><strong>热点</strong>：DeepSeek V4-Pro API 8/16 起实行<strong>峰谷定价</strong>，高峰时段最高涨 1100%、离峰时段半价。</div>
+        <div class="ai-sub">复刻建议</div>
+        <div class="ai-desc">把批量生成、后台跑批任务<strong>调度到离峰时段</strong>（凌晨/非高峰），配合精简上下文，可省下数倍API成本。对每天定时跑自动化情报/内容生成流水线的用户，这是实打实的降本操作。</div>
+      </div>
+
+      <div class="money-item">
+        <div class="ai-topic">Grok "Harvey级会员"99美元订阅套利</div>
+        <div class="ai-desc"><strong>热点</strong>：社区流传通过<strong>叠加两轮促销</strong>，可99美元/月订阅到价值300美元的 Grok Harvey（含Build权限）、价值200美元的 Cursor Ultra、Fable 5 额度、Grok Image/Video 额度，还附赠 Twitter Premium+。</div>
+        <div class="ai-sub">复刻建议</div>
+        <div class="ai-desc">操作路径是注册新 Grok 账号并叠加促销。注意：此类套利有账号封禁风险，仅适合短期尝鲜，不适合作为稳定依赖。但思路可复用——关注各家旗舰模型的"新手促销/限时额度"，组合出高性价比工具栈。</div>
+      </div>
+
+      <div class="money-item">
+        <div class="ai-topic">新闻联播简报转音频早报，视频号/小红书吸粉</div>
+        <div class="ai-desc"><strong>热点</strong>：国外博主用 NotebookLM 将枯燥法律文档转成脱口秀电台在 Spotify 获利；国内已有"新闻联播简报转音频早报"玩法。</div>
+        <div class="ai-sub">复刻建议</div>
+        <div class="ai-desc">把今日这份<strong>新闻联播风向标简报</strong>用 TTS/NotebookLM 转成 3 分钟音频早报，配字幕发视频号/小红书，AI 生产力+时政解读双标签，吸粉极快。同样思路可迁移到生鲜选品、财商科普等垂直领域，做"AI播报型"轻量内容矩阵。</div>
+      </div>
+
+      <!-- 避坑黑话 -->
+      <div class="ai-section-title">🔍 【避坑/黑话词典】</div>
+
+      <div class="glossary-item">
+        <div class="term">MCP (Model Context Protocol)</div>
+        <div class="explain">给所有AI统一插座。让不同AI工具都能调用同一批外部能力（数据库、企查查、文件系统等），不用再纠结"选哪个AI才连得上这个工具"。</div>
+      </div>
+
+      <div class="glossary-item">
+        <div class="term">OpenRouter</div>
+        <div class="explain">AI界的"模型路由器"。一个API口同时接400+模型，帮你自动挑最合适的模型跑任务。刚被Stripe 7亿美元买走，成为AI计费咽喉。</div>
+      </div>
+
+      <div class="glossary-item">
+        <div class="term">峰谷定价</div>
+        <div class="explain">像电费一样分时段计价。AI API在高峰时段贵、离峰时段便宜，DeepSeek离峰半价，高峰最高涨1100%——批量任务记得挪到离峰跑。</div>
+      </div>
+
+      <div class="glossary-item">
+        <div class="term">SynthID-Text 隐形水印</div>
+        <div class="explain">给AI生成文字打上机器可识别、人看不见的水印。欧盟AI法案要求，Anthropic已在新Claude模型落地，用于溯源"这是AI写的"。</div>
+      </div>
+
+      <div class="glossary-item">
+        <div class="term">MoE 稀疏激活</div>
+        <div class="explain">"专家混战"架构——模型虽大，但每次只激活一小撮"专家"，所以又快又省。DeepSeek V4-Pro 的 1.6万亿参数里每次只激活490亿。</div>
+      </div>
+
+      <div class="glossary-item">
+        <div class="term">harness（Agent运行时）</div>
+        <div class="explain">Agent的"方向盘"——控制它怎么思考、怎么调用工具、怎么执行任务的那套运行时框架。HarnessRouter 就是给多个harness统一接口。</div>
+      </div>
+
+      <!-- GitHub Trending 汇总 -->
+      <div class="ai-section-title">📈 GitHub Trending TOP10（8月18日）</div>
+      <div class="github-item"><div class="rank">1</div><div class="gh-info"><div class="gh-name">harry0703/MoneyPrinterTurbo</div><div class="gh-desc">AI一键生成高清短视频</div></div><div class="gh-stars">★105.9k · +1189</div></div>
+      <div class="github-item"><div class="rank">2</div><div class="gh-info"><div class="gh-name">usestrix/strix</div><div class="gh-desc">开源AI渗透测试工具</div></div><div class="gh-stars">★54.1k · +598</div></div>
+      <div class="github-item"><div class="rank">3</div><div class="gh-info"><div class="gh-name">nautilus_trader</div><div class="gh-desc">Rust原生事件驱动量化交易引擎</div></div><div class="gh-stars">★25.9k · +120</div></div>
+      <div class="github-item"><div class="rank">4</div><div class="gh-info"><div class="gh-name">akitaonrails/ai-memory</div><div class="gh-desc">Agent长期记忆+跨厂商交接</div></div><div class="gh-stars">★2.0k · +207</div></div>
+      <div class="github-item"><div class="rank">5</div><div class="gh-info"><div class="gh-name">Anthropic-Cybersecurity-Skills</div><div class="gh-desc">817个AI网络安全技能(映射6大框架)</div></div><div class="gh-stars">★28.4k · +198</div></div>
+      <div class="github-item"><div class="rank">6</div><div class="gh-info"><div class="gh-name">AlexsJones/llmfit</div><div class="gh-desc">一条命令查硬件能跑什么模型</div></div><div class="gh-stars">★32.2k · +198</div></div>
+      <div class="github-item"><div class="rank">7</div><div class="gh-info"><div class="gh-name">santifer/career-ops</div><div class="gh-desc">开源AI求职(扫岗位/评分/改简历)</div></div><div class="gh-stars">★64.6k · +218</div></div>
+      <div class="github-item"><div class="rank">8</div><div class="gh-info"><div class="gh-name">jundot/omlx</div><div class="gh-desc">Apple Silicon LLM推理服务器(菜单栏管理)</div></div><div class="gh-stars">★18.9k · +78</div></div>
+      <div class="github-item"><div class="rank">9</div><div class="gh-info"><div class="gh-name">immich-app/immich</div><div class="gh-desc">高性能自托管照片/视频管理</div></div><div class="gh-stars">★111.1k · +175</div></div>
+      <div class="github-item"><div class="rank">10</div><div class="gh-info"><div class="gh-name">cordiverse/cordis</div><div class="gh-desc">时空组合元框架</div></div><div class="gh-stars">★5.5k · +957</div></div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  每日双专栏 · AI情报推送 · 2026-08-18 · 数据来源：央视网/国家统计局/GitHub Trending/Product Hunt/彭博社/FT/新智元/量子位等 · 仅供学习参考，不构成投资建议
+</div>
+
+</body>
+</html>
