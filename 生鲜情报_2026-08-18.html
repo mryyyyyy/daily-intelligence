@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌶️ 小红书生鲜电商作战情报 | 2026-08-18</title>
+<style>
+:root {
+  --bg: #0f0f14;
+  --card: #1a1a24;
+  --card-hover: #222235;
+  --border: #2a2a3a;
+  --text: #e0e0e8;
+  --text-secondary: #9090a8;
+  --accent: #ff6b35;
+  --accent2: #e8453c;
+  --green: #2ecc71;
+  --blue: #3498db;
+  --purple: #a855f7;
+  --gold: #f59e0b;
+  --red: #e8453c;
+  --tag-bg: rgba(255,107,53,0.12);
+  --radius: 12px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  line-height: 1.6;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.header { text-align: center; padding: 32px 20px 24px; border-bottom: 2px solid var(--accent); margin-bottom: 24px; }
+.header h1 { font-size: 1.8em; color: #fff; }
+.header h1 span { color: var(--accent); }
+.header .date { color: var(--text-secondary); font-size: 0.95em; margin-top: 6px; }
+.header .subtitle { color: var(--accent); font-size: 0.85em; margin-top: 4px; }
+
+.countdown-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 24px; }
+.countdown-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; text-align: center; transition: all 0.2s; }
+.countdown-card:hover { background: var(--card-hover); }
+.countdown-card.urgent { border-color: var(--red); }
+.countdown-card.warning { border-color: var(--gold); }
+.countdown-card .cd-label { font-size: 0.78em; color: var(--text-secondary); margin-bottom: 4px; }
+.countdown-card .cd-num { font-size: 2em; font-weight: 700; color: #fff; }
+.countdown-card.urgent .cd-num { color: var(--red); }
+.countdown-card.warning .cd-num { color: var(--gold); }
+.countdown-card .cd-unit { font-size: 0.85em; color: var(--text-secondary); }
+
+.section { margin-bottom: 28px; }
+.section-title { font-size: 1.2em; font-weight: 700; color: #fff; padding: 8px 0; border-bottom: 1px solid var(--border); margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 12px; transition: all 0.2s; }
+.card:hover { background: var(--card-hover); }
+.card h3 { font-size: 1.05em; color: #fff; margin-bottom: 8px; }
+.card p { color: var(--text-secondary); font-size: 0.9em; line-height: 1.7; }
+.card .highlight { color: var(--accent); font-weight: 600; }
+.card .price { color: var(--green); font-weight: 600; }
+.card.correct { border-color: var(--purple); background: rgba(168,85,247,0.06); }
+.card.correct h3 { color: var(--purple); }
+.tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 0.75em; font-weight: 600; margin-right: 4px; }
+.tag-hot { background: rgba(232,69,60,0.15); color: var(--red); }
+.tag-new { background: rgba(46,204,113,0.15); color: var(--green); }
+.tag-trend { background: rgba(168,85,247,0.15); color: var(--purple); }
+.tag-gold { background: rgba(245,158,11,0.15); color: var(--gold); }
+.tag-blue { background: rgba(52,152,219,0.15); color: var(--blue); }
+.data-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; font-size: 0.85em; }
+.data-item { background: rgba(255,255,255,0.03); padding: 8px 12px; border-radius: 8px; }
+.data-item .label { color: var(--text-secondary); }
+.data-item .value { color: #fff; font-weight: 600; }
+hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+.source { font-size: 0.78em; color: var(--text-secondary); margin-top: 8px; font-style: italic; }
+.action-item { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; }
+.action-item .priority { width: 24px; height: 24px; border-radius: 6px; font-size: 0.7em; font-weight: 700; display: flex; align-items: center; justify-content: center; color: #fff; flex-shrink: 0; }
+.p0 { background: var(--red); }
+.p1 { background: var(--gold); }
+.p2 { background: var(--blue); }
+.action-item .content { font-size: 0.9em; }
+.action-item .content b { color: #fff; }
+.title-list { list-style: none; }
+.title-list li { padding: 6px 0; font-size: 0.9em; color: var(--text-secondary); border-bottom: 1px dashed var(--border); }
+.title-list li b { color: var(--accent); }
+.category-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.category-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+.category-card h4 { font-size: 0.95em; color: #fff; margin-bottom: 6px; }
+.category-card p { font-size: 0.8em; color: var(--text-secondary); line-height: 1.5; }
+.insight-box { border-left: 3px solid var(--accent); padding: 12px 16px; background: rgba(255,107,53,0.06); border-radius: 0 8px 8px 0; margin-bottom: 10px; }
+.insight-box b { color: #fff; }
+.footer { text-align: center; color: var(--text-secondary); font-size: 0.78em; padding: 20px 0; border-top: 1px solid var(--border); margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🌶️ 小红书生鲜电商<span>作战情报</span></h1>
+  <div class="date">2026-08-18 · 星期二 · 农历七月初六</div>
+  <div class="subtitle">⚠️ 大闸蟹礼卡最后1天（8/19截止）× 秋果进入"放量回落期" × 中秋38天 × 佣金恢复后生鲜2%费率明确</div>
+</div>
+
+<div class="countdown-grid">
+  <div class="countdown-card urgent">
+    <div class="cd-label">大闸蟹礼卡预售</div>
+    <div class="cd-num">1</div>
+    <div class="cd-unit">天（8/19截止）</div>
+  </div>
+  <div class="countdown-card warning">
+    <div class="cd-label">中秋佳节</div>
+    <div class="cd-num">38</div>
+    <div class="cd-unit">天（9/25）</div>
+  </div>
+  <div class="countdown-card">
+    <div class="cd-label">立秋之后</div>
+    <div class="cd-num">11</div>
+    <div class="cd-unit">天（换季叙事窗口）</div>
+  </div>
+  <div class="countdown-card">
+    <div class="cd-label">LEAP UP跃迁计划</div>
+    <div class="cd-num">99</div>
+    <div class="cd-unit">天（5/11启动·运行中）</div>
+  </div>
+</div>
+
+<!-- ============ BREAKING ============ -->
+<div class="section">
+  <div class="section-title">🔥 BREAKING · 今日关键情报</div>
+
+  <div class="card">
+    <h3>① 大闸蟹礼卡最后1天（8/19截止）：全价格带完整盘点，"卡面价≠成交价"是最大信息差</h3>
+    <p>今日是阳澄湖大闸蟹礼卡预售的最后完整一天，主流品牌真实到手价已完全透明化。以阳澄股份礼券为例，全价格带从<span class="price">328元（698型）→ 398元（828型）→ 458元（888型）→ 638元（1698型）→ 798/998元（1888型）→ 1188/1488元（2888型）</span>；而"蟹小姐"则切出更宽的梯度：<span class="price">生鲜多选卡499—5000元（7档，可兑大闸蟹及上百款生鲜）+ 单品蟹卡698—3888元（6档）</span>。</p>
+    <p><span class="highlight">最强的内容切口依然是信息差</span>：礼券上的"888型/2888型"是型号代号而非价格，"卡面价"与"成交价"之间存在大幅折扣，普通消费者极易踩坑。帮用户看懂"净重规格（公X两/母X两）+ 足重包赔 + 防伪蟹扣 + 提前预约天数"，仍是礼卡类目最有效的"我帮你选对的"避雷内容——但只剩今天最后1天卡位窗口。</p>
+    <div class="source">来源：阳澄股份热门产品榜（maigoo，328—1488元全档）· 蟹小姐中秋蟹礼（微博/官微，499—5000元多选卡+698—3888单品卡）· 义乌网礼卡品牌报价（499/688/1088/2088/3000/5000元）</div>
+  </div>
+
+  <div class="card">
+    <h3>② 秋果换季进入"放量回落期"：冬枣/秋月梨/软籽石榴批发价集体松动，尝鲜溢价窗口收窄</h3>
+    <p>多地产区+批发市场最新行情显示，秋果已从"抢先上市"切换至"放量回落"阶段。<span class="highlight">萧山（8/17最新）</span>：冬枣批发价已从刚上市高位回落、趋于亲民，秋月梨零售<span class="price">10—12元/斤、批发8.5元/斤</span>，软籽石榴<span class="price">8元/斤</span>；<span class="highlight">宁波（8/8）</span>：山东秋月梨批发<span class="price">7.5—10元/斤</span>，精品莱阳秋月梨<span class="price">9.5元/斤</span>，云南秋月梨4—6元/斤已进入尾声（口感偏硬）；<span class="highlight">遵义8月第一周</span>：软籽石榴<span class="price">3.60元/斤</span>、六盘水红心猕猴桃<span class="price">8元/斤</span>、冬枣<span class="price">7.25元/斤</span>。</p>
+    <p><span class="highlight">关键结论：8月下旬至9月将迎秋果集中上市高峰，价格将进一步回落。</span>这意味着"抢先尝鲜"的溢价叙事正在失效，精品生鲜的内容策略要从"抢头茬"切换到"帮用户选对产区+规格"（如山东秋月梨 vs 云南秋月梨的甜度/价格差异），用性价比+品质双锚点建立信任。</p>
+    <div class="source">来源：萧山农产品批发市场走访（8/17，搜狐）· 宁波果品批发市场（8/8，宁波晚报）· 遵义市发改委8月第一周批发价（8/7）· 北海果篮子换季（8/6，北海日报）· 铜仁市8/5批发价</div>
+  </div>
+
+  <div class="card correct">
+    <h3>③ 佣金恢复后生鲜蔬果费率明确：技术服务费低至2% + 支付通道0.6—0.7%，跃迁计划Day99仍是最优杠杆</h3>
+    <p>延续昨日纠错结论（百万免佣计划已5/15终止、被"LEAP UP·百万跃迁计划"替代），今日进一步锁定佣金恢复后的<b>具体费率结构</b>：小红书生鲜蔬果类目技术服务费<span class="highlight">低至2%</span>（女装/个护约5%、美妆约4%），另每笔交易额外扣<span class="price">0.6%—0.7%</span>给微信/支付宝等支付通道。注意：爱企查等第三方仍出现"前100万免佣有效期至8/31"的滞后说法，<b>与官方信源（DoNews 4/29公告、5/15终止）冲突，不可作为决策依据</b>。</p>
+    <p><span class="highlight">对精品生鲜店铺的结论不变</span>：与其纠结1.4%的佣金差，不如主攻"百万跃迁计划"——月销10万内中小商家做"笔记/直播成长任务"（每周官方指引），所有商家做"GMV冲刺任务"拿<span class="highlight">最高5万流量券</span>。精品生鲜天然契合"好品质、好服务、好价格"的好货标准，正是该计划的重点扶持对象。</p>
+    <div class="source">来源：爱企查小红书平台抽成说明（2026-08-08，费率结构）· DoNews 5/13 + 百度百科"小红书商城" + tianhebiaoshi政策解读（终止/跃迁，≥3独立来源交叉验证）</div>
+  </div>
+
+  <div class="card">
+    <h3>④ 中秋礼盒"药食同源+滋补"坐实：好想你159款新品、达州非遗牛肉月饼、若羌灰枣回购53%</h3>
+    <p>距中秋38天，礼盒供给端密集释放，最确定的趋势仍是<span class="highlight">"健康化 + 药食同源 + 滋补"</span>。好想你发布十二大系列159款中秋新品，主打<b>黑果枸杞、西洋参、铁棍山药、黑金枣</b>等高端滋补礼盒，明确"对标头部品质、二类亲民定价"；达州把<b>非遗"灯影牛肉"（地标+省级非遗）做成月饼馅</b>，确立为城市特产伴手礼；若羌灰枣在1688以"药食同源养生礼盒"切入，支持贴牌定制、回购率<span class="price">53%</span>。</p>
+    <p><span class="highlight">可复制模式浮现：非遗/地标食材"礼盒化"（月饼化）是2026中秋的确定性打法</span>——把有故事的地标食材做成节庆礼盒，既抬溢价又补文化背书，精品生鲜可借鉴"地标鲜果 × 药食同源干货"的组合礼思路。</p>
+    <div class="source">来源：好想你2026联盟商大会暨中秋新品发布会（8/11，全景网）· 达州灯影牛肉月饼新品发布（8/6，中国网食品）· 1688若羌灰枣新枣预售（8/14）</div>
+  </div>
+
+  <div class="card">
+    <h3>⑤ 新品雷达：璞旅×VDS"胡萝卜月"月饼、宜茶茶月饼+美人酥、若羌灰枣养生礼盒</h3>
+    <p>渠道与品牌上新信号：<span class="highlight">璞旅酒店集团 × VDS活力东势</span>推"Carrot Moon胡萝卜月月饼礼盒"（1080元，8/19前83折895元，100%可溯源+产销履历，胡萝卜叶入料是差异化记忆点）；<span class="highlight">宜茶</span>升级茶月饼并新推"美人酥"礼盒（绿茶/宜红/乌龙入酥、黑松露/石斛冬瓜等咸甜层次）；<span class="highlight">若羌灰枣</span>在1688以"药食同源"线推养生礼盒定制（回购率53%）。三者的共同点：<b>用"在地/功能性食材"做记忆锚点，把普通礼盒做出差异</b>，正是精品生鲜选品可复用的叙事范式。</p>
+    <div class="source">来源：璞旅酒店集团官网（8/19早鸟）· 宜茶中秋茶点礼盒预售（8/13，山东食品网）· 1688若羌灰枣专题（8/14）</div>
+  </div>
+</div>
+
+<!-- ============ 品类池 ============ -->
+<div class="section">
+  <div class="section-title">🛒 动态精品品类池</div>
+  <div class="category-grid">
+
+    <div class="category-card">
+      <h4>🦀 阳澄湖大闸蟹 <span class="tag tag-hot">礼卡最后1天</span></h4>
+      <p>328—5000元全价格带，"卡面价≠成交价"是最强避雷切口，8/19预售截止。5维全满。</p>
+    </div>
+    <div class="category-card">
+      <h4>🟡 秋月梨 <span class="tag tag-gold">放量回落</span></h4>
+      <p>山东批发7.5—10元/斤，精品莱阳9.5元/斤，云南4—6元尾声，8月下旬集中上市价格续降。4/5维。</p>
+    </div>
+    <div class="category-card">
+      <h4>🟣 软籽石榴 <span class="tag tag-gold">中秋旺季</span></h4>
+      <p>会理/大凉山大量上市，批8元/斤（萧山）、遵义3.6元/斤，复购35—45%，礼盒接力品类。4/5维。</p>
+    </div>
+    <div class="category-card">
+      <h4>🟢 大荔冬枣 <span class="tag tag-new">新上·价格回落</span></h4>
+      <p>17.8元小盒→128元礼盒，批价从高位回落趋亲民，中秋水果礼盒主力。4/5维。</p>
+    </div>
+    <div class="category-card">
+      <h4>🟣 新疆西梅 <span class="tag tag-new">产地直发</span></h4>
+      <p>55—128元/件，伽师县占全国60%，高甜+低热量健康卖点。4/5维。</p>
+    </div>
+    <div class="category-card">
+      <h4>🟣 红心猕猴桃 <span class="tag tag-trend">趋势</span></h4>
+      <p>遵义8元/斤、北海29.8—33.6元/kg（陕西四川），中秋备货有望反弹。4/5维。</p>
+    </div>
+    <div class="category-card">
+      <h4>🟣 三红柚/糖果柚 <span class="tag tag-new">中秋接力</span></h4>
+      <p>海南三红柚6.5元/斤、糖果柚4.5元/斤，中秋礼盒接力琯溪蜜柚。4/5维。</p>
+    </div>
+    <div class="category-card">
+      <h4>🟣 琯溪蜜柚 <span class="tag tag-trend">采收</span></h4>
+      <p>福建平和8月采收，GI认证，500年种植史，中秋礼盒新势力。5维全满。</p>
+    </div>
+    <div class="category-card">
+      <h4>🔥 云南野生菌 <span class="tag tag-hot">高峰</span></h4>
+      <p>松茸800—2000元/kg，黄金窗口延续，溯源可视化是信任基建。5维全满。</p>
+    </div>
+    <div class="category-card">
+      <h4>🟢 猫山王榴莲 <span class="tag tag-blue">旺季</span></h4>
+      <p>65—120元液氮果，金枕走量线，精品赛道独立行情。4/5维。</p>
+    </div>
+    <div class="category-card">
+      <h4>🟣 药食同源 <span class="tag tag-trend">滋补礼盒</span></h4>
+      <p>黑果枸杞/西洋参/铁棍山药/若羌灰枣入礼盒，从"趋势"走向"中秋标配"。4/5维。</p>
+    </div>
+    <div class="category-card">
+      <h4>🟢 纯血和牛 <span class="tag tag-blue">全年</span></h4>
+      <p>488—1288元，中秋礼盒CP，立秋贴秋膘叙事。4/5维。</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ 新品雷达 ============ -->
+<div class="section">
+  <div class="section-title">📡 本周新品雷达</div>
+  <div class="card">
+    <h3>本期锁定 5 个具体新品</h3>
+    <p><span class="highlight">① 璞旅×VDS"胡萝卜月"月饼礼盒</span>（1080元，8/19前83折895元）：产销履历胡萝卜+胡萝卜叶入料，"功能性在地食材"做记忆锚点。</p>
+    <p><span class="highlight">② 宜茶"美人酥"礼盒</span>：绿茶/宜红/乌龙入酥 + 黑松露/石斛冬瓜咸甜层次，轻甜配方抢占"低甜负担"心智。</p>
+    <p><span class="highlight">③ 达州灯影牛肉月饼</span>（非遗+地标）：48层酥皮 + 川味馅，确立为城市特产伴手礼，"非遗食材礼盒化"样本。</p>
+    <p><span class="highlight">④ 好想你"黑果枸杞/铁棍山药"高端滋补礼盒</span>：对标头部品质、二类亲民定价，药食同源滋补礼代表。</p>
+    <p><span class="highlight">⑤ 若羌灰枣养生礼盒</span>（1688，3.22元/斤起、可贴牌）：回购率53%，"药食同源+定制礼盒"入门级机会点。</p>
+    <div class="source">来源：璞旅酒店集团官网 · 山东食品网（宜茶）· 中国网食品（达州）· 全景网（好想你）· 1688若羌灰枣专题</div>
+  </div>
+</div>
+
+<!-- ============ 三大洞察 ============ -->
+<div class="section">
+  <div class="section-title">💡 今日三大洞察</div>
+  <div class="insight-box"><b>洞察一：大闸蟹礼卡只剩最后1天，"信息差避雷"是今天唯一该抢的内容窗口。</b>8/19预售截止，明天起搜索热度会快速退坡。今天的最高优先级就是一条「大闸蟹礼卡真实到手价拆解 + 卡面价≠成交价避雷」——328—5000元全价格带 + 净重规格 + 足重包赔已经齐备，直接可发。</div>
+  <div class="insight-box"><b>洞察二：秋果从"尝鲜溢价"切换到"放量性价比"，内容叙事必须跟着换。</b>冬枣/秋月梨/软籽石榴批发价已集体松动、8月下旬还要再降。别再讲"抢头茬"，改讲"帮用户选对产区+规格"——山东秋月梨（甜）vs 云南秋月梨（便宜但硬）就是现成的横评素材，性价比+品质双锚点建立信任。</div>
+  <div class="insight-box"><b>洞察三：2026中秋确定性主线 = "药食同源滋补 + 非遗地标礼盒化"。</b>好想你159款、达州非遗牛肉月饼、若羌灰枣回购53%共同指向同一件事——把有故事/有功能的地标食材做成节庆礼盒。精品生鲜可以组"地标鲜果 × 药食同源干货"的中秋健康组合礼，避开月饼正面红海。</div>
+</div>
+
+<!-- ============ 行动建议 ============ -->
+<div class="section">
+  <div class="section-title">🎯 行动建议</div>
+  <div class="card">
+    <div class="action-item"><div class="priority p0">P0</div><div class="content"><b>大闸蟹礼卡避雷内容（今日必发）</b>：做「大闸蟹礼卡328—5000元真实到手价拆解 + 卡面价≠成交价」，卡位8/19预售截止前最后1天的高搜索流量。</div></div>
+    <div class="action-item"><div class="priority p0">P0</div><div class="content"><b>秋果内容策略切换</b>：从"抢先尝"切换到"产区横评"——山东 vs 云南秋月梨、会理 vs 其他产区软籽石榴，用性价比+品质双锚点接住8月下旬放量回落期。</div></div>
+    <div class="action-item"><div class="priority p0">P0</div><div class="content"><b>主攻"百万跃迁计划"</b>：店铺后台认领"笔记/直播成长任务"+"GMV冲刺任务"，目标最高5万流量券（免佣已5/15终止，这是当前最优政策杠杆）。</div></div>
+    <div class="action-item"><div class="priority p1">P1</div><div class="content"><b>中秋"药食同源组合礼"策划</b>：把地标鲜果（冬枣/石榴/蜜柚）× 药食同源干货（灰枣/枸杞/山药）组健康组合礼，避开月饼红海。</div></div>
+    <div class="action-item"><div class="priority p1">P1</div><div class="content"><b>软籽石榴产地直发评估</b>：会理/大凉山放量、批价已回落，评估礼盒装直发线，锁定中秋接力。</div></div>
+    <div class="action-item"><div class="priority p2">P2</div><div class="content"><b>秋月梨精品线评估</b>：山东莱阳精品9.5元/斤（纯甜无渣）适合做"产地直发精品梨"选品，关注8月底盛期价格。</div></div>
+    <div class="action-item"><div class="priority p2">P2</div><div class="content"><b>若羌灰枣"药食同源养生礼盒"预调研</b>：回购率53%、可贴牌定制，评估作为入门级健康礼盒的可行性。</div></div>
+  </div>
+</div>
+
+<!-- ============ 标题建议 ============ -->
+<div class="section">
+  <div class="section-title">✍️ 今日标题建议</div>
+  <ul class="title-list">
+    <li><b>[避雷指南]</b> 大闸蟹礼卡最后1天！328—5000元真实到手价，卡面价≠成交价，3步不踩坑</li>
+    <li><b>[产地溯源]</b> 同样是秋月梨，山东和云南差在哪？甜度口感价格PM帮你测透了</li>
+    <li><b>[价格解读]</b> 秋果集体降价了！冬枣/石榴/秋月梨批发价回落，现在囤中秋礼盒正合适</li>
+    <li><b>[趋势解读]</b> 好想你一口气推159款，中秋礼盒最确定的趋势还是"药食同源+滋补"</li>
+    <li><b>[新品雷达]</b> 山姆之外又有新玩法：胡萝卜做月饼馅、非遗牛肉包月饼，精品生鲜能抄什么</li>
+    <li><b>[政策解读]</b> 小红书生鲜佣金恢复到2%了？别慌，真正该抢的是这个最高5万流量券的计划</li>
+    <li><b>[场景指南]</b> 中秋送礼500/1000/1500三档，地标鲜果+药食同源怎么组合最体面？清单拿走</li>
+  </ul>
+</div>
+
+<div class="footer">
+  <p>数据来源：阳澄股份产品榜 · 蟹小姐官微 · 义乌网礼卡报价 · 萧山/宁波/北海农产品批发市场走访 · 遵义市发改委/铜仁市批发价 · 爱企查 · DoNews · 百度百科 · 全景网 · 中国网食品 · 1688 · 璞旅酒店集团官网 · 山东食品网</p>
+  <p>信息解读纪律：负面信息区分个体/系统 · 绝对词须有数据支撑 · P0情报≥2独立来源 · 风险标注归因 · 精品/高端搜索前缀</p>
+  <p>⚠️ 本期延续8/17纠错结论（免佣5/15已终止），并补充佣金恢复后生鲜蔬果低至2%的费率明细</p>
+  <p>🌶️ 食材买手实验室 · 每日作战情报 · 生成于 2026-08-18</p>
+</div>
+
+</body>
+</html>
