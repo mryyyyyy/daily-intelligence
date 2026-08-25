@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 2026-08-25</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #faf3ea; color: #3d2f26; font-size: 15px; line-height: 1.75; }
+
+  .hero {
+    background: linear-gradient(135deg, #c75b1e 0%, #d96a2b 40%, #b8501d 100%);
+    border-bottom: 1px solid #f0e2d2;
+    padding: 36px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255,255,255,0.10) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%; left: -5%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255,220,160,0.14) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #fff6ec;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #fffaf3;
+    margin-bottom: 8px;
+  }
+  .hero .sub {
+    color: #ffe4cd;
+    font-size: 14px;
+  }
+
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 24px 20px 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .card {
+    background: #ffffff;
+    border: 1px solid #f0e2d2;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(120, 70, 30, 0.05);
+  }
+  .card-header {
+    background: linear-gradient(135deg, #fff4e8 0%, #fdeeda 100%);
+    padding: 16px 22px;
+    border-bottom: 1px solid #f5e6d2;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .card-header .icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .card-header h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #4a3221;
+  }
+  .card-header .tag {
+    margin-left: auto;
+    font-size: 12px;
+    color: #b08560;
+    font-weight: 600;
+  }
+  .card-body { padding: 22px; }
+
+  /* 板块配色 */
+  .sec-1 .icon { background: rgba(217,106,43,0.14); }
+  .sec-1 .card-header h2 { color: #c75b1e; }
+  .sec-2 .icon { background: rgba(201,154,61,0.16); }
+  .sec-2 .card-header h2 { color: #b8862b; }
+  .sec-3 .icon { background: rgba(120,150,60,0.16); }
+  .sec-3 .card-header h2 { color: #6d8a2e; }
+  .sec-4 .icon { background: rgba(190,110,70,0.14); }
+  .sec-4 .card-header h2 { color: #a8593a; }
+  .sec-5 .icon { background: rgba(200,90,60,0.14); }
+  .sec-5 .card-header h2 { color: #c2453a; }
+  .sec-6 .icon { background: rgba(217,106,43,0.18); }
+  .sec-6 .card-header h2 { color: #d96a2b; }
+
+  .item {
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px dashed #f0e2d2;
+  }
+  .item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .item-title {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #3d2f26;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .item-desc { color: #5c4a3a; font-size: 14px; margin-bottom: 6px; }
+  .relate {
+    background: #fdf2e4;
+    border-left: 3px solid #d96a2b;
+    padding: 8px 12px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13.5px;
+    color: #8a5a2e;
+    margin-top: 6px;
+  }
+  .relate strong { color: #c75b1e; }
+
+  .signal { display: inline-block; padding: 1px 8px; border-radius: 12px; font-size: 12px; font-weight: 700; }
+  .sig-green { background: rgba(110,155,55,0.14); color: #6d8a2e; }
+  .sig-yellow { background: rgba(201,154,61,0.16); color: #b8862b; }
+  .sig-red { background: rgba(200,69,58,0.14); color: #c2453a; }
+
+  .line { background: #faf3ea; border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; font-size: 14px; color: #5c4a3a; }
+  .line b { color: #3d2f26; }
+
+  /* 新品速递卡片 */
+  .new-product {
+    background: #fffaf3;
+    border: 1px solid #f5d9b8;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+  .new-product:last-child { margin-bottom: 0; }
+  .np-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+  .np-name { font-size: 15px; font-weight: 800; color: #c75b1e; }
+  .np-meta { font-size: 12.5px; color: #a07a55; font-weight: 600; }
+  .np-break { color: #5c4a3a; font-size: 14px; margin-bottom: 4px; }
+  .np-inspire {
+    background: #fdf2e4;
+    border-left: 3px solid #e0a24a;
+    padding: 6px 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: #8a5a2e;
+    margin-top: 6px;
+  }
+  .np-inspire strong { color: #c75b1e; }
+
+  .expo { background: #fdf6ec; border: 1px solid #f0e0c8; border-radius: 10px; padding: 12px 14px; margin-bottom: 8px; }
+  .expo:last-child { margin-bottom: 0; }
+  .expo b { color: #8a5a2e; }
+
+  .brainstorm {
+    background: linear-gradient(135deg, #fff4e8, #fdeeda);
+    border: 1px solid #f5d9b8;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .brainstorm:last-child { margin-bottom: 0; }
+  .brainstorm h4 { color: #c75b1e; font-size: 15.5px; margin-bottom: 8px; }
+  .brainstorm p { font-size: 13.5px; color: #5c4a3a; margin-bottom: 4px; }
+  .brainstorm p b { color: #3d2f26; }
+
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: #b99a7d;
+    font-size: 12px;
+    border-top: 1px solid #f0e2d2;
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">🍂 2026年8月25日 星期二 · 处暑第3天</div>
+    <h1>🥘 食研日推 · 每日行业情报</h1>
+    <div class="sub">服务下厨房食品品牌产品经理｜配料表洁净 · 新鲜短保 · 产地直发 · 真品类升级 | 距白露 13 天 · 距中秋 31 天</div>
+  </div>
+</div>
+
+<!-- 主体 -->
+<div class="container">
+
+<!-- ============ 板块一 ============ -->
+<div class="card sec-1">
+  <div class="card-header">
+    <div class="icon">🔥</div>
+    <h2>一、今日行业要闻</h2>
+    <div class="tag">72小时内</div>
+  </div>
+  <div class="card-body">
+
+    <div class="item">
+      <div class="item-title">① 星巴克「茶拿铁」系列上线：海外爆款食材 UBE（紫山药）首次进入中国</div>
+      <div class="item-desc">星巴克上新 4 款「茶拿铁」：冰 UBE 风味抹茶拿铁、脆玄米焙茶拿铁、花漾伯爵茶拿铁、咸芝士红茶拿铁，均 35 元/大杯、38 元/超大杯。其中 UBE（菲律宾紫色山药）是近年火遍海外社交媒体的特色食材，此番被星巴克首次引入中国，并与一级抹茶、椰浆、抹茶冻组合，以"熟悉的茶饮形式"呈现陌生食材。</div>
+      <div class="relate"><strong>与我何干：</strong>头部品牌正在系统性地"把海外爆款食材中国化"。UBE 紫山药是天然紫色、自带高颜值，与我们的"产地食材+出片率"逻辑同源——可盯住"紫薯/紫山药/紫糯"这类天然紫色系食材做产地直发，卖点天然、无需添加剂调色，正好踩配料洁净。</div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">② 瑞幸泰奶系列首周 1324 万杯，破今年新品纪录；东南亚风味成秋季确定性主旋律</div>
+      <div class="item-desc">瑞幸 8/17 上线的「萨瓦迪卡泰奶」「泰奶鸳鸯拿铁」（9.9 元起），首周销量破 1324 万杯，刷新瑞幸今年新品首周纪录。同期爷爷不泡茶推「泰奶珍珠冰」「青柠泰奶」，7-ELEVEN 上线泰式新菜单（打抛猪饭团、泰式奶茶提拉米苏等）。东南亚风味从"旅游伴手礼"升级为"可规模化的全国爆款"。</div>
+      <div class="relate"><strong>与我何干：</strong>泰奶的核心壁垒在"茶底+炼乳的浓郁感"，零售端"泰式风味冲饮/酱料"尚缺洁净版——市面泰奶粉多含植脂末。用真茶粉+真炼乳+椰浆做"泰奶家庭冲饮"，是东南亚风味落地的低门槛切口。</div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">③ 可可期货突破 6126 美元/吨，烘焙/巧克力成本压力全面上行</div>
+      <div class="item-desc">纽约可可期货 8/17 单日大涨 5%、突破 6126 美元/吨，巧克力终端零售价同比上涨 14%。韩国巴黎贝甜 8/25 起 127 款产品（面包86+蛋糕甜点41）平均涨价 5%，主因黄油、可可、包装材料成本齐涨。国内烘焙厂、连锁饼房普遍面临"配方调整或涨价"的两难。</div>
+      <div class="relate"><strong>与我何干：</strong>含可可产品线的成本是"硬风险"，要提前锁价或调整配方。反向机会是"减可可/可可替代"：用黑芝麻、红曲、紫薯等天然深色食材做"巧克力平替风味"，既控成本又契合配料洁净，正好落在我们的产地食材优势上。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ 板块二 ============ -->
+<div class="card sec-2">
+  <div class="card-header">
+    <div class="icon">🎯</div>
+    <h2>二、爆品雷达 · 趋势苗头</h2>
+    <div class="tag">信号强度</div>
+  </div>
+  <div class="card-body">
+
+    <div class="item">
+      <div class="item-title"><span class="signal sig-red">🔴 已爆</span> "韩国冰奶"专门店全国跑马圈地：冰+鲜奶+鲜果的极简组合</div>
+      <div class="item-desc">茶百道荔枝冰奶上市 51 天卖出 1700 万杯，书亦烧仙草柠檬冰奶首周破 120 万杯；öhmo哦莫、WUYOO 等"韩国冰奶"专门店今年已开出近百家到近 200 家（WUYOO 仅今年 1 月后就在广东、四川新开 170+ 家，青岛 CBD 店首月营业额 42 万）。核心原料只有<b>冰、鲜奶、鲜果</b>，小红书"冰奶"话题浏览 1600 万+、抖音播放破亿。</div>
+      <div class="relate"><strong>机会判断：</strong>值得重点跟进。冰奶是"洁净标签+鲜果+奶"的极致表达，配方天然、无植脂末，正好卡我们品牌 DNA。零售端"冰奶料包/鲜果冰奶 DIY 套装"（真果粒+真牛乳+糖浆）目前几乎空白，是茶饮爆款迁移到家庭食材的典型机会。</div>
+    </div>
+
+    <div class="item">
+      <div class="item-title"><span class="signal sig-red">🔴 已爆</span> 康师傅「冻冻茶」：可饮用茶味果冻，5 天抖音 GMV 破 1130 万</div>
+      <div class="item-desc">康师傅冰红茶联名小黄人 IP，推出"冻冻茶"——可咀嚼的茶味果冻形态，把经典大单品从液体重构为"液体+果冻"双口感，上市 5 天抖音 GMV 突破 1130 万元。这是"熟悉味道 + 陌生形态"的经典焕新路径。</div>
+      <div class="relate"><strong>机会判断：</strong>"形态重构"比"口味微调"更有爆发力，是可复用的方法论。我们的即食甜汤/冲饮可以用"冻冻化"做差异化——比如银耳羹做成可吸可嚼的双口感，或者时令果汁冻成"果冻杯"，用形态新鲜感制造传播。</div>
+    </div>
+
+    <div class="item">
+      <div class="item-title"><span class="signal sig-yellow">🟡 起势</span> "糯叽叽"口感成为 2026 零食绝对王者，从甜品向主食/咸点扩散</div>
+      <div class="item-desc">企查查显示 2026 年 Q1 全国新增"糯叽叽"相关食品企业同比增长 210%，品类从麻薯、年糕扩展到糯米鸡、糯米肠、糯米饭团甚至"糯叽叽冰皮月饼"；抖音"水泥美食"播放破 80 亿、"糯叽叽DIY"成短视频新流量池。低卡糯米肠、无糖麻薯开始试水"口感+健康"平衡。</div>
+      <div class="relate"><strong>机会判断：</strong>"糯叽叽"是情绪刚需（软糯触感触发愉悦），但健康化版本刚起步。可做"低糖/高纤糯叽叽"（用魔芋粉、燕麦麸部分替代糯米），切"既要软糯又怕胖"的精准人群，符合我们"真品类升级"定位。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ 板块三 ============ -->
+<div class="card sec-3">
+  <div class="card-header">
+    <div class="icon">🌿</div>
+    <h2>三、时令风向 · 品类机会</h2>
+    <div class="tag">提前 2-4 周</div>
+  </div>
+  <div class="card-body">
+    <div class="line">📅 <b>当前：</b>处暑第 3 天（8/23 处暑）——暑气止、秋燥起，饮食核心转"清润祛燥、温补不上火"，水果从夏季捡漏切换为秋季尝鲜+送礼。</div>
+    <div class="line">⏰ <b>倒计时：</b>距白露（9/7）13 天，距中秋（9/25）31 天。</div>
+    <div class="line">🎯 <b>即将热卖：</b>秋月梨（接棒翠冠梨，糖度 15° 零果渣，黄金赏味期仅上市后 15 天，苏州已 15 元/斤）— 中秋送礼首选；西梅（头茬 45 元/斤跳水至 9.9 元/斤，冲千万级大单品）；早熟蜜橘（云南蜂飘飘 7.5 元/斤、湖北 5.5 元/斤，填补柑橘空档期）。</div>
+    <div class="line">🚨 <b>窗口提醒：</b>翠冠梨已下市、黄桃/水蜜桃进入尾期——梨类、桃类换季决策要快；大闸蟹进入中秋预热，礼盒需提前锁货锁价。</div>
+    <div class="line">🏔️ <b>产地机会：</b>①秋月梨（山东莱阳/上海金山，8/19 开园，甜度天花板）— 产地直发+礼盒溢价明确；②喀什萨特西梅（新疆岳普湖，单果 25g+、糖度 18°+）— 叮咚"贾建新的喀什萨特西梅"人名水果模式已验证，上架首日售罄；③早熟蜜橘（云南/湖北）— 填补 3-4 月柑橘下市后的空档期，尝鲜溢价明显。</div>
+  </div>
+</div>
+
+<!-- ============ 板块四 ============ -->
+<div class="card sec-4">
+  <div class="card-header">
+    <div class="icon">💡</div>
+    <h2>四、跨界灵感 · 创新动作</h2>
+    <div class="tag">可迁移</div>
+  </div>
+  <div class="card-body">
+
+    <div class="item">
+      <div class="item-title">霸王茶姬 × 厦门航空「炭烤橙皮武夷肉桂茶」：新茶饮首登万米高空</div>
+      <div class="item-desc">8/20 起，霸王茶姬与厦航合作，将茶饮送上飞机餐（飞行≥90 分钟航班可点）。茶底用武夷岩茶，加赣南脐橙皮、衢州陈皮、安岳柠檬皮，同风味蛋糕配套上线。这是中国新茶饮首次进入航空场景。</div>
+      <div class="relate"><strong>迁移可能：</strong>"场景升维"是存量竞争下的差异化新解——把产品嵌入"消费者意想不到的场景"。我们的时令食材可做"高铁/航空/酒店伴手礼"场景化产品，用小包装+地域故事切入渠道型消费。</div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">叮咚「西域美食节」人名水果模式：贾建新的喀什萨特西梅</div>
+      <div class="item-desc">叮咚"西域美食节"扩至 200+ SKU，用"农人匠心"系列把种植者推成人名 IP——贾建新的喀什萨特西梅（北纬39°黄金带、日照3000小时、糖度18°+）上架首日多站点售罄。新疆奶制品（酸奶疙瘩、干噎奶酪、奶皮子酸奶）成今年新增亮点品类。</div>
+      <div class="relate"><strong>迁移可能：</strong>"人名水果=信任背书"可复制——我们产地直发可给每个单品绑定一个真实农人/产地故事，把"从谁手里买的"讲清楚，这是对抗白牌价格战的最强护城河。</div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">COLD STONE × 麻古茶坊「柚香红萱波波」冰淇淋：手摇饮变冰淇淋</div>
+      <div class="item-desc">酷圣石与麻古茶坊联名，把麻古招牌"柚香红萱""葡萄"饮品及配料做成冰淇淋（柚香红萱波波、萄气波波），8/7-9/17 限定。茶饮风味"冰品化"再添一例，主打"喝得到的麻古，吃得到"。</div>
+      <div class="relate"><strong>迁移可能：</strong>茶饮爆款"冰品化/甜品化"是双向迁移的成熟路径。我们可反向操作——把时令鲜果（秋月梨、西梅、蜜橘）做成"冻干/冰品/果酱"多种形态，一个原料多形态复用，摊薄供应链成本。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ 板块五 ============ -->
+<div class="card sec-5">
+  <div class="card-header">
+    <div class="icon">🧪</div>
+    <h2>五、脑暴时刻 · 融合创意</h2>
+    <div class="tag">收敛</div>
+  </div>
+  <div class="card-body">
+
+    <div class="brainstorm">
+      <h4>🍐 创意一：「秋月第一口甜」秋月梨银耳桂花即食甜汤（HPP 洁净版）</h4>
+      <p><b>一句话：</b>秋月梨 + 银耳 + 桂花 + 天然甜味替代糖的即食甜汤，HPP 锁鲜，配料表只有看得懂的 4-5 样。</p>
+      <p><b>为什么是现在：</b>处暑后秋燥上线，秋月梨正值"黄金赏味期 15 天"，距中秋 31 天正好卡送礼+自用双场景；润燥养生是当季最强消费理由。</p>
+      <p><b>差异化锚点：</b>市面即食银耳羹多为高温灌装、口感软烂且加增稠剂，我们用 HPP 锁住秋月梨的"脆+清甜"，把"梨中白月光"的鲜脆感保留进杯子里，配料表干净可溯源。</p>
+      <p><b>可行性初判：</b>秋月梨产地（山东/金山）可直接锁货，HPP 代工成熟；客单价可做到 15-20 元/杯，契合品牌"新鲜短保+产地直发"DNA，抖音达播"秋燥喝它"叙事自带话题。</p>
+    </div>
+
+    <div class="brainstorm">
+      <h4>🥥 创意二：「一口泰爽」泰式柠檬奶/泰奶风味家庭冲饮（去植脂末洁净版）</h4>
+      <p><b>一句话：</b>一款真茶粉 + 真炼乳 + 椰浆的泰式风味冲饮（可做泰奶、可加柠檬做柠檬奶），冷水即冲、无植脂末。</p>
+      <p><b>为什么是现在：</b>瑞幸泰奶首周 1324 万杯证明东南亚风味已是全民爆款，但零售端泰奶粉普遍含植脂末，存在明确的"洁净版"缺口；柠檬奶是 2026 茶饮年度爆款，家庭自制必踩"果酸遇奶结絮"的坑。</p>
+      <p><b>差异化锚点：</b>对标市面泰奶粉（植脂末+香精），我们主打"真红茶粉+真炼乳+真椰浆"，再搭一个"去酸留香"柠檬风味包，解决家庭自制柠檬奶结絮痛点，双重差异化。</p>
+      <p><b>可行性初判：</b>供应链中等（需锁定真茶粉、真炼乳、椰浆供应商），冲饮形态适配抖音达播"冲一杯对比市面脏配料"的演示叙事，客单价可做 39-49 元/组。</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ 板块六 ============ -->
+<div class="card sec-6">
+  <div class="card-header">
+    <div class="icon">🏬</div>
+    <h2>六、展会速递 · 每周新品雷达</h2>
+    <div class="tag">新品 7 天内优先</div>
+  </div>
+  <div class="card-body">
+
+    <div style="font-weight:700;color:#c75b1e;font-size:15px;margin-bottom:14px;">🆕 每周新品速递（5个）</div>
+
+    <div class="new-product">
+      <div class="np-head"><span class="np-name">🆕 星巴克「茶拿铁」系列</span><span class="np-meta">｜8/20｜35元/大杯、38元/超大杯</span></div>
+      <div class="np-break"><b>产品力拆解：</b>4 款：冰 UBE 风味抹茶拿铁（菲律宾紫山药+一级抹茶+椰浆+抹茶冻）、脆玄米焙茶拿铁（烘烤脆玄米+焙茶+巴旦木奶）、花漾伯爵茶拿铁、咸芝士红茶拿铁。把海外爆款食材 UBE 首次引入中国，用熟悉的茶饮形态承载陌生食材，切"特色食材+差异化风味"。</div>
+      <div class="np-inspire"><strong>启发：</strong>天然紫色系食材（UBE 紫山药/紫薯）自带颜值+话题，可做产地直发，卖点无需调色、契合洁净配料。</div>
+    </div>
+
+    <div class="new-product">
+      <div class="np-head"><span class="np-name">🆕 瑞幸「萨瓦迪卡泰奶」系列</span><span class="np-meta">｜8/17｜9.9元起</span></div>
+      <div class="np-break"><b>产品力拆解：</b>经典泰奶（泰式红茶+新西兰进口干酪）、原创泰奶鸳鸯拿铁（泰式红茶+浓醇咖啡）。首周销量 1324 万杯破今年新品纪录，靠"法务出差带回灵感"的段子式传播出圈，产品+联名+社交内容同节奏放量。</div>
+      <div class="np-inspire"><strong>启发：</strong>东南亚风味的"茶底+炼乳"组合零售端缺洁净版，真茶粉+真炼乳+椰浆冲饮是低门槛落地切口；同时"产品背后的故事"是可复用的传播打法。</div>
+    </div>
+
+    <div class="new-product">
+      <div class="np-head"><span class="np-name">🆕 康师傅冰红茶「冻冻茶」</span><span class="np-meta">｜8月中｜联名小黄人 IP</span></div>
+      <div class="np-break"><b>产品力拆解：</b>开创"可饮用型茶味果冻"，把冰红茶从液体重构为"液体+可嚼果冻"双口感，联名小黄人 IP 拉新。上市 5 天抖音 GMV 破 1130 万元，验证"熟悉味道+陌生形态"的焕新路径。</div>
+      <div class="np-inspire"><strong>启发：</strong>形态重构比口味微调更有爆发力，我们的即食甜汤/冲饮可做"冻冻化"双口感，用形态新鲜感制造自传播。</div>
+    </div>
+
+    <div class="new-product">
+      <div class="np-head"><span class="np-name">🆕 叮咚有豆志「山涧柴火风味豆乳雪糕」</span><span class="np-meta">｜8/17｜65g×6支/19.9元</span></div>
+      <div class="np-break"><b>产品力拆解：</b>基于"山涧柴火豆腐"同款风味研发，添加超 36% 山涧柴火豆浆 + 不低于 30% 巴氏杀菌鲜牛奶 + 不低于 11% 原味麻薯，融合豆乳、奶香、麻薯三种口感。把"柴火豆香"这一地域记忆点做成冰品差异化。</div>
+      <div class="np-inspire"><strong>启发：</strong>"传统工艺风味 + 现代冰品形态"是独特切口，"柴火豆香"这类地域记忆点可作为我们的风味差异化资产。</div>
+    </div>
+
+    <div class="new-product">
+      <div class="np-head"><span class="np-name">🆕 新希望乳业 × 阿华田「浓醇麦芽可可低温乳饮」</span><span class="np-meta">｜9月上市｜生牛乳≥30%</span></div>
+      <div class="np-break"><b>产品力拆解：</b>瑞士阿华田的经典麦芽可可"风味引擎" + 新希望低温冷链"新鲜引擎"双轮驱动，生牛乳添加量≥30%，开盖即饮，首发华南/华东/西南的便利店、精品超市、生鲜 O2O 即时零售渠道。</div>
+      <div class="np-inspire"><strong>启发：</strong>联名从"LOGO 并置"升级为"能力互补"——经典 IP 风味资产 + 本土供应链能力绑定。我们可借鉴"经典风味 × 新鲜短保供应链"的组合，做"麦芽可可/经典风味"的低温升级版。</div>
+    </div>
+
+    <div style="font-weight:700;color:#c75b1e;font-size:15px;margin:18px 0 12px;">🎪 展会预告</div>
+
+    <div class="expo">🎪 <b>SIAL 西雅国际食品展（广州）</b> 9/3-9/5 广州保利世贸博览馆｜<b>看点：</b>6万㎡/1500+展商，预制菜与方便食品专区为热门板块，特设进口食材专区｜<b>与我何干：</b>秋季选品+产地资源对接核心场，重点逛健康休食、预加工食品、进口食材。</div>
+    <div class="expo">🎪 <b>广州国际自有品牌展（MARCA China）</b> 9/8-9/9 保利世贸博览馆｜<b>看点：</b>自有品牌/渠道代工选品｜<b>与我何干：</b>对接代工厂、找自有品牌供货资源的一站式窗口。</div>
+    <div class="expo">🎪 <b>中食展（广州）暨广州国际食品食材展 Food2China</b> 9/10-9/12 广交会展馆｜<b>看点：</b>同期办广州国际渔业博览会、冷链设备暨生鲜配送展、海洋牧场展｜<b>与我何干：</b>渔博会+冷链展精准对应我们高端生鲜与冷链短保方向。</div>
+
+  </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>⚠️ 以上内容由 AI 自动聚合生成，信息来源于公开渠道，仅供参考，不构成经营决策依据</p>
+  <p>信源：Foodaily / 食品伙伴网 / 顶端新闻 / 壹览商业 / 蝉妈妈 / 上虞新闻网 / 金山融媒 / SIAL西雅展官网 等</p>
+  <p style="margin-top:8px;">Generated by WorkBuddy 食研日推 · 2026-08-25 09:00 CST</p>
+</div>
+
+</body>
+</html>
