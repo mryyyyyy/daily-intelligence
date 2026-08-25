@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日双专栏AI情报推送 - 2026年8月25日</title>
+<style>
+:root {
+  --bg: #0f0f14;
+  --card-bg: #1a1a24;
+  --card-border: #2a2a3a;
+  --text: #e1e1e6;
+  --text-secondary: #9999aa;
+  --accent-red: #e8454d;
+  --accent-blue: #4a90d9;
+  --accent-green: #3cb371;
+  --accent-orange: #f0a040;
+  --accent-purple: #a78bfa;
+  --accent-teal: #2dd4bf;
+  --tag-bg: rgba(232,69,77,0.1);
+  --tag-text: #e8454d;
+  --highlight: #ffd700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  padding: 20px;
+}
+.header {
+  text-align: center;
+  padding: 40px 20px 30px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border-radius: 16px;
+  margin-bottom: 30px;
+  border: 1px solid var(--card-border);
+}
+.header h1 {
+  font-size: 2em;
+  background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+.header .date { color: var(--text-secondary); font-size: 0.95em; }
+.header .tagline { color: var(--accent-teal); font-size: 0.85em; margin-top: 6px; }
+.columns { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 900px) { .columns { grid-template-columns: 1fr; } }
+.column-title { font-size: 1.3em; font-weight: 700; padding: 14px 20px; border-radius: 12px 12px 0 0; margin-bottom: 0; }
+.col1 .column-title { background: linear-gradient(135deg, #c0392b, #e74c3c); color: #fff; }
+.col2 .column-title { background: linear-gradient(135deg, #2c3e50, #3498db); color: #fff; }
+.column { background: var(--card-bg); border-radius: 14px; border: 1px solid var(--card-border); overflow: hidden; }
+.column-body { padding: 20px; }
+.section { margin-bottom: 24px; }
+.section-title {
+  font-size: 1.1em; font-weight: 700; color: var(--accent-orange);
+  border-left: 3px solid var(--accent-orange); padding-left: 10px; margin-bottom: 14px;
+}
+.news-item {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px; padding: 16px; margin-bottom: 14px;
+}
+.news-item:hover { border-color: rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); }
+.news-item .topic { font-size: 1.05em; font-weight: 700; color: var(--accent-red); margin-bottom: 8px; }
+.news-item .label {
+  display: inline-block; font-size: 0.75em; font-weight: 600; padding: 2px 8px;
+  border-radius: 4px; margin-right: 6px; background: var(--tag-bg); color: var(--tag-text);
+}
+.news-item .content { color: var(--text-secondary); font-size: 0.9em; line-height: 1.7; margin: 6px 0; }
+.news-item .read { color: var(--text); font-size: 0.92em; line-height: 1.7; margin: 6px 0; }
+.news-item .read strong { color: var(--highlight); }
+.news-item .interpret {
+  margin-top: 8px; padding: 8px 12px; background: rgba(74,144,217,0.08);
+  border-left: 3px solid var(--accent-blue); border-radius: 0 6px 6px 0;
+  font-size: 0.85em; color: var(--accent-blue);
+}
+.news-item .interpret strong { color: var(--text); }
+.news-item .impact {
+  margin-top: 8px; padding: 8px 12px; background: rgba(60,179,113,0.08);
+  border-left: 3px solid var(--accent-green); border-radius: 0 6px 6px 0;
+  font-size: 0.85em; color: var(--accent-green);
+}
+.news-item .impact strong { color: var(--text); }
+.summary-box {
+  background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,215,0,0.02));
+  border: 1px solid rgba(255,215,0,0.2); border-radius: 10px; padding: 16px; margin-top: 10px;
+}
+.summary-box .title { color: var(--highlight); font-weight: 700; margin-bottom: 8px; }
+.summary-box .text { color: var(--text-secondary); font-size: 0.9em; }
+.ai-section-title {
+  font-size: 1.05em; font-weight: 700; color: var(--accent-teal);
+  border-bottom: 1px solid rgba(45,212,191,0.2); padding-bottom: 6px;
+  margin-bottom: 14px; margin-top: 20px;
+}
+.ai-section-title:first-child { margin-top: 0; }
+.ai-item {
+  background: rgba(45,212,191,0.03); border: 1px solid rgba(45,212,191,0.08);
+  border-radius: 10px; padding: 14px; margin-bottom: 12px;
+}
+.ai-item .ai-topic { font-size: 1em; font-weight: 700; color: var(--accent-teal); margin-bottom: 6px; }
+.ai-item .ai-sub { font-size: 0.85em; color: var(--accent-purple); font-weight: 600; margin: 8px 0 4px; }
+.ai-item .ai-desc { font-size: 0.88em; color: var(--text-secondary); line-height: 1.7; }
+.ai-tag {
+  display: inline-block; font-size: 0.7em; font-weight: 700; padding: 2px 7px;
+  border-radius: 3px; margin-right: 4px; background: rgba(167,139,250,0.15); color: var(--accent-purple);
+}
+.ai-tag.hot { background: rgba(232,69,77,0.15); color: var(--accent-red); }
+.ai-tag.new { background: rgba(60,179,113,0.15); color: var(--accent-green); }
+.money-item {
+  background: linear-gradient(135deg, rgba(240,160,64,0.08), rgba(240,160,64,0.02));
+  border: 1px solid rgba(240,160,64,0.15); border-radius: 10px; padding: 14px; margin-bottom: 12px;
+}
+.money-item .ai-topic { color: var(--accent-orange); }
+.money-item .ai-desc { color: var(--text-secondary); font-size: 0.88em; line-height: 1.7; }
+.money-item .ai-sub { font-size: 0.85em; color: var(--accent-purple); font-weight: 600; margin: 8px 0 4px; }
+.glossary-item { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.glossary-item:last-child { border-bottom: none; }
+.glossary-item .term { color: var(--accent-blue); font-weight: 700; font-size: 0.9em; }
+.glossary-item .explain { color: var(--text-secondary); font-size: 0.85em; margin-top: 2px; }
+.github-item {
+  display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.github-item:last-child { border-bottom: none; }
+.github-item .rank { font-size: 0.85em; font-weight: 700; color: var(--accent-orange); min-width: 24px; }
+.github-item .gh-info { flex: 1; }
+.github-item .gh-name { color: var(--accent-blue); font-weight: 600; font-size: 0.9em; }
+.github-item .gh-desc { color: var(--text-secondary); font-size: 0.82em; margin-top: 2px; }
+.github-item .gh-stars { font-size: 0.78em; color: var(--accent-orange); white-space: nowrap; }
+.footer {
+  text-align: center; padding: 30px; color: var(--text-secondary); font-size: 0.8em;
+  margin-top: 20px; border-top: 1px solid var(--card-border);
+}
+.core-wind {
+  background: linear-gradient(135deg, rgba(255,107,107,0.1), rgba(255,107,107,0.02));
+  border: 1px solid rgba(255,107,107,0.2); border-radius: 10px; padding: 14px;
+  margin-bottom: 20px; font-size: 1.02em; font-weight: 600; color: var(--accent-red); text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>每日双专栏 · AI情报推送</h1>
+  <div class="date">2026年8月25日 星期二</div>
+  <div class="tagline">新闻联播风向标 × AI生产力黑洞</div>
+</div>
+
+<div class="columns">
+
+  <!-- ==================== 专栏一：新闻联播 ==================== -->
+  <div class="column col1">
+    <div class="column-title">专栏一 · 新闻联播每日简报（8月24日）</div>
+    <div class="column-body">
+
+      <!-- 核心风向 -->
+      <div class="core-wind">
+        主场外交破局中东（约旦国王国事访问+联合声明）+ 党建"政绩观"制度化收口 + 全链条科技服务体系成形 + 三台风连击东南沿海——8月24日周一联播以"外交+党建+科技"三轴并进，中东"全球南方"再下一城
+      </div>
+
+      <!-- 一、核心风向 -->
+      <div class="section">
+        <div class="section-title">一、核心风向</div>
+        <p style="color:var(--text-secondary);font-size:0.9em;">
+          8月24日新闻联播约<strong>14条主体</strong>，是一期"外交主场日"。头条双响炮聚焦<strong>约旦国王阿卜杜拉二世国事访问</strong>——上午习近平主持欢迎仪式、下午人民大会堂会谈，并发表<strong>《中约深化战略伙伴关系联合声明》</strong>，成为本期最重要的地缘政治信号。党建板块，习近平就<strong>"树立和践行正确政绩观"</strong>作出重要指示（蔡奇主持中央党的建设工作领导小组会议、李希出席），标志这一学习教育从"集中开展"进入"久久为功"的制度化收口阶段。经济科技板块，<strong>全链条科技服务体系</strong>给出密集量化数据（32家制造业创新中心、21家国家级中试平台、孵化42.5万家企业团队）。防灾板块，<strong>第18号"沙德尔"、第19号"紫檀"、第20号"简拉维"三台风共舞</strong>，东南沿海防汛进入最吃劲阶段。国际面，伊朗发布霍尔木兹海峡通行新规，中东博弈与主场外交形成呼应。
+        </p>
+      </div>
+
+      <!-- 二、分项解读 -->
+      <div class="section">
+        <div class="section-title">二、分项解读</div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">头条</span>习近平同约旦国王阿卜杜拉二世会谈</div>
+          <div class="read">
+            8月24日下午，国家主席习近平在<strong>北京人民大会堂</strong>同来华进行国事访问的约旦国王<strong>阿卜杜拉二世·本·侯赛因</strong>举行会谈（上午先举行欢迎仪式）。这是约旦国王<strong>8月18日至24日</strong>对华国事访问的高潮环节。习近平指出，中约建交以来始终相互尊重、平等相待、互利合作，<strong>2015年双方共同宣布建立中约战略伙伴关系</strong>；双方要深化发展战略对接，加强经贸、基建、交通、矿产等传统领域合作，拓展<strong>数字经济、人工智能、绿色能源</strong>等新合作增长点。阿卜杜拉二世表示，约方<strong>坚定奉行一个中国政策，认为台湾是中国领土的组成部分</strong>，欢迎更多中国企业赴约旦投资。两国元首就中东局势交换意见，习近平强调中方一贯主张全面停火止战、通过政治外交途径化解争端。会谈后发表<strong>《中华人民共和国和约旦哈希姆王国关于深化中约战略伙伴关系的联合声明》</strong>，明确以筹备<strong>2027年两国建交50周年</strong>为契机推动关系深化，并同意探讨开通两国直航；约方重视将《海洋生物多样性协定》秘书处设在中国厦门。同日，李强总理、赵乐际委员长分别会见阿卜杜拉二世。
+          </div>
+          <div class="interpret">
+            <strong>风向标解读：</strong>这是8月下旬中国主场外交的又一落子，本质是在中东乱局（伊朗霍尔木兹新规、以巴冲突延烧）中持续经营"全球南方联合自强"的朋友圈。约旦作为中东的"稳定器国家"，其"一个中国政策"表态 + 联合声明把<strong>数字经济、人工智能、绿色能源</strong>单列为"新合作增长点"，是继沙特、阿联酋之后中东产油国向中国数字经济/新能源产业链敞开的又一明确信号。"直航开通"是旅游与民间往来最直接的先手棋。
+          </div>
+          <div class="impact">
+            <strong>行业影响：</strong>直接利好<strong>出海中东的中国AI/新能源/基建企业</strong>（数据中心、光伏、储能、数字支付、智慧城市），约旦作为"一带一路"中东节点，是进入黎凡特与海湾市场的跳板。"《海洋生物多样性协定》秘书处落地厦门"若成真，将强化厦门国际海洋治理话语权，利好海洋经济、蓝碳、涉海环保产业。中东地缘的"中国变量"持续走强，油气贸易人民币结算、中东主权基金投资中国科技都是中长期观察点。
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">党建</span>习近平重要指示：巩固拓展树立和践行正确政绩观学习教育成果</div>
+          <div class="read">
+            中共中央总书记、国家主席、中央军委主席习近平近日作出重要指示强调，树立和践行正确政绩观是<strong>一项长期任务，必须久久为功</strong>，不断巩固拓展学习教育成果，持续推动各级党组织和广大党员、干部立党为公、为民造福、科学决策、真抓实干，努力创造<strong>经得起实践、人民、历史检验的实绩</strong>。习近平指出，党的十八大以来，针对党的建设中的重要问题、紧迫问题在全党组织开展学习教育，已成为党的建设一项重要制度性安排。习近平强调，要经常性开展政绩观教育，重点抓好<strong>地方党政正职、新提拔干部、年轻干部、关键岗位干部</strong>的教育培训；要坚持常态化查改问题，深化<strong>"新官不理旧账"</strong>整改整治；要用好考核指挥棒，完善<strong>差异化考核评价体系</strong>，树立重实干重实绩的选人用人导向。<strong>蔡奇主持中央党的建设工作领导小组会议并讲话，李希出席并讲话</strong>。
+          </div>
+          <div class="interpret">
+            <strong>风向标解读：</strong>这是"树立和践行正确政绩观学习教育"的收官定调——从集中性教育活动转为"经常性教育+常态化查改+考核指挥棒"的制度化安排。三个关键词值得高度关注：<strong>"新官不理旧账整改整治"</strong>直指地方债务、烂尾工程、历史遗留项目等"旧账"治理，释放"接力棒必须接稳"的信号；<strong>"差异化考核评价体系"</strong>意味着GDP导向考核将进一步让位于分类精准考核；<strong>重点抓"地方党政正职、关键岗位干部"</strong>则把监督靶心对准"一把手"。
+          </div>
+          <div class="impact">
+            <strong>行业影响：</strong>对<strong>地方政府债务化解、存量项目续建、营商环境</strong>是制度性利好——"新官必须理旧账"为存量PPP项目、在建工程、招商引资承诺提供连续性预期。对依赖政绩工程冲量的领域（盲目铺摊子式基建、面子工程）是利空约束。市场层面，地方政府的政策稳定性、契约精神提升，有利于民营资本中长期投资信心修复，利好<strong>基建、环保、公用事业</strong>等与地方财政强绑定的板块。
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">科技</span>我国加速形成全链条科技服务体系</div>
+          <div class="read">
+            新闻联播报道，为破解科研成果和产业需求脱节难题，今年以来我国加速建设科技成果转化的全链条服务体系。研发端：为提升制造领域关键共性技术供给能力，国家<strong>新成立2家国家制造业创新中心，目前已累计达到32家</strong>。中试环节：形成由<strong>21家国家级制造业中试平台和1800多家储备平台</strong>组成的中试服务网络。孵化阶段：全国共认定<strong>首批14家卓越级和402家标准级科技型企业孵化器，孵化企业和团队超过42.5万家</strong>。交易端：山东科技大市场已能利用<strong>大模型技术实现智能匹配</strong>，让企业从"大海捞针找技术"到"系统主动推送适配成果"；国家正加紧制定政策，建设<strong>国家统一技术交易服务平台</strong>。一条覆盖"研发—中试—孵化—交易"的全链条科技服务体系正加速形成。
+          </div>
+          <div class="interpret">
+            <strong>风向标解读：</strong>这是"科技创新与产业创新深度融合"战略在制度基建上的关键落子，核心是<strong>补齐"科技成果产业化"这条最薄弱的中段链条</strong>。数据信号非常明确：32家制造业创新中心（研发源头）、21+1800家中试平台（转化鸿沟）、14卓越级+402标准级孵化器（培育落地）、42.5万家孵化企业团队（规模底盘），加上<strong>"国家统一技术交易服务平台"</strong>——意味着国家层面正在把过去分散在各地、各高校的成果转化资源"联网成一张网"。
+          </div>
+          <div class="impact">
+            <strong>行业影响：</strong>直接利好<strong>科技服务业、技术交易/成果转化中介、中试基地运营方、科技型孵化器</strong>，"技术经理人"成为政策明确要壮大的职业化队伍。山东"科技大市场用大模型做智能匹配"是AI+成果转化的标杆样本，利好<strong>垂直行业大模型、专利导航、技术情报分析</strong>类AI应用。"概念验证—中试—孵化—交易"全链条的资本与场景，为<strong>耐心资本、知识产权证券化、科技保险</strong>打开新增量。对科创型中小企业，转化渠道畅通意味着"实验室成果→生产线"的周期显著缩短。
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">外交</span>习近平致电祝贺阿拉姆吉尔就任孟加拉国总统</div>
+          <div class="read">
+            8月24日，国家主席习近平<strong>致电阿拉姆吉尔，祝贺他就任孟加拉人民共和国总统</strong>。习近平指出，中孟是守望相助的友好近邻，两国始终相互尊重、平等相待，中方高度重视中孟关系，愿同孟方一道深化共建"一带一路"合作，推动中孟命运共同体建设走深走实。
+          </div>
+          <div class="interpret">
+            <strong>风向标解读：</strong>这是中国对孟加拉国政坛新局面的外交确认动作，延续"南亚友好近邻"的既定基调。孟加拉国是共建"一带一路"在南亚的重要支点（中孟经济走廊、吉大港项目、孟加拉国中资工业园），新总统就任后的对华政策延续性是核心观察点。
+          </div>
+          <div class="impact">
+            <strong>行业影响：</strong>利好<strong>中孟基建、纺织服装产业链、港口物流</strong>合作延续。孟加拉国是全球第二大服装出口国，中资在服装、电力、基建领域布局较深，政治过渡平稳与否直接关系相关出海企业的项目安全与订单稳定性。
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">时政</span>王沪宁主持全国政协主席会议并会见中美1.5轨对话美方代表</div>
+          <div class="read">
+            政协第十四届全国委员会<strong>第五十四次主席会议</strong>24日在京召开，中共中央政治局常委、全国政协主席王沪宁主持并讲话。同日，王沪宁在京会见出席<strong>第三届中美1.5轨对话</strong>的美方代表。国家副主席<strong>韩正24日在北京会见科威特外交大臣杰拉赫</strong>。
+          </div>
+          <div class="interpret">
+            <strong>风向标解读：</strong>"1.5轨对话"是介于官方（一轨）与民间（二轨）之间的半官方交流，中美1.5轨对话的持续举行，是两国在正式外交渠道之外保留的"缓冲沟通带"。叠加韩正会见科威特外交大臣，中东方向的外交节奏与约旦国事访问形成同日联动。
+          </div>
+          <div class="impact">
+            <strong>行业影响：</strong>中美1.5轨对话的延续，对<strong>科技、金融、贸易</strong>领域的政策预期管理有边际缓和意义，是市场关注中美关系的"温度计"之一。科威特方向利好<strong>能源（石油工程、炼化）、基建</strong>合作。
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">防灾</span>三台风影响东南沿海 多地积极应对强降雨</div>
+          <div class="read">
+            受今年<strong>第18号台风"沙德尔"、第19号台风"紫檀"和第20号台风"简拉维"</strong>影响，我国东南沿海持续强降雨，各地严密防范、积极应对。这是继8月23日"三台风共舞"之后，台风群影响持续发酵，广东、福建、浙江等沿海地区进入防汛防台风关键期。
+          </div>
+          <div class="interpret">
+            <strong>风向标解读：</strong>三台风同场影响是典型的"秋季台风群发"现象，叠加天文大潮易形成"风、雨、潮"三碰头。新闻联播连续两日播报，说明防汛防台风已进入国家层面的应急调度节奏，体现"人民至上、生命至上"的底线思维。
+          </div>
+          <div class="impact">
+            <strong>行业影响：</strong>短期利好<strong>防汛抗洪物资、应急装备、水利工程、市政排水</strong>；利空<strong>东南沿海的物流运输、港口航运、户外文旅、农产品（果蔬）</strong>短期供给。台风过后通常伴随城市基础设施灾后重建需求，中长期关注<strong>海绵城市、城市排水管网改造</strong>。对生鲜电商用户是即时提醒——东南沿海冷链物流、果蔬产地短期可能延误或涨价。
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">应急</span>国新办"新征程上的奋斗者"中外记者见面会</div>
+          <div class="read">
+            国务院新闻办公室24日举行"新征程上的奋斗者"中外记者见面会，<strong>5位应急管理系统先进典型代表</strong>围绕"躬身实干防风险 应急守护为民安"与中外记者见面交流。这是"新征程上的奋斗者"系列主题发布活动之一，聚焦应急管理战线的一线人物。
+          </div>
+          <div class="interpret">
+            <strong>风向标解读：</strong>把"应急管理系统先进典型"推向中外记者，既呼应当期三台风防灾的时点，也体现"大应急、大安全、大减灾"框架下对基层应急队伍的价值肯定，属于典型的人物叙事型宣传。
+          </div>
+          <div class="impact">
+            <strong>行业影响：</strong>政策叙事持续向<strong>应急管理体系、基层应急能力建设</strong>倾斜，利好智慧应急、灾害预警信息化、应急装备国产化赛道。
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">讣告</span>全国政协副主席陈武同志逝世</div>
+          <div class="read">
+            中国共产党的优秀党员，忠诚的共产主义战士，我国民族工作和经济建设战线的杰出领导人，中国人民政治协商会议第十四届全国委员会副主席<strong>陈武同志</strong>，因病于<strong>2026年8月24日15时05分在北京逝世，享年72岁</strong>。陈武曾任广西壮族自治区人民政府主席。
+          </div>
+          <div class="interpret">
+            <strong>风向标解读：</strong>这是一条例行的领导人讣告。陈武同志长期在民族地区和经济建设战线工作，曾任广西壮族自治区主席，其逝世是广西及民族工作领域的重要人事节点。
+          </div>
+          <div class="impact">
+            <strong>行业影响：</strong>无直接市场影响，属于时政记录。关注后续治丧安排及广西相关人事衔接。
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">快讯</span>医保基层专项行动 / 团播整治 / 长春电影节</div>
+          <div class="read">
+            <strong>①医保助力基层卫生专项行动：</strong>"十五五"期间我国将开展医保助力基层卫生专项行动，医保基金对符合条件的紧密型县域医共体实行总额付费，推动医疗资源下沉，并将<strong>98%以上村卫生室纳入医保定点管理</strong>，提高基层就医报销比例，引导患者基层就诊。<br>
+            <strong>②团播乱象整治：</strong>中央网信办7月启动"清朗·网络娱乐团播乱象整治"专项行动以来，已累计<strong>处置团播违规直播间7200余个，严惩违规账号2200余个</strong>，聚焦内容低俗不良、侵害未成年人权益等突出问题。<br>
+            <strong>③长春电影节：</strong>第二十一届中国长春电影节开幕，征集参赛作品150多部、16部影片入围角逐10个奖项，为期6天，展映近500场次，同步举办电影嘉年华、光影市集等活动。
+          </div>
+          <div class="interpret">
+            <strong>风向标解读：</strong>三条快讯分别对应"民生—治理—文化"三个维度：医保"总额付费+村卫生室全覆盖"是分级诊疗的制度性加码；团播整治延续对网络娱乐内容生态的强监管；长春电影节则是提振电影消费、激活地方文旅的信号。
+          </div>
+          <div class="impact">
+            <strong>行业影响：</strong>医保条线利好<strong>基层医疗、县域医共体信息化、药品下沉渠道、连锁基层诊所</strong>；团播整治利空低俗直播公会、擦边娱乐直播，利好合规MCN与内容精品化；电影节利好<strong>影视内容、电影消费、地方文旅</strong>，电影大盘暑期档尾声仍有拉动。
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">国际</span>伊朗发布霍尔木兹海峡通行新规</div>
+          <div class="read">
+            伊朗波斯湾海峡管理局23日就霍尔木兹海峡通行发布新规称，<strong>违反伊朗关于海峡航行规定的船只将面临罚款、扣押或没收等限制措施</strong>；伊朗同时称正与《麦加共同防务协议》成员国进行相关讨论。另据国际联播快讯：<strong>超七成加拿大受访者支持退出加美谈判</strong>；<strong>欧盟敦促以色列停止扩建定居点计划</strong>。
+          </div>
+          <div class="interpret">
+            <strong>风向标解读：</strong>霍尔木兹海峡是"世界油阀"（全球约1/5石油、1/4液化天然气经此运输），伊朗发布通行新规并抬升执法力度，是中东博弈升级的直接信号。中国作为中东原油重要买家，油运安全与能源价格波动是核心传导链。同日约旦国王访华、中方重申"全面停火止战"，形成"中东博弈升温—中国主场斡旋"的鲜明对照。
+          </div>
+          <div class="impact">
+            <strong>行业影响：</strong>霍尔木兹局势紧张短期推升<strong>油价、航运保险（战争险）、油运运价</strong>，利好油气开采、油运、油服板块；利空炼化下游成本端。地缘风险升温还利好<strong>黄金等避险资产</strong>。中国能源安全视角下，<strong>新能源替代、油气战略储备、人民币油气结算</strong>的中长期逻辑进一步强化。
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 三、总结风向标 -->
+      <div class="section">
+        <div class="section-title">三、总结风向标</div>
+        <div class="summary-box">
+          <div class="title">📌 整体政策走向与投资建议</div>
+          <div class="text">
+            8月24日联播可概括为<strong>"外交突围中东 + 党建制度化 + 科技转化补短板 + 台风防灾"</strong>四条主线。<strong>外交面</strong>，约旦国事访问+联合声明把"数字经济、AI、绿色能源"写入对中东合作清单，是出海板块（新能源、AI基础设施、数字支付）的确定性增量；<strong>治理面</strong>，"正确政绩观"制度化+"新官不理旧账"整改，为地方政府债务化解、存量项目续建提供契约预期，利好与地方财政强绑定的基建/环保/公用事业；<strong>科技面</strong>，全链条科技服务体系量化数据密集披露，科技服务业、中试平台、技术交易平台是政策明确扶植的新赛道；<strong>风险面</strong>，三台风连击东南沿海短期扰动物流与农产品供给，霍尔木兹通行新规推升油价与避险情绪。综合看，<strong>结构性机会集中在中东出海、科技服务、基层医疗、避险资产四条线；需规避台风直接冲击的航运物流与低俗直播内容生态。</strong>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== 专栏二：AI生产力情报 ==================== -->
+  <div class="column col2">
+    <div class="column-title">专栏二 · AI生产力情报</div>
+    <div class="column-body">
+
+      <div class="ai-section-title">🚀 AI 生产力黑洞：今日黑科技与套利指南</div>
+      <p style="color:var(--text-secondary);font-size:0.85em;margin-bottom:14px;">📅 日期：2026-08-25</p>
+
+      <!-- 顶级装备库 -->
+      <div class="ai-section-title">🛠️ 【顶级装备库更新】</div>
+
+      <div class="ai-item">
+        <div class="ai-topic">free-claude-code <span class="ai-tag hot">GitHub #1</span><span class="ai-tag new">48.9k★</span></div>
+        <div class="ai-desc">
+          项目：<strong>Alishahryar1/free-claude-code</strong>——"免费白嫖 Claude Code / Codex / Pi / OpenCode"深度拆解<br>
+          <span class="ai-sub">核心黑科技：</span>聚合 13亿+ 免费 token 池，把多家顶级编码模型的免费额度"打包装进一个入口"，支持终端、App、IDE 甚至手机（如 OpenClaw，支持语音且对 ToS 友好）。本质是<strong>把各家模型的免费额度/学生额度/试用额度做聚合路由</strong>，一个工具轮着薅。
+          <span class="ai-sub">实战价值：</span>适合个人开发者、独立开发、副业接单场景——在预算为零的前提下白嫖 Claude Code 级别的编码能力。对"一个人顶一个开发小组"的 vibe coding 玩家，等于把工具成本打到地板。配合你的 UE 插件开发、HLSL 调试、小红书选品脚本，能省下一大笔 API 月费。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">ai-job-search <span class="ai-tag hot">GitHub #3</span><span class="ai-tag new">34k★</span></div>
+        <div class="ai-desc">
+          项目：<strong>MadsLorentzen/ai-job-search</strong>——"跑在你本机上的 AI 求职 Agent"深度拆解<br>
+          <span class="ai-sub">核心黑科技：</span>基于 Claude Code 构建的求职框架，能<strong>自动评估职位匹配度、定制化改写简历、生成针对性求职信、准备面试</strong>。不是简单套模板，而是让 AI 读懂 JD 后做"岗位—你的经历"的双向对齐，"Fork 即可拥有"。
+          <span class="ai-sub">实战价值：</span>适合求职者与自由职业者批量投递——一个人同时海投几十个岗位还能保持每份简历"定制化"。对做副业接单的人，反过来也能用它<strong>拆解甲方的需求、定制报价与方案</strong>，把"海投"逻辑平移到"海选商机"。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">andrej-karpathy-skills <span class="ai-tag hot">GitHub #4</span><span class="ai-tag new">206.5k★</span></div>
+        <div class="ai-desc">
+          项目：<strong>multica-ai/andrej-karpathy-skills</strong>——"一个 CLAUDE.md 文件改善 Claude Code 行为"深度拆解<br>
+          <span class="ai-sub">核心黑科技：</span>源自 Andrej Karpathy 对 LLM 编码陷阱的观察，把<strong>「如何避免 AI 编码踩坑」的隐性经验压缩成一份 CLAUDE.md 提示词</strong>，让 Claude Code 在你项目里少犯低级错误、更懂你的代码风格。20 万+ star 说明"调教 Agent 的提示词资产"已成为硬通货。
+          <span class="ai-sub">实战价值：</span>核心启发是——<strong>你的 agent.md / CLAUDE.md 就是你的"生产力护城河"</strong>。与其每次对话重复解释偏好，不如把代码风格、命名规范、UE 项目约定写成一份项目级提示词，一劳永逸。这正是"个人 agent 记忆"的最佳实践，值得直接套用到你的工作流。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">OpenLogi <span class="ai-tag new">GitHub #8</span><span class="ai-tag new">15.8k★</span></div>
+        <div class="ai-desc">
+          项目：<strong>AprilNEA/OpenLogi</strong>——"Logitech Options+ 的本地优先替代品"深度拆解<br>
+          <span class="ai-sub">核心黑科技：</span>用 Rust 重写，通过 <strong>HID++ 协议直接重映射按键、DPI、SmartShift</strong>，无账号、无遥测、纯本地。把罗技官方套件臃肿的云账号+遥测那套彻底拿掉，给你一个干净、开源、可控的鼠标管理工具。
+          <span class="ai-sub">实战价值：</span>对在乎隐私与效率的重度键鼠用户是刚需级替代——尤其适合 UE 编辑器里需要精细控制 DPI、快捷键映射的场景。"无账号无遥测"的产品哲学，也是当下"本地优先"AI 工具潮的一个缩影。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">hermes-agent <span class="ai-tag hot">GitHub #6</span><span class="ai-tag new">235.8k★</span></div>
+        <div class="ai-desc">
+          项目：<strong>NousResearch/hermes-agent</strong>——"与你一起成长的智能代理"深度拆解<br>
+          <span class="ai-sub">核心黑科技：</span>Nous Research 出品的 Agent 框架，主打<strong>"长期记忆 + 持续成长"</strong>，Agent 会随使用沉淀对用户的认知、偏好与工作习惯，而不是每次会话清零。235k star 是本期 Trending 里 star 总量最高的项目。
+          <span class="ai-sub">实战价值：</span>呼应本期一个核心趋势——<strong>"AI 第二大脑会腐烂"（long-running agent memory decays）</strong>。长期跑任务的 Agent 最大的痛点是记忆衰减，hermes-agent 正是冲着这个问题去。做自动化、日推机器人、多 Agent 协作的人值得关注其记忆机制设计。
+        </div>
+      </div>
+
+      <!-- Agent 战场情报 -->
+      <div class="ai-section-title">🤖 【Agent 战场情报】</div>
+
+      <div class="ai-item">
+        <div class="ai-topic">Grok Bot 拓展更多订阅计划 <span class="ai-tag new">xAI</span></div>
+        <div class="ai-desc">
+          <span class="ai-sub">动态：</span>Grok Bot 现已扩展至所有 <strong>SuperGrok Plus、Cursor Pro+、Cursor Teams</strong> 订阅方案，用户可以管理用于<strong>销售拓客（Sales Prospector）、网站搭建（Website Builder）、收件箱管理（Inbox Manager）</strong>等不同角色的多个 Bot。
+          <span class="ai-sub">解读：</span>核心是"从单 Bot 到多 Agent 团队"的范式——Grok Bot 被赋予明确的权责划分、可复用 Skills、事件驱动 Routines、类型化交接（Typed Handoffs）、验证规则和审批边界后，会演化为一个<strong>7×24 持久化的多 Agent 系统</strong>，能以极少人工干预执行、验证并交付周期性工作。
+          <span class="ai-sub">落地场景：</span>直接映射到你的日推自动化——把"新闻联播抓取""AI 情报采集""HTML 生成""git 推送"拆成带校验边界的 Bot，经理 Bot 审核产出质量、不合格打回重做，就能从"我每天手动跑"升级为"一个团队自动跑"。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">OpenAI Codex「额度黑洞」查清并全量重置 <span class="ai-tag hot">Codex</span></div>
+        <div class="ai-desc">
+          <span class="ai-sub">动态：</span>OpenAI Codex 负责人 <strong>Tibo Sottiaux</strong> 复盘承认三处 Bug 导致用量消耗过快：<strong>①长会话图片压缩低效；②Computer History 重度用户消耗偏高；③自动生成对话标题功能超额消耗</strong>。OpenAI 将为所有付费订阅做一次完整额度重置。
+          <span class="ai-sub">解读：</span>用户此前集体"查账"质疑 Codex 偷额度、配额缩水甚至模型降级，官方从"打击违规账号"的叙事转向"承认 Bug + 全量重置"，相当于<strong>白送数百万美元算力</strong>。这暴露了 Agent 计费的"黑箱化"——用量消耗缺乏透明审计。
+          <span class="ai-sub">落地场景：</span>提醒所有重度用 Agent 的人：<strong>定期审计自己的 token 消耗明细</strong>，别默认官方扣费就是对的。对个人开发者，趁这波"额度重置"红利，把积压的代码任务集中跑掉。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">MCP 全新路线图发布 <span class="ai-tag new">协议层</span></div>
+        <div class="ai-desc">
+          <span class="ai-sub">动态：</span>Model Context Protocol（MCP）发布最新路线图，确立五大优先领域：<strong>①Agent 消息传递原语；②HTTP 原生传输协议的统一与加固；③Agent 身份标识与企业级安全；④改进的原语；⑤优化的 SDK 开发者体验</strong>。
+          <span class="ai-sub">解读：</span>MCP 从"工具调用协议"走向"Agent 互操作标准"——重点是让不同 Agent 之间能<strong>发消息、交接任务、验证身份</strong>，也就是从"给 AI 一个插座"升级到"给一群 AI 一个协作网络"。合规这些优先领域的提案会获快速审查。
+          <span class="ai-sub">落地场景：</span>意味着未来"经理 Agent 监控员工 Agent"会有标准协议支撑，而不是各框架各搞一套。做多 Agent 编排、Agent 团队的开发者应提前关注 MCP 的 Agent 原语，避免在私有协议上重复造轮子。
+        </div>
+      </div>
+
+      <!-- AI新玩法新概念 -->
+      <div class="ai-section-title">🖊【AI新玩法，新概念】</div>
+
+      <div class="ai-item">
+        <div class="ai-topic">OpenAI 总裁 Greg Brockman：要「买光地球所有算力」</div>
+        <div class="ai-desc">
+          <span class="ai-sub">动态：</span>OpenAI 总裁 <strong>Greg Brockman</strong> 在 45 分钟深度访谈中提出新判断：<strong>世界长期不会有足够算力</strong>——智能体用户仅约两千万，而 ChatGPT 用户已达十亿，需求"远未真正开始"；他透露 Codex 内部渗透率已接近 Slack，<strong>每周约 2.3 亿人用 ChatGPT 问健康问题</strong>。
+          <span class="ai-sub">解读：</span>"买光所有算力"不是字面收购，而是表达<strong>算力将成为 AI 时代最稀缺的生产资料</strong>，智能体规模化后算力需求会指数级爆发。ChatGPT 十亿用户 vs Agent 两千万用户的 50 倍差，正是"Agent 普及仍处极早期"的量化证据。
+          <span class="ai-sub">落地场景：</span>对个人与团队的直接启示是<strong>尽早卡位算力资源与降本技巧</strong>——利用开源权重模型、离峰定价、免费额度聚合（如前文的 free-claude-code）来对冲未来算力溢价。对关注 AI 投资的人，算力/芯片/电力仍是主线逻辑。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">奥特曼点名 Alec Radford：定义 OpenAI 技术路线的幕后研究者</div>
+        <div class="ai-desc">
+          <span class="ai-sub">动态：</span>奥特曼在播客中推崇一位幕后研究者 <strong>Alec Radford</strong>——他以第一作者奠定 <strong>GPT-1/2</strong>，并主导 <strong>CLIP、Whisper</strong>，将通用预训练从语言扩展到图像与语音。Radford 已于 2024 年离开 OpenAI 转向独立研究。
+          <span class="ai-sub">解读：</span>这条动态的"新概念"在于——<strong>真正定义 AI 技术路线的是"把预训练范式从语言泛化到多模态"的底层研究者</strong>，而非台前的明星高管。CLIP（文本图像对齐）、Whisper（语音识别）至今仍是无数应用的地基。
+          <span class="ai-sub">落地场景：</span>方法论启发：<strong>跟着"范式奠基人"的论文走，而不是跟着热搜走</strong>。CLIP/Whisper 系列至今仍是多模态选品识别、音频转写类工具的底座，研究这类"地基技术"的二次应用，往往比追新概念更能挖到套利点。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">「个人 agent.md」：把代码风格偏好一次写清，不再每次重复解释</div>
+        <div class="ai-desc">
+          <span class="ai-sub">动态：</span>一篇登顶 Hacker News 的帖子提出新概念 <strong>"personal agent.md"</strong>——把你的代码风格偏好、命名约定、技术栈选择<strong>一次性写成一份 agent.md 文件</strong>，避免每个 coding agent 会话都重新解释一遍。
+          <span class="ai-sub">解读：</span>本质是<strong>把"提示词"资产化、文件化</strong>。当编码 Agent 越来越像"临时工"（每次会话都从零开始），一份稳定的 agent.md 就是让它们秒变"老员工"的 onboarding 手册。这与本期 Trending 的 andrej-karpathy-skills（20万星）同源。
+          <span class="ai-sub">落地场景：</span>立刻可做：为你的 UE 项目、日推自动化分别写一份 agent.md，固化"UE5.5 + C++ + Rider"的工程约定、"新闻联播解读纪律 + 五维选品标准"的业务规则，以后任何 Agent 接手都能无缝衔接，效率提升立竿见影。
+        </div>
+      </div>
+
+      <!-- AI套利/变现线索 -->
+      <div class="ai-section-title">💰 【AI 套利/变现线索】</div>
+
+      <div class="money-item">
+        <div class="ai-topic">Cloudflare 用 AI Agent 审查 13 万次合并请求，每次仅 $1</div>
+        <div class="ai-desc">
+          <span class="ai-sub">热点：</span>IndyDevDan 新视频拆解 Cloudflare 的"软件工厂"——<strong>每月用 AI Agent 审查 130,000 次 merge request，单次成本仅 $1</strong>，实现"海量代码审查的工业化"。
+          <span class="ai-sub">复刻建议：</span>个人/小团队也能复刻这套"廉价规模化质检"逻辑：用便宜的编码 Agent（配合离峰定价、开源模型）给 GitHub 仓库挂一个<strong>自动 code review 流水线</strong>，把"每个 PR 都要人工看"变成"AI 先审、人只终审"。对做外包、接单的人，等于把交付质量兜底成本压到接近零。
+        </div>
+      </div>
+
+      <div class="money-item">
+        <div class="ai-topic">新闻联播简报 → 音频早报，发视频号/小红书吸粉</div>
+        <div class="ai-desc">
+          <span class="ai-sub">热点：</span>国外博主用 NotebookLM 把枯燥法律文档转成脱口秀电台在 Spotify 获利。国内可本地化的成熟玩法是——<strong>把"新闻联播风向标解读"这类文字内容转成音频早报</strong>，用 TTS（如 edge-tts、豆包配音）生成自然语音。
+          <span class="ai-sub">复刻建议：</span>具体操作：①把你每日生成的"新闻联播风向标解读"文字稿，用 edge-tts 或豆包 TTS 转成 3-5 分钟音频；②配一张模板封面，发<strong>视频号/小红书/喜马拉雅</strong>，标题用"今日政策风向 3 分钟速览"；③坚持日更，吃"通勤/洗漱听早报"的场景红利。内容资产你已有，只是换了个分发形态，边际成本几乎为零。
+        </div>
+      </div>
+
+      <div class="money-item">
+        <div class="ai-topic">DeepSeek 价格过山车 = 弹性需求的套利窗口</div>
+        <div class="ai-desc">
+          <span class="ai-sub">热点：</span>DeepSeek V4 Flash 0731 上线首周在 OpenRouter 处理 <strong>7.22 万亿 token</strong>（榜首），8月16日涨价后用量"一夜腰斩"；Vercel AI Gateway 数据显示开源权重模型（多为中国模型）已占网关 token 量的 <strong>29%</strong>，DeepSeek 一家占 22.6%，却只占不到 4% 的花费。同期 OpenAI 对 GPT-5.6 Sol 降价 20-33%（输入 $4/百万、输出 $20/百万，促销至 11月21日）。
+          <span class="ai-sub">复刻建议：</span>抓住两点：①<strong>趁 OpenAI 这波 3 个月促销价</strong>，把需要高质量推理的任务集中跑掉；②<strong>建立"峰值用贵模型、离峰用便宜/开源模型"的混合路由</strong>——日常批量任务走开源权重模型，关键任务才上旗舰。价差就是你的利润，模型路由能力就是护城河。
+        </div>
+      </div>
+
+      <div class="money-item">
+        <div class="ai-topic">Anthropic 冲击史上最大 IPO：2 万亿估值、募资超千亿</div>
+        <div class="ai-desc">
+          <span class="ai-sub">热点：</span>Anthropic 计划年内 IPO，目标估值 <strong>2 万亿美元、募资超 1000 亿美元</strong>，有望超 SpaceX 成史上最大 IPO；其 ARR 已超 650 亿美元并首次盈利，还挖来谷歌 TPU 项目创始人 <strong>Amir Salek</strong> 组建自研芯片团队（2026 年算力投入约 190 亿美元）。同时 Anthropic 最强模型 Fable 5 发布两月后企业支出占比仅约 11%，平价 Opus 5 反超。
+          <span class="ai-sub">复刻建议：</span>这条对普通人的启示不是"去打新 IPO"，而是<strong>识别"最贵模型遇冷、平价模型逆袭"的产业拐点</strong>——高端模型单价高企反而催生"平价替代"的巨大市场空间。做应用层的创业者/副业者，与其追逐最贵旗舰，不如把架构搭在<strong>性价比最优的模型</strong>上，成本结构就赢了。
+        </div>
+      </div>
+
+      <!-- 避坑/黑话词典 -->
+      <div class="ai-section-title">🔍 【避坑/黑话词典】</div>
+
+      <div class="glossary-item">
+        <div class="term">MCP (Model Context Protocol)</div>
+        <div class="explain">给所有 AI 一个统一插座。以前你的扣子、Trae、Claude Code 各连各的工具，现在通过 MCP 一个协议就能让任意 AI 无缝调用同一批本地/云端能力，不用再纠结选哪个客户端。</div>
+      </div>
+      <div class="glossary-item">
+        <div class="term">Agent Harness（智能体外壳）</div>
+        <div class="explain">套在模型外面的那套"手脚"——负责让模型能调用工具、读写文件、执行命令的框架层。模型本身只会"预测下一个词"，是 Harness 让它能真的动手干活。现在 Harness 的进化速度比模型还关键。</div>
+      </div>
+      <div class="glossary-item">
+        <div class="term">Benchmaxxing（基准刷榜）</div>
+        <div class="explain">模型专门针对评测基准做优化，在榜单上刷高分，但真实任务能力没提升。看模型别只看 benchmark 分数，要看它在你的具体场景里的实测表现。</div>
+      </div>
+      <div class="glossary-item">
+        <div class="term">Typed Handoffs（类型化交接）</div>
+        <div class="explain">多 Agent 协作里，一个 Agent 把任务"结构化地"交给下一个 Agent 的机制——不是甩一段模糊文本，而是带明确字段、状态、验证规则的交接单，确保任务不会在 Agent 之间传丢、传错。</div>
+      </div>
+      <div class="glossary-item">
+        <div class="term">HID++（罗技硬件协议）</div>
+        <div class="explain">罗技键鼠与电脑之间通信的底层协议。第三方工具（如 OpenLogi）直接跟它对话，就能绕过官方软件实现按键重映射、DPI 调节，做到无账号、无遥测。</div>
+      </div>
+
+      <div class="ai-section-title" style="margin-top:20px;">📈 GitHub Trending 精选（8月25日）</div>
+      <div class="github-item"><div class="rank">1</div><div class="gh-info"><div class="gh-name">Alishahryar1/free-claude-code</div><div class="gh-desc">免费使用 Claude Code、Codex、Pi、OpenCode（13亿+免费token），支持 OpenClaw 语音</div></div><div class="gh-stars">48.9k★</div></div>
+      <div class="github-item"><div class="rank">2</div><div class="gh-info"><div class="gh-name">openai/codex</div><div class="gh-desc">终端里运行的轻量级编码代理（Rust）</div></div><div class="gh-stars">117k★</div></div>
+      <div class="github-item"><div class="rank">3</div><div class="gh-info"><div class="gh-name">MadsLorentzen/ai-job-search</div><div class="gh-desc">本机运行的 AI 求职工具：评估职位、定制简历、写求职信、准备面试</div></div><div class="gh-stars">34k★</div></div>
+      <div class="github-item"><div class="rank">4</div><div class="gh-info"><div class="gh-name">multica-ai/andrej-karpathy-skills</div><div class="gh-desc">改善 Claude Code 行为的单一 CLAUDE.md 文件（Karpathy LLM 编码陷阱观察）</div></div><div class="gh-stars">206.5k★</div></div>
+      <div class="github-item"><div class="rank">5</div><div class="gh-info"><div class="gh-name">makeplane/plane</div><div class="gh-desc">开源 Jira/Linear/Monday/ClickUp 替代品（TypeScript）</div></div><div class="gh-stars">57.9k★</div></div>
+      <div class="github-item"><div class="rank">6</div><div class="gh-info"><div class="gh-name">NousResearch/hermes-agent</div><div class="gh-desc">与你一起成长的智能代理（长期记忆）</div></div><div class="gh-stars">235.8k★</div></div>
+      <div class="github-item"><div class="rank">7</div><div class="gh-info"><div class="gh-name">anthropics/claude-plugins-community</div><div class="gh-desc">Claude Cowork 与 Claude Code 社区插件市场</div></div><div class="gh-stars">1.3k★</div></div>
+      <div class="github-item"><div class="rank">8</div><div class="gh-info"><div class="gh-name">AprilNEA/OpenLogi</div><div class="gh-desc">Logitech Options+ 本地优先替代（Rust，HID++ 重映射）</div></div><div class="gh-stars">15.8k★</div></div>
+      <div class="github-item"><div class="rank">9</div><div class="gh-info"><div class="gh-name">apache/maka</div><div class="gh-desc">本地优先 AI 代理工作区，仅追加日志记录模型消息/工具调用</div></div><div class="gh-stars">2.9k★</div></div>
+      <div class="github-item"><div class="rank">10</div><div class="gh-info"><div class="gh-name">PostHog/posthog</div><div class="gh-desc">AI 可观测性/分析/会话回放平台，可从 Slack/MCP 操控</div></div><div class="gh-stars">39k★</div></div>
+
+      <div class="ai-section-title" style="margin-top:20px;">🆕 Product Hunt 新品（8月25日）</div>
+      <div class="ai-item">
+        <div class="ai-topic">Construct Computer <span class="ai-tag new">今日新品</span></div>
+        <div class="ai-desc">"Your AI coworker gets a computer. You get your day back."——给你的 AI 同事配一台电脑，让它在云端自主完成繁琐任务，你只需回收时间。定位 Productivity + AI，属于"AI 电脑/云端数字员工"赛道的又一选手。</div>
+      </div>
+      <div class="ai-item">
+        <div class="ai-topic">FetchSandbox MCP <span class="ai-tag new">今日新品</span></div>
+        <div class="ai-desc">"The MCP that proves your AI's integration fixes work"——专门验证你的 AI 集成修复是否有效的 MCP 工具，为 Agent 集成测试提供沙箱环境，开发者工具赛道。</div>
+      </div>
+      <div class="ai-item">
+        <div class="ai-topic">Claude Academy <span class="ai-tag new">今日新品</span></div>
+        <div class="ai-desc">Anthropic 官方学习中心（The Official Learning Hub），教育 + AI + 在线学习赛道。官方下场做教程，意味着 Claude 生态的"开发者教育"进入系统化阶段，是学 Claude 全家桶的权威入口。</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  每日双专栏AI情报推送 · 信源：央视网/新闻联播、GitHub Trending、Product Hunt、Twitter/X、36氪/量子位等<br>
+  仅供学习参考，不构成投资建议 · 生成于 2026-08-25
+</div>
+
+</body>
+</html>
