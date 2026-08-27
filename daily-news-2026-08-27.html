@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日双专栏AI情报推送 - 2026年8月27日</title>
+<style>
+:root {
+  --bg: #0f0f14;
+  --card-bg: #1a1a24;
+  --card-border: #2a2a3a;
+  --text: #e1e1e6;
+  --text-secondary: #9999aa;
+  --accent-red: #e8454d;
+  --accent-blue: #4a90d9;
+  --accent-green: #3cb371;
+  --accent-orange: #f0a040;
+  --accent-purple: #a78bfa;
+  --accent-teal: #2dd4bf;
+  --tag-bg: rgba(232,69,77,0.1);
+  --tag-text: #e8454d;
+  --highlight: #ffd700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  padding: 20px;
+}
+.header {
+  text-align: center;
+  padding: 40px 20px 30px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border-radius: 16px;
+  margin-bottom: 30px;
+  border: 1px solid var(--card-border);
+}
+.header h1 {
+  font-size: 2em;
+  background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+.header .date { color: var(--text-secondary); font-size: 0.95em; }
+.header .tagline { color: var(--accent-teal); font-size: 0.85em; margin-top: 6px; }
+.columns { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 900px) { .columns { grid-template-columns: 1fr; } }
+.column-title { font-size: 1.3em; font-weight: 700; padding: 14px 20px; border-radius: 12px 12px 0 0; margin-bottom: 0; }
+.col1 .column-title { background: linear-gradient(135deg, #c0392b, #e74c3c); color: #fff; }
+.col2 .column-title { background: linear-gradient(135deg, #2c3e50, #3498db); color: #fff; }
+.column { background: var(--card-bg); border-radius: 14px; border: 1px solid var(--card-border); overflow: hidden; }
+.column-body { padding: 20px; }
+.section { margin-bottom: 24px; }
+.section-title {
+  font-size: 1.1em; font-weight: 700; color: var(--accent-orange);
+  border-left: 3px solid var(--accent-orange); padding-left: 10px; margin-bottom: 14px;
+}
+.news-item {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px; padding: 16px; margin-bottom: 14px;
+}
+.news-item:hover { border-color: rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); }
+.news-item .topic { font-size: 1.05em; font-weight: 700; color: var(--accent-red); margin-bottom: 8px; }
+.news-item .label {
+  display: inline-block; font-size: 0.75em; font-weight: 600; padding: 2px 8px;
+  border-radius: 4px; margin-right: 6px; background: var(--tag-bg); color: var(--tag-text);
+}
+.news-item .content { color: var(--text-secondary); font-size: 0.9em; line-height: 1.7; margin: 6px 0; }
+.news-item .read { color: var(--text); font-size: 0.92em; line-height: 1.7; margin: 6px 0; }
+.news-item .read strong { color: var(--highlight); }
+.news-item .interpret {
+  margin-top: 8px; padding: 8px 12px; background: rgba(74,144,217,0.08);
+  border-left: 3px solid var(--accent-blue); border-radius: 0 6px 6px 0;
+  font-size: 0.85em; color: var(--accent-blue);
+}
+.news-item .interpret strong { color: var(--text); }
+.news-item .impact {
+  margin-top: 8px; padding: 8px 12px; background: rgba(60,179,113,0.08);
+  border-left: 3px solid var(--accent-green); border-radius: 0 6px 6px 0;
+  font-size: 0.85em; color: var(--accent-green);
+}
+.news-item .impact strong { color: var(--text); }
+.summary-box {
+  background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,215,0,0.02));
+  border: 1px solid rgba(255,215,0,0.2); border-radius: 10px; padding: 16px; margin-top: 10px;
+}
+.summary-box .title { color: var(--highlight); font-weight: 700; margin-bottom: 8px; }
+.summary-box .text { color: var(--text-secondary); font-size: 0.9em; }
+.ai-section-title {
+  font-size: 1.05em; font-weight: 700; color: var(--accent-teal);
+  border-bottom: 1px solid rgba(45,212,191,0.2); padding-bottom: 6px;
+  margin-bottom: 14px; margin-top: 20px;
+}
+.ai-section-title:first-child { margin-top: 0; }
+.ai-item {
+  background: rgba(45,212,191,0.03); border: 1px solid rgba(45,212,191,0.08);
+  border-radius: 10px; padding: 14px; margin-bottom: 12px;
+}
+.ai-item .ai-topic { font-size: 1em; font-weight: 700; color: var(--accent-teal); margin-bottom: 6px; }
+.ai-item .ai-sub { font-size: 0.85em; color: var(--accent-purple); font-weight: 600; margin: 8px 0 4px; }
+.ai-item .ai-desc { font-size: 0.88em; color: var(--text-secondary); line-height: 1.7; }
+.ai-tag {
+  display: inline-block; font-size: 0.7em; font-weight: 700; padding: 2px 7px;
+  border-radius: 3px; margin-right: 4px; background: rgba(167,139,250,0.15); color: var(--accent-purple);
+}
+.ai-tag.hot { background: rgba(232,69,77,0.15); color: var(--accent-red); }
+.ai-tag.new { background: rgba(60,179,113,0.15); color: var(--accent-green); }
+.money-item {
+  background: linear-gradient(135deg, rgba(240,160,64,0.08), rgba(240,160,64,0.02));
+  border: 1px solid rgba(240,160,64,0.15); border-radius: 10px; padding: 14px; margin-bottom: 12px;
+}
+.money-item .ai-topic { color: var(--accent-orange); }
+.money-item .ai-desc { color: var(--text-secondary); font-size: 0.88em; line-height: 1.7; }
+.money-item .ai-sub { font-size: 0.85em; color: var(--accent-purple); font-weight: 600; margin: 8px 0 4px; }
+.glossary-item { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.glossary-item:last-child { border-bottom: none; }
+.glossary-item .term { color: var(--accent-blue); font-weight: 700; font-size: 0.9em; }
+.glossary-item .explain { color: var(--text-secondary); font-size: 0.85em; margin-top: 2px; }
+.github-item {
+  display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.github-item:last-child { border-bottom: none; }
+.github-item .rank { font-size: 0.85em; font-weight: 700; color: var(--accent-orange); min-width: 24px; }
+.github-item .gh-info { flex: 1; }
+.github-item .gh-name { color: var(--accent-blue); font-weight: 600; font-size: 0.9em; }
+.github-item .gh-desc { color: var(--text-secondary); font-size: 0.82em; margin-top: 2px; }
+.github-item .gh-stars { font-size: 0.78em; color: var(--accent-orange); white-space: nowrap; }
+.footer {
+  text-align: center; padding: 30px; color: var(--text-secondary); font-size: 0.8em;
+  margin-top: 20px; border-top: 1px solid var(--card-border);
+}
+.core-wind {
+  background: linear-gradient(135deg, rgba(255,107,107,0.1), rgba(255,107,107,0.02));
+  border: 1px solid rgba(255,107,107,0.2); border-radius: 10px; padding: 14px;
+  margin-bottom: 20px; font-size: 1.02em; font-weight: 600; color: var(--accent-red); text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>每日双专栏 · AI情报推送</h1>
+  <div class="date">2026年8月27日 星期四</div>
+  <div class="tagline">新闻联播风向标 × AI生产力黑洞</div>
+</div>
+
+<div class="columns">
+
+  <!-- ==================== 专栏一：新闻联播 ==================== -->
+  <div class="column col1">
+    <div class="column-title">专栏一 · 新闻联播每日简报（8月26日）</div>
+    <div class="column-body">
+
+      <!-- 核心风向 -->
+      <div class="core-wind">
+        西藏吉隆口岸泥石流重大伤亡（习近平连夜作重要指示）+ 习近平将出席上合峰会并出访吉、埃 + "十五五"新型工业化提速（数字产业收入超20万亿）+ 北斗渗透率90% + 人大政协两会"共同富裕"收官——8月26日联播以"突发救灾+大国外交+产业升级+科技创新"四轴并进
+      </div>
+
+      <!-- 一、核心风向 -->
+      <div class="section">
+        <div class="section-title">一、核心风向</div>
+        <p style="color:var(--text-secondary);font-size:0.9em;">
+          8月26日新闻联播约<strong>17组主体</strong>，是一期"突发应急+外交预热+产业升级"的高密度播报日。头条是突发——<strong>8月26日10时30分许，因尼泊尔北部热索瓦地区发生大规模泥石流，造成西藏日喀则市吉隆县吉隆口岸重大人员伤亡、失联</strong>，习近平总书记连夜作出重要指示，李强总理作出批示。外交面，<strong>8月30日至9月3日，习近平将出席在比什凯克举行的2026年上海合作组织峰会，并应吉尔吉斯斯坦总统扎帕罗夫、埃及总统塞西邀请对两国进行国事访问</strong>——这是继中非、金砖之后又一次高规格元首外交。产业面，国务院新闻办举行"开局起步'十五五'"系列发布会，工信部披露<strong>上半年数字产业收入超20万亿元、同比增13.6%，智能算力规模达2185 EFLOPS、建成70余条算力大通道</strong>。科技面，<strong>北斗系统重点行业综合应用渗透率约90%、终端保有量近4000万台（套）</strong>。法治与民生面，人大联组会议围绕"巩固脱贫攻坚成果+乡村振兴"开展专题询问，政协常委会第十八次会议以"共同富裕"为议题闭幕。国际面，美伊局势（阿曼斡旋、霍尔木兹临时航线）、加拿大对美加征700多种商品等额反制关税、俄美情报部门接触，地缘博弈三线并行。
+        </p>
+      </div>
+
+      <!-- 二、分项解读 -->
+      <div class="section">
+        <div class="section-title">二、分项解读</div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">头条·突发</span>习近平对西藏日喀则市吉隆县泥石流灾害作出重要指示</div>
+          <div class="read">
+            8月26日10时30分许，因<strong>尼泊尔北部热索瓦地区发生大规模泥石流灾害</strong>，造成<strong>西藏日喀则市吉隆县吉隆口岸重大人员伤亡、失联</strong>。灾害发生后，习近平总书记高度重视并作出重要指示，强调<strong>"当务之急要千方百计搜救失联人员，转移安置受威胁群众，抓紧救治伤员，最大限度减少人员伤亡"</strong>，并要求"加强监测预警，注重科学施救，防止发生次生灾害"。李强总理作出批示。各方正加紧抢险救援。
+          </div>
+          <div class="interpret">
+            <strong>风向标解读：</strong>这是今年汛期以来，最高领导人再次就跨境地质灾害作出即时响应。关键点在于<strong>"尼泊尔一侧"的跨境属性</strong>——泥石流源头在尼泊尔境内，却冲击中方吉隆口岸，凸显<strong>边境口岸的地质安全与跨境灾害联防联控</strong>议题的紧迫性。吉隆口岸是西藏对尼泊尔（南亚）的重要陆路口岸，也是"一带一路"南亚通道节点，此次灾害短期将对中尼边境贸易、口岸物流造成冲击。
+          </div>
+          <div class="impact">
+            <strong>行业影响：</strong>短期利好<strong>应急抢险、地质灾害监测预警、救援装备</strong>板块；对<strong>中尼边境贸易、跨境物流、西藏口岸经济</strong>形成阶段性扰动。中长期强化"防灾减灾+边境基础设施加固"的政策导向，利好<strong>地质监测信息化、边坡治理、口岸设施重建</strong>。注意跨境地质灾害的"保险+再保险"需求上升。
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">外交·重磅</span>习近平将出席上合峰会并对吉尔吉斯斯坦、埃及进行国事访问</div>
+          <div class="read">
+            8月30日至9月3日，国家主席习近平将出席在<strong>比什凯克（吉尔吉斯斯坦首都）</strong>举行的<strong>2026年上海合作组织峰会</strong>，并应<strong>吉尔吉斯斯坦总统扎帕罗夫、埃及总统塞西</strong>邀请，对两国进行国事访问。这是继此前中非合作论坛、金砖国家合作之后，又一次高规格元首外交，覆盖"中亚+中东/非洲"两个战略方向。
+          </div>
+          <div class="interpret">
+            <strong>风向标解读：</strong>访问对象选点极为讲究——<strong>吉尔吉斯斯坦是"一带一路"中亚走廊核心节点、中吉乌铁路的关键国家</strong>；<strong>埃及是中东与非洲的枢纽、苏伊士运河所在国、金砖新成员</strong>。一北一南，正好串起<strong>"中亚陆权通道 + 苏伊士海权通道"</strong>两条物流命脉，是"一带一路"高质量发展的又一次战略落子。上合峰会则是扩大后的"上合+"框架下，中国推进区域安全与经济合作的主场舞台。
+          </div>
+          <div class="impact">
+            <strong>行业影响：</strong>直接利好<strong>基建出海（铁路、公路、港口、电力）</strong>、<strong>中吉乌铁路产业链、跨境物流与跨境电商</strong>；对<strong>埃及方向</strong>利好苏伊士运河经济区、新能源、通信设备出海。中亚与中东是中国工程承包与装备输出的核心增量市场，元首外交落地将加速大项目签约与融资落地，利好<strong>建筑央企、电力设备、轨道交通、数字基建</strong>。
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">经济·主线</span>【"十五五"开好局起好步】融合升级 新型工业化提速</div>
+          <div class="read">
+            国务院新闻办8月26日举行<strong>"开局起步'十五五'"系列主题新闻发布会</strong>，工业和信息化部介绍"十五五"新型工业化有关情况。核心数据：<strong>上半年中国数字产业收入超20万亿元，同比增长13.6%</strong>；<strong>智能算力规模达2185 EFLOPS，建成70余条算力大通道</strong>；<strong>已研制近200项AI关键标准</strong>。"十五五"时期将实施一系列专项行动，<strong>加快构建以先进制造业为骨干的现代化产业体系</strong>，攻坚<strong>高端训练芯片、世界模型</strong>等前沿技术，深化"人工智能+制造"，并加快形成AI终端产品目录。
+          </div>
+          <div class="interpret">
+            <strong>风向标解读：</strong>这是"十五五"新型工业化的<strong>顶层路线图定调</strong>。三个信号最值得抓：<strong>①"数字产业收入20万亿+13.6%"</strong>坐实数字经济作为新增长引擎的地位；<strong>②"智能算力2185 EFLOPS+70余条算力大通道"</strong>意味着算力已从"建得起"转向"连得通、用得好"，算力网络（国家枢纽）建设进入成网阶段；<strong>③"攻坚高端训练芯片+世界模型"</strong>直接点名前沿卡点，国产AI从应用层向上游芯片与基础模型纵深突破。
+          </div>
+          <div class="impact">
+            <strong>行业影响：</strong>利好<strong>算力基础设施（AI服务器、智算中心、算力调度）、国产AI芯片、大模型与Agent</strong>；"人工智能+制造"利好<strong>工业软件、工业机器人、智能工厂、工业互联网</strong>。近200项AI标准研制利好<strong>AI合规、评测、数据服务</strong>赛道。对普通从业者，这是"AI+实体经济"确定性最强的一轮政策红利期。
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">科技</span>北斗系统重点行业综合应用渗透率约90%</div>
+          <div class="read">
+            工信部消息，北斗系统在各行业的应用广度和深度加快拓展，当前<strong>重点行业领域的北斗终端设备保有量已接近4000万台（套），综合应用渗透率约90%</strong>。北斗已深度融入交通运输、农林牧渔、电力、防灾减灾、公共安全等重点领域，成为新型基础设施的关键组成。
+          </div>
+          <div class="interpret">
+            <strong>风向标解读：</strong>"渗透率90%+终端近4000万台（套）"标志着北斗从"可用"进入<strong>"标配化"</strong>阶段——它不再是选配的导航替代品，而是重点行业的基础底座。这是"国产替代+安全自主"双重逻辑在时空基准领域的成熟标志，也是"十五五"新基建的重要支撑。
+          </div>
+          <div class="impact">
+            <strong>行业影响：</strong>利好<strong>北斗导航、高精度定位、卫星互联网、测绘地理信息</strong>产业链；下游利好<strong>智能驾驶（高精定位）、低空经济、精准农业、智慧港口、防灾减灾</strong>。北斗芯片、模组、终端与应用解决方案厂商将受益于渗透率从"重点行业"向"大众消费"的持续扩散。
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">立法·民生</span>十四届全国人大常委会第二十四次会议举行联组会议（乡村振兴专题询问）</div>
+          <div class="read">
+            8月26日下午，十四届全国人大常委会第二十四次会议在京举行<strong>联组会议</strong>，审议国务院关于<strong>持续巩固拓展脱贫攻坚成果、扎实推进乡村全面振兴工作情况的报告</strong>并开展专题询问，赵乐际委员长出席。10位与会同志围绕<strong>村级集体经济发展、城乡居民基本养老保险、医保综合帮扶、帮扶产业可持续发展、东西部协作、农村人口老龄化、易地搬迁后续帮扶、农业政策性保险</strong>等8大问题提出询问。<strong>国务院副总理刘国中</strong>及农业农村部、国家发改委、民政部、财政部、人社部、国家医保局等部门负责同志到会回答询问。
+          </div>
+          <div class="interpret">
+            <strong>风向标解读：</strong>这是"巩固脱贫攻坚成果5年过渡期"后段的关键监督动作，8大询问问题精准覆盖<strong>从"脱贫"到"振兴"衔接期的痛点</strong>——集体经济（造血）、养老保险与医保帮扶（兜底）、产业可持续（防止返贫）、人口老龄化（新变量）。专题询问是人大刚性监督形式，意味着一套<strong>防返贫长效机制</strong>正在立法监督层面固化。
+          </div>
+          <div class="impact">
+            <strong>行业影响：</strong>利好<strong>乡村振兴、县域经济、农业产业（帮扶产业）、农业保险、农村养老与医疗</strong>；"东西部协作"利好<strong>区域协同、产业转移</strong>；"易地搬迁后续帮扶"利好<strong>县域基建、公共服务下沉</strong>。对下沉市场消费、县域商业体系是中长期利好。
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">政协·民生</span>全国政协十四届常委会第十八次会议闭幕（共同富裕）</div>
+          <div class="read">
+            全国政协十四届常委会第十八次会议8月26日下午在京闭幕，以<strong>"加大保障和改善民生力度，扎实推进全体人民共同富裕"</strong>为议题协商议政，中共中央政治局常委、全国政协主席<strong>王沪宁</strong>主持并讲话。上午的全体会议上，<strong>14位全国政协常委</strong>围绕同一议题作大会发言。
+          </div>
+          <div class="interpret">
+            <strong>风向标解读：</strong>政协本次常委会与人大联组会议形成"立法监督+协商议政"双轮，议题高度聚焦<strong>"民生"与"共同富裕"</strong>，与8月25日头条"为人民出政绩"一脉相承。共同富裕从"方向性论述"持续走向"可操作的政策清单"，就业、收入分配、社保、养老、医疗是抓手。
+          </div>
+          <div class="impact">
+            <strong>行业影响：</strong>"共同富裕+民生兜底"利好<strong>养老服务、康养、商业养老保险、医疗健康、职业教育、人力资源服务</strong>；收入分配向中低收入倾斜，利好<strong>大众消费、县域与下沉市场、平价消费品牌</strong>。这是消费板块中长期的政策主线之一。
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">财政·改革</span>丁薛祥在安徽合肥出席财政科学管理试点座谈会</div>
+          <div class="read">
+            8月25日至26日，中共中央政治局常委、国务院副总理<strong>丁薛祥</strong>在<strong>安徽合肥</strong>出席<strong>财政科学管理试点座谈会</strong>并调研。会议围绕推进财政科学管理、提升财政资金使用绩效等展开，是财政管理改革在地方试点层面的一次部署推进。
+          </div>
+          <div class="interpret">
+            <strong>风向标解读：</strong>财政科学管理试点的核心是<strong>"花钱必问效"</strong>——在地方财政收支紧平衡、土地财政转型的背景下，通过科学化、精细化管理提升财政资金绩效。这呼应"过紧日子"与"提高财政资金使用效益"的一贯要求，也是<strong>防范地方债务风险、规范财政纪律</strong>的重要制度安排。
+          </div>
+          <div class="impact">
+            <strong>行业影响：</strong>利好<strong>财政信息化、预算绩效管理、政府数字化转型</strong>赛道；对依赖政府购买服务、财政补贴的行业是"提质增效"信号——低效补贴项目面临压缩，高效项目获倾斜。利好<strong>政务软件、数据治理、绩效评价咨询</strong>。
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">调研</span>李强在黑龙江、吉林调研</div>
+          <div class="read">
+            中共中央政治局常委、国务院总理<strong>李强8月24日至26日在黑龙江、吉林调研</strong>，深入一线了解东北地区经济社会发展、产业转型、粮食安全等方面情况，为东北全面振兴问诊把脉。
+          </div>
+          <div class="interpret">
+            <strong>风向标解读：</strong>总理在<strong>东北两省连续三天调研</strong>，信号明确——东北全面振兴进入政策加码期。黑龙江、吉林作为<strong>粮食安全压舱石 + 老工业基地 + 对俄开放前沿</strong>，调研方向大概率聚焦农业现代化、装备制造升级、向北开放等主线。
+          </div>
+          <div class="impact">
+            <strong>行业影响：</strong>利好<strong>东北振兴、农业现代化（黑土地、种业、大农业）、高端装备制造、对俄贸易与边境开放</strong>。中长期关注东北基建补短板、产业园区、口岸经济等配套政策落地。
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">快讯</span>国家电网5亿千瓦 / 家庭医生签约 / 澳琴跨境陆空联运</div>
+          <div class="read">
+            <strong>①国家电网：</strong>"十五五"时期，国家电网跨省区输电能力将达到<strong>5亿千瓦</strong>，跨区电力互济能力比"十四五"末扩大<strong>两倍以上</strong>，推动新能源基地与算力设施协同布局。<br>
+            <strong>②家庭医生：</strong>国家卫健委等三部门印发通知，<strong>进一步完善家庭医生签约服务</strong>，推进基层医疗健康管理。<br>
+            <strong>③澳琴跨境陆空联运：</strong>首批跨境电商货物在<strong>横琴南光物流中心</strong>完成标准化打板，经海关验收，从横琴口岸运抵<strong>澳门国际机场</strong>后飞往海外，标志着<strong>澳琴跨境陆空联运业务正式开通</strong>。
+          </div>
+          <div class="interpret">
+            <strong>风向标解读：</strong>三条快讯分别对应<strong>新型电力系统、基层医疗、大湾区物流联通</strong>三大主题。国家电网"5亿千瓦+算力协同"最具风向标意义——<strong>"新能源基地+算力设施协同布局"</strong>首次把"绿电"与"AI算力"两大战略捆绑，是"东数西算"的深化；澳琴跨境陆空联运是粤港澳大湾区物流一体化的标志性落子。
+          </div>
+          <div class="impact">
+            <strong>行业影响：</strong>"新能源+算力协同"利好<strong>特高压、电网设备、绿色数据中心、储能、新能源</strong>；家庭医生签约利好<strong>基层医疗、互联网医疗、健康管理</strong>；澳琴跨境陆空联运利好<strong>跨境电商、航空物流、大湾区供应链、横琴深合区</strong>。
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="topic"><span class="label">国际</span>美伊斡旋 / 加拿大对美反制关税 / 俄美情报接触</div>
+          <div class="read">
+            <strong>①美伊：</strong>阿曼外交大臣访问伊朗，伊方公布<strong>霍尔木兹海峡临时航线安排</strong>；美媒称美国暂不对伊朗发动新打击，重点转向<strong>经济施压</strong>。<br>
+            <strong>②美加贸易战：</strong>加拿大宣布对美加征<strong>等额反制关税，涉及700多种商品</strong>；美总统称考虑将<strong>安大略湖更名为"美国湖"</strong>，加官员称将捍卫加方一切利益。<br>
+            <strong>③俄美：</strong>俄总统新闻秘书证实<strong>俄美情报部门接触</strong>。<br>
+            <strong>④其他：</strong>以色列拆除联合国近东救济工程处设施遭谴责；西班牙推进移民和庇护制度改革；美国得州林火蔓延迅速、居民疏散。
+          </div>
+          <div class="interpret">
+            <strong>风向标解读：</strong>三条国际主线各有信号：<strong>美伊从"军事打击"转向"经济施压"</strong>，叠加阿曼斡旋与霍尔木兹临时航线，中东紧张度短期降温但未解除；<strong>美加贸易战升级至"等额反制700多种商品"</strong>，"安大略湖更名"的极端表态显示谈判筹码博弈白热化；<strong>俄美情报部门接触</strong>是地缘对话的微妙信号。整体地缘风险仍高，能源与航运的风险溢价维持。
+          </div>
+          <div class="impact">
+            <strong>行业影响：</strong>美伊降温利好<strong>油价回落预期、航运保险费率</strong>，但霍尔木兹不确定仍存，利好<strong>油气、油运、黄金避险</strong>；美加贸易战利好<strong>国产替代（农产品、汽车零部件、钢铁铝）</strong>、利空北美出口敞口企业；俄美接触是军工、能源博弈的新观察点。全球供应链风险溢价仍高，利好<strong>航运、军工、避险资产</strong>主题。
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 三、总结风向标 -->
+      <div class="section">
+        <div class="section-title">三、总结风向标</div>
+        <div class="summary-box">
+          <div class="title">📌 整体政策走向与投资建议</div>
+          <div class="text">
+            8月26日联播可概括为<strong>"突发救灾 + 大国外交 + 产业升级 + 科技创新"</strong>四条主线。<strong>外交面</strong>，习近平8月30日起出席上合峰会并出访吉尔吉斯斯坦、埃及，串起"中亚陆权通道+苏伊士海权通道"，利好基建出海、中吉乌铁路、跨境电商；<strong>产业面</strong>，"十五五"新型工业化定调，数字产业收入20万亿+13.6%、智能算力2185 EFLOPS、攻坚高端训练芯片与世界模型，是"AI+实体经济"最确定的一轮政策红利；<strong>科技面</strong>，北斗渗透率90%进入标配化，利好导航、低空经济、智能驾驶；<strong>民生面</strong>，人大政协两会收官"共同富裕"，利好养老、医疗、县域消费。风险面，西藏吉隆口岸泥石流短期扰动中尼边境贸易，美伊、美加、俄美三条地缘线并行推升能源与航运风险溢价。<strong>结构性机会集中在算力与AI基础设施、基建出海（中亚/中东）、北斗应用、乡村振兴四条线；需规避中尼口岸物流、北美出口敞口的短期扰动。</strong>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== 专栏二：AI生产力情报 ==================== -->
+  <div class="column col2">
+    <div class="column-title">专栏二 · AI生产力情报</div>
+    <div class="column-body">
+
+      <div class="ai-section-title">🚀 AI 生产力黑洞：今日黑科技与套利指南</div>
+      <p style="color:var(--text-secondary);font-size:0.85em;margin-bottom:14px;">📅 日期：2026-08-27</p>
+
+      <!-- 顶级装备库 -->
+      <div class="ai-section-title">🛠️ 【顶级装备库更新】</div>
+
+      <div class="ai-item">
+        <div class="ai-topic">ponytail <span class="ai-tag hot">GitHub 爆款</span><span class="ai-tag new">112.5k★</span></div>
+        <div class="ai-desc">
+          项目：<strong>DietrichGebert/ponytail</strong>——"让 AI 代理像房间里最懒的资深开发者一样思考"深度拆解<br>
+          <span class="ai-sub">核心黑科技：</span>不是让你写更多代码，而是<strong>训练 AI 在动手前先"偷懒地"想清楚"这段代码到底要不要写"</strong>——核心理念"最好的代码是你从未写过的代码"。通过极简主义约束，让 Agent 自动做"需求裁剪、方案权衡、删繁就简"，从根上减少返工与过度工程。
+          <span class="ai-sub">实战价值：</span>适合<strong>用 AI 写代码但总被"过度实现"坑到的人</strong>——AI 常把简单需求做成复杂架构。把 ponytail 的"懒人哲学"注入你的 Agent 提示词，能显著降低代码冗余、提升可维护性。对做接单/小工具的人，等于雇了个"会拒绝无效需求"的资深架构师。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">free-claude-code <span class="ai-tag hot">GitHub #4</span><span class="ai-tag new">50.4k★</span></div>
+        <div class="ai-desc">
+          项目：<strong>Alishahryar1/free-claude-code</strong>——"从终端、IDE 或手机免费白嫖 Claude Code / Codex / Pi / OpenCode"深度拆解<br>
+          <span class="ai-sub">核心黑科技：</span>聚合多个 AI 编码助手的<strong>免费 token 通道（号称 13 亿+ 免费 token）</strong>，一处入口切换多个模型，绕过单一平台订阅墙。本质是把"各家免费额度"做成了一个可复用、ToS 友好的聚合层。
+          <span class="ai-sub">实战价值：</span>适合<strong>预算敏感、想低成本体验顶级编码模型</strong>的开发者。但需注意——免费额度通道的稳定性与合规风险并存，适合"试玩+批量轻任务"，核心生产环境仍建议走正规订阅，别把饭碗押在"白嫖"上。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">scientific-agent-skills <span class="ai-tag hot">GitHub #14</span><span class="ai-tag new">34.7k★</span></div>
+        <div class="ai-desc">
+          项目：<strong>K-Dense-AI/scientific-agent-skills</strong>——"把任何 AI 代理变成 AI 科学家"深度拆解<br>
+          <span class="ai-sub">核心黑科技：</span>全球<strong>17.5 万+ 科学家使用</strong>的科学 Agent 技能库，<strong>163 个即用型验证技能 + 100+ 科学数据库</strong>，覆盖生物、化学、医学、药物发现，兼容 Cursor、Claude Code、Codex 等。把"科研 SOP"沉淀为可调用的 Agent 技能。
+          <span class="ai-sub">实战价值：</span>适合<strong>科研、生物医药、数据分析</strong>从业者——把文献检索、实验设计、数据分析等科研流程交给 Agent 技能化执行。对非科研用户是范本：<strong>"专业领域知识→可复用 Skills"</strong>这条路径，正是你做"精品生鲜选品技能库"可以照搬的方法论。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">archify <span class="ai-tag new">GitHub #1</span><span class="ai-tag new">17.9k★</span></div>
+        <div class="ai-desc">
+          项目：<strong>tt-a1i/archify</strong>——"生成美观、可验证的架构/工作流/序列/数据流图的 Agent 技能"深度拆解<br>
+          <span class="ai-sub">核心黑科技：</span>让 Agent <strong>直接产出带动态效果、可清晰导出的自包含 HTML 架构图</strong>，而非静态图片。架构图、时序图、数据流图一网打尽，且"可验证"意味着图与代码/文档能对齐。
+          <span class="ai-sub">实战价值：</span>适合<strong>做方案汇报、系统设计、给客户讲架构</strong>的人——用 AI 把口头方案秒变专业可交互架构图，省去 Visio/Draw.io 的手工绘制。对做"选品框架图、业务流程图"的内容创作者，是图文升级的神器。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">claude-plugins-official <span class="ai-tag new">GitHub #3</span><span class="ai-tag new">34.4k★</span></div>
+        <div class="ai-desc">
+          项目：<strong>anthropics/claude-plugins-official</strong>——"Anthropic 官方维护的高质量 Claude Code 插件目录"深度拆解<br>
+          <span class="ai-sub">核心黑科技：</span>官方亲自下场做<strong>插件/技能市场的"精选层"</strong>，把社区里良莠不齐的插件做一道官方认证与质量筛选。这是 Agent 生态从"散装"走向"标准化分发"的标志性动作。
+          <span class="ai-sub">实战价值：</span>对开发者是<strong>"官方背书 = 可信来源"</strong>——装插件时不必再逐个审计。更深层的信号：<strong>"Skills/插件市场"正在成为 AI Agent 时代的新应用商店</strong>，早期做优质 Skills 的人，有望吃到类似 App Store 早期的分发红利。
+        </div>
+      </div>
+
+      <!-- Agent 战场情报 -->
+      <div class="ai-section-title">🤖 【Agent 战场情报】</div>
+
+      <div class="ai-item">
+        <div class="ai-topic">智谱开源 GLM-5.3-Flash，"牛来"Ox Alpha 身份揭晓 <span class="ai-tag hot">国产</span><span class="ai-tag hot">开源</span></div>
+        <div class="ai-desc">
+          <span class="ai-sub">动态：</span>8月26日晚，"国产大模型第一股"智谱上线并开源<strong>GLM-5.3-Flash（320B-A18B）</strong>，正式认领此前匿名登顶 OpenRouter/OpenCode 的神秘模型 <strong>Ox Alpha（中文社区昵称"牛来"）</strong>。这是 GLM-5 系列首个<strong>原生多模态模型</strong>，AA 综合智能指数 <strong>57 分，与 Claude Opus 4.8 持平</strong>，编程表现相当；<strong>定价仅为 Opus 4.8 的 1/40、GLM-5.3 的 1/10</strong>，MIT 许可证开源。
+          <span class="ai-sub">解读：</span>两个"第一次"：<strong>①首个采用"稀疏注意力+线性注意力混合架构"的开源前沿模型</strong>，在保持 1M 长上下文精度同时把成本打下来；<strong>②首次用超10万张国产芯片集群承载全球真实负载</strong>——匿名测试期间（6天处理 42 万亿 Token）全部流量由国产算力支撑，靠"以算力换带宽、以通信换显存"的激进内存优化扛住。国产模型首次在"能力+成本+算力自主"三线同时逼近前沿。
+          <span class="ai-sub">落地场景：</span>对你的直接意义——<strong>配合做选品/内容/UE 插件的 Agent，可以用 1/40 的成本跑接近 Opus 4.8 能力的多模态模型</strong>，看图分析（材质截图、竞品笔记、产品图）成本骤降。多模态+Office 文档自校验能力，可直接用于"自动检查并优化小红书封面/海报"的质检 Agent。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">阿里开源 Qwen3.8-Flash <span class="ai-tag hot">国产</span><span class="ai-tag new">125B-A6B</span></div>
+        <div class="ai-desc">
+          <span class="ai-sub">动态：</span>阿里8月26日晚发布并开源<strong>Qwen3.8-Flash</strong>，采用下一代（Qwen4 雏形）架构，<strong>125B 总参数仅激活 6B</strong>，在 DeepSWE、CoWorkBench 等基准上<strong>超越 Claude Opus 4.6、接近 4.8</strong>。每百万 token 输入 1 元、输出 3 元，约为 DeepSeek-V4-Flash 的 1/3，<strong>训练成本较 Qwen3.7-Plus 降近 90%</strong>。
+          <span class="ai-sub">解读：</span>"小激活、大能力"是这波国产模型的内卷方向——用极低的激活参数（6B/18B）逼近超大模型的能力，推理成本断崖式下降。Qwen3.8-Flash 与 GLM-5.3-Flash 同日开源，叠加 OpenAI 一个月内二次降价 20%，<strong>《福布斯》所称"价格逐底战"正式打响</strong>。
+          <span class="ai-sub">落地场景：</span>对高频调用 Agent 是实打实的降本——<strong>代码接单、批量内容生成、数据清洗</strong>这类 token 消耗大的任务，切到 Flash 级国产模型，成本可降一个数量级。策略是<strong>"关键决策用旗舰、批量执行用 Flash"</strong>的分层路由。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">京东物流发布"超脑"大模型3.0 <span class="ai-tag new">工业AI</span></div>
+        <div class="ai-desc">
+          <span class="ai-sub">动态：</span>8月26日第十八届国际交通展上，京东物流发布<strong>"超脑"大模型3.0</strong>，由 <strong>PreX/OptiX/OmniX/GeoX/EmbodiedX 五大工业大模型</strong>构成，<strong>亿级包裹路径规划从分钟级压缩至秒级，车辆自动化调度率 86%</strong>，"异狼"机械臂与"独狼"无人车已规模化运行。
+          <span class="ai-sub">解读：</span>这是<strong>"AI+物流"从单点算法走向"全链路 Agent 化"</strong>的样板——五个垂直模型分管预测、优化、全链路、地理、具身执行，本质是"多智能体协同"在物流场景的工业级落地。亿级包裹秒级规划，证明了 AI 优化在超大规模实时场景的商业价值。
+          <span class="ai-sub">落地场景：</span>启发在于<strong>"五模型分工"架构</strong>——你也可以把生鲜选品拆成"地标 Agent、价格 Agent、物流 Agent、颜值 Agent"分工协作。另外，物流智能化是生鲜电商的命门，关注京东"超脑"的冷链调度能力，直接关系到你的生鲜履约成本。
+        </div>
+      </div>
+
+      <!-- AI新玩法新概念 -->
+      <div class="ai-section-title">🖊【AI新玩法，新概念】</div>
+
+      <div class="ai-item">
+        <div class="ai-topic">黄仁勋："计算即收入"，AI 已迈过商业化拐点</div>
+        <div class="ai-desc">
+          <span class="ai-sub">动态：</span>英伟达 CEO <strong>黄仁勋</strong>在 Q2 财报电话会（营收 <strong>962 亿美元，同比+106%</strong>）上提出<strong>"In AI, compute is revenue（在 AI 中，算力即收入）"</strong>，宣布 <strong>Vera Rubin 全面投产</strong>，并首次给出 2028 财年营收同比增 70% 的确定性指引。他同步推进与高盛等六家机构筹建<strong>5000 亿美元 AI 融资平台</strong>，把 GPU 算力打包成抵押资产卖给养老金等长期资金——即"算力美元"体系。
+          <span class="ai-sub">解读：</span>这是<strong>"算力金融化"</strong>的标志性论述——算力从"生产资料"升级为"可抵押、可证券化的资产"。黄仁勋把 AI 叙事从"技术竞赛"推进到"资产定价"：当 GPU 集群能像房产一样抵押融资，AI 基础设施的资本循环就闭环了。
+          <span class="ai-sub">落地场景：</span>对个人与中小团队的启示——<strong>关注"算力即资产"趋势下，本地/云算力的成本曲线</strong>。Vera Rubin 投产+国产 Flash 模型降价，意味着"用更便宜的算力跑更强的模型"，你的 AI 应用成本将持续下探，越早上手越能吃到红利。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">奥特曼最新反思："我们高估了 AI 改变世界的速度"</div>
+        <div class="ai-desc">
+          <span class="ai-sub">动态：</span>OpenAI CEO <strong>萨姆·奥特曼</strong>在最新长访谈中公开反思，承认<strong>2023 年 GPT-4 发布后低估了"经济与人的惯性"</strong>——技术可以极快跃迁，但企业采购、组织流程与工作习惯不会同步改变。他主张 OpenAI 应做<strong>"平台公司"</strong>而非吞掉所有应用，并最担心<strong>"失控"与"权力集中"</strong>两类 AI 风险。
+          <span class="ai-sub">解读：</span>这是头部 AI 掌舵人少见的<strong>"冷思考"</strong>——技术领先≠落地领先。他说的"惯性"恰好是普通人的机会窗口：<strong>AI 能力与真实应用之间存在巨大鸿沟，谁先把 AI 塞进具体工作流，谁就吃到套利</strong>，而不是比谁更懂模型本身。
+          <span class="ai-sub">落地场景：</span>印证你的判断——<strong>别追"最新最强模型"，追"把 AI 用在具体生意上"</strong>。你的"精品生鲜选品 Agent""小红书内容工作流"，正是"技术落地慢于能力"窗口里的套利位置：模型够用就好，关键是打通流程。
+        </div>
+      </div>
+
+      <div class="ai-item">
+        <div class="ai-topic">马斯克："Grok Bot 若让你亏钱，我们全额赔付"（但条款有猫腻）</div>
+        <div class="ai-desc">
+          <span class="ai-sub">动态：</span>8月26日，马斯克在 X 上为 Grok Bot（8月11日上线的"AI 财务管家"）背书，承诺<strong>"如果 Grok Bot 搞砸了，我们会让你回本"</strong>。但 xAI 的用户条款却把<strong>责任上限设定为"用户已付费用或 100 美元，取较高者"</strong>，且明确 AI 输出"按现状提供（as-is）"。此前 5 月，恶意 NFT 的提示词注入已从 Grok 关联钱包骗走约 15 万美元。
+          <span class="ai-sub">解读：</span>这是<strong>"AI 代理接管资金"的风险放大镜</strong>——嘴上承诺与合同条款严重脱节，且<strong>提示词注入（prompt injection）</strong>一旦攻击"带真实银行登录态的 AI"，损失远大于加密钱包。监管（美国 Reg E）对"用户主动交出账户权限"的交易通常不提供盗刷保护。
+          <span class="ai-sub">落地场景：</span>实用警示——<strong>别让 AI 代理直接掌控你的资金/账户登录态</strong>。做任何"AI 自动执行"类工具，务必设计"人工确认+金额上限+白名单"三层风控。这也是你未来若做"AI 选品下单助手"必须绕开的坑。
+        </div>
+      </div>
+
+      <!-- AI套利/变现线索 -->
+      <div class="ai-section-title">💰 【AI 套利/变现线索】</div>
+
+      <div class="money-item">
+        <div class="ai-topic">GLM-5.3-Flash「1/40 价格」= 多模态 Agent 降本套利</div>
+        <div class="ai-desc">
+          <span class="ai-sub">热点：</span>智谱 GLM-5.3-Flash（AA 57 分，持平 Opus 4.8）价格仅为 Opus 的 1/40，且<strong>开源（MIT）+ 原生多模态 + 国产芯片</strong>；同日阿里 Qwen3.8-Flash 每百万 token 输入 1 元、输出 3 元。
+          <span class="ai-sub">复刻建议：</span>①把<strong>看图的活</strong>（材质截图分析、竞品笔记解析、产品图质检）从"贵的闭源多模态"切到 GLM-5.3-Flash，成本降 40 倍；②利用开源权重，<strong>自部署到本地/私有环境</strong>，处理敏感的选品数据不留外泄风险；③做"多模态+Office 自校验"工作流——让模型生成小红书封面/海报后自己看图检查、迭代优化，等于雇了个 7×24 的视觉质检员。
+        </div>
+      </div>
+
+      <div class="money-item">
+        <div class="ai-topic">"算力美元"叙事 = AI 基础设施的投资风向标</div>
+        <div class="ai-desc">
+          <span class="ai-sub">热点：</span>黄仁勋"计算即收入"+5000 亿美元 AI 融资平台，把 GPU 算力打包成资产卖给养老金等长期资金；英伟达 Q2 营收 962 亿美元（+106%）、Vera Rubin 全面投产、首次给出全年 70% 增速指引。
+          <span class="ai-sub">复刻建议：</span>这是一个<strong>"算力资产化"的确定性主线</strong>——对关注 AI 投资的人，算力供应链（GPU、光模块、液冷、电力、IDC）仍是资本开支最密集的赛道。对非投资用途的启发：<strong>"算力成本持续下探"意味着 AI 应用的毛利空间在扩大</strong>，谁先构建低成本、可复用的 AI 工作流，谁就站在成本曲线的有利一侧。
+        </div>
+      </div>
+
+      <div class="money-item">
+        <div class="ai-topic">新闻联播风向标 → 音频早报，发视频号/小红书吸粉</div>
+        <div class="ai-desc">
+          <span class="ai-sub">热点：</span>延续已验证的变现路径——把每日"新闻联播风向标解读"文字稿，用 TTS（edge-tts / 豆包配音）转成 3-5 分钟音频，发<strong>视频号/小红书/喜马拉雅</strong>。
+          <span class="ai-sub">复刻建议：</span>今天的<strong>差异化切入点是"算力/AI 政策解读"</strong>——8月26日联播的"十五五新型工业化（智能算力 2185 EFLOPS、攻坚高端芯片）"是极好的垂直选题，可单独出一期"国产算力政策风向 3 分钟速览"，比泛泛的"今日新闻"更容易切中科技人群。坚持日更，吃"通勤听早报"的场景红利。
+        </div>
+      </div>
+
+      <!-- 避坑/黑话词典 -->
+      <div class="ai-section-title">🔍 【避坑/黑话词典】</div>
+
+      <div class="glossary-item">
+        <div class="term">稀疏注意力 + 线性注意力混合架构（Sparse + Linear Attention）</div>
+        <div class="explain">让模型不用对每个词都"全量看一遍"，只对关键位置精细计算、对远距离信息用近似算法。既保住长上下文（如 1M）的精度，又把计算成本大幅降下来。GLM-5.3-Flash 是首个这么干的开源前沿模型。</div>
+      </div>
+      <div class="glossary-item">
+        <div class="term">mHC（流形约束超连接 / Manifold-Constrained Hyper-Connections）</div>
+        <div class="explain">给模型内部的学习过程加"智能导航"，让同样参数下学到更多有效知识、推理更快更准。一句话：提升模型"用更少参数跑更强能力"的 Scaling 效率。</div>
+      </div>
+      <div class="glossary-item">
+        <div class="term">计算即收入 / 算力美元（Compute is Revenue）</div>
+        <div class="explain">黄仁勋的核心叙事——算力（GPU）已经是可以像房产、证券一样抵押、定价、流通的资产，AI 的商业模式本质是"卖算力"。当算力能被证券化，AI 基建的资本就能循环起来。</div>
+      </div>
+      <div class="glossary-item">
+        <div class="term">价格逐底战（Price Race to Bottom）</div>
+        <div class="explain">各家大模型竞相降价抢市场的现象。《福布斯》用来形容当前 OpenAI 二次降价 20%、谷歌 Gemini 半价首发、国产 Flash 模型 1/40 价格的内卷局面。对用户是利好，对厂商是利润绞杀。</div>
+      </div>
+      <div class="glossary-item">
+        <div class="term">Ox Alpha / 牛来（匿名测试 Anonymous Testing）</div>
+        <div class="explain">智谱把新模型以匿名身份放到 OpenRouter/OpenCode 接受真实调用、压测性能，等口碑起来后再官宣认领的营销+工程手法。既能无偏见地收集真实反馈，又能制造"神秘黑马"的话题效应。</div>
+      </div>
+
+      <div class="ai-section-title" style="margin-top:20px;">📈 GitHub Trending 精选（8月27日）</div>
+      <div class="github-item"><div class="rank">1</div><div class="gh-info"><div class="gh-name">tt-a1i/archify</div><div class="gh-desc">生成美观可验证的架构/工作流/序列/数据流图的 Agent 技能，自包含 HTML 带动效</div></div><div class="gh-stars">17.9k★</div></div>
+      <div class="github-item"><div class="rank">2</div><div class="gh-info"><div class="gh-name">freestylefly/awesome-gpt-image-2</div><div class="gh-desc">GPT-Image2 工业级提示词引擎，530+ 逆向案例，Prompt as Code</div></div><div class="gh-stars">21.3k★</div></div>
+      <div class="github-item"><div class="rank">3</div><div class="gh-info"><div class="gh-name">anthropics/claude-plugins-official</div><div class="gh-desc">Anthropic 官方维护的高质量 Claude Code 插件目录</div></div><div class="gh-stars">34.4k★</div></div>
+      <div class="github-item"><div class="rank">4</div><div class="gh-info"><div class="gh-name">Alishahryar1/free-claude-code</div><div class="gh-desc">从终端/IDE/手机免费使用 Claude Code、Codex、Pi、OpenCode（13亿+免费token）</div></div><div class="gh-stars">50.4k★</div></div>
+      <div class="github-item"><div class="rank">5</div><div class="gh-info"><div class="gh-name">MadsLorentzen/ai-job-search</div><div class="gh-desc">本机运行的 AI 求职框架：评估职位、定制简历、写求职信、准备面试</div></div><div class="gh-stars">36.5k★</div></div>
+      <div class="github-item"><div class="rank">6</div><div class="gh-info"><div class="gh-name">AgriciDaniel/claude-obsidian</div><div class="gh-desc">Obsidian + Claude Code 自组织 AI 第二大脑，知识图谱归档</div></div><div class="gh-stars">13.4k★</div></div>
+      <div class="github-item"><div class="rank">7</div><div class="gh-info"><div class="gh-name">basecamp/omarchy</div><div class="gh-desc">美观、现代、有主见的 Linux 发行版</div></div><div class="gh-stars">32.0k★</div></div>
+      <div class="github-item"><div class="rank">8</div><div class="gh-info"><div class="gh-name">rohitg00/ai-engineering-from-scratch</div><div class="gh-desc">学它、构建它、交付它（AI 工程从零学起）</div></div><div class="gh-stars">49.6k★</div></div>
+      <div class="github-item"><div class="rank">9</div><div class="gh-info"><div class="gh-name">tinyhumansai/openhuman</div><div class="gh-desc">个人 AI 超级智能：本地优先记忆 + 智能体舰队 + 深度研究者</div></div><div class="gh-stars">38.2k★</div></div>
+      <div class="github-item"><div class="rank">10</div><div class="gh-info"><div class="gh-name">DietrichGebert/ponytail</div><div class="gh-desc">让 AI 代理像最懒的资深开发者一样思考：最好的代码是你从未写过的代码</div></div><div class="gh-stars">112.5k★</div></div>
+      <div class="github-item"><div class="rank">11</div><div class="gh-info"><div class="gh-name">ConardLi/garden-skills</div><div class="gh-desc">开源 Skills 集合：网页设计、知识检索、图像生成等</div></div><div class="gh-stars">10.9k★</div></div>
+      <div class="github-item"><div class="rank">12</div><div class="gh-info"><div class="gh-name">browser-use/browser-use</div><div class="gh-desc">让网站对 AI 代理可访问，轻松在线自动化任务</div></div><div class="gh-stars">111.0k★</div></div>
+      <div class="github-item"><div class="rank">13</div><div class="gh-info"><div class="gh-name">K-Dense-AI/scientific-agent-skills</div><div class="gh-desc">把任何 AI 代理变成 AI 科学家：163 个验证技能 + 100+ 科学数据库</div></div><div class="gh-stars">34.7k★</div></div>
+      <div class="github-item"><div class="rank">14</div><div class="gh-info"><div class="gh-name">marin-community/marin</div><div class="gh-desc">用于基础模型研究与开发的开源框架</div></div><div class="gh-stars">2.5k★</div></div>
+
+      <div class="ai-section-title" style="margin-top:20px;">🆕 Product Hunt 新品（8月26日）</div>
+      <div class="ai-item">
+        <div class="ai-topic">Lovable for iPhone <span class="ai-tag hot">#1</span><span class="ai-tag new">320票</span></div>
+        <div class="ai-desc">"From idea to App Store"——把想法直接变成可上架 App Store 的 iPhone 应用。AI 从需求描述生成完整 App，打通"想法→原型→开发→上架"全链路，是 no-code/AI 建应用的最新形态，大幅降低个人开发者做 App 的门槛。</div>
+      </div>
+      <div class="ai-item">
+        <div class="ai-topic">Expertise AI <span class="ai-tag hot">#2</span><span class="ai-tag new">267票</span></div>
+        <div class="ai-desc">"Turn your GTM skills into recurring revenue"——把你的市场推广（GTM）技能打包成可持续变现的产品/服务。面向顾问、营销人的"技能产品化"工具，把"接一单赚一单"变成"做一次、反复收钱"。</div>
+      </div>
+      <div class="ai-item">
+        <div class="ai-topic">MCP-Builder.ai <span class="ai-tag new">#5</span><span class="ai-tag new">137票</span></div>
+        <div class="ai-desc">"The fastest way to connect your data with your AI tools"——快速把你的数据源与 AI 工具连接起来，可视化搭建 MCP（模型上下文协议）服务，让不懂代码的人也能给 AI 接上自己的数据。</div>
+      </div>
+      <div class="ai-item">
+        <div class="ai-topic">PostHog Desktop <span class="ai-tag new">#3</span><span class="ai-tag new">229票</span></div>
+        <div class="ai-desc">"The product editor for product builders"——面向产品构建者的桌面端产品分析工具，本地化处理产品数据与用户行为分析，主打隐私与速度。</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  每日双专栏AI情报推送 · 信源：央视网/新闻联播文字稿、财联社、GitHub Trending、Product Hunt、Twitter/X、量子位/IT之家/新浪财经等<br>
+  仅供学习参考，不构成投资建议 · 生成于 2026-08-27
+</div>
+
+</body>
+</html>
