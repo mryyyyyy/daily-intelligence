@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 · 2026-08-29</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #fbf4ea; color: #3d2c1e; font-size: 15px; line-height: 1.75; }
+
+  .hero {
+    background: linear-gradient(135deg, #3d2413 0%, #6b3f1d 45%, #8a5a2b 100%);
+    border-bottom: 3px solid #e0a458;
+    padding: 34px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255,196,110,0.16) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%; left: -5%;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(230,120,60,0.14) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(255,196,110,0.16);
+    border: 1px solid rgba(255,196,110,0.4);
+    color: #ffd9a0;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 { font-size: 28px; font-weight: 800; color: #fff6e8; margin-bottom: 8px; }
+  .hero .sub { color: #e8cfa8; font-size: 14px; }
+
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 28px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .card {
+    background: #fffdf8;
+    border: 1px solid #f0e2cf;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 14px rgba(107,63,29,0.06);
+  }
+  .card-header {
+    background: linear-gradient(135deg, #fdf1df 0%, #fff8ec 100%);
+    padding: 15px 20px;
+    border-bottom: 1px solid #f0e2cf;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-header .icon {
+    width: 34px; height: 34px;
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    background: rgba(224,122,57,0.12);
+  }
+  .card-header h2 { font-size: 17px; font-weight: 700; color: #6b3f1d; }
+  .card-body { padding: 20px; }
+
+  .item {
+    margin-bottom: 16px;
+    padding: 14px 16px;
+    background: #fdf8f0;
+    border: 1px solid #f3e6d2;
+    border-radius: 10px;
+  }
+  .item:last-child { margin-bottom: 0; }
+  .item h3 { font-size: 15px; font-weight: 700; color: #4a2c14; margin-bottom: 6px; }
+  .item p { font-size: 13.8px; color: #5c4634; margin-top: 3px; }
+  .item .tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 5px;
+    font-size: 11.5px;
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  .tag-me { background: rgba(224,122,57,0.14); color: #c96f1e; }
+  .tag-sig-up { background: rgba(200,60,40,0.12); color: #c63c28; }
+  .tag-sig-mid { background: rgba(224,140,30,0.14); color: #c87d1a; }
+  .tag-sig-low { background: rgba(90,150,60,0.14); color: #4f8a35; }
+  .tag-new { background: rgba(200,60,40,0.12); color: #7c2f1c; }
+
+  .strong { color: #8a3c1a; font-weight: 700; }
+  .divider { height: 1px; background: #f0e2cf; margin: 20px 0; }
+
+  .time-box {
+    background: linear-gradient(135deg, #fdefdc, #fff7ea);
+    border: 1px solid #f0d9b8;
+    border-left: 4px solid #e07b39;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+  .time-box p { font-size: 13.8px; color: #5c4634; margin-top: 3px; }
+
+  .new-card {
+    background: #fffaf1;
+    border: 1px solid #f0d9b8;
+    border-left: 4px solid #e07b39;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .new-card:last-child { margin-bottom: 0; }
+  .new-card h3 { font-size: 14.5px; font-weight: 700; color: #8a3c1a; margin-bottom: 5px; }
+  .new-card .meta { font-size: 12.5px; color: #a06a35; margin-bottom: 6px; }
+  .new-card p { font-size: 13.5px; color: #5c4634; margin-top: 3px; }
+
+  .idea-card {
+    background: linear-gradient(135deg, #fdeee0, #fff7ec);
+    border: 1px solid #f0d3a8;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .idea-card:last-child { margin-bottom: 0; }
+  .idea-card h3 { font-size: 15.5px; font-weight: 800; color: #7c3a12; margin-bottom: 6px; }
+  .idea-card .line { font-size: 13.8px; color: #5c4634; margin-top: 4px; }
+
+  .footer {
+    text-align: center;
+    padding: 22px;
+    color: #a08a72;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">🍽️ 2026年8月29日 星期六 · 处暑第7天</div>
+    <h1>🌿 食研日推 · 每日行业情报</h1>
+    <div class="sub">下厨房食品品牌 · 产品经理专属 | 只给开品弹药，拒绝水文 | 自动生成，仅供参考</div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- 板块一 -->
+<div class="card">
+  <div class="card-header"><div class="icon">🔥</div><h2>一、今日行业要闻</h2></div>
+  <div class="card-body">
+
+    <div class="item">
+      <h3>1. 2026全球乳业20强发布，头部乳企集体交半年报</h3>
+      <p>伊利上半年营收644.9亿、蒙牛净利同比+15.9%、农夫山泉营收+16%、健合集团中国市场营收+30.9%；全球乳业20强榜单同步揭晓，飞鹤发布的蛋白原料品牌「智纯」再获关注。</p>
+      <p><span class="tag tag-me">与我何干</span>乳品高端化、蛋白营养是确定性增长极——<span class="strong">乳清蛋白/乳蛋白原料国产替代加速</span>，做高蛋白即食、洁净蛋白零食有真实上游供给支撑。</p>
+    </div>
+
+    <div class="item">
+      <h3>2. 海底捞中报：营收223.37亿+7.9%，外卖收入+121.2%</h3>
+      <p>海底捞上半年外卖业务收入20.51亿、同比翻倍；一人食拌饭、霸道吃鱼季（非遗鱼糕+酸汤锅）成为新增长点，"中台建设元年"启动，多品牌复制提速。</p>
+      <p><span class="tag tag-me">与我何干</span><span class="strong">一人食正餐、外卖场景是真增长极</span>——"一餐一汤一饭"的便捷正餐组合，是比零食更稳的复购场景，值得做3分钟洁净净菜/拌饭的升级版。</p>
+    </div>
+
+    <div class="item">
+      <h3>3. 旺旺"听劝"健康化升级：旺仔牛奶低糖低脂高钙版、五黑雪饼齐上阵</h3>
+      <p>旺旺近百款新品集体"轻装上阵"——O泡果奶低糖版、五黑雪饼（黑芝麻黑米黑豆）、FixXBody系列，靠乳品/米果工艺底层攻关实现"减糖不减味"，明年将新增旺豆乳产线切植物基。</p>
+      <p><span class="tag tag-me">与我何干</span><span class="strong">国民经典减糖不减味=配料表洁净是行业共识</span>，老牌靠工艺而非代糖做升级，印证"真品类升级"路线正确，也提醒我们洁净不能牺牲好吃。</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- 板块二 -->
+<div class="card">
+  <div class="card-header"><div class="icon">🎯</div><h2>二、爆品雷达 · 趋势苗头</h2></div>
+  <div class="card-body">
+
+    <div class="item">
+      <h3>米酿入茶：霸王茶姬「冰酿系列」8/28全国上新</h3>
+      <p>一骑红尘冰酿、花田乌龙冰酿，糯米发酵48小时酿出"非遗米酿香"，配荔枝鲜香/水蜜桃金观音，喝前搅一搅让米酿与茶香交织。</p>
+      <p><span class="tag tag-sig-mid">🟡 起势</span><span class="strong">米元素从"奶茶加料"升级为"风味主轴"</span>——糯米发酵的风味复杂度远超普通米浆，零售端即食米酿/米酿甜点仍是空白，值得盯。</p>
+    </div>
+
+    <div class="item">
+      <h3>益生菌酸菜走进连锁餐饮供应链</h3>
+      <p>三米粥铺×一米八盐中甜「老面酸菜鲜肉小笼包」8/20在1200家门店同步上线，益生菌发酵酸菜从"佐餐小菜"升级为可复用的"主食级食材"。</p>
+      <p><span class="tag tag-sig-mid">🟡 起势</span><span class="strong">发酵品类正经历"标准化菌种"范式转移</span>——传统腌菜自然发酵→植物乳植杆菌标准化发酵（六必居乳酸菌酸菜≥5×10⁸CFU/100g），做"洁净+益生菌"酸菜类食材有明确差异化。</p>
+    </div>
+
+    <div class="item">
+      <h3>甜咸反差成新一代驱动机：肯德基×奥利奥"双向奔赴"</h3>
+      <p>奥利奥炸鸡味饼干（7月底）→ 肯德基奥利奥原味鸡汉堡（8/28全国），黑色可可面包胚夹炸鸡排+奥利奥碎土豆泥，29.9元套餐。</p>
+      <p><span class="tag tag-sig-up">🔴 已爆</span><span class="strong">甜咸跨界从猎奇走向主流战略</span>——两大巨头"品类互侵"验证反差感是流量密码，但这是巨头游戏，我们更适合做"甜品基因注入咸食"的轻量级零食（如咸甜口即食小吃）。</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- 板块三 -->
+<div class="card">
+  <div class="card-header"><div class="icon">🌿</div><h2>三、时令风向 · 品类机会</h2></div>
+  <div class="card-body">
+
+    <div class="time-box">
+      <p>📅 当前：处暑第7天，秋意渐浓，中秋礼盒采购窗口已全面打开</p>
+      <p>⏰ 倒计时：距白露9天(9/7)、距中秋27天(9/25)、距阳澄湖开捕约20天(9月下旬)</p>
+      <p>🎯 即将热卖：<strong>秋月梨</strong>（莱西糖度14°、35-68元礼盒）— 润燥刚需+中秋礼盒双驱动；<strong>突尼斯软籽石榴</strong>（云南6.8元/斤回落）— 高颜值出片+剥粒仪式感</p>
+      <p>🚨 窗口提醒：<strong>大闸蟹礼券</strong>——9月下旬才开捕、正式缺席中秋(9/25)，中秋踩点兑蟹=全年性价比最差，别赌节点；<strong>早熟红心柚</strong>（福建平和6元/斤）窗口正在打开</p>
+      <p>🏔️ 产地机会：<strong>莱西秋月梨</strong>（山东莱西·现摘现发·糖度14°）、<strong>云南/四川软籽石榴</strong>（十余天后两地同步成熟，价格再降1-2元）、<strong>开海季梭子蟹</strong>（东海黄海伏季休渔结束，第一口鲜正到港）</p>
+    </div>
+
+    <div class="item">
+      <h3>⚠️ 关键提醒：大闸蟹"错峰"才是真机会</h3>
+      <p>中新经纬核实：阳澄湖开捕9月下旬，<span class="strong">中秋(9/25)恰好卡在开捕期而非肥度峰值</span>，此时蟹膏未顶满、价格全年最高、预约最挤。10月中下旬才是母蟹巅峰+供应最稳的性价比峰值。盒马"4公4母"蟹券688元/张，天猫8/25已启动"好蟹季"。</p>
+      <p><span class="tag tag-me">与我何干</span>蟹礼做"错峰"卖点——用专业选品逻辑反常识种草"好蟹不怕晚"，既是差异化，也规避中秋节点投诉风险。</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- 板块四 -->
+<div class="card">
+  <div class="card-header"><div class="icon">💡</div><h2>四、跨界灵感 · 创新动作</h2></div>
+  <div class="card-body">
+
+    <div class="item">
+      <h3>盒马上新「奶豆腐（新鲜奶酪）」：奶酪变身中式烹饪食材</h3>
+      <p>把奶酪从西式甜品/佐餐场景，拉进中式炒菜、炖煮、煎炸场景，做"新鲜奶酪"的中餐化尝试。</p>
+      <p><span class="tag tag-me">迁移可能</span>奶酪品类"中式烹饪化"是蓝海——可做<span class="strong">家用新鲜奶酪+中式菜式料包</span>（如奶豆腐炒蛋、奶豆腐火锅），把"吃奶酪"翻译成国人熟悉的做饭场景。</p>
+    </div>
+
+    <div class="item">
+      <h3>噜咪啦「玫瑰普洱茶味薯片」：地域食材×茶香风味</h3>
+      <p>锚定地域食材创新，把云南玫瑰+普洱茶的茶香做进膨化零食。</p>
+      <p><span class="tag tag-me">迁移可能</span><span class="strong">地域+茶香风味</span>是膨化/烘焙零食的差异化切口——茶香（普洱/桂花/乌龙）叠加地域食材，天然有故事可讲、有产地直发逻辑。</p>
+    </div>
+
+    <div class="item">
+      <h3>海底捞「6斤番茄锅」三城主题公园：番茄投料量化成卖点</h3>
+      <p>把"一锅凝聚约6斤新疆番茄"作为核心记忆点，北京/深圳/上海三城快闪"番茄主题公园"，5万份免费锅底券引爆。</p>
+      <p><span class="tag tag-me">迁移可能</span><span class="strong">把"投料量"显性化</span>是强信任话术——我们的番茄类/菌菇类产品可量化"X斤鲜果熬制"，让价值感知直接可算。</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- 板块五 -->
+<div class="card">
+  <div class="card-header"><div class="icon">🧪</div><h2>五、脑暴时刻 · 融合创意</h2></div>
+  <div class="card-body">
+
+    <div class="idea-card">
+      <h3>①「错峰蟹礼 · 十月到」大闸蟹礼券</h3>
+      <div class="line"><strong>一句话描述：</strong>主打"好蟹不怕晚，10月中下旬肥度峰值直发"的精品大闸蟹礼券，避开中秋节点。</div>
+      <div class="line"><strong>为什么是现在：</strong>阳澄湖9月下旬开捕、缺席中秋，中秋兑蟹是全年性价比最差窗口；10月中下旬才是母蟹巅峰+供应最稳。</div>
+      <div class="line"><strong>差异化锚点：</strong>竞品都在抢中秋节点，我们用专业选品逻辑"反常识种草"，用肥度时间表做信任背书，反而显专业。</div>
+      <div class="line"><strong>可行性初判：</strong>供应链成熟（江苏蟹企2.32万家、天猫好蟹季已启动），核心是"错峰"心智的种草内容设计，抖音达播适配度高。</div>
+    </div>
+
+    <div class="idea-card">
+      <h3>②「一口米酿香」米酿风味即食甜点</h3>
+      <div class="line"><strong>一句话描述：</strong>糯米发酵48小时的非遗米酿，做成洁净版即食米酿甜点/冲饮。</div>
+      <div class="line"><strong>为什么是现在：</strong>霸王茶姬冰酿系列刚把"米酿香"从加料升级为风味主轴，米元素在茶饮端已验证，零售端仍空白。</div>
+      <div class="line"><strong>差异化锚点：</strong>竞品的米酿多甜腻、多添加剂；我们走"糯米自然发酵+低糖洁净"，风味复杂度靠发酵而非糖精。</div>
+      <div class="line"><strong>可行性初判：</strong>发酵供应链门槛中等（可对接标准化菌种发酵厂），短保质期适配产地直发+冷链，需验证家庭复购场景。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 板块六 -->
+<div class="card">
+  <div class="card-header"><div class="icon">🏬</div><h2>六、展会速递 · 每周新品雷达</h2></div>
+  <div class="card-body">
+
+    <div style="font-size:14px;font-weight:700;color:#7c3a12;margin-bottom:12px;">🆕 每周新品速递（5款 · 指名道姓）</div>
+
+    <div class="new-card">
+      <h3>🆕 霸王茶姬「冰酿系列」— 一骑红尘冰酿 / 花田乌龙冰酿</h3>
+      <div class="meta">上市时间：8月28日全国上新 | 价格带：茶饮常规带（约15-20元档）</div>
+      <p><strong>产品力拆解：</strong>糯米发酵48小时酿出"非遗米酿香"，一骑红尘冰酿=荔枝鲜香+醇厚红茶+米酿；花田乌龙冰酿=水蜜桃+金观音茶底+软糯米粒。喝前搅一搅让米酿与茶香交织，颗粒感+发酵香是记忆点。</p>
+      <p><strong>启发：</strong>米酿从"配料"升级为"风味主轴"——发酵赋予的复杂度是糖精替代不了的。可迁移：<span class="strong">米酿类即食甜点/冲饮，用自然发酵代替高糖</span>，做"一口米酿香"洁净版。</p>
+    </div>
+
+    <div class="new-card">
+      <h3>🆕 肯德基×奥利奥「奥利奥原味鸡汉堡」</h3>
+      <div class="meta">上市时间：8月28日全国 | 价格带：套餐29.9元（2汉堡+炸鸡+饼干）</div>
+      <p><strong>产品力拆解：</strong>黑色奥利奥风味面包胚压经典饼干花纹，夹吮指原味鸡风味鸡腿排+混奥利奥碎的绵密土豆泥，附可可/香草"黑白酱"。甜品元素被解构后重组进咸食主食。</p>
+      <p><strong>启发：</strong>甜咸反差是确定性流量密码。我们可做"甜品基因注入咸食"的轻量零食——如咸甜口即食小吃，但需避开巨头正面战场，走细分场景。</p>
+    </div>
+
+    <div class="new-card">
+      <h3>🆕 盒马「奶豆腐（新鲜奶酪）」</h3>
+      <div class="meta">上市时间：本周上新 | 价格带：中高客单（新鲜奶酪品类）</div>
+      <p><strong>产品力拆解：</strong>奶酪变身中式烹饪食材，切入炒菜、炖煮、煎炸等中餐场景，把"新鲜奶酪"从西式甜品拉进日常做饭。</p>
+      <p><strong>启发：</strong>奶酪"中式烹饪化"是蓝海。可迁移：<span class="strong">家用新鲜奶酪+中式菜式料包</span>，把吃奶酪翻译成国人熟悉的做饭场景，降低尝鲜门槛。</p>
+    </div>
+
+    <div class="new-card">
+      <h3>🆕 京东七鲜×ffit8「胶原蛋白肽水」</h3>
+      <div class="meta">上市时间：本周上新 | 价格带：蛋白即饮带</div>
+      <p><strong>产品力拆解：</strong>蛋白饮料再添新军，胶原蛋白肽做成即饮水形态，切入"日常补水+美容蛋白"场景，降低蛋白粉冲泡门槛。</p>
+      <p><strong>启发：</strong>功能蛋白从粉剂走向即饮、从运动走向日常。可迁移：<span class="strong">洁净版蛋白/胶原即饮</span>，配料表干净是差异化，适配白领下午茶+轻运动场景。</p>
+    </div>
+
+    <div class="new-card">
+      <h3>🆕 噜咪啦「玫瑰普洱茶味薯片」</h3>
+      <div class="meta">上市时间：本周上新 | 价格带：零食常规带</div>
+      <p><strong>产品力拆解：</strong>锚定地域食材，把云南玫瑰+普洱茶的茶香做进膨化薯片，地域食材+茶香双记忆点。</p>
+      <p><strong>启发：</strong>地域+茶香是膨化/烘焙的差异化切口。可迁移：<span class="strong">茶香风味系列（普洱/桂花/乌龙）×地域食材</span>，天然有产地直发故事和溢价逻辑。</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div style="font-size:14px;font-weight:700;color:#7c3a12;margin-bottom:12px;">🎪 展会预告</div>
+    <div class="item">
+      <p>🎪 <strong>2026亚洲国际果蔬展览会</strong> 9/2 香港 | <strong>看点</strong>：亚洲果蔬贸易风向标 | <strong>与我何干</strong>：秋季果品产地直发选品的前置窗口。</p>
+      <p>🎪 <strong>SIAL西雅国际食品展（广州）</strong> 9/3-5 保利世贸博览馆 | <strong>看点</strong>：国际食品饮料大展，6万㎡/1500+展商 | <strong>与我何干</strong>：新品趋势+供应链对接核心现场。</p>
+      <p>🎪 <strong>广州国际自有品牌展MARCA</strong> 9/8-9 保利世贸博览馆 | <strong>看点</strong>：自有品牌选品与代工对接 | <strong>与我何干</strong>：找OEM/ODM代工、看渠道自有品牌打法。</p>
+      <p>🎪 <strong>中食展（广州）</strong> 9/10-12 广交会展馆B区 | <strong>看点</strong>：同期牛肉节+低GI食品展+西点烘焙展+渔业博览会 | <strong>与我何干</strong>：低GI+牛肉+水产三赛道集中看，9月最值得去的展。</p>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <p>⚠️ 以上内容由 AI 自动聚合生成，信息来源于公开渠道，仅供参考，不构成投资建议</p>
+  <p>信源：Foodaily每日食品 / 食品伙伴网 / 中新经纬 / 新华网 / 腾讯新闻 / 餐饮老板内参 等</p>
+  <p style="margin-top:8px;">Generated by WorkBuddy 食研日推 · 2026-08-29 09:00 CST</p>
+</div>
+
+</body>
+</html>
