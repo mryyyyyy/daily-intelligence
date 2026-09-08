@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 · 2026-09-08</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #fbf4ea; color: #3d2c1e; font-size: 15px; line-height: 1.75; }
+
+  .hero {
+    background: linear-gradient(135deg, #3d2413 0%, #6b3f1d 45%, #8a5a2b 100%);
+    border-bottom: 3px solid #e0a458;
+    padding: 34px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255,196,110,0.16) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%; left: -5%;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(230,120,60,0.14) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(255,196,110,0.16);
+    border: 1px solid rgba(255,196,110,0.4);
+    color: #ffd9a0;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 { font-size: 28px; font-weight: 800; color: #fff6e8; margin-bottom: 8px; }
+  .hero .sub { color: #e8cfa8; font-size: 14px; }
+
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 28px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .card {
+    background: #fffdf8;
+    border: 1px solid #f0e2cf;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 14px rgba(107,63,29,0.06);
+  }
+  .card-header {
+    background: linear-gradient(135deg, #fdf1df 0%, #fff8ec 100%);
+    padding: 15px 20px;
+    border-bottom: 1px solid #f0e2cf;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-header .icon {
+    width: 34px; height: 34px;
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    background: rgba(224,122,57,0.12);
+  }
+  .card-header h2 { font-size: 17px; font-weight: 700; color: #6b3f1d; }
+  .card-body { padding: 20px; }
+
+  .item {
+    margin-bottom: 16px;
+    padding: 14px 16px;
+    background: #fdf8f0;
+    border: 1px solid #f3e6d2;
+    border-radius: 10px;
+  }
+  .item:last-child { margin-bottom: 0; }
+  .item h3 { font-size: 15px; font-weight: 700; color: #4a2c14; margin-bottom: 6px; }
+  .item p { font-size: 13.8px; color: #5c4634; margin-top: 3px; }
+  .item .tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 5px;
+    font-size: 11.5px;
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  .tag-me { background: rgba(224,122,57,0.14); color: #c96f1e; }
+  .tag-sig-up { background: rgba(200,60,40,0.12); color: #c63c28; }
+  .tag-sig-mid { background: rgba(224,140,30,0.14); color: #c87d1a; }
+  .tag-sig-low { background: rgba(90,150,60,0.14); color: #4f8a35; }
+  .tag-new { background: rgba(200,60,40,0.12); color: #7c2f1c; }
+
+  .strong { color: #8a3c1a; font-weight: 700; }
+  .divider { height: 1px; background: #f0e2cf; margin: 20px 0; }
+
+  .time-box {
+    background: linear-gradient(135deg, #fdefdc, #fff7ea);
+    border: 1px solid #f0d9b8;
+    border-left: 4px solid #e07b39;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+  .time-box p { font-size: 13.8px; color: #5c4634; margin-top: 3px; }
+
+  .new-card {
+    background: #fffaf1;
+    border: 1px solid #f0d9b8;
+    border-left: 4px solid #e07b39;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .new-card:last-child { margin-bottom: 0; }
+  .new-card h3 { font-size: 14.5px; font-weight: 700; color: #8a3c1a; margin-bottom: 5px; }
+  .new-card .meta { font-size: 12.5px; color: #a06a35; margin-bottom: 6px; }
+  .new-card p { font-size: 13.5px; color: #5c4634; margin-top: 3px; }
+
+  .idea-card {
+    background: linear-gradient(135deg, #fdeee0, #fff7ec);
+    border: 1px solid #f0d3a8;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .idea-card:last-child { margin-bottom: 0; }
+  .idea-card h3 { font-size: 15.5px; font-weight: 800; color: #7c3a12; margin-bottom: 6px; }
+  .idea-card .line { font-size: 13.8px; color: #5c4634; margin-top: 4px; }
+
+  .footer {
+    text-align: center;
+    padding: 22px;
+    color: #a08a72;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">🍽️ 2026年9月8日 星期二 · 白露第2天</div>
+    <h1>🌿 食研日推 · 每日行业情报</h1>
+    <div class="sub">下厨房食品品牌 · 产品经理专属 | 只给开品弹药，拒绝水文 | 自动生成，仅供参考</div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- 板块一 -->
+<div class="card">
+  <div class="card-header"><div class="icon">🔥</div><h2>一、今日行业要闻</h2></div>
+  <div class="card-body">
+
+    <div class="item">
+      <h3>1. 美国蛋白黑马David母公司拿下2.5亿美元B轮：蛋白质进入"日常化"下半场</h3>
+      <p>Medici Brands（David Protein）9/2完成2.5亿美元（约17亿人民币）B轮，估值一年翻三倍至22.5亿美元；David从蛋白棒起家，已扩到冷冻甜品、即饮奶昔，铺进沃尔玛/Costco等3.5万个网点。Foodaily判断：蛋白正从蛋白粉延展到水、咖啡、酸奶等日常品类，星巴克/蒙牛/伊利集中上新，国产乳清蛋白加速落地、酵母/合成生物蛋白进入产业化。</p>
+      <p><span class="tag tag-me">与我何干</span><strong>高蛋白"日常化+零食化"是确定方向，但蛋白棒/蛋白粉已是红海</strong>——洁净蛋白×中式食材（乳清入粥羹、蛋白入烘焙/卤味）才有差异化；国产乳清蛋白放量意味着高蛋白开品的上游成本有望改善，值得重新算账。</p>
+    </div>
+
+    <div class="item">
+      <h3>2. 山姆中国2026财年全渠道销售破1400亿、付费会员1070万，加速下沉</h3>
+      <p>9/5前后数据：山姆河北首店（石家庄）9月开业、哈尔滨商业体中标落子、Costco披露5年9店计划；渠道端动作密集——自有礼盒月饼13款99.9-238元（红豆沙三拼99.9元压到老字号同规格之下）、9/3官宣MM德式小麦鲜啤39.9元/2瓶。</p>
+      <p><span class="tag tag-me">与我何干</span>会员店自有品牌把<strong>"质价比"价格锚点越压越低</strong>（99.9元月饼/约20元每升鲜啤），对所有渠道成立——我们的产地食材礼盒定价要敢对标"看得见的好"，不能只靠故事溢价。想进会员店货架=自有品牌代工机会，Marca China今明两天在广州开展，可直接对接。</p>
+    </div>
+
+    <div class="item">
+      <h3>3. 京东生鲜中秋礼单转向："从送得贵到送得对"，73%消费者优先低糖/零添加/药食同源</h3>
+      <p>9/3京东生鲜发布中秋礼单：月饼不再是唯一主角，佛跳墙、鳗鱼礼盒、酱牛肉、大闸蟹礼券（阳澄联合/姑苏渔歌）、盐池滩羊、应季果礼（秋月梨/软籽石榴/阳光玫瑰）成热门替代；消费决策关键词变为"份量适中、内容有特色、包装有质感"。</p>
+      <p><span class="tag tag-me">与我何干</span><strong>中秋礼盒"去月饼化"是今年明确的结构性变化</strong>——产地食材礼盒正踩在风口上，距中秋仅17天，礼盒方案这周必须定稿开售。</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- 板块二 -->
+<div class="card">
+  <div class="card-header"><div class="icon">🎯</div><h2>二、爆品雷达 · 趋势苗头</h2></div>
+  <div class="card-body">
+
+    <div class="item">
+      <h3>冷藏柜"短保鲜啤"战争开打：山姆/盒马/七鲜/泰山到齐</h3>
+      <p>山姆9/3官宣MM德式小麦鲜啤（1L×2/39.9元、13.2°P，冷链短保）；京东七鲜冰萃鲜啤12天保质只卖7.9元/升；盒马28天锁鲜全麦原浆、比利时白啤鲜啤；泰山啤酒7天原浆凌晨3点生产、上午9点到店——短保鲜啤今年夏天起在超市冷藏柜全面开战。</p>
+      <p><span class="tag tag-sig-mid">🟡 起势</span><strong>"新鲜短保=溢价"的心智正被主流渠道集体教育</strong>，从食材蔓延到啤酒。方向正确性被验证；同时提示可关注短保鲜啤的下酒场景——卤味/冷吃小食的"短保升级版"有空档。</p>
+    </div>
+
+    <div class="item">
+      <h3>滇味月饼爆发：宣威火腿月饼日销30万盒，地域风味成中秋新引擎</h3>
+      <p>宣威火腿月饼全网搜索同比+217%~317%、抖音#滇味月饼#播放86亿、小红书单周新增笔记12万+篇，直播间单场破千万，宣威工厂凌晨4点开工赶单。京东消费研究院：宣威火腿月饼稳居平台"地域特色糕点"TOP1。</p>
+      <p><span class="tag tag-sig-up">🔴 已爆</span>月饼本体别追（白热化），真正可借的是<strong>"宣威火腿"地标食材的全国认知红利</strong>——火腿丝、火腿酱、云腿小食的产地直发能借势；也验证中秋"咸口点心"需求起来了。</p>
+    </div>
+
+    <div class="item">
+      <h3>茶饮开启"地域双鲜"组合：奈雪吊干杏×人参果，小众产地果被带火</h3>
+      <p>奈雪9/2「霸气小红杏酸奶冰」首日登顶门店TOP1——新疆吊干杏（树上自然熟、冷链锁鲜）×云南人参果（脆粒口感）+益生菌酸奶；此前茉莉奶白"针王橘子"、奈雪"落日橘子海"已是同一打法：地域水果品种化、组合化。</p>
+      <p><span class="tag tag-sig-low">🟢 苗头</span>茶饮在替我们做<strong>小众产地水果的消费者教育</strong>——吊干杏、人参果、泰橘这类"品种化"水果接下来会在零售/即食端起量。新疆吊干杏只剩夏末秋初窗口，提前锁产地是产地直发的先发机会。</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- 板块三 -->
+<div class="card">
+  <div class="card-header"><div class="icon">🌿</div><h2>三、时令风向 · 品类机会</h2></div>
+  <div class="card-body">
+
+    <div class="time-box">
+      <p>📅 当前：白露第2天（9/7入白露），暑退秋燥起，全年"润燥"主题正式开闸；中秋（9/25）进入最后两周采购期</p>
+      <p>⏰ 倒计时：距秋分15天（9/23）、距中秋17天（9/25）、距大闸蟹批量上市约2周（9月下旬，太湖/固城湖已小批量先行）</p>
+      <p>🎯 即将热卖：<strong>秋月梨</strong>（山东莱阳批发3-5.5元/斤回落中，礼盒45-89.9元）— 润燥刚需+中秋果礼双驱动，从现在到国庆是主窗口；<strong>突尼斯软籽石榴</strong>（四川会理/云南蒙自批发2.5-5.5元/斤，8斤礼盒约118元）— "中秋红果"+不用吐籽，下周进送礼高峰；<strong>大闸蟹</strong>（九月吃母蟹，下旬放量）</p>
+      <p>🚨 窗口提醒：<strong>松茸季收尾</strong>（7-9月，小象超市香格里拉前置产线仍在推）——想上"菌季末班车"要快；<strong>阳光玫瑰/巨峰尾期放量</strong>价格回落，别做礼盒溢价，适合引流；<strong>西瓜/小龙虾已过季</strong>，别再铺</p>
+      <p>🏔️ 产地机会：<strong>山东莱阳秋月梨</strong>（糖分向峰值沉淀中，现摘现发）、<strong>四川会理软籽石榴</strong>（最佳赏味期）、<strong>新疆吊干杏</strong>（奈雪刚带火，最后窗口）、<strong>江西/云南早熟蜜橘</strong>（本月中旬上市高峰，可抢"第一口橘"）、陕西大荔冬枣</p>
+    </div>
+
+    <div class="item">
+      <h3>⚠️ 果礼注意：石榴别只卖"大"，梨要讲"化渣度"</h3>
+      <p>今年秋果批发价全面亲民（石榴2.5元/斤起、秋月梨3元/斤起），<span class="strong">裸果走量没有利润空间</span>，差异化只能靠"品种/产地/规格/体验"：会理石榴分级（单果400g+礼盒装）、秋月梨糖度实测值（14°+）、冬枣脆度承诺。京东礼单数据显示"应季水果礼"正替代部分月饼礼盒，果礼做"测得准、看得见"是溢价钥匙。</p>
+      <p><span class="tag tag-me">与我何干</span>秋果礼盒是中秋第二曲线，但要在<strong>分级标准与信任话术</strong>（糖度/果径/可溯源产地）上做出专业感，避免和批发市场裸果价格战。</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- 板块四 -->
+<div class="card">
+  <div class="card-header"><div class="icon">💡</div><h2>四、跨界灵感 · 创新动作</h2></div>
+  <div class="card-body">
+
+    <div class="item">
+      <h3>霸王茶姬开卖「白雾红尘茶叶蛋」：茶底风味资产跨界早餐</h3>
+      <p>9/7上海7家门店上线，用白雾红尘同款大红袍茶底（武夷山核心产区、一级奇兰拼水仙）原叶慢煮，5元/枚、随饮品加2.5元换购，早餐套餐10:30前8折；阿那亚电影周日出时段免费派发造势，"奶茶店卖茶叶蛋"话题发酵。</p>
+      <p><span class="tag tag-me">迁移可能</span><strong>"同款原料做高毛利副线"是风味资产的复用模板</strong>——对我们意味着：好茶底/菌菇高汤/香辛料底都可以延伸出硬食副线（预包装溏心卤蛋、汤底+蛋早餐组合），现制店验证场景，我们做零售化。</p>
+    </div>
+
+    <div class="item">
+      <h3>海底捞「巡鲜岛」9月开业：一人一锅+轨道送餐，锅底当日现做</h3>
+      <p>新业态主打"鲜切、鲜活、鲜送"：170款SKU、菜品1.9-39.9元，9款有料锅底当日现做（椰香竹荪文昌鸡锅、山野五指毛桃鸡汤锅、金汤黑鱼锅等），鲜切清远鸡/文昌鸡一日两配，折后客单约80元。</p>
+      <p><span class="tag tag-me">迁移可能</span>头部火锅放量"一人食小火锅"=<strong>家庭/独居小份汤底与食材包需求扩容</strong>；五指毛桃、椰香竹荪这类有辨识度的地域汤底被大店验证，正是我们做"洁净有料汤底/炖汤食材包"的现成风味清单。</p>
+    </div>
+
+    <div class="item">
+      <h3>日本7-11「布丁狗30周年」联名甜点今日上市：把口感承诺做成logo</h3>
+      <p>9/8起日本全国7-11上架三款联名甜点（奶油牛奶布丁268円、麻糬白铜锣烧220円、冷冻今川烧158円），全部标注"Happy Texture"标志——品牌把"对美味、口感、可爱度的坚持"做成可视化承诺，配合App抽奖与限定周边。</p>
+      <p><span class="tag tag-me">迁移可能</span>把抽象"好吃"翻译成<strong>可感知的工艺承诺标签</strong>（脆度/糯度/化渣度/爆汁度）在国内还是空位——我们的秋月梨可以承诺"化渣度、糖度实测"，即食可以承诺"弹度/流心度"，让消费者下单前就"看得见好吃"。</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- 板块五 -->
+<div class="card">
+  <div class="card-header"><div class="icon">🧪</div><h2>五、脑暴时刻 · 融合创意</h2></div>
+  <div class="card-body">
+
+    <div class="idea-card">
+      <h3>①「一枚好蛋·茶香溏心」短保即食茶香溏心蛋</h3>
+      <div class="line"><strong>一句话描述：</strong>用产地整叶茶（大红袍/正山小种/龙井分级）原叶慢卤、可生食标准半熟溏心、短保冷链的预包装茶香溏心蛋。</div>
+      <div class="line"><strong>为什么是现在：</strong>霸王茶姬茶叶蛋9/7引爆"茶底×蛋"话题，5元/枚的门店价已把价格锚定拉高；早餐场景+茶香风味正被现制端教育。</div>
+      <div class="line"><strong>差异化锚点：</strong>存量卤蛋（卫龙/无穷等）走香辣、全熟、重卤香；我们做"茶底品质叙事+溏心半熟+配料表只有蛋/茶/酱油香辛料"的洁净版，风味靠真茶而非香精。</div>
+      <div class="line"><strong>可行性初判：</strong>可生食鸡蛋+无菌溏心工艺供应链成熟，短保（21-45天）冷链适配达播+即时零售；核心要验证"茶叶蛋能否支撑溢价"，可用产地茶分级做9.9-19.9元价格带分层。</div>
+    </div>
+
+    <div class="idea-card">
+      <h3>②「一盅秋汤」地域有料炖汤食材包（白露-秋分润燥窗口）</h3>
+      <div class="line"><strong>一句话描述：</strong>清远鸡/鲜鲍/瘦肉+五指毛桃、椰香竹荪、雪梨无花果等地域汤料组合的"看得见食材"炖汤包，每份一人食/小家庭两档。</div>
+      <div class="line"><strong>为什么是现在：</strong>白露润燥主题刚开闸（少辛增酸、清补养肺），海底捞巡鲜岛验证了五指毛桃鸡汤、椰香竹荪鸡等地域有料汤底的市场接受度；炖汤包在抖音已被"广东靓汤"完成品类教育。</div>
+      <div class="line"><strong>差异化锚点：</strong>市面炖汤包多药材味重、配料表长、食材等级低；我们做"产地食材看得见+配料只有食材与汤料"的洁净包，用清远鸡/鲜菌等真材实料撑溢价，附食材溯源卡。</div>
+      <div class="line"><strong>可行性初判：</strong>供应链简单（分装组合+冷冻/短保），达播适配度高（现场炖煮演示是天然内容）；窗口到秋分-霜降约6周，适合快速测款。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 板块六 -->
+<div class="card">
+  <div class="card-header"><div class="icon">🏬</div><h2>六、展会速递 · 每周新品雷达</h2></div>
+  <div class="card-body">
+
+    <div style="font-size:14px;font-weight:700;color:#7c3a12;margin-bottom:12px;">🆕 每周新品速递（5款 · 指名道姓）</div>
+
+    <div class="new-card">
+      <h3>🆕 霸王茶姬「白雾红尘茶叶蛋」</h3>
+      <div class="meta">上市时间：9月7日（上海7店限定） | 价格带：5元/枚，随正价饮品+2.5元换购，早餐套餐8折</div>
+      <p><strong>产品力拆解：</strong>用招牌"白雾红尘"同款茶底（武夷山大红袍，一级奇兰拼水仙）原叶慢煮，茶香浸入蛋体；9/5-7阿那亚电影周日出时段免费派发造势。卖点是"真正的茶叶蛋+茶底同源"，切早餐硬食场景。</p>
+      <p><strong>启发：</strong>茶饮品牌把"茶底风味"延伸到高毛利硬食——预包装"茶香溏心蛋"仍是零售空档（见脑暴①）；同时提示<strong>同款原料做副线</strong>的资产复用逻辑，我们的核心食材都能这么盘一遍。</p>
+    </div>
+
+    <div class="new-card">
+      <h3>🆕 奈雪的茶「霸气小红杏酸奶冰」</h3>
+      <div class="meta">上市时间：9月2日全国 | 价格带：茶饮常规带 | 上市首日登顶门店销量TOP1</div>
+      <p><strong>产品力拆解：</strong>新疆吊干杏（树上自然熟、冷链锁鲜）×云南人参果（脆粒咀嚼感）双产地鲜果互补，+益生菌酸奶基底+茉莉初雪茶底；"鲜果轻压+冰沙缓打"工艺锁香，精准打"入秋润燥解腻、轻负担"。</p>
+      <p><strong>启发：</strong><strong>双产地鲜果组合是现制饮品的上新模板</strong>；杏品类被奈雪连续多年深耕后今年做形态升级。新疆吊干杏只剩最后风味窗口，鲜果/杏干产地直发值得立刻锁货。</p>
+    </div>
+
+    <div class="new-card">
+      <h3>🆕 盒马「人间清醒酸柠2700」营养素饮料</h3>
+      <div class="meta">上市时间：9月2日 | 价格带：5.9元/155ml（小规格轻功能）</div>
+      <p><strong>产品力拆解：</strong>无糖柠檬气泡，果汁≥10%（1瓶≈1颗柠檬）+绿咖啡粉+D-阿洛酮糖+VC/烟酰胺/B6，主打通勤办公"轻提神"；同日还上了情绪放松款「顺其自然GABA100」（100mg GABA+茶氨酸）。盒马自有饮品从风味创新转向"轻功能+小规格高密度"。</p>
+      <p><strong>启发：</strong>反面教材价值大——测评普遍吐槽<strong>代糖味出戏（配料表第二位即赤藓糖醇）</strong>：功能叠加不能牺牲风味，这恰恰是我们做洁净配方时"风味优先级"的提醒；"155ml小规格高功能密度"的规格思路可借鉴到即食/饮品。</p>
+    </div>
+
+    <div class="new-card">
+      <h3>🆕 德芙「武夷大红袍·茶萃黑巧」</h3>
+      <div class="meta">上市时间：9月2日（盒马首发） | 价格带：24.9元/108g</div>
+      <p><strong>产品力拆解：</strong>2.5%武夷大红袍乌龙茶粉+100%进口可可脂，微米级研磨把茶粉做到够细防粗涩，突出黑巧醇厚×大红袍馥郁茶香。中国名茶×西式巧克力的新跨界公式。</p>
+      <p><strong>启发：</strong>龙井/茉莉之后大红袍入巧，<strong>"地域名茶×可可"仍在上新窗口</strong>——茶香×坚果、茶香×糕点、茶香×肉脯都还没被做透；我们可用产地茶风味给传统食材加"第二记忆点"。</p>
+    </div>
+
+    <div class="new-card">
+      <h3>🆕 张飞牛肉「陈皮牛肉」</h3>
+      <div class="meta">上市时间：9月初 | 价格带：休闲肉干带（45g约11.8元）</div>
+      <p><strong>产品力拆解：</strong>牛后腿肉原切条，五香/香辣两味；把经典川菜"陈皮牛肉"直接零食化——陈皮提供清香+天然"食养"联想，避开牛肉干麻辣/蜜汁的重口红海，风味更轻更克制。</p>
+      <p><strong>启发：</strong>老字号打法="菜名即记忆点+药食同源食材做差异化"。我们做肉脯/卤味/肉干时，可用<strong>陈皮、山楂、罗汉果等有认知基础的草本</strong>替代纯辣纯甜，既立风味又有合规可讲的"食养"叙事。</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div style="font-size:14px;font-weight:700;color:#7c3a12;margin-bottom:12px;">🎪 展会预告</div>
+    <div class="item">
+      <p>🎪 <strong>Marca China广州国际自有品牌展</strong> 9/8-9（今明）保利世贸博览馆 | <strong>看点</strong>：300+制造企业，商超/便利/即时零售自有品牌选品对接 | <strong>与我何干</strong>：想进山姆/盒马/小象货架的OEM/ODM对接窗口，今日开展。</p>
+      <p>🎪 <strong>2026中食展（广州）暨Food2China Expo</strong> 9/10-12（后天）广交会展馆B区 | <strong>看点</strong>：6万㎡/2000+展商，同期Meat2China牛肉节+西点烘焙展+低GI食品展，新增<strong>「蛋白世界」「水吧星球」</strong>专题展区 | <strong>与我何干</strong>：蛋白+牛肉+低GI+烘焙四赛道集中看，是9月最值得去的展（官栈/农耕记/千禾等都在）。</p>
+      <p>🎪 <strong>中国餐饮品牌节</strong> 9/21-23 广州 | <strong>看点</strong>：连锁餐饮趋势与供应链对接 | <strong>与我何干</strong>：看餐饮端食材需求，为炖汤包/汤底方向找B端出口。</p>
+      <p>（注：亚洲果蔬展香港9/2、SIAL广州9/3-5已闭幕，其释放的秋果/新品信号已并入上文）</p>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <p>⚠️ 以上内容由 AI 自动聚合生成，信息来源于公开渠道，仅供参考，不构成投资建议</p>
+  <p>信源：Foodaily每日食品 / 36氪 / 红餐网 / 食品伙伴网 / 京东消费研究院 / 信息时报 / 光明网 等</p>
+  <p style="margin-top:8px;">Generated by WorkBuddy 食研日推 · 2026-09-08 09:00 CST</p>
+</div>
+
+</body>
+</html>
