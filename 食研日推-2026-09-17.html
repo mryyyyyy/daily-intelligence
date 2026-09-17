@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 · 2026-09-17 · 白露第10日·中秋倒计时8天</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(135deg, #FFF8F0 0%, #FCEED9 100%);
+    color: #3A2515;
+    line-height: 1.7;
+    padding: 20px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .header {
+    background: linear-gradient(135deg, #C8553D 0%, #E07A5F 100%);
+    color: #FFF8F0;
+    padding: 32px 28px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 24px rgba(200, 85, 61, 0.18);
+  }
+  .header h1 {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .header .sub {
+    font-size: 14px;
+    opacity: 0.95;
+    letter-spacing: 0.5px;
+  }
+  .header .meta {
+    margin-top: 14px;
+    font-size: 13px;
+    opacity: 0.9;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .header .meta span {
+    background: rgba(255, 248, 240, 0.18);
+    padding: 4px 10px;
+    border-radius: 8px;
+  }
+  .section {
+    background: #FFFCF7;
+    border-left: 4px solid #E07A5F;
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 8px rgba(154, 96, 60, 0.08);
+  }
+  .section h2 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #C8553D;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .item {
+    padding: 12px 0;
+    border-bottom: 1px dashed rgba(200, 85, 61, 0.15);
+  }
+  .item:last-child { border-bottom: none; }
+  .item-title {
+    font-weight: 700;
+    color: #5A2E1A;
+    margin-bottom: 4px;
+    font-size: 15px;
+  }
+  .item-title .emoji {
+    margin-right: 4px;
+  }
+  .item-meta {
+    font-size: 13px;
+    color: #8B5A3C;
+    margin-top: 2px;
+  }
+  .item-meta .tag {
+    display: inline-block;
+    background: #FCEED9;
+    color: #8B4513;
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-right: 4px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .highlight {
+    background: linear-gradient(transparent 60%, #FFE5C2 60%);
+    font-weight: 700;
+    padding: 0 2px;
+  }
+  .callout {
+    background: #FFF1DC;
+    border-left: 3px solid #D97942;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #6B3818;
+  }
+  .product-card {
+    background: linear-gradient(135deg, #FFF8F0 0%, #FCEED9 100%);
+    border: 1.5px solid #E07A5F;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin: 12px 0;
+    position: relative;
+  }
+  .product-card::before {
+    content: "🆕";
+    position: absolute;
+    top: -10px;
+    left: 14px;
+    background: #C8553D;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .product-card .brand {
+    font-size: 16px;
+    font-weight: 800;
+    color: #C8553D;
+    margin-bottom: 4px;
+    margin-top: 4px;
+  }
+  .product-card .price {
+    display: inline-block;
+    background: #C8553D;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-left: 6px;
+  }
+  .product-card .breakdown {
+    font-size: 13.5px;
+    color: #5A2E1A;
+    margin: 6px 0;
+  }
+  .product-card .breakdown b {
+    color: #8B4513;
+  }
+  .product-card .inspire {
+    font-size: 13px;
+    color: #6B3818;
+    background: rgba(200, 85, 61, 0.08);
+    padding: 8px 10px;
+    border-radius: 6px;
+    margin-top: 8px;
+  }
+  .signal {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 4px;
+  }
+  .signal-green { background: #D4F0D4; color: #2C6B2C; }
+  .signal-yellow { background: #FFE9B3; color: #8B5A00; }
+  .signal-red { background: #FFD4D4; color: #8B2222; }
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(200, 85, 61, 0.3), transparent);
+    margin: 18px 0;
+  }
+  .footer {
+    text-align: center;
+    color: #8B5A3C;
+    font-size: 12px;
+    padding: 20px 0 10px;
+    letter-spacing: 0.5px;
+  }
+  .footer .tip {
+    background: #FFFCF7;
+    padding: 12px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 10px;
+    box-shadow: 0 2px 6px rgba(154, 96, 60, 0.06);
+  }
+  ul.bullets {
+    margin: 8px 0 8px 20px;
+    font-size: 14px;
+  }
+  ul.bullets li { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="meta">
+    <span>📅 2026年9月17日 星期四</span>
+    <span>🌿 白露第10日</span>
+    <span>🥮 中秋倒计时8天</span>
+  </div>
+  <h1>🧠 食研日推 · 第49期</h1>
+  <div class="sub">下厨房食品PM情报站 · 每日30分钟读懂食品圈</div>
+  <div class="meta" style="margin-top: 10px;">
+    <span>🔥 要闻：3条</span>
+    <span>🎯 爆品雷达：3个</span>
+    <span>🆕 本周新品：5款</span>
+    <span>🧪 脑暴：2个</span>
+  </div>
+</div>
+
+<!-- ==================== 板块一：要闻 ==================== -->
+<div class="section">
+  <h2>🔥 一、今日行业要闻</h2>
+  <div class="item">
+    <div class="item-title"><span class="emoji">📜</span>市场监管总局印发食糖新规：食糖中不得添加淀粉糖</div>
+    <div class="item-meta">9/16正式发布《食糖生产许可审查细则（征求意见稿）》，意见截止10/16</div>
+    <div class="callout"><span class="highlight">与我何干</span>：第五条直接规定"食糖中不得添加淀粉糖"，复合糖/复配糖浆/预混粉不得作为原料。手作红糖/古法黑糖/原蔗糖赛道迎来<span class="highlight">真品类升级窗口</span>——配料表洁净+真原蔗糖溯源可作差异化卖点。下厨房做糖品类（红糖/糖粉/糖渍）时，<span class="highlight">"洁净配料表+GI认证"是最现实的差异化锚点</span>。</div>
+  </div>
+  <div class="item">
+    <div class="item-title"><span class="emoji">🦐</span>朴朴启动湖南特色辣椒商品矩阵：8个月累计销售破2000万，月均200万+</div>
+    <div class="item-meta">9/16零售氪星球深度报道，朴朴商品分级筛选+量化展示案例</div>
+    <div class="callout"><span class="highlight">与我何干</span>：朴朴把"鸡肠子辣椒+玉指+樟树港辣椒（国家地理标志）+湘研2307"做成4款不同辣度、覆盖不同烹饪场景的商品矩阵，<span class="highlight">复购率显著跑赢蔬菜大盘</span>。这是非标农产品"风味→商品→全国规模化"的标准解法。<span class="highlight">阳雀湖辣椒线（樟树港）已经具备成熟供应链认知</span>，完全可以借鉴这套思路做品种分级+辣度标定，让产地故事直接转化为终端货架的复购率。</div>
+  </div>
+  <div class="item">
+    <div class="item-title"><span class="emoji">🔒</span>全家便利店华南区16店试点"锁鲜零食"赛道</div>
+    <div class="item-meta">继唐久/7-11布局后，全家9/16广州/深圳/东莞16家门店开卖透明盒装+独立密封袋锁鲜零食</div>
+    <div class="callout"><span class="highlight">与我何干</span>：从零食集合店蔓延至便利店，蜜饯果干+炭烤鱿鱼丝+香辣小银鱼等多款单品开盒即食。<span class="highlight">"锁鲜短保"渠道定位与下厨房食品的"洁净短保"高度契合</span>——可以把"现制零食/短保卤味/锁鲜小吃"作为即时零售新渠道专供产品线开发，匹配全家/7-11/罗森便利店场景。</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ==================== 板块二：爆品雷达 ==================== -->
+<div class="section">
+  <h2>🎯 二、爆品雷达·趋势苗头</h2>
+  <div class="item">
+    <div class="item-title"><span class="emoji">🍠</span>秋冬"蜜薯四拼时代"——从按斤卖到按情绪卖</div>
+    <div class="item-meta"><span class="signal signal-yellow">🟡起势</span>烟薯25+榴莲蜜薯+哈密冰糖薯+糖心紫薯，29.9-59.9元/箱，搭空气炸锅教程</div>
+    <div class="callout"><span class="highlight">机会判断</span>：秋冬生鲜直播间造出来的"情绪包"消费词，背后是中国农产品从按斤到按情绪的转身——算法叙事×色彩冲击力×健康标签（花青素/粗粮/低GI）×懒人经济。<span class="highlight">借鉴价值</span>：下厨房的时令根茎/瓜果礼盒可考虑"四色/四味/四场景组合装"+配方的可视化（如纸卡食谱+厨房工具搭配）。</div>
+  </div>
+  <div class="item">
+    <div class="item-title"><span class="emoji">🥮</span>中秋月饼"轻装上阵+健康化+审美升级"——百元档成主流</div>
+    <div class="item-meta"><span class="signal signal-yellow">🟡起势</span>西安/宁波多家商超今年月饼销量与去年持平，<span class="highlight">简装/散装占比提升至2-3成</span>，主流价格带集中在100-300元</div>
+    <div class="callout"><span class="highlight">机会判断</span>：包装做减法+老口味回归（苔菜/椒盐/五仁销量翻倍）+健康化（低糖豆沙/低糖流心/青稞/米月饼）成三主线。月饼+茶/小份简装礼盒更适合节日居家自食场景。<span class="highlight">下厨房品牌"洁净配料+大众价带"组合可以打差异化</span>——避开高价礼盒价格战，做"节日自食份"。</div>
+  </div>
+  <div class="item">
+    <div class="item-title"><span class="emoji">🌿</span>药食同源零食化扩品类——青青膳缘首发5款健康零食</div>
+    <div class="item-meta"><span class="signal signal-green">🟢苗头</span>青青乐旗下新品牌9月初亮相，含无糖羽衣甘蓝奇亚籽燕麦饼干+化橘红雪梨枇杷软糖+猴头菇山药莲子软糖+人参枸杞铁软糖</div>
+    <div class="callout"><span class="highlight">机会判断</span>：传统滋补从"节庆礼盒/炖煮场景"走向"日常随手可得"已成定局。零食化新品牌入场门槛低，但配方沉淀+食养平衡是壁垒。<span class="highlight">下厨房做"轻滋补零食"可以借鉴"饼干×清洁标签"+"软糖×中式食养"两条思路</span>——后者是我们擅长的差异化区间。</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ==================== 板块三：时令 ==================== -->
+<div class="section">
+  <h2>🌿 三、时令风向·品类机会</h2>
+  <div class="callout">
+    📅 <span class="highlight">当前节点</span>：白露第10日 · 秋分前6天（9/23）· 中秋倒计时8天（9/25）· 秋季第6周<br>
+    ⏰ <span class="highlight">倒计时提醒</span>：阳澄湖开捕11天（9/28）/ 寒露21天（10/8）/ 重阳32天（10/19）<br>
+    🎯 <span class="highlight">即将热卖</span>：<br>
+    · <span class="highlight">大闸蟹梯队</span>——南北并举产地差异化（盘锦稻田蟹9月中旬已批量/黄河口9月中旬开捕/江苏兴化9月中旬尝鲜/阳澄湖9/28开捕），"九雌十雄"公母赏味切换<br>
+    · <span class="highlight">9月水果C位</span>——软籽石榴（会理/蒙自）、陕西大荔冬枣（"维C炸弹"是苹果60倍）、秋月梨（莱阳）、榴莲蜜（海南白沙）、花牛苹果（甘肃天水）、琯溪蜜柚（福建平和）、蒲江红心猕猴桃<br>
+    · <span class="highlight">立秋贴秋膘最强场景</span>——江浙老鸭汤（陈皮老鸭"秋天写给喉咙的情书"）<br>
+    🚨 <span class="highlight">窗口提醒</span>：<br>
+    · 桂花新花：9月中旬前最后一批鲜摘桂花蜜窗口期将关闭<br>
+    · 中秋月饼上架：9/25前最后一周引爆点，工厂端需提前48小时锁单<br>
+    · 阳光玫瑰礼盒：10月预埋期（利润率40-55%）<br>
+    🏔️ <span class="highlight">产地机会</span>：<br>
+    · 江苏建昌红香芋（GI认证/中秋糖芋头原料）<br>
+    · 太秋甜柿（常州毛尖村，9月上旬-11月下旬超长挂果期）<br>
+    · 青藏高原大闸蟹（海拔高+水温低，错峰阳澄湖15-20天上市）<br>
+    · 五常稻花香2号（朴朴已签5万亩订单基地，新米直发跑通）<br>
+ films / 🎯 抖音#中秋压轴菜挑战#播放量破12.8亿，小红书"我家中秋C位菜"笔记47万篇——这是"中秋压轴菜预制版+礼盒化"的机会窗
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ==================== 板块四：跨界灵感 ==================== -->
+<div class="section">
+  <h2>💡 四、跨界灵感·创新动作</h2>
+  <div class="item">
+    <div class="item-title"><span class="emoji">🇯🇵</span>日本Lawson/FamilyMart：AI开发新品——从趋势提取到定价反推</div>
+    <div class="item-meta">9/15日经新闻+Kyodo：FamilyMart"番薯焦糖酱可露莉"285日元，AI分析POS数据决定概念；Lawson 9/29发售"泡菜风味柠檬塔"270日元（约1.75美元）</div>
+    <div class="callout"><span class="highlight">迁移可能</span>：开品流程数字化——①用POS/电商评论/小红书笔记提取关键词做趋势匹配（"内外反差口感"+"单手可食"等数据驱动概念）②定价用"试购率"反推（FamilyMart发现>300日元试购率明显下降，故定285）。下厨房开品可以借鉴"AI驱动开品"思路，先用小红书数据验证再小批量试产。</div>
+  </div>
+  <div class="item">
+    <div class="item-title"><span class="emoji">🍝</span>全家×王品夏慕尼：把法式铁板烧经典搬进便利店（详见新品雷达①）</div>
+    <div class="callout"><span class="highlight">迁移可能</span>：轻奢料理大众化——下厨房食品可以做"餐厅招牌菜家用版"，选取大众已有认知的菜品（如费大厨辣椒炒肉在家版、家用版蒜蓉粉丝虾、家用版砂锅粥），用即时零售+冷链包装+预制料理料包切入。</div>
+  </div>
+  <div class="item">
+    <div class="item-title"><span class="emoji">🧁</span>北京稻香村"科技×非遗"双背书（详见新品雷达③）</div>
+    <div class="callout"><span class="highlight">迁移可能</span>：老字号"可视化工序+非遗文化"是信任差异化新范式——下厨房食品可以用"工厂实地直播+老师傅手作视频+溯源可视化"做信任差异化，对应精品生鲜"信任电商"基建建设。</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ==================== 板块五：脑暴 ==================== -->
+<div class="section">
+  <h2>🧪 五、脑暴时刻·融合创意</h2>
+  <div class="item">
+    <div class="item-title">🎨 创意①「江浙老鸭·药食同源」低盐便利装</div>
+    <div class="breakdown">
+      · <b>一句话描述</b>：江浙名菜老鸭汤（陈皮/黄精/山药/枸杞药食同源版）即热料包<br>
+      · <b>为什么是现在</b>：白露老鸭全国通吃（"白露鸭"民俗）+立秋贴秋膘最强叙事+"秋天写给喉咙的情书"内容抓手+药食同源零食化趋势已起+中秋送礼场景<br>
+      · <b>差异化锚点</b>：对比市面鸭汤料包（市售多为浓油赤酱/含味精）→ <span class="highlight">低钠/洁净配料/可视化药食材/"白露鸭场景化"</span><br>
+      · <b>可行性初判</b>：鸭肉供应链成熟（华英/樱桃谷鸭）+药食同源食材标准化（如新会陈皮/九制黄精/铁棍山药）+即热料包工艺成熟（海底捞捞派有料汤模式）
+    </div>
+    <div class="product-card">
+      <div class="brand">🔖 产品形态建议</div>
+      <div class="breakdown">一袋鸭块（150g低脂鸭腿肉）+ 一袋药食同源汤料包（新会陈皮/九制黄精/铁棍山药/枸杞4味可视化独立包装）+ 一袋古法米醋蘸料。定价49-69元/份（1-2人份），匹配山姆/Sam/盒马即食区。主视觉参考"白露·一封写给喉咙的情书"+卡通药食材IP。</div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="item-title">🎨 创意②「中秋压轴·山海一盆」迷你盆菜/佛跳墙便利礼盒</div>
+    <div class="breakdown">
+      · <b>一句话描述</b>：广东盆菜/福建佛跳墙的家用版即热礼盒，1200-2000元价位，4-6人份<br>
+      · <b>为什么是现在</b>：中秋倒计时8天+抖音#中秋压轴菜挑战#播放量破12.8亿+小红书"我家中秋C位菜"47万篇+厦门家庭版迷你佛跳墙同比+210%（"年轻人边追剧边煨一坛"）<br>
+      · <b>差异化锚点</b>：对比传统大盆菜（一次煮一锅、用不完浪费）→ <span class="highlight">即热形态+鲍鱼参翅量化独立小包+溯源可视化（每只鲍鱼捕捞经纬度扫码可见）+4-6人份小规格契合现代家庭</span><br>
+      · <b>可行性初判</b>：鲍鱼/海参有标品供应链（国内南日鲍/大连辽参干参/鳕鱼胶）+加热即食工艺成熟（广州酒家/苏州好得睐成熟方案）+中秋礼盒大档期正是财富转移窗口
+    </div>
+    <div class="product-card">
+      <div class="brand">🔖 产品形态建议</div>
+      <div class="breakdown">六宫格独立装：①大连辽参2只（溯源）②南日鲍4只（溯源）③鳕鱼胶50g（北欧深海）④花胶100g（越南）⑤自制蚝豉6枚（广东老字号风味）⑥手工瑶柱莲藕（江苏太湖红香芋泥）。配套赠送"数字藏品盆菜券"+即热铝箔袋设计。整套礼盒定价1280-1880元（4-6人份），主打"团圆家宴的科技+非遗双背书"。</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ==================== 板块六：新品雷达+展会 ==================== -->
+<div class="section">
+  <h2>🏬 六、展会速递·每周新品雷达 <span style="font-size:12px;color:#8B5A3C;background:#FCEED9;padding:2px 8px;border-radius:6px;">🆕 板块核心</span></h2>
+  
+  <div class="product-card">
+    <div class="brand">🆕 盒马×盼盼领鲜×BASE BREAD 多营养面包 <span class="price">9.9-19.9元/盒</span></div>
+    <div class="item-meta">上市时间：9/15盒马首发</div>
+    <div class="breakdown">
+      <b>产品力拆解</b>：<br>
+      · 卖点：跳出"代餐面包"窄化定位，以"将完整膳食营养埋进面包本体"为核心研发逻辑<br>
+      · 配料：植物蛋白+高膳食纤维+10+维生素矿物质集成于面包基质（配方系统化科学配比）<br>
+      · 规格：红豆/枫糖/巧克力三款风味，78g/片<br>
+      · 场景：解决"热量达标/营养不足"悖论——一餐解决多元营养需求
+    </div>
+    <div class="inspire">💡 <b>启发</b>：日本已成熟的"营养面包"品类（BASE BREAD原版）中国本土化标杆。对比抖音满大街"低卡面包"（仅下压热量），这套方案走的是"高营养密度"差异化。<span class="highlight">下厨房食材升级可以做"营养密度优先"的同思路——同样面包/同样拌饭/同样杂粮饼，但完成一餐多维补给</span>。</div>
+  </div>
+
+  <div class="product-card">
+    <div class="brand">🆕 霸王茶姬 一抹茉莉花+浓抹花田双品 <span class="price">25-28元/杯</span></div>
+    <div class="item-meta">上市时间：9月初新品·微博9/16官宣（抹茶赛道延伸）</div>
+    <div class="breakdown">
+      <b>产品力拆解</b>：<br>
+      · 双品策略：①<b>"一抹茉莉花"</b>——3斤茉莉鲜花窨1斤雪芽（花香清雅）+千目抹茶（鲜爽），花香×抹茶双叠 ②<b>"浓抹花田"</b>——抹茶×蜜桃乌龙双茶底+真实水蜜桃香入茶<br>
+      · 场景：抹茶赛道从"风味品类"升级为"潮流符号"——延伸至花香/果香双场景<br>
+      · 价位：维持霸王茶姬一贯的中高端茶饮25-28元价格带
+    </div>
+    <div class="inspire">💡 <b>启发</b>："茶基底×多维风味叠加"思路可以迁移到食材创新。例如"陈皮×茉莉花茶渍牛肉"vs"藤椒×蜜桃乌龙渍鸡腿"，<span class="highlight">茶元素的食材跨界组合是抖音差异化新空间——可以打"新派茶香即食"</span>。</div>
+  </div>
+
+  <div class="product-card">
+    <div class="brand">🆕 全家便利店×王品夏慕尼 4款联名鲜食 <span class="price">65元起</span></div>
+    <div class="item-meta">上市时间：9/16起全家便利商店冷藏/冷冻鲜食区陆续上架</div>
+    <div class="breakdown">
+      <b>产品力拆解</b>：<br>
+      · 4款商品：夏慕尼主厨秘制<b>松露奶香燉飯</b>+夏慕尼<b>普罗旺斯风味青酱烤雞麵</b>+夏慕尼<b>樱花蝦炒飯</b>+夏慕尼<b>燻鴨佐白蘭地義大利麵</b><br>
+      · 场景定位：把法式铁板烧经典料理做成便利店冷/冻鲜食，"让消费者随时都能轻松享用餐厅级美味"<br>
+      · 引流设计：买任一款即赠价值388元"松露鲍鱼"兑换券，凭券10/1-12/11平日到夏慕尼门店消费两客套餐可兑
+    </div>
+    <div class="inspire">💡 <b>启发</b>："<span class="highlight">轻奢料理大众化+餐厅招牌菜家用版</span>"是新品雷达方向。选取大众已有认知的菜品（如费大厨辣椒炒肉家用版、海底捞捞派有料汤家用版），用即时零售+冷链包装切入。<span class="highlight">下厨房可重点关注"米其林/必吃榜餐厅×食材品牌"的跨界联名</span>。</div>
+  </div>
+
+  <div class="product-card">
+    <div class="brand">🆕 北京稻香村 15款月饼礼盒 <span class="price">100-200元主流价带</span></div>
+    <div class="item-meta">上市时间：9月新季·已全渠道（小程序/天猫/京东/线下）上市</div>
+    <div class="breakdown">
+      <b>产品力拆解</b>：<br>
+      · 健康化主线：<b>"低糖月韵"礼盒</b>（青稞+藜麦+奇亚籽+石斛）兼顾传统风味与健康属性<br>
+      · 京式工艺创新：<b>"古都新月"礼盒</b>京式翻毛工艺新口味（翻毛蛋黄开心果+翻毛玫瑰松仁+翻毛黄桃）<br>
+      · 中式限定：<b>"花好饼""月圆饼"</b>中秋限定；提浆椰蓉/芝士蛋月烧/黑芝麻蛋月烧同步<br>
+      · 科技×非遗：携手<b>睿尔曼智能机器人"智能学徒·稻香学艺"</b>——2026世界机器人大会协同演绎后，机器人将长期在零号寻宝馆门店跟随糕点师傅学习京式月饼制作，可独立参与倒料/搅拌/出模/刷蛋黄标准化工序
+    </div>
+    <div class="inspire">💡 <b>启发</b>：老字号<span class="highlight">"机器人现场加工可视化"是非遗信任电商基建新范式</span>——消费者亲眼看到"一枚月饼从和面到出炉"。<span class="highlight">下厨房的月饼/食材礼盒可以借鉴"实地直播+老师傅手作视频+溯源二维码"做信任差异化</span>，把工厂/非遗工序变成内容资产。</div>
+  </div>
+
+  <div class="product-card">
+    <div class="brand">🆕 瑞幸×时光代理人"时光咖啡馆"联名 <span class="price">27-35元/杯</span></div>
+    <div class="item-meta">上市时间：9/14正式开启·全国门店同步联名杯套/纸袋</div>
+    <div class="breakdown">
+      <b>产品力拆解</b>：<br>
+      · 概念：把动画中"时光照相馆"延伸为线下"时光咖啡馆"<br>
+      · 限定饮品：<b>咸芝士豆乳茶+咸芝士豆乳鸳鸯拿铁</b>（豆乳+芝士+咖啡三重口感叠加）<br>
+      · 周边机制：双杯套餐获<b>镭射票组或角色怀表</b>（怀表造型呼应程小时标志性道具），PP超大杯分3轮上线对应程小时/陆光/乔苓
+    </div>
+    <div class="inspire">💡 <b>启发</b>：瑞幸联名从"蹭热度"转向"<span class="highlight">圈层深耕</span>"——瞄准泛二次元用户（愿意为角色情感买单、具备高复购的"谷子消费群体"）。<span class="highlight">下厨房食品可以做"产地IP符号化+地区限定款"</span>（如新疆/云南/福建地理标志符号+切中年轻人谷子消费心理），<span class="highlight">把"产地故事"包装成可收集的IP周边</span>。</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2 style="font-size:16px;">🎪 展会预告</h2>
+  <ul class="bullets">
+    <li><span class="highlight">天津冰淇淋展</span> 9/16-18（今日开展中·<span style="color:#8B2222;font-weight:700;">重点现场</span>）</li>
+    <li><span class="highlight">HOTELEX深圳国际酒店及餐饮展</span> 10/13-15 深圳</li>
+    <li><span class="highlight">南京秋糖（全国糖酒商品交易会）</span> 10/15-17</li>
+    <li><span class="highlight">2026 SIAL Paris 巴黎国际食品展</span> 10/17-21 巴黎北郊维勒班（7500家企业/127国——中国出口食品对接欧洲主流渠道的关键平台）</li>
+    <li><span class="highlight">亚洲果蔬展</span> 10/22-24（产地直发型品类对接的天然场所）</li>
+    <li><span class="highlight">HEC2026第27届中国国际营养健康产业博览会</span> 10/29-31 北京（药食同源+营养健康风口品类窗口）</li>
+    <li><span class="highlight">广货行天下·"中秋文化嘉年华"月饼专场</span> 9/18 广东茂名（174场系列活动之一，潮式+粤式月饼新势力）</li>
+  </ul>
+</div>
+
+<div class="footer">
+  ⚠️ 以上内容由AI自动聚合生成，仅供下厨房食品PM参考<br>
+  信源：市场监管总局/Foodaily/零售氪星球/FBIF/霸王茶姬官方/北京稻香村/SocialBeta/瑞幸官方/微信官方/山海今榜/今日头条/广货行天下<br>
+  <div class="tip">Generated by WorkBuddy Daily Intelligence · 2026-09-17 09:00 CST<br>
+  下次推送：2026-09-18（星期五）·🌿 白露第11日 · 中秋倒计时7天</div>
+</div>
+
+</body>
+</html>
