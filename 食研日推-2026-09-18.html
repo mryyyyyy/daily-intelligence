@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 · 2026-09-18 · 白露第12日·中秋倒计时7天</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(135deg, #FFF8F0 0%, #FCEED9 100%);
+    color: #3A2515;
+    line-height: 1.7;
+    padding: 20px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .header {
+    background: linear-gradient(135deg, #C8553D 0%, #E07A5F 100%);
+    color: #FFF8F0;
+    padding: 32px 28px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 24px rgba(200, 85, 61, 0.18);
+  }
+  .header h1 {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .header .sub {
+    font-size: 14px;
+    opacity: 0.95;
+    letter-spacing: 0.5px;
+  }
+  .header .meta {
+    margin-top: 14px;
+    font-size: 13px;
+    opacity: 0.9;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .header .meta span {
+    background: rgba(255, 248, 240, 0.18);
+    padding: 4px 10px;
+    border-radius: 8px;
+  }
+  .section {
+    background: #FFFCF7;
+    border-left: 4px solid #E07A5F;
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 8px rgba(154, 96, 60, 0.08);
+  }
+  .section h2 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #C8553D;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .item {
+    padding: 12px 0;
+    border-bottom: 1px dashed rgba(200, 85, 61, 0.15);
+  }
+  .item:last-child { border-bottom: none; }
+  .item-title {
+    font-weight: 700;
+    color: #5A2E1A;
+    margin-bottom: 4px;
+    font-size: 15px;
+  }
+  .item-title .emoji {
+    margin-right: 4px;
+  }
+  .item-meta {
+    font-size: 13px;
+    color: #8B5A3C;
+    margin-top: 2px;
+  }
+  .item-meta .tag {
+    display: inline-block;
+    background: #FCEED9;
+    color: #8B4513;
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-right: 4px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .highlight {
+    background: linear-gradient(transparent 60%, #FFE5C2 60%);
+    font-weight: 700;
+    padding: 0 2px;
+  }
+  .callout {
+    background: #FFF1DC;
+    border-left: 3px solid #D97942;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #6B3818;
+  }
+  .product-card {
+    background: linear-gradient(135deg, #FFF8F0 0%, #FCEED9 100%);
+    border: 1.5px solid #E07A5F;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin: 12px 0;
+    position: relative;
+  }
+  .product-card::before {
+    content: "🆕";
+    position: absolute;
+    top: -10px;
+    left: 14px;
+    background: #C8553D;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .product-card .brand {
+    font-size: 16px;
+    font-weight: 800;
+    color: #C8553D;
+    margin-bottom: 4px;
+    margin-top: 4px;
+  }
+  .product-card .price {
+    display: inline-block;
+    background: #C8553D;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-left: 6px;
+  }
+  .product-card .breakdown {
+    font-size: 13.5px;
+    color: #5A2E1A;
+    margin: 6px 0;
+  }
+  .product-card .breakdown b {
+    color: #8B4513;
+  }
+  .product-card .inspire {
+    font-size: 13px;
+    color: #6B3818;
+    background: rgba(200, 85, 61, 0.08);
+    padding: 8px 10px;
+    border-radius: 6px;
+    margin-top: 8px;
+  }
+  .signal {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 4px;
+  }
+  .signal-green { background: #D4F0D4; color: #2C6B2C; }
+  .signal-yellow { background: #FFE9B3; color: #8B5A00; }
+  .signal-red { background: #FFD4D4; color: #8B2222; }
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(200, 85, 61, 0.3), transparent);
+    margin: 18px 0;
+  }
+  .footer {
+    text-align: center;
+    color: #8B5A3C;
+    font-size: 12px;
+    padding: 20px 0 10px;
+    letter-spacing: 0.5px;
+  }
+  .footer .tip {
+    background: #FFFCF7;
+    padding: 12px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 10px;
+    box-shadow: 0 2px 6px rgba(154, 96, 60, 0.06);
+  }
+  ul.bullets {
+    margin: 8px 0 8px 20px;
+    font-size: 14px;
+  }
+  ul.bullets li { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🍲 食研日推 · 2026-09-18</h1>
+  <div class="sub">白露第12日 · 中秋倒计时7天 · 秋分倒计时5天</div>
+  <div class="meta">
+    <span>📅 星期五</span>
+    <span>🌾 节气：白露→秋分</span>
+    <span>🌕 中秋：9/25（7天）</span>
+  </div>
+</div>
+
+<!-- 板块一：今日行业要闻 -->
+<div class="section">
+  <h2>🔥 一、今日行业要闻</h2>
+
+  <div class="item">
+    <div class="item-title"><span class="emoji">🍨</span><b>钟薛高9/15展会复出，新CEO上任+定价砍半</b></div>
+    <div class="item-meta">
+      <span class="tag">2026-09-15</span>
+      <span class="tag">食品板</span>
+      第28届中国冰淇淋展上，钟薛高新东家携"钟雪高品牌管理"亮相，剧透新产品定价低于8元（巅峰期最贵66元），预计2026年Q4回归上市。新CEO陈大成（90后食品科普博主出身）强调"安全之后一定要好吃"。
+    </div>
+    <div class="callout">💡 <b>与我何干</b>：高端雪糕降价潮已蔓延到曾经"雪糕界爱马仕"——当钟薛高都砍到8元，"真材实料+合理定价"的中间带是最大蓝海。我们开冷链甜品/即食可以参考这条"轻奢大众化"逻辑。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title"><span class="emoji">🥥</span><b>春光食品三十周年战略：椰子品类深度+渠道共创模式</b></div>
+    <div class="item-meta">
+      <span class="tag">2026-09-09</span>
+      <span class="tag">界面新闻</span>
+      春光在三十周年品牌大会上集中发布椰奶清补凉、红枣炖桃胶、谷物罐、熟椰子饮料等新品。"椰奶清补凉"先线上测→盒马首发千万元级销售→联名生榨椰汁版。渠道共创模式（零售商参与商品开发）成为新标准。
+    </div>
+    <div class="callout">💡 <b>与我何干</b>：渠道共创（"盒马数据+春光供应链"）正在颠覆传统铺货逻辑——新品先小渠道测试再放大。我们做产地直发礼盒时，可以主动找盒马/山姆做"测试-反馈-迭代"的共创链路。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title"><span class="emoji">🇺🇸</span><b>蜜雪冰城加速"攻美"，幸运咖全球门店破万</b></div>
+    <div class="item-meta">
+      <span class="tag">2026-09-17</span>
+      <span class="tag">顶端新闻</span>
+      蜜雪冰城旗下"幸运咖"全球门店突破1万家，加速布局美国市场（喜茶/霸王茶姬之后又一家押注北美）。同时蜜雪国内主品牌9月推出"奶麻薯系列"（草莓+芒果），9元价位继续横扫。
+    </div>
+    <div class="callout">💡 <b>与我何干</b>：9元以下价格带已被蜜雪锁死，国内战场向"海外+下沉"双向延伸。我们开品如果打不进9-15元主战场，要么上探15-25元品质段，要么下沉走社区团购+便利店即时零售。</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 板块二：爆品雷达 -->
+<div class="section">
+  <h2>🎯 二、爆品雷达·趋势苗头</h2>
+
+  <div class="item">
+    <div class="item-title"><span class="emoji">🍊</span><b>柚子被头部茶饮集体"深度开发"，从单品到系列</b></div>
+    <div class="item-meta">
+      茶颜悦色一个月连上5款柚子（"甜酸苦辛咸"五味柚子，HPP双柚汁基底），沪上阿姨"爆汁血橙西柚"加入血橙+脐橙+沃柑+西柚粒的多层结构，古茗"鲜柚生啤"内测，霸王茶姬"诶？橙柚康普"——上游供应商称"近期问询物料的客户特别多"。
+    </div>
+    <div class="callout">
+      <span class="signal signal-yellow">🟡 起势</span>
+      <b>机会判断</b>：柚子成为继柠檬后第二个被茶饮"拆解到底"的柑橘类目。HPP双柚汁+不同风味元素碰撞是可复用框架。我们如果做果茶基底或鸡尾酒风味食材包，可以借"柚+花香/草本/茶"的组合方式。
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title"><span class="emoji">🐄</span><b>海底捞"国家地理标志食材"溯源模式——地标肉+地理文化叙事</b></div>
+    <div class="item-meta">
+      海底捞秋季5款新品（9/25上市）：呼伦贝尔草原肥牛卷+虫草花肥牛卷+虾滑鱼籽三明治+黑松露鱼籽牛肉饭+沙棘百香果维C小炸弹。研发周期6个月/70选5/400+消费者盲测。牛肉从600余天/数千公里/上百次选牛后锁定"北纬50度呼伦贝尔"。
+    </div>
+    <div class="callout">
+      <span class="signal signal-green">🟢 苗头</span>
+      <b>机会判断</b>：地标食材+溯源故事已成为连锁餐饮的差异化标配。我们做产地直发/肉类食材升级时，"地理标志+漫长选品过程+可验证溯源"三件套比"真材实料"更有说服力。
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title"><span class="emoji">🎂</span><b>广式老字号月饼"国际IP+地理文化"双线突围</b></div>
+    <div class="item-meta">
+      广州酒家×玛氏M&M'S（巧克力流心月饼+浮雕m标）、广州酒家×德芙（双黄纯白莲蓉+巧克力工艺）、陶陶居×广东省博物馆（清广绣黑地花鸟四屏+低糖双黄白莲蓉）、莲香楼×广州塔（"塔映莲心"+湖南湘莲）。9/14大爆。
+    </div>
+    <div class="callout">
+      <span class="signal signal-yellow">🟡 起势</span>
+      <b>机会判断</b>：月饼"广式+国际IP"和"广式+本地博物馆"成为2026中秋的两条明线。我们做地方特色礼盒（湖南/陕西/江苏）时，可以借鉴"地域食材+本地博物馆IP"双背书模式。
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 板块三：时令风向 -->
+<div class="section">
+  <h2>🌿 三、时令风向·品类机会</h2>
+
+  <div class="item">
+    <div class="item-title">📅 <b>当前时令定位</b>：白露第12日·仲秋后半段·秋分5天后（9/23）</div>
+    <div class="item-meta">气温骤降+桂花陆续绽放+大闸蟹进入三梯队分批上市。中秋节（9/25）进入"最后一公里"销售冲刺期。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">⏰ <b>倒计时提醒</b>：中秋7天 / 秋分5天 / 重阳35天 / 国庆12天</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">🎯 <b>即将热卖品类</b></div>
+    <ul class="bullets">
+      <li><b>月饼礼盒（最后冲刺周）</b>——中秋节前7-10天是礼盒销售黄金期，错过即废。北京稻香村/广州酒家/陶陶居/美心/莲香楼全部已上架。</li>
+      <li><b>桂花风味全线</b>——茶颜悦色"桂花弄"9/22回归，霸王茶姬"桂馥兰香"持续售卖，盒马"桂在当季"桂花蜜同步。</li>
+      <li><b>大闸蟹"三梯队"上市</b>——黄河口/青藏高原/盘锦/兴化已上市，阳澄湖9/28开捕。</li>
+    </ul>
+  </div>
+
+  <div class="item">
+    <div class="item-title">🚨 <b>窗口提醒</b></div>
+    <ul class="bullets">
+      <li><b>月饼</b>——节前1-2周销量最猛，现在上架即"末班车"，但要避开和大牌正面竞争（他们99.9-238元已锁死价格带）。</li>
+      <li><b>桂花食品</b>——桂花花期极短（10-15天），今年因为气温，桂花可能集中在9/20-9/30爆发。</li>
+    </ul>
+  </div>
+
+  <div class="item">
+    <div class="item-title">🏔️ <b>产地直发机会</b></div>
+    <ul class="bullets">
+      <li><b>呼伦贝尔牛肉</b>——海底捞地标溯源模式跑通后，散切/调理包装的家用版机会窗口打开（火锅片/牛肉粒/牛排）。</li>
+      <li><b>阳澄湖大闸蟹</b>——9/28开捕，提卡预售进入最后5天，券面价值598-5688元，产地直发卡券+真蟹组合可打。</li>
+      <li><b>新疆西梅/冬枣/石榴</b>——喀什西梅进入尾期，冬枣/石榴进入高峰，软籽石榴云南会泽/陕西临潼双线直发。</li>
+      <li><b>琯溪蜜柚</b>——8月采收期，福建平和产地，1688预售已开始，中秋礼盒定制窗口。</li>
+    </ul>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 板块四：跨界灵感 -->
+<div class="section">
+  <h2>💡 四、跨界灵感·创新动作</h2>
+
+  <div class="item">
+    <div class="item-title"><span class="emoji">🌺</span><b>茉莉奶白"花香茶咖2.0"——花香茶基因做咖啡，跨界不是拉郎配</b></div>
+    <div class="item-meta">
+      9/10全国上新"针王与维也纳+白兰与维也纳"，21元/杯。茶底是七窨金奖茉莉针王（广西横州）/四川乐山白兰花茶，咖啡是洪都拉斯雪莉SOE。上市首日新品总销量第一，新增会员近10万。教师节送47万杯。
+    </div>
+    <div class="callout">💡 <b>迁移可能</b>：跨界成功的关键是"用品牌自己的母语去翻译新品类"——茉莉奶白用"花香"母语做咖啡，所以不违和。我们如果做"果干+茶"或"咖啡+酱料"组合，先想清楚"我们最擅长什么母语"，不要硬蹭。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title"><span class="emoji">🐟</span><b>海底捞"呼伦贝尔牛肉+沙棘百香果"——地标肉+地域小料双组合</b></div>
+    <div class="item-meta">
+      海底捞秋季5款新品中，"沙棘百香果维C小炸弹"是和地标牛肉同步上新的。沙棘本身是呼伦贝尔/西北高原的代表性小众食材。组合逻辑：地理相近+功能互补（牛肉滋补+沙棘维C解腻）。
+    </div>
+    <div class="callout">💡 <b>迁移可能</b>：我们可以做"地标食材+地域小料"的组合套餐——比如阳澄湖大闸蟹+镇江香醋+阳澄湖周边黄酒，或者琯溪蜜柚+福建老酒酿+平和白茶。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title"><span class="emoji">📚</span><b>北京稻香村"科技+非遗"双背书——传统糕点的年轻化样本</b></div>
+    <div class="item-meta">
+      15款月饼礼盒（100-200元价格带），与睿尔曼智能机器人合作"智能学徒·稻香学艺"——机器人跟随师傅学习倒料/搅拌/出模/刷蛋黄，已在2026世界机器人大会演出。
+    </div>
+    <div class="callout">💡 <b>迁移可能</b>：传统品类（青团/月饼/汤圆/年糕）做抖音内容时，可以借"非遗老师傅+新科技/新场景"的反差感获取流量溢价。我们如果做传统节令食品，可以主动找本地非遗传承人做联名背书。</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 板块五：脑暴时刻 -->
+<div class="section">
+  <h2>🧪 五、脑暴时刻·融合创意</h2>
+
+  <div class="item">
+    <div class="item-title">🍁 <b>创意①：呼伦贝尔地标牛肉·陈皮草本短保调理包</b></div>
+    <div class="item-meta">
+      <b>一句话描述</b>：地标牛肉切片+广式陈皮去腥+药食同源草本（山楂/麦芽/甘草）预调味的半成品调理包，开袋即炒或涮锅。
+    </div>
+    <div class="callout">
+      <b>为什么是现在</b>：海底捞呼伦贝尔牛肉地标叙事跑通→家用半成品化空间打开；陈皮/药食同源是药食同源零食化趋势下的成熟配料；白露立秋"贴秋膘"场景天然契合。<br>
+      <b>差异化锚点</b>：现有抖音牛肉片竞品（恒都/大希地）只有肉，没有"陈皮+草本预调味"的差异化；广州酒家月饼联名只是"非遗甜点"，陈皮牛肉是"非遗咸食"蓝海。<br>
+      <b>可行性初判</b>：供应链中等难度（呼伦贝尔牛肉采购链路成熟，陈皮有新会地标），抖音渠道适配度高（短保+地标+养生故事三件套适合达人种草）。
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">🌕 <b>创意②：中秋压轴·家庭版迷你盆菜礼盒</b></div>
+    <div class="item-meta">
+      <b>一句话描述</b>：广式盆菜（鲍/参/翅/肚/花菇/烧鹅/蚝豉/冬菇/萝卜）迷你版，4-6人份，冷链即热，礼盒装送礼/家用。
+    </div>
+    <div class="callout">
+      <b>为什么是现在</b>：中秋节最后一周"压轴菜"需求（家宴/送岳父母/公司福利），抖音#中秋家宴 播放量超12.8亿；盒马"新鲜方便菜"1-5月销售同比+70%/全年预计+85%；盆菜是粤港中秋标志性硬菜。
+      <br><b>差异化锚点</b>：抖音上现有预制盆菜多是佛跳墙/关东煮，缺少"广式地道盆菜+迷你家宴"定位；对比广州酒家/陶陶居高价位礼盒（300-800元），我们可以做"性价比+短保+地标食材"。
+      <br><b>可行性初判</b>：供应链较难（鲍/参/烧鹅需要预制半成品供应商，粤菜工厂代工），但中秋前2-3周可借助盒马/叮咚的代工体系。
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 板块六：展会速递·每周新品雷达 -->
+<div class="section">
+  <h2>🏬 六、展会速递·每周新品雷达</h2>
+
+  <div class="product-card">
+    <div class="brand">🆕 蜜雪冰城 草莓奶麻薯+芒果奶麻薯</div>
+    <span class="price">9元/杯</span>
+    <span class="price" style="background: #8B5A3C;">9/1全国上新</span>
+    <div class="breakdown">
+      <b>产品力拆解</b>：草莓版含草莓果肉+奶麻薯+芋圆，麻薯里能嚼到米颗粒；芒果版杨枝甘露味更浓。9元价格带（部分区域活动价低至6元）。建议三分糖/七分糖的选五分糖，摇匀后30分钟内饮用口感最佳。
+    </div>
+    <div class="inspire">
+      💡 <b>启发</b>：奶麻薯"半流体质感+谷物颗粒"成为今年秋冬奶茶主流新形态，米麻薯+芋圆+水果的结构可拆解复用。我们如果做秋冬即食甜品/奶基产品，可以参考"米麻薯+谷物颗粒+轻负担"的三件套。
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="brand">🆕 茉莉奶白 针王与维也纳+白兰与维也纳（花香茶咖2.0）</div>
+    <span class="price">21元/杯</span>
+    <span class="price" style="background: #8B5A3C;">9/10全国上新</span>
+    <div class="breakdown">
+      <b>产品力拆解</b>：茶底是七窨金奖茉莉针王（横州）/四川乐山白兰花茶，咖啡是洪都拉斯雪莉SOE威士忌酒桶发酵，自带百利甜+香槟+香草香气。顶部维也纳奶油+香草芝士+可可粉，饮用分四步：先挖奶油→吃奶盖→搅三圈→饮主体。上市首日总销量第一/新增会员近10万/教师节送47万杯。
+    </div>
+    <div class="inspire">
+      💡 <b>启发</b>：花香茶×咖啡跨界成功的关键是"用品牌母语翻译新品类"——不是硬凑，而是把花香基因平移到咖啡里。我们如果做"果干+茶"或"咖啡+酱料"组合，先想清楚"品牌最擅长的母语"是什么。
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="brand">🆕 海底捞 秋季5款新品（呼伦贝尔系列）</div>
+    <span class="price">9/25全国上新</span>
+    <div class="breakdown">
+      <b>产品力拆解</b>：呼伦贝尔草原肥牛卷（国家地理标志产品，北纬50度黄金牧场，1000种牧草滋养含韭菜花/扎蒙花提鲜植物）+呼伦贝尔虫草花肥牛卷（自研虫草花配比，防涮煮脱落）+虾滑鱼籽三明治（三层蛋白结构）+黑松露鱼籽牛肉饭+沙棘百香果维C小炸弹。研发6个月/70选5/400+消费者盲测。
+    </div>
+    <div class="inspire">
+      💡 <b>启发</b>："地标+漫长选品过程+400+消费者盲测"是地标食材的标准化产品话术。我们做产地直发肉类/食材时，可以复制这套"溯源时长+品鉴用户数+候选淘汰率"的内容框架。
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="brand">🆕 北京稻香村 15款月饼礼盒+智能学徒非遗</div>
+    <span class="price">100-200元价格带</span>
+    <span class="price" style="background: #8B5A3C;">9月已上架</span>
+    <div class="breakdown">
+      <b>产品力拆解</b>：低糖月韵礼盒（青稞+藜麦+奇亚籽+石斛，控糖人群友好）、古都新月京式翻毛月饼（翻毛蛋黄开心果+翻毛玫瑰松仁+翻毛黄桃）、提浆椰蓉月饼、晋式芝士味蛋月烧/黑芝麻蛋月烧、中秋限定花好饼/月圆饼。最大看点：与睿尔曼智能机器人"智能学徒·稻香学艺"合作，机器人已学会倒料/搅拌/出模/刷蛋黄。
+    </div>
+    <div class="inspire">
+      💡 <b>启发</b>：传统品类的年轻化有两个抓手——一是"低糖+杂粮+健康食材"，二是"非遗老师傅+智能机器人"的反差叙事。我们做节令传统食品（青团/汤圆/月饼/年糕）时，可以同时打这两张牌。
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="brand">🆕 益禾堂 × 《仙逆》动画联名·三款芋泥饮品</div>
+    <span class="price">9月起全国上新</span>
+    <div class="breakdown">
+      <b>产品力拆解</b>：回归爆款"芋泥啵啵奶绿"（广西槟榔芋+芋泥+Q弹啵啵+奶绿）、新品"葡萄仙芋"（智利进口葡萄汁+芋泥+果茶碰撞）、新品"抹茶仙芋"（贵州抹茶+山药糯米小汤圆+芋香茶香）。周边三种：光栅卡（动作变换画面）+撕拉吧唧（亲手撕开惊喜）+流麻（角色定格闪粉）。8/28-9/3王林款，9/4-9/9李慕婉款，两阶段情绪递进。
+    </div>
+    <div class="inspire">
+      💡 <b>启发</b>：国漫IP联名的关键是"精神契合+地域食材"——选择"逆天改命"主题对应开学季焦虑，选用广西槟榔芋/贵州抹茶做差异化。数据参考：动漫IP消费意向32.35%，国漫占68.28%。我们做开学的学生场景产品，可考虑与国漫IP联名。
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3 style="color: #C8553D; font-size: 16px; margin-bottom: 10px;">🎪 展会预告</h3>
+
+  <div class="item">
+    <div class="item-title">🎪 <b>2026云南茶博会暨新茶饮生活方式展</b></div>
+    <div class="item-meta">
+      <span class="tag">9/18-20</span>
+      <span class="tag">昆明滇池国际会展中心3号馆</span>
+      五展联动（茶+花卉+咖啡+热植+小浆果），162个"绿色云品"+十个重点产区展团，临沧/双江/德宏/普洱/文山麻栗坡/红河/勐腊/楚雄/昌宁/思茅。新品发布推介区集中亮相茶行业新品。
+    </div>
+    <div class="callout">💡 <b>与我何干</b>：云南是中国茶叶+咖啡+小浆果+花卉的核心产区，下厨房做"原产地好物"如果涉及云茶/云咖/鲜花食材，这是必看的现场展。9/18当日开幕，9/20截止。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">🎪 <b>HOTELEX深圳国际酒店及餐饮业博览会</b></div>
+    <div class="item-meta">
+      <span class="tag">10/13-15</span>
+      <span class="tag">深圳国际会展中心</span>
+      酒店餐饮一站式采购平台，新食材/新设备/新包装集中亮相，B端供应链机会窗口。
+    </div>
+    <div class="callout">💡 <b>与我何干</b>：HOTELEX是寻找OEM代工/预制菜供应链/酒店餐饮食材新趋势的核心展会，下厨房做B端+半成品可以重点看。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">🎪 <b>南京秋季糖酒会</b></div>
+    <div class="item-meta">
+      <span class="tag">10/15-17</span>
+      <span class="tag">南京国际博览中心</span>
+      全国糖酒行业风向标，10月新品爆款集中首发平台，新增药食同源+茶饮专区。
+    </div>
+    <div class="callout">💡 <b>与我何干</b>：秋糖是节后开品的核心选品场，可以一次性看完10月即将爆发的所有新品。</div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="tip">
+    🍂 食研日推 · 让每天的开品决策有据可依<br>
+    <span style="font-size: 11px;">下厨房食品品牌 · 产品经理专属情报</span>
+  </div>
+</div>
+
+</body>
+</html>
