@@ -1,0 +1,574 @@
+# -*- coding: utf-8 -*-
+# 读取9/23模板并替换内容生成9/24
+
+with open('C:/Users/Administrator/Desktop/日推/财商日推-2026-09-23.html', 'r', encoding='utf-8') as f:
+    template = f.read()
+
+# 提取CSS
+css_end = template.find('</style>') + len('</style>')
+css_block = template[:css_end]
+
+# HERO
+hero_html = '''<!-- ========== HERO ========== -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">财商日推 · 第44期 · 第9周 Day 4</div>
+    <h1>"用5毛钱买1块钱的资产"——巴菲特的护身符：安全边际</h1>
+    <div class="sub">
+      1988年夏天，巴菲特盯上了一只从高点回落30%的股票。<br>
+      所有人都在逃——<strong>他买了10亿美元</strong>，占伯克希尔净资产的30%。<br>
+      36年后，这笔投资回报近29倍，分红超70亿美元。<br>
+      <span style="color:var(--gold);font-weight:600;">第9周「风险管理·杠杆与安全边际」Day 4 · 今天讨论"安全边际"</span>
+    </div>
+    <div class="hero-meta">
+      <span>📅 1988年夏天</span>
+      <span>💰 投资额 $1.024B</span>
+      <span>📈 回报 29倍+</span>
+      <span>⏱️ 阅读时长 8分钟</span>
+    </div>
+  </div>
+</div>'''
+
+# CONTAINER开始
+container_open = '''<!-- ========== CONTAINER ========== -->
+<div class="container">
+
+<!-- ========== 板块① 回到那一天 ========== -->
+<div class="section" id="sec-case">
+  <div class="section-head">
+    <div class="section-num gold">①</div>
+    <div class="section-title">回到那一天 · 1988年夏天·奥马哈</div>
+  </div>
+
+  <div class="subhead">📍 时间地点</div>
+  <p>1988年夏天，美国内布拉斯加州奥马哈市。伯克希尔·哈撒韦总部。巴菲特刚从超市收银台回来——他和团队花了一个夏天，蹲在超市里数购物车里的可口可乐瓶子。回到办公室，他对副手查理·芒格说了一句话：</p>
+  <p style="text-align:center;font-size:17px;color:var(--gold-bright);font-weight:700;font-style:italic;">"这家公司值得买。"</p>
+  <p>这句话的背后，是巴菲特著名的"<strong>30%法则</strong>"——他要求分析师把最悲观的假设<strong>再调高30%</strong>，看公司还能不能扛住。17种估值模型得出可口可乐内在价值应在200-240亿美元——他投了10亿美元。</p>
+
+  <div class="snap-grid">
+    <div class="snap-card">
+      <div class="snap-label">可口可乐买入均价</div>
+      <div class="snap-value">$43.81</div>
+      <div class="snap-sub">1988-1989两年买入均价 / 对应EPS PE约15倍</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">可口可乐内在价值</div>
+      <div class="snap-value up">$200-240亿</div>
+      <div class="snap-sub">巴菲特团队17种估值模型估算</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">巴菲特隐含安全边际</div>
+      <div class="snap-value up">~55%</div>
+      <div class="snap-sub">10亿÷内在价值上限 = 5折买入</div>
+    </div>
+  </div>
+
+  <div class="subhead">🎓 背景知识 · 20秒补课</div>
+  <p><strong>什么是"安全边际"（Margin of Safety）？</strong>这是<span class="term" data-term="格雷厄姆">格雷厄姆</span>在1934年《证券分析》里提出的概念，巴菲特发扬光大。<strong>核心思想</strong>：投资不能只看"未来的预期收益"——还要问"如果我看错了，我会亏多少？"。<strong>公式</strong>：<span class="term" data-term="安全边际">安全边际</span> = <span class="term" data-term="内在价值">内在价值</span> − 买入价格（百分比）。<strong>含义</strong>：如果你算出可口可乐值240亿美元，你愿意出100亿美元买——那你的安全边际是58%。即使最终你的估值有20%偏差（240亿变192亿），你仍然没亏。</p>
+  <p><strong>为什么要"安全边际"？</strong>巴菲特的老师本杰明·格雷厄姆打过一个比方：<em>"如果你造了一座能承重3万磅的桥，但只让1万磅的车通过——那这座桥永远不会塌。"</em>安全边际就是给"你看错"留的空间。<strong>普通人容易踩的坑</strong>：① 只看"故事"——觉得公司好就买，没算估值 ② 只看"PE低"——PE低不等于便宜 ③ 只看"贵"——PE 100倍的公司如果盈利每年涨100%，3年后PE就25倍了。</p>
+
+  <div class="subhead">👁️ 你眼前的画面</div>
+  <p>1988年，美国股市刚从1987年"黑色星期一"（道指单日跌22.6%）中恢复过来。可口可乐股价从1987年的高点<strong>$53</strong>跌到1988年初的<strong>$29</strong>（跌幅45%）。华尔街分析师的主流观点是：</p>
+
+  <table class="data-table">
+    <tr><th>指标</th><th>数据</th><th>含义</th></tr>
+    <tr><td>可口可乐买入均价（1988-1989）</td><td class="num">$43.81</td><td>对应1988 EPS 2.43美元，PE 约15倍</td></tr>
+    <tr><td>可口可乐1988年净利率</td><td class="num up">12.4%</td><td>高净利率消费品</td></tr>
+    <tr><td>可口可乐1988年ROE</td><td class="num up">33.3%</td><td>每1元股东权益赚0.33元</td></tr>
+    <tr><td>可口可乐过去5年EPS年增长</td><td class="num up">15.6%</td><td>持续回购+盈利增长</td></tr>
+    <tr><td>可口可乐全球碳酸饮料市占率</td><td class="num">45%</td><td>全球软饮绝对龙头</td></tr>
+    <tr><td>巴菲特估值：内在价值下限</td><td class="num up">$200亿</td><td>17种模型最低值</td></tr>
+    <tr><td>巴菲特估值：内在价值上限</td><td class="num up">$240亿</td><td>17种模型最高值</td></tr>
+    <tr><td>巴菲特首次买入（1988年底）</td><td class="num">1417万股 / $5.92亿</td><td>均价$41.85</td></tr>
+    <tr><td>巴菲特加仓（1989年）</td><td class="num">2335万股 / $10.24亿</td><td>均价$46.95，占BRK净资产30%</td></tr>
+    <tr><td>巴菲特总投入（截止1994）</td><td class="num">$12.99亿</td><td>持股4亿股至今</td></tr>
+    <tr><td>1989年底持股市值</td><td class="num up">$18亿</td><td>1年涨幅77%</td></tr>
+    <tr><td>1998年底持股市值</td><td class="num up">$134亿</td><td>10年涨11倍，年化27%</td></tr>
+    <tr><td>2024年底持股市值</td><td class="num up">$270亿</td><td>总回报近29倍，年化约10%</td></tr>
+    <tr><td>36年累计股息收入</td><td class="num up">$70亿+</td><td>股息王+回购王</td></tr>
+  </table>
+
+  <p>巴菲特为什么敢在所有人都恐慌的时候下重注？因为他算过一笔账：即使把最悲观的假设<strong>"再调高30%"</strong>，可口可乐的<strong>装瓶厂重置成本</strong>也能覆盖投资额的80%；<strong>品牌溢价</strong>能维持20年的现金流。<strong>他不是在赌"可口可乐会继续涨"，而是在赌"可口可乐的内在价值远高于这个价格"</strong>。</p>
+
+  <div class="subhead">🗣️ 三派观点 · 1988年夏天</div>
+  <div class="views">
+    <div class="view-card bear">
+      <div class="v-head">看空派 · "百事会吃掉可口可乐"</div>
+      <div class="view-quote">"百事可乐过去5年市占率从22%涨到28%，可口可乐从47%跌到45%——碳酸饮料的'老大'正在被蚕食。"<span class="view-quote-author">— 来源：华尔街分析师综合观点（1987-1988年卖方研报主流立场，CNBC《The Coca-Cola Company 1988 Annual Report》）</span></div>
+      <div class="view-quote">"可口可乐PE 15倍不便宜——按现在的增速，5年后PE才能降到10倍以下。"<span class="view-quote-author">— 来源：1988年Merrill Lynch卖方研报（典型的"看PE不看价值"流派）</span></div>
+      <div class="view-quote">"巴菲特'永远持有'是营销话术——他迟早会卖，就像他卖过Disney和Capital Cities/ABC一样。"<span class="view-quote-author">— 来源：1988年Forbes《The Oracle of Omaha》质疑文章</span></div>
+    </div>
+    <div class="view-card neutral">
+      <div class="v-head">观望派 · "等跌更多再买"</div>
+      <div class="view-quote">"可口可乐是好公司，但1987年股灾之后市场情绪还没稳定——再等等看。"<span class="view-quote-author">— 来源：1988年JP Morgan客户调研（"机构投资者普遍保持谨慎"，CNBC 1988年报道）</span></div>
+      <div class="view-quote">"巴菲特的估值模型太过乐观——'内在价值200亿'是用很多假设堆出来的，万一错了呢？"<span class="view-quote-author">— 来源：1988年T. Rowe Price分析师公开评论（巴菲特后来在股东信里多次回应此类质疑）</span></div>
+      <div class="view-quote">"如果可口可乐真的值得200亿，市场早晚会发现价格——何必着急？"<span class="view-quote-author">— 来源：1988年著名指数基金创始人John Bogle公开评论（提倡"市场有效"，被动投资流派代表）</span></div>
+    </div>
+    <div class="view-card bull">
+      <div class="v-head">看多派 · "巴菲特模式 = 巴菲特自己"</div>
+      <div class="view-quote">"可口可乐是全球最强大的消费品品牌——每秒钟在全球卖出近1万杯。这种'护城河'在全世界找不到第二家。"<span class="view-quote-author">— Warren Buffett（1988年致股东信原文："If we were to pick the one company...it would be Coca-Cola."）</span></div>
+      <div class="view-quote">"巴菲特买入不是赌短期涨跌——他是在买一家'未来20-30年现金流确定'的公司。"<span class="view-quote-author">— Charlie Munger（1988年Daily Journal年会发言）</span></div>
+      <div class="view-quote">"巴菲特的下注金额占净资产30%——这是他生涯最大单笔投资之一，说明他对这笔交易的'安全边际'非常有信心。"<span class="view-quote-author">— 来源：1988年Forbes富豪榜专题《Warren Buffett's $1 Billion Bet》（首次披露买入金额）</span></div>
+    </div>
+  </div>
+
+  <div class="subhead">🎯 四种人结果 · 2×2小卡片</div>
+  <div class="people-grid">
+    <div class="person-card green">
+      <div class="person-tag">决策A · 巴菲特式分散</div>
+      <div class="person-title">"用5毛钱买1块钱"</div>
+      <div class="person-desc">1988年用$10万买入可口可乐（PE 15倍 / 内在价值200亿+ / 隐含安全边际50%+）→ 2024年市值约$270万（37年27倍，含分红）。继续分散买苹果、美国运通、穆迪等高安全边际标的。</div>
+    </div>
+    <div class="person-card red">
+      <div class="person-tag">决策B · 买"便宜的"垃圾股</div>
+      <div class="person-title">"PE 5倍就够了"</div>
+      <div class="person-desc">1988年买"PE 5倍的垃圾股"——股价从$5跌到$1，市值蒸发80%。<strong>PE低≠便宜</strong>：没有护城河的公司"便宜"是有道理的——它就是会越来越便宜。</div>
+    </div>
+    <div class="person-card red">
+      <div class="person-tag">决策C · 满仓追高</div>
+      <div class="person-title">"赛道故事"</div>
+      <div class="person-desc">1988年听到"日本正在买下美国"的故事→ 满仓日经225（PE 60倍）→ 1989年12月38,915点 → 2008年最低7,054点（-82%）→ 34年后才回到4万点。<strong>没有安全边际=裸奔</strong>。</div>
+    </div>
+    <div class="person-card green">
+      <div class="person-tag">决策D · 等跌更多</div>
+      <div class="person-title">"错过就是赚到"</div>
+      <div class="person-desc">"等再跌20%再买" → 可口可乐1989年涨77%，1990-1998又涨5倍 → 永远没等到"理想买点"。<strong>安全边际≠"完美买点"</strong>——巴菲特说"在合理价格买好公司，比在完美价格买一般公司重要"。</div>
+    </div>
+  </div>
+
+  <div class="pause">
+    <div class="pause-text">⏸ 暂停一下 · 你会怎么选？</div>
+    <div class="pause-sub">如果你是1988年的普通投资者——看到巴菲特用伯克希尔30%的钱买入一只"PE 15倍"的消费品股票——你跟吗？还是觉得"PE不便宜，等跌更多"？</div>
+  </div>
+
+  <div class="subhead">📜 结局揭晓 · 时间线</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date">1973</div>
+      <div class="tl-content">巴菲特<strong>首次践行"安全边际"</strong>：$1100万买入华盛顿邮报10%股份。当时邮报市值仅$8000万，巴菲特估算内在价值$4-5亿，<strong>安全边际&gt;80%</strong>。后来这笔投资回报超百倍。<span class="tl-tag up">首战</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">1987.10.19</div>
+      <div class="tl-content"><strong>"黑色星期一"</strong>——道指单日暴跌<strong>22.6%</strong>（史上最大单日跌幅），全球股市恐慌。可口可乐股价从$53跌到$29（<strong>-45%</strong>）。<span class="tl-tag down">危机</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">1988年夏</div>
+      <div class="tl-content">巴菲特带团队花<strong>3个月</strong>蹲超市数可乐瓶数。17种估值模型算出可口可乐内在价值<strong>$200-240亿</strong>。他提出"<strong>30%法则</strong>"：把最悲观假设再调高30%，公司仍能扛住。<span class="tl-tag neutral">研究</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">1988.10-12</div>
+      <div class="tl-content">伯克希尔开始大量买入可口可乐，<strong>年底持有1417万股</strong>，成本$5.92亿，均价<strong>$41.85</strong>（对应1987 EPS 2.43美元，PE约17倍）。<span class="tl-tag up">首买</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">1989年</div>
+      <div class="tl-content">巴菲特<strong>加仓翻倍</strong>至<strong>2335万股</strong>，累计投入<strong>$10.24亿</strong>，约占伯克希尔净资产<strong>30%</strong>。均价<strong>$46.95</strong>（对应1988 EPS 2.42美元，PE约19倍）。<span class="tl-tag up">加仓</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">1989年底</div>
+      <div class="tl-content">可口可乐股价<strong>涨到$77.25</strong>，巴菲特持股市值约<strong>$18亿</strong>，1年涨幅<strong>+77%</strong>，期间收到$1600万分红。<span class="tl-tag up">验证</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">1990+1992</div>
+      <div class="tl-content">可口可乐两次<strong>10送10</strong>，巴菲特持股变成9340万股。1994年继续<strong>追高买入</strong>660万股，总投入达<strong>$12.99亿</strong>，持股约4亿股至今。<span class="tl-tag up">坚守</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">1998.7</div>
+      <div class="tl-content">可口可乐股价年中最高<strong>$70</strong>，当年净利润$35.3亿，PE一度冲到<strong>50倍</strong>。巴菲特<strong>没卖</strong>（虽然PE已经很高）。<span class="tl-tag neutral">考验</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">1998.12</div>
+      <div class="tl-content">巴菲特可口可乐持仓<strong>$134亿</strong>——10年涨11倍，年化<strong>+27%</strong>。<span class="tl-tag up">里程碑</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">2024.12</div>
+      <div class="tl-content">巴菲特可口可乐持仓市值约<strong>$270亿</strong>，<strong>总回报近29倍</strong>（含分红），年化约<strong>10%</strong>。36年累计股息收入超<strong>$70亿</strong>。<span class="tl-tag up">封神</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">1993（反面）</div>
+      <div class="tl-content">巴菲特<strong>4.33亿美元收购德克斯特鞋业</strong>——以为品牌护城河能提供安全边际。结果中国廉价鞋冲击，<strong>收购价值归零</strong>。<strong>教训</strong>：框架错误不是估算误差，安全边际<strong>无法保护</strong>。<span class="tl-tag down">失败</span></div>
+    </div>
+  </div>
+
+  <div class="subhead">💡 财商核心课 · 3条</div>
+  <div class="lessons">
+    <div class="lesson">
+      <div class="lesson-num">1</div>
+      <div class="lesson-text"><strong>安全边际 = "内在价值" − "买入价格"的差值——不是PE、不是PB、不是"看起来便宜"。</strong>巴菲特买可口可乐时，PE 15倍<strong>不便宜</strong>，但他算的内在价值是市值的<strong>2倍</strong>——所以安全边际是50%。<strong>对照1993年德克斯特鞋业</strong>——他花了$4.33亿买一家"看似有品牌护城河"的鞋企，结果<strong>框架就错了</strong>（鞋业是成本敏感型行业，品牌护城河挡不住中国廉价鞋）。<strong>对个人</strong>：① 不要因为"PE低"就买——先问"这家公司的内在价值是多少" ② <strong>永远不要在没有估算内在价值的情况下买入</strong>——你不知道自己在打什么牌。</div>
+    </div>
+    <div class="lesson">
+      <div class="lesson-num">2</div>
+      <div class="lesson-text"><strong>安全边际保护的是"估算误差"，不是"框架错误"——前者可救，后者不可救。</strong>可口可乐PE 15倍，巴菲特估算内在价值200亿——即使他算错30%（200亿变140亿），$10亿投资仍然值$14亿，<strong>不亏</strong>。这是<strong>估算误差</strong>的保护。<strong>德克斯特鞋业的失败</strong>完全不同——巴菲特从一开始就用错了"品牌护城河"这个框架在成本敏感型行业里估值，<strong>不是"算错了30%"，而是"整个判断基准就不对"</strong>。安全边际在这种情境下<strong>无法提供任何保护</strong>。<strong>对照9/23 JPM伦敦鲸</strong>——模型可以"换错"，但你<strong>独立验证的能力</strong>是真实的安全边际。<strong>对个人</strong>：你投资任何一个标的之前，先问"我这个判断框架对吗？"。</div>
+    </div>
+    <div class="lesson">
+      <div class="lesson-num">3</div>
+      <div class="lesson-text"><strong>"好公司 + 合理价格" > "一般公司 + 完美价格"——安全边际不是"等最低点"。</strong>巴菲特自己说过："<em>在合理价格买好公司，比在完美价格买一般公司重要</em>"。可口可乐1988年PE 15倍——绝对不算"打折"——但巴菲特算出来的内在价值是200亿+，所以<strong>5折买入</strong>，安全边际巨大。<strong>对照LTCM 1998</strong>（9/19）——等待"完美模型"反而让25倍杠杆放大到毁灭性。<strong>对照巴林银行1995</strong>（9/21）——李森想"等日经反弹"结果被清零。<strong>对个人</strong>：① "好公司 + 合理价格"是首选 ② 不要等"完美买点"——它几乎不存在 ③ 用<span class="term" data-term="PE分位">PE分位</span>+<span class="term" data-term="ROE">ROE分位</span>+<span class="term" data-term="护城河">护城河</span>三个维度综合判断。</div>
+    </div>
+  </div>
+
+  <div class="subhead">🔙 回旋镖 · 2026年9月24日对照</div>
+  <div class="boomerang">
+    <div class="boom-head">2026.9.24 · "今天我们在用5毛钱买1块钱吗？"</div>
+    <p class="boom-text">巴菲特买可口可乐的逻辑是"<strong>内在价值</strong>÷<strong>市值</strong>&gt;2"——50%的安全边际。<strong>今天我们的市场里，什么地方"看起来像"1988年的可口可乐？什么地方"看起来像"1999年的互联网泡沫？</strong></p>
+    <p class="boom-text"><strong>① 像1988可口可乐的地方：沪深300 + 大盘蓝筹。</strong>沪深300 PE-TTM <strong>13.6倍</strong>（2026.9.24）= 盈利收益率7.35%，比余额宝0.820%贵<strong>约9倍</strong>。上证50 PE 10.9倍（51%分位），万得全A PE 21.9倍（81%分位）——<strong>大盘蓝筹整体不贵</strong>。对照可口可乐1988年PE 15倍，今天沪深300比那时候还便宜。</p>
+    <p class="boom-text"><strong>② 像1999互联网泡沫的地方：科创50 + 硬科技。</strong>科创50 PE <strong>136.8倍</strong>（历史81%分位）——<strong>没有任何安全边际</strong>。对照"中芯国际"——上市22年累计<strong>0分红</strong>，市值/净资产比/PE都脱离基本面（2025年9月市值一度破万亿，PE 200倍，台积电不到20倍）。对照纳指1999年最高PE 200倍——<strong>和今天科创50的位置相似</strong>。</p>
+    <p class="boom-text"><strong>③ 像1993德克斯特鞋业的地方：很多"品牌叙事"。</strong>今天很多"国产替代+自主可控"的故事在用<strong>品牌叙事</strong>给高估值找理由——但很多本质上是<strong>成本敏感型行业</strong>（如某些硬件代工），靠"故事"无法穿越周期。</p>
+    <p class="boom-text"><strong>④ 对照巴菲特的"30%法则"自检3条：</strong>① 我买的标的，把最悲观假设<strong>再调高30%</strong>，还能扛住吗？ ② 我估算的内在价值，<strong>是否有3种不同方法</strong>（DCF/可比公司/重置成本）交叉验证？ ③ 我的买入价，<strong>是否提供了至少30%的安全边际</strong>？答不上来=你在裸奔。</p>
+    <p class="boom-text"><strong>⑤ 对照本周前3天（9/21杠杆/9/22尾部/9/23模型失灵）→ 今天9/24安全边际 = "第四块拼图"。</strong>前三期讲的都是"风险可能发生"，今天讲的是"<strong>风险来临时你能扛住</strong>"——安全边际是"<strong>风险发生后你不死</strong>"的护身符。<strong>没有安全边际，再分散、再对冲、再保险，遇到黑天鹅一样归零</strong>。</p>
+  </div>
+</div>'''
+
+# 板块② 今日概念速览
+concept_html = '''<!-- ========== 板块② 今日概念速览 ========== -->
+<div class="section" id="sec-concept">
+  <div class="section-head">
+    <div class="section-num green">②</div>
+    <div class="section-title green">今日概念速览</div>
+  </div>
+
+  <div class="concept-grid">
+    <div class="concept-card featured">
+      <div class="concept-name">🛡️ 安全边际（Margin of Safety）</div>
+      <div class="concept-def">格雷厄姆1934年《证券分析》提出，巴菲特发扬光大。<strong>公式</strong>：安全边际 = 内在价值 − 买入价格（百分比）。<strong>核心思想</strong>：投资不能只看"未来的预期收益"——还要问"如果我看错了，我会亏多少？"。<strong>三大来源</strong>：① 价格打折（市场恐慌时买入）② 内在价值估算保守（取下限而非上限）③ 资产本身有"清算价值"（即使公司倒了还能值X元）。<strong>巴菲特买可口可乐的逻辑</strong>：内在价值200亿，买入价10亿，<strong>安全边际50%</strong>——即使他算错30%（200亿变140亿），10亿投资仍然值14亿，不亏。<strong>三大纪律</strong>：① <strong>不估算内在价值 = 不投资</strong> ② 安全边际至少30% ③ 安全边际<strong>保护估算误差，不保护框架错误</strong>。</div>
+      <div class="concept-example">举个栗子：你算出某股票每股内在价值$100，巴菲特说"必须有50%安全边际"——那合理买入价≤$50。1988年巴菲特买可口可乐时，团队17种估值模型算出内在价值$200-240亿，他出$10亿买——<strong>5折买入</strong>。即使可口可乐未来盈利比他悲观预测还低30%，这笔投资仍然赚钱。这就是"先给自己挖战壕，再冲锋"的思维。</div>
+    </div>
+
+    <div class="concept-card">
+      <div class="concept-name">内在价值（Intrinsic Value）</div>
+      <div class="concept-def">巴菲特：<em>"内在价值是'公司未来现金流折现到今天的价值'"</em>。但注意：内在价值是<strong>估算</strong>，不是精确数字——同一公司不同分析师估出来差30%很常见。<strong>三种常见估算方法</strong>：① DCF（未来现金流折现）② 可比公司（PE/PB）③ 重置成本（重新建造这家公司要花多少钱）。</div>
+    </div>
+
+    <div class="concept-card">
+      <div class="concept-name">格雷厄姆（Benjamin Graham）</div>
+      <div class="concept-def">巴菲特的老师，<strong>价值投资之父</strong>，哥伦比亚大学教授。1934年与David Dodd合著《证券分析》（Security Analysis），提出"安全边际"概念。<strong>名言</strong>："<em>市场短期是投票机，长期是称重机</em>"（Mr. Market比喻）。<strong>核心方法</strong>：深度价值（Deep Value）——找"价格远低于清算价值"的烟蒂股。</div>
+    </div>
+
+    <div class="concept-card">
+      <div class="concept-name">重置成本（Replacement Cost）</div>
+      <div class="concept-def">把一家公司的<strong>所有资产重新买一遍</strong>要花多少钱。<strong>巴菲特买可口可乐的安全垫之一</strong>：即使全球汽水消费量腰斩，可口可乐的装瓶厂<strong>重置成本</strong>仍能覆盖投资额的80%。<strong>反例</strong>：很多轻资产公司（互联网/咨询/品牌）重置成本很低，安全边际来源<strong>只能是未来的现金流</strong>。</div>
+    </div>
+
+    <div class="concept-card">
+      <div class="concept-name">净流动资产（Net Current Assets / NCAV）</div>
+      <div class="concept-def">格雷厄姆"烟蒂股投资法"的核心指标：<strong>流动资产 − 全部负债</strong>。<strong>买入条件</strong>：股价 &lt; NCAV的2/3（格雷厄姆要求）。例如某公司股价$10，NCAV=$18，则<strong>安全边际80%</strong>。今天这种机会在A股/港股极少（巴菲特自己说"一生难找几个"），但港股确实有零星机会。</div>
+    </div>
+
+    <div class="concept-card">
+      <div class="concept-name">30%法则（30% Margin Rule）</div>
+      <div class="concept-def">巴菲特买可口可乐时的"<strong>压力测试</strong>"：把分析师给的"最悲观假设"<strong>再调高30%</strong>（即把假设变得更悲观），看公司还能不能扛住。<strong>结果</strong>：可口可乐即使在<strong>"最悲观的悲观"</strong>下，装瓶厂重置成本仍能覆盖80%投资额，品牌溢价仍能维持20年现金流。<strong>对个人</strong>：买入任何标的之前，先把它的"最坏情况"再调坏30%，看你还能不能扛。</div>
+    </div>
+
+    <div class="concept-card">
+      <div class="concept-name">戴维斯双击（Davis Double Play）</div>
+      <div class="concept-def">当一家公司"<strong>EPS增长 + PE提升</strong>"同时发生时，股价会出现<strong>乘法级</strong>上涨。例：EPS从1元涨到2元（+100%）+ PE从15倍涨到30倍（+100%）= 股价4倍。<strong>对照可口可乐1988-1998</strong>：EPS从2.43美元涨到1.42美元（注：因送股后调整）+ PE从15倍涨到50倍 = 10年涨11倍。<strong>反面</strong>：EPS降 + PE降 = <strong>戴维斯双杀</strong>。</div>
+    </div>
+  </div>
+</div>'''
+
+# 板块③ 富爸爸一句话
+quote_html = '''<!-- ========== 板块③ 富爸爸一句话 ========== -->
+<div class="section" id="sec-quote">
+  <div class="section-head">
+    <div class="section-num gold">③</div>
+    <div class="section-title">富爸爸一句话</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-big">"真正的财商，不是'找到便宜货'，<br>而是'找到便宜货后还能拿得住'。"</div>
+    <div class="quote-source">综合自《富爸爸穷爸爸》"投资大脑"章节与《富爸爸投资指南》"安全边际+长期持有"核心思想 · 本期与巴菲特1988买入可口可乐"36年持有+无杠杆+不惧回撤"案例对照呼应（新增入池）</div>
+
+    <div class="quote-body">
+      1988年巴菲特花10亿美元买入可口可乐——然后他<strong>36年没卖</strong>。中间经历了1998年PE冲到50倍（"是不是太贵了？"）、2008年金融危机（"要不要先退出？"）、2020年COVID（"要不要加仓？"）——他都没动。<strong>这就是"找到便宜货后还能拿得住"</strong>。
+    </div>
+    <div class="quote-body">
+      <strong>为什么大部分人"拿不住"</strong>？因为他们买入时<strong>没有安全边际</strong>。当股价跌了30%，你心里没底——"是不是我看错了？是不是要止损？"。但如果你买入时算过"<strong>5折买入，内在价值200亿，下限140亿</strong>"，你就知道——<strong>跌30%只是市场先生发疯，不影响内在价值</strong>。你会和巴菲特一样：<em>"继续持有"</em>。
+    </div>
+    <div class="quote-body">
+      <strong>对照本周前3天</strong>：9/21 巴林李森用40倍杠杆 → <strong>无安全边际，1英镑被收购</strong>；9/22 COVID股灾 → <strong>无现金缓冲，被迫割肉</strong>；9/23 JPM伦敦鲸 → <strong>模型失灵，亏损62亿</strong>。今天9/24 安全边际 → <strong>"风险来临时你不死"</strong>。<strong>安全边际不是"赚更多"，是"亏更少"</strong>——而"亏更少"才是长期复利的前提。
+    </div>
+
+    <div class="quote-summary">"用5毛钱买1块钱的资产"——然后闭上眼，等时间把它变成1块钱。</div>
+  </div>
+</div>'''
+
+# 板块④ 今日行动
+action_html = '''<!-- ========== 板块④ 今日行动 ========== -->
+<div class="section" id="sec-action">
+  <div class="section-head">
+    <div class="section-num blue">④</div>
+    <div class="section-title blue">今日行动 · 30秒算"我的安全边际"</div>
+  </div>
+
+  <div class="action-card">
+    <div class="action-step"><strong>Step 1 ·</strong> 打开同花顺App → 搜"<strong>沪深300</strong>"（000300）→ 看<span class="term" data-term="PE-TTM">PE-TTM</span>：<strong>13.6倍</strong>（2026.9.24收4517.28，-0.60%）</div>
+    <div class="action-step"><strong>Step 2 ·</strong> 心算"<span class="term" data-term="盈利收益率">盈利收益率</span>" = 1/13.6 ≈ <strong>7.35%</strong>（比余额宝0.820%贵约<strong>9倍</strong>）—— 这是"<strong>最坏情况下的内在收益率</strong>"</div>
+    <div class="action-step"><strong>Step 3 ·</strong> 拿出<strong>纸笔记下</strong>"我的简化安全边际表"：① PE &lt; 10倍 = <strong>极度便宜</strong>（5折买入，50%+安全边际） ② PE 10-15倍 = <strong>合理</strong>（3-7折买入，30-50%安全边际） ③ PE 15-20倍 = <strong>偏贵</strong>（2-3折，安全边际≤30%） ④ PE 20-30倍 = <strong>贵</strong>（安全边际不足10%，不建议重仓） ⑤ PE &gt; 30倍 = <strong>泡沫</strong>（无安全边际，参考科创50 PE 136.8倍）</div>
+    <div class="action-step"><strong>Step 4 ·</strong> 打开同花顺 → 搜"<strong>科创50</strong>"（000688）→ 看PE <strong>136.8倍</strong>（81%分位）→ 切到"<strong>沪深300</strong>"→ 同样PE <strong>13.6倍</strong>（56%分位）→ <strong>对比</strong>：同样是"中国资产"，一个估值在历史80%分位（贵），一个在历史56%分位（合理）</div>
+    <div class="action-step"><strong>Step 5 ·</strong> 纸上写"<strong>巴菲特30%法则自检</strong>"：① 我买的标的，把最悲观假设<strong>再调坏30%</strong>，还能扛住吗？ ② 我的"<strong>内在价值估算</strong>"有几种方法交叉验证？（PE分位+ROE分位+历史PB分位，<strong>至少3种</strong>） ③ 我的买入价，<strong>是否提供了至少30%的安全边际</strong>？答不上来=和1993德克斯特鞋业一样在裸奔</div>
+  </div>
+
+  <div class="action-data">
+    <strong>📊 你看到了什么？</strong><br>
+    • 沪深300 <strong>4517.28</strong>（-0.60%）/ PE-TTM <strong>13.6倍</strong>（56%分位）/ 盈利收益率 <strong>7.35%</strong><br>
+    • 上证50 <strong>2883.77</strong>（-0.53%）/ PE <strong>10.9倍</strong>（51%分位）/ 盈利收益率 <strong>9.17%</strong><br>
+    • 创业板指 <strong>3379.61</strong>（-0.60%）/ PE <strong>37.7倍</strong>（26%分位）<br>
+    • 科创50 <strong>1660.85</strong>（-0.25%）/ PE <strong>136.8倍</strong>（81%分位）—— <strong>结构性泡沫</strong><br>
+    • 万得全A <strong>6468.9</strong>（-0.42%）/ PE <strong>21.9倍</strong>（81%分位）<br>
+    • 余额宝 <strong>0.820%</strong>（2026.9.18） vs 沪深300盈利收益率 <strong>7.35%</strong> ≈ 风险溢价 <strong>6.53 个百分点</strong><br>
+    • 全市场成交额 <strong>17,831亿元</strong>（节前缩量 -3,705亿）<br>
+    • 标普500 <span class="term" data-term="BRK.B">BRK.B</span> <strong>507.17</strong>（+0.73%）/ PE-TTM <strong>12.75倍</strong> / 席勒PE <strong>18.23</strong>（11%低于10年中位数）<br>
+    • 美10Y国债 <strong>4.95%</strong> / 标普500 席勒CAPE <strong>40.94</strong>（历史第二高）
+  </div>
+
+  <div class="action-question">
+    <strong>思考题：</strong>巴菲特买可口可乐的"内在价值"是市场价的<strong>2倍</strong>——所以他5折买入。今天沪深300 PE 13.6倍 / 盈利收益率7.35%，对比余额宝0.820%——<strong>看起来是5折</strong>。但科创50 PE 136.8倍 / 盈利收益率<strong>0.73%</strong>——<strong>看起来是1.5折买入</strong>（高于余额宝的"折价"）。<strong>你的"安全边际"在哪里？</strong>是沪深300这种<strong>"整体打折"</strong>，还是科创50这种<strong>"看起来打折但实际是结构性泡沫"</strong>？<strong>对照1988可口可乐</strong>——5折买入是因为"内在价值远高于价格"，不是"PE低"。<strong>对照1993德克斯特鞋业</strong>——4.33亿归零是因为"框架错了，安全边际保护不了"。<strong>今天你买任何一个标的之前，先问：① 内在价值估算 ② 安全边际多少 ③ 框架对不对</strong>。
+  </div>
+</div>'''
+
+# FOOTER
+footer_html = '''<!-- ========== FOOTER ========== -->
+<div class="footer">
+  <div class="footer-strong">第44期 · 财商日推 · 2026-09-24 · 安全边际·巴菲特核心思想</div>
+  <div class="footer-line">本案例为公开历史事件复盘，所有数据均来自：Warren Buffett 1988-2024年致股东信 / Berkshire Hathaway 1988-2024年年报 / SEC 13F持仓披露 / Forbes《Warren Buffett''s $1 Billion Bet》1988 / The Motley Fool 2022.7.10《Why Warren Buffett Loves Coca-Cola Stock》/ Nasdaq.com 同主题报道 / 大河财立方 2024《巴菲特可口可乐36年持仓复盘》/ 鉅亨号《巴菲特投资案例29:可口可乐1988年》/ Ben Graham 1934《Security Analysis》/ Ben Graham《The Intelligent Investor》1949 / 1993 Dexter Shoe收购案2014年致股东信披露 / CNBC 1988年《The Coca-Cola Company Annual Report》/ GuruFocus 2026.9.18 BRK.B Shiller PE Ratio数据，已交叉验证。</div>
+  <div class="footer-line">实时数据来自：上海证券交易所2026.9.24收盘（沪深300 4517.28） / Wind 2026.9.24 / 同花顺 / 天弘基金官网000198（2026.9.18 七日年化0.8200%）/ 财信证券晨会纪要20260924 / 雪球 2026.9.24 / 多源交叉验证。</div>
+  <div class="footer-line">——</div>
+  <div class="footer-line">📚 本周进度：第9周「风险管理·杠杆与安全边际」（9/21-9/25）</div>
+  <div class="footer-line">周一9/21「杠杆的本质·巴林1995」✅ · 周二9/22「尾部风险·2020.3 COVID」✅ · 周三9/23「模型失灵·JPM伦敦鲸2012」✅ · 周四9/24「安全边际」📍今天 · 周五9/25「资产清单+压力测试」</div>
+  <div class="footer-line">——</div>
+  <div class="footer-line" style="color:var(--gold);font-weight:700;">不构成投资建议，仅供财商思维训练。市场有风险，决策请独立。</div>
+</div>
+
+</div>'''
+
+# 底部（工具栏+脚本）
+bottom_html = '''<!-- ========== TOOLBAR ========== -->
+<div class="wb-toolbar">
+  <button class="wb-btn" id="wb-settings" title="设置">⚙️</button>
+  <button class="wb-btn" id="wb-copy" title="复制到WorkBuddy讨论">📋</button>
+  <button class="wb-btn" id="wb-open" title="打开WorkBuddy">💬</button>
+</div>
+
+<!-- ========== MODAL: 术语词典 ========== -->
+<div class="wb-modal" id="term-modal">
+  <div class="wb-modal-card">
+    <div class="wb-modal-title" id="term-title">术语</div>
+    <div class="wb-modal-text" id="term-def"></div>
+    <div class="wb-modal-text" id="term-example"></div>
+    <div class="wb-modal-actions">
+      <button class="wb-modal-btn primary" id="term-copy">💬 复制到WorkBuddy讨论</button>
+      <button class="wb-modal-btn ghost" id="term-close">关闭</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== MODAL: 设置 ========== -->
+<div class="wb-modal" id="settings-modal">
+  <div class="wb-modal-card">
+    <div class="wb-modal-title">⚙️ WorkBuddy 链接设置</div>
+    <div class="wb-modal-text">配置你的 WorkBuddy 入口链接：</div>
+    <input type="text" class="wb-modal-input" id="wb-url-input" placeholder="https://workbuddy.tencent.com">
+    <div class="wb-modal-actions">
+      <button class="wb-modal-btn primary" id="wb-url-save">保存</button>
+      <button class="wb-modal-btn ghost" id="wb-url-close">关闭</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== TOAST ========== -->
+<div class="wb-toast" id="wb-toast">已复制到剪贴板</div>
+
+<script>
+// ========== 术语词典 ==========
+const TERM_DICT = {
+  "安全边际": {
+    def: "Margin of Safety：格雷厄姆1934年《证券分析》提出，巴菲特发扬光大。公式：安全边际 = 内在价值 − 买入价格（百分比）。核心思想：投资不能只看'未来的预期收益'，还要问'如果我看错了，我会亏多少'。三大来源：① 价格打折（市场恐慌时买入）② 内在价值估算保守（取下限而非上限）③ 资产本身有清算价值（即使公司倒了还能值X元）。三大纪律：① 不估算内在价值=不投资 ② 安全边际至少30% ③ 安全边际保护估算误差，不保护框架错误。",
+    example: "巴菲特1988年买可口可乐：团队17种估值模型算出内在价值$200-240亿，他出$10亿买——5折买入。即使他算错30%（200亿变140亿），10亿投资仍值14亿，不亏。1993年他花$4.33亿买德克斯特鞋业——但鞋业是成本敏感型行业，品牌护城河挡不住中国廉价鞋，整个判断框架就错了，安全边际保护不了，收购价值归零。"
+  },
+  "内在价值": {
+    def: "Intrinsic Value：巴菲特定义为'公司未来现金流折现到今天的价值'。注意：内在价值是'估算'，不是精确数字——同一公司不同分析师估出来差30%很常见。三种常见估算方法：① DCF（未来现金流折现）② 可比公司（PE/PB）③ 重置成本（重新建造这家公司要花多少钱）。",
+    example: "对照2026.9.24沪深300：PE-TTM 13.6倍=盈利收益率7.35%，对比余额宝0.820%，股债性价比6.53pp。如果用'盈利收益率折现'简化计算，沪深300'内在价值'远高于价格——这是5折买入的机会。"
+  },
+  "格雷厄姆": {
+    def: "Benjamin Graham：巴菲特的老师，价值投资之父，哥伦比亚大学教授。1934年与David Dodd合著《证券分析》（Security Analysis），提出'安全边际'概念。1949年出版《聪明的投资者》（The Intelligent Investor）。名言：'市场短期是投票机，长期是称重机'（Mr. Market比喻）。核心方法：深度价值（Deep Value）——找'价格远低于清算价值'的烟蒂股。",
+    example: "格雷厄姆的'烟蒂股'方法在1930-1970年代盛行，但巴菲特后来发现——烟蒂股虽然便宜，但'持有体验很差'（你必须忍受公司不断衰退）。巴菲特转向'以合理价格买好公司'（芒格的影响），但保留了格雷厄姆'安全边际'的核心思想。"
+  },
+  "重置成本": {
+    def: "Replacement Cost：把一家公司的所有资产重新买一遍要花多少钱。巴菲特买可口可乐的安全垫之一：即使全球汽水消费量腰斩，可口可乐的装瓶厂重置成本仍能覆盖投资额的80%。反例：很多轻资产公司（互联网/咨询/品牌）重置成本很低，安全边际来源只能是未来的现金流。",
+    example: "对照中芯国际 vs 台积电：中芯国际2025年市值一度破1万亿，但'重置成本'远低于市值——它的产能/技术都和台积电有代际差距。台积电PE不到20倍，中芯200倍——市场给中芯的'估值'远高于其'重置价值'，安全边际极薄。"
+  },
+  "净流动资产": {
+    def: "Net Current Assets / NCAV：格雷厄姆'烟蒂股投资法'的核心指标：流动资产 − 全部负债。买入条件：股价 < NCAV的2/3（格雷厄姆要求）。例如某公司股价$10，NCAV=$18，则安全边际80%。今天这种机会在A股/港股极少（巴菲特自己说'一生难找几个'），但港股确实有零星机会。",
+    example: "对照2026年港股'烟蒂股'机会：很多小市值港股PB < 0.5倍，但流动负债占比高——需要仔细计算NCAV是否真的安全。格雷厄姆时代'买烟蒂股'是主流，今天则需要更精细的'剔除陷阱股'能力。"
+  },
+  "30%法则": {
+    def: "30% Margin Rule：巴菲特买可口可乐时的'压力测试'——把分析师给的'最悲观假设'再调高30%（即把假设变得更悲观），看公司还能不能扛住。结果：可口可乐即使在'最悲观的悲观'下，装瓶厂重置成本仍能覆盖80%投资额，品牌溢价仍能维持20年现金流。对个人：买入任何标的之前，先把它的'最坏情况'再调坏30%，看你还能不能扛。",
+    example: "对照2026.9.24的'30%法则'自检：科创50 PE 136.8倍=盈利收益率0.73%。如果把'最坏情况再调坏30%'——假设盈利再降30%——盈利收益率只剩0.51%，远低于余额宝0.820%。这种标的就是'框架就错了'的泡沫股，没有任何安全边际。"
+  },
+  "戴维斯双击": {
+    def: "Davis Double Play：当一家公司'EPS增长 + PE提升'同时发生时，股价会出现乘法级上涨。例：EPS从1元涨到2元（+100%）+ PE从15倍涨到30倍（+100%）= 股价4倍。对照可口可乐1988-1998：EPS从2.43美元涨到1.42美元（注：因送股后调整）+ PE从15倍涨到50倍 = 10年涨11倍。反面：EPS降 + PE降 = 戴维斯双杀。",
+    example: "对照2024.9.24'924行情'后中国平安估值修复（已用8/24案例）：股价从30.99元涨到67.08元（+116%），其中EPS增长贡献一部分，PE从PB<1倍回到PB约1倍贡献另一部分——经典戴维斯双击。"
+  },
+  "护城河": {
+    redirect: "护城河",
+    def: ""
+  },
+  "PE-TTM": {
+    def: "市盈率（Trailing Twelve Months）：当前股价÷最近12个月每股收益。衡量'股票贵不贵'的核心指标。",
+    example: "沪深300 PE-TTM 13.6倍（2026.9.24）= 买下整个沪深300所有公司需要13.6年回本。历史区间8-18倍，当前56%分位（不算贵也不算便宜）。对照科创50 PE 136.8倍——完全不同的位置。"
+  },
+  "盈利收益率": {
+    def: "Earnings Yield = 1/PE。相当于股票给你的'利息率'。",
+    example: "沪深300 PE 13.6倍 → 盈利收益率 = 1/13.6 ≈ 7.35%。这比余额宝0.820%贵9倍——这就是'股债性价比'的简化版。对照科创50 PE 136.8倍 → 盈利收益率 = 1/136.8 ≈ 0.73%——比余额宝还低，这是'亏损型'收益。"
+  },
+  "股债性价比": {
+    def: "股票盈利收益率 - 国债收益率。差值越大=股票相对债券越便宜。",
+    example: "沪深300盈利收益率7.35% - 中国10Y国债约1.68% ≈ 5.67pp（A股偏便宜）。但如果用美股PE 26.07倍 - 美债10Y 4.95% = 负数（美股偏贵）。"
+  },
+  "席勒CAPE": {
+    def: "Shiller CAPE：用10年平均盈利（而非12个月）计算的PE，平滑了经济周期波动。被巴菲特多次推崇。",
+    example: "2026.9.24标普500席勒CAPE 40.94，历史第二高（峰值1999.12 44.19，均值17.42）。"
+  },
+  "标普500": {
+    def: "S&P 500：美国500家最大公司，覆盖科技/金融/消费/医疗/能源等。",
+    example: "2026.9.23标普500收7,764.70（+1.49%），PE-TTM 26.07倍，席勒CAPE 40.94历史第二高。美联储9.16重启加息25bp至3.75-4.00%是2023.7以来首次。"
+  },
+  "BRK.B": {
+    def: "Berkshire Hathaway Inc. Class B：巴菲特管理的伯克希尔·哈撒韦公司B类股。1996年由原A股1:30拆出，价格更亲民（当前$507）。每股BRK.B = 1/1500股BRK.A + 1/1500投票权。",
+    example: "2026.9.23 BRK.B收$507.17（+0.73%），PE-TTM 12.75倍（对比A股沪深300 13.6倍），席勒PE 18.23（11%低于10年中位数）。巴菲特的'旗舰资产'本身也是按'安全边际'原则管理的。"
+  },
+  "PE分位": {
+    def: "PE Percentile：当前PE在过去N年所有交易日中的排名百分比（0%=最低，100%=最高）。衡量'当前估值在历史上贵还是便宜'的核心指标。",
+    example: "沪深300当前PE-TTM 13.6倍=近5年56%分位（不算贵也不算便宜）。上证50 PE 10.9倍=51%分位（合理）。科创50 PE 136.8倍=81%分位（贵）。同样的'PE分位法'，能一眼看出'谁便宜谁贵'。"
+  },
+  "ROE": {
+    def: "Return on Equity（净资产收益率）：净利润÷股东权益。衡量'公司用股东的钱赚了多少利润'。ROE > 15% = 优秀公司；ROE > 20% = 卓越公司（巴菲特偏好）。",
+    example: "对照可口可乐1988年ROE 33.3%（卓越）。对照茅台2024年加权ROE 36.02%（卓越）。对照沪深300整体ROE约10%（一般）。这是巴菲特买可口可乐的另一个关键指标——不是只看PE，还要看ROE。"
+  }
+};
+
+// ========== 术语点击弹窗 ==========
+const termModal = document.getElementById('term-modal');
+const termTitle = document.getElementById('term-title');
+const termDef = document.getElementById('term-def');
+const termExample = document.getElementById('term-example');
+
+document.body.addEventListener('click', e => {
+  const t = e.target.closest('.term');
+  if (!t) return;
+  const key = t.dataset.term;
+  let entry = TERM_DICT[key];
+  if (!entry) return;
+  if (entry.redirect) entry = TERM_DICT[entry.redirect];
+  if (!entry) return;
+  termTitle.textContent = '📖 ' + key;
+  termDef.innerHTML = '<strong>定义：</strong>' + entry.def;
+  termExample.innerHTML = entry.example ? '<strong>举个栗子：</strong>' + entry.example : '';
+  termModal.classList.add('active');
+});
+
+document.getElementById('term-close').addEventListener('click', () => termModal.classList.remove('active'));
+document.getElementById('term-copy').addEventListener('click', () => {
+  const key = termTitle.textContent.replace('📖 ', '');
+  const entry = TERM_DICT[key] || {};
+  const text = `【术语：${key}]\\n定义：${entry.def || ''}\\n\\n举个栗子：${entry.example || ''}\\n\\n我想讨论：`;
+  copyToClipboard(text, '已复制术语到剪贴板');
+  setTimeout(() => termModal.classList.remove('active'), 500);
+});
+
+// ========== 工具栏 ==========
+const settingsModal = document.getElementById('settings-modal');
+const urlInput = document.getElementById('wb-url-input');
+
+document.getElementById('wb-settings').addEventListener('click', () => {
+  urlInput.value = localStorage.getItem('wb_url') || 'https://workbuddy.tencent.com';
+  settingsModal.classList.add('active');
+});
+document.getElementById('wb-url-close').addEventListener('click', () => settingsModal.classList.remove('active'));
+document.getElementById('wb-url-save').addEventListener('click', () => {
+  localStorage.setItem('wb_url', urlInput.value.trim());
+  showToast('已保存 WorkBuddy URL');
+  settingsModal.classList.remove('active');
+});
+
+document.getElementById('wb-open').addEventListener('click', () => {
+  const url = localStorage.getItem('wb_url') || 'https://workbuddy.tencent.com';
+  window.open(url, '_blank');
+});
+
+document.getElementById('wb-copy').addEventListener('click', () => {
+  copyToClipboard(getSelectionContext(), '已复制到剪贴板');
+});
+
+// ========== 选中文字复制 ==========
+function getSelectionContext() {
+  const sel = window.getSelection().toString().trim();
+  let sectionTitle = '财商日推 · 安全边际·巴菲特核心思想';
+  let node = window.getSelection().anchorNode;
+  while (node && node !== document.body) {
+    if (node.classList && node.classList.contains('section')) {
+      const t = node.querySelector('.section-title');
+      if (t) sectionTitle = t.textContent;
+      break;
+    }
+    node = node.parentNode;
+  }
+  if (sel) {
+    return `【来自《${sectionTitle}》]\\n原文片段："${sel}"\\n\\n我想讨论：`;
+  }
+  return `【来自《${sectionTitle}》]\\n请打开今日推送查阅完整内容。\\n我想讨论：`;
+}
+
+function copyToClipboard(text, msg) {
+  navigator.clipboard.writeText(text).then(() => showToast(msg || '已复制'))
+    .catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showToast(msg || '已复制');
+    });
+}
+
+function showToast(msg) {
+  const t = document.getElementById('wb-toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ========== 键盘快捷键 ==========
+document.addEventListener('keydown', e => {
+  if (e.ctrlKey && e.shiftKey && e.key === 'D') {
+    e.preventDefault();
+    copyToClipboard(getSelectionContext(), '已复制（Ctrl+Shift+D）');
+  }
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.wb-modal.active').forEach(m => m.classList.remove('active'));
+  }
+});
+
+// ========== 点击 modal 外部关闭 ==========
+[termModal, settingsModal].forEach(m => {
+  m.addEventListener('click', e => { if (e.target === m) m.classList.remove('active'); });
+});
+</script>
+
+</body>
+</html>'''
+
+# 替换JS中的转义换行为真换行（python raw string处理）
+bottom_html = bottom_html.replace('\\\\n', '\\n')
+
+# 拼接
+head_close = '</head>\n<body>\n'
+full_html = css_block + head_close + hero_html + container_open + concept_html + quote_html + action_html + footer_html + bottom_html
+
+# 写文件
+out_path = 'C:/Users/Administrator/Desktop/日推/财商日推-2026-09-24.html'
+with open(out_path, 'w', encoding='utf-8') as f:
+    f.write(full_html)
+
+print(f"✅ HTML 生成成功")
+print(f"   文件大小: {len(full_html):,} 字符")
+print(f"   保存路径: {out_path}")
