@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 2026-10-05 · 寒露节气×国庆假期Day 5</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: linear-gradient(135deg, #faf6f1 0%, #f5ede0 100%);
+    color: #3a2e25;
+    font-size: 15px;
+    line-height: 1.75;
+    min-height: 100vh;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #c2410c 0%, #b8541e 30%, #d97706 70%, #92400e 100%);
+    color: #fef7ed;
+    padding: 36px 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(180, 83, 9, 0.15);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(254, 215, 170, 0.18) 0%, transparent 65%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%; left: -5%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(252, 211, 77, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(254, 215, 170, 0.25);
+    border: 1px solid rgba(254, 215, 170, 0.5);
+    color: #fef3c7;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #fffbeb;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .hero .sub {
+    color: #fed7aa;
+    font-size: 14.5px;
+  }
+  .hero .weather-bar {
+    display: flex;
+    gap: 24px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+  }
+  .hero .weather-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #fef3c7;
+    background: rgba(255, 251, 235, 0.12);
+    padding: 6px 14px;
+    border-radius: 8px;
+    backdrop-filter: blur(8px);
+  }
+  .hero .weather-item strong { color: #fff; font-weight: 700; }
+
+  /* 主容器 */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 28px 20px;
+  }
+
+  /* 板块卡片通用 */
+  .section {
+    background: #fffbeb;
+    border: 1px solid #f3d9b1;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(180, 83, 9, 0.06);
+  }
+  .section-header {
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #f3d9b1;
+    position: relative;
+  }
+  .section-header .num-badge {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-size: 19px;
+    font-weight: 700;
+    color: #7c2d12;
+  }
+  .section-header .sub-tag {
+    margin-left: auto;
+    font-size: 12px;
+    color: #92400e;
+    background: #fed7aa;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+  .section-body {
+    padding: 22px 24px;
+  }
+
+  /* 板块一：今日行业要闻 */
+  .sec-1 .section-header { background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%); }
+  .sec-1 .num-badge { background: #c2410c; color: #fff; }
+
+  /* 板块二：爆品雷达 */
+  .sec-2 .section-header { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); }
+  .sec-2 .num-badge { background: #d97706; color: #fff; }
+
+  /* 板块三：时令风向 */
+  .sec-3 .section-header { background: linear-gradient(135deg, #d9f99d 0%, #bef264 100%); }
+  .sec-3 .num-badge { background: #65a30d; color: #fff; }
+
+  /* 板块四：跨界灵感 */
+  .sec-4 .section-header { background: linear-gradient(135deg, #fed7aa 0%, #fbbf24 100%); }
+  .sec-4 .num-badge { background: #b45309; color: #fff; }
+
+  /* 板块五：脑暴时刻 */
+  .sec-5 .section-header { background: linear-gradient(135deg, #fbcfe8 0%, #f9a8d4 100%); }
+  .sec-5 .num-badge { background: #be185d; color: #fff; }
+
+  /* 板块六：展会速递·每周新品雷达 */
+  .sec-6 .section-header { background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); }
+  .sec-6 .num-badge { background: #dc2626; color: #fff; }
+
+  /* 核心风向 */
+  .core-wind {
+    background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+    border-left: 4px solid #c2410c;
+    padding: 14px 18px;
+    border-radius: 0 10px 10px 0;
+    margin-bottom: 20px;
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #7c2d12;
+    line-height: 1.65;
+  }
+  .core-wind strong { color: #c2410c; }
+
+  /* 新闻条目 */
+  .news-item {
+    background: #fffaf0;
+    border: 1px solid #fed7aa;
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+    transition: border-color 0.2s;
+  }
+  .news-item:hover { border-color: #fb923c; }
+  .news-item:last-child { margin-bottom: 0; }
+  .news-item h3 {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #7c2d12;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .news-item h3 .label {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .label-hot { background: #fee2e2; color: #b91c1c; }
+  .label-policy { background: #dbeafe; color: #1e40af; }
+  .label-data { background: #fef3c7; color: #a16207; }
+  .label-trade { background: #dcfce7; color: #15803d; }
+  .label-time { background: #f3e8ff; color: #6b21a8; }
+  .news-item .body-text {
+    color: #44403c;
+    font-size: 14px;
+    margin-bottom: 8px;
+    line-height: 1.75;
+  }
+  .news-item .relevance {
+    background: #fef7ed;
+    border-left: 3px solid #fb923c;
+    padding: 8px 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: #7c2d12;
+    margin-top: 8px;
+  }
+  .news-item .relevance strong {
+    color: #c2410c;
+    font-weight: 700;
+  }
+
+  /* 爆品雷达条目 */
+  .radar-item {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    border: 1px solid #fcd34d;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .radar-item:last-child { margin-bottom: 0; }
+  .radar-item h3 {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #7c2d12;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .signal-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .signal-red { background: #fee2e2; color: #b91c1c; }
+  .signal-yellow { background: #fef3c7; color: #a16207; }
+  .signal-green { background: #dcfce7; color: #15803d; }
+  .radar-item .body-text {
+    color: #44403c;
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  .radar-item .judgment {
+    background: #fef7ed;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #7c2d12;
+    border-left: 3px solid #d97706;
+  }
+  .radar-item .judgment strong { color: #c2410c; }
+
+  /* 时令 */
+  .seasonal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+  }
+  .seasonal-card {
+    background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%);
+    border: 1px solid #d9f99d;
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .seasonal-card .label {
+    display: inline-block;
+    background: #65a30d;
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 5px;
+    margin-bottom: 6px;
+  }
+  .seasonal-card .label.warn { background: #ea580c; }
+  .seasonal-card .label.urgent { background: #b91c1c; }
+  .seasonal-card h4 {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #3f6212;
+    margin-bottom: 4px;
+  }
+  .seasonal-card p {
+    font-size: 13px;
+    color: #4d7c0f;
+    line-height: 1.6;
+  }
+  .seasonal-card .data {
+    font-size: 12px;
+    color: #65a30d;
+    margin-top: 4px;
+    font-weight: 600;
+  }
+  .seasonal-summary {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border: 1px solid #86efac;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+    font-size: 14px;
+    color: #14532d;
+    line-height: 1.7;
+  }
+  .seasonal-summary strong { color: #166534; font-weight: 700; }
+
+  /* 跨界灵感 */
+  .cross-item {
+    background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+    border: 1px solid #fdba74;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+  }
+  .cross-item:last-child { margin-bottom: 0; }
+  .cross-item h4 {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #7c2d12;
+    margin-bottom: 6px;
+  }
+  .cross-item .body-text {
+    color: #44403c;
+    font-size: 13.5px;
+    line-height: 1.7;
+  }
+  .cross-item .migration {
+    background: rgba(254, 215, 170, 0.5);
+    border-radius: 6px;
+    padding: 6px 10px;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #7c2d12;
+  }
+  .cross-item .migration strong { color: #c2410c; }
+
+  /* 脑暴卡片 */
+  .idea-card {
+    background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+    border: 1px solid #f9a8d4;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .idea-card:last-child { margin-bottom: 0; }
+  .idea-card .name {
+    display: inline-block;
+    background: linear-gradient(135deg, #be185d 0%, #db2777 100%);
+    color: #fff;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 13.5px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .idea-card h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #831843;
+    margin-bottom: 8px;
+  }
+  .idea-card .one-liner {
+    font-size: 13.5px;
+    color: #9d174d;
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  .idea-card .item {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: #44403c;
+    line-height: 1.65;
+  }
+  .idea-card .item .item-label {
+    font-weight: 700;
+    color: #831843;
+    flex-shrink: 0;
+    width: 84px;
+  }
+
+  /* 新品雷达 */
+  .new-product {
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    border: 1px solid #fca5a5;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+    transition: transform 0.2s;
+  }
+  .new-product:last-child { margin-bottom: 0; }
+  .new-product:hover { transform: translateX(-2px); }
+  .new-product h4 {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #7f1d1d;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .new-product .np-tag {
+    display: inline-flex;
+    align-items: center;
+    background: #dc2626;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 5px;
+    flex-shrink: 0;
+  }
+  .new-product .meta {
+    font-size: 12.5px;
+    color: #991b1b;
+    margin-bottom: 8px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .new-product .meta span {
+    background: rgba(220, 38, 38, 0.08);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .new-product .deconstruct {
+    color: #44403c;
+    font-size: 13.5px;
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+  .new-product .deconstruct strong { color: #7f1d1d; }
+  .new-product .inspiration {
+    background: rgba(254, 215, 170, 0.4);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: #7c2d12;
+    border-left: 3px solid #ea580c;
+  }
+  .new-product .inspiration strong { color: #c2410c; }
+
+  /* 展会 */
+  .exhibition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+  }
+  .exhibition-card {
+    background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 100%);
+    border: 1px solid #d6d3d1;
+    border-radius: 10px;
+    padding: 12px 16px;
+  }
+  .exhibition-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #44403c;
+    margin-bottom: 4px;
+  }
+  .exhibition-card .time {
+    font-size: 12px;
+    color: #dc2626;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .exhibition-card p {
+    font-size: 12.5px;
+    color: #57534e;
+    line-height: 1.6;
+  }
+  .exhibition-card .relevance {
+    font-size: 12px;
+    color: #c2410c;
+    margin-top: 4px;
+  }
+
+  /* 收尾彩蛋 */
+  .footer-note {
+    background: linear-gradient(135deg, #7c2d12 0%, #c2410c 50%, #d97706 100%);
+    color: #fffbeb;
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-top: 8px;
+    box-shadow: 0 4px 16px rgba(180, 83, 9, 0.18);
+  }
+  .footer-note h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fffbeb;
+    margin-bottom: 8px;
+  }
+  .footer-note p {
+    font-size: 13.5px;
+    color: #fed7aa;
+    line-height: 1.7;
+  }
+
+  /* 响应式 */
+  @media (max-width: 768px) {
+    .hero { padding: 24px 20px; }
+    .hero h1 { font-size: 22px; }
+    .container { padding: 16px 12px; }
+    .section-header { padding: 14px 16px; }
+    .section-body { padding: 16px; }
+    .seasonal-grid, .exhibition-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">📅 2026年10月5日 · 星期一 · 国庆假期Day 5 · 寒露节气</div>
+    <h1>🗞️ 食研日推 · 寒露节气×合规收紧特别版</h1>
+    <div class="sub">今日下厨房品牌情报 · 6大板块·每周新品雷达核心 · 暖色调食品主题版</div>
+    <div class="weather-bar">
+      <div class="weather-item">🍂 <strong>今日</strong>：寒露节气（露气寒冷，将凝结也）</div>
+      <div class="weather-item">⏰ <strong>距霜降</strong>：24天</div>
+      <div class="weather-item">📅 <strong>距立冬</strong>：54天</div>
+      <div class="weather-item">📊 <strong>距重阳糕峰值</strong>：已过·窗口关闭</div>
+    </div>
+  </div>
+</div>
+
+<!-- 主容器 -->
+<div class="container">
+
+  <!-- ========== 板块一：今日行业要闻 ========== -->
+  <div class="section sec-1">
+    <div class="section-header">
+      <div class="num-badge">🔥</div>
+      <h2>一、今日行业要闻（3条）</h2>
+      <div class="sub-tag">每日必读 · 与我何干</div>
+    </div>
+    <div class="section-body">
+
+      <div class="core-wind">
+        🧭 <strong>核心风向：</strong>寒露节气首日 + 外卖"明厨亮灶"造假央媒曝光 + 商务部国庆消费数据 + 茶咖10月新趋势——监管收紧+消费升级+秋季时令+首店经济四股力量同时发力，"地标食材+清洁标签+信任背书"再次成为下厨房全链路的共同答案。
+      </div>
+
+      <div class="news-item">
+        <h3>
+          <span class="label label-policy">📜 监管</span>
+          央视《每周质量报告》曝光外卖"明厨亮灶"造假，多地核查立案
+        </h3>
+        <div class="body-text">
+          总台《每周质量报告》10/4报道外卖商家明厨亮灶监控摄像头随意摆放、故意偏移角度、刻意不对准后厨切配烹饪洗消等关键操作区域，导致后厨卫生脏乱差现象难以及时发现。<strong>市场监管总局当日部署湖南/湖北/云南等地市场监管部门开展核查处置</strong>，武汉/丽江等地已立案调查+停业整顿+平台约谈。下一步将推动修订《食品安全法》进一步明确外卖平台和入网餐饮服务提供者食品安全主体责任，并将"健全多元共治格局"写入长效机制。
+        </div>
+        <div class="relevance">
+          🎯 <strong>与我何干：</strong>"明厨亮灶"造假被央媒点名+食安法即将修订是2026年Q4最强合规信号——下厨房若做B端餐饮渠道或半成品供应，<strong>必须将"明厨亮灶+扫码溯源+洁净配料"作为入驻门槛</strong>，这是与海底捞捞派/费大茶信任 头部看齐的最短路径；C端抖音达播选品时把"洁净配料表+溯源凭证+第三方检测"作为推荐话术标配。
+        </div>
+      </div>
+
+      <div class="news-item">
+        <h3>
+          <span class="label label-data">📊 消费数据</span>
+          商务部：国庆前三天消费市场平稳有序，以旧换新带动销售额196.3亿元
+        </h3>
+        <div class="body-text">
+          新华社10/4披露，<strong>10/1-10/3商务部重点监测78个步行街（商圈）客流量同比+3.4%、营业额+5.3%</strong>。消费品以旧换新带动销售额196.3亿元，惠及348.3万人次：汽车4.6万辆（销售额74.5亿元）/家电151.1万台（65.0亿元）/智能产品170.9万件（49.0亿元）。200家大型农副产品批发市场库存充足，粮油/猪肉/牛羊肉/水果与节前基本持平，<strong>蔬菜/鸡肉价格较节前均下降0.5%，鸡蛋-1.1%</strong>——<strong>农产品端价格回落</strong>是开品窗口期。
+        </div>
+        <div class="relevance">
+          🎯 <strong>与我何干：</strong>国庆消费端"温和增长+农产品降价"组合是Q4开品最舒适窗口——下厨房若做"应季蔬菜+短保组合"礼盒（白菜/萝卜/菌菇/鸡蛋），<strong>原料端成本下降+客流回升</strong>双重利好，<strong>15-25元/盒客单价</strong>对应盒马NB+叮咚买菜即时零售是最高效铺货路径。
+        </div>
+      </div>
+
+      <div class="news-item">
+        <h3>
+          <span class="label label-trade">🏮 茶饮</span>
+          霸王茶姬陕西区域限定"茯茶系列"9/30焕新上市，让千年茯茶走进当代茶饮
+        </h3>
+        <div class="body-text">
+          三秦都市报10/4披露，霸王茶姬陕西区域9/30推出茯茶系列焕新上市，<strong>4款饮品（金茯揽月/茯间月/丝路咸霜/关山杏雨）</strong>，以陕西茯茶为核心，原叶鲜奶茶/纯茶/茶特调三大类型均有覆盖。"金花"是茯茶区别于其他茶类的重要特色，传统形态为茶砖需撬煮，今转化为现制茶饮。10/1-10/3西安华阳城店推出主题活动，秦腔演绎+乐队+文化体验。
+        </div>
+        <div class="relevance">
+          🎯 <strong>与我何干：</strong>"茶底+在地茶种+在地文化"三角组合让霸王茶姬继湖北恩施玉露后再次升级"在地化原料"——茯茶"丝路黑金"文化背书+陕西产区链接+千年非遗工艺，下厨房"地标茶叶B端供应"可对标做"茶饮门店在地化茶底包"（茯茶预拌粉对接陕西/六安瓜片对接安徽/恩施玉露对接湖北），单品类200-400元/kg对标恩施玉露产区直发价。
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 板块二：爆品雷达 ========== -->
+  <div class="section sec-2">
+    <div class="section-header">
+      <div class="num-badge">🎯</div>
+      <h2>二、爆品雷达·趋势苗头（3个）</h2>
+      <div class="sub-tag">信号强度 · 机会判断</div>
+    </div>
+    <div class="section-body">
+
+      <div class="radar-item">
+        <h3>
+          <span class="signal-badge signal-red">🔴 已爆</span>
+          寒露节气"五宝+三果"润燥食材清单全面进入消费决策——节气消费教育窗口达顶峰
+        </h3>
+        <div class="body-text">
+          央视/中国农业博物馆/广东省中医药局/腾讯新闻多源背书今日寒露节气饮食指南，<strong>"寒露五宝"（芝麻+柿子+冬枣+莲藕+山药）+ "三果"（梨+苹果+葡萄/柚子/山楂）</strong>成为全民时令心智。民间"立秋核桃白露梨，寒露柿子红了皮"谚语再次刷屏，"九雌十雄"母蟹黄膏丰腴达顶峰。<strong>"减辛增酸+温补脾胃"</strong>成为社交媒体核心传播关键词。
+        </div>
+        <div class="judgment">
+          💡 <strong>机会判断：</strong>寒露节气首日是2026年Q4首个"全民养生时令心智"窗口——下厨房"三宝+三果六件套预拌粉组合礼盒"可对标王老吉/东鹏特饮"季节限定"路径，<strong>把芝麻糊/柿子粉/冬枣糕/莲藕粉/山药粉/雪梨膏打包为"寒露润燥礼盒"</strong>，客单价198-498元，走抖音达播+山姆/Ole'/盒马X会员三渠道，对标盒马缤纷多彩松糕"低糖+地标+时令"组合。
+        </div>
+      </div>
+
+      <div class="radar-item">
+        <h3>
+          <span class="signal-badge signal-yellow">🟡 起势</span>
+          10月茶咖品牌合计上新77款，奶茶占83%/奶咖占52%双线化趋势
+        </h3>
+        <div class="body-text">
+          茶咖观察统计：2026年10月全国门店数TOP10茶咖品牌共推77款新品（较8月+11.59%）。<strong>茶饮品牌36款（含11款回归），茶百道6款+古茗5款+益禾堂/CoCo都可各4款</strong>。咖啡品牌41款，<strong>幸运咖10款+瑞幸7款</strong>。茶饮板块<strong>奶茶类爆发增长30款占茶饮新品总量83.33%</strong>，果茶仅3款热度回落；咖啡领域奶咖22款（含2款回归）占咖啡新品总量52.38%。绿茶底占28.6%（含5款抹茶），牛乳占奶基69.35%，<strong>咸芝士/南瓜/红豆/芋泥/黑糖珍珠等秋冬小料高频出现</strong>。
+        </div>
+        <div class="judgment">
+          💡 <strong>机会判断：</strong>"奶咖+奶茶双线化"是2026秋冬茶饮最确定的结构——咸甜边界拓展（瑞幸锡林郭勒咸奶茶+幸运咖玫瑰海盐拿铁）+地域特色融合（瑞幸奶皮子拿铁+肯悦玫瑰乳扇风味拿铁）成为茶饮品牌竞相押注母题；下厨房"地域特色原料包"（锡林郭勒奶皮子/云南玫瑰乳扇/内蒙古炒米/潮汕鸭屎香）可对标做"茶饮门店秋冬原料包"，对接幸运咖/瑞幸/古茗。
+        </div>
+      </div>
+
+      <div class="radar-item">
+        <h3>
+          <span class="signal-badge signal-green">🟢 苗头</span>
+          餐饮首店经济×城市文旅×国庆消费券三件套深度联动——"城市即产品"成为新打法
+        </h3>
+        <div class="body-text">
+          国庆假期"首店经济×城市文旅×消费券"三件套全面打通：<strong>广州白鹅潭万象城陶陶居6.0臻品店排号3500桌/早茶8:20开始排队</strong>；广州10/1-5白云国际啤酒美食嘉年华+长隆东南亚美食节+岭南集团千万级跨界联动消费券；<strong>深圳10/4-7"漫步亚洲的面包节"50+亚洲烘焙品牌集中亮相</strong>+南山区入境消费券最高满1000港元减600港元；成都"国庆美食上新+市集巡礼"（必胜客/海底捞/新希望华西三件套）。广州日报"食在广州"消费券联动近千家餐饮门店。
+        </div>
+        <div class="judgment">
+          💡 <strong>机会判断：</strong>"首店经济×城市文旅×消费券"三角联动是2026下半年最强餐饮消费新基建——下厨房"地标食材+"路径可对标做"城市级营销三件套"（首店首发+在地文旅联动+政府消费券叠加），对接广州酒家/陶陶居/新荣记/海底捞等连锁在地化营销素材池，<strong>"城市即产品"</strong>成为下厨房抖音达播选品和天猫店铺详情的最高级命题素材。
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 板块三：时令风向·品类机会 ========== -->
+  <div class="section sec-3">
+    <div class="section-header">
+      <div class="num-badge">🌿</div>
+      <h2>三、时令风向·品类机会</h2>
+      <div class="sub-tag">提前2-4周预判</div>
+    </div>
+    <div class="section-body">
+
+      <div class="seasonal-summary">
+        📅 <strong>当前时令定位：</strong>国庆Day 5 + 秋分第21天 + <strong>寒露节气首日</strong>（10/5） + 霜降倒计时<strong>24天</strong>（10/23-25重庆火锅产业博览会同时开幕） + 立冬54天。"寒露三宝"（芝麻+柿子+冬枣）+ "四白"（山药+莲藕+白萝卜+银耳百合）+ "双润"（梨+蜂蜜）已进入消费教育峰值。
+      </div>
+
+      <div class="seasonal-grid">
+        <div class="seasonal-card">
+          <span class="label">🎯 即将热卖</span>
+          <h4>芝麻·寒露节气第一宝</h4>
+          <p>项城白芝麻+瑞昌黑芝麻+河北黄骅芝麻三大产区。寒露吃芝麻整道"以食润燥"千年食俗。芝麻酱/芝麻糖/芝麻糊/麻瓜麻球做行成情绪食材。</p>
+          <div class="data">📊 民间"芝麻绿豆糕，吃了不长包"谚语传播</div>
+        </div>
+
+        <div class="seasonal-card">
+          <span class="label">🎯 即将热卖</span>
+          <h4>柿子·寒露红了皮</h4>
+          <p>陕西富平尖柿/河北满城/山东青州/广西恭城月柿/无锡火葫芦柿。立秋核桃白露梨，寒露柿子红了皮。柿饼+柿子醋+柿子果酒3场景同时启动。</p>
+          <div class="data">📊 陕西批发1.7-2.5元/斤（较去年-30%）</div>
+        </div>
+
+        <div class="seasonal-card">
+          <span class="label">🎯 即将热卖</span>
+          <h4>冬枣·寒露巅峰</h4>
+          <p>山东沾化（可溶性固形物29.1%）/陕西大荔（糖酸比91.4）/河北黄骅（着色均匀+裂果率最低1.1%）——"三粒之王"小花护身。</p>
+          <div class="data">📊 青岛批发12-18元/斤</div>
+        </div>
+
+        <div class="seasonal-card">
+          <span class="label">🎯 即将热卖</span>
+          <h4>品蟹·"九雌十雄"母蟹最佳赏味期</h4>
+          <p>寒露过后母蟹黄膏丰腴达顶峰，9月-10月母蟹比公蟹更鲜美——姜醋黄酒配酒驱寒。"持整赏菊·把酒临风"千年文人雅事。</p>
+          <div class="data">📊 多湖区接力+广西阳澄湖+盘锦+黄河口+固城湖十家</div>
+        </div>
+
+        <div class="seasonal-card">
+          <span class="label warn">🚨 窗口提醒</span>
+          <h4>桂花末班车·5-10天</h4>
+          <p>桂花盛放期已近尾声，金桂/丹桂/银桂次第开败。桂花香囊+桂花米酒+桂花酒酿+桂花糖藕+桂花盆栽30+SKU窗口期极短。</p>
+          <div class="data">⏰ 盒马桂花盆栽+桂花米酒环比预计+40%以上</div>
+        </div>
+
+        <div class="seasonal-card">
+          <span class="label urgent">⏰ 窗口极短</span>
+          <h4>重阳糕窗口·今明日关闭</h4>
+          <p>重阳糕以100%−70%高峰已过（10/4重阳节当日峰值）。桂花米糕+桂花酒酿+红枣糕点今日到明日下午是尾段。冷绿决策窗口：寒露（今日）→霜降预热。</p>
+          <div class="data">📊 上海/合肥/贵州/北京/济南TOP5</div>
+        </div>
+
+        <div class="seasonal-card">
+          <span class="label">🏔️ 产地机会</span>
+          <h4>江汉平原·洪湖粉藕</h4>
+          <p>22.5万亩+综合产值120亿元+鄂洪1号老藕中段——海底捞100万份藕霸验证"地标+连锁火锅+IP化"路径，可对标做C端"地标食材即食版"。</p>
+          <div class="data">📊 海底捞藕霸100万份+窗花藕片50万份</div>
+        </div>
+
+        <div class="seasonal-card">
+          <span class="label">🏔️ 产地机会</span>
+          <h4>陕西富平·尖柿+月柿</h4>
+          <p>陕西富平尖柿+广西恭城月柿联动双产。柿子重阳后成熟，5-7天到丰产期。盒马灪纷多彩松糕+柿子果酒+柿子醋+柿子果茶多场景。</p>
+          <div class="data">📊 产地批发1.5-2.5元/斤</div>
+        </div>
+
+        <div class="seasonal-card">
+          <span class="label">🏔️ 产地机会</span>
+          <h4>河北迁西·板栗</h4>
+          <p>寒露前后板栗大量上市黄金期，迁西"中国板栗之乡"——糖炒栗子/栗子蛋糕/栗子酥/桂花栗子粥/桂花板栗露五大场景同步进入消费决策。</p>
+          <div class="data">📊 千果之王·补脾胃·强腰腿</div>
+        </div>
+
+        <div class="seasonal-card">
+          <span class="label">🏔️ 产地机会</span>
+          <h4>内蒙古锡林郭勒·奶皮子+炒米</h4>
+          <p>锡林郭勒奶皮子+炒米+黑砖茶三件套。瑞幸锡林郭勒咸奶茶（10/27发布）"黑砖茶底+真实炒米+奶皮子风味奶底"验证"地标+奶+谷"原料路径。</p>
+          <div class="data">📊 锅茶传统，娶包革渊子</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 板块四：跨界灵感 ========== -->
+  <div class="section sec-4">
+    <div class="section-header">
+      <div class="num-badge">💡</div>
+      <h2>四、跨界灵感·创新动作（3个）</h2>
+      <div class="sub-tag">跨领域迁移可能</div>
+    </div>
+    <div class="section-body">
+
+      <div class="cross-item">
+        <h4>① 沪上阿姨"超级快乐蕉"系列 × 超级猩猩健身课程</h4>
+        <div class="body-text">
+          沪上阿姨10/1-10/31上线"超级快乐蕉"系列，<strong>"抹掉蕉绿（香蕉×抹茶）"、"不蕉不躁（香蕉×牛乳）"、"芝香巴拿拿拿铁（香蕉×咖啡）"</strong>三款。品牌同步联动生活方式品牌超级猩猩，在北上广深四地推出燃脂搏击/尊巴等定制健身课程。香蕉每100g含钾256mg，"超级食物"概念+运动场景绑定。
+        </div>
+        <div class="migration">
+          🎯 <strong>迁移可能：</strong>"果蔬+超级食物+健身场景"组合已被沪上阿姨/超级猩猩双背书验证——下厨房"地标食材超级食物化"可对标做"茶饮门店+健身房"原料包（云南超级香蕉×巴西椰子×新疆番茄×内蒙古奶皮子），对标"超级食物概念饮品化"路径，把传统水果/蔬菜"焕发新活力"。
+        </div>
+      </div>
+
+      <div class="cross-item">
+        <h4>② 麦当劳 × 《燕云十六声》"如月而至金拱门"7款限定+主题快闪</h4>
+        <div class="body-text">
+          麦当劳×《燕云十六声》推出"如月而至金拱门"主题活动（10/1-10/7），陆续上线<strong>7款限定产品</strong>：咸蛋黄鸡腿蛋月堡+三文鱼双虾至尊月堡+月下相思扭扭薯条+举杯邀月柚桂茶等。深圳福田田面国际文创小镇T11设置"金拱门中秋奇遇雅集"主题快闪，覆盖整个国庆假期，购买套餐配套实体周边及游戏虚拟礼包。
+        </div>
+        <div class="migration">
+          🎯 <strong>迁移可能：</strong>"头部IP+限定产品+主题快闪"已被脸谱7反复使用——可对标给/海底捞/超级猩猩信任头部看齐的最短路径；下厨房"地标食材+国风IP+快闪"组合可对标做"中国风IP+食材礼盒"路径（如《国家宝藏》/《三星堆》IP联名联名+扫地机器金手柄联名）。
+        </div>
+      </div>
+
+      <div class="cross-item">
+        <h4>③ 野人先生冰淇淋"五谷丰登"系列丰收节全国巡礼</h4>
+        <div class="body-text">
+          野人先生冰淇淋丰收节全国巡礼杭州站10/2-10/5落地<strong>西溪天街</strong>，厦门站10/3-10/10登陆<strong>集美银泰百货</strong>。"五谷丰登"系列Gelato（高粱+小米+玉米+红豆+绿豆+黑米）以"秋天到了！冰淇淋'熟'了！"为创意内核，国风美陈+巨型南瓜装置还原田野丰收图景。深圳站"测试你的五谷人格"拍拍机+丰收投投乐+花生速剥挑战赛+南瓜大丰收。
+        </div>
+        <div class="migration">
+          🎯 <strong>迁移可能：</strong>"谷物冰淇淋化+城市商圈快闪+沉浸式互动"组合已验证城市商业价值；下厨房"地标食材冰品化"可对标做"五谷/地区地图/金字塔谷物·冰淇淋预拌粉"路径（豆沙冰淇淋预拌粉/深糝冰淇淋预拌粉/芝麻冰淇淋预拌粉），对接冰淇淋店/盒马/山姆商铺。
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 板块五：脑暴时刻 ========== -->
+  <div class="section sec-5">
+    <div class="section-header">
+      <div class="num-badge">🧪</div>
+      <h2>五、脑暴时刻·融合创意（2个）</h2>
+      <div class="sub-tag">基于今日信息·收敛创意</div>
+    </div>
+    <div class="section-body">
+
+      <div class="idea-card">
+        <div class="name">💡 创意一</div>
+        <h4>「寒露润燥·三宝三果六件套预拌粉组合礼盒」</h4>
+        <div class="one-liner">
+          抓住寒露节气首日+央视/中国农业博物馆/广东省中医药局/腾讯新闻多源背书"五宝+三果"+10月茶咖新品中奶茶占83%秋冬小料高频趋势三大信号，做"节气养生预拌粉组合礼盒"。
+        </div>
+        <div class="item"><span class="item-label">一句话描述</span><span>芝麻糊预拌粉+柿子粉+冬枣糕+莲藕粉+山药粉+雪梨膏六件套节气润燥预拌粉礼盒</span></div>
+        <div class="item"><span class="item-label">为什么是现在</span><span>寒露节气首日"以食润燥"消费教育达顶峰；多源背书五宝+三果；10月茶咖77款新品秋冬小料高频化；雀巢/徐福记联合送礼"节气限定"路径</span></div>
+        <div class="item"><span class="item-label">差异化锚点</span><span>对茶百道秋冬六元小料形成差异化（节气预拌粉 vs 门店现做）；对瑞幸锡林郭勒咸奶茶形成差异化（六件套 vs 单杯）；对盒马五谷丰登Gelato形成差异化（热食开代餐 vs 冰品）</span></div>
+        <div class="item"><span class="item-label">可行性初判</span><span>供应链：项城白芝麻+陕西富平尖柿+山东沾化冬枣+洪湖粉藕+温县铁棍山药+河北赵州雪花梨+安徽颍州蜂宍均成熟产地；渠道适配：抖音达播+山姆/Ole'/盒马X会员三渠道全覆盖；客单价198-498元，对标盒马灪纷多彩松糕"低糖+地标+时令"路径</span></div>
+      </div>
+
+      <div class="idea-card">
+        <div class="name">💡 创意二</div>
+        <h4>「城市首店经济对标·"广州早茶+小食化原料包"组合」</h4>
+        <div class="one-liner">
+          抓住广州白鹅潭万象城陶陶居6.0臻品店排号3500桌/早茶8:20开始排队+深圳"漫步亚洲的面包节"50+品牌+广州10/1-5白云国际啤酒美食嘉年华三大首店经济事件，做"广州早茶文化小食化"组合原料包。
+        </div>
+        <div class="item"><span class="item-label">一句话描述</span><span>"广州早茶+小食化原料包"组合（荔灣艇仔粥预拌粉+醒酊派蛋桂粉+蒸鱼仔粉+鲜虾烧麦布料+东海茶馆冷茶粉+肠粉预拌粉）六件套</span></div>
+        <div class="item"><span class="item-label">为什么是现在</span><span>广州白鹅潭排号3500桌/早茶8:20开始排队验证"城市+首店+在地化"路径；深圳"漫步亚洲的面包节"50+亚洲品牌验证"城市+烘焙"路径；广州岭点季十家名店“岭南新味·创意点心"十款验证"在地化点心"</span></div>
+        <div class="item"><span class="item-label">差异化锚点</span><span>对广州酒家/陶陶居/莲香楼/广州宾馆六老形成"小食化原料包"路径（家庭装 vs 门店现场）；对麦当劳/月揥揥软面火腿照烧饭粉路径（地域性 vs 全球性）；对深凅股"漫步亚洲的面包节"50+品牌路径（中国点心 vs 亚洲面包）</span></div>
+        <div class="item"><span class="item-label">可行性初判</span><span>供应链：荔灣/铜盅/顺德是成熟早餐食材产区；渠道适配：奥山姆+O+BLT+盒马X会员+京东酒业区酱广笼罩；客单价198-498元，对标山姆MM Dried Mushroom Gift Box+北京黍香村青稞藜麦路径</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 板块六：展会速递·每周新品雷达 ========== -->
+  <div class="section sec-6">
+    <div class="section-header">
+      <div class="num-badge">🆕</div>
+      <h2>六、展会速递·每周新品雷达</h2>
+      <div class="sub-tag">板块核心 · 5个具体新品</div>
+    </div>
+    <div class="section-body">
+
+      <div class="core-wind" style="background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%); border-left-color: #dc2626; color: #7f1d1d;">
+        🆕 <strong>每周新品雷达核心：</strong>今日5个具体新品（沪上阿姨"超级快乐蕉"系列×超级猩猩健身课程 / 麦当劳×《燕云十六声》"如月而至金拱门"7款限定 / 霸王茶姬陕西茯茶系列焕新 / 野人先生"五谷丰登"系列Gelato丰收节巡礼 / 茶颜悦色广州首店+古德墨柠广州首店）——每个都指名道姓，可截图入档。
+      </div>
+
+      <div class="new-product">
+        <h4>
+          <span class="np-tag">🆕 新品</span>
+          沪上阿姨 "超级快乐蕉"系列（抹掉蕉绿+不蕉不躁+芝香巴拿拿拿铁）×超级猩猩健身课程
+        </h4>
+        <div class="meta">
+          <span>📅 9/30-10/31</span>
+          <span>📍 全国+北上广深四城健身房</span>
+          <span>💰 21.8元双杯套餐起</span>
+        </div>
+        <div class="deconstruct">
+          <strong>产品力拆解：</strong>"超级快乐蕉"系列3款——"抹掉蕉绿"（香蕉×抹茶+厚布蕾微苦回甘）、"不蕉不躁"（香蕉×牛乳+绵密质地）、"芝香巴拿拿拿铁"（香蕉×咖啡+果咖流行组合）。同步联动<strong>生活方式品牌超级猩猩</strong>，在北上广深四地推出燃脂搏击/尊巴等定制健身课程，把新品嵌入"运动后便捷充能"场景。每100g香蕉含钾256mg，《中国食物成分表》第六版数据背书。
+        </div>
+        <div class="inspiration">
+          💡 <strong>启发：</strong>"超级食物饮品化+运动场景绑定"是2026年下半年茶饮新路径——下厨房"地标食材超级食物化"可对标做"茶饮门店+健身房"原料包（云南超级香蕉/巴西椰子/新疆番茄/内蒙古奶皮子），对接沪上阿姨/超级猩猩/古茗。
+        </div>
+      </div>
+
+      <div class="new-product">
+        <h4>
+          <span class="np-tag">🆕 新品</span>
+          麦当劳 ×《燕云十六声》"如月而至金拱门"7款限定+主题快闪
+        </h4>
+        <div class="meta">
+          <span>📅 10/1-10/7</span>
+          <span>📍 全国麦当劳+深圳福田田面国际文创小镇T11</span>
+          <span>💰 套餐价 9.9-30元</span>
+        </div>
+        <div class="deconstruct">
+          <strong>产品力拆解：</strong>麦当劳×《燕云十六声》国风武侠游戏IP推"如月而至金拱门"主题活动，<strong>7款限定产品</strong>：咸蛋黄鸡腿蛋月堡+三文鱼双虾至尊月堡+月下相思扭扭薯条+举杯邀月柚桂茶等。深圳福田田面国际文创小镇T11设置"金拱门中秋奇遇雅集"主题快闪，覆盖整个国庆假期，购买套餐配套实体周边+游戏虚拟礼包——<strong>头部IP+限定产品+主题快闪</strong>三件套组合。
+        </div>
+        <div class="inspiration">
+          💡 <strong>启发：</strong>"国风文化IP+头部餐饮品牌+城市快闪"已被麦当劳/海底捞/喜茶反复验证——下厨房"地标食材+国风IP+城市快闪"组合可对标做"中国风IP联名+食材礼盒"路径，对接《国家宝藏》/《只此青绿》/中国传统文化IP。
+        </div>
+      </div>
+
+      <div class="new-product">
+        <h4>
+          <span class="np-tag">🆕 新品</span>
+          霸王茶姬 陕西区域限定"茯茶系列"（金茯揽月+茯间月+丝路咸霜+关山杏雨）
+        </h4>
+        <div class="meta">
+          <span>📅 9/30上市</span>
+          <span>📍 陕西全省门店</span>
+          <span>💰 22-26元/杯</span>
+        </div>
+        <div class="deconstruct">
+          <strong>产品力拆解：</strong>霸王茶姬陕西区域限定"茯茶系列"9/30焕新上市，<strong>4款饮品</strong>：金茯揽月（茯茶茶底+鲜奶）/茯间月（茯茶本味）/丝路咸霜（茯茶+现代风味）/关山杏雨（茯茶+现代风味）。茯茶是黑茶中的特色茶品，<strong>"丝路黑金"</strong>称谓，历史上经古丝绸之路等贸易通道远销西北。"金花"是茯茶区别于其他茶类的重要特色。10/1-10/3西安华阳城店主题活动：秦腔演绎+乐队+在地文化体验。
+        </div>
+        <div class="inspiration">
+          💡 <strong>启发：</strong>"茶底+在地茶种+在地文化"三角组合已被霸王茶姬从湖北恩施玉露升级到陕西茯茶——下厨房"地标茶叶B端供应"可对标做"茶饮门店在地化茶底包"（茯茶预拌粉对接陕西/六安瓜片对接安徽/恩施玉露对接湖北/碧螺春白茶对接江苏）。
+        </div>
+      </div>
+
+      <div class="new-product">
+        <h4>
+          <span class="np-tag">🆕 新品</span>
+          野人先生 "五谷丰登"系列Gelato丰收节全国巡礼（杭州西溪天街10/2-5+厦门集美10/3-10）
+        </h4>
+        <div class="meta">
+          <span>📅 10/2-10/10</span>
+          <span>📍 杭州西溪天街+厦门集美银泰百货</span>
+          <span>💰 28-38元/单球</span>
+        </div>
+        <div class="deconstruct">
+          <strong>产品力拆解：</strong>野人先生冰淇淋丰收节巡礼，<strong>"五谷丰登"系列Gelato（高粱+小米+玉米+红豆+绿豆+黑米）</strong>，以"秋天到了！冰淇淋'熟'了！"为创意内核。杭州站10/2-5西溪天街+厦门站10/3-10集美银泰百货，<strong>国风美陈+巨型南瓜装置还原田野丰收图景</strong>。"测试你的五谷人格"拍拍机+丰收投投乐+花生速剥挑战赛+南瓜大丰收沉浸式互动。
+        </div>
+        <div class="inspiration">
+          💡 <strong>启发：</strong>"谷物冰淇淋化+城市商圈快闪+沉浸式互动"组合——下厨房"地标食材冰品化"可对标做"五谷·冰淇淋预拌粉"路径（豆沙冰淇淋预拌粉/芝麻冰淇淋预拌粉/深糝冰淇淋预拌粉），对接野人先生/GELATO店铺高端冰淇淋店/盒马超市烘焙区。
+        </div>
+      </div>
+
+      <div class="new-product">
+        <h4>
+          <span class="np-tag">🆕 新品</span>
+          茶颜悦色 广州首店+古德墨柠 广州首店（9/30前夜开业，263分钟取茶等候）
+        </h4>
+        <div class="meta">
+          <span>📅 9/30-10/8</span>
+          <span>📍 广州白鹅潭万象城</span>
+          <span>💰 17-22元/杯</span>
+        </div>
+        <div class="deconstruct">
+          <strong>产品力拆解：</strong>茶颜悦色广州首店+古德墨柠广州首店于<strong>9/30前夜在广州白鹅潭万象城开业</strong>，263分钟取茶等候时长创广州新纪录。配合广州国庆点心季+白鹅潭万象城50+品牌矩阵+白云国际啤酒美食嘉年华，国庆首日同步引爆。<strong>茶颜悦色秋冬内测新品"柚见晴空"（抹茶×柚子果乳+香柠鲜酪球18.9元）/ "惟有柚香如故"（柚子果乳+香柠鲜酪球17.9元）</strong>同步内测（10/27-11/9）。
+        </div>
+        <div class="inspiration">
+          💡 <strong>启发：</strong>"区域首店+城市文旅+城市新品"是2026下半年最强品牌建设路径——下厨房"地标食材+区域首店"组合可对标做"区域限定"路径（北方限定东北食材礼盒/华东限定华南限定华南食材礼盒/华南限定华东食材礼盒），对标盒马区域限定+地域品牌+10+区域限定区域。
+        </div>
+      </div>
+
+      <!-- 展会预告 -->
+      <div class="core-wind" style="background: linear-gradient(135deg, #f5f5f4 0%, #e7e5e4 100%); border-left-color: #57534e; color: #292524; margin-top: 24px;">
+        🎪 <strong>展会预告：</strong>10/13-15 HOTELEX深圳 + 10/17-21 SIAL Paris法国 + 10/22-24 Bakery China武汉 + 10/23-25 第11届重庆火锅产业博览会 + 11/4-6 SIAL Interfood Jakarta + 11/11-14 SIAL Vietnam胡志明。
+      </div>
+
+      <div class="exhibition-grid">
+        <div class="exhibition-card">
+          <h4>🎪 HOTELEX深圳</h4>
+          <div class="time">10/13-15 · 深圳</div>
+          <p>16万㎡·2000+展商·咖啡茶饮+食材+烘焙+酒类全产业链</p>
+          <div class="relevance">🎯 与我何干：茶饮品牌集中亮相，RTD即饮茶/茶底在地化/养生茶饮新风向</div>
+        </div>
+
+        <div class="exhibition-card">
+          <h4>🎪 SIAL Paris法国</h4>
+          <div class="time">10/17-21 · 巴黎北郊维勒班</div>
+          <p>21万㎡·8000+展商·全球第四大食品展·清洁标签+在地化</p>
+          <div class="relevance">🎯 与我何干：百年老字号出海+清洁标签趋势+全球风味融合</div>
+        </div>
+
+        <div class="exhibition-card">
+          <h4>🎪 Bakery China武汉</h4>
+          <div class="time">10/22-24 · 武汉</div>
+          <p>4万㎡·600+企业·冻转鲜预制烘焙+健康烘焙+年礼节礼</p>
+          <div class="relevance">🎯 与我何干：寒露节气五宝三果节气预拌粉对接+B2B对接年礼节礼供应链</div>
+        </div>
+
+        <div class="exhibition-card">
+          <h4>🎪 第11届中国（重庆）火锅产业博览会</h4>
+          <div class="time">10/23-25 · 重庆</div>
+          <p>有料锅底+地标食材+重庆酸汤/海南椰子鸡/广东花胶鸡</p>
+          <div class="relevance">🎯 与我何干：海底捞100万份藕霸验证"地标食材+火锅"路径扩展窗口</div>
+        </div>
+
+        <div class="exhibition-card">
+          <h4>🎪 SIAL Interfood Jakarta</h4>
+          <div class="time">11/4-6 · 雅加达</div>
+          <p>东南亚B2B食品平台·印尼最大食品展·食品技术+创新</p>
+          <div class="relevance">🎯 与我何干：东南亚风味出口试水·预包装调味品出海模板</div>
+        </div>
+
+        <div class="exhibition-card">
+          <h4>🎪 SIAL Vietnam胡志明</h4>
+          <div class="time">11/11-14 · 胡志明</div>
+          <p>越南食品B2B平台·东南亚第二站·食品饮料创新</p>
+          <div class="relevance">🎯 与我何干：东南亚热带水果/咖啡/调味品供应链对接</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 收尾彩蛋 ========== -->
+  <div class="footer-note">
+    <h3>📌 今日总结</h3>
+    <p>
+      今日是<strong>寒露节气首日</strong>（10/5），国庆假期Day 5，<strong>2026年Q4首个"全民养生时令心智"窗口</strong>开启。<br><br>
+      <strong>三大核心抓手：</strong>①<strong>外卖"明厨亮灶"造假央媒曝光+食安法即将修订</strong>（市场监管总局当日部署核查处置+多地立案）→ "洁净配料+扫码溯源+第三方检测"是Q4开品最具体动作；②<strong>寒露节气首日"五宝+三果"润燥食材清单消费教育达顶峰</strong>（央视/中国农业博物馆/广东省中医药局/腾讯新闻多源背书）→ 节气预拌粉组合礼盒窗口打开；③<strong>10月茶咖77款新品+奶茶83%/奶咖52%双线化趋势</strong>（茶百道6+古茗5+幸运咖10+瑞幸7）→ "地域特色原料+咸甜边界拓展"成新蓝海。<br><br>
+      <strong>关键差异化锚点：</strong>对霸王茶姬陕西茯茶形成差异化（罐茶预拌粉B端 vs 门店现做）· 对麦当劳×燕云十六声形成差异化（地标食材+国风IP vs 头部IP+套餐）· 对野人先生五谷丰登Gelato形成差异化（节气预拌粉 vs 冰品）· 对沪上阿姨超级快乐蕉形成差异化（地标食材超级食物化 vs 香蕉）。
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>
