@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 2026-10-06 · 寒露倒计时2天</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #fff8f0; color: #3d2817; font-size: 15px; line-height: 1.7; }
+
+  /* Hero 区域 - 暖色调 */
+  .hero {
+    background: linear-gradient(135deg, #fef0d6 0%, #f9d99c 50%, #f5b96b 100%);
+    border-bottom: 1px solid #e8b873;
+    padding: 32px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(245,185,107,0.25) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%; left: -5%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(220,120,60,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(139,69,19,0.15);
+    border: 1px solid rgba(139,69,19,0.35);
+    color: #8b4513;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #5d2f0a;
+    margin-bottom: 8px;
+  }
+  .hero .sub {
+    color: #8b4513;
+    font-size: 14px;
+  }
+
+  /* 双栏布局 */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 900px) {
+    .container { grid-template-columns: 1fr; }
+  }
+
+  /* 卡片通用 */
+  .card {
+    background: #fffaf2;
+    border: 1px solid #f0d9b5;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .card-header {
+    background: linear-gradient(135deg, #fae5c8 0%, #fffaf2 100%);
+    padding: 16px 20px;
+    border-bottom: 1px solid #f0d9b5;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-header .icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .card-header h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #5d2f0a;
+  }
+  .card-body {
+    padding: 20px;
+  }
+
+  /* 板块一：要闻 */
+  .col-news .card-header { background: linear-gradient(135deg, #f9d6c2 0%, #fffaf2 100%); }
+  .col-news .icon { background: rgba(220,80,30,0.18); color: #dc501e; }
+  .col-news .card-header h2 { color: #c0431e; }
+
+  /* 板块二：爆品雷达 */
+  .col-radar .card-header { background: linear-gradient(135deg, #f9e6c4 0%, #fffaf2 100%); }
+  .col-radar .icon { background: rgba(255,165,0,0.2); color: #e07b00; }
+  .col-radar .card-header h2 { color: #b85f00; }
+
+  /* 板块三：时令风向 */
+  .col-season .card-header { background: linear-gradient(135deg, #d6e8c8 0%, #fffaf2 100%); }
+  .col-season .icon { background: rgba(80,140,60,0.18); color: #4d7c2a; }
+  .col-season .card-header h2 { color: #3d6120; }
+
+  /* 板块四：跨界灵感 */
+  .col-cross .card-header { background: linear-gradient(135deg, #e6d4f0 0%, #fffaf2 100%); }
+  .col-cross .icon { background: rgba(140,80,180,0.2); color: #7a3fa8; }
+  .col-cross .card-header h2 { color: #6a2c8e; }
+
+  /* 板块五：脑暴时刻 */
+  .col-brain .card-header { background: linear-gradient(135deg, #f7d4d4 0%, #fffaf2 100%); }
+  .col-brain .icon { background: rgba(220,60,90,0.18); color: #c03060; }
+  .col-brain .card-header h2 { color: #a02040; }
+
+  /* 板块六：新品雷达 */
+  .col-new .card-header { background: linear-gradient(135deg, #d4e7f5 0%, #fffaf2 100%); }
+  .col-new .icon { background: rgba(50,120,180,0.2); color: #2e6da4; }
+  .col-new .card-header h2 { color: #1f5680; }
+
+  /* 通用行 */
+  .news-item {
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px dashed #e8d4b0;
+  }
+  .news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .news-item h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #3d2817;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .news-item h3 .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px; height: 22px;
+    background: rgba(220,80,30,0.15);
+    color: #c0431e;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .news-detail { margin-bottom: 8px; }
+  .news-detail strong {
+    color: #3d2817;
+    font-weight: 600;
+  }
+  .news-detail p {
+    color: #5d4423;
+    font-size: 13.5px;
+    margin-top: 4px;
+    padding-left: 12px;
+    border-left: 2px solid #e8d4b0;
+  }
+
+  /* 风向标签 */
+  .wind-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    font-weight: 600;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .wind-up { background: rgba(80,140,60,0.15); color: #4d7c2a; }
+  .wind-down { background: rgba(220,80,30,0.15); color: #c0431e; }
+  .wind-neutral { background: rgba(180,130,30,0.15); color: #a37520; }
+
+  /* 信号强度 */
+  .signal-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    font-weight: 600;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .signal-hot { background: rgba(220,30,30,0.15); color: #c01818; }
+  .signal-rise { background: rgba(230,150,30,0.18); color: #b07020; }
+  .signal-bud { background: rgba(80,140,60,0.15); color: #4d7c2a; }
+
+  /* 创意卡片 */
+  .idea-card {
+    background: linear-gradient(135deg, rgba(255,235,200,0.4), rgba(255,210,160,0.3));
+    border: 1px solid #f0d9b5;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+  .idea-card .idea-title {
+    color: #a02040;
+    font-weight: 700;
+    font-size: 14.5px;
+    margin-bottom: 6px;
+  }
+  .idea-card .idea-body {
+    color: #5d4423;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .idea-card .idea-tip {
+    background: rgba(220,150,60,0.12);
+    border-left: 2px solid #c08030;
+    padding: 6px 10px;
+    border-radius: 0 6px 6px 0;
+    font-size: 12.5px;
+    color: #8b4513;
+    margin-top: 8px;
+  }
+
+  /* 时令卡片 */
+  .season-block {
+    background: rgba(80,140,60,0.08);
+    border-left: 3px solid #4d7c2a;
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: #3d2817;
+  }
+  .season-block strong { color: #3d6120; font-weight: 700; }
+
+  /* 新品卡片（板块六核心） */
+  .newprod-card {
+    background: #fffaf2;
+    border: 1px solid #f0d9b5;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    transition: border-color 0.2s;
+  }
+  .newprod-card:hover { border-color: #dc501e; }
+  .newprod-name {
+    font-weight: 800;
+    font-size: 14.5px;
+    color: #1f5680;
+    margin-bottom: 4px;
+  }
+  .newprod-meta {
+    font-size: 12.5px;
+    color: #8b4513;
+    margin-bottom: 6px;
+    line-height: 1.6;
+  }
+  .newprod-meta .meta-tag {
+    display: inline-block;
+    background: rgba(50,120,180,0.12);
+    color: #1f5680;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    margin-right: 4px;
+  }
+  .newprod-desc {
+    font-size: 13px;
+    color: #5d4423;
+    margin-bottom: 6px;
+    line-height: 1.65;
+  }
+  .newprod-inspire {
+    background: rgba(220,80,30,0.08);
+    border-left: 2px solid #dc501e;
+    padding: 6px 10px;
+    border-radius: 0 6px 6px 0;
+    font-size: 12.5px;
+    color: #c0431e;
+    font-weight: 600;
+  }
+
+  /* 时令列表 */
+  .season-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  .season-list li {
+    padding: 8px 0;
+    border-bottom: 1px dashed #e8d4b0;
+    font-size: 13.5px;
+    color: #5d4423;
+  }
+  .season-list li:last-child { border-bottom: none; }
+  .season-list li strong { color: #3d6120; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: #8b6f47;
+    font-size: 12px;
+    border-top: 1px solid #f0d9b5;
+    margin-top: 24px;
+  }
+
+  /* 总结盒子 */
+  .summary-box {
+    background: linear-gradient(135deg, rgba(255,200,120,0.15), rgba(220,150,60,0.1));
+    border: 1px solid #f0d9b5;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 14px;
+  }
+  .summary-box h4 {
+    color: #c0431e;
+    font-size: 14px;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .summary-box p {
+    color: #5d4423;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Hero 区域 -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">📅 2026年10月6日 星期二 · 国庆Day 6 · 寒露倒计时2天</div>
+    <h1>🍂 食研日推 · 每日食品行业情报</h1>
+    <div class="sub">今日核心抓手：超长蛋挞破10亿曝光+韩国便利店奶油面包爆火+寒露食养四宝+广州点心季跨界场景 · 仅供开品决策参考</div>
+  </div>
+</div>
+
+<!-- 双栏主体 -->
+<div class="container">
+
+<!-- ==================== 板块一：今日行业要闻 ==================== -->
+<div class="col-news">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">📰</div>
+      <h2>🔥 板块一：今日行业要闻（2-3条）</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="news-item">
+        <h3><span class="num">1</span>国庆假期6日各地餐饮消费数据集中出炉</h3>
+        <div class="news-detail">
+          <p><strong>📋 新闻要点：</strong>①<strong>广州点心季</strong>十家名店推出"岭南新味·创意点心"（白天鹅/广州酒家/陶陶居等），白天鹅"泛舟珠江"点心10/1-31供应，陶陶居排号超3500桌；②<strong>沈阳餐饮</strong>首日预订量同比+30%+，4-8人桌占预订量80%+，海底捞包间每5个预订有1个选包间；③<strong>成都海底捞银石广场店</strong>因"边吃火锅边看爬墙熊猫"景观餐位爆火，烤匠麻辣烤鱼国庆前3天超12万人次用餐。</p>
+          <p><strong>🧭 与我何干：</strong><span class="wind-tag wind-up">机会</span>"首店经济×城市文旅×消费券"三件套已成假日餐饮公式。烤匠/海底捞等"视觉化景观餐位+在地文化体验+联名套餐"组合可对标下厨房"地域食材×在地文化×体验化包装"路径。</p>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <h3><span class="num">2</span>台湾海底捞8成菜色调价+捞面涨幅83%</h3>
+        <div class="news-detail">
+          <p><strong>📋 新闻要点：</strong>台湾海底捞9/20开幕运营2个月后宣布调价，店长李瑜称主要原因为"优化食材"，平均涨幅10%左右，约8成菜单调涨。捞面从60元涨至110元，涨幅83%为最凶单品；五花肉片+44%/梅花猪肉+47%/白饭+50%；澳洲和牛、美国特选沙朗、羔羊肉卷等核心肉类未涨价。自选酱料反降价90→50元，降幅44%。</p>
+          <p><strong>🧭 与我何干：</strong><span class="wind-tag wind-neutral">警示</span>海底捞"涨价+降价"双向策略=核心食材保价格+表演型产品+周边提价+引流型酱料补贴。下厨房做"地标食材火锅底料"时，可考虑"地标食材不加价+情绪价值产品提价+引流爆款降价"组合拳，避免单一涨价被消费者抵触。</p>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <h3><span class="num">3</span>10月149项食品标准+GB 22570新国标持续发酵</h3>
+        <div class="news-detail">
+          <p><strong>📋 新闻要点：</strong>①《辅食营养补充品和学龄前儿童营养补充品》GB 22570-2026（替代2014版）2027/8/18实施，过渡期1年，新增37-72月龄学龄前儿童营养补充品规定；②《预包装食品营养标签通则》GB 28050-2025在强制标示能量、蛋白质、脂肪、碳水化合物和钠的基础上，新增<strong>饱和脂肪和糖两项强制标示</strong>。</p>
+          <p><strong>🧭 与我何干：</strong><span class="wind-tag wind-neutral">合规</span>"糖+饱和脂肪"强制双标示=所有预包装食品2027前必须重新做营养标签核算。下厨房做"洁净配料表"产品时，"低糖+低饱和脂肪"双指标将成为标配——这是基础合规线，不是差异化。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== 板块二：爆品雷达·趋势苗头 ==================== -->
+<div class="col-radar">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🎯</div>
+      <h2>🎯 板块二：爆品雷达·趋势苗头（2-3个）</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="news-item">
+        <h3>🔴 <strong>超长蛋挞</strong>国庆现象级爆款 抖音话题10亿曝光+GMV破亿
+          <span class="signal-tag signal-hot">🔴已爆</span>
+        </h3>
+        <div class="news-detail">
+          <p><strong>📊 现象数据：</strong>60cm超长蛋挞国庆前后从河南一路火到全国，单根售价16.8元，门店排队2-3小时+限购，个别店单日卖出五六百根，工厂8月上线至今售出1.6万箱，远至新疆都有大批量采购。抖音"超长蛋挞"话题累计曝光破10亿，相关团购累计支付GMV破亿。</p>
+          <p><strong>🎯 机会判断：</strong>⚠️ 这不是趋势，这是<strong>流量爆品白送模式</strong>的极致形态。逻辑三层：①标准品拉长=几乎零技术门槛但改产品性质（普通蛋挞用来吃，超长用来拍）；②它不是美食是社交货币；③背后"廉价攀比话术"已让消费者反感。下厨房不应跟进形状拉长，但可借鉴"为传播而生"的反向逻辑——做<strong>"内容感食材"</strong>，让产品本身就是故事（如阳雀湖辣椒的产地故事比任何拉长包装更值钱）。</p>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <h3>🟡 <strong>韩国便利店烘焙化</strong> 7-11奶油面包爆火+CU炸鱼饼+57%
+          <span class="signal-tag signal-rise">🟡起势</span>
+        </h3>
+        <div class="news-detail">
+          <p><strong>📊 现象数据：</strong>①韩国7-11 "Easy-to-Digest Milk Cream Bun"（易消化奶奶油面包）爆火，消费者单日下午逛4店只为买一只，奶油含量45%，奶量比前作"Puhaha Salted Milk"增加129%，巧克力款奶量+330%，售价2,900/3,000韩元（约15元）；②韩国7-11烘焙品类销售1-8月+82%，即时配送同品类+533%；③CU冬季商品销售暴增：暖手宝+400%/冬装+69.3%/炸鱼饼+57.3%/热面包+117.3%，新上线"玉米派+苹果派"现做单品2,000韩元/个（约9元3个）；④CU的"Yonsei Milk Cream Bun"截至2026/8累计销售1.1亿个。</p>
+          <p><strong>🎯 机会判断：</strong>✅ <strong>便利店烘焙化+液态奶IP化+海外街头食品本土化</strong>三大信号叠加。对标路径：下厨房可对山姆/盒马X会员店做"<strong>液态奶IP化鲜奶油包预拌粉</strong>"（类似Easy-to-Digest Milk跨界授权合作），或对7-11/罗森/全家做"<strong>便利店现烤鲜奶油包原料包</strong>"（30%奶油含量+短保24h+预拌粉形态）。</p>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <h3>🟢 <strong>国庆餐饮"在地文化×首店经济"</strong>全国集体爆发
+          <span class="signal-tag signal-bud">🟢苗头</span>
+        </h3>
+        <div class="news-detail">
+          <p><strong>📊 现象数据：</strong>国庆多地"首店+在地文化"联动：①广州点心季十家名店岭南新味创意点心+白天鹅"泛舟珠江"+点都德"薄脆三鲜炸云吞"+1万张免费券；②南航万米高空"一盅两件"广府早茶覆盖悉尼/墨尔本/奥克兰/北京公务舱；③水上茶居"游船叹茶双人套餐"158元；④中国大酒店×广州巴士"消失的名菜"美食巴士；⑤独山"三酸"全网12.8亿播放+43.6%游客专程为"三酸"而来。</p>
+          <p><strong>🎯 机会判断：</strong>✅ "在地文化体验化+首店首发经济+跨界场景（高空/水上/巴士）"三件套已被多地验证。可对标做"<strong>地标食材体验化小份装</strong>"（独山虾酸/广州点心/杭州糕点等小份预制形态），切入盒马/山姆/胖东来。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== 板块三：时令风向·品类机会 ==================== -->
+<div class="col-season">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🌿</div>
+      <h2>🌿 板块三：时令风向·品类机会</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="season-block">
+        📅 <strong>当前时令定位：</strong>国庆假期第6天，秋分第22天，<strong>距离寒露节气仅剩2天（10/8）</strong>，霜降倒计时17天，立冬47天。<br>
+        ⏰ <strong>关键节点：</strong>寒露是秋季第一个带"寒"字的节气，秋燥由温转凉，央视/腾讯/广州医科大学附属中医医院多源集中推"<strong>寒露食养</strong>"。
+      </div>
+
+      <ul class="season-list">
+        <li>🎯 <strong>即将热卖①：寒露食养四宝（民间版）</strong> — 山药+银耳+板栗+红薯，"秋季第一平补"+平民燕窝+肾之果+饱腹粗粮组合，老话"寒露食四宝人顺百事兴"全网发酵。</li>
+        <li>🎯 <strong>即将热卖②：润燥四白（医院背书版）</strong> — 山药+莲藕+白萝卜+南瓜+梨，被广州医科大学附属中医医院陈丽兰主任中医师力推"养阴生津清肺胃之燥"，是医院级别养生代茶饮背书。</li>
+        <li>🎯 <strong>即将热卖③：广东桂香秋润茶方</strong> — 麦冬+玉竹+雪梨干+桂花，广州日报+广州医科大学附属中医医院官方推荐，岭南深秋气候适配，是养生代茶饮新爆款。</li>
+        <li>🚨 <strong>窗口提醒①：国庆×寒露双节叠加5天决策窗口</strong> — 出行+润燥+礼赠三大场景同时进入决策，10/8寒露节气日前必须上新完成。</li>
+        <li>🚨 <strong>窗口提醒②：月饼库存压力高峰+桂花末班车</strong> — 月饼进入清库存阶段，桂花全产业链（桂花乌龙茶/桂花酒酿/桂花米糕/桂花酱/桂花糖）进入最后一周冲刺。</li>
+        <li>🏔️ <strong>产地机会①：苏州南环桥市场四宝持续走俏</strong> — 山药养胃补虚+莲藕生津润燥+白萝卜清火理气+南瓜温润健脾，出货量持续走高，无需复杂烹饪的家庭复购之王。</li>
+        <li>🏔️ <strong>产地机会②：阳山水蜜桃湖景蜜露倒计时最后3天</strong> — 8/5赏味期截止，台风减产好货坚挺，零售9-15元/斤，最后窗口期倒计时。</li>
+        <li>🏔️ <strong>产地机会③：香格里拉松茸进入尾期+出口36小时到日本</strong> — 西部陆海新通道+航空冷链双线驱动，2026上半年中国农产品出口529.7亿美元同比+7.4%，松茸高端食材出口蓝海持续打开。</li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== 板块四：跨界灵感·创新动作 ==================== -->
+<div class="col-cross">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">💡</div>
+      <h2>💡 板块四：跨界灵感·创新动作（2-3个）</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="news-item">
+        <h3>1️⃣ <strong>广州点心季跨界场景</strong> 万米高空+游船+巴士三场景联动
+        </h3>
+        <div class="news-detail">
+          <p><strong>📋 创新动作：</strong>2026广州点心季由市商务局主办，白天鹅/广州酒家/陶陶居等十家名店推出十款"岭南新味·创意点心"，同时落地三个<strong>非传统堂食场景</strong>：①<strong>南航</strong>"一盅两件"广府早茶覆盖悉尼/墨尔本/奥克兰/北京公务舱（红米鲜虾肠+晶莹虾饺+西施粉果+千层鳗鱼酥+腐皮鸡丝粥）；②<strong>水上茶居</strong>"游船叹茶双人套餐"158元（含非遗西关水菱角+穗城笋尖虾饺皇+至尊荷香糯米鸡+榄仁萨其马+蜜汁叉烧酥+潘多拉魔球+船票+文创冰箱贴）；③<strong>中国大酒店×广州巴士</strong>"消失的名菜"美食巴士，10/4-6参与行程+138元丽廊自助午餐。</p>
+          <p><strong>🎯 迁移可能：</strong>✅ 下厨房地标食材组合可对标"<strong>五场景通用礼盒</strong>"（高铁便当+游船套餐+巴士快闪+酒店行政+航空公务舱五场景通吃），参考"点心季"机制做"地标食材五场景小份装礼盒"。</p>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <h3>2️⃣ <strong>瓶装茶货架"桂花主题季"</strong> 全品类集中上新
+        </h3>
+        <div class="news-detail">
+          <p><strong>📋 创新动作：</strong>9月中旬-10月初，瓶装茶货架集体"换季"到桂花主题：①<strong>维他无糖茶</strong>一口气上三款新口味（桂花乌龙+鸭屎香单丛+金牡丹红茶）广东7-11限定；②<strong>果子熟了×黄鹤楼</strong>联名"金桂月光白"武汉罗森上架；③<strong>果子熟了</strong>金桂乌龙年度款烫金限定包装+官方礼盒评论区盖539楼；④<strong>三得利</strong>桂花乌龙全国渠道可售；⑤<strong>山姆</strong>桂花味活性益生菌康普茶9月回归69.9元230ml×20瓶；⑥<strong>东方树叶</strong>桂花乌龙被蹲货架网友称为"碰运气才买得到的限定口味"；⑦<strong>盒马</strong>柚花青柑水（4.5元/瓶）+茉莉柚子花果饮10/2上新。</p>
+          <p><strong>🎯 迁移可能：</strong>✅ 无糖茶+16.1%同比正增长，唯一全品类正增长品类。下厨房做"低糖桂花乌龙茶预拌粉+花茶酱组合"，切"便利店现调茶饮"原料供应（B端），可对接7-11/罗森/全家冷柜专区。</p>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <h3>3️⃣ <strong>韩国CU现做炸派+海外街头食品本土化</strong> 玉米派+苹果派2新品
+        </h3>
+        <div class="news-detail">
+          <p><strong>📋 创新动作：</strong>韩国CU在店内现做食品角新上线<strong>玉米派+苹果派</strong>两款单品，2,000韩元/个（约9元3个买二送一），玉米派内含玉米奶油+玉米粒，苹果派用苹果丁+肉桂，包装设计成不弄脏手的食用形式。CU商品负责人表示："我们将从现有的炸鸡、热狗、烤红薯扩展到<strong>更多海外街头即食食品</strong>。"玉米派作为泰国等地的经典街头食品在韩国常态化上架。</p>
+          <p><strong>🎯 迁移可能：</strong>✅ 海外街头食品本土化=便利店现做小食升级机会。下厨房可对7-11/罗森/全家做"<strong>地域小食预拌粉/预制胚</strong>"（如东南亚椰浆西米露/印度飞饼胚/日本鲷鱼烧预拌粉），切B端便利店现做档口原料供应。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== 板块五：脑暴时刻·融合创意 ==================== -->
+<div class="col-brain">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🧪</div>
+      <h2>🧪 板块五：脑暴时刻·融合创意（1-2个）</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="idea-card">
+        <div class="idea-title">💡 创意①：「寒露润燥·食养四宝九件套预拌粉礼盒」</div>
+        <div class="idea-body">
+          <strong>一句话描述：</strong>抓住寒露节气2天倒计时+广州医科大学附属中医医院"润燥四白"官方背书+民间"寒露食四宝"全网发酵+国庆Day 6礼赠高峰四大信号，做"<strong>四宝+四白+桂花+蜂蜜九件套预拌粉组合礼盒</strong>"，让家庭一站式完成寒露节气润燥汤品。<br>
+          <strong>差异化锚点：</strong>对标盒马缤纷多彩松糕"多地标食材组合+节令养生礼盒"路径，但升级到"<strong>医院级养生背书+民间智慧+预拌粉便利性</strong>"三合一：山药粉+银耳百合羹预拌粉+板栗红薯粉+莲藕粉+白萝卜粉+南瓜粥预拌粉+桂花乌龙茶预拌粉+雪梨膏+槐花蜜九件套，客单价198-498元。<br>
+          <strong>可行性初判：</strong>供应链：低（粉剂类常规工艺，山药/银耳/板栗/南瓜主产区均有成熟供应链）。渠道适配度：抖音达播+山姆+Ole'+盒马X会员店均可切入。差异化锚点：医院背书是稀缺资源。
+        </div>
+        <div class="idea-tip">🎯 启发来源：今日"润燥四白（医院版）+寒露食四宝（民间版）"两套话语并行，可做"双话语覆盖"礼盒，对标盒马缤纷多彩松糕+海底捞藕霸路径。</div>
+      </div>
+
+      <div class="idea-card">
+        <div class="idea-title">💡 创意②：「韩国便利店对标·"鲜奶油液态奶IP化奶油包"半成品原料」</div>
+        <div class="idea-body">
+          <strong>一句话描述：</strong>抓住韩国7-11 Easy-to-Digest Milk奶油面包爆火+CU现做炸派+57.3%热面包+117.3%+果子熟了×黄鹤楼金桂月光白联名+瑞幸茉莉花香美式回归五大信号，做"<strong>液态奶IP授权+30%奶油+短保24h预拌粉+冷藏柜专架</strong>"的B端原料供应套装，切入7-11/罗森/全家便利店现烤档口。<br>
+          <strong>差异化锚点：</strong>对标韩国7-11 "Easy-to-Digest Milk Cream Bun"（液态奶IP+45%奶油+奶量+129%）+CU炸派"现做+海外街头食品本土化"路径，做"鲜奶油预拌粉+IP授权+地标食材奶油馅"三件套组合。产品规格：5kg/袋×4袋/箱，9.9-29.9元/只零售建议。<br>
+          <strong>可行性初判：</strong>供应链：中（需要冷链运输+24h短保+IP授权谈判）。渠道适配度：便利店现做档口是验证过的渠道。差异化锚点：液态奶IP授权+地域奶油馅组合（阳雀湖辣椒奶油/贵州酸汤奶油/洪湖莲蓉奶油）。
+        </div>
+        <div class="idea-tip">🎯 启发来源：海外便利店烘焙化趋势+果子熟了地域IP联名+瑞幸茉莉花香美式回归三信号叠加。</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== 板块六：展会速递·每周新品雷达 ==================== -->
+<div class="col-new">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🏬</div>
+      <h2>🆕 板块六：每周新品雷达（3-5个，板块核心）</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="summary-box">
+        <h4>📌 本周新品扫描总结</h4>
+        <p>本周（10/1-10/6）新品聚焦三大方向：①<strong>韩国便利店烘焙化</strong>7-11奶油面包爆火+CU现做炸派+即时配送+533%；②<strong>瓶装茶货架桂花季</strong>维他+果子熟了+三得利+山姆+东方树叶全品类集中上新；③<strong>海外超市节日季</strong>山姆Member's Mark秋季新品+Costco秋季囤货新品。下面5个精选新品均可作为开品/选品直接借鉴。</p>
+      </div>
+
+      <div class="newprod-card">
+        <div class="newprod-name">🆕 韩国7-11 Easy-to-Digest Milk Cream Bun</div>
+        <div class="newprod-meta">
+          <span class="meta-tag">🇰🇷海外</span>
+          <span class="meta-tag">📅10月初上市</span>
+          <span class="meta-tag">💰2,900-3,000韩元（约15元/只）</span>
+        </div>
+        <div class="newprod-desc">
+          <strong>产品力拆解：</strong>基于每日乳业"Maeil Dairies"无乳糖液态奶品牌<strong>Easy-to-Digest Milk</strong>（韩国无乳糖奶品类领导品牌）跨界授权推出的奶油面包，奶油含量45%，奶量比前作"Puhaha Salted Milk Cream Bun"+129%，巧克力款奶量+330%。主打<strong>"液态奶IP授权+高奶油含量+柔软奶香口感"</strong>三大差异化，瞄准便利店烘焙化+健康+IP化三大趋势交汇点。<br>
+          <strong>社交传播：</strong>消费者单日下午逛4店只为买一只，社交媒体被誉为"韩国版液体奶油面包革命"，引发与日本便利店高端甜点的横向比较。<br>
+          <strong>消费场景：</strong>便利店下午茶/办公下午茶/家庭早餐/学生零食。
+        </div>
+        <div class="newprod-inspire">
+          🎯 <strong>启发：</strong>下厨房可对7-11/罗森/全家做"地域液态奶IP授权+地标食材奶油馅+30-45%高奶油含量+短保24h"鲜奶油包预拌粉供应。地域特色馅料方向：阳雀湖辣椒奶油/贵州酸汤奶油/洪湖莲蓉奶油/苏州鸡头米奶油。
+        </div>
+      </div>
+
+      <div class="newprod-card">
+        <div class="newprod-name">🆕 韩国CU 玉米派+苹果派 双新品</div>
+        <div class="newprod-meta">
+          <span class="meta-tag">🇰🇷海外</span>
+          <span class="meta-tag">📅10月初上市</span>
+          <span class="meta-tag">💰2,000韩元/个（约9元3个买二送一）</span>
+        </div>
+        <div class="newprod-desc">
+          <strong>产品力拆解：</strong>两款单品均在店内现做食品角现做现卖，<strong>玉米派</strong>内含玉米奶油+玉米粒，<strong>苹果派</strong>用苹果丁+肉桂粉，包装设计成"不弄脏手"食用形式（外面用纸包装）。CU明确将"从现有的炸鸡、热狗、烤红薯扩展到<strong>更多海外街头即食食品</strong>"作为品类战略。<br>
+          <strong>消费场景：</strong>便利店现做即食/通勤路上/学生零食/办公下午茶。<br>
+          <strong>差异化玩法：</strong>玉米派作为泰国等地的经典街头食品首次在韩国常态化上架——这是<strong>海外街头食品本土化</strong>路径。
+        </div>
+        <div class="newprod-inspire">
+          🎯 <strong>启发：</strong>下厨房可对便利店/餐饮小吃街做"<strong>海外街头食品预制胚/预拌粉</strong>"组合（椰浆西米露/印度飞饼胚/日本鲷鱼烧预拌粉/葡式蛋挞预拌粉/泰式芒果糯米饭预拌粉），切B端现做档口原料供应，6-19元/份终端定价。
+        </div>
+      </div>
+
+      <div class="newprod-card">
+        <div class="newprod-name">🆕 瑞幸 茉莉花香美式回归+生耶锡兰轻乳茶同期上市</div>
+        <div class="newprod-meta">
+          <span class="meta-tag">🇨🇳国内</span>
+          <span class="meta-tag">📅10月初</span>
+          <span class="meta-tag">💰茉莉花香美式+轻乳茶系列</span>
+        </div>
+        <div class="newprod-desc">
+          <strong>产品力拆解：</strong>①<strong>茉莉花香美式回归</strong>（去年夏天上市4天即下架，本次回归去掉了标志性的茉莉干花装饰），由<strong>广西横州双瓣茉莉花茶汤+咖啡液</strong>混合，开盖有浓郁茉莉香气。②<strong>生耶锡兰轻乳茶</strong>，东南亚进口成熟生耶+生榨椰肉汁+椰子水（≥38%），搭配锡兰红茶，主打0乳糖+生椰+茶咖组合。<br>
+          <strong>消费场景：</strong>办公/通勤/下午茶。<br>
+          <strong>差异化玩法：</strong>茉莉花香美式是"消费者呼声驱动复刻+改良版本"——去年下架后粉丝留言呼吁回归，今年回归时吸取教训做减法（去掉装饰干花）。
+        </div>
+        <div class="newprod-inspire">
+          🎯 <strong>启发：</strong>下厨房可对<strong>茶饮门店</strong>做"<strong>广西横州茉莉花茶预拌粉/茶汤包</strong>"原料供应，切入喜茶/奈雪/瑞幸/茶百道茶饮供应链。同时借鉴"消费者呼声驱动复刻"路径，下厨房可对<strong>已下架爆款做改良版复刻</strong>。
+        </div>
+      </div>
+
+      <div class="newprod-card">
+        <div class="newprod-name">🆕 山姆 Member's Mark Homestyle Chicken Pastry Bakes</div>
+        <div class="newprod-meta">
+          <span class="meta-tag">🇺🇸海外会员店</span>
+          <span class="meta-tag">📅10月初上市</span>
+          <span class="meta-tag">💰冷冻8个/盒</span>
+        </div>
+        <div class="newprod-desc">
+          <strong>产品力拆解：</strong>冷冻区新品，<strong>8个/盒</strong>装，每只约12g蛋白+21g饱和脂肪（饱和脂肪较高源于酥皮黄油）。<strong>外形像普通圆面包</strong>，但内部包裹<strong>鸡肉+蔬菜+白酱混合馅</strong>——是"手持版鸡肉派"。<br>
+          <strong>消费场景：</strong>冷冻便携/办公午餐/学生餐/家庭快手菜。<br>
+          <strong>差异化玩法：</strong>"外形朴素+内容物惊喜"反差感。Sporked测评员实测："酥皮烤后有美好的坚果香+馅料丰富+鸡肉没有冷冻餐常见的橡胶感+酱料可更浓郁"。
+        </div>
+        <div class="newprod-inspire">
+          🎯 <strong>启发：</strong>下厨房可对山姆/盒马做"<strong>冷冻地标食材酥皮包预制胚</strong>"（阳雀湖辣椒鸡肉酥皮包/洪湖粉藕猪肉酥皮包/苏州鸡头米虾仁酥皮包），每只8-12g蛋白+短保3天+冷冻便携+空气炸锅/烤箱两用。
+        </div>
+      </div>
+
+      <div class="newprod-card">
+        <div class="newprod-name">🆕 韩国便利店奶油面包品类销售+82%+即时配送+533%</div>
+        <div class="newprod-meta">
+          <span class="meta-tag">🇰🇷海外趋势</span>
+          <span class="meta-tag">📅1-8月累计数据</span>
+          <span class="meta-tag">💰多渠道全覆盖</span>
+        </div>
+        <div class="newprod-desc">
+          <strong>产品力拆解：</strong>不是单品而是<strong>品类级数据</strong>：韩国7-11烘焙品类销售1-8月+82%，即时配送同品类销售+533%。CU自2022年Yonsei Milk奶油面包爆火后，截至2026/8累计销售1.1亿个。GS25和Emart24也开发了自家招牌奶油面包。便利店烘焙化已成系统性品类机会。<br>
+          <strong>消费场景：</strong>便利店现做+即时配送+下午茶+办公场景。<br>
+          <strong>差异化玩法：</strong>"<strong>液态奶品牌IP化+高奶油含量+柔软口感</strong>"已成为便利店奶油面包爆款公式。
+        </div>
+        <div class="newprod-inspire">
+          🎯 <strong>启发：</strong>下厨房可对<strong>抖音即时零售+小象超市+朴朴超市</strong>做"<strong>地标食材+IP化液态奶授权+短保24h鲜奶油包预制胚</strong>"，切即时配送品类（朴朴/小象/叮咚均已在做）。这是品类级机会，不是单品级。
+        </div>
+      </div>
+
+      <div class="summary-box">
+        <h4>📌 展会预告</h4>
+        <p>🎪 <strong>HOTELEX深圳 10/13-15</strong>（16万㎡+2000+展商+咖啡茶饮+食材+烘焙+酒类）| <strong>SIAL Paris法国 10/17-21</strong>（21万㎡+8000+展商+清洁标签+在地化+百年老字号出海）| <strong>Bakery China武汉 10/22-24</strong>（4万㎡+600+企业+冻转鲜预制烘焙+健康烘焙+年礼节礼）| <strong>第11届中国（重庆）国际火锅产业博览会 10/23-25</strong>（有料锅底+地标食材+重庆酸汤+海南椰子鸡+广东花胶鸡）。</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>⚠️ 以上内容由AI自动聚合生成，信息来源于公开渠道，仅供参考，不构成投资建议</p>
+  <p>信源：FBIF食品饮料创新 / Foodaily每日食品 / 红餐网 / 蝉妈妈 / 蝉小红 / 小红书 / 大众点评 / 山姆会员商店 / 盒马 / 韩国7-Eleven Korea / CU便利店 / Costcoguide / FinanceBuzz / Sporked / 广东广州日报 / 南方日报 / 广州市商务局 / 广州医科大学附属中医医院 / 腾讯新闻 / 苏州市发展和改革委员会 / 山姆会员商店 / 叮咚买菜 / 罗森官方微博 / 瑞幸咖啡官方微信 / 麦当劳中国官方</p>
+  <p style="margin-top:8px;">Generated by WorkBuddy 食研日推 · 2026-10-06 09:00 CST · 暖色调食品主题版式</p>
+</div>
+
+</body>
+</html>
