@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 2026-10-07 · 寒露倒计时1天·重阳倒计时2天</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #fff8f0; color: #3d2817; font-size: 15px; line-height: 1.7; }
+
+  .hero {
+    background: linear-gradient(135deg, #fef0d6 0%, #f9d99c 50%, #f5b96b 100%);
+    border-bottom: 1px solid #e8b873;
+    padding: 32px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(245,185,107,0.25) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%; left: -5%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(220,120,60,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .date-tag {
+    display: inline-block;
+    background: rgba(139,69,19,0.15);
+    border: 1px solid rgba(139,69,19,0.35);
+    color: #8b4513;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #5d2f0a;
+    margin-bottom: 8px;
+  }
+  .hero .sub {
+    color: #8b4513;
+    font-size: 14px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 900px) {
+    .container { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: #fffaf2;
+    border: 1px solid #f0d9b5;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .card-header {
+    background: linear-gradient(135deg, #fae5c8 0%, #fffaf2 100%);
+    padding: 16px 20px;
+    border-bottom: 1px solid #f0d9b5;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-header .icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .card-header h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #5d2f0a;
+  }
+  .card-body {
+    padding: 20px;
+  }
+
+  .col-news .card-header { background: linear-gradient(135deg, #f9d6c2 0%, #fffaf2 100%); }
+  .col-news .icon { background: rgba(220,80,30,0.18); color: #dc501e; }
+  .col-news .card-header h2 { color: #c0431e; }
+
+  .col-radar .card-header { background: linear-gradient(135deg, #f9e6c4 0%, #fffaf2 100%); }
+  .col-radar .icon { background: rgba(255,165,0,0.2); color: #e07b00; }
+  .col-radar .card-header h2 { color: #b85f00; }
+
+  .col-season .card-header { background: linear-gradient(135deg, #d6e8c8 0%, #fffaf2 100%); }
+  .col-season .icon { background: rgba(80,140,60,0.18); color: #4d7c2a; }
+  .col-season .card-header h2 { color: #3d6120; }
+
+  .col-cross .card-header { background: linear-gradient(135deg, #e6d4f0 0%, #fffaf2 100%); }
+  .col-cross .icon { background: rgba(140,80,180,0.2); color: #7a3fa8; }
+  .col-cross .card-header h2 { color: #6a2c8e; }
+
+  .col-brain .card-header { background: linear-gradient(135deg, #f7d4d4 0%, #fffaf2 100%); }
+  .col-brain .icon { background: rgba(220,60,90,0.18); color: #c03060; }
+  .col-brain .card-header h2 { color: #a02040; }
+
+  .col-new .card-header { background: linear-gradient(135deg, #d4e7f5 0%, #fffaf2 100%); }
+  .col-new .icon { background: rgba(50,120,180,0.2); color: #2e6da4; }
+  .col-new .card-header h2 { color: #1f5680; }
+
+  .news-item {
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px dashed #e8d4b0;
+  }
+  .news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .news-item h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #3d2817;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .news-item h3 .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px; height: 22px;
+    background: rgba(220,80,30,0.15);
+    color: #c0431e;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .news-detail { margin-bottom: 8px; }
+  .news-detail strong {
+    color: #3d2817;
+    font-weight: 600;
+  }
+  .news-detail p {
+    color: #5d4423;
+    font-size: 13.5px;
+    margin-top: 4px;
+    padding-left: 12px;
+    border-left: 2px solid #e8d4b0;
+  }
+
+  .wind-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    font-weight: 600;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .wind-up { background: rgba(80,140,60,0.15); color: #4d7c2a; }
+  .wind-down { background: rgba(220,80,30,0.15); color: #c0431e; }
+  .wind-neutral { background: rgba(180,130,30,0.15); color: #a37520; }
+
+  .signal-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    font-weight: 600;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .signal-hot { background: rgba(220,30,30,0.15); color: #c01818; }
+  .signal-rise { background: rgba(230,150,30,0.18); color: #b07020; }
+  .signal-bud { background: rgba(80,140,60,0.15); color: #4d7c2a; }
+
+  .idea-card {
+    background: linear-gradient(135deg, rgba(255,235,200,0.4), rgba(255,210,160,0.3));
+    border: 1px solid #f0d9b5;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+  .idea-card .idea-title {
+    color: #a02040;
+    font-weight: 700;
+    font-size: 14.5px;
+    margin-bottom: 6px;
+  }
+  .idea-card .idea-body {
+    color: #5d4423;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .idea-card .idea-tip {
+    background: rgba(220,150,60,0.12);
+    border-left: 2px solid #c08030;
+    padding: 6px 10px;
+    border-radius: 0 6px 6px 0;
+    font-size: 12.5px;
+    color: #8b4513;
+    margin-top: 8px;
+  }
+
+  .season-block {
+    background: rgba(80,140,60,0.08);
+    border-left: 3px solid #4d7c2a;
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: #3d2817;
+  }
+  .season-block strong { color: #3d6120; font-weight: 700; }
+
+  .newprod-card {
+    background: #fffaf2;
+    border: 1px solid #f0d9b5;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    transition: border-color 0.2s;
+  }
+  .newprod-card:hover { border-color: #dc501e; }
+  .newprod-name {
+    font-weight: 800;
+    font-size: 14.5px;
+    color: #1f5680;
+    margin-bottom: 4px;
+  }
+  .newprod-meta {
+    font-size: 12.5px;
+    color: #8b4513;
+    margin-bottom: 6px;
+    line-height: 1.6;
+  }
+  .newprod-meta .meta-tag {
+    display: inline-block;
+    background: rgba(50,120,180,0.12);
+    color: #1f5680;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    margin-right: 4px;
+  }
+  .newprod-desc {
+    font-size: 13px;
+    color: #5d4423;
+    margin-bottom: 6px;
+    line-height: 1.65;
+  }
+  .newprod-inspire {
+    background: rgba(220,80,30,0.08);
+    border-left: 2px solid #dc501e;
+    padding: 6px 10px;
+    border-radius: 0 6px 6px 0;
+    font-size: 12.5px;
+    color: #c0431e;
+    font-weight: 600;
+  }
+
+  .season-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  .season-list li {
+    padding: 8px 0;
+    border-bottom: 1px dashed #e8d4b0;
+    font-size: 13.5px;
+    color: #5d4423;
+  }
+  .season-list li:last-child { border-bottom: none; }
+  .season-list li strong { color: #3d6120; }
+
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: #8b6f47;
+    font-size: 12px;
+    border-top: 1px solid #f0d9b5;
+    margin-top: 24px;
+  }
+
+  .summary-box {
+    background: linear-gradient(135deg, rgba(255,200,120,0.15), rgba(220,150,60,0.1));
+    border: 1px solid #f0d9b5;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 14px;
+  }
+  .summary-box h4 {
+    color: #c0431e;
+    font-size: 14px;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .summary-box p {
+    color: #5d4423;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Hero 区域 -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="date-tag">📅 2026年10月7日 星期三 · 国庆Day 7 · 寒露倒计时1天 · 重阳倒计时2天</div>
+    <h1>🍂 食研日推 · 每日食品行业情报</h1>
+    <div class="sub">今日核心抓手：霸王茶姬40+款区域限定+袁记云饺IPO通过+国庆预制菜订单+75%+寒露×重阳双节叠加 · 仅供开品决策参考</div>
+  </div>
+</div>
+
+<!-- 双栏主体 -->
+<div class="container">
+
+<!-- ==================== 板块一：今日行业要闻 ==================== -->
+<div class="col-news">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">📰</div>
+      <h2>🔥 板块一：今日行业要闻（2-3条）</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="news-item">
+        <h3><span class="num">1</span>国庆假期7日B端C端双爆发：预制菜订单+75%+高铁餐车"卷"养生</h3>
+        <div class="news-detail">
+          <p><strong>📋 新闻要点：</strong>①<strong>美团+京东数据</strong>：国庆假期前一周预制菜搜索量同比+128%，预售订单+75%，家宴礼盒+户外露营套餐+地方特色菜增速领跑，整家宴礼盒客单价199-399元销量占比42%，山东潍坊/广东佛山/河南周口预制菜产业带满产，日均发货量是平日2.3倍，2026年预制菜行业规模有望破<strong>7200亿元</strong>；②<strong>中国铁路上海局</strong>10/1起推出"一碗好饭"养生膳系列，3款养生膳食+6款便当+鸭脖鸭翅卤味+新口味现制茶饮+指定盒饭5-6.2折饮品，部分组合促销低至3元，旅客可扫码"铁路畅行码"线上下单送餐到座。</p>
+          <p><strong>🧭 与我何干：</strong><span class="wind-tag wind-up">机会</span>"<strong>地方特色菜×家宴礼盒×露营套餐</strong>"三件套已成预制菜新爆点。下厨房做"地标食材预制礼盒"可直接对接美团/京东到家+盒马奥莱+山姆"端到端年菜/家宴专区"。"高铁养生膳+卤味+茶饮"组合可参考做"<strong>在地养生食材套装</strong>"（如阳雀湖辣椒+洪湖粉藕+苏州鸡头米+徽州刀板香组合礼盒）。</p>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <h3><span class="num">2</span>袁记云饺通过港交所聆讯 中国最大中式快餐IPO在即</h3>
+        <div class="news-detail">
+          <p><strong>📋 新闻要点：</strong>袁记食品9/29通过港交所聆讯，拟募资3-4亿港元，预计10月启动招股，联席保荐人为华泰国际+广发证券。截至2026/5/31，公司拥有<strong>4773家门店</strong>（4754家加盟+23家直营），2023-2025年营收20.26/25.61/27.95亿元，2026年前5个月营收13.06亿元同比+39.8%，经调整净利润1.85亿元同比+164%。海外门店41家（36家在新加坡），2026年前5个月海外门店客单价66.34元，约为国内3倍。</p>
+          <p><strong>🧭 与我何干：</strong><span class="wind-tag wind-up">机会</span>"<strong>标准化馅料+冷链配送+门店现包</strong>"的供应链型餐饮模式已验证。<strong>单店日均GMV从2023年5394元降至2026前5月4627元</strong>暴露同质化压力。下厨房做"地标食材馅料供应"（如洪湖粉藕猪肉/阳雀湖辣椒牛肉/苏州鸡头米虾仁）可切入袁记/遇见小面/霸蛮/和府捞面等连锁餐饮供应链。</p>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <h3><span class="num">3</span>市场监管总局食安帮扶8638家 帮扶有效率95.66%</h3>
+        <div class="news-detail">
+          <p><strong>📋 新闻要点：</strong>国家市场监督管理总局数据显示，2026年以来全国市场监管系统共开展食品抽检核查处置技术帮扶11661次，帮扶食品企业8638家，跟踪抽检被帮扶企业4927家，其中<strong>4713家未再检出不合格，帮扶有效率达95.66%</strong>。监管方式从事后处罚向源头治理延伸，针对中小微食品企业技术能力不足。</p>
+          <p><strong>🧭 与我何干：</strong><span class="wind-tag wind-neutral">合规</span>"<strong>技术帮扶</strong>"已成监管新常态，监管重点从"处罚"转向"教企业怎么做对"。下厨房这类有标准品控体系的品牌天然受益（"洁净配料表+原料溯源+批次检测"是帮扶对标的范本），可主动对接地方监管局做合规示范。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== 板块二：爆品雷达·趋势苗头 ==================== -->
+<div class="col-radar">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🎯</div>
+      <h2>🎯 板块二：爆品雷达·趋势苗头（2-3个）</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="news-item">
+        <h3>🔴 <strong>霸王茶姬40+款区域限定齐发</strong> 浙江龙井+江苏碧螺春+山东崂山绿茶+陕西茯茶+湖北恩施玉露
+          <span class="signal-tag signal-hot">🔴已爆</span>
+        </h3>
+        <div class="news-detail">
+          <p><strong>📊 现象数据：</strong>霸王茶姬9/30一次性推出<strong>19个系列、40+款区域限定</strong>，覆盖全国十余省，是该品牌迄今规模最大的一次区域限定集中投放。北方穗穗系列覆盖辽宁/吉林/黑龙江/天津/河北/山西6省；重庆晚山红雾系列以福建安溪乌龙+金观音+铁观音拼配，主打红提果香；湖北柚逢知音系列茶底为恩施玉露（云柚玉露+梨栖玉露+抹茶柚子鲜酪）；浙江龙井+江苏碧螺春+山东崂山绿茶+陕西茯茶+四川雅安藏茶等茶底与当地标志性茶种绑定。<strong>湖北区域9/30-10/7买新品加价购武汉轮渡船票</strong>，将茶饮消费与城市文旅直接绑定。</p>
+          <p><strong>🎯 机会判断：</strong>✅ 茶饮赛道"<strong>地域茶底×城市文旅</strong>"双绑定已成现象级打法。下厨房做"地域食材礼盒"可对标——把<strong>地标食材（阳雀湖辣椒/洪湖粉藕/苏州鸡头米/徽州刀板香）绑定城市文旅场景</strong>（如博物馆联名+城市徒步打卡+非遗体验）做在地化消费体验，对切山姆/盒马/胖东来"城市礼物"专区。</p>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <h3>🟡 <strong>喜茶"喜拉朵实验室+"佛山首店+城市特供全国开</strong> 喜茶"城市特供"模式化
+          <span class="signal-tag signal-rise">🟡起势</span>
+        </h3>
+        <div class="news-detail">
+          <p><strong>📊 现象数据：</strong>①<strong>喜茶"喜拉朵实验室+"</strong>首店9月底落地佛山万象天地，开业9/28-10/4每日前100名到店送喜拉朵+线下点单4.9折+冰箱贴每天限500个；②<strong>喜茶成都限定</strong>"三大炮+咸奶油+茶味炒冰" 9月中旬正式推出，瞄准川渝市场；③<strong>喜茶江苏限定</strong>"万象清和系列（碧螺春+白兰）"9/30起刺绣网纱包回归+手机链，集7张"茶票票"兑手持镜；④<strong>喜茶海南限定</strong>杨枝甘露系列+凉感毯+冰箱贴+限定玻璃杯。江苏万象清和+刺绣网纱包+茶票票形成"<strong>限定饮品+周边+城市文旅权益</strong>"三件套闭环。</p>
+          <p><strong>🎯 机会判断：</strong>✅ 喜茶"<strong>城市特供</strong>"模式已从"零散上新"升级为"<strong>品牌运营方法论</strong>"——每个城市单独做产品+周边+权益。印证"<strong>在地化</strong>"是头部茶饮应对存量竞争的统一路径。下厨房做"地域食材小份装"可借鉴"喜茶城市特供"路径，对切<strong>山姆"寻味中国"+盒马"城市礼物"</strong>专区。</p>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <h3>🟢 <strong>国庆档票房破10亿+县域商业焕新</strong> 16.8万村级便民商店集中改造
+          <span class="signal-tag signal-bud">🟢苗头</span>
+        </h3>
+        <div class="news-detail">
+          <p><strong>📊 现象数据：</strong>①<strong>2026国庆档</strong>（10/1-7）总票房（含预售）截至10/7 07:41突破<strong>10.71亿元</strong>；②<strong>县域商业焕新</strong>——国庆假期河南新野/四川蒲江朝阳湖镇鞍山村等地村级便民商店提升改造，全国已建设改造村级便民商店<strong>16.8万个</strong>，应季石榴+秋季桂花米酒+新口味辣条成爆品；③<strong>105个国家骨干冷链物流基地</strong>覆盖东中西部，福建霞浦"海上交邮合作"客运班船承担快递进岛任务，新疆刚建成生鲜冷链仓让消费者有了更多选择。</p>
+          <p><strong>🎯 机会判断：</strong>✅ <strong>下沉市场+冷链基建+村级便利店焕新</strong>三件套为"<strong>下沉市场食品触达</strong>"打开新通路。下厨房做"地标食材小包装+短保+常温可运输"组合（如洪湖粉藕预拌粉/阳山水蜜桃冻干/阳雀湖辣椒酱料），可通过<strong>村级便民商店+国家骨干冷链网络</strong>触达三四线及县乡消费者，是"反向输出"的新通路。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== 板块三：时令风向·品类机会 ==================== -->
+<div class="col-season">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🌿</div>
+      <h2>🌿 板块三：时令风向·品类机会</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="season-block">
+        📅 <strong>当前时令定位：</strong>国庆假期第7天（明天正式上班），秋分第23天，<strong>寒露节气明天（10/8）</strong>，<strong>重阳节后天（10/9）</strong>，霜降倒计时16天，立冬46天。<br>
+        ⏰ <strong>关键节点：</strong>寒露=秋季第一个带"寒"字节气，秋燥由温转凉；重阳=登高+敬老+菊花酒传统节日，10/9与10/8双节叠加，<strong>5天礼赠决策窗口</strong>集中释放。
+      </div>
+
+      <ul class="season-list">
+        <li>🎯 <strong>即将热卖①：寒露"4宝"——柿子+芝麻+萝卜+红薯</strong> — 民谚"寒露柿子红了皮"+"寒露吃芝麻"+"寒露萝卜赛人参"+"寒露薯香食补安康"，五个微博话题累计阅读破8亿，老话"寒露食4宝人顺百事兴"全网发酵。</li>
+        <li>🎯 <strong>即将热卖②：重阳"登高+敬老+菊花酒"三件套</strong> — 苏州桂花糯米藕+陕西火晶柿子+山东寒露梨+南京大闸蟹"九月团脐十月尖"+安徽柿饼，是"应季+敬老+地域文化"三重叙事。</li>
+        <li>🎯 <strong>即将热卖③：苏州南环桥市场秋果价格高峰</strong> — 苏州南环桥市场秋果日均到货<strong>1000吨</strong>（柿子+秋月梨+冬枣+柑橘+软籽石榴+高原丑苹果），陕西产地柿子价格较去年同期<strong>下跌约30%</strong>（红方柿1.7-1.8元/斤，脆柿2.5元/斤）。</li>
+        <li>🚨 <strong>窗口提醒①：寒露×重阳双节叠加5天礼赠决策窗口</strong> — 出行+润燥+敬老+登高三场景同时进入决策，10/9重阳节前礼盒必须上架完成。</li>
+        <li>🚨 <strong>窗口提醒②：柿子价格较去年同期-30%</strong> — 陕西产地柿子行情低位运行（红方柿1.7-1.8元/斤，脆柿2.5元/斤），价格便宜时最该做的是吃新鲜，不是囤着放坏——<strong>短保柿子礼盒+现摘现发</strong>窗口期。</li>
+        <li>🏔️ <strong>产地机会①：苏州南环桥市场秋果集散地</strong> — 山东/陕西/四川/福建多地冷链车有序进场，<strong>家庭家宴鲜果拼配</strong>取代礼盒订单成为采购主流，是"散装小份装+分场景礼盒"转型机会。</li>
+        <li>🏔️ <strong>产地机会②：苏州鸡头米尾期+洪湖粉藕进入火锅季</strong> — 苏州南环桥市场鸡头米进入尾期最后1-2周；洪湖粉藕22.5万亩+120亿元产值+海底捞"藕霸"已售100万份，<strong>粉藕预制菜+粉藕半成品组合</strong>持续打开。</li>
+        <li>🏔️ <strong>产地机会③：山东沾化冬枣+陕西周至徐香猕猴桃</strong> — 冬枣批2.5-4.5元/斤（"一颗冬枣维生素C≈两个柠檬"），徐香猕猴桃6-9元/斤，是"高维C+家庭装"组合套装的理想原料。</li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== 板块四：跨界灵感·创新动作 ==================== -->
+<div class="col-cross">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">💡</div>
+      <h2>💡 板块四：跨界灵感·创新动作（2-3个）</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="news-item">
+        <h3>1️⃣ <strong>国庆高铁餐车"养生膳+卤味+茶饮"组合拳</strong> 铁餐食品类化升级
+        </h3>
+        <div class="news-detail">
+          <p><strong>📋 创新动作：</strong>中国铁路上海局9/30宣布10/1起推出"<strong>一碗好饭</strong>"系列餐食新品：①<strong>3款养生膳食</strong>（秋令时令+药食同源食材）；②<strong>6款便当</strong>（多口味覆盖）；③<strong>鸭脖/鸭翅等卤味</strong>休闲零食；④<strong>现制茶饮新口味</strong>（车内日用+文娱配套）。惠民让利方面，<strong>指定价位盒饭+5-6.2折饮品+部分组合促销低至3元</strong>，旅客可扫座椅扶手"铁路畅行码"线上下单+送餐到座。铁餐食品从"填饱肚子"升级为"药食同源养生场景"。</p>
+          <p><strong>🎯 迁移可能：</strong>✅ 高铁餐车"<strong>养生膳+卤味+茶饮</strong>"三件套对下厨房的启示——做"<strong>在地养生食材预制小份装</strong>"（阳雀湖辣椒+洪湖粉藕+苏州鸡头米+徽州刀板香组合礼盒），切高铁餐车+航空配餐+酒店行政楼层+企业团购四场景通用。</p>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <h3>2️⃣ <strong>山姆Member's Mark秋季爆品矩阵</strong> 美国会员店秋季上新6大单品
+        </h3>
+        <div class="news-detail">
+          <p><strong>📋 创新动作：</strong>山姆10月上线6款新品：①<strong>Member's Mark枫糖波本猪腰肉</strong>（$7.98/15.8oz+15.4oz双瓶，波本+枫糖，4.7星94评分）；②<strong>Member's Mark蔓越莓坚果沙拉Topper</strong>（$10/20盎司袋装，蔓越莓+烤盐山核桃+烤盐南瓜籽，适用沙拉+谷物碗+酸奶+燕麦+冰淇淋）；③<strong>Member's Mark有机莎莎酱</strong>（$7.48/两罐24盎司装，番茄+洋葱+墨西哥辣椒+大蒜+醋+香料全有机）；④<strong>Member's Mark季节性咖啡胶囊</strong>（$20/60颗，香草蛋糕+巧克力榛子+糖霜甜甜圈+黄油山核桃4口味）；⑤<strong>Member's Mark蔓越莓橙子胡桃乡村面包</strong>（每日门店现烤）；⑥<strong>Member's Mark玛歌红酒</strong>（玛歌村第三酒庄Château Desmirail酿造）。</p>
+          <p><strong>🎯 迁移可能：</strong>✅ 山姆"<strong>地域食材×有机化×复合口味</strong>"公式已被验证（枫糖波本+有机莎莎+咖啡胶囊）。下厨房可对山姆做"<strong>中国地标食材有机酱料+复合调味料</strong>"（阳雀湖辣椒有机莎莎酱/洪湖粉藕酱/苏州鸡头米坚果Topper/徽州刀板香番茄底料），切山姆"Member's Mark中国地标食材"专区。</p>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <h3>3️⃣ <strong>日本LAWSON×GODIVA联名周年+全家安纳芋挞</strong> 海外便利店秋季甜品化
+        </h3>
+        <div class="news-detail">
+          <p><strong>📋 创新动作：</strong>①<strong>日本LAWSON×GODIVA</strong>联名一周年推出"<strong>UchiCafé×GODIVA巧克力卷蛋糕+生巧克力大福</strong>"两款限定甜点，巧克力海绵蛋糕+巧克力幕斯+可可粉三层风味，生巧克力大福是GODIVA合作史首款日式甜点（450/260日元含税）；②<strong>全家便利店</strong>"<strong>安纳芋挞</strong>"秋季限定——安纳芋（红薯中糖度最高的品种）+安纳芋膏+安纳芋果酱+卡仕达酱三层奶油，松软挞皮+烤焦芳香，搭配温绿茶或红茶；③<strong>日本鲜奶油专门店Milk</strong>10/2推出东京限定"<strong>Milky Busse</strong>"（1,350日元4入），北海道产牛奶鲜奶油+布雪蛋糕，被定位为"尽情享受牛奶的布雪"。</p>
+          <p><strong>🎯 迁移可能：</strong>✅ 海外便利店"<strong>品牌IP联名+地域限定食材+鲜奶油液态奶IP化</strong>"三大路径持续验证。下厨房可对盒马/山姆/罗森/全家做"<strong>地标食材+IP联名+短保24h</strong>"鲜奶油挞预制胚组合（阳山水蜜桃挞/苏州鸡头米挞/洪湖粉藕挞），切便利店现烤档口。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== 板块五：脑暴时刻·融合创意 ==================== -->
+<div class="col-brain">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🧪</div>
+      <h2>🧪 板块五：脑暴时刻·融合创意（1-2个）</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="idea-card">
+        <div class="idea-title">💡 创意①：「寒露×重阳双节融合·"敬老润燥"五件套预拌粉礼盒」</div>
+        <div class="idea-body">
+          <strong>一句话描述：</strong>抓住寒露节气明天+重阳节后天<strong>双节叠加5天礼赠决策窗口</strong>+民谚"寒露4宝"（柿子+芝麻+萝卜+红薯）全网发酵+重阳"敬老+登高+菊花酒"传统+苏州南环桥市场秋果价格-30%四大信号，做"<strong>敬老润燥五件套预拌粉礼盒</strong>"，让家庭一站式完成寒露节气润燥汤品+重阳节敬老双场景。<br>
+          <strong>差异化锚点：</strong>对标盒马缤纷多彩松糕"多地标食材组合+节令养生礼盒"路径，但升级到"<strong>双节融合+敬老属性+预拌粉便利性</strong>"三合一：柿子粉+黑芝麻糊预拌粉+白萝卜粉+红薯山药粉+菊花决明子茶包五件套，客单价198-398元，主打"<strong>送长辈=送健康+送时令+送文化</strong>"。<br>
+          <strong>可行性初判：</strong>供应链：低（粉剂类常规工艺，柿子/芝麻/萝卜/红薯/菊花主产区均有成熟供应链，且当前价格低位）。渠道适配度：抖音达播+山姆+Ole'+盒马X会员店+京东健康均可切入。差异化锚点：双节融合是稀缺叙事，<strong>适老食品+节令养生+地标食材</strong>三合一，无竞品。
+        </div>
+        <div class="idea-tip">🎯 启发来源：今日"寒露4宝（柿子+芝麻+萝卜+红薯）+重阳敬老+苏州南环桥市场秋果-30%+国庆预制菜订单+75%"四信号叠加。</div>
+      </div>
+
+      <div class="idea-card">
+        <div class="idea-title">💡 创意②：「袁记IPO对标·"地标食材馅料×标准化冷链"连锁餐饮供应链套装」</div>
+        <div class="idea-body">
+          <strong>一句话描述：</strong>抓住袁记云饺通过港交所聆讯+<strong>4773家门店</strong>+袁记供应链模式（中央工厂+冷链配送+门店现包）+单店日均GMV下降暴露的"地标食材升级"缺口三大信号，做"<strong>地标食材馅料×冷链配送×连锁餐饮B端供应</strong>"套装，切入袁记/遇见小面/霸蛮/和府捞面/海底捞等连锁餐饮供应链。<br>
+          <strong>差异化锚点：</strong>对标袁记"<strong>标准化馅料+冷链配送+门店现包</strong>"模式，但升级到"<strong>地标食材馅料差异化</strong>"路径——洪湖粉藕猪肉馅（切入海底捞"藕霸"路径复用）+阳雀湖辣椒牛肉馅（切入湘菜连锁）+苏州鸡头米虾仁馅（切入淮扬菜连锁）+徽州刀板香笋丁馅（切入徽菜连锁）。每袋500g×20袋/箱，<strong>B端48.9-89.9元/份终端定价</strong>。<br>
+          <strong>可行性初判：</strong>供应链：中（需要冷链运输+48小时短保+连锁餐饮品控标准）。渠道适配度：海底捞/袁记/遇见小面/霸蛮等连锁餐饮供应链已验证。差异化锚点：<strong>地标食材×连锁餐饮</strong>双背书，是<strong>"连锁餐饮在地化升级"</strong>的最优B端路径。
+        </div>
+        <div class="idea-tip">🎯 启发来源：袁记IPO通过+海底捞"藕霸"已售100万份+苏州南环桥市场家庭散装走俏三信号叠加。</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== 板块六：展会速递·每周新品雷达 ==================== -->
+<div class="col-new">
+  <div class="card">
+    <div class="card-header">
+      <div class="icon">🏬</div>
+      <h2>🆕 板块六：每周新品雷达（3-5个，板块核心）</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="summary-box">
+        <h4>📌 本周新品扫描总结</h4>
+        <p>本周（10/1-10/7）新品聚焦四大方向：①<strong>茶饮赛道"地域限定"+城市文旅绑定</strong>（霸王茶姬40+款+喜茶"喜拉朵实验室+"+喜茶城市特供全国开）；②<strong>海外会员店秋季囤货季</strong>（山姆Member's Mark枫糖波本猪+有机莎莎+咖啡胶囊+玛歌红酒+Costco阿拉斯加烟熏三文鱼+阿拉斯加鳟鱼+Devour通心粉+儿童节日装饰）；③<strong>海外便利店秋季甜品化+品牌IP联名</strong>（LAWSON×GODIVA一周年+全家安纳芋挞+Milk东京Milky Busse）；④<strong>日本便利店季节限定</strong>（三丽鸥联名面包+蜜薯焦糖布丁+和栗蒙布朗）。下面5个精选新品均可作为开品/选品直接借鉴。</p>
+      </div>
+
+      <div class="newprod-card">
+        <div class="newprod-name">🆕 霸王茶姬 9/30一次性40+款区域限定饮品</div>
+        <div class="newprod-meta">
+          <span class="meta-tag">🇨🇳国内茶饮</span>
+          <span class="meta-tag">📅9/30起</span>
+          <span class="meta-tag">💰斜挎包加价约34.1元起</span>
+        </div>
+        <div class="newprod-desc">
+          <strong>产品力拆解：</strong>9/30一次性推出<strong>19个系列、40+款区域限定</strong>，覆盖全国十余省。北方穗穗系列覆盖辽宁/吉林/黑龙江/天津/河北/山西6省；湖北柚逢知音系列（云柚玉露+梨栖玉露+抹茶柚子鲜酪）；重庆晚山红雾系列（福建安溪乌龙+金观音+铁观音拼配，主打红提果香）；浙江龙井+江苏碧螺春+山东崂山绿茶+陕西茯茶+四川雅安藏茶等<strong>茶底与当地标志性茶种绑定</strong>。湖北区域9/30-10/7买新品加价购<strong>武汉轮渡船票</strong>，将茶饮消费与城市文旅直接绑定。<br>
+          <strong>消费场景：</strong>国庆出游+城市文旅+打卡限定+礼赠亲友。<br>
+          <strong>差异化玩法：</strong>"<strong>地域茶底×城市文旅×周边集点</strong>"三件套——从"地名+果味"模式升级为"原料端建立地域关联"。
+        </div>
+        <div class="newprod-inspire">
+          🎯 <strong>启发：</strong>下厨房可对山姆"寻味中国"+盒马"城市礼物"+胖东来"地域食材专区"做"<strong>地标食材+城市文旅+非遗体验</strong>"三件套礼盒（如阳雀湖辣椒×湘西非遗+洪湖粉藕×湖北文旅+苏州鸡头米×苏州博物馆），切入"在地化消费"赛道。
+        </div>
+      </div>
+
+      <div class="newprod-card">
+        <div class="newprod-name">🆕 喜茶 "喜拉朵实验室+"佛山首店+城市特供全国</div>
+        <div class="newprod-meta">
+          <span class="meta-tag">🇨🇳国内茶饮</span>
+          <span class="meta-tag">📅9/28-10/4首店开业</span>
+          <span class="meta-tag">💰冰箱贴每天限500个</span>
+        </div>
+        <div class="newprod-desc">
+          <strong>产品力拆解：</strong>①<strong>喜茶"喜拉朵实验室+"</strong>首店9月底落地佛山万象天地（"喜拉朵"=喜茶gelato意式冰淇淋系列）；开业9/28-10/4<strong>每日前100名到店送喜拉朵+线下点单4.9折+冰箱贴每天限500个</strong>；②<strong>喜茶成都限定</strong>"三大炮+咸奶油+茶味炒冰"瞄准川渝市场；③<strong>喜茶江苏限定</strong>"万象清和系列（碧螺春+白兰）"9/30起刺绣网纱包回归+集7张"茶票票"兑手持镜；④<strong>喜茶海南限定</strong>杨枝甘露系列+凉感毯+冰箱贴+限定玻璃杯。<br>
+          <strong>消费场景：</strong>国庆出游+城市打卡+周边收藏+礼品赠予。<br>
+          <strong>差异化玩法：</strong>"<strong>城市特供饮品+地域周边+城市文旅权益</strong>"三件套闭环——"喜拉朵实验室+"作为<strong>城市限定业态创新</strong>是喜茶应对存量竞争的方法论升级。
+        </div>
+        <div class="newprod-inspire">
+          🎯 <strong>启发：</strong>下厨房可对盒马/山姆/胖东来做"<strong>城市限定食材店中店</strong>"（如盒马"苏州味道"专区/山姆"寻味中国"专区），把<strong>苏州鸡头米+洪湖粉藕+阳雀湖辣椒+徽州刀板香</strong>按城市分组上架，对切"城市礼物"消费场景。
+        </div>
+      </div>
+
+      <div class="newprod-card">
+        <div class="newprod-name">🆕 山姆 Member's Mark 枫糖波本猪腰肉+有机莎莎酱+玛歌红酒</div>
+        <div class="newprod-meta">
+          <span class="meta-tag">🇺🇸海外会员店</span>
+          <span class="meta-tag">📅10月起</span>
+          <span class="meta-tag">💰枫糖波本猪$7.98双瓶/有机莎莎$7.48两罐</span>
+        </div>
+        <div class="newprod-desc">
+          <strong>产品力拆解：</strong>山姆10月上线6款Member's Mark秋季新品：①<strong>枫糖波本猪腰肉</strong>（$7.98双瓶，15.8oz+15.4oz，<strong>波本+枫糖</strong>复合调味，4.7星94评分）；②<strong>有机莎莎酱</strong>（$7.48两罐24盎司，<strong>番茄+洋葱+墨西哥辣椒+大蒜+醋+香料全有机</strong>）；③<strong>季节性咖啡胶囊</strong>（$20/60颗，<strong>香草蛋糕+巧克力榛子+糖霜甜甜圈+黄油山核桃</strong>4口味）；④<strong>玛歌红酒</strong>（玛歌村第三酒庄Château Desmirail酿造，Private Reserve新系列）；⑤<strong>蔓越莓坚果沙拉Topper</strong>（$10/20盎司，蔓越莓+烤盐山核桃+烤盐南瓜籽）；⑥<strong>蔓越莓橙子胡桃乡村面包</strong>（每日门店现烤）。<br>
+          <strong>消费场景：</strong>秋季囤货+家庭聚餐+节庆礼赠+深夜食堂。<br>
+          <strong>差异化玩法：</strong>"<strong>地域食材×有机化×复合口味</strong>"公式已被验证——枫糖波本+有机莎莎+玛歌红酒三个差异化组合。
+        </div>
+        <div class="newprod-inspire">
+          🎯 <strong>启发：</strong>下厨房可对山姆/盒马做"<strong>中国地标食材有机酱料+复合调味料</strong>"套装（阳雀湖辣椒有机莎莎酱/洪湖粉藕酱/苏州鸡头米坚果Topper/徽州刀板香番茄底料），切"Member's Mark中国地标食材"专区。
+        </div>
+      </div>
+
+      <div class="newprod-card">
+        <div class="newprod-name">🆕 日本LAWSON×GODIVA联名一周年+全家安纳芋挞</div>
+        <div class="newprod-meta">
+          <span class="meta-tag">🇯🇵海外便利店</span>
+          <span class="meta-tag">📅10月起</span>
+          <span class="meta-tag">💰巧克力卷450日元/生巧大福260日元</span>
+        </div>
+        <div class="newprod-desc">
+          <strong>产品力拆解：</strong>①<strong>日本LAWSON×GODIVA联名一周年</strong>推出两款限定甜点："<strong>UchiCafé×GODIVA巧克力卷蛋糕</strong>"（450日元，巧克力海绵蛋糕+巧克力幕斯+可可粉三层风味）；"<strong>生巧克力大福</strong>"（260日元，GODIVA合作史首款日式甜点，洒满可可粉+巧克力幕斯+巧克力酱三层可可）；②<strong>全家便利店"安纳芋挞"</strong>秋季限定——安纳芋（红薯中糖度最高品种）+安纳芋膏+安纳芋果酱+卡仕达酱三层奶油，松软挞皮+烤焦芳香；③<strong>日本鲜奶油专门店Milk</strong>10/2推出东京限定"<strong>Milky Busse</strong>"（1,350日元4入），北海道产牛奶鲜奶油+布雪蛋糕。<br>
+          <strong>消费场景：</strong>便利店下午茶+秋季限定+甜品打卡+伴手礼。<br>
+          <strong>差异化玩法：</strong>"<strong>品牌IP联名+地域限定食材+鲜奶油液态奶IP化</strong>"三大路径持续验证。
+        </div>
+        <div class="newprod-inspire">
+          🎯 <strong>启发：</strong>下厨房可对盒马/山姆/罗森/全家做"<strong>地标食材+IP联名+短保24h</strong>"鲜奶油挞预制胚组合（阳山水蜜桃挞/苏州鸡头米挞/洪湖粉藕挞/徽州刀板香火腿挞），切便利店现烤档口原料供应。
+        </div>
+      </div>
+
+      <div class="newprod-card">
+        <div class="newprod-name">🆕 苏州南环桥市场秋果集散+袁记云饺IPO聆讯</div>
+        <div class="newprod-meta">
+          <span class="meta-tag">🇨🇳国内食材</span>
+          <span class="meta-tag">📅10月初</span>
+          <span class="meta-tag">💰红方柿1.7-1.8元/斤/脆柿2.5元/斤</span>
+        </div>
+        <div class="newprod-desc">
+          <strong>产品力拆解：</strong>①<strong>苏州南环桥市场秋果日均到货1000吨</strong>——柿子+秋月梨+冬枣+柑橘+软籽石榴+高原丑苹果集中入市，来自山东/陕西/四川/福建多地冷链车有序进场；<strong>陕西产地柿子价格较去年同期下跌约30%</strong>（红方柿1.7-1.8元/斤，吊红柿2-2.2元/斤，火葫芦柿子2.2-2.3元/斤，脆柿2.5元/斤）；<strong>家庭家宴鲜果拼配</strong>取代礼盒订单成为采购主流。②<strong>袁记云饺通过港交所聆讯</strong>——4773家门店+2023-2025年营收20.26/25.61/27.95亿元+2026前5个月营收13.06亿元同比+39.8%+海外41家门店+客单价66.34元（国内3倍）。<br>
+          <strong>消费场景：</strong>家庭家宴+秋季养生+连锁餐饮供应链+海外华人市场。<br>
+          <strong>差异化玩法：</strong>"<strong>低价位+散装小份装+冷链直发</strong>"对"<strong>连锁餐饮供应链+海外华人市场</strong>"两个渠道双覆盖。
+        </div>
+        <div class="newprod-inspire">
+          🎯 <strong>启发：</strong>下厨房可对袁记/遇见小面/海底捞/和府捞面做"<strong>地标食材馅料标准化B端供应</strong>"（洪湖粉藕猪肉馅/阳雀湖辣椒牛肉馅/苏州鸡头米虾仁馅），同时对新加坡/马来西亚华人市场做"<strong>柿子+秋月梨+软籽石榴现摘现发</strong>"组合。
+        </div>
+      </div>
+
+      <div class="summary-box">
+        <h4>📌 展会预告</h4>
+        <p>🎪 <strong>HOTELEX深圳 10/13-15</strong>（16万㎡+2000+展商+咖啡茶饮+食材+烘焙+酒类）| <strong>SIAL Paris法国 10/17-21</strong>（28万㎡+8000+展商+130国+40万+款产品+清洁标签+在地化+百年老字号出海）| <strong>Bakery China武汉 10/22-24</strong>（4万㎡+600+企业+冻转鲜预制烘焙+健康烘焙+年礼节礼）| <strong>第11届中国（重庆）国际火锅产业博览会 10/23-25</strong>（有料锅底+地标食材+重庆酸汤+海南椰子鸡+广东花胶鸡）| <strong>哈萨克斯坦阿拉木图国际农业展 10/28-30</strong>（中亚最大+冷链专题展同期+现代农业机械+种植农资+畜牧+粮食加工+跨境农业供应链）。</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+</div>
+<!-- Footer -->
+<div class="footer">
+  <p>⚠️ 以上内容由AI自动聚合生成，信息来源于公开渠道，仅供参考，不构成投资建议</p>
+  <p>信源：FBIF食品饮料创新 / Foodaily每日食品 / 央广网 / 新华社 / 国家市场监督管理总局 / 红餐网 / 中国食品产业分析师朱丹蓬 / 蝉妈妈 / 蝉小红 / 小红书 / 大众点评 / 山姆会员商店 / 盒马 / 叮咚买菜 / 霸王茶姬官方 / 喜茶官方 / 摩斯IPO / 苏州发布 / 苏州南环桥市场 / 日本LAWSON官方 / GODIVA Japan / 日本Milk鲜奶油专门店 / 全家便利店 / 光明日报 / 中国铁路上海局 / Costcoguide / FinanceBuzz / Food & Wine / 寒露节气央广新闻 / 央视网 / 央视新闻</p>
+  <p style="margin-top:8px;">Generated by WorkBuddy 食研日推 · 2026-10-07 09:00 CST · 暖色调食品主题版式</p>
+</div>
+
+</body>
+</html>
