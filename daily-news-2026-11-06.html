@@ -221,7 +221,7 @@ blockquote{margin:10px 0;padding:10px 16px;border-left:3px solid var(--accent2);
 
 <div class="intro ai-intro">
 <div class="field-label" style="color:var(--accent3)">今日一句话</div>
-<div class="highlight" style="font-size:16px;margin-top:6px">Agent 层的「地基战争」在同一天集体落地：Google 把 Agent runtime 捐给 CNCF 并发 1.0、Meta 收购 Agent 工作区 Conductor 并两周后关停其云服务、Perplexity 把 always-on Agent 定价 200 美元/月——<span class="hl-purple">「谁在控制 Agent 的运行时、工作区与记忆」</span>正在取代「谁的模型分数更高」成为新的胜负手。</div>
+<div class="highlight" style="font-size:16px;margin-top:6px">Agent 层的「地基战争」在同一天集体落地：Google 把 Agent runtime 捐给 CNCF 并发 1.0、Meta 收购 Agent 工作区 Conductor 并两周后关停其云服务、Perplexity 把 always-on Agent 定价 200 美元/月、Kimi 与 DeepSeek 各自托管 Harness——<span class="hl-purple">「谁在控制 Agent 的运行时、工作区与记忆」</span>正在取代「谁的模型分数更高」成为新的胜负手；<span class="hl-purple">而同一天另一条线同步跑：模型侧密集上新（蚄万 560B、TokenRhythm RSI、Ripple-65B），资本侧已经开始「挑着投」（微软退出新云、字节封禁外部 AI 工具）。</span></div>
 </div>
 
 <h3>🛠️ 【顶级装备库更新】— GitHub Trending 今日榜</h3>
@@ -292,6 +292,96 @@ Garry Tan（Garry Tan Capital / YC 前 CEO，硅谷顶级 AI 意见领袖）的 
 </div>
 </div>
 
+<div class="card">
+<div class="item-title purple"><span class="num">7</span>项目：JiaFeiMiao-K-Cat / DiscImageStudio 「把图片烧进光盘盘面」的实体内容工具</div>
+<div class="field"><span class="field-label">核心黑科技：</span><br>
+一个用 <strong>C# / .NET 10</strong> 写的多平台工具，能把任意一张图片转成<strong>符合 CD、DVD、单层蓝光物理层约束的真实数据</strong>，刻录后在盘面上留下肉眼可见的图案。总星数 <span class="hl-purple">7,350</span>（fork 263），<strong>今日 +984</strong>，是今日 GitHub 增速榜第二。<br>
+技术难点不在「烧」，而在<strong>「让机器可读的同时人眼可看」</strong>：CD 用黑白二阶（<code>0x0D / 0xAA</code>）四电平，DVD 扰码域用 <code>A5 / 92</code>，蓝光走 <strong>17PP/ECC + 3T/6T 映射 + UDF 2.01</strong> 写入器，还要通过 DVD <strong>NRZI 图像约束求解器</strong>反解纹理映射；作者还做了一套<strong>三阶段辅助标定</strong>（粗标定→边界标定→精细标定），用盘面实拍照片拟合三次轨距曲线，把径向十字线从明显弯曲校正为接近直线。参考标准是 ECMA-394 / ECMA-267 / ECMA-359 / ISO/IEC 30190:2021，许可证 GPL-3.0-or-later，11 月 2 日刚发 v1.3.6（新增实验性 Linux / macOS CLI）。</div>
+<div class="field"><span class="field-label">实战价值：</span><br>
+<span class="opp">这是今天最反直觉的一条：它不是 AI 项目，却是最强的「内容实体化」样本。</span><br>
+当所有人都在把内容往屏幕里搬的时候，它证明了<strong>内容还可以往物理介质里搬</strong>——一张图、一张光盘、一次手工刻录，就是一件可送、可留、可收藏的实物。对做小红书生鲜项目的直接启发：<br>
+① <strong>成本极低的实物周边</strong>：把店铺 logo、溯源码、生鲜溯源海报刻成小批量光盘/卡片，成本远低于定制周边，且「会发光/会显影」的物理形态天然适合拍短视频；<br>
+② <strong>「过程即内容」</strong>：刻录过程本身（盘面显影、标定对比图）就是极好的选题，比「AI 又生成了什么」更有新鲜感；<br>
+③ <strong>内容合规的物理退路</strong>：AI 生成内容越来越受监管（广总局已定调「规范 AI 剧」），而<strong>人工制作的实体物天然落在监管射程之外</strong>——这在内容合规收紧期是稀缺资产。<br>
+<span class="opp">变现路径</span>：实体盲盒 / 生鲜溯源卡定制 / 小批量品牌礼品 / 代客「把内容刻进光盘」的创意服务，都是可以直接开单的非纯线上业务。</div>
+</div>
+
+<h3>🏆 【Product Hunt 今日新品】— 11 月 6 日日榜 TOP 15 与深度拆解</h3>
+
+<div class="card">
+<div class="item-title purple"><span class="num">PH-1</span>日榜全景：今天是 Product Hunt 的「Hypership Day」，前 15 名有 13 个是 Agent 基础设施</div>
+<div class="field"><span class="field-label">主体观察：</span><br>
+11 月 6 日是 PH 的 <strong>Hypership Day</strong>（本日赞价资源为 Supabase 与 TypeSafe AI）——“全天只上线一个产品，但可以反复发布、每个版本都计分」，上一次全天超过 100 个请求被上线、发出超过 8000 分。今日榜单会与其说的不是一件事——“给 Agent 搭轮子、给 Agent 一台真机、给 Agent 一张记忆、给 Agent 一套计费、给 Agent 一个商店、给 Agent 一个邮箱、给 Agent 一台手机」是今日全站的主题。<br>
+下表为 11 月 6 日日榜（抓取时点为上午 11 十分左右，票数雷时仍在变化）：</div>
+<table>
+<thead><tr><th>#</th><th>产品</th><th>一句话</th><th>票数</th><th>评论</th><th>分类</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>Glasshand</strong></td><td>给你的 agent 一台真实的 iPhone 和 Mac</td><td>319</td><td>78</td><td>Productivity / AI / Apple</td></tr>
+<tr><td>2</td><td>Rerun</td><td>把你的 AI 订阅变成一支能干活的队伍</td><td>211</td><td>13</td><td>Productivity / Open Source / AI</td></tr>
+<tr><td>3</td><td>Living Brain</td><td>互操作、高效的 Agent 记忆层</td><td>194</td><td>38</td><td>Productivity / DevTools / AI</td></tr>
+<tr><td>4</td><td>Maritime</td><td>为任意 AI agent 定制的云计算机</td><td>170</td><td>10</td><td>Developer Tools / AI</td></tr>
+<tr><td>5</td><td>Pushary for Teams</td><td>看清你的团队 AI agent 替谁点了头</td><td>161</td><td>33</td><td>Productivity / DevTools / AI</td></tr>
+<tr><td>6</td><td>Clocknext</td><td>面向 AI Agent 的定价与账单基础设施</td><td>139</td><td>47</td><td>SaaS / AI / Monetization</td></tr>
+<tr><td>7</td><td>Bridge</td><td>Agent 时代的视频会议</td><td>115</td><td>25</td><td>Productivity / Meetings / AI</td></tr>
+<tr><td>8</td><td>Rainbrand</td><td>Agent 的品牌层</td><td>104</td><td>14</td><td>API / Branding / Marketing</td></tr>
+<tr><td>9</td><td>Tao Browser</td><td>每家公司一个独立登录的隐私浏览器</td><td>101</td><td>9</td><td>Mac / Productivity / Privacy</td></tr>
+<tr><td>10</td><td>Stitch.ai</td><td>邮件、日历、备忘、任务一体的 AI 工作台</td><td>94</td><td>16</td><td>Email / Productivity / AI</td></tr>
+<tr><td>11</td><td>Polylane for Google Cloud</td><td>你的 Google Cloud 应用的 AI 值班生</td><td>93</td><td>5</td><td>Developer Tools / AI</td></tr>
+<tr><td>12</td><td>Wingmen</td><td>带真实意图数据的 Agent 外发</td><td>89</td><td>16</td><td>Sales / AI / Marketing automation</td></tr>
+<tr><td>13</td><td>Nemotron 3.5 Transcribe</td><td>用语音 LLM 做智能转写</td><td>81</td><td>1</td><td>Open Source / AI / Audio</td></tr>
+<tr><td>14</td><td>FounderMail</td><td>给你和你的 agent 的邮箱，托管在你的 Cloudflare 域名上</td><td>81</td><td>11</td><td>Email / DevTools / AI</td></tr>
+<tr><td>15</td><td><strong>Tencent Hy4</strong></td><td>腾讯旗舰模型学会了观察和操作电脑</td><td>80</td><td>1</td><td>Artificial Intelligence</td></tr>
+</tbody>
+</table>
+<div class="field"><span class="field-label">解读：</span><br>
+三个结构性信号：① <strong>13/15 是 Agent 基础设施</strong>（记忆、云机、计费、邮箱、浏览器、报表、外发）——市场已经不再采购「能说话的东西」，而是采购「能干活的家具」；② <strong>Tencent Hy4 与 Nemotron 3.5 Transcribe 同日上榜</strong>（腾讯旗舰与英会软件同时出现，说明开源与中国方向的供给在同一个赛道上同步竞速）；③ 票数体型已经分化开来：<b>Glasshand 319 票</b>、<b>Living Brain 194 票</b>与一大堆“能用”垂价中间活（Pushary 161、Clocknext 139、Bridge 115、Tao Browser 101）形成了明显的二层分化。</div>
+</div>
+
+<div class="card">
+<div class="item-title purple"><span class="num">PH-2</span>新品：Glasshand 「为 Agent 租一台真实 iPhone」深度拆解 —— 今日首帪</div>
+<div class="field"><span class="field-label">核心黑科技：</span><br>
+创始人 Trevor Keith（团队 Solid 的联合创始人，成员背景分别来自 MIT、Berkeley 与 Waterloo，已融资 <span class="hl-purple">600 万美元</span>）做的不是模拟器，而是<strong>把真实硬件放进自家数据中心让 Agent 真的拿手</strong>：通过 API 连接 Claude Code、Codex、Cursor 或任何 agent，一句话就能租到一台物理 iPhone 或 Mac。<br>
+真实设备带来了模拟器永远拿不到的能力：<strong>签入 Apple ID 与 iCloud</strong>、<strong>App Store 安装应用</strong>、<strong>加 eSIM 卡自己接收短信验证码</strong>（不再需要人工转发）、<strong>TikTok / Instagram 发帖</strong>、Uber 打车、以及在 Mac 上用 Xcode 真机构建与测试 iOS App。官方定价：<strong>iPhone 60 美元/月、Mac 90 美元/月</strong>，月约可随时取消，租用期内设备专属于你，<strong>你自己设密码、平台看不到</strong>，退讣时数据抹除并恢复出厂设置。<br>
+<span class="opp">关键设计点</span>：硬件租用与云端设备的本质差别是——<strong>它赌的是「真实身份资源」</strong>：平台的风控依赖行为信号，而真实设备拥有真实指纹、真实物理链路与真实网络身份。</div>
+<div class="field"><span class="field-label">实战价值：</span><br>
+<span class="opp">对做小红书 / 电商自动化的人，这是直接的“多账号基础设施”。</span><br>
+中国平台的风控依赖设备指纹与行为信号，你自家的多账号很容易被判为同源活动。这个你注重现为一台物理机器、拥有真实网络与真实设备指纹的账号，所以它对“批量发帖”的价值比任何模拟器都高。<br>
+<span class="risk">风险提示</span>：60 — 90 美元/月/设备是持续性成本（不是按小时），且 Apple ID 与秘密可能引发风控与账号风险；也要注意其可用于 TikTok / Instagram 自动发帖本身就可能违反这些平台的服务条款——真实设备不等于合规。<br>
+<span class="opp">另一个值得借鉴的点</span>：你可以把「租设备三个月」变成「租一台设备跑一个月的内容”——就算片不现在存在，设备可以运行。</div>
+</div>
+
+<div class="card">
+<div class="item-title purple"><span class="num">PH-3</span>新品：Living Brain 「互操作的 Agent 记忆层」深度拆解 —— 今日第三</div>
+<div class="field"><span class="field-label">核心黑科技：</span><br>
+制作人 Mark Nazarov（ChatAndBuild）做的是一层<strong>不属于任何一家厂商的记忆层</strong>：把你在 ChatGPT、Claude、Gemini、Cursor、Codex、OpenClaw、Hermes 等 60+ 个平台里的对话编译成<strong>带来源链接的结构化知识</strong>，再通过 <strong>REST API / SDK / CLI / MCP</strong> 分发给任意 agent，让每一次交互都是上一次的延续而不是重来。<br>
+官方自测数据（属自报，未经独立复现）：自评 LoCoMo <span class="hl-purple">92.2%</span>（共 1540 题）、记忆检索中位延迟 <span class="hl-purple">464 毫秒</span>、在 LongMemEval-S 上每题 token 消耗约为全上下文基线的 <strong>1/22.6</strong>。定价：API 按量计费 <strong>输入 8 美元/百万 token、输出 0.5 美元/百万 token</strong>，Workspace 版 <strong>99 美元/月</strong>（含 3 座、共享月度额度、10GB 存储、50 万次请求）。</div>
+<div class="field"><span class="field-label">实战价值：</span><br>
+今日这一条与日报主线完全对上了：主流厂商今天同时在锁定「记忆与运行时」的归属权（Google 把 runtime 捡给 CNCF、Meta 买下 Conductor、Kimi 与 DeepSeek 自建 Harness）——<strong>Living Brain 就是第三方：不卖模型、不卖运行时，只卖「记忆这一层」。</strong><br>
+对你的实战意义：小红书生项目每天采购、每天做竞品分析、每天写笔记，产生的是大量「分散在各处的中间资料」。把它们收进一个<strong>不依赖任何一家模型厂商的记忆层</strong>，就得到了一个真正可穿越的资产：换模型不丢记忆，换工具不丢记忆，换人员不丢记忆。<br>
+<span class="risk">风险提示</span>：记忆污染（一条错误被写进去的结论会被以后所有 agent 当作事实）与权限泄露，是这一层的两个生产级风险；自报跑分与官方评测仍需独立复现。</div>
+</div>
+
+<div class="card">
+<div class="item-title purple"><span class="num">PH-4</span>新品：Maritime、Tao Browser、Pushary、backlane —— 四个很“小”但很具体的产品</div>
+<div class="field"><span class="field-label">核心黑科技：</span><br>
+· <strong>Maritime</strong>（YC F26，联合创始人 Maria Gorskikh，美国 MIT 研究 AI agent 的背景）：给 agent 提供四类云计算机——<strong>持久工作区、一次性沙箱、Linux/Windows 桌面、Android 手机</strong>，人类可随时接管。定价很有意思：沙箱 <strong>0.011 美元/小时</strong>（1 vCPU / 2GB）、Linux 桌面 0.12 美元/小时、Windows 桌面 <strong>0.18 美元/小时</strong>（含许可证）、Android 手机 0.15 美元/小时，按秒计费，7 天免费试用送 20 美元用量。<br>
+· <strong>Tao Browser</strong>：每家公司一个独立登录身份的隐私浏览器——解决的是「多账号互相流污」这个真实需求。<br>
+· <strong>Pushary for Teams</strong>：让团队看到「自己的 AI agent 替我们点了哪些头」——<strong>这是今日唯一一个直接针对「Agent 授权审计」的产品</strong>。<br>
+· <strong>backlane</strong>：通过 MCP 管理 ChatGPT 和 Claude 里的市场与店铺——<strong>直接对应电商自动化的最终形态</strong>。</div>
+<div class="field"><span class="field-label">实战价值：</span><br>
+① Maritime 把「给 Agent 一台电脑」的边际成本从设备购买拆成按小时计费的服务（你不必拥有机器）——对做<strong>批量试错 / 并行扫描</strong>的人直接就是提效项，已经出现与 GitHub 榜上 <code>agent-desktop</code>（本地 computer use）对照的云端方案。<br>
+② <strong>backlane 是今日清单中与你最相关的一个</strong>：它说明「在 ChatGPT / Claude 里直接管理市场」已经从概念变成了产品，而它的技术路径是 MCP——就是你小红书店铺数据对外接口的标准化路径。<br>
+③ Pushary 提醒的问题正好是你今天已经面对的问题：一个 agent 代替你回复客户、修改价格、发送邮件，<strong>你需要知道它替你承诺了什么</strong>。建议把这作为你自建 Agent 流程的第一个工具，不要等到出事了才补。</div>
+</div>
+
+<div class="card">
+<div class="item-title purple"><span class="num">PH-5</span>周榜：第 45 周（11 月 2 日— 11 月 8 日）榜单，beacon.sh 登顶且连续三周在榜</div>
+<div class="field"><span class="field-label">观察：</span><br>
+周榜前名：<strong>beacon.sh</strong>（开源、可自主改进的 AI 编码 agent 记忆）、<strong>UnleashX</strong>（把对话转成结果的 AI 劳动方）、<strong>Xmind 2027</strong>（思维导图升级为 AI 思考伙伴）、<strong>Cedric AI for Meetings</strong>（第一个代你做演示并代你参会的销售 agent）、<strong>Hera AI Creative Canvas</strong>、<strong>Clayzo</strong>（用编码 agent 做动效）、<strong>Self-Growing Websites by Greta.sh</strong>（自动做 SEO / AEO）、<strong>Display 1.0</strong>、<strong>Agent Inbox</strong>（给 agent 一个邮箱 + Slack + Telegram）、<strong>Hyperresearch</strong>（持久、可验证的 agentic 搜索 API）、<strong>Friday Work</strong>（Claude 碰到限额时任务继续跑）、<strong>Help</strong>、<strong>diff-tour</strong>（AI 写代码，你学会像 senior 工程师一样读）、<strong>Looper</strong>（Grok Bot 的团队协作开源版）、<strong>CuriousLM</strong>（私有 AI 跑在本机、无需账号）、<strong>Linkly AI Clipper</strong>、<strong>redu.cloud</strong>（按 agent 速度而非人速开机器）、<strong>Widgeteer</strong>。<br>
+<span class="opp">两个值得单独标红的信号</span>：① <strong>beacon.sh 连续三周在榜</strong> —— 它做的是「记忆自主改进」，这与 Living Brain 是同一个方向的两个剪影（一个闭源一个不闭源），说明「Agent 记忆层」已经是独立一个竞争赛道，而不是某个产品的附属功能。<br>
+② <strong>Friday Work「Claude 碰到限额时任务继续跑」与今日的其他信号形成了完整链条</strong>：你为限额这一个问题（为什么怕限额）已经被供应方做成了产品（Friday Work），为你的状态被删除而做成了产品（Conductor 两周删数据），为你的记忆被绑定做成了产品（Living Brain、beacon.sh）。</div>
+</div>
+
 <h3>🤖 【Agent 战场情报】</h3>
 
 <div class="card">
@@ -348,6 +438,25 @@ Cat Wu 的流向说明一件事：<span class="hl-purple">Agent 产品的竞争�
 同时留意 OpenAI 披露的财务结构：<strong>企业已是收入主体</strong>，且明确把「agentic coding」列为曾经缺席的战场——这正是 Meta 花 2026 年下半年重点补课的方向（Muse Code、Muse 系列智能体用户已破 1000 万）。</div>
 </div>
 
+
+<div class="card">
+<div class="item-title purple"><span class="num">F</span>动态：X 平台大佭动态—— 今日四条确认可回溯的一等公民发言</div>
+<div class="field"><span class="field-label">动态一：OpenAI CEO 萨妥特曼一度改名 X 昵称为「Ram Altman」，随后又改回去</span><br>
+11 月 4–5 日，萨妥特曼在 X 上回应其关于内存的争议：他称自己并未主张限制普通用户的内存容量，反而一直主张「增加全球内存产能」：「I实际上希望世界上的人都拥有海量内存」。事出原因是 10 月 29 日在 Cheeky Pint 播客中与 Stripe 联合创始人 John Collison 讨论本地运行 AI 模型，当时他说「大量有限的 DRAM 被安装在个人电脑里，却有约 95% 的时间处于闲置状态」，被解读为「个人用户抢了 AI 公司的宜用内存」，得到美国硬件圈和 PC 玩家的起侉。马斯克也在 X 上发了图片讽讽「佬也有权拥有自己的内存！」。<br>
+尽管他已经改回去（美国东部时间周三上午 11 点已恢复为 SamAltman），但这段抢话背后的产业事实比他的笑话更值钱：智能数据中心正在大量抢购全球内存，<b>英特尔预计短缺至少持续到明年，SK 海力士则预测可能延续至 2030 年</b>，第三季全球 DRAM 营收逼近 <strong>2000 亿美元</strong>3000亿、价格上涨是主因。</div>
+<div class="field"><span class="field-label">动态二：MiniMax 员工发出「BYOB」（Bring Your Own Bot）开源形态</span><br>
+MiniMax 员工 Ronny 在 X 上提出：他的判断是“很快大家都会拥有 agent ，难点在于让它们彼此配合”。其形态是一张「桌子」：<strong>桌上不放任何 bot</strong>，而是给每个 agent 一份共享账本、一个座位、发言权与一道 commit gate，<strong>agent 只提案，人类签字</strong>。他指出的空白市场是「归属于不同人的 agent 的多方协作」。</div>
+<div class="field"><span class="field-label">动态三：Grok Bot 官方账号宣布支持电话打出</span><br>
+Grok Bot 官方账号于 11 月 4 日宣带电话能力：其条款允许代客户打电话，但<strong>要求披露虚拟助手身份</strong>、<strong>同意与合规责任由客户承担</strong>，并禁止用于营销、批量呼叫与紧急服务。</div>
+<div class="field"><span class="field-label">动态四：多位构建者在 X 上给出的同一个需求——「按可逆性而不是按工具分级的权限」</span><br>
+一位开发者做了 <strong>barebox</strong>：他认为把电脑交给 agent 通常要么每一步都要批准到你不再看，要么采用大量重隔离而大多数人忽略。他的解法是把每个动作归为一个字母，像文件权限：<code>r</code> 读取、<code>w</code> 可回滚的修改、<code>x</code> 不可撤回的事（如付款、删除）必须等待确认，并提供 <code>ask / auto / trust</code> 三种模式。<br>
+同一位作者还收归了几个高质量需求：<strong>供应商健康度应从真实流量学习</strong>（团队的合成探针曾两次在真实故障中保持绿色，因为探针只是一个小请求而真实失败是另一种请求形状）、<strong>每条响应的来源标注</strong>（同一个 Claude 模型 10 月 26 日由 Amazon Bedrock 服务、10 月 28 日由 Anthropic 直供，而留存规则是按宿主而不是按模型计的）、<strong>每应用预算上限</strong>、<strong>版本化文档解析与漂移检测</strong>、<strong>不要模型自报置信度</strong>、<strong>给 Claude Code / Codex / Copilot 一个共享消息板</strong>。</div>
+<div class="field"><span class="field-label">解读与落地场景：</span><br>
+<span class="hl-purple">这四条把今天的主线“记忆与运行时归属权之争”从工业口号落到了个人可执行的层面。</span><br>
+① <strong>Ram Altman 这一事件的真正含义，不在于“改名客回辩”</strong>，而在于它暴露了一个结构性事实：<strong>在内存短缺的时候，模型方与用户方的利益是直接冲突的</strong>，而你的内容会说什么、你用什么工具，已经反映你是谁。对做“小红书生项目”的人，这个信号的价值在于：你的工具链可能当天就变。<br>
+② <strong>BYOB 的“agent 提案 + 人签字”模式，对应到你的小红书流程就是一个具体可落地的架构选择</strong>：建议把「选题”与「发布」拆成两个不同的 agent，一个只写稿一个只审核，中间用一张共享账本表记录「出库、审核、发布、数据回流」四个状态。这很就是一个不依赖任何厂商的、<strong>状态可导出的小红书 Agent 流程架构</strong>。<br>
+③ <strong>barebox 的 r / w / x 分级是今日最适合给你的实战方案</strong>：将小红书流程里的所有动作归类——① 读（查竞品、查数据）；② 可回滚的写（生成图片、写草稿）；③ 不可撤回的写（<strong>发布、下单、改价、租机</strong>）。第三类必须人工确认。这一份分级表本身就是你给客户的「为什么我不会擅自发布」的依据。</div>
+</div>
 
 <h3>🖊️ 【AI 新玩法，新概念】</h3>
 
@@ -421,6 +530,46 @@ Goodfire Research 发布论文提出 mechanistic shaping 框架，通过 <strong
 今天的国内证据极强：AI 萌宠账号「猫子柒」全网播放超 5 亿、粉丝累计超 200 万，Prada、瑞幸、东方树叶、大众等品牌商单接踵而至（详见下节变现线索）。<strong>但博主本人否认「半年赚百万」，指出中介返点 40-50%、税费与高额工具成本吞掉了大部分收入</strong>——这恰恰说明：这个赛道已从蓝海进入「渠道与成本决定生死」的阶段，<strong>合规能力（无人审核的 AI 内容链路终将撞上监管）会变成真正的壁垒</strong>。</div>
 </div>
 
+
+<div class="card">
+<div class="item-title purple"><span class="num">8</span>动态：中国信通院联合华为、腾讯、阿里等 <strong>20 家单位</strong>发布《智能体发展自律公约》</div>
+<div class="field"><span class="field-label">解读：</span><br>
+11 月 4 日，中国信通院、华为、腾讯、阿里、蚌窝、小米、百度、火山引擎、荣耀、OPPO、中移互联、深信服、奇安信、三六零、度小满、深演智能等<strong>20 家单位</strong>联合发布《智能体发展自律公约》，场合是乌镇峰会「智能体互信互联互操作全球合作创新——联手构建智能互联网」论坛。<br>
+公约提出<strong>八条自律措施</strong>：健全智能体信任体系、建设智能体互联基础设施、提升互操作水平、提升安全防护能力、健全治理机制、保护用户权益、加速赋能千行百业、推动技术普惠共享。<br>
+两条关键条款对你最实用：① 第四条要求“健全前瞻性风险评估、运行监测、行为管控、异常熔断等技术体系，保障模型、插件、技能来源可靠”，防范智能体越权操作、隐私泄露与行为失控；② 第五条要求“发展规则表达与内嵌、合规性测试等技术”，共同抵制<strong>利用智能体实施算法压稽、黑灰产</strong>；③ 第六条要求保障用户的<strong>知情权、选择权与对重要事项的最终控制权</strong>，防范信息滥用、过度迎合与认知控制，并将未成年人、老年人纳入保护视野。</div>
+<div class="field"><span class="field-label">落地场景：</span><br>
+<span class="opp">这份公约是一份现成的「合规对照表」，一实际可以直接拿来做你的产品资产。</span><br>
+三个具体用法：<br>
+① <strong>把它变成你的内容审核清单</strong>：写作前先声明「本内容由 AI 生成、已人工修改、所有数据已回原始信源核对」，并开关保存一份「人工签字栏」。这符合第六条的「最终控制权」，也符合广电总局「规范 AI 剧」的要求。<br>
+② <strong>把它变成你的供应商筛选表</strong>：今天谈到的邦克斯特、回归来看，一个能提供「独立记忆层」、「审计日志」、「可导出状态」的供应商，比价格优先而言。你的下一个客户如果是团队/企业，先问它「你的 agent 记忆存在哪里、可不可以导出、谁能看到它替你做了什么」。<br>
+③ <strong>把它变成你的内部红线清单</strong>：“算法压稽”与「黑灰产」是两个完全不同的风险面——算法压稽是你主动把任务交给机器后的不透明，黑灰产是你被其他人的机器开发。你的内部服务商与员工审核时，这两个问题必须分开问。</div>
+</div>
+
+<div class="card">
+<div class="item-title purple"><span class="num">9</span>动态：国内四家同日发模——蚄万轨、TokenRhythm、Ricursive、百度 ApolloWorld</div>
+<div class="field"><span class="field-label">解读：</span><br>
+· <strong>蚄万百灵 Ling-3.2-flash</strong>：560B 参数原生多模态模型，1M 上下文，官方自测多项超越 Opus 5（属厂商自测，未经独立复现）。<br>
+· <strong>TokenRhythm NeoHorse-1.5-Flash Preview</strong>（前华为盘古负责人创办）：总参 1250 亿、激活 60 亿，基于 Qwen3.8-Flash 用<strong>RSI（递归自我改进）</strong>迭代；Agents' Last Exam 总分从 41.20 升到 50.43（约 +22.4%），物理科学任务提升约 106.1%，但<strong>计算与数学领域从 59.51 回落到 52.96（约 -11.0%）</strong>——这是今日最值得记住的一个信号。<br>
+· <strong>Ricursive Ripple-65B Preview</strong>：650 亿参数开源权重，12 万亿 token 预训练，1M 上下文，Apache 2.0，官方报 TerminalBench 2.1 得分 80.52，<strong>研发总成本の 3200 万美元</strong>（这个数字比跑分更值钱）。<br>
+· <strong>百度 ApolloWorld</strong>：面向物理 AI 的全模态世界模型，每天最高生成 <strong>10 万公里虚拟驾驶数据</strong>用于训练萝菜快跑车队。</div>
+<div class="field"><span class="field-label">落地场景：</span><br>
+<span class="hl-purple">NeoHorse 那个“物理科学 +106.1% 但数学 -11.0%”是今日最重要的一个技术信号。</span><br>
+它说明了 RSI（让模型自己改进自己）的真实边界：<strong>当你把执行反馈接入训练轨道，模型会在“能被验证的动作”上变强，却可能在“严格推理”上退化</strong>。对你的实战：如果你让 Agent 自动生成内容并自动根据数据修正（小红书的数据回流循环就是这个场景），必须把「数字正确性」与「流程流畅性」分开评估，不能用同一个分数结论。<br>
+另一个立即可用的选择：你今天选模型的时候，应该把「规模与激活参数」与「测试成本」并列看（Ricursive 的 3200 万美元研发成本就是最真实的估算样本），而不是只比跑分。</div>
+</div>
+
+<div class="card">
+<div class="item-title purple"><span class="num">10</span>动态：资本侧冷却—— 微软审查新云、特强选为置名本地算力、安卓与字节的双向动作</div>
+<div class="field"><span class="field-label">解读：</span><br>
+· <strong>微软对「新云」拉手</strong>：当时微软在新云上签下的量级极大——对 Nscale 的承诺最高达 <strong>438 亿美元</strong>、对 Nebius 最高 194 亿、对 CoreWeave 超过 100 亿、对 IREN 约 97 亿。而现在，微软正加强对 Nebius、IREN、Nscale 部分数据中心项目的监督，退出高风险项目，并内部讨论是否再签新云交易；已退出 Nscale 多个项目（相关算力后来由 Figure AI 接手），并撤回了其西弗吉尼亚 1.35 千瓦算力的意向书。<strong>消息公布后 IREN 与 Nebius 股价一度各跌 20%</strong>。CFO Amy Hood 已第三次在财报电话会上点出第三方算力交付延迟正在扰乱支出计划（IREN 德州项目伊琉斯佬 4 月发生发电机起火、8 月披露硬件交付延迟）。<br>
+· <strong>Gartner 预测：到 2030 年末，80% 的新云服务商可能被整合或关闭</strong>；马斯克也给出相同判断——大量新云公司会像「小鱼」一样被淘汰，因为难以筹够运营资金。<br>
+· <strong>选民侧的压力同步到位</strong>：红志小区追踪器记录的 47 项有结果的 11 月选票中，<strong>46 项偏向限制数据中心的一方</strong>（未经部分县域交引计数确认）；得州候任州长 Gina Hinojosa 呼叫在建立更完善监管制度前立即暂停数据中心开发。<br>
+· <strong>安全与供应链侧的反向动作</strong>：字节将大面积限制员工使用 Claude、Codex 等外部工具，并封禁 L4 级代码仓库与飞书文档的外部 AI 访问；华为云上线不足半年即停售 openPangu-2.0-Flash 与 Pro，30 日下线；游族网络拟 42 亿元采购 GPU 跨界 AI 算力。</div>
+<div class="field"><span class="field-label">落地场景：</span><br>
+<span class="opp">这是今日中文 AI 圈最值得记的一条反向信号：模型侧密集上新，资本侧开始选择性投资。</span><br>
+对你最实用的提醒（很容易被忽略）：<strong>字节封禁 L4 代码仓库与飞书文档的外部 AI 访问，说明「企业代码/文档不能出压」已经从名论进入事实。</strong>如果你用 AI 处理客户诉求、产品文案与货车信息，先把「哪些数据绝不能出压」列出来，并把其口径写进你的 skill 与审核清单。你的竞品报告与飞书文档就属于这类高敏感数据。<br>
+另外，微软退出新云项目这一动作对你是好事情：<b>你若用云服计算力，供应商的运营稳定性已经是现实风险</b>，多依赖单一供应商的方案需要重新算账。</div>
+</div>
 
 <h3>💰 【AI 套利 / 变现线索】</h3>
 
@@ -585,17 +734,43 @@ Forrester 报告预测：<strong>金融服务业将在 2027 年从「数字银�
 </div>
 
 
+<div class="card">
+<div class="item-title purple"><span class="num">14</span>词条：「可逆性分级」与 Agent 权限三字法（r / w / x）</div>
+<div class="field"><span class="field-label">一句话大白话：</span><br>
+就是给 AI 的每个动作先标一个「字母」，像给文件加权限一样：<b>r = 只读</b>（查贵、查数据），<b>w = 可撤回的写</b>（生成图片、写草稿，能自动回滚），<b>x = 不可撤回的事</b>（付款、删除、<strong>发布</strong>）必须等你点头。大白话：今天的 barebox 把「为什么不能把电脑交给 AI」这个问题，从「批准到死」变成了「哪些动作可以自动、哪些动作永远需要我」。</div>
+</div>
+
+<div class="card">
+<div class="item-title purple"><span class="num">15</span>词条：新云（Neocloud）与「小鱼淘汰」</div>
+<div class="field"><span class="field-label">一句话大白话：</span><br>
+就是为 AI 专门建的「云厂商」——不做公众业务，只卖算力和机器。今日两条硬数据：微软已退出其中若干项目（信用承诺最高达 438 亿美元）；Gartner 估计到 2030 年末 80% 的新云服务商可能被整合或关闭。大白话：你租的其实例服务商冒的是自己的钱和数据安全，不是对方的。</div>
+</div>
+
+<div class="card">
+<div class="item-title purple"><span class="num">16</span>词条：Hypership Day（Product Hunt 特殊日）</div>
+<div class="field"><span class="field-label">一句话大白话：</span><br>
+就是 Product Hunt 上的「同一个产品全天反复上线」日。上一次全天有超过 100 个请求被作者亲自实现并上线，发出超过 8000 分的交易热度。大白话：普通日开一个产品是一次打磨，Hypership Day 是一天打一百次。</div>
+</div>
+
+<div class="card">
+<div class="item-title purple"><span class="num">17</span>词条：《智能体发展自律公约》与「最终控制权」</div>
+<div class="field"><span class="field-label">一句话大白话：</span><br>
+就是国内 20 家大厂商公司联合签的「智能体不得滥用算法压稽、不得做黑灰产」的行业自律约束，其中最重要的是「用户必须拥有对重要事项的最终控制权」。大白话：今天谈的「让 AI 替你回客户」「让 AI 替你发布」，以及公约明确要求你保留那一下。</div>
+</div>
+
 <div class="summary-box ai-sum">
-<div class="field-label" style="color:var(--accent3);font-size:15px">🚀 专栏二总结：今日三条判断</div>
+<div class="field-label" style="color:var(--accent3);font-size:15px">🚀 专栏二总结：今日四条判断</div>
 <p style="margin-top:8px"><strong>判断一：Agent 之战的上半场结束，下半场是「记忆与运行时」的归属权之争。</strong>Google 把 runtime 捐给 CNCF（1.0）、Meta 买下 Conductor 却两周关停其云、Perplexity 把 always-on Agent 定价 200 美元/月、Kimi 与 DeepSeek 各自托管 Harness —— 一周之内，四个玩家用四种方式回答了同一个问题：<strong>谁控制 Agent 的运行时、工作区与记忆。</strong>对我们的直接含义是：<strong>选平台不如选「状态可导出」的架构</strong>。</p>
 <p style="margin-top:10px"><strong>判断二：成本坍塌与能力跃迁同时发生，中间那段「工程化套利」就是这 6-12 个月的窗口。</strong>一边是 GPT-6 Cyber 在 ExploitGym 上 +51%、Images 2.6 提速 50%、ERNIE 5.5 Flash Base 开源 280B/激活 14B；另一边是 floci 免费、Scrapling 免费、7 个 skills 仓库免费、Spring 与 PH 上一堆 AGPL 自托管产品。<strong>结论：不要拼模型能力（拼不过），要拼「用最便宜的开源底座 + 最高效的 skill 封装 + 最快的内容迭代」这套组合拳。</strong></p>
 <p style="margin-top:10px"><strong>判断三：变现的真问题从来不是「AI 能不能做」，而是「你手上有没有别人没有的东西」。</strong>今天两组数据的对照最能说明问题：一边是 Tech Automation Insider 用全套 AI 工具 30-40 小时换 94 美元（约 3 美元/小时）；另一边是持有官方一手信源、能做「新闻联播 × AI 视频/音频早报」这套复合产线的人，单条 27 万播放、单日广告分成 327 元、私域单 180-600 元。<strong>AI 把执行成本压到了接近零，于是稀缺性整体转移到了「选题与信源」上。</strong>这就是为什么你手上有日推项目这件事本身，比会不会写提示词重要得多。</p>
+<p style="margin-top:10px"><strong>判断四：模型侧密集上新，资本侧已经开始「挑着投」。</strong>今日最值得记的一对反向信号：同一天里，蚄万发布 560B 的 Ling-3.2-flash、TokenRhythm 用 RSI 自改进做到 1250 亿参数、Ricursive 拿出 3200 万美元研发成本的 Ripple-65B、百度发布 ApolloWorld；同一天里，微软退出新云项目、字节封禁员工用 Claude/Codex、华为云停售 openPangu，国内 20 家单位联合发布《智能体发展自律公约」。<strong>结论：能做的东西还在快速变多，但愿意为未来充钱的人在变少。</strong>这对个人的意味是很具体的：第一，选模型的时候把「测试成本」与「规模」并列，而不是只比跑分（Ricursive 的 3200 万美元就是最真实的估算样本）；第二，<strong>把「哪些数据不能出压」写成一张表，并把发布类动作列为必须人工确认的 x 级操作</strong>（barebox 的 r/w/x 分级）；第三，在「模型富装化」的同时，第一时间拿到的是<strong>独立的记忆层与可导出的状态</strong>（Living Brain、beacon.sh、Kimi/DeepSeek Harness）——选平台不如选架构。</p>
 <div style="margin-top:14px;padding:14px;background:var(--bg2);border-radius:8px;border:1px solid var(--border)">
 <p style="font-weight:600;color:var(--accent2)">🎯 明日三个可立即执行的动作</p>
 <ul style="margin-top:8px">
 <li><strong>装 gstack，把小红书生鲜项目改成「虚拟公司」流程</strong>：CEO 角色定选题 → Designer 角色出封面模板 → QA 角色审图打回 → Release Manager 出发布清单。一个人的产能上限由此抬高一个量级。</li>
 <li><strong>用 Images 2.6（Flare 档 + Reference Image）做一次角色一致性测试</strong>：固定一个 IP 形象批量出 10 张笔记图 + 3 张 GIF，测出「同一主角不同场景」的稳定性，作为是否扩大产能的分界线。</li>
 <li><strong>把「核数据」写成一条 skill</strong>：所有对外产出的数字强制回原始信源核对 + 人工改写不低于 30%。今天广总局定调「规范 AI 剧」、信通院启动「迎合谄媚」测试，两个信号指向同一个结论：<strong>内容质量与合规即将成为分水岭</strong>。</li>
+<li><strong>把「哪些数据绝不能出压」列成一张表，并把「发布」定为人工确认动作</strong>：今天字节已封禁 L4 级代码仓库与飞书文档的外部 AI 访问，《智能体发展自律公约》也要求保留「最终控制权」——先建立这张表，再让 Agent 按 r / w / x 分级执行，才不会在关键动作上出错。</li>
 </ul>
 </div>
 </div>
@@ -603,7 +778,7 @@ Forrester 报告预测：<strong>金融服务业将在 2027 年从「数字银�
 
 <div class="footer">
 <p><strong>日推情报双专栏日报 · 2026-11-06（星期五）</strong></p>
-<p style="margin-top:6px">专栏一信源：央视网 / 央视新闻 / 腾讯新闻《新闻联播》速览（2026.11.5）及 11 月 4 日文字稿镜像　|　专栏二信源：GitHub Trending、Product Hunt、noid.one 跨平台趋势榜、X 平台、36氪、量子位、AIbase、爱范儿、每经科技早参</p>
+<p style="margin-top:6px">专栏一信源：央视网 / 央视新闻 / 腾讯新闻《新闻联播》速览（2026.11.5）及 11 月 4 日文字稿镜像　|　专栏二信源：GitHub Trending 实时榜、Product Hunt 日榜/周榜（Hunted.Space 归档）、X 平台、36克、量子位、AIbase、爱范儿、每经科技早参、帖纹见问、财讯/科创板日报、企业媒体 AI 日报、Claude Updates</p>
 <p style="margin-top:6px">所有数据均标注原始出处与口径；自报数据已单独标注「未经独立审计」。本报告由 WorkBuddy 自动化生成，仅供信息参考，不构成投资建议。</p>
 </div>
 
