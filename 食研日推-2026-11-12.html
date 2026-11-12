@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 · 2026-11-12（星期四）</title>
+<style>
+  :root {
+    --bg: #fdf6ed;
+    --bg-card: #ffffff;
+    --bg-soft: #fbeed7;
+    --primary: #c0392b;
+    --gold: #d49a3f;
+    --green: #4a7c59;
+    --brown: #5a3e2b;
+    --text: #2c2c2c;
+    --text-soft: #6b6b6b;
+    --border: #e8d5b7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.78;
+    padding: 24px;
+    max-width: 940px;
+    margin: 0 auto;
+  }
+  .header {
+    background: linear-gradient(135deg, var(--primary), var(--gold));
+    color: #fff;
+    padding: 30px 28px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 20px rgba(192,57,43,0.15);
+  }
+  .header h1 { font-size: 27px; letter-spacing: 1px; margin-bottom: 6px; }
+  .header .sub { font-size: 13px; opacity: 0.94; display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+  .header .sub span::before { content: "· "; opacity: 0.6; }
+  .card {
+    background: var(--bg-card);
+    border-left: 4px solid var(--primary);
+    padding: 18px 22px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(90,62,43,0.05);
+  }
+  .card.gold { border-left-color: var(--gold); }
+  .card.green { border-left-color: var(--green); }
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-title.gold { color: #a9761f; }
+  .card-title.green { color: var(--green); }
+  .item { padding: 11px 0; border-bottom: 1px dashed var(--border); }
+  .item:last-child { border-bottom: none; }
+  .item-title { font-weight: 700; color: var(--brown); font-size: 15px; margin-bottom: 5px; }
+  .item-desc { font-size: 14px; color: var(--text); margin-bottom: 5px; }
+  .item-relate {
+    font-size: 13px;
+    color: var(--primary);
+    background: var(--bg-soft);
+    padding: 5px 12px;
+    border-radius: 4px;
+    display: block;
+    margin-top: 5px;
+    border-left: 2px solid var(--gold);
+  }
+  .divider { height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 22px 0; }
+  .callout {
+    background: linear-gradient(135deg, #fff8eb, #ffeed5);
+    border: 1px solid var(--gold);
+    padding: 14px 18px;
+    border-radius: 6px;
+    margin: 12px 0;
+    font-size: 14px;
+    color: var(--brown);
+  }
+  .callout b { color: var(--primary); }
+  .signal { display: inline-block; font-size: 12px; padding: 2px 9px; border-radius: 10px; font-weight: 700; margin-left: 6px; }
+  .signal-up { background: #fde7e7; color: #c0392b; }
+  .signal-mid { background: #fff4d6; color: #8a6a1f; }
+  .signal-low { background: #e3f1e7; color: #4a7c59; }
+  .footer { text-align: center; font-size: 12px; color: var(--text-soft); padding: 18px 0; border-top: 1px dashed var(--border); margin-top: 26px; }
+  .newprod {
+    background: linear-gradient(135deg, #fff9f2, #fff2e0);
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+  }
+  .newprod .np-head { font-weight: 800; color: var(--primary); font-size: 15px; margin-bottom: 7px; line-height: 1.55; }
+  .newprod .np-meta { font-size: 12.5px; color: var(--text-soft); background: #fff; border-radius: 4px; padding: 6px 10px; margin-bottom: 8px; border-left: 3px solid var(--gold); }
+  .newprod .np-body { font-size: 13.5px; line-height: 1.72; }
+  .newprod .np-relate { font-size: 13px; color: var(--green); background: #eaf4ec; padding: 7px 11px; border-radius: 4px; margin-top: 8px; border-left: 3px solid var(--green); }
+  .tl-item { padding: 11px 0 11px 14px; border-left: 3px solid var(--gold); margin-bottom: 10px; font-size: 13.5px; }
+  .tl-item b { color: var(--primary); }
+  .up { color: #c0392b; font-weight: 700; }
+  .down { color: #4a7c59; font-weight: 700; }
+  .flat { color: #8a6a1f; font-weight: 700; }
+  .warn { background: #fde7e7; border-left: 3px solid var(--primary); padding: 8px 12px; border-radius: 0 5px 5px 0; margin-top: 7px; font-size: 13px; color: #8b2b20; }
+  .minitable { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px; }
+  .minitable th { background: var(--bg-soft); color: var(--brown); text-align: left; padding: 7px 9px; border: 1px solid var(--border); font-weight: 700; }
+  .minitable td { padding: 7px 9px; border: 1px solid var(--border); vertical-align: top; color: var(--text); }
+  .minitable td:first-child { font-weight: 700; color: var(--primary); white-space: nowrap; }
+  .quicklist { font-size: 13.5px; line-height: 1.85; }
+  .quicklist li { margin-bottom: 5px; }
+  .anchor { color: var(--brown); font-weight: 700; }
+  .hn { color: var(--primary); font-weight: 700; }
+  .kpi { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 4px; }
+  .kpi div { flex: 1 1 150px; background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 9px 12px; font-size: 13px; }
+  .kpi div b { display: block; color: var(--primary); font-size: 17px; margin-bottom: 2px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>食研日推 · 2026-11-12（星期四）</h1>
+  <div class="sub">
+    <span>立冬第6天</span><span>小雪倒计时10天</span><span>冬至倒计时39天</span><span>标签改版倒计时18天</span><span>FHC今天最后一天</span><span>服务对象：下厨房食品品牌产品经理</span>
+  </div>
+</div>
+
+<div class="callout">
+  <b>今日一句话：</b>抖音把「新品种」跑成了可复制路径（瑞雪苹果 <b>+165%</b>、秦脆苹果 <b>+200%</b>、泰紫薯抖音店日均20万），而渠道把「一顿饭」拆成了主料＋1支料汁＋1个时间数字（盒马贻贝14.9元、5分钟出锅）。<b>「可验证的确定性」正在同时取代「长保质期」和「好食材叙事」，成为货架上真正稀缺的东西。</b>
+</div>
+
+<div class="divider"></div>
+
+<div class="card">
+  <div class="card-title">🔥 一、今日行业要闻</div>
+
+  <div class="item">
+    <div class="item-title">抖音电商发布「双11寻鲜地图」，新品种水果集体爆发</div>
+    <div class="item-desc">11月11日发布，取样10月15-25日食品生鲜数据。成交额同比增长 TOP10 里出现两个"非传统"品种：<b>瑞雪苹果 +165%</b>（西北农林科技大学赵政阳团队选育）、<b>秦脆苹果 +200%</b>（马锋旺团队选育）。泰紫薯一号（山东泰安农科院育种、云南楚雄元谋种植发货）抖音店日均销售额约20万元，泰紫薯占一半。福建平和琯溪蜜柚进入外省购买榜前十。</div>
+    <div class="item-relate"><b>与我何干：</b>我们主渠道是抖音达播，而抖音已经替我们验证了"新品种×主播试吃展示糖度"这条路径跑得通。瑞雪当年的阻力是"黄绿皮被误认青苹果"，解决方式就是主播当场切、当场测糖度——这套动作脚本化后就是我们的产地直播标准动作，不是临时发挥。<b>新品种不需要教育市场，需要的是一次"当场证明"。</b></div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">格力高在中国首发三个巧克力新品牌，技术当溢价卖</div>
+    <div class="item-desc">Foodaily 11月12日探访格力高日本总部：<b>芯冻挚巧</b>（-40℃棒状冻干内芯＋厚涂巧克力涂层，40%/60%可可双档，37g/支，单支仅29kcal、0代可可脂、0反式脂肪酸，首日成交20万+元、单日最高34万）；<b>巧想嚼</b>（≥60%黑巧壳包扁桃仁、碱水脆、香米脆、海盐，两周成交100万+元）；<b>醇芯巧</b>（扁桃仁浓醇巧克力≥45%可可＋巧克力风味酱注心／扁桃仁抹茶，两周100万+元）。格力高2026年前三季度中国营收21.35亿元、同比+31.5%，营业利润4.13亿元、同比+61.3%。</div>
+    <div class="item-relate"><b>与我何干：</b>外资百年品牌把溢价锚点从"减糖"换成了"工艺＋数字"——一栏 29kcal、一栏 0代可可脂，冻干内芯是能不能在抖音讲三秒的核心画面。<b>我们的坚果、豆类、果干完全可以做"冻干脆芯＋外层"结构件，配方表写得干净（一共五六样）还能卖高价</b>，比"低糖"这种无法被消费者验证的词有用得多。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">盼盼食品30周年发布「大健康新鲜零食战略」，5G冻转鲜产线落子</div>
+    <div class="item-desc">11月12日厦门战略新品发布会。战略新品含<b>三文鱼脆片、蒸汽虾片、极简配方玉米粒、高纤苦荞片</b>，坚持极简配方、无多余添加；同时用<b>5G冻转鲜智能产线</b>突破烘焙"现烤现卖、地域受限"瓶颈，实现门店级新鲜口感工业化、标准化、全国化交付。品牌方明确点名当下消费主趋势为"干净配料、真实原料、新鲜短保、轻负营养、场景细分"。</div>
+    <div class="item-relate"><b>与我何干：</b>"洁净配料"已从我们内部的自我要求变成头部零食品牌的对外战略语言，说明这条赛道不再是无人区——<b>我们不能只靠配料表干净这一个优势，要给它配上"工艺化交付"（冻转鲜/锁鲜）才是完整差异</b>。极简配方玉米粒这种"最普通的主料＋最干净的配方"，恰恰是抖音上还没有刷屏的形态。</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card gold">
+  <div class="card-title gold">🎯 二、爆品雷达·趋势苗头</div>
+
+  <div class="item">
+    <div class="item-title">社区超市从"卖食材"转向"卖一顿饭" <span class="signal signal-mid">🟡 起势</span></div>
+    <div class="item-desc">盒马旗下平价社区超市<b>超盒算NB</b>（门店600-800㎡、约1500 SKU、自有品牌占比近60%）上新<b>一米八鲜活贻贝</b>：14.9元/盒，随盒赠冬阴功料汁，冷水下锅水开5分钟成锅。选品逻辑是嵊泗深远海中国原生种厚壳贻贝、养足三年、多轮清洗净养吐沙充氧锁鲜，开盒冲洗即下锅；该产品连获ITI"顶级美味奖章"三星，盒马鲜生体系累计销售超1000吨。</div>
+    <div class="item-relate"><b>机会判断：</b>值不值得跟——值得，但跟的不是贻贝，是<b>"主料＋1支复合料汁＋1个时间数字"这个三件套结构</b>。近场业态的壁垒是把一顿饭想清楚，不是把菜场搬进来。抖音端同样成立：观众要的不是"干净贻贝"，是"你告诉我五分钟怎么吃"。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">「黏糊饭」成秋冬最强口感词，B端已跑通 <span class="signal signal-up">🔴 已爆</span></div>
+    <div class="item-desc">海底捞以云贵风味为灵感，在12城上线<b>油焖土豆泥系列</b>外卖新品4款（鸡肉拌饭、牛肉拌饭、鸡肉锅、番茄牛肉锅），上线10天总销量破10万单，其中<b>油焖土豆泥鸡肉拌饭单品超4万单</b>；北京、上海、深圳居前三，北京高校与写字楼商圈最集中，评价高频词为"浓郁/下饭/满足"。消费端自发把黏糊麻辣烫、土豆泥火鸡面、土薯泥拌饭归成"黏糊美食"。</div>
+    <div class="item-relate"><b>机会判断：</b>这个赛道已经很挤，抖音端"预制土豆泥包"更是一搜一大把。<b>真正的缺口不是土豆泥，是"干净版浓稠主食"</b>——配料≤6项、钠含量公示克数、鲜土豆占比可标、非植脂末；同时把"黏糊"翻译成消费者能感知的<b>流变指标</b>（挂勺/拉丝/拌开挂壁）而不是形容词。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">巧克力进入"质变"阶段，工艺与结构件替代减糖 <span class="signal signal-mid">🟡 起势</span></div>
+    <div class="item-desc">魔镜洞察《2026年一季度消费新潜力白皮书》：巧克力以近50%增速领跑休闲食品；OC&amp;C《2026巧克力行业趋势报告》：低卡、低糖、低脂巧克力已占整体市场约20%份额且增速显著；Innova数据：1/3消费者偏好新颖独特口味。格力高三款新品同期在抖音/天猫跑通，印证"结构＋工艺"可溢价。</div>
+    <div class="item-relate"><b>机会判断：</b>抖音上"低卡巧克力"基本在卷代可可脂和甜度，真正没被占位的是<b>"主料可见的巧克力"</b>——整颗咖啡豆做内芯（盒马已做）、冻干脆芯（格力高）、坚果碎结构件。一口一颗、可数可拍、成分可读，这条线在坚果与豆类赛道完全可复制。</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card green">
+  <div class="card-title green">🌿 三、时令风向·品类机会</div>
+
+  <div class="item">
+    <div class="item-title">📅 当前时令定位</div>
+    <div class="item-desc">立冬第6天，膏物蹄肉类"冬补"消费正式启动（叮咚买菜的立冬羊肉动作已被平台数据验证：<b>鲜羊肉已占平台羊肉SKU约45%</b>，草地羊系列复购率达普通冷冻羊肉的2倍）；小雪还有10天，是秋冬暖食内容的第一波收口点；冬至39天，暖锅备货窗口正式打开。<b>今年冬天最硬的一条线是"绵密、软糯、浓郁"的口感迁移</b>（海底捞10万单、鲍师傅板栗饼返场、蜜薯麻薯上新同时指向）。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">🎯 即将热卖品类（3个）</div>
+    <div class="item-desc">
+      <b>① 一人份绵密浓汤／暖锅料包</b> — 气温降下来，"热、软、稠"是最省决策的口感；海底捞把土豆泥做成10万单证明消费者愿意为绵密付费；便利店端7-11冬季微波即食汤品月销超百万碗、饗喫鍋份量翻倍、1-2人小家庭占比破6成。<br>
+      <b>② 柑橘与柚类原料（现在抄原料，不是抄终端）</b> — 蜜柚批发均价已跌到2.9元/kg（最低2.8），零售端打到1-2元/斤，"10块钱抱走两个"；而西瓜/蜜桔/柿子同步走低。<b>原料端的价格红利正在打开，但红心柚与精品果仍存在3.6-10元/kg的规格价差</b>——分级才是利润。<br>
+      <b>③ 柑橘/柚的"零废弃"延伸品</b> — 琯溪蜜柚进抖音双11外省购买榜前十，柚皮、茶饮、柚香调味料正在成为增量；且柚子"耐放、常温一两周不坏"的属性适合做礼盒与囤货。
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">🚨 开品窗口提醒</div>
+    <div class="item-desc">
+      <b>阿克苏冰糖心采收已结束</b> — 红旗坡片区晚熟红富士采收到11月10日左右，<b>今天（11/12）风味窗口正式关闭</b>；产地一级果1.86元/斤、嘉兴批发6.13元/斤、精品5斤装39-59元。没提前锁货的今年只能做冻干/果干延伸。<br>
+      <b>车厘子现在不是囤货的时候</b> — 空运首茬同比降约40%（JJ级250g 29.9元），<b>海运大货11月中下旬到港、供应高峰在12月中旬至1月中下旬，正好撞春节备货</b>；现在谈的是12月柜期和分级档位，不是抢现货。<br>
+      <b>柑橘价格红利不会等</b> — 蜜柚还在跌，但跌到底就走量不走价；要做的柚子产品必须在12月上旬前定版。
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">🏔️ 产地直发机会（3个）</div>
+    <div class="item-desc">
+      <b>福建漳州平和琯溪蜜柚</b> — 主力货源整车冷链直达批发市场，是本轮1-2元/斤的源头；抖音双11已进入外省购买榜前十。<b>机会点：用分级吃规格价差（白心走量／红心3.6元起／精品10元封顶），并把"柚皮不废弃"做成产品线。</b><br>
+      <b>山东泰紫薯一号</b>（育种在山东泰安农科院，种植与发货在云南楚雄元谋）— <b>订单种植模式</b>：公司供苗＋提供技术指导＋按合同收购，元谋农户杜西洋按订单种植，采收季每天雇20多名村民捡薯装箱；抖音店日均20万、泰紫薯占一半。<b>这是"新品种＋订单农业＋抖音专营店"三者闭环的现成模板，值得照抄组织形式。</b><br>
+      <b>宁夏盐池滩羊／江苏海门白山羊</b> — 叮咚买菜的"冷鲜海门白山羊羊肉块"用地理标志品种＋带皮带骨传统形态＋非遗红烧料汁，家庭炖煮开箱即用；盐池滩羊靠产地直采＋冷链供应链上江浙沪餐桌。<b>羊肉是今年唯一"真涨"的肉类（羊肉+8.8%、牛肉+11.1%，同期猪肉-15.3%），痛点是"不会炖"，所以料汁必须随货走。</b>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card">
+  <div class="card-title">💡 四、跨界灵感·创新动作</div>
+
+  <div class="item">
+    <div class="item-title">悠哈「ENERGY ARTS」卡片型饮料：把液体装进一张卡</div>
+    <div class="item-desc">7月上市，每张卡仅12ml液体，是一张对折后沿折痕裂开的密封薄膜＋半硬底片；每12ml含精氨酸1000mg、瓜氨酸1000mg（对比红牛精氨酸120mg/100ml），且不含咖啡因与牛磺酸。11月11日东视节目片段播放量达1170万，入选日经Trendy"2027年爆款产品预测"第5位。</div>
+    <div class="item-relate"><b>迁移可能：</b>它解的是"液体难携带、难计量、难讲配料"三个痛点。<b>我们的对应物是把浓稠、挂勺、倒不出来的液体（浓汤、酱料、果膏、芝麻酱）做成"折一下就出来"的挤压小包</b>——抖音端"折"的瞬间是天然的3秒视觉钩子，且独立小包天然解决配料表可读与计量问题。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">全家 Let's Tea × 山海楼主厨监制「桂圆薏仁飲」「杏仁燕麥飲」</div>
+    <div class="item-desc">11月11日至12月8日限定、59元；桂圆薏仁飲用古法炒糖搭配圆糯米与薏仁慢煮，杏仁燕麥飲选用光中杏原粒现磨搭配饱满燕麦，强调"保留颗粒口感"与"自然甘甜"。同期全家另有熊本拉面名店"火之国文龙"联名浓厚盐豚骨拉面、麻油菇菇拌面、韩式泡菜海陆豆腐丼饭等暖食。</div>
+    <div class="item-relate"><b>迁移可能：</b>便利店给药食同源甜品化的<b>定价锚点是59元两杯量级</b>，配方叙事是"主厨监制＋古法炒糖＋看得见的颗粒"。可迁移的是<b>薏仁/桂圆/黑芝麻/桃胶这类"有颗粒感"的药食同源原料做一人份冲调基底</b>——比"养生水"有食欲，比"甜品"有场景。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">FHC 翡丽百瑞：同一基质切三种物理形态 + 直接做进礼盒</div>
+    <div class="item-desc">意大利百年橄榄油品牌（1867年，光明食品集团2014年收购），此次为 FHC 展会首秀。带来特级初榨橄榄油<b>喷雾新包装，可切换雾状／柱状／滴状三档</b>，适配煎炒喷洒多场景；同时推"油醋"礼盒与"健康糖油"礼盒，并现场用青酱司康做试吃演示——用实际出品证明，而不是讲参数。</div>
+    <div class="item-relate"><b>迁移可能：</b>三个动作可迁移：<b>①同一基质做形态切换（喷雾／滴／浇）而不是做三个产品；②把油/醋做成礼盒组合而不是单品；③用"现场做给你看"替代参数讲解</b>。对应我们：醋/油/酱料都可以做"一基质三形态"，并配一个可在家复刻的用法卡。</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card gold">
+  <div class="card-title gold">🧪 五、脑暴时刻·融合创意</div>
+
+  <div class="item">
+    <div class="item-title">创意一：「折一下就出来」一人份浓汤挤压包</div>
+    <div class="item-desc">
+      <b>一句话：</b>立冬到冬至的40天窗口期内，做一组"可折断挤出"的独立小包浓汤/酱底，主料洁净、料汁可计量、90秒一碗。
+    </div>
+    <div class="item-desc">
+      <b>为什么是现在：</b>三个信号同向——海底捞油焖土豆泥10天10万单证明"绵密浓郁"被接受；悠哈卡片饮料证明折断式包装能上热搜（1170万播放）；全家桂圆薏仁饮证明药食同源甜品化在便利店已被定价。
+    </div>
+    <div class="item-desc">
+      <b>差异化锚点：</b>抖音端"预制土豆泥包"一搜一大把，但它们只卖"软糯"；我们卖"折断瞬间＋配料≤6项＋钠公示克数＋挂勺流变"。相比全家59元的现成饮品，我们卖的是<b>家里90秒复刻版</b>；相比海底捞外卖20-35元，我们卖<b>一次一包、煮完不剩</b>。
+    </div>
+    <div class="item-desc">
+      <b>可行性初判：</b>自立袋/挤压包代工成熟，供应链难度低；口味建议锁定<b>浓稠挂勺型</b>（酸汤、番茄牛骨、菌菇芝麻、芋泥红豆）而非清汤型；渠道上抖音达播适配度最高（视觉钩子强、可做"一包一人份"价格锚点）；难点在挤压膜厚度与内容物黏度匹配，需先做3款小样测流动性。
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">创意二：「8斤柚子出1斤好货」琯溪蜜柚零废弃产地直发礼盒</div>
+    <div class="item-desc">
+      <b>一句话：</b>从福建平和直发一箱琯溪蜜柚，果肉、柚皮蜜饯、柚皮茶/柚香调味料全部用完，每一份都标产地与分级。
+    </div>
+    <div class="item-desc">
+      <b>为什么是现在：</b>蜜柚批发跌至2.9元/kg（最低2.8）、零售1-2元/斤，<b>原料成本红利正在打开</b>；同时琯溪蜜柚已进入抖音双11"外省购买榜前十"，跨省认知已经建立；立冬后"润燥"是现成的消费理由。
+    </div>
+    <div class="item-desc">
+      <b>差异化锚点：</b>抖音上的蜜柚只有两种——低价整箱和高端礼盒（拼果径拼箱）。<b>我们的第三种是"不废弃"：一箱8斤柚＝果肉＋柚皮蜜饯＋柚皮茶包，柚皮部分还带"小果皮完整无农残"说明</b>；相比普通礼盒，我们卖的是"利用率"，相比零食化柚皮，我们保留产地直发的溯源。
+    </div>
+    <div class="item-desc">
+      <b>可行性初判：</b>供应链难度中等偏高——蜜饯加工与农残检测是两道硬门槛（柚皮农残限值严），且糖渍蜜饯属于"添加糖"敏感区；建议做成<b>"柚皮茶/柚香盐"低糖版本 + 蜜饯作为可选加购</b>，把添加糖争议规避掉；抖音达播适配度高，可做"一只柚子的三种去处"三段式内容。
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card">
+  <div class="card-title">🏬 六、展会速递·每周新品雷达</div>
+
+  <div class="newprod">
+    <div class="np-head">🆕 格力高 芯冻挚巧（Chewco）</div>
+    <div class="np-meta">上市时间：2026年10月中旬上市，11月4日单日成交34万元 ｜ 上市时间确认：11月12日 Foodaily 探访格力高日本总部发布 ｜ 价格带：37g/支独立装，抖音单支约5-8元区间（按官方电商渠道成交额折算，未见官方公示零售价）</div>
+    <div class="np-body"><b>产品力拆解：</b>卖点是"先融后脆"的质地反差——棒状冻干内芯（约-40℃超低温速冻）外裹厚涂巧克力涂层，配40%/60%双可可档位；配料端强调0代可可脂、0反式脂肪酸，单支热量29kcal；场景明确切"工作间隙、出行等碎片化场景"，单根独立包装不脏手。百奇同期完成两年半研发的中国焕新（43%可可含量升级、全麦粉饼干棒、含膳食纤维）。</div>
+    <div class="np-relate"><b>启发：</b>冻干不是"健康概念"，是可被镜头拍到的<b>结构件</b>。我们做坚果/豆类/果干时，可以复制"<b>冻干脆芯＋外层</b>"（如冻干草莓芯＋黑巧外层、冻干腰果芯＋椰壳层），配料表控制在五六样、主料占比可标、29kcal式的单件数字印正面。差异化不在减糖，在"能拍出脆响的那一下"。</div>
+  </div>
+
+  <div class="newprod">
+    <div class="np-head">🆕 盒马超盒算NB 一米八鲜活贻贝（赠冬阴功料汁）</div>
+    <div class="np-meta">上市时间：2026年11月11日上架（社区平价业态首铺）｜ 价格带：14.9元/盒首发价 ｜ 规格：单盒装，随盒赠冬阴功料汁</div>
+    <div class="np-body"><b>产品力拆解：</b>卖点是"养足三年的东海贝王"——嵊泗深远海中国原生种厚壳贻贝，人放天养、养足三年，经多轮清洗、净养吐沙、充氧锁鲜，到家保持鲜活，开盒冲洗即可下锅无需额外处理；<b>随盒附赠冬阴功料汁</b>，冷水下锅、水开后煮5分钟即成一锅；该产品连获国际风味评鉴所（ITI）"顶级美味奖章"三星，盒马鲜生体系累计销售超1000吨。渠道逻辑是"渠道更近（社区动线）、价格更轻（14.9元降尝试门槛）、场景更实（附料汁＋5分钟出餐）"。</div>
+    <div class="np-relate"><b>启发：</b>这是"准成品菜"最省力的模板：<b>主料 ＋ 1支复合料汁 ＋ 1个时间数字</b>，三件套同时解决"不会挑、不会养、不会调味、不会做"。可直接迁移到一人份禽肉/鱼排/菌菇/蔬菜组合。对我们尤其重要的一点：<b>料汁随货走是"洁净配料"最难被模仿的一面</b>——它把调味从消费者厨房的不可控，变成我们可标注钠含量与配方的确定物。</div>
+  </div>
+
+  <div class="newprod">
+    <div class="np-head">🆕 海底捞 油焖土豆泥系列（外卖新品，12城）</div>
+    <div class="np-meta">上市时间：2026年11月上旬上线，10天总销量破10万单 ｜ 价格带：外卖单份约20-35元区间 ｜ 规格：4款（油焖土豆泥鸡肉拌饭、牛肉拌饭、油焖土豆泥鸡肉锅、油焖土豆泥番茄牛肉锅）</div>
+    <div class="np-body"><b>产品力拆解：</b>卖点是"黏糊"口感＋云贵风味，核心在绵密土豆泥裹油焖酱汁的挂壁下饭感；鸡肉拌饭单品超4万单，北京、上海、深圳居前三，北京订单集中在高校、写字楼及商住混合商圈；门店做法是提前备好米饭与配菜并增加人手打包出餐。海底捞同步把外卖从火锅外送延伸到下饭火锅菜、拌饭、粉面，并试点"外卖+堂食"一体化模型店。</div>
+    <div class="np-relate"><b>启发：</b>B端已把"绵密浓郁"验证完毕，C端的空白在<b>"洁净版浓稠主食"</b>：抖音端预制土豆泥包的通病是配料表长、含植脂末与增稠剂、钠不透明；我们的打法是①鲜土豆/藕/山药<b>主料占比标到正面</b>（≥55%）②钠公示克数③把"黏糊"翻译成<b>挂勺流变指标</b>而不是形容词。这是"真品类升级"在主食里最容易被消费者当场验证的一次。</div>
+  </div>
+
+  <div class="newprod">
+    <div class="np-head">🆕 佳果源（佳农集团）100%小粉柠复合果汁</div>
+    <div class="np-meta">上市时间：2026年11月10-12日 FHC 第29届上海环球食品展首展亮相（展期新品）｜ 价格带：展台试饮，未见公示零售价 ｜ 规格：NFC非浓缩还原灌装复合果汁系列</div>
+    <div class="np-body"><b>产品力拆解：</b>卖点是"真天然、零添加"与全链条锁鲜——从泰国丹嫩沙多产区的香水椰，到加州斑马柠檬，建立"源头种植、采摘到NFC非浓缩还原灌装"的重资产链路；本次除经典100% NFC椰子水外，<b>100%小粉柠复合果汁等新品亮相</b>，标志品牌从椰子水单一赛道走向全品类天然果汁平台。展位洽谈中"配料表干净"与"多品类组合出货"是渠道反复问询的高频词。</div>
+    <div class="np-relate"><b>启发：</b>两个可迁移点。<b>①"小粉柠"是一次成功的"颜色即品类"命名</b>——把一个农产品用一个色号变成消费者记忆点，我们的果蔬饮/果膏完全可以做"小粉""金黄""琥珀"这类色号命名法，并让天然色由原料本身给出。<b>②重资产链路＝护城河</b>：NFC＋单一产地＋非浓缩还原是可核验的信任状，比"0添加"这种无法验证的话术有用。</div>
+  </div>
+
+  <div class="newprod">
+    <div class="np-head">🆕 7-ELEVEN CITY CAFE「熊津黑蔘元氣美式」</div>
+    <div class="np-meta">上市时间：2026年11月10日正式上市（至11月24日）｜ 价格带：元氣价89元/大杯（原价114元）｜ 规格：热饮大杯限定，门店现制</div>
+    <div class="np-body"><b>产品力拆解：</b>卖点是"好喝不苦澀且能即效补充能量"——首次与韩国熊津跨界，把熊津5X精力黑蔘饮与美式咖啡融合，诉求上班族的寒冬补气；同期 "!+? CAFE RESERVE" 推出"燕麥可可瑪奇朵"与"<b>金盞花膠原蜜香拿鐵</b>"（金盏花萃取＋胶原蛋白＋蜂蜜），11月11日至12月8日优惠价99元。全家同期推出山海楼主厨监制桂圆薏仁飲、杏仁燕麥飲（59元，11/11-12/8）。</div>
+    <div class="np-relate"><b>启发：</b>药食同源已经打进<b>全亚洲最大液体入口</b>，但目前全部是"饮品版"——黑蔘饮、金盏花、胶原蛋白、桂圆薏仁全部做成了液体。<b>我们的对应物是把这类原料做成可食用的固体基底（冻干块/粉/膏/含片），并在话术上只讲原料来源与含量指标，不碰功效声称</b>——合规红线之内仍有巨大空白。另一个可用信息：59元（全家桂圆薏仁饮）与99元（7-11金盏花拿铁）已经把"药食同源暖饮"的家用复刻版价格天花板画出来了。</div>
+  </div>
+
+  <div class="item" style="margin-top:16px">
+    <div class="item-title">📌 本周上新速记（渠道端，品牌+品名）</div>
+    <div class="item-desc quicklist">
+      <ul>
+        <li><b>盒马「人类猫条」酸奶</b>｜已在盒马线上线下上架｜14.9元/组（60g×6条）｜命名即传播。</li>
+        <li><b>盒马 J26 百亿活菌青梅水</b>｜活性菌数≥200亿 CFU｜NFC青梅原汁基底、佐餐定位｜与盒马J26品类号直接绑定，货架辨识度极高。</li>
+        <li><b>小象超市 香柚果粒 / 青提果肉活菌水</b>｜每瓶添加100亿活菌（均瑶健康BB-G90菌株）｜NFC果汁＋真实果粒，走"果粒咀嚼感"路线。</li>
+        <li><b>叮咚买菜 V5 茉莉白葡萄水</b>｜每瓶100亿 CFU｜NFC白葡萄原汁、低糖低卡0脂、<b>低糖低卡0脂</b>——走花香轻饮路线。</li>
+        <li><b>叮咚买菜 冷鲜海门白山羊羊肉块</b>｜地理标志海门山羊｜带皮带骨传统形态＋非遗红烧料汁｜<b>家庭炖煮开箱即用</b>。</li>
+        <li><b>大窑饮品 焕爽苏打汽水</b>｜0糖0脂0卡、真实果汁≥2.5%、CO₂含量≥7.5g/L｜330ml，青柠/白桃双味｜加入维生素C、烟酰胺、维生素B6及益生元。</li>
+        <li><b>盼盼 粉椰水</b>｜饮料新品，11月发布。</li>
+        <li><b>盼盼 三文鱼脆片 / 蒸汽虾片 / 极简配方玉米粒 / 高纤苦荞片</b>｜11月12日30周年战略发布｜极简配方、无多余添加、5G冻转鲜产线全国化交付。</li>
+        <li><b>亨氏英国 圣诞限定蔓越莓风味蛋黄酱</b>｜11月上旬｜节庆场景限定。</li>
+        <li><b>杨掌柜「一大根」系列</b>｜11月上旬｜把"量少"做成规格卖点。</li>
+        <li><b>奥乐齐 晚安酸奶</b>｜11月上旬｜晚间场景。</li>
+        <li><b>盒马 小象超市 智利车厘子 3J 1kg</b>｜新品｜79.9元｜对应海运大货到港后的规格补充。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">🌏 海外速递</div>
+    <div class="item-desc quicklist">
+      <ul>
+        <li><b>悠哈 ENERGY ARTS 卡片型能量饮料</b>｜2026年7月上市｜12ml/张｜精氨酸1000mg＋瓜氨酸1000mg per 12ml｜日经Trendy"2027爆款预测"第5位。</li>
+        <li><b>台湾7-ELEVEN 黑糖珍珠蕎麥奶茶</b>｜11月10日起｜荞麦系列第2杯半价（11/10-11/24）｜浓郁系＋季节限定双保险。</li>
+        <li><b>台湾全家 麻油菇菇拌面 / 韓式泡菜海陸豆腐丼飯</b>｜11月11日起｜麻油素食＋韩式微辣双线并行。</li>
+        <li><b>中国（乳山）海博会：乳山牡蛎</b>｜11月5-7日｜24小时无菌海水净化、洁净度95%以上＋HPP分离闭壳肌＋零下近200℃液氮速冻，解冻"与鲜活几乎没差别"；另有酶解生蚝＋全链路溯源码。</li>
+        <li><b>农心 辛拉面 ROSE面 / 泡菜辣炒面 / 辛拉面辣番茄牛肉面</b>｜10月底起｜ROSE面是番茄＋奶油意餐 Rosé 酱汁（名字有欺骗性）、辣炒面辣度接近火鸡面但带辣白菜发酵咸香、与主厨黎子安联名款。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">🎪 展会预告</div>
+    <div class="item-desc quicklist">
+      <ul>
+        <li><b>🎪 FHC第29届上海环球食品展</b>｜11月10-12日·上海新国际博览中心·<b>今天最后一天</b>｜20万㎡、3500+展商、50+国际展团、18万专业买家、15大板块（含药食同源、火锅食材及用品、预制品及中央厨房）｜<b>看点</b>：盒马、叮咚买菜、得物、大润发、麦德龙、全家、罗森、百果园等渠道悉数在场；金苹果奖五周年＋"金苹果五周年荣耀殿堂"展区（140+爆款评选）＝一份经评审的供应商名录；<b>论坛</b>："向新而生"2026休闲食品健康化创新论坛（11/11）；同期发布《中式复合调味料感官评价通则》团标T/CFA 2026，首次明确"鲜醇度"｜<b>与我何干</b>：渠道采购带着明年清单来逛，今天能一次性见到主流商超的选品偏好与展商的产品力，两头对齐效率最高。</li>
+        <li><b>🎪 北京素食产业展</b>｜11月13-16日·北京｜看点：植物基蛋白与代餐｜与我何干：洁净配料的替代蛋白线，值得看"配料表怎么写"。</li>
+        <li><b>🎪 Interpack China 上海国际食品加工与包装机械展</b>｜11月16-18日·上海｜看点：锁鲜/速冻/分装产线设备｜<b>与我何干</b>：委托生产新规11/30标签改版死线前最后一场设备选型窗口。</li>
+        <li><b>🎪 海峡两岸茶业博览会</b>｜11月16日·武夷山｜看点：原产地茶叶与加工工艺。</li>
+        <li><b>🎪 宁波食品博览会</b>｜11月20日｜看点：长三角渠道与水产。</li>
+        <li><b>🎪 温州国际食品博览会</b>｜11月26日｜看点：区域食品与经销渠道。</li>
+        <li><b>🎪 第三届新鲜零食行业大会</b>｜11月26-28日｜看点：短保分级标准制定者公开亮相｜<b>与我何干</b>：短保赛道"谁定标准谁受益"，今年该露面。</li>
+        <li><b>🎪 上海自有品牌产品展 PLF/FMR</b>｜12月3-5日·上海新国际博览中心｜看点：自有品牌供应链｜<b>与我何干</b>：可对接盒马/叮咚自有品牌代工，直接解决"给渠道做专供"的路径。</li>
+        <li><b>🎪 亚洲（北京）国际食品博览会 AIFE</b>｜12月11-13日·北京｜看点：年末食品大展与年度新品收口。</li>
+        <li><b>🎪 2027上海FIC 食品配料展</b>｜3月17-19日｜看点：2027年配料与标签方案定版。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card green">
+  <div class="card-title green">🎯 差异化锚点对照（我们 vs 在架竞品）</div>
+  <table class="minitable">
+    <tr><th>我们的方向</th><th>竞品在做什么</th><th>我们差在哪</th></tr>
+    <tr><td>折断式浓汤挤压包</td><td>抖音预制土豆泥包（配料长、钠不透明）</td><td>折断视觉钩子＋配料≤6项＋钠公示克数＋挂勺流变指标</td></tr>
+    <tr><td>洁净版浓稠主食</td><td>海底捞油焖土豆泥（20-35元外卖、黏糊但不可复制到家庭）</td><td>B端验证过的口感＋家庭复刻版＋主料占比印正面</td></tr>
+    <tr><td>主料＋料汁＋时间数字三件套</td><td>盒马超盒算NB贻贝（14.9元，社区场景）</td><td>同结构不同品类：禽肉/菌菇/蔬菜，且我们做"洁净版料汁"</td></tr>
+    <tr><td>冻干脆芯结构件</td><td>格力高芯冻挚巧（29kcal、0代可可脂）</td><td>同工艺路线，落到坚果/豆类/果干赛道（尚无强占位）</td></tr>
+    <tr><td>蜜柚零废弃产地直发</td><td>抖音蜜柚低价整箱 / 高端果径礼盒（两极）</td><td>第三种：一箱8斤出三种去处＋利用率叙事＋溯源</td></tr>
+    <tr><td>药食同源固体基底</td><td>7-11黑蔘美式、全家桂圆薏仁饮（全是液体）</td><td>固体形态（冻干块/膏/含片）＋只讲原料与含量指标</td></tr>
+    <tr><td>色号命名法（小粉/金黄/琥珀）</td><td>佳果源"小粉柠"、盒马"人类猫条"</td><td>命名可解释："为什么是这个颜色"＝原料与工艺</td></tr>
+    <tr><td>新品种产地直播</td><td>瑞雪苹果+165%、秦脆苹果+200%（抖音已验证）</td><td>从"验证路径"到"我们的品类"，用同一套主播测糖度脚本</td></tr>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<div class="card">
+  <div class="card-title">⚠️ 窗口提醒（今天/明天必须处理）</div>
+  <div class="item-desc">
+    <ul class="quicklist">
+      <li><b>委托生产新规标签改版 11月30日死线</b>——还剩18天，全线委托生产SKU台账＋"委托方/受托方/许可证编号"版面排期今天要定。</li>
+      <li><b>GB7718-2025 还有约4个月生效</b>——数字标签与正面版面今年内定版，不要拖到明年。</li>
+      <li><b>阿克苏冰糖心采收11月10日已结束</b>——今天必须确认货权状态；没锁到的只能走冻干/果干延伸。</li>
+      <li><b>车厘子海运大货11月中下旬到港</b>——现在该谈的是12月柜期与分级档位，不是抢空运现货。</li>
+      <li><b>蜜柚价格仍在下行</b>——要做柚子产品，12月上旬前必须定版。</li>
+      <li><b>FHC今天最后一天</b>——重点不是逛展，是抓金苹果奖获奖名录＋E4地理标志展的产地供应商清单。</li>
+      <li><b>小雪还有10天</b>——暖食短保内容今晚就发，过了就开始贬值。</li>
+      <li><b>冬至39天</b>——一人份暖锅/汤圆类备货与冷链产能要提前谈。</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">🧭 明日可开发线索</div>
+  <div class="item-desc quicklist">
+    <ul>
+      <li>挤压自立袋供应商询价（浓汤黏度区间、折痕裂口结构、单包 80-150ml）＋3款小样流动性测试</li>
+      <li>瑞雪/秦脆/泰紫薯三类新品种的产地直采合同条款草拟（订单种植＋按合同收购＋糖度分级判据＋抖音专场排期）</li>
+      <li>琯溪蜜柚柚皮农残检测机构对接＋低糖柚皮茶/柚香盐配方可行性（规避添加糖争议）</li>
+      <li>Interpack China 设备选型：分装线＋锁鲜隧道＋可打码批次卡印刷方案询价（11/30标签改版窗口期内）</li>
+      <li>海底捞油焖土豆泥配料表与钠含量反查（竞品拆解，为洁净版定标）</li>
+      <li>FHC今天三问：分级判据问谁、检测机构名单要一份、锁鲜工艺参数与冷链半径</li>
+      <li>盒马超盒算NB"料汁随行"结构能否反向定制（问盒马采销合作条件）</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">📌 今日三大信号</div>
+  <div class="item-desc">
+    <ul class="quicklist">
+      <li><b>① 抖音把"新品种"跑成了可复制路径——瑞雪+165%、秦脆+200%、泰紫薯日均20万。</b>新品种的障碍从来不是消费者不懂，而是没人当场证明：瑞雪当年怕被当成青苹果，解决办法就是主播当场切、当场测糖度。这套动作是脚本化的，不是灵感的。<b>对我们：产地直播必须配"一次当场证明"，否则新品种就是一次性的尝鲜流量。</b></li>
+      <li><b>② 货架上真正稀缺的是"确定性"，而确定性的形态是三件套：主料＋1支料汁＋1个时间数字。</b>盒马贻贝14.9元附冬阴功料汁5分钟出锅；海底捞10万单教用户接受"黏糊"；格力高把-40℃冻干＋29kcal印上正面。<b>三者共同点是：都把不确定性从消费者手里拿走，把承诺变成可核对的数字。</b>我们做配料洁净、产地直发、规格标准，如果最后只交付"故事"，在这个货架上会输。</li>
+      <li><b>③ 药食同源已经走到液体尽头，固体形态是空白。</b>黑蔘做成美式、金盏花做成拿铁、桂圆薏仁做成便利店热饮、胶原蛋白做成拿铁——全部是液体，且都在讲"补气""胶原"这类功效话术。<b>合规红线之内、且不碰功效声称的做法是：把这类原料做成固体基底，只讲产地、工艺与含量指标。</b>这是"真品类升级"在养生线里唯一干净的位置。</li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer">
+  食研日推 · 2026-11-12 ｜ 信息截至 2026-11-12 09:30 GMT+8 ｜ 板块六为每日核心（每周新品雷达）<br>
+  所有判断服务于"配料表洁净、新鲜短保、产地直发、真品类升级"的产品哲学；具体开品前请复核合规口径与供应链可行性
+</div>
+
+</body>
+</html>
