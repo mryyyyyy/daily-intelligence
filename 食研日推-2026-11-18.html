@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 · 2026-11-18（星期三）</title>
+<style>
+  :root {
+    --bg: #fdf6ed;
+    --bg-card: #ffffff;
+    --bg-soft: #fbeed7;
+    --primary: #c0392b;
+    --gold: #d49a3f;
+    --green: #4a7c59;
+    --brown: #5a3e2b;
+    --text: #2c2c2c;
+    --text-soft: #6b6b6b;
+    --border: #e8d5b7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.78;
+    padding: 24px;
+    max-width: 940px;
+    margin: 0 auto;
+  }
+  .header {
+    background: linear-gradient(135deg, var(--primary), var(--gold));
+    color: #fff;
+    padding: 30px 28px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 20px rgba(192,57,43,0.15);
+  }
+  .header h1 { font-size: 27px; letter-spacing: 1px; margin-bottom: 6px; }
+  .header .sub { font-size: 13px; opacity: 0.94; display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+  .header .sub span::before { content: "· "; opacity: 0.6; }
+  .card {
+    background: var(--bg-card);
+    border-left: 4px solid var(--primary);
+    padding: 18px 22px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(90,62,43,0.05);
+  }
+  .card.gold { border-left-color: var(--gold); }
+  .card.green { border-left-color: var(--green); }
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-title.gold { color: #a9761f; }
+  .card-title.green { color: var(--green); }
+  .item { padding: 11px 0; border-bottom: 1px dashed var(--border); }
+  .item:last-child { border-bottom: none; }
+  .item-title { font-weight: 700; color: var(--brown); font-size: 15px; margin-bottom: 5px; }
+  .item-desc { font-size: 14px; color: var(--text); margin-bottom: 5px; }
+  .item-relate {
+    font-size: 13px;
+    color: var(--primary);
+    background: var(--bg-soft);
+    padding: 5px 12px;
+    border-radius: 4px;
+    display: block;
+    margin-top: 5px;
+    border-left: 2px solid var(--gold);
+  }
+  .divider { height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 22px 0; }
+  .callout {
+    background: linear-gradient(135deg, #fff8eb, #ffeed5);
+    border: 1px solid var(--gold);
+    padding: 14px 18px;
+    border-radius: 6px;
+    margin: 12px 0;
+    font-size: 14px;
+    color: var(--brown);
+  }
+  .callout b { color: var(--primary); }
+  .signal { display: inline-block; font-size: 12px; padding: 2px 9px; border-radius: 10px; font-weight: 700; margin-left: 6px; }
+  .signal-up { background: #fde7e7; color: #c0392b; }
+  .signal-mid { background: #fff4d6; color: #8a6a1f; }
+  .signal-low { background: #e3f1e7; color: #4a7c59; }
+  .footer { text-align: center; font-size: 12px; color: var(--text-soft); padding: 18px 0; border-top: 1px dashed var(--border); margin-top: 26px; }
+  .newprod {
+    background: linear-gradient(135deg, #fff9f2, #fff2e0);
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+  }
+  .newprod .np-head { font-weight: 800; color: var(--primary); font-size: 15px; margin-bottom: 7px; line-height: 1.55; }
+  .newprod .np-meta { font-size: 12.5px; color: var(--text-soft); background: #fff; border-radius: 4px; padding: 6px 10px; margin-bottom: 8px; border-left: 3px solid var(--gold); }
+  .newprod .np-body { font-size: 13.5px; line-height: 1.72; }
+  .newprod .np-relate { font-size: 13px; color: var(--green); background: #eaf4ec; padding: 7px 11px; border-radius: 4px; margin-top: 8px; border-left: 3px solid var(--green); }
+  .tl-item { padding: 11px 0 11px 14px; border-left: 3px solid var(--gold); margin-bottom: 10px; font-size: 13.5px; }
+  .tl-item b { color: var(--primary); }
+  .up { color: #c0392b; font-weight: 700; }
+  .down { color: #4a7c59; font-weight: 700; }
+  .flat { color: #8a6a1f; font-weight: 700; }
+  .warn { background: #fde7e7; border-left: 3px solid var(--primary); padding: 8px 12px; border-radius: 0 5px 5px 0; margin-top: 7px; font-size: 13px; color: #8b2b20; }
+  .minitable { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px; }
+  .minitable th { background: var(--bg-soft); color: var(--brown); text-align: left; padding: 7px 9px; border: 1px solid var(--border); font-weight: 700; }
+  .minitable td { padding: 7px 9px; border: 1px solid var(--border); vertical-align: top; color: var(--text); }
+  .minitable td:first-child { font-weight: 700; color: var(--primary); white-space: nowrap; }
+  .quicklist { font-size: 13.5px; line-height: 1.85; }
+  .quicklist li { margin-bottom: 5px; }
+  .anchor { color: var(--brown); font-weight: 700; }
+  .hn { color: var(--primary); font-weight: 700; }
+  .kpi { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 4px; }
+  .kpi div { flex: 1 1 150px; background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 9px 12px; font-size: 13px; }
+  .kpi div b { display: block; color: var(--primary); font-size: 17px; margin-bottom: 2px; }
+  .subhead { font-size: 15px; font-weight: 800; color: var(--brown); margin: 16px 0 8px; padding-bottom: 5px; border-bottom: 2px solid var(--gold); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>食研日推 · 2026-11-18（星期三）</h1>
+  <div class="sub">
+    <span>立冬第12天</span><span>小雪倒计时4天</span><span>大雪倒计时19天</span><span>冬至倒计时34天</span><span>双12倒计时24天</span><span>GB 7718-2025实施倒计时118天</span><span>标签改版自查倒计时12天</span><span>春节倒计时80天</span><span>服务对象：下厨房食品品牌产品经理</span>
+  </div>
+</div>
+
+<div class="callout">
+  <b>今日一句话：</b>昨天的关键词是"可核验的数字"，今天多了一个词——<b>可排期的供给</b>。叮咚买菜把霜打菜做成"空间换时间"的产区接力表，八大山脉海拔800—1200米的霜期比长三角平原早近一个月；盒马把一锅汤改成400克一杯，公开承认"好喝是基础，零售商品还要有不依赖某道菜的购买理由"；温州鸭舌被一句综艺台词引爆，团购订单环比暴涨1443%。<b>三件事指向同一件事：能提前把货排进日程表、把工艺选择讲成内容、把产地接住流量的供应链，才是短保赛道的真护城河</b>——而《酱油质量通则》GB/T 18186—2025 将于12月1日实施，提醒我们"排期"里还要加上合规排期。
+</div>
+
+<div class="kpi">
+  <div><b>111.31</b>11/17农产品批发价格200指数（+0.13）</div>
+  <div><b>12小时</b>叮咚趴地小菠菜地头到大仓</div>
+  <div><b>1443%</b>鸭舌团购订单环比增幅（10/28—11/3）</div>
+  <div><b>1g/100g</b>李锦记韩国低糖蚝油糖含量</div>
+  <div><b>118天</b>GB 7718-2025实施倒计时</div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card">
+  <div class="card-title">🔥 一、今日行业要闻</div>
+
+  <div class="item">
+    <div class="item-title">《酱油质量通则》GB/T 18186—2025 将于12月1日实施，替代沿用二十余年的旧标准</div>
+    <div class="item-desc">据11月16日都市快报报道，新通则于12月1日正式实施。弗若斯特沙利文数据显示，2024年中国酱油市场规模1041亿元，预计2029年达1313亿元，餐饮采购端需同步关注产品标签与质量标准变化。</div>
+    <div class="item-relate">与我何干：12月1日这天已经聚了"三道闸门"——38号公告（非食用物质名录）、委托生产监督管理办法施行、酱油新通则实施。<b>我们的标签改版排期要一次排三件事，而不是分三次改</b>。千亿级调味品类的分级与标示规则换版，意味着"减盐/低糖/零添加"这些话术的可用边界要重新对表；同时也提醒我们：如果做酱油或复合调味汁，必须按新通则重排配料表与等级标示，别把旧版版式直接搬过来。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">即时零售从"线上盈利"走到"线下门店"：叮咚Q3连续11季盈利，朴朴首家线下店11月20日福州开业</div>
+    <div class="item-desc">叮咚买菜Q3营收73.8亿元、同比+10.8%，已连续11个季度实现GAAP盈利、连续16个季度Non-GAAP盈利。朴朴超市全国首家线下店"朴朴生活"启动预约，门店总面积6500平方米，定位"仓店一体"，其中约三分之一面积用于食品现制（烘焙、熟食餐饮），消费者可现场观看食材制作。</div>
+    <div class="item-relate">与我何干：朴朴把三分之一的面积做成了<b>"看得见的现制"</b>——这不是餐饮，而是把零售店的信任问题用明档解决。<b>即时零售渠道正在用"重"换"信任"</b>，这跟小象超市前置仓上现烤是同一条路。对我们的意义是：短保鲜品的竞争正在从"谁冷链更贵"转向"谁能让消费者看见制作过程"，抖音直播里的"现切/现熬/手作"镜头，本质上就是零售版的明档。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">资本不再为"健康食品"概念买单：广酒15.51亿扩建利口福园区主攻冷冻烘焙，安琪酵母砍项目</div>
+    <div class="item-desc">广州酒家11月10日公告拟投约15.51亿元实施番禺园区提容项目，在月饼、速冻和肉制品扩能基础上重点布局冷冻烘焙。安琪酵母11月16日公告，将园区健康食品产业园食品原料三期项目投资额由4.22亿元调整为1.85亿元，改为实施年产5000吨风味面团生产线与年产1500吨米酒曲生产线，米酒曲2027年上半年动工、2028年上半年投产。</div>
+    <div class="item-relate">与我何干：两家公司的动作方向一致——<b>钱流向可排期的中间体与冷冻产能，而不是概念</b>。对我们有两层用：一是找代工的窗口期，冷冻烘焙与发酵调味（米酒曲、味噌、风味面团）是2027年确定会释放的产能段，合作意向要在今年12月前锁；二是提醒我们"药食同源+发酵"这条路有工业基础，但配方表里真正能写的是原料与工艺，不是功效词。</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card gold">
+  <div class="card-title gold">🎯 二、爆品雷达·趋势苗头</div>
+
+  <div class="item">
+    <div class="item-title">内容即产品：温州鸭舌被一句台词引爆，淡季提前两个月沸腾</div>
+    <div class="item-desc">综艺《后会友期》一句"她教我吃鸭舌，就像嗑瓜子一样"带火品类。抖音生活服务数据显示，10月28日至11月3日鸭舌相关团购订单量环比增长1443%。温州修文食品近半个月销量环比增长三倍（往年旺季要到12月下旬），修文鸭舌登上天猫卤肉类榜单榜首，连纽约经销商都出现断货；藤桥食品11月2日抖音、淘宝达人直播销量较前一周同日增长两倍。温州鸭舌占国内四成以上市场份额，仅瓯海一区相关产业年产值就突破4.5亿元。</div>
+    <div class="item-relate">机会判断：<b>值得立刻做，但价值不在鸭舌本身，在"接住流量的产地"</b>。信号强度：🔴已爆但窗口只剩两周——真正的稀缺资产是48小时内能锁产地、锁包装、发货的响应能力。我们现在就该建一张"热点→产地"映射表（鸭舌/糖炒栗子/糖葫芦/柿饼各对应哪几个主产区），而不是爆了再临时找货。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">霜打菜被做成"空间换时间"的产区接力表，叮咚一次上140多款</div>
+    <div class="item-desc">叮咚买菜启动2026年霜打菜季，本产季上架140多款霜打菜，较去年新增30款。胶州大白菜上市首周销量飙升49%，跃升叶菜榜前十。供给侧用"空间换时间"：贺兰山、祁连山、天目山、武夷山、井冈山、武陵山、乌蒙山、大娄山八大产区平均海拔超800米、部分达1200米，蔬菜打霜比平原早近一个月，10月底首批高山霜打菜即可上架；长三角本地推"十二时辰鲜"系列14款，以南通趴地小菠菜为例，清晨四点带霜采收、上午十点至十二点完成检测包装、下午两点装车、下午四点到大仓，最短12小时地头到大仓。</div>
+    <div class="item-relate">机会判断：<b>护城河是排期表，不是菜</b>。信号强度：🟡起势，窗口到明年1月。启发有两层：一是"同一品类用产地接力做出12月—1月的稳定供应"，是短保产品避开断货的最实用解法，我们如果能签到一条霜打菜专线，就能在12月拿到"比平原早一个月"的价差与内容差；二是"清晨四点采收—下午四点到仓"这种时间轴，本身就是抖音最好的内容脚本，比任何文案都硬。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">"轻养生"从标签变成配料表结构：低糖蚝油、五金酸奶、无糖袋装汤同时出现</div>
+    <div class="item-desc">李锦记在韩国市场推出"低糖蚝油"，糖含量降至每100g仅1g，以高品质生蚝提取物为主料，290g管状包装单手挤压。新希望雪兰活润推"五金酸奶"，复配卡曼橘、沙棘、铁皮石斛花、南瓜、蜂蜜五大"金色食材"，定位清润舒缓、日常润燥。亨氏在英国推四款可微波袋装汤（烤红椒番茄、奶油南瓜香料、鸡汤田园蔬菜、黑扁豆达尔），天然原料、不添加糖、常温保存且开封前无需冷藏，350g。</div>
+    <div class="item-relate">机会判断：<b>值得做，但要抄对它的表达层</b>。信号强度：🟢苗头。这三家的共同语法是"具体原料名 + 含量/减法指标 + 即食形态"，而不是"药食同源"四个字。金银花式的合规红利窗口还在，但真正能收钱的是"1g糖/100g"这种可写在包装正面的数字。<b>注意红线</b>：铁皮石斛、沙棘等原料能否用于普通食品、能否提"舒缓"，必须逐条对目录，"清润"作为场景描述可用，功效表述不可用。</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card green">
+  <div class="card-title green">🌿 三、时令风向·品类机会</div>
+
+  <div class="tl-item">
+    📅 <b>当前时令定位</b>：立冬第12天，小雪还有4天。霜打菜进入最佳赏味期与断货前夜的双重节点，柑橘换茬开秤在即，羊肉/根茎/暖锅食材全面接棒夏季品类。
+  </div>
+  <div class="tl-item">
+    ⏰ <b>倒计时</b>：小雪4天 ｜ 大雪19天 ｜ 冬至34天（数九"一九"起于12月23日）｜ 双12 24天 ｜ GB 7718-2025实施 118天 ｜ 标签改版自查 12天 ｜ 2027春节 80天（较2026年春节提前11天）
+  </div>
+  <div class="tl-item">
+    🎯 <b>即将热卖一：沙糖橘换茬（开秤倒计时2—7天）</b> — 云南广南11月20—25日开秤，广西西林、梧州、象州、永福11月下旬接力。11月17日苏州南环桥市场数据：砂糖橘2.5—5.5元/斤、江西早脐橙1.5—2.6元/斤、四川爱媛果冻橙1.2—2.5元/斤、福建红土橘2.8—3.5元/斤，浙江涌泉蜜橘4—5.5元/斤。<b>关键：普通柑橘类同比降20%—30%，部分蜜橘跌破1元/斤</b>——普货彻底没有利润，价差被压到极薄，产地端几乎不再有中间商空间，礼盒溢价只能来自分级和地标，不是来自"产地"两个字。
+  </div>
+  <div class="tl-item">
+    🎯 <b>即将热卖二：霜打菜与时令根茎（12月上中旬是家庭炖煮与礼盒窗口）</b> — 胶州大白菜、如皋黑塌菜、太湖菜、矮脚青菜、趴地小菠菜进入最佳口感期；霜降后储存的黄心菜可在零下5℃存30天以上，耐储性支撑了"12月—1月礼盒化"的可能。<b>红心薯、蜜薯、芋头、板栗同步进入年货预热</b>，板栗批发7.3—8.6元/斤。
+  </div>
+  <div class="tl-item">
+    🎯 <b>即将热卖三：柿子与柿饼（12月是糖度顶点，不是现在）</b> — 宁夏市场脆柿子1.5—1.7元/斤、活柿子1.7—1.9元/斤、金钱柿1.4—1.7元/斤、柿饼子5.5—6.5元/斤。现在是"果期与口感爬坡期"，适合做内容与预售，不适合压货。
+  </div>
+  <div class="tl-item">
+    🚨 <b>窗口提醒</b>：①<b>沙糖橘本周必须定</b>——开秤窗口只有5—7天，越晚越差，价差已薄到0.04元/斤级别；②<b>标签改版只剩12天</b>，要跟12月1日三道合规闸门合并成一次排期；③<b>双12货盘24天</b>，12月初定版，现在不定就赶不上第一波流量；④<b>霜打菜现在上架</b>，高山产区第一波已到，断货前窗口就是现在。
+  </div>
+  <div class="tl-item">
+    🏔️ <b>产地机会</b>：①<b>浙江涌泉蜜橘</b>（4—5.5元/斤，是普通蜜橘1.1—1.8元/斤的3—5倍）——地理标志+品种溢价都在，礼盒必须讲清"涌泉"而非"柑橘"；②<b>福建古田大花银耳 + 雪花梨 + 大五星枇杷</b>——已被吾岛用"≥40%雪花梨、≥5%古田大花银耳、≥12%大五星枇杷"的三产地组合验证过溢价，这条原料链的B端与C端都通了；③<b>温州鸭舌</b>——旺季提前到11月中，本地产业年产值4.5亿+、占全国四成，产地直发即食零食窗口就在这两周。
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card">
+  <div class="card-title">💡 四、跨界灵感·创新动作</div>
+
+  <div class="item">
+    <div class="item-title">盒马「从一锅到一杯」：公开承认"好喝是基础"，并给出一个失败复盘</div>
+    <div class="item-desc">盒马把汤品从"一锅"改成"一杯"，规格定在400克、定位为正餐之外的佐餐搭配而非替代一顿饭。团队走访炖品店、餐饮店与酒店，拆解一份汤的固形物与汤水比例；客家土猪汤上投入最久——比较过6种水、反复筛猪肉原料、最终选用农夫山泉矿泉水并从5个部位取料。</div>
+    <div class="item-desc"><b>但这款汤销售未达预期</b>。团队复盘认为：它更适合搭配客家菜，缺少让人专门买来喝的理由——好喝是基础，零售商品还要有不依赖某道菜的购买理由。</div>
+    <div class="item-relate">迁移可能：这段复盘比新品本身更值钱。<b>它给了我们一条否决标准：任何短保即食汤品，如果它的购买理由必须依附于某道菜，就上不了货架</b>。反过来，"一个人晚饭就这一碗"才是能独立成立的理由。同时"我们试了6种水"这种工艺选择过程，就是现成的短视频脚本——消费者买的是"被认真做过"，而认真必须被拍出来。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">山姆天津红桥店11月19日开业：用"全国首发 + 新店限定"给新品一个零包袱的冷启动</div>
+    <div class="item-desc">这是天津第二家山姆、也是天津卖场面积最大的一家（总建筑面积约6.4万㎡，仓储卖场超2万㎡），11月19日开业。首发新品包含巧克力主题全国首发烘焙：MM法式黑巧可颂、MM樱桃慕斯蛋糕、MM香橙巧克力欧包（融合比利时黑巧、秭归脐橙）；餐桌上架土著黄公鸡、梁汾十年老陈醋、波士顿龙虾、三去东星斑、4—5头鲍鱼等家常硬菜与高端海鲜。</div>
+    <div class="item-relate">迁移可能：<b>"限定"是新品最便宜的冷启动工具</b>。新店限定/首发限定之所以有效，是因为它绕开了老渠道的历史包袱和比价压力。我们可以复制这个机制但换一种形式：<b>做"产地首发日"——某一批次货只在抖音直播间首发、限量、发货地可查、48小时内从产地发出</b>。稀缺来自"这批只有多少箱"，而不是"我们卖得便宜"。同时注意山姆这次把"秭归脐橙"写进巧克力欧包，说明产地名值得被写进配方名而不是只写在背标。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">海外便利店把功能原料做成日常热饮，但也踩到了合规边界</div>
+    <div class="item-desc">7-ELEVEN（台湾）CITY CAFE首度跨界韩国熊津推出"熊津黑蔘元氣美式"，11月10日上市、11月24日前特價89元（原價114元）；同品牌"!+? CAFE RESERVE"自11月11日起推燕麥可可瑪奇朵与金盞花膠原蜜香拿鐵（99元，至12月8日）。全家（台湾）Let's Tea与米其林星級餐厅山海樓合作推"桂圓薏仁飲"（古法炒糖取代焦糖色素、圓糯米与薏仁慢熬）与"杏仁燕麥飲"（光中杏原粒现磨），59元。7-ELEVEN公开数据：往年11月至次年1月温暖系饮品销量较平时成长约三成。</div>
+    <div class="item-relate">迁移可能：<b>方向可抄，原料不能照搬</b>。黑蔘属中药材目录，普通食品不得随意添加，落地必须换成"药食同源目录内"或已获批新食品原料的品种（如人参、黄精类已开通的路径），并把话术限定在原料名称与含量。<b>但"功能原料+日常高频热饮"这个组合逻辑是成立的</b>，且"温暖系饮品冬季+30%"给出了确定的需求斜率。真正值得抄的是山海楼那一支：<b>"古法炒糖代替焦糖色素""原粒现磨代替香精"——把工艺替换做成可被消费者一眼看懂的洁净表达</b>，这正是我们零添加话术被禁用后的替代位。</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card gold">
+  <div class="card-title gold">🧪 五、脑暴时刻·融合创意</div>
+
+  <div class="item">
+    <div class="item-title">创意一：「就这一碗」——不用依赖任何一道菜的单人份现成汤</div>
+    <div class="item-desc"><b>一句话描述</b>：一罐400g的即食汤，主料完整可数（1整鸡 / 3朵菇 / 1根藕 / 2块牛骨），配一包复合料，加热3分钟就是一餐里唯一那道热菜，不许"配什么菜"。<br>
+    <b>为什么是现在</b>：盒马400克佐餐定位 + 海底捞"捞派·鲜烫小馆"板前一人食（U型吧台一人一位、鸡汤现熬、牛肉现切、虾滑手作、3元自助小料台）+ 火锅集体板前化（左庭右院28.9元起蔬菜自助、三出山与王奋斗板前直火烤鸡、珮姐金佛山方竹笋、洪湖莲藕汤上新一月锅底累计150万份）。<br>
+    <b>差异化锚点</b>：海底捞卖堂食、盒马卖社区低价店的"400克一杯"，我们做抖音版且<b>主料与料包同源</b>——"从哪来"和"怎么做"来自同一个产地（抖音端尚无人做）；且产品必须自带独立购买理由，"就这一碗"就是那个理由。<br>
+    <b>可行性初判</b>：供应链中高。主料与料包须共用冷链逻辑并倒推保质期，QB/T 8120"微生物1项不合格即判整批不合格且不得复验"下批次稳定性是硬门槛，建议先做冷冻版避开冷藏最严判定条款；渠道适配度高，抖音"3分钟一热菜"的动作脚本极强。</div>
+    <div class="item-relate">下一步：选菌菇或根茎类（耐储可冷冻）找具乳化/HPP/冷冻复合调味能力的代工，先做200—300份家庭盲测，只验两件事——"没有配菜时你会不会买它"和"3分钟是不是真的省事"。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">创意二：「首发批次」——只在直播间出现的产地限定货</div>
+    <div class="item-desc"><b>一句话描述</b>：每批货只在抖音直播间首发，页面写明"本批多少箱、产地到仓多少小时、什么时候发出"，卖完即止，产地不囤货、平台也不铺货。<br>
+    <b>为什么是现在</b>：山姆用"全国首发+新店限定"给新品零包袱冷启动；温州鸭舌被一句台词引爆、团购订单环比+1443%、纽约经销商断货，说明产能与流量可以同时爆掉。<b>我们的机会是提前排期接热点，而不是事后追热点</b>；同时沙糖橘11月20—25日开秤、霜打菜12月上架，这两个节点都需要一个"首发"理由来溢价。<br>
+    <b>差异化锚点</b>：山姆限的是城市，我们限的是<b>批次与渠道</b>；抖音竞品的"产地直发"是情绪话术，我们的产地直发是四个数字（批号、箱数、小时数、发货日），且不靠低价，靠"限量+可核验"。<br>
+    <b>可行性初判</b>：供应链中高（要求供应商支持小批量分批与批次级溯源，短期只能找愿意配合的合作社或自有基地）；渠道适配度高，直播间本身就是发售场；内容侧有天然动作——直播现场称重、贴批次码、翻牌溯源页。</div>
+    <div class="item-relate">下一步：本周内把"沙糖橘/霜打菜/鸭舌"三张产地—批次—箱数表做出来，各找2家能出批次级溯源的供应商谈一次，先用最小批次跑一场直播测转化率。</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card green">
+  <div class="card-title green">🏬 六、展会速递·每周新品雷达</div>
+
+  <div class="subhead">🆕 每周新品速递（本周必读）</div>
+
+  <div class="newprod">
+    <div class="np-head">🆕 吾岛（Oarmilk）「枇杷银耳雪梨希腊酸奶」</div>
+    <div class="np-meta">上市时间：11月中旬 ｜ 价格带：137元/12杯（100g/杯，约11.4元/杯）｜ 渠道：淘宝官方旗舰店</div>
+    <div class="np-body"><b>产品力拆解</b>：果酱含量全部写死——<b>≥40%雪花梨、≥5%古田大花银耳、≥12%大五星枇杷</b>，三地三品种；酸奶基底由约4倍生牛乳脱乳清浓缩制成，原生乳蛋白约为国标3倍；0乳糖配方；添加6种有益菌、每杯≥100亿活菌；主打早餐、运动补给、烘焙、下午茶四场景。核心打法是"果酱不靠香精，靠三样真原料撑出层次"。</div>
+    <div class="np-relate">启发：<b>这是"地标原料含量百分比"的顶级范式</b>——每一条后面都挂着产地与数字（古田大花银耳、大五星枇杷），把"用好料"从形容词变成可核验事实。可直接迁移的两件事：①我们做果酱/基底/组合装时，同样用"≥X% + 产地名"写法；②"4倍浓缩→蛋白约国标3倍"这种推导式表达，比单说"高蛋白"更值钱。</div>
+  </div>
+
+  <div class="newprod">
+    <div class="np-head">🆕 叮咚买菜「2026霜打菜季」+「十二时辰鲜」本地系列</div>
+    <div class="np-meta">上市时间：11月中旬启动 ｜ 价格带：常规蔬菜价带（胶州大白菜等）｜ 渠道：叮咚买菜App及前置仓</div>
+    <div class="np-body"><b>产品力拆解</b>：本产季上架140多款霜打菜，较去年新增30款，供应期可延续到明年1月。八大高山产区（贺兰山、祁连山、天目山、武夷山、井冈山、武陵山、乌蒙山、大娄山）平均海拔超800米、部分达1200米，昼夜温差大，比长三角平原早近一个月打霜，10月底首批即可上架；长三角本地推"十二时辰鲜"14款，以南通趴地小菠菜为例：清晨四点带霜采收 → 上午10—12点完成检测与包装 → 下午2点装车 → 下午4点到仓，<b>最短12小时地头到大仓</b>。风味原理讲清楚了：低温应激把淀粉转为可溶性糖，硫苷类苦味物质受抑制，口感从硬脆转软糯清甜。</div>
+    <div class="np-relate">启发：<b>两件事可以直接抄</b>：①"空间换时间"给了短保品类一条跳出看天吃饭的排期解法，我们的冬季品类也该做一张"产区接力表"；②"四点采收—四点到仓"是抖音现成脚本，比任何文案都硬。建议把我们的根茎/叶菜线也做成"时间轴+批次溯源"，并把检测节点写进包装。</div>
+  </div>
+
+  <div class="newprod">
+    <div class="np-head">🆕 李锦记（韩国市场）「低糖蚝油」</div>
+    <div class="np-meta">上市时间：11月中旬 ｜ 价格带：韩国市场首发（规格290g）｜ 渠道：韩国商超/电商</div>
+    <div class="np-body"><b>产品力拆解</b>：糖含量降至每100g仅1g，以高品质生蚝提取物为主料，保留蚝油特有的鲜味与醇厚感（减糖不等于降鲜味，用提取物而非糖去补味是关键）；<b>包装改为290g管状、单手挤压即可使用</b>，无需勺舀，主打烹饪便利与卫生性；适用场景覆盖肉类腌制、炒菜、炖煮与汤底调味。</div>
+    <div class="np-relate">启发：<b>"减法指标+包装即功能"两件事一起做</b>——只有数字没有包装，厨房动作没变；只有包装没有数字，说服力不够。我们做减盐/低糖调味时，同步把容器改成单手可控的挤压管或倒立瓶，且在包装正面写清"每100g含糖1g"。另注意：李锦记在中国市场投放该产品时的合规话术与韩国不同，国内上市前必须重走标签审核。</div>
+  </div>
+
+  <div class="newprod">
+    <div class="np-head">🆕 康师傅「韩式火鸡浓汤面」</div>
+    <div class="np-meta">上市时间：11月中旬 ｜ 价格带：38.8元/6桶（124g/桶，与韩式火鸡拌面118g组售，优惠前）｜ 渠道：天猫康师傅官方旗舰店</div>
+    <div class="np-body"><b>产品力拆解</b>：<b>7大名椒复配</b>——灯笼椒、线椒、丘北椒、金塔椒、印度椒、甜椒、朝天椒，呈现"先甜后辣"的复合层次；面体选1.8mm粗圆面（大波曲面），Q弹且挂汁更挂汤；配芝麻海苔碎增加酥脆。背景是火鸡面已是方便面赛道增长最快的品类——2026年上半年相关SKU从1802个增至2133个，<b>超越红烧牛肉面成为口味SKU最多的品类</b>。康师傅此前已推出三角脆芝士、爆珠芝士、年糕火鸡面等口味创新。</div>
+    <div class="np-relate">启发：<b>口味之王在做的是"补形态"而不是"加口味"</b>——浓汤面补上了火鸡面矩阵长期缺失的"热汤"形态，把一个夏季偏干食的风味延伸到秋冬暖食场景。这对我们极有启发：<b>不要去发明新口味，去补抖音已成熟口味的形态缺口</b>。酸汤、麻辣、番茄这类已经跑通的内容模型，配上"汤/煮/蒸/拌/烤"的形态补位，比再造一个概念便宜十倍。另外"7大名椒复配"和"1.8mm粗圆面"是两个可以直接印在包装正面的数字。</div>
+  </div>
+
+  <div class="newprod">
+    <div class="np-head">🆕 全家便利店（台湾）×日本熊本名店「火之國文龍」浓厚盐豚骨拉面等4款冬季暖食</div>
+    <div class="np-meta">上市时间：11月10日起 ｜ 价格带：45—159元（拉面159元、拌面89元、丼饭89元、酥派45元；11/11—11/24配指定饮品组合价99元）｜ 渠道：全家台湾全门店</div>
+    <div class="np-body"><b>产品力拆解</b>：①「濃厚鹽豚骨拉麵」——大量猪骨慢火熬煮汤底，配芝麻油提味；②「麻油菇菇拌麵」——杏鮑菇+高麗菜+麻油醬汁，素食可吃；③「韓式泡菜海陸豆腐丼飯」——韓式大醬醬汁+豬肉、蛤蜊、豆腐、泡菜，微辣鮮香；④「SOHOT炎選三角起司酥派」——層層酥皮包起司與白醬，現烤后外酥内浓。同期还有山海樓桂圓薏仁飲、杏仁燕麥飲（59元，11/11—12/8）。</div>
+    <div class="np-relate">启发：<b>便利店把"国家和城市"做成了主食矩阵</b>——日本熊本名店、台式麻油菇、韩式泡菜，一口气铺齐四种地域暖食，每款都有明确的风味坐标。这比"地域风味"四个字有用得多。<b>我们可做"一省一味"的国家版</b>：用真实的地方名店/地方吃法做主力主食，比笼统的"云贵风味""川味"更有辨识度，也天然带产地故事——恰好对接我们产地直发的定位。</div>
+  </div>
+
+  <div class="subhead">🛒 上新速记（其他值得记的）</div>
+  <ul class="quicklist">
+    <li><b>亨氏（英国）</b>可微波袋装汤4款（烤红椒番茄/奶油南瓜香料/鸡汤田园蔬菜/黑扁豆达尔），天然原料不加糖、常温保存且开封前免冷藏、350g，定位"可随身携带的便捷午餐"——<b>常温+微波+免冷藏是货架成本结构的重写，值得研究</b>。</li>
+    <li><b>新希望雪兰活润「五金酸奶」</b>：卡曼橘+沙棘+铁皮石斛花+南瓜+蜂蜜五大"金色食材"，命名法可借鉴（把原料数与色系写进品名），但"舒缓"须逐条核目录。</li>
+    <li><b>伊利 Joyday 条形酸奶落地印尼</b>（11/16）：原味/草莓/蓝莓，40g，冷藏直接喝、冷冻当冰食，"一支两吃"；单支3000印尼盾（约1.43元人民币）——<b>形态创新+极低价带同时成立</b>。</li>
+    <li><b>叮咚V5「麻辣去皮核桃仁」</b>：新疆阿克苏薄皮大核桃，手工取完整大瓣果仁，去皮蒸煮去涩、低温烘烤锁鲜，辣椒花椒调制"3级辣度"，60g、12.9元——<b>用"3级辣度"给风味分级，是风味刻度化的范例</b>。</li>
+    <li><b>光明冷饮「光明鲜奶云朵卷」</b>：抹茶云朵卷/红糖红豆云朵卷，鲜奶和面+蒸制工艺，240g，蒸制复热即食，适配便捷早餐。</li>
+    <li><b>霸王茶姬马来西亚全球首发5款茶咖特调</b>：品牌首个茶咖融合系列，含焙茶奶茶、蜜桃乌龙纯茶、大红袍拿铁、香草大红袍拿铁等，并提供常规/加浓两种咖啡浓度——<b>海外首发也把"纯茶不加奶"与"浓度可选"写进菜单</b>。</li>
+    <li><b>让茶×八马茶业达成战略合作</b>：联合研发"让茶八马茶"系列，首批推清香铁观音、大红袍、金骏眉3款，上架永辉超市全国门店——<b>茶企×茶企×渠道三方联合研发，是新品效率极高的组织形式</b>。</li>
+    <li><b>MANNER「咸焦糖卡布」</b>全国上新（11/16）：柔滑咸芝士融入丰盈奶泡，顶部搭琥珀色蜂窝糖。</li>
+    <li><b>呷哺呷哺</b>广州门店推21.9元起25种蔬菜畅吃、28.9元套餐含锅底与蔬菜自助，工作日午间上座率接近九成。</li>
+    <li><b>麻六记</b>绵阳自有工厂投产：一期2条桶装线+3条袋装线，每小时约1万份桶/袋酸辣粉；二期调味品及粉菜包车间日产能10吨以上——<b>餐饮做自有工厂的同时，粉菜包上游产能也在扩张</b>。</li>
+    <li><b>抖音食品饮料日榜（11/14）</b>值得记：①「一勺烤橘子梨膏」秋冬换季清润暖饮；②「现烤现发」14包奶香厚切吐司560g；③山楂巧脆筒（高钙高锌）；④「-70%脂肪」减油麻酱拌面汁；⑤珍选白灼汁1L（0脂肪、点蘸凉拌调味汁）；⑥山药棒（非油炸烘烤、0添加蔗糖）；⑦「产地直发5斤」七色糙米。<b>抖音端"产地直发+减法指标+清润暖饮"三条线同时在跑</b>。</li>
+    <li><b>青啤双11</b>：轻干+734%、无醇+296%、白啤+43%，抖音短视频成交额+636%、商品曝光破1.12亿次，天猫会员成交占比62%——<b>内容电商里"无醇/轻干"这类减法产品比全品类打法更跑得动</b>。</li>
+  </ul>
+
+  <div class="subhead">🎪 展会预告</div>
+  <table class="minitable">
+    <tr><th>展会</th><th>时间 / 地点</th><th>看点</th><th>与我何干</th></tr>
+    <tr><td>第十五届中国（温州）国际食品博览会</td><td>11/26 温州</td><td>与温州鸭舌产业同一产地</td><td><b>最对场的一场</b>：鸭舌产地直销会、供应链与冷链配套可一次看全</td></tr>
+    <tr><td>FIC 健康展（天然提取物与健康食品配料）</td><td>11/25—27 广州广交会展馆B区</td><td>3万㎡、400+展商，天然提取物与功能性配料的"秋收场"</td><td>为药食同源原料合规路径做选品与代工摸底</td></tr>
+    <tr><td>合肥糖酒会</td><td>11/27—29 合肥</td><td>华中渠道年货盘选品场</td><td>对接年货预热经销资源，问清代工与账期</td></tr>
+    <tr><td>临沂糖酒会</td><td>11/28—30 临沂</td><td>板栗与冻品集散地</td><td>板栗/板栗仁产地直发与分级定价的现场对标</td></tr>
+    <tr><td>嘉兴食品产业博览会暨农产品博览会</td><td>11/28 嘉兴</td><td>长三角产销对接</td><td>霜打菜"本地短链路"的产地合作洽谈</td></tr>
+    <tr><td>PLF 全球零售自有品牌亚洲展 + FMR 零售生鲜食材展</td><td>12/3—5 上海新国际博览中心</td><td>PLF 1400+源头工厂；FMR生鲜专区扩容，盒马、麦德龙、ALDI、胖东来、叮咚、7FRESH、天猫超市到场对接</td><td><b>代工与自有品牌一站两得</b>，宣称可帮零售压缩20%—30%采购成本</td></tr>
+    <tr><td>CFE 中国（国际）调味品及食品配料博览会</td><td>12/11—13 广州广交会展馆B区</td><td>4万㎡、700+展商、6万人次，复调/减盐/定制代工与出海</td><td>减盐与复合调味的上游配方会，配合12月1日酱油新通则一起看</td></tr>
+    <tr><td>AIFE 亚洲（北京）国际食品博览会</td><td>12/11—13 北京中国国际展览中心</td><td>3万㎡、600+企业、1000+品牌，设地标食品与非遗美食产业价值创新峰会</td><td>年末采购季的"选品比价"场，地标/非遗类目是下厨房的天然交集</td></tr>
+  </table>
+  <div class="warn">另：interpack China（11/16—18，上海新国际博览中心）<b>今天15:00闭馆</b>，如要看锁鲜自立袋阻隔材料、批次卡打码与二维码防伪、柑橘防冻瓦楞箱，今天下午是最后窗口。2027成都春糖展位招商已于11月12日启动，本月内定比3月抢便宜。</div>
+</div>
+
+<div class="divider"></div>
+
+<div class="footer">
+  食研日推 · 2026-11-18（星期三）｜ 立冬第12天 · 小雪倒计时4天 · 大雪19天 · 冬至34天 · 双12 24天 · GB 7718-2025实施118天 · 春节80天<br>
+  服务对象：下厨房食品品牌产品经理 ｜ 本报告为开品决策辅助信息，所有数据以官方公开发布为准
+</div>
+
+</body>
+</html>
