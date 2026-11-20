@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食研日推 · 2026-11-20（星期五）</title>
+<style>
+  :root {
+    --bg: #fdf6ed;
+    --bg-card: #ffffff;
+    --bg-soft: #fbeed7;
+    --primary: #c0392b;
+    --gold: #d49a3f;
+    --green: #4a7c59;
+    --brown: #5a3e2b;
+    --text: #2c2c2c;
+    --text-soft: #6b6b6b;
+    --border: #e8d5b7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.78;
+    padding: 24px;
+    max-width: 940px;
+    margin: 0 auto;
+  }
+  .header {
+    background: linear-gradient(135deg, var(--primary), var(--gold));
+    color: #fff;
+    padding: 30px 28px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 20px rgba(192,57,43,0.15);
+  }
+  .header h1 { font-size: 27px; letter-spacing: 1px; margin-bottom: 6px; }
+  .header .sub { font-size: 13px; opacity: 0.94; display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+  .header .sub span::before { content: "· "; opacity: 0.6; }
+  .card {
+    background: var(--bg-card);
+    border-left: 4px solid var(--primary);
+    padding: 18px 22px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(90,62,43,0.05);
+  }
+  .card.gold { border-left-color: var(--gold); }
+  .card.green { border-left-color: var(--green); }
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-title.gold { color: #a9761f; }
+  .card-title.green { color: var(--green); }
+  .item { padding: 11px 0; border-bottom: 1px dashed var(--border); }
+  .item:last-child { border-bottom: none; }
+  .item-title { font-weight: 700; color: var(--brown); font-size: 15px; margin-bottom: 5px; }
+  .item-desc { font-size: 14px; color: var(--text); margin-bottom: 5px; }
+  .item-relate {
+    font-size: 13px;
+    color: var(--primary);
+    background: var(--bg-soft);
+    padding: 5px 12px;
+    border-radius: 4px;
+    display: block;
+    margin-top: 5px;
+    border-left: 2px solid var(--gold);
+  }
+  .divider { height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 22px 0; }
+  .callout {
+    background: linear-gradient(135deg, #fff8eb, #ffeed5);
+    border: 1px solid var(--gold);
+    padding: 14px 18px;
+    border-radius: 6px;
+    margin: 12px 0;
+    font-size: 14px;
+    color: var(--brown);
+  }
+  .callout b { color: var(--primary); }
+  .signal { display: inline-block; font-size: 12px; padding: 2px 9px; border-radius: 10px; font-weight: 700; margin-left: 6px; }
+  .signal-up { background: #fde7e7; color: #c0392b; }
+  .signal-mid { background: #fff4d6; color: #8a6a1f; }
+  .signal-low { background: #e3f1e7; color: #4a7c59; }
+  .footer { text-align: center; font-size: 12px; color: var(--text-soft); padding: 18px 0; border-top: 1px dashed var(--border); margin-top: 26px; }
+  .newprod {
+    background: linear-gradient(135deg, #fff9f2, #fff2e0);
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+  }
+  .newprod .np-head { font-weight: 800; color: var(--primary); font-size: 15px; margin-bottom: 7px; line-height: 1.55; }
+  .newprod .np-meta { font-size: 12.5px; color: var(--text-soft); background: #fff; border-radius: 4px; padding: 6px 10px; margin-bottom: 8px; border-left: 3px solid var(--gold); }
+  .newprod .np-body { font-size: 13.5px; line-height: 1.72; }
+  .newprod .np-relate { font-size: 13px; color: var(--green); background: #eaf4ec; padding: 7px 11px; border-radius: 4px; margin-top: 8px; border-left: 3px solid var(--green); }
+  .tl-item { padding: 11px 0 11px 14px; border-left: 3px solid var(--gold); margin-bottom: 10px; font-size: 13.5px; }
+  .tl-item b { color: var(--primary); }
+  .up { color: #c0392b; font-weight: 700; }
+  .down { color: #4a7c59; font-weight: 700; }
+  .flat { color: #8a6a1f; font-weight: 700; }
+  .warn { background: #fde7e7; border-left: 3px solid var(--primary); padding: 8px 12px; border-radius: 0 5px 5px 0; margin-top: 7px; font-size: 13px; color: #8b2b20; }
+  .minitable { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px; }
+  .minitable th { background: var(--bg-soft); color: var(--brown); text-align: left; padding: 7px 9px; border: 1px solid var(--border); font-weight: 700; }
+  .minitable td { padding: 7px 9px; border: 1px solid var(--border); vertical-align: top; color: var(--text); }
+  .minitable td:first-child { font-weight: 700; color: var(--primary); }
+  .quicklist { font-size: 13.5px; line-height: 1.85; }
+  .quicklist li { margin-bottom: 5px; }
+  .anchor { color: var(--brown); font-weight: 700; }
+  .hn { color: var(--primary); font-weight: 700; }
+  .kpi { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 4px; }
+  .kpi div { flex: 1 1 150px; background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 9px 12px; font-size: 13px; }
+  .kpi div b { display: block; color: var(--primary); font-size: 17px; margin-bottom: 2px; }
+  .subhead { font-size: 15px; font-weight: 800; color: var(--brown); margin: 16px 0 8px; padding-bottom: 5px; border-bottom: 2px solid var(--gold); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>食研日推 · 2026-11-20（星期五）</h1>
+  <div class="sub">
+    <span>立冬第14天</span><span>小雪倒计时2天</span><span>大雪倒计时17天</span><span>冬至倒计时32天</span><span>双12倒计时22天</span><span>GB 7718-2025实施倒计时116天</span><span>标签改版自查倒计时10天</span><span>春节倒计时78天</span><span>服务对象：下厨房食品品牌产品经理</span>
+  </div>
+</div>
+
+<div class="callout">
+  <b>今日一句话：</b>昨天的落点是"把可核验的数字印在正面"，今天多了一块更硬的东西——<b>标准开始由零售渠道向下游输出</b>：盒马按草莓甜度、摆放角度、奶油要求倒逼工厂自研"洗烘一体机"，山姆把"湖北秭归脐橙（国家地理标志）糖渍橙皮丁"写进全国首发新品的面包里。而零售端给消费者的价差正在塌陷（福州柑橘批发价同比腰斩约50%）。<b>货在贬值，标准在升值。</b>开品动作只有一个：把"我们替你挑掉了什么"做成一等公民。
+</div>
+
+<div class="divider"></div>
+
+<div class="card">
+  <div class="card-title">🔥 一、今日行业要闻</div>
+
+  <div class="item">
+    <div class="item-title">星巴克中国首推「星现烤」，把"从生到熟"整条链路塞进门店内当日完成</div>
+    <div class="item-desc">11/20 每经：全新「星现烤」系列烘焙食品已在<b>全国30余个城市、一百余家门店</b>正式上市，特点是烘焙、冷却、上架与销售全流程在门店内当日完成。这不是上新品，是从供应商到吧台的一次全链路重构，对门店设备、人力排班与损耗管控提出更高要求。</div>
+    <div class="item-relate"><b>与我何干：</b>现制烘焙的门槛正在从"有没有中央工厂"转向"门店当天能不能做完、损耗谁承担"。这是短保烘焙的两条路——中央工厂+门店复热，还是门店现烤——的分水岭。我们做短保必须先在立项表里回答：设备进谁的店、隔夜损耗算谁的、成本加在谁头上。星巴克能全国铺100+店，是因为它有30余城的高频点位和成熟的损耗管理，不等于我们能照抄。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">袁记云饺通过上市聆讯：把"生鲜手工制品"做成了一条公开的零售线</div>
+    <div class="item-desc">11/20 雷递：预计港交所上市。2023/2024/2025营收20.26亿、25.61亿、27.95亿元，期内利润1.67亿、1.42亿、2亿元；2026年前5个月营收13亿、毛利3.71亿、期内利润1.57亿。截至2026/5/31门店超<b>4700家</b>（90%收入来自门店），SKU超<b>350个</b>，往绩记录期推出超200个新SKU，新加坡已开5家店。核心是"手工现包现煮"，并同时提供<b>熟食与生食</b>两种形态，通过堂食、外带、外卖三种形式触达。</div>
+    <div class="item-relate"><b>与我何干：</b>这是国内规模最大的中式快餐在招股书里公开确认"生食零售化"的合法性——生饺子是真商品，不是损耗品。三个可抄结构：①生/熟双形态覆盖三种消费场景；②SKU做到350个+往绩期上新200个，靠的是柔性供应链不是单点爆款；③投资方里坐着益海嘉里（金龙鱼母公司），说明粮油与手工制品的产能绑定已被资本认可。我们做"生鲜/半成品"最该抄的是这个结构，不是饺子本身。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">元气森林把供应商从"代工厂"改造成"研发合伙人"</div>
+    <div class="item-desc">11/20 食品伙伴网：唐彬森在2026供应商大会透露，要让伙伴从研发源头参与、联合开发前瞻性研究，推动合作从"供需衔接"向"协同延伸"；2026年元气森林与设备供应商已开展技术合作，涉及<b>14项联合专利与20多项生产新技术</b>。</div>
+    <div class="item-relate"><b>与我何干：</b>头部品牌正在把供应链关系从采购价谈判改成共同研发。对我们的直接含义是：想要独家配方或独家工艺，越早和有联合研发能力的工厂绑定越便宜。立项评审表建议加一栏——"这家工厂愿意为我们的独家配方共同投入研发吗"，愿意的工厂能拿到别人拿不到的定价与排产优先级。</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card gold">
+  <div class="card-title gold">🎯 二、爆品雷达·趋势苗头</div>
+
+  <div class="item">
+    <div class="item-title">"挖着吃"的顶料，正在从配料变成主角——B端供应链被打开</div>
+    <div class="item-desc">书亦烧仙草8月以来推出抹茶布蕾、焦糖布蕾、可可橙子小蛋糕奶茶，<b>不到两个月卖出近千万杯</b>，逼近经典大单品招牌烧仙草；11月"万事可橙"上市<b>3天35万杯</b>，两个月合计破1亿。抖音"蛋糕奶茶"话题播放超5500万次，小红书"挖着吃"成新流行词。仅10月中上旬，集中上新甜品化产品的头部品牌就超过10家（茶百道焦糖饼干奶茶、奈雪烤布蕾红苹果、沪上阿姨半熟芝士牛乳茶等跟进）。</div>
+    <div class="item-relate"><b>信号强度：</b><span class="signal signal-up">🔴 已爆</span> <b>机会判断：</b>值得抄的是<b>原料层与形态层，不是杯型</b>。厚布蕾/蛋糕酱把"顶料"从调味的配角变成决定产品性格的主角，一杯成本被抬上去，客单价也跟着抬。对我们是B端机会而非C端机会：抖音奶茶店的顶部固体料（蛋糕酱、布蕾、法式小甜点）需要短保烘焙与冷冻顶料供应商，而这块目前几乎没有专业供应商——要么去做给茶饮品牌供顶料，要么反着做"家里三分钟复刻一杯"的家庭装顶料。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">柑橘大宗腰斩约50%，但分级果的溢价没跟着跌</div>
+    <div class="item-desc">11/18 福州：脐橙、蜜橘批发价同比普遍下降约50%（去年脐橙统货1.5元/500g，今年降到0.7—0.8元；蜜橘0.6—0.7元，比去年降一半）；金秋砂糖橘3—4元，比去年便宜1—2元；耙耙柑5—5.5元，比去年降约1元。终端已跟跌：永辉脐橙3.99元/500g、朴朴超市脐橙约4.5元/500g、蜜橘约3.6元/500g。主因是产量足、供大于求，叠加电商统货低价竞争冲击赣南脐橙。零售端曲靖砂糖橘已降到10元/公斤以下。</div>
+    <div class="item-relate"><b>信号强度：</b><span class="signal signal-mid">🟡 起势</span> <b>机会判断：</b>这是"货在贬值、标准在升值"的教科书时刻。原料便宜了，但消费者对"贵的那一截到底买了什么"依然没有判断力——所以<b>礼盒溢价只能来自分级判据（糖度/直径/可食率/品种权）与产地批次溯源</b>，不能靠讲故事。现在囤普果等于替渠道垫库，但用分级标准把果分成"能直接吃"和"必须做菜"两档，是当下最划算的动作。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">"选果标准"正在反向定义商品——渠道开始给工厂下图纸</div>
+    <div class="item-desc">11/19-20 封面新闻：盒马「草莓盒子蛋糕」本周起几乎每天断货，消费者要下班"蹲守"。这个单品2021年就上架，主推25颗、16颗大盒装，上线至今销售额同比+80%、销售规模破亿；今年按消费者反馈推出<b>一人食小盒装</b>后成"断货王"。工厂车间入口贴满一整墙制造标准——草莓的甜度、外观、摆放角度，蛋糕的高度、奶油的要求；每颗草莓经5道挑选、2轮清洗等数十道工序；更关键的是工厂按渠道标准<b>自研了草莓"洗烘一体机"</b>（多角度水压冲洗+自带冷风系统直接吹干）。</div>
+    <div class="item-relate"><b>信号强度：</b><span class="signal signal-low">🟢 苗头</span> <b>机会判断：</b>零售渠道已经不满足于"选品上架"，开始向上游输出可执行的产品标准，并倒逼出专用设备——<b>能接住渠道标准的产能会被优先排产，这就是产能护城河</b>。对我们的提醒是双向的：一方面要主动去接渠道给的图纸（能被排产优先），另一方面要意识到"我们卖好果"已经不构成差异化，<b>差异化在于"我们替消费者挑好了，并把挑的标准讲明白"</b>。</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card green">
+  <div class="card-title green">🌿 三、时令风向·品类机会</div>
+
+  <div class="tl-item">
+    📅 <b>当前定位：</b>立冬第14天，小雪只剩2天，冷空气已全面到位。11/19 北京荟聚、合生汇等商场火锅门店午晚双高峰排队，呷哺"蔬菜畅吃"模式已落地250家门店、自选小火锅"呷哺牧场"布局20家，海底捞牛羊肉与菌汤锅底销量同步走高——<b>"暖经济"是今年立冬后最确定的一条消费主线</b>。同时农业农村部11/19数据：28种蔬菜均价4.17元/公斤（较前一日+1.5%），农产品批发价格200指数111.99（+0.30点），菜篮子指数111.63（+0.35点），涨幅前五为莴笋+5.5%、洋白菜+4.8%、生菜+4.0%、西葫芦+3.7%、油菜+3.5%；第45周整体呈"菜弱果强"分化。
+  </div>
+
+  <div class="subhead">🎯 即将热卖品类（3个）</div>
+
+  <div class="tl-item">
+    <b>柑橘换茬头茬砂糖橘</b> — 云南文山广南11/20—25开秤，百色西林、梧州、来宾象州、桂林永福11月下旬陆续上市，早熟高峰在12月中下旬至1月。<b>但今年大宗跌了约50%，所以"早到"已经没有溢价，能溢价的只有分级。</b>头茬的价值是"抢内容"（最早上市＝最早出片＝最早定价），真正讲糖度要等12月中下旬转色之后。
+  </div>
+
+  <div class="tl-item">
+    <b>大棚早熟草莓与草莓甜品化</b> — 大棚早果零售20元/公斤以上（宁夏11/17批发：本地25—29.5元/公斤、外地22.5—26.6元/公斤），商户称12月集中上市后价格明显回落；需求端盒马草莓盒子蛋糕一人食小盒装已断货。<b>窗口是"现在贵、12月便宜"</b>：如果要押草莓，必须在12月前把分级判据与包装定死，而不是现在冲量等降价。
+  </div>
+
+  <div class="tl-item">
+    <b>冬季根茎"暖食"配比包</b> — 白萝卜2—3元/公斤、山药7—10元/公斤、本地小黄姜6—8元/公斤，货源稳定、耐储、价格波动小；11/19涨幅前五里莴笋、洋白菜、生菜、油菜占四席（叶菜回暖）。<b>大路菜在11月底有一波反弹，正好是冬季锅边菜配比包的成本低点</b>，且与"暖经济"消费端同频。
+  </div>
+
+  <div class="subhead">⏰ 窗口提醒（本周必须处理）</div>
+
+  <div class="warn">
+    ① <b>柑橘礼盒版式本周定版</b>：现在锁产地、现在定包装，12月中下旬转色后再发货，不要现在冲量；<br>
+    ② <b>标签改版自查只剩10天（11/30截止）</b>，叠加12月1日三闸门同月落地（委托生产监督管理办法施行、酱油质量通则GB/T 18186—2025实施、38号公告非食用物质名录后续），版面定版必须合并成一次动作，不能分三次改；<br>
+    ③ <b>腌腊与火锅季备货进入放量前夜</b>：11月下旬至12月上旬是腌腊订单集中期，羊肉腌料/汤底包材须在11/20前定版；<br>
+    ④ <b>小雪只剩2天（11/22 15:23）</b>，气节短保品须在11/21前上架，否则只能吃双11之后的自然流量。
+  </div>
+
+  <div class="subhead">🏔️ 产地直发机会（4个）</div>
+
+  <div class="tl-item">
+    <b>云南文山广南沙糖橘</b> — 11/20—25开秤，早熟、量小、价高，适合做"头茬限定批次"做内容与稀缺感，不适合当主力走量。
+  </div>
+
+  <div class="tl-item">
+    <b>湖北秭归脐橙</b> — 11/6已开摘，<b>12月为上市高峰且品质最佳</b>；国家地理标志产品，已被山姆天津红桥店全国首发新品"MM香橙巧克力欧包"用作糖渍橙皮丁，产地被头部渠道公开背书。脐橙通货产地1.41元/斤、销地12市场均价3.56元/斤（北园春7.00与万邦2.00并存），产地-销地价差足够大，但必须分级才能兑现。
+  </div>
+
+  <div class="tl-item">
+    <b>重庆奉节/江津脐橙</b> — 柑橘行情日报（11/16）显示，<b>重庆脐橙产地价逆势上涨，是本周唯一上行的样本</b>。小众、稀缺、可以先发，适合做"本周唯一涨价的产区"这类内容。
+  </div>
+
+  <div class="tl-item">
+    <b>江西南丰蜜桔（组织化产地的现成样板）</b> — "三农"主播超3000人，年销售额逾百万元者上百人，2025年农产品网络销售额破3亿、带动上万农户人均增收1万元以上，<b>直播间单场平均销售额突破50万元</b>，"南丰蜜桔"区域公共品牌全网曝光量增长超300%；"数商兴农·庆丰收"系列活动持续至12月。<b>意义在于：蜜橘今年跌了50%，靠一家企业卖不动，靠一县主播矩阵可以消化。</b>产地直发的终极形态不是找一家工厂，是找一套已经跑通的产地直播组织。
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card gold">
+  <div class="card-title gold">💡 四、跨界灵感·创新动作</div>
+
+  <div class="item">
+    <div class="item-title">韩国便利店把年糕做成甜品：老品类换形态的增速是+485.6%</div>
+    <div class="item-desc">GS25 11/1—13年糕类销售同比上月<b>+485.6%</b>，旗舰款"韩正善酸奶米糕"累计破100万件，10月推出巧克力夹心米糕；7-Eleven同期米糕销售<b>+300%</b>，Real Choco Mochi 与 Tirol Choco Mochi（9月重发）至10/21累计破20万件，另上南瓜露馅米糕、黑芝麻米糕一口装、披萨米糕；CU米糕相关+49.6%，"鲜巧克力和风麻薯"两款累计破80万件、11/1—13收入+116.9%。Macromill Embrain：过去12个月年糕类消费1519亿韩元（+31.2%），其中米糕+88.7%、mochi+161.5%。买家结构变了：青少年占比从3.6%升到12.6%，40岁以上人群从13%升到25%。</div>
+    <div class="item-relate"><b>迁移可能：</b><b>"一个白糯米皮 + 一个可数的馅 + 一个季节限定口味"是最省力的甜品化路径</b>——不需要新原料、不需要新设备，靠形态和口味就能吃到三位数增速。参考国内已被验证的同构产品（小象超市「福禄绵绵山楂汤圆」把冰糖葫芦复刻进汤圆、汤圆被做成柿子形）。对我们的启发是：做年糕、糯米、汤圆、青团这类中式米制品时，"换形态"比"换概念"便宜一个数量级；而且要把"白皮+有馅主料"的可数结构印在正面。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">海奇趣：拿做刺身的磷虾肉做成虾片，16.9元卖了两万盒</div>
+    <div class="item-desc">江苏省沿海开发集团旗下江苏海洋生物资源创新中心孵化，2025年初成立，6位清华/北大/浙大博士做出一盒16.9元的「南极磷虾脆片」，拿下iSEE全球食品创新奖铜奖，累计售出超2万盒，25—35岁年轻妈妈为核心客群、女性消费者占比超80%。关键产品力：<b>非油炸烘焙工艺</b>（保留营养、不额外带油脂、不产生反式脂肪酸）；<b>配料表里没有任何虾味粉和香精</b>——磷虾天然鲜味即风味全部来源；番茄风味款只用纯番茄提供风味，不加任何其他添加；磷虾出水后必须立即脱壳速冻防自溶；EPA/DHA多为磷脂结合形态利于吸收。</div>
+    <div class="item-relate"><b>迁移可能：</b>三条可直接抄。①<b>"非油炸烘焙"比"低脂"更好讲，且天然不产生反式脂肪酸</b>——我们做薯片/虾片/蔬脆时，工艺本身就是卖点，不靠减法宣称。②<b>具名减法是合规安全的</b>：法规2027/3/16后禁用"零添加/不添加"，但"配料表：磷虾、食用盐"这种正面陈述、以及"我们没有加虾味粉和香精"这种具名说明都安全（不写"零添加"三字，只列具体物质名）。③<b>差异化原料的选品公式 = 认知空白 + 已有成熟产能</b>——磷虾国内几乎没人吃过，但远洋捕捞与速冻产能现成；同类可替代物还有羊肚菌、菊芋、青花椒、皱皮辣椒。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">Costco 11月新品：全部是"可囤的装数"，不是"单盒的精品"</div>
+    <div class="item-desc">Throne Sport Coffee（每罐11盎司含10g蛋白，12支装3口味，$28.99）、Bob's Red Mill 无麸质1:1烘焙粉（$14.49）、Think Jerky 草饲牛肉干（20支×0.5盎司独立包装，$16.49）、Dot Cakes 网红杯装蛋糕做成6连包、Honey Chicken 意面炒鸡套餐（约$15，可吃4人份）、Cabot Maple Cheddar 双味爆米花（一袋浓cheddar味+一袋枫糖味）。</div>
+    <div class="item-relate"><b>迁移可能：</b><b>"规格阶梯"比"单盒定价"更能吃满抖音复购与客单</b>：单袋尝鲜 → 3袋分享 → 12袋囤货，三个装数对应三种场景，比只做一个规格更合理。同时注意这些商品正面全是可印数字——"10g蛋白""20支独立装""4人份""无麸质1:1替换"，正好落在我们"必须落到包装正面的三个数字"这条规则上：会员店在做的事，抖音也该有对应话术。</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card">
+  <div class="card-title">🧪 五、脑暴时刻·融合创意</div>
+
+  <div class="item">
+    <div class="item-title">创意一：「挑过了」标准果盒——把挑选工序做成一等公民</div>
+    <div class="item-desc"><b>一句话：</b>一盒当季水果，每一袋对应一套可核验的挑选工序，正面印"几道挑选 / 什么糖度 / 什么果径 / 挑掉了什么"，附一张次品实物对照卡（糖度不够的、有磕伤的、果径不足的三种实物照片）。</div>
+    <div class="item-desc"><b>为什么是现在：</b>盒马已经把草莓拆到"5道挑选+2轮清洗"并倒逼工厂自研洗烘一体机；柑橘批发价同比腰斩50%但分级果溢价没跌；12月是柑橘品质顶点、草莓集中上市后价格回落——三件事指向同一件事：<b>货在贬值、标准在升值</b>。</div>
+    <div class="item-desc"><b>差异化锚点：</b>抖音的"产地直发"讲的是"谁种的"（故事，无法核验）；我们讲的是"我们替你挑掉了什么"（工序，可以核验、可以印在正面、可以直播演示）。<b>工序能变成资产，情绪不能。</b></div>
+    <div class="item-desc"><b>可行性初判：</b>供应链中（产地分选设备与第三方糖度/果径检测服务均已成熟，可只买一个检测维度先跑通），渠道高（抖音天然吃"翻牌"与拆箱动作）。<b>最大难点是教育成本</b>——消费者第一次看到"5道挑选"会怀疑，必须用次品实物卡把抽象标准变成可见对比，否则数字只是自说自话。</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">创意二：「同框」双产地盲品装——用对照代替宣称</div>
+    <div class="item-desc"><b>一句话：</b>一盒装两份同种食材但来自两个不同产地的产品（秭归脐橙 vs 重庆奉节脐橙；江苏宝应二两五母蟹 vs 常规规格大蟹），不标顺序，扫码揭晓产地与关键指标，喝完/吃完可投票。</div>
+    <div class="item-desc"><b>为什么是现在：</b>消费者对"贵的那一截买了什么"没有判断力；抖音寻鲜地图已验证"新品种+产地讲得清=溢价"（瑞雪苹果+165%、秦脆苹果+200%）；山姆已把秭归脐橙写进全国首发新品，产地背书有了；柑橘今年跌50%说明光靠"早"已经换不到溢价，只能靠对比。</div>
+    <div class="item-desc"><b>差异化锚点：</b>竞品做单向的产地故事，我们做<b>产地对照</b>——两个产地并排放，让消费者自己判断。这比任何"我们更好"都可信，且天然产出内容与互动；复购理由也变了：不是"再买一次"，而是"我要追上次赢的那个"。</div>
+    <div class="item-desc"><b>可行性初判：</b>供应链中高（两产地要同时排期、货值翻倍、两条冷链），渠道高（盲品+揭晓是抖音极稳的短视频结构）。<b>必须守住合规红线</b>：只陈述两个产地的客观指标（糖度、果径、可食率、品种权、规格克重），绝不暗示"哪一个更好"、不做功效与优劣宣称，否则从"对照"滑回"虚假宣传"。</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card green">
+  <div class="card-title green">🏬 六、展会速递·每周新品雷达</div>
+
+  <div class="subhead">🆕 每周新品速递（板块核心）</div>
+
+  <div class="newprod">
+    <div class="np-head">🆕 山姆会员商店「MM香橙巧克力欧包」| 全国首发</div>
+    <div class="np-meta">上市时间：2026/11/19（天津红桥店全国首发，全国73家店）｜价格带：门店首发限定，未公开零售价｜同批首发：MM法式黑巧可颂、MM樱桃慕斯蛋糕</div>
+    <div class="np-body"><b>产品力拆解：</b>经<b>冷藏12小时慢发酵</b>工艺，<b>80%高含水量</b>带来湿润Q弹口感；内嵌比利时进口黑巧克力粒；关键动作是添加以<b>国家地理标志产品——湖北秭归脐橙</b>制成的糖渍橙皮丁，果香与可可风味交融；欧洲进口黄油开酥（法式黑巧可颂同用）；樱桃慕斯蛋糕用65%可可含量纯脂黑巧+仿真樱桃装饰。</div>
+    <div class="np-relate"><b>启发：</b>地标柑橘已经被头部渠道写进烘焙甜品的配料，而且用的是<b>糖渍橙皮丁这种深加工件而不是鲜果</b>——意思是地标果可以走切片/糖渍/冻干进入常温甜品供应链，绕开冷链与损耗。我们的柑橘礼盒可以同步开发"秭归/奉节脐橙糖渍皮丁、冻干片"作为烘焙与泡茶原料件；"冷藏12小时慢发酵""80%含水量"这类工艺参数完全可以印正面，不含任何宣称风险。</div>
+  </div>
+
+  <div class="newprod">
+    <div class="np-head">🆕 霸王茶姬「泰奶拿铁」系列 3 款</div>
+    <div class="np-meta">上市时间：2026/11/20 全国上线｜价格带：常规饮品档，会员限量"泰奶茶拿铁+香草籽泰奶茶拿铁"买一送一（每店限量100套，售完即止）</div>
+    <div class="np-body"><b>产品力拆解：</b>①<b>泰奶茶拿铁</b>——精选泰式红茶与东南亚大叶种红茶，配芝士轻乳与优质牛乳做"双倍奶香"；②<b>泰奶云朵粿粿</b>——浓醇泰奶中加入Q弹粉粿与卡美罗糖，每一口有焦糖惊喜；③<b>香草籽泰奶茶拿铁</b>——加入马达加斯加天然香草籽，香气与浓醇泰奶完美交融。</div>
+    <div class="np-relate"><b>启发：</b>泰式风味的抓手不是椰奶，而是<b>"东南亚原料三件套"——大叶种红茶 / 卡美罗糖 / 香草籽 / 粉粿</b>。这套原料国内B端供应链全都成熟，但零售端几乎是空白。我们可以反着做：<b>"泰式原料包"（卡美罗糖+香草籽+粉粿+冬阴功料）在抖音目前几乎没有品牌做过</b>。另外"双倍奶香""马达加斯加天然香草籽"是典型的原料级正面表达，不含功效词，可直接迁移到我们的包装话术。</div>
+  </div>
+
+  <div class="newprod">
+    <div class="np-head">🆕 奈雪的茶「烤香蕉巴斯克」（暖暖现烤系列）</div>
+    <div class="np-meta">上市时间：2026/11/19—20 全国上线｜价格带：厉娜同款双杯套餐 + 烘焙套餐（含巴斯克乳酪布丁烧、开心果麻薯流心塔）｜官宣厉娜为"暖暖现烤系列"推荐官</div>
+    <div class="np-body"><b>产品力拆解：</b>以<b>熟香蕉与牛乳调制成香蕉果奶</b>，顶部配现烤布蕾及焦糖脆壳，点缀菲律宾进口香蕉；"抱抱芭娜娜"主题；卖点是"现烤"工艺 + 甜品化顶部 + 烘焙套餐组合。</div>
+    <div class="np-relate"><b>启发：</b><b>"现烤"这门工艺正在从"烤布蕾"扩展到"烤水果基底"</b>——现烤工艺 + 成熟水果（香蕉、苹果）= 一款不依赖产地稀缺性、成本与供应链都可控的甜品，这比抢高价莓果现实得多（对照盒马草莓盒子蛋糕的断货程度）。对我们的直接启发：<b>做"产地水果甜品化"应优先选耐运输、成本低的老品种水果做基底</b>，把稀缺性放在配料与分级上，而不是放在水果本身。</div>
+  </div>
+
+  <div class="newprod">
+    <div class="np-head">🆕 海奇趣「南极磷虾脆片」纯净款</div>
+    <div class="np-meta">上市时间：2025年初上市，2026年11月为当前在售主力｜价格带：16.9元/盒（4小袋）｜累计售出超2万盒，iSEE全球食品创新奖铜奖</div>
+    <div class="np-body"><b>产品力拆解：</b><b>非油炸烘焙工艺</b>（保留营养、不额外带入油脂、不产生反式脂肪酸）；<b>配料表里没有任何虾味粉和香精</b>——磷虾天然自带的鲜味就是风味全部来源，靠特殊工艺"保留鲜味、抑制腥味"；番茄风味款只用<b>纯番茄</b>提供风味，不加任何其他添加（靠调烘烤设备参数解决纯番茄粘板）；磷虾出水后必须立即脱壳速冻防自溶；EPA/DHA 多为磷脂结合形态更利于吸收；6位清华/北大/浙大博士研发+国企科研平台背书；核心客群25—35岁年轻妈妈，女性消费者占比超80%。</div>
+    <div class="np-relate"><b>启发：</b>这是"清洁配方"在<b>零添加禁令之后</b>依然能收钱的实证（16.9元、两年两万盒、复购人群精准）。三条可抄：①"非油炸烘焙"是比"低脂"更好讲的工艺卖点；②"我们没加虾味粉和香精"是<b>具名减法</b>，合规安全，不写"零添加"三字；③差异化原料的选品公式＝<b>认知空白 + 已有成熟产能</b>。</div>
+  </div>
+
+  <div class="newprod">
+    <div class="np-head">🆕 盒马「草莓盒子蛋糕」一人食小盒装</div>
+    <div class="np-meta">上市时间：2021年上架大盒装，2026年11月中旬推出一人食小盒新规格｜价格带：单人份小盒（原主推25颗/16颗大盒装）｜本周几乎每天断货</div>
+    <div class="np-body"><b>产品力拆解：</b>每颗草莓经<b>5道挑选、2轮清洗</b>等数十道工序；工厂按渠道标准<b>自研"草莓洗烘一体机"</b>（多角度水压冲洗+自带冷风系统吹干水渍，比人工手洗更洁净且避免损伤）；车间入口贴满制造标准——甜度、外观、摆放角度、蛋糕高度、奶油要求；上线至今销售额同比+80%、销售规模破亿；消费者需下班"蹲守"并研究"蹲守攻略"。</div>
+    <div class="np-relate"><b>启发：</b>两条，一正一反。正面：<b>零售渠道开始向上游输出可执行标准</b>，能接住标准的产能会被优先排产——这是我们的产能护城河，应该主动去接渠道给的图纸。反面：<b>"我们卖好果"已经不构成差异化</b>，差异化在于"我们替消费者挑好了，并把挑的标准讲明白"。可执行动作：把"几道挑选 / 几轮清洗 / 什么糖度 / 挑掉了什么"印进包装正面，配一张次品对照卡——参照星巴克"特级"与海奇趣"配料表里没有X"两种表达模板。</div>
+  </div>
+
+  <div class="subhead">📌 上新速记（本周行业上新快讯）</div>
+  <ul class="quicklist">
+    <li><b>茶百道×SEE基金会「维纳斯黄金苹果系列」</b>｜11/19上新｜小黄油维纳斯（门店手熬黄油红糖酱+苹果香）、维纳斯苹果奶绿（七窨茉香雪芽茶底）23元档；购两款赠"森林朋友杯"（全国限量270万个）+"守护卡"5款随机1张（限量22.6万张）；另有小雀斑苹果美式、苹果拿铁两款果咖不参与送杯</li>
+    <li><b>茉莉奶白「足火焙香」焙茶系列</b>｜11/12起｜焙茶与豆乳、焙茶粉粿脆麦麦；随杯赠"控火"焙茶产品小卡——<b>用一张卡把工艺参数变成传播语言</b></li>
+    <li><b>沪上阿姨「红豆慢养」系列</b>｜红豆桃胶炖奶 / 一抹相思 / 绵绵红豆奶茶，立冬前夕上市<b>首周超210万杯</b></li>
+    <li><b>星巴克中国「星现烤」系列</b>｜11/20｜全国30余城、100余家门店，从生到熟当日完成</li>
+    <li><b>一栗NUTCO 新鲜零食</b>｜截至2026/10底近120家直营店、覆盖近20城，<b>预计年底突破130家</b>——新鲜零食业态已从"品类"变成"连锁业态"</li>
+    <li><b>叮咚V5「麻辣去皮核桃仁」</b>｜新疆阿克苏薄皮大核桃、手工取完整大瓣果仁、去皮蒸煮去涩、低温烘烤锁鲜、辣椒花椒调制<b>3级辣度</b>、配料干净、60g装12.9元</li>
+    <li><b>光明冷饮「鲜奶云朵卷」</b>｜抹茶云朵卷 / 红糖红豆云朵卷，鲜奶和面+蒸制工艺、240g、蒸制复热即食，适配早餐场景</li>
+    <li><b>小象超市「福禄绵绵山楂汤圆」</b>｜200g（10只），白色汤圆顶部印红色"福"字，把冰糖葫芦味觉复刻进传统汤圆</li>
+    <li><b>漯河生物制造三连</b>｜思念食品用中大恒源天然色素做「柿柿如意」汤圆；瑞幸联合微康生物做乳酸菌美式咖啡；大树食品推山药雪花片</li>
+    <li><b>书亦烧仙草布蕾系列</b>｜8月以来2个月近千万杯，11月"万事可橙"可可橙子小蛋糕奶茶上市3天35万杯</li>
+    <li><b>Costco 11月新品</b>｜Throne Sport Coffee（每罐10g蛋白、11盎司、12支3口味、$28.99）／Bob's Red Mill 无麸质1:1烘焙粉（$14.49）／Think Jerky 草饲牛肉干（20支×0.5oz独立装、$16.49）／Dot Cakes 杯装蛋糕6连包／Hony Chicken 意面炒鸡套餐（约$15、4人份）／Cabot Maple Cheddar 双味爆米花</li>
+  </ul>
+
+  <div class="subhead">🎪 展会预告</div>
+  <table class="minitable">
+    <tr><th>展会</th><th>时间 · 地点</th><th>看点</th><th>与我何干</th></tr>
+    <tr><td>PLF第十九届跨采·全球零售自有品牌亚洲展 + FMR第八届零售生鲜食材展</td><td>12/3—5 上海新国际博览中心 E1—E7馆（各6万㎡）</td><td>盒马、麦德龙、ALDI、胖东来、叮咚、7FRESH、天猫超市采购同场；FMR生鲜专区扩容至水产海鲜/肉禽蔬果/速冻预制/南北干货/乳制品/生鲜调味品</td><td>距今<b>13天</b>，是冬季新品定版前最后一次与头部渠道采购面对面；带"产地六字段+分级卡"样张去谈自有品牌代工</td></tr>
+    <tr><td>CFE第二十二届中国(国际)调味品及食品配料博览会</td><td>12/11—13 广州广交会展馆B区（4万㎡）</td><td>食用盐、食糖、酱油、食醋、味精、日餐系列、<b>泰餐系列</b>、西餐罐头、薯制品</td><td>泰餐系列是霸王茶姬泰奶的上游，复合调味是"一主料+一料包"路线最近的供应链</td></tr>
+    <tr><td>AIFE 2026亚洲(北京)国际食品博览会</td><td>12/11—13 北京中国国际展览中心（朝阳馆）</td><td>兼办非遗地标美食博览会，主题"智链未来 品味新生"；年度订货+新品订货发布会</td><td>地标美食与非遗工艺同场，是"产地工艺非遗清单"对接产地方与工艺方的场合</td></tr>
+    <tr><td>第32届广州酒店用品展览会</td><td>12/18—20 广州（28万㎡）</td><td>肉类冻品、海鲜水产、预制菜品、速冻面点/点心、果蔬制品、粮油、调味品</td><td>B端预制供应链密度最高的一站，可直接对接短保/速冻代工</td></tr>
+    <tr><td>AI+未来食品创新应用暨实操大会</td><td>12/3—5 无锡丽呈华庭酒店（1000㎡）</td><td>AI驱动食品研发、产品创新、智能制造与供应链</td><td>小而精，可看AI配方与品控工具，半天往返</td></tr>
+    <tr><td>第28届深圳全食展</td><td>2027/2/23—25 深圳国际会展中心（宝安新馆）15万㎡、2800家展商、近2万款新品</td><td>控糖食品、低GI食品、速冻预制、休闲健康化同场；雅客、洽洽、良品铺子、三只松鼠、卫龙、甘源等均在</td><td>距今<b>95天</b>，展位须本月内定；是开春新品首发第一站</td></tr>
+    <tr><td>MoreFood Expo 华食展</td><td>2027/2/25—27 上海国家会展中心（30万㎡）</td><td>预制食材、火锅烧烤、中央厨房、食品加工、包装</td><td>距今<b>97天</b>，与深圳全食展连成一趟</td></tr>
+    <tr><td>Anuga FoodTec 德国科隆</td><td>2027/2/23—26</td><td>HPP 6000bar、PEF脉冲电场、干式无菌PET线7.2万容器/小时、在线加料2万升/小时</td><td>我们的HPP与冻干工艺路线可对照海外设备选型，年初看展最合适</td></tr>
+    <tr><td>2027成都春糖 · 2027 FIC上海</td><td>2027/3/25—27（展位招商已启动）· 2027/3/17—19</td><td>—</td><td>本月定比3月抢便宜；FIC距今117天</td></tr>
+  </table>
+  <div class="warn"><b>展会动作提醒：</b>interpack China（11/16—18）已闭馆，本周内整理《interpack + FHC 供应商入库清单》；PLF+FMR 展位今天必须锁定；FIC广州（11/25—27）与广州餐饮食材展（11/26—28）、温州食博会（11/26）、合肥糖酒会（11/27—29）、良之隆·东盟食材电商节（南宁·桂菜，11/28—30）、嘉兴食产展与临沂糖酒会（11/28—30）可连成一趟广西云南货源线。</div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card">
+  <div class="card-title">✅ 今日三项动作清单</div>
+  <ul class="quicklist">
+    <li><b>① 标签改版与12月1日三闸门合并成一次排期</b>（只剩10天）：正面版面加"配料N项 + 主料≥X% + 钠XXmg"区块、致敏物质加粗下划线、委托生产受托方信息标注位置、日期标到小时，四件事一次做完，不要分四次改版。</li>
+    <li><b>② 立"挑过了"标准果盒最小闭环</b>：选一个品类（建议秭归脐橙或重庆奉节脐橙）+ 一个检测维度（糖度或果径），跑通"分选标准 → 印正面 → 扫码出报告"最小闭环，先做一场直播测转化。</li>
+    <li><b>③ 柑橘礼盒版式本周定版</b>：现在锁产地（文山广南头茬+秭归/奉节），现在定分级卡与包装，12月中下旬转色后再发货；同步开发糖渍橙皮丁/冻干片这类可常温流通的深加工件。</li>
+  </ul>
+</div>
+
+<div class="footer">
+  食研日推 · 2026-11-20（星期五）｜立冬第14天 · 小雪2天 · 大雪17天 · 冬至32天 · 双12 22天 · GB 7718-2025实施116天 · 标签改版自查10天 · 春节78天<br>
+  信息来源：每日经济报 / 21世纪经济报道 / 封面新闻 / 央广网 / 证券日报 / 食品伙伴网 / Foodaily每日食品 / 农业农村部监测 / 福州新闻网 / 柑橘行情日报 / 朝鲜Biz / 韩国经济新闻 / 山姆官方通稿 ｜ 服务对象：下厨房食品品牌产品经理
+</div>
+
+</body>
+</html>
